@@ -1,0 +1,791 @@
+{
+ "about": "Dated rechecks of Call Sheet calls against their official pages. 'changed' dates replace the research pack's; 'confirmed' dates only add times and zones. Unreachable pages are recorded but earn no 'Rechecked' mark.",
+ "method": "Each official page was read on the day given; every date is backed by a quote in 'evidence'.",
+ "rechecks": [
+  {
+   "id": "opp:atlas:current:f01",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://cmf-fmc.ca/program/slate-development-pilot-program/",
+   "evidence": "\"Slate Development Pilot Program: Track Record Applicants\" \"First Come, First Served\" \"Opening Date\" \"October 6, 2026\" \"Closing Date\" \"November 12, 2026\"",
+   "dates": [],
+   "note": "Intake dates confirmed on the CMF program page. The Track Record intake is first come, first served."
+  },
+  {
+   "id": "opp:atlas:current:f03",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://screenaustraliafunding.smartygrants.com.au/QiHYA0WFB2Ek",
+   "evidence": "\"First Nations Development October 2026\" \"Submissions are now being accepted.\" \"Submissions close at 5:00pm 22 October 2026 (AEDT).\"",
+   "dates": [],
+   "note": "Deadline confirmed on Screen Australia's application portal: 5pm AEDT, 22 October."
+  },
+  {
+   "id": "opp:atlas:current:f07_innovation",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.nzfilm.co.nz/funding-support-nz-filmmakers/funding/feature-film-production-investment",
+   "evidence": "\"Deadline 1pm Monday 9th November - Board meeting 16th & 17th February 2027 (TBC)\"; guidelines PDF: \"arrange a hui at least four weeks ahead of your application submission.\"",
+   "dates": [],
+   "note": "NZFC lists a 1pm Monday 9 November deadline; book a pre-application hui at least four weeks before you submit."
+  },
+  {
+   "id": "opp:atlas:current:f07_post",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.nzfilm.co.nz/funding-support-nz-filmmakers/funding/feature-film-production-investment",
+   "evidence": "\"Deadline 1pm Monday 9th November - Board meeting 16th & 17th February 2027 (TBC)\"; guidelines PDF: \"arrange a hui at least four weeks ahead of your application submission.\"",
+   "dates": [],
+   "note": "NZFC lists a 1pm Monday 9 November deadline; book a pre-application hui at least four weeks before you submit."
+  },
+  {
+   "id": "opp:atlas:current:f07_prod",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.nzfilm.co.nz/funding-support-nz-filmmakers/funding/feature-film-production-investment",
+   "evidence": "\"Deadline 1pm Monday 9th November - Board meeting 16th & 17th February 2027 (TBC)\"; guidelines PDF: \"arrange a hui at least four weeks ahead of your application submission.\"",
+   "dates": [],
+   "note": "NZFC lists a 1pm Monday 9 November deadline; book a pre-application hui at least four weeks before you submit."
+  },
+  {
+   "id": "opp:atlas:current:g03",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://bengaluru.sciencegallery.com/work-with-us-open-calls/quantum-film-commission-open-call",
+   "evidence": "\"Call opens: 20 September 2026\" \"Call closes: 20 October 2026\"",
+   "dates": [],
+   "note": "Deadline confirmed on the organiser's call page; no closing time is published."
+  },
+  {
+   "id": "opp:atlas:current:g04",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://dafo.cultura.pe/convocatorias/fondo-chirapaq-de-apoyo-al-cine-indigena",
+   "evidence": "\"Cierre de convocatoria: 17 de noviembre de 2026\"; CHIRAPAQ's announcement: \"El plazo para enviar las propuestas vence el 17 de noviembre.\"",
+   "dates": [],
+   "note": "Deadline confirmed on the Ministry of Culture (DAFO) call page: 17 November 2026."
+  },
+  {
+   "id": "opp:atlas:current:g14_cont",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php",
+   "evidence": "Calendario: \"Cierre de convocatoria y de plataforma digital para registro de proyectos.\" \"Jueves 22 de octubre de 2026 a las 17:00 horas del centro de México.\" One close date applies to all etapas and formats.",
+   "dates": [],
+   "note": "Deadline confirmed in IMCINE's rules: 22 October, 17:00 central Mexico time, for all stages."
+  },
+  {
+   "id": "opp:atlas:current:g14_dev",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php",
+   "evidence": "Calendario: \"Cierre de convocatoria y de plataforma digital para registro de proyectos.\" \"Jueves 22 de octubre de 2026 a las 17:00 horas del centro de México.\" One close date applies to all etapas and formats.",
+   "dates": [],
+   "note": "Deadline confirmed in IMCINE's rules: 22 October, 17:00 central Mexico time, for all stages."
+  },
+  {
+   "id": "opp:atlas:current:g14_fin_feature",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php",
+   "evidence": "Calendario: \"Cierre de convocatoria y de plataforma digital para registro de proyectos.\" \"Jueves 22 de octubre de 2026 a las 17:00 horas del centro de México.\" One close date applies to all etapas and formats.",
+   "dates": [],
+   "note": "Deadline confirmed in IMCINE's rules: 22 October, 17:00 central Mexico time, for all stages."
+  },
+  {
+   "id": "opp:atlas:current:g14_fin_short",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php",
+   "evidence": "Calendario: \"Cierre de convocatoria y de plataforma digital para registro de proyectos.\" \"Jueves 22 de octubre de 2026 a las 17:00 horas del centro de México.\" One close date applies to all etapas and formats.",
+   "dates": [],
+   "note": "Deadline confirmed in IMCINE's rules: 22 October, 17:00 central Mexico time, for all stages."
+  },
+  {
+   "id": "opp:atlas:current:g14_prod_feature",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php",
+   "evidence": "Calendario: \"Cierre de convocatoria y de plataforma digital para registro de proyectos.\" \"Jueves 22 de octubre de 2026 a las 17:00 horas del centro de México.\" One close date applies to all etapas and formats.",
+   "dates": [],
+   "note": "Deadline confirmed in IMCINE's rules: 22 October, 17:00 central Mexico time, for all stages."
+  },
+  {
+   "id": "opp:atlas:current:g14_prod_short",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php",
+   "evidence": "Calendario: \"Cierre de convocatoria y de plataforma digital para registro de proyectos.\" \"Jueves 22 de octubre de 2026 a las 17:00 horas del centro de México.\" One close date applies to all etapas and formats.",
+   "dates": [],
+   "note": "Deadline confirmed in IMCINE's rules: 22 October, 17:00 central Mexico time, for all stages."
+  },
+  {
+   "id": "opp:atlas:current:g16_debut",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://inap.gov.py/fondos-concursables-inap-2026-segundo-llamado/",
+   "evidence": "Call page: \"cierre del periodo de postulaciones para el 19 de octubre a las 07:59 h\". Bases y Condiciones, 12. Calendario: \"CIERRE: 19 de octubre de 2026, a las7:59 horas.\"",
+   "dates": [],
+   "note": "Deadline (19 Oct, 07:59) confirmed on the INAP call page and in the Bases; no time zone is stated."
+  },
+  {
+   "id": "opp:atlas:current:g16_dev",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://inap.gov.py/fondos-concursables-inap-2026-segundo-llamado/",
+   "evidence": "Call page: \"cierre del periodo de postulaciones para el 19 de octubre a las 07:59 h\". Bases y Condiciones, 12. Calendario: \"CIERRE: 19 de octubre de 2026, a las7:59 horas.\"",
+   "dates": [],
+   "note": "Deadline (19 Oct, 07:59) confirmed on the INAP call page and in the Bases; no time zone is stated."
+  },
+  {
+   "id": "opp:atlas:current:g16_doc",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://inap.gov.py/fondos-concursables-inap-2026-segundo-llamado/",
+   "evidence": "Call page: \"cierre del periodo de postulaciones para el 19 de octubre a las 07:59 h\". Bases y Condiciones, 12. Calendario: \"CIERRE: 19 de octubre de 2026, a las7:59 horas.\"",
+   "dates": [],
+   "note": "Deadline (19 Oct, 07:59) confirmed on the INAP call page and in the Bases; no time zone is stated."
+  },
+  {
+   "id": "opp:atlas:current:g16_fiction",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://inap.gov.py/fondos-concursables-inap-2026-segundo-llamado/",
+   "evidence": "Call page: \"cierre del periodo de postulaciones para el 19 de octubre a las 07:59 h\". Bases y Condiciones, 12. Calendario: \"CIERRE: 19 de octubre de 2026, a las7:59 horas.\"",
+   "dates": [],
+   "note": "Deadline (19 Oct, 07:59) confirmed on the INAP call page and in the Bases; no time zone is stated."
+  },
+  {
+   "id": "opp:atlas:current:g16_minority",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://inap.gov.py/fondos-concursables-inap-2026-segundo-llamado/",
+   "evidence": "Call page: \"cierre del periodo de postulaciones para el 19 de octubre a las 07:59 h\". Bases y Condiciones, 12. Calendario: \"CIERRE: 19 de octubre de 2026, a las7:59 horas.\"",
+   "dates": [],
+   "note": "Deadline (19 Oct, 07:59) confirmed on the INAP call page and in the Bases; no time zone is stated."
+  },
+  {
+   "id": "opp:atlas:current:g16_short",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://inap.gov.py/fondos-concursables-inap-2026-segundo-llamado/",
+   "evidence": "Call page: \"cierre del periodo de postulaciones para el 19 de octubre a las 07:59 h\". Bases y Condiciones, 12. Calendario: \"CIERRE: 19 de octubre de 2026, a las7:59 horas.\"",
+   "dates": [],
+   "note": "Deadline (19 Oct, 07:59) confirmed on the INAP call page and in the Bases; no time zone is stated."
+  },
+  {
+   "id": "opp:atlas:legacy:c01",
+   "checked_on": "2026-10-17",
+   "status": "changed",
+   "url": "https://www.funrepublicpictures.com/the-canadian-short-screenplay-competition/",
+   "evidence": "Key Dates: \"OPENING DATE July 1st, 2026\" \"EARLY BIRD DEADLINE November 4th, 2026\" \"REGULAR DEADLINE December 2nd, 2026\" \"LATE DEADLINE January 6th, 2027\" \"FINAL DEADLINE February 3rd, 2027\" \"I-MISSED-THE-DEADLINE DEADLINE March 3rd, 2027\"",
+   "dates": [
+    {
+     "date": "2026-07-01",
+     "role": "opening",
+     "label": "Opening date",
+     "time": null,
+     "timezone": null
+    },
+    {
+     "date": "2026-11-04",
+     "role": "application_fee_tier_cutoff",
+     "label": "Early bird deadline",
+     "time": null,
+     "timezone": null
+    },
+    {
+     "date": "2026-12-02",
+     "role": "application_fee_tier_cutoff",
+     "label": "Regular deadline",
+     "time": null,
+     "timezone": null
+    },
+    {
+     "date": "2027-01-06",
+     "role": "application_fee_tier_cutoff",
+     "label": "Late deadline",
+     "time": null,
+     "timezone": null
+    },
+    {
+     "date": "2027-02-03",
+     "role": "application_fee_tier_cutoff",
+     "label": "Final deadline",
+     "time": null,
+     "timezone": null
+    },
+    {
+     "date": "2027-03-03",
+     "role": "application_submission_deadline",
+     "label": "I-Missed-The-Deadline deadline",
+     "time": null,
+     "timezone": null
+    },
+    {
+     "date": "2027-04-07",
+     "role": "selection",
+     "label": "Notification date",
+     "time": null,
+     "timezone": null
+    },
+    {
+     "date": "2027-05-22",
+     "role": "event_or_context",
+     "label": "Award ceremony",
+     "time": null,
+     "timezone": null
+    }
+   ],
+   "note": "4 Nov is only the early-bird deadline; entries run to 3 Feb 2027 (final) and 3 Mar 2027 (last chance)."
+  },
+  {
+   "id": "opp:atlas:legacy:f01",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://hotdocs.ca/industry/submit/submit-a-film",
+   "evidence": "\"2027 Festival Submission Deadlines & Fees\" \"EARLY DEADLINE October 29, 2026\" \"REGULAR DEADLINE December 10, 2026\" \"LATE DEADLINE January 4, 2027\"",
+   "dates": [],
+   "note": "Early (29 Oct), regular (10 Dec) and late (4 Jan 2027) deadlines confirmed on the Hot Docs submissions page."
+  },
+  {
+   "id": "opp:atlas:legacy:p01",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://industry.hkiff.org.hk/en/haf/idp/eligibility-and-selection-criteria",
+   "evidence": "\"HAF25 will accept application from 01 September to 30 October 2026. Applications on or before 30 September can enjoy early bird discount.\" Fee page: \"Official Submission Period: 01 - 30 Oct 2026\"",
+   "dates": [],
+   "note": "Deadline confirmed: HAF25 accepts applications from 1 September to 30 October 2026."
+  },
+  {
+   "id": "opp:atlas:legacy:p04",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.aidc.com.au/pitches-marketplace/the-factory-2/",
+   "evidence": "\"Applications open: Wednesday 16 September 2026\" \"Regular Deadline: Sunday 1 November 2026 at 23:59 AEDT\" \"Late Deadline: Sunday 8 November 2026 at 23:59 AEDT\"",
+   "dates": [],
+   "note": "Regular deadline confirmed; a late deadline at a higher fee runs to 8 November, 23:59 AEDT."
+  },
+  {
+   "id": "opp:atlas:legacy:p17",
+   "checked_on": "2026-10-17",
+   "status": "changed",
+   "url": "https://www.joseignaciofilmfestival.com/17/en/generacion-j-bases-y-reglamento",
+   "evidence": "\"This call is specifically for the five participants from Uruguay.\" \"Applicants must carefully read these Rules and Regulations and complete the application form before November 13th, 2026.\"",
+   "dates": [
+    {
+     "date": "2026-11-12",
+     "role": "application_submission_deadline",
+     "label": "The rules say “before 13 November”",
+     "time": null,
+     "timezone": null
+    }
+   ],
+   "note": "The rules say to apply before 13 November, so 12 November is the last safe day."
+  },
+  {
+   "id": "opp:atlas:legacy:p18",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.dohafilm.com/en/learning-training/learning/workshops-labs/2026/0c910051-36d5-4f6c-a2e5-2140406daf3c",
+   "evidence": "\"Short Script Lab 2026 (Online)\" \"Applications are open.\" \"Deadline: 24 October 2026\" \"SUBMISSION DEADLINE 24 Oct 2026\"",
+   "dates": [],
+   "note": "Deadline confirmed on the Doha Film Institute's lab page; applications are open."
+  },
+  {
+   "id": "opp:atlas:legacy:s01",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.fondosdecultura.cl/apoyo-mercados-internacionales-2026-ventana-sur/",
+   "evidence": "\"Estado: abierta\" \"Plazo: lunes 19 de octubre de 2026, 15:00 hrs.\" \"Plazo para postular: 19 de octubre hasta las 15:00 horas de Santiago de Chile.\"",
+   "dates": [],
+   "note": "Deadline confirmed on the Fondos de Cultura call page: 19 October, 15:00 Santiago time."
+  },
+  {
+   "id": "opp:europe:current:g03",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.bfi.org.uk/get-funding-support/funding-support-international-activity/uk-global-screen-fund/uk-global-screen-fund-ukgsf-international-co-production",
+   "evidence": "\"The deadline for Fast Track applications is midday on 27 October 2026.\" \"This fund opens at midday on 29 September 2026 and closes at midday on 24 November 2026.\"",
+   "dates": [],
+   "note": "Confirmed: Fast Track applications close midday 27 Oct; all other applications close midday 24 Nov 2026."
+  },
+  {
+   "id": "opp:europe:current:g04",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.bfi.org.uk/get-funding-support/funding-support-international-activity/uk-global-screen-fund/uk-global-screen-fund-ukgsf-international-co-production",
+   "evidence": "\"The deadline for Fast Track applications is midday on 27 October 2026.\" \"This fund opens at midday on 29 September 2026 and closes at midday on 24 November 2026.\"",
+   "dates": [],
+   "note": "Confirmed: Fast Track applications close midday 27 Oct; all other applications close midday 24 Nov 2026."
+  },
+  {
+   "id": "opp:europe:current:g08",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.cnc.fr/professionnels/aides-et-financements/multi-sectoriel/production/aide-aux-cinemas-du-monde_190862",
+   "evidence": "\"AIDE APRES REALISATION (3ème commission)\" \"2026 - SESSION 04\" \"Dépôts : lundi 9 novembre 2026\"; \"2027 – SESSION 01\" \"Dépôts : lundi 25 janvier 2027\". \"Les dates indiquées sont susceptibles d'être modifiées.\"",
+   "dates": [],
+   "note": "Deposit date of 9 November confirmed on the CNC calendar; the CNC says dates may change."
+  },
+  {
+   "id": "opp:europe:current:g09",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.cnc.fr/professionnels/aides-et-financements/multi-sectoriel/ecriture-et-developpement/fonds-daide-a-linnovation-en-documentaire-de-creation_2198824",
+   "evidence": "Table \"Dates de dépôt 2026 pour l’aide à l’écriture\" lists \"Lundi 2 novembre | Mi-décembre | Date à déterminer 2027\".",
+   "dates": [],
+   "note": "The 2 November writing-aid deposit date is confirmed on the CNC fund page."
+  },
+  {
+   "id": "opp:europe:current:g12",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.cnc.fr/professionnels/aides-et-financements/cinema/ecriture-et-developpement/soutien-au-scenario-aide-a-lecriture_191516",
+   "evidence": "\"Le dépôt des dossiers a lieu de 9h à 17h\" 2nd college: \"1ère Session 2027 / lundi 16 novembre 2026\"; 1st college: \"1ère Session 2027 / jeudi 19 novembre 2026\". 2ème session 2027 deposits: \"lundi 25 janvier 2027\", \"jeudi 28 janvier 2027\".",
+   "dates": [],
+   "note": "Confirmed: deposit days are 16 Nov (experienced writers) and 19 Nov (first features), 9:00 to 17:00."
+  },
+  {
+   "id": "opp:europe:current:g22",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.ses.fi/en/funding/deadlines/",
+   "evidence": "Scriptwriting grant for documentary films and series: \"Application deadline: October 21, 2026\" \"Decisions are announced to applicants by December 18, 2026.\" \"Application deadline: January 13, 2027\"",
+   "dates": [],
+   "note": "Deadline confirmed on the Finnish Film Foundation's deadlines page."
+  },
+  {
+   "id": "opp:europe:current:g23",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.ses.fi/en/funding/deadlines/",
+   "evidence": "Development support: \"Application deadline: October 20, 2026\" \"Application deadline: January 12, 2027\". Support guide: \"The application deadline is at 16:00 on the last day of the application period.\"",
+   "dates": [],
+   "note": "Deadline confirmed on the Finnish Film Foundation's deadlines page; applications close at 16:00."
+  },
+  {
+   "id": "opp:europe:current:g24",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.ses.fi/en/funding/deadlines/",
+   "evidence": "Production support: \"Application deadline: October 20, 2026\" \"Decisions are announced to applicants by December 18, 2026.\" \"Application deadline: January 12, 2027\"",
+   "dates": [],
+   "note": "Deadline confirmed on the Finnish Film Foundation's deadlines page."
+  },
+  {
+   "id": "opp:europe:legacy:eu02",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.torinofilmlab.it/labs/scriptlab---story-editing/scriptlab-2027",
+   "evidence": "\"DEADLINE FOR APPLICATIONS : Tuesday 3rd November 2026, 4.00 pm CET\" \"Please note: the deadline is non-extendable with no exceptions.\" \"Preselected applicants will be notified by email on 8th - 9th December 2026\"",
+   "dates": [],
+   "note": "Deadline confirmed: 3 November 2026, 4 pm CET. The organiser says it will not be extended."
+  },
+  {
+   "id": "opp:europe:legacy:eu03",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.torinofilmlab.it/labs/featurelab/featurelab-2027",
+   "evidence": "\"DEADLINE FOR APPLICATIONS: Thursday, 5th November 2026, 4.00 pm CET.\" \"Preselected applicants will be notified by email by 15th January 2027\" ... \"by Wednesday, 20th January 2027, 2.00 pm CET.\"",
+   "dates": [
+    {
+     "date": "2026-11-05",
+     "role": "application_submission_deadline",
+     "label": "Deadline, 4.00 pm CET",
+     "time": "16:00",
+     "timezone": "Europe/Paris"
+    },
+    {
+     "date": "2027-01-15",
+     "role": "selection",
+     "label": "Preselected applicants notified by email",
+     "time": null,
+     "timezone": null
+    },
+    {
+     "date": "2027-01-20",
+     "role": "selection",
+     "label": "Preselected: updated financial plan and timeline due, 2.00 pm CET",
+     "time": "14:00",
+     "timezone": "Europe/Paris"
+    }
+   ],
+   "note": "Deadline confirmed: 5 November 2026, 4.00 pm CET."
+  },
+  {
+   "id": "opp:europe:legacy:eu04",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://cphdox.dk/forum-rules-and-regulations/",
+   "evidence": "\"CPH:FORUM is now open for applications and the deadline to submit is November 3, 2026.\" \"November 3: Application deadline.\"",
+   "dates": [],
+   "note": "Deadline confirmed on CPH:DOX's rules page; no closing time is published."
+  },
+  {
+   "id": "opp:europe:legacy:eu06",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.cartoon-media.eu/movie/submit-your-project/schedule-deadlines",
+   "evidence": "Schedule & deadlines: submission deadline \"12 NOV 2026\"; event \"2-4 MAR 2027\".",
+   "dates": [],
+   "note": "Submission deadline of 12 Nov confirmed on the Cartoon Movie schedule page."
+  },
+  {
+   "id": "opp:europe:legacy:eu07",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.lecourt-clermont.org/wp-content/uploads/2026/08/EC27_appel_ENG_final.pdf",
+   "evidence": "\"CALL FOR PROJECTS 2027 Deadline for application: 20 October 2026\"; \"Applications must be sent by email to the national correspondent in your country no later than October 20, 2026.\"",
+   "dates": [],
+   "note": "Deadline confirmed in the official 2027 call; apply through your national correspondent."
+  },
+  {
+   "id": "opp:europe:legacy:eu07_xr",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://forms.gle/pQep3TE7SrX4Jxs19",
+   "evidence": "Official immersive application form (linked from the EC27 call PDF), titled \"Euro Connection 2027 - Immersive projects\": \"Deadline : October 20, 2026\"",
+   "dates": [],
+   "note": "Deadline confirmed on the official immersive-projects application form."
+  },
+  {
+   "id": "opp:europe:legacy:eu08_s",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.c21media.net/c21-pitch-content-london-2026/",
+   "evidence": "\"The Content London Pitch Competition is open for entries between August 19 and October 19, 23:59 GMT.\" Timeline: \"19/10/2026 Entry deadline\"",
+   "dates": [],
+   "note": "Deadline confirmed on the organiser's page: 19 October, 23:59 GMT."
+  },
+  {
+   "id": "opp:europe:legacy:eu08_u",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.c21media.net/c21-pitch-content-london-2026/",
+   "evidence": "\"The Content London Pitch Competition is open for entries between August 19 and October 19, 23:59 GMT.\" Timeline: \"19/10/2026 Entry deadline\"",
+   "dates": [],
+   "note": "Deadline confirmed on the organiser's page: 19 October, 23:59 GMT (shared with Scripted)."
+  },
+  {
+   "id": "opp:europe:legacy:eu09",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://seriesmania.com/institute/en/program/writers-campus/",
+   "evidence": "Key dates: \"November 9, 2026\" \"Applications deadline\"; \"Closing date Nov 9, 2026\"; \"December 16, 2026\" \"Selection results\"",
+   "dates": [],
+   "note": "Deadline (9 Nov) and selection results (16 Dec) confirmed on the Writers Campus page; no time is given."
+  },
+  {
+   "id": "opp:europe:legacy:eu10",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.midpoint-institute.eu/en/detail/midpoint-feature-launch-2027-7CbDOS",
+   "evidence": "Fees & how to apply: \"OPEN CALL\" \"SEPTEMBER 3-OCTOBER 19, 2026\"; structure: \"March 18-24, 2027 (5 working days) | Prague, Czech Republic\"",
+   "dates": [],
+   "note": "Deadline confirmed on the organiser's call page (open call 3 September to 19 October 2026)."
+  },
+  {
+   "id": "opp:europe:legacy:eu14_o",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://lim-lessismore.eu/the-lim%C2%B2-2027-call-for-projects-is-open/",
+   "evidence": "\"The lim² 2027 Call for Projects is now open (from the 1st of September to 14 October 2026 – Extended deadline : 21 October)\"; \"Extended Deadline : 21 October 2026 11.59pm CET\"",
+   "dates": [
+    {
+     "date": "2026-09-01",
+     "role": "opening",
+     "label": "Call opens",
+     "time": null,
+     "timezone": null
+    },
+    {
+     "date": "2026-10-21",
+     "role": "application_submission_deadline",
+     "label": "Extended deadline (11.59pm CET as written)",
+     "time": "23:59",
+     "timezone": null
+    }
+   ],
+   "note": "Extended deadline of 21 Oct, 11.59pm CET, confirmed on the lim² call page; one call covers both programmes."
+  },
+  {
+   "id": "opp:europe:legacy:eu14_r",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://lim-lessismore.eu/the-lim%C2%B2-2027-call-for-projects-is-open/",
+   "evidence": "\"The lim² 2027 Call for Projects is now open (from the 1st of September to 14 October 2026 – Extended deadline : 21 October)\"; \"Extended Deadline : 21 October 2026 11.59pm CET\"",
+   "dates": [
+    {
+     "date": "2026-09-01",
+     "role": "opening",
+     "label": "Call opens",
+     "time": null,
+     "timezone": null
+    },
+    {
+     "date": "2026-10-21",
+     "role": "application_submission_deadline",
+     "label": "Extended deadline (11.59pm CET as written)",
+     "time": "23:59",
+     "timezone": null
+    }
+   ],
+   "note": "Extended deadline of 21 Oct, 11.59pm CET, confirmed on the lim² call page; one call covers both programmes."
+  },
+  {
+   "id": "opp:europe:legacy:eu15",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.midpoint-institute.eu/en/detail/midpoint-focus-queer-2027-3kReXZ",
+   "evidence": "\"OPEN CALL SEPTEMBER 3 - OCTOBER 19, 2026\"",
+   "dates": [],
+   "note": "Deadline confirmed on the MIDPOINT Focus Queer 2027 page; no closing time is published."
+  },
+  {
+   "id": "opp:europe:legacy:eu19",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.legroupeouest.com/actualites/selection-annuelle-2027/",
+   "evidence": "\"Appel à candidatures ouvert jusqu'au 12 novembre 2026\" \"Ouvert jusqu’au 12 novembre 2026 à 23h59 CET\"",
+   "dates": [
+    {
+     "date": "2026-11-12",
+     "role": "application_submission_deadline",
+     "label": "23h59 CET",
+     "time": "23:59",
+     "timezone": "Europe/Paris"
+    }
+   ],
+   "note": "Deadline confirmed: 12 November 2026 at 23:59 CET."
+  },
+  {
+   "id": "opp:us:current:g04",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://apply.sundance.org/prog/2027_graton_fellowship/",
+   "evidence": "\"Opens Sep 1 2026 14:00 (MDT)\" \"Deadline Nov 16 2026 16:30 (MST)\" \"November 16, 2026, 3:30 p.m. PT/4:30 p.m. MT/6:30 p.m. ET\"",
+   "dates": [
+    {
+     "date": "2026-09-01",
+     "role": "opening",
+     "label": "Opens 14:00 MDT",
+     "time": "14:00",
+     "timezone": "America/Denver"
+    },
+    {
+     "date": "2026-11-16",
+     "role": "application_submission_deadline",
+     "label": "3:30 p.m. PT / 4:30 p.m. MT / 6:30 p.m. ET",
+     "time": "16:30",
+     "timezone": "America/Denver"
+    }
+   ],
+   "note": "Deadline confirmed on Sundance's application portal: 16 November, 3:30pm PT / 4:30pm MT."
+  },
+  {
+   "id": "opp:us:current:g05",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://apply.sundance.org/prog/2027_merata_mita_fellowship/",
+   "evidence": "\"Opens Oct 13 2026 14:00 (MDT)\" \"Deadline Nov 3 2026 16:30 (MST)\" \"Tuesday, November 3, 2026 – 3:30 p.m. PT/4:30 p.m. MT/6:30 p.m. ET\"",
+   "dates": [
+    {
+     "date": "2026-10-13",
+     "role": "opening",
+     "label": "Opens 14:00 MDT",
+     "time": "14:00",
+     "timezone": "America/Denver"
+    },
+    {
+     "date": "2026-11-03",
+     "role": "application_submission_deadline",
+     "label": "3:30 p.m. PT / 4:30 p.m. MT / 6:30 p.m. ET",
+     "time": "16:30",
+     "timezone": "America/Denver"
+    }
+   ],
+   "note": "Deadline confirmed on Sundance's application portal: 3 November, 3:30pm PT / 4:30pm MT."
+  },
+  {
+   "id": "opp:us:current:g06",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.wavelengthproductions.com/wavegrant",
+   "evidence": "\"Applications open on October 15th, 2026.\" \"November 15, 2026: Application submission deadline\"",
+   "dates": [],
+   "note": "Deadline of 15 Nov confirmed on the WAVE Grant page; no time is given."
+  },
+  {
+   "id": "opp:us:current:g08",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://fromtheheartproductions.com/roy-w-dean-film-grants-and-awards/",
+   "evidence": "Grant page: \"2026 Fall Grant Application Now Open!\" \"APPLICATION DEADLINE: October 31st @ Midnight PT\". Application form: \"Application Deadline - October 31st @ Midnight\"",
+   "dates": [
+    {
+     "date": "2026-10-31",
+     "role": "application_submission_deadline",
+     "label": "Midnight PT",
+     "time": null,
+     "timezone": null
+    }
+   ],
+   "note": "Deadline confirmed: 31 October at midnight Pacific Time (PT)."
+  },
+  {
+   "id": "opp:us:current:g11",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.nyc.gov/site/dcla/cultural-funding/funding-for-artists.page",
+   "evidence": "Queens: \"New York Foundation for the Arts (Deadline: November 17, 2026)\" \"The New York Foundation for the Arts currently administers the Queens Arts Fund, providing grants to artists and arts organizations within Queens.\"",
+   "dates": [],
+   "note": "Deadline confirmed on NYC Cultural Affairs' funding page. NYFA's own grant page blocked our check."
+  },
+  {
+   "id": "opp:us:current:g12",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://miamifilmfestival.com/the-louies/",
+   "evidence": "\"Applications for The Louies are now open!\" \"Applications will be accepted from Sept. 28 through Nov. 6, 2026.\"",
+   "dates": [],
+   "note": "Deadline confirmed on the Miami Film Festival page: applications run 28 Sept to 6 Nov 2026."
+  },
+  {
+   "id": "opp:us:current:g13",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://miamifilmfestival.com/the-louies/",
+   "evidence": "\"Applications for The Louies are now open!\" \"Applications will be accepted from Sept. 28 through Nov. 6, 2026.\"",
+   "dates": [],
+   "note": "Deadline confirmed on the Miami Film Festival page: applications run 28 Sept to 6 Nov 2026."
+  },
+  {
+   "id": "opp:us:current:g14",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://miamifilmfestival.com/the-louies/",
+   "evidence": "\"Applications for The Louies are now open!\" \"Applications will be accepted from Sept. 28 through Nov. 6, 2026.\"",
+   "dates": [],
+   "note": "Deadline confirmed on the Miami Film Festival page: applications run 28 Sept to 6 Nov 2026."
+  },
+  {
+   "id": "opp:us:current:g16",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.filmindependent.org/programs/artist-development/film-independent-x-humana-foundation-shorts/",
+   "evidence": "\"Applications open on September 25, 2026, and close on October 26.\" \"The extended deadline for Film Independent Members is November 2, 2026.\"",
+   "dates": [],
+   "note": "Non-member (26 Oct) and member (2 Nov) deadlines confirmed on the Film Independent page; no time is given."
+  },
+  {
+   "id": "opp:us:current:g18",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.thefilmfund.co/official-rules/",
+   "evidence": "Official rules: \"The Contest begins on September 22nd, 2026, at 11:00 AM Eastern Time\" and \"ends on November 17th, 2026, at 11:59.59 PM Eastern Time\".",
+   "dates": [],
+   "note": "Deadline of 17 Nov, 11:59:59 PM Eastern, confirmed in The Film Fund's official rules."
+  },
+  {
+   "id": "opp:us:legacy:f05",
+   "checked_on": "2026-10-17",
+   "status": "confirmed",
+   "url": "https://www.atlantafilmfestival.com/screenplay-submission-faq",
+   "evidence": "\"Late Deadline: October 16, 2026\" \"Extended Deadline: November 6, 2026\" \"All deadlines are set for 11:59 pm EDT (with the exception of our final deadline on November 6, 2027 at 11:59pm EST).\"",
+   "dates": [
+    {
+     "date": "2026-05-29",
+     "role": "application_fee_tier_cutoff",
+     "label": "Hella Early deadline (11:59 pm EDT)",
+     "time": "23:59",
+     "timezone": null
+    },
+    {
+     "date": "2026-06-26",
+     "role": "application_fee_tier_cutoff",
+     "label": "Early deadline (11:59 pm EDT)",
+     "time": "23:59",
+     "timezone": null
+    },
+    {
+     "date": "2026-09-11",
+     "role": "application_fee_tier_cutoff",
+     "label": "Regular deadline (11:59 pm EDT)",
+     "time": "23:59",
+     "timezone": null
+    },
+    {
+     "date": "2026-10-16",
+     "role": "application_fee_tier_cutoff",
+     "label": "Late deadline (11:59 pm EDT)",
+     "time": "23:59",
+     "timezone": null
+    },
+    {
+     "date": "2026-11-06",
+     "role": "application_submission_deadline",
+     "label": "Extended (final) deadline (11:59 pm EST)",
+     "time": "23:59",
+     "timezone": null
+    },
+    {
+     "date": "2027-01-29",
+     "role": "selection",
+     "label": "Initial notification (quarterfinalists)",
+     "time": null,
+     "timezone": null
+    },
+    {
+     "date": "2027-02-12",
+     "role": "selection",
+     "label": "Semifinalists announced",
+     "time": null,
+     "timezone": null
+    },
+    {
+     "date": "2027-03-05",
+     "role": "selection",
+     "label": "Finalists announced",
+     "time": null,
+     "timezone": null
+    },
+    {
+     "date": "2027-04-22",
+     "role": "event_or_context",
+     "label": "Festival, 22 April to 2 May 2027",
+     "time": null,
+     "timezone": null
+    }
+   ],
+   "note": "Final deadline confirmed: 6 November 2026 at 11:59 pm EST, per the festival's screenplay FAQ."
+  },
+  {
+   "id": "opp:us:legacy:f06",
+   "checked_on": "2026-10-17",
+   "status": "unreachable",
+   "url": "https://filmfreeway.com/CinequestScreenwritingCompetition",
+   "evidence": "",
+   "dates": [],
+   "note": "The FilmFreeway page would not load and Cinequest's own site lists no deadline. Check FilmFreeway before entering."
+  },
+  {
+   "id": "opp:us:legacy:f07",
+   "checked_on": "2026-10-17",
+   "status": "unreachable",
+   "url": "https://filmfreeway.com/BigSkyPitch",
+   "evidence": "",
+   "dates": [],
+   "note": "The official pages would not load for us. Check the deadline on Big Sky's FilmFreeway page before applying."
+  },
+  {
+   "id": "opp:us:legacy:f10",
+   "checked_on": "2026-10-17",
+   "status": "unreachable",
+   "url": "https://filmfreeway.com/VailScreenplayContest",
+   "evidence": "",
+   "dates": [],
+   "note": "The FilmFreeway listing blocked our check, and the festival site points to FilmFreeway for deadlines."
+  }
+ ]
+}

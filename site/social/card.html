@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Call Sheet social card</title>
+<!-- Rendered at 1200×630 to call-sheet-social-card.png. Serve the pitch.dog
+     site root so the type system path resolves, then screenshot this page. -->
+<link rel="stylesheet" href="/assets/type/dist/pitchdog-system-v13.1.1.min.css">
+<style>
+  :root { --paper: #f6f5f8; --panel: #fffdfb; --ink: #0e0e0f; --muted: #65666e; --rule: rgb(14 14 15 / .14); --rule-strong: rgb(14 14 15 / .27); --pink: #d24599; --pink-soft: #f7a3d3; --signal: #c2381f; --mint: #eaf1e8; --mint-ink: #376246; }
+  * { box-sizing: border-box; margin: 0; }
+  body { width: 1200px; height: 630px; overflow: hidden; background: var(--paper); color: var(--ink); font-family: var(--pd-font-body); position: relative; }
+  body::before { content: ""; position: absolute; inset: 0; background: linear-gradient(rgb(14 14 15 / .055) 1px, transparent 1px) 0 0 / 60px 60px, linear-gradient(90deg, rgb(14 14 15 / .055) 1px, transparent 1px) 0 0 / 60px 60px; -webkit-mask-image: radial-gradient(80% 90% at 30% 50%, #000 30%, transparent 85%); }
+  body::after { content: ""; position: absolute; inset: 0; background: radial-gradient(40% 50% at 78% 70%, rgb(210 69 153 / .18), transparent 70%), radial-gradient(30% 40% at 15% 90%, rgb(247 163 211 / .2), transparent 70%); }
+  .wrap { position: relative; z-index: 1; height: 100%; padding: 64px 72px; display: grid; grid-template-columns: 1fr 470px; gap: 56px; align-items: center; }
+  .eyebrow { display: flex; align-items: center; gap: 12px; color: var(--muted); font: 550 17px/1 var(--pd-font-eyebrow); letter-spacing: .08em; text-transform: uppercase; }
+  .dot { width: 11px; height: 11px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 0 6px rgb(210 69 153 / .16); }
+  h1 { margin-top: 26px; font: 600 132px/.86 var(--pd-font-head); font-variation-settings: "wght" 600; letter-spacing: -.045em; }
+  p { margin-top: 30px; max-width: 30ch; color: var(--muted); font: 400 31px/1.25 var(--pd-font-body-alt); letter-spacing: -.012em; }
+  .by { margin-top: 34px; display: flex; align-items: center; gap: 12px; font: 650 26px/1 var(--pd-font-body); }
+  .by img { width: 38px; height: 38px; }
+  .sheet { background: var(--panel); border: 1.5px solid var(--rule-strong); box-shadow: 12px 12px 0 rgb(210 69 153 / .2), 0 40px 70px -40px rgb(210 69 153 / .8); transform: rotate(-1.6deg); }
+  .sheet header { padding: 16px 22px; display: flex; justify-content: space-between; border-bottom: 1.5px solid var(--ink); font: 600 14px/1 var(--pd-font-eyebrow); letter-spacing: .08em; text-transform: uppercase; }
+  .row { padding: 16px 22px; display: grid; grid-template-columns: 74px 1fr; gap: 16px; align-items: start; border-bottom: 1px solid var(--rule); }
+  .row:last-child { border-bottom: 0; }
+  .day { font: 560 46px/.86 var(--pd-font-head); letter-spacing: -.04em; }
+  .mon { margin-top: 6px; color: var(--muted); font: 600 13px/1 var(--pd-font-eyebrow); letter-spacing: .08em; text-transform: uppercase; }
+  .t { font: 600 21px/1.18 var(--pd-font-body); }
+  .m { margin-top: 6px; color: var(--muted); font: 500 13px/1.2 var(--pd-font-eyebrow); letter-spacing: .06em; text-transform: uppercase; }
+  .tag { display: inline-block; margin-top: 8px; padding: 5px 8px; background: var(--mint); color: var(--mint-ink); font: 600 12px/1 var(--pd-font-eyebrow); letter-spacing: .06em; text-transform: uppercase; }
+  .left { color: var(--signal); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Free tool · film &amp; TV</div>
+      <h1>Call Sheet.</h1>
+      <p>Grants, labs, markets and festivals, sorted by when they close.</p>
+      <div class="by"><img src="/assets/pitchdog-logomark.svg" alt="">pitch.dog</div>
+    </div>
+    <div class="sheet">
+      <header><span>Call sheet</span><span>Soonest first</span></header>
+      <div class="row"><div><div class="day">21</div><div class="mon">Oct</div></div><div><div class="t">Documentary scriptwriting grant</div><div class="m">Grant · Documentary · Writing</div><span class="tag">Open now</span></div></div>
+      <div class="row"><div><div class="day">3</div><div class="mon">Nov</div></div><div><div class="t">Directing fellowship</div><div class="m">Lab · Feature · Development</div><span class="tag">Free to enter</span></div></div>
+      <div class="row"><div><div class="day">24</div><div class="mon">Nov</div></div><div><div class="t">Co-production fund</div><div class="m">Grant · Feature · Production</div><span class="tag">Open worldwide</span></div></div>
+    </div>
+  </div>
+</body>
+</html>

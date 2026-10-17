@@ -4,7 +4,9 @@
 
 - Read this file, the README, and [docs/CLOUD_CODEX.md](docs/CLOUD_CODEX.md).
 - Inspect the existing files and the nearest available check before choosing an implementation seam.
-- Keep the repository framework-neutral until a primary runtime and release path are explicitly chosen.
+- The runtime and release path are chosen: static pages built by `tools/build_site.py` (Python standard library), released into pitch.dog through `bomkino/pitchdog-cloudflare-sites`. Add no framework or dependency without a reason the README can state.
+- `data/calls.json` and `dist-pitchdog/` are generated. Change `data/overlay.json`, `data/rechecks.json`, `site/` or the tools instead.
+- Keep the private foundation out of this public repository.
 
 ## Working agreements
 
