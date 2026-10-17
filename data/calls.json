@@ -500,7 +500,7 @@
      "value": null
     }
    ],
-   "official_url": "https://cmf-fmc.ca/document/core-development-and-predevelopment-guidelines/",
+   "official_url": "https://cmf-fmc.ca/program/slate-development-pilot-program/",
    "open_questions": [
     {
      "meanwhile": "Withhold disputed slate size, duration and caps. Dates and core advance model remain separately evidenced.",
@@ -512,7 +512,12 @@
    "organiser_country": "Canada",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Intake dates confirmed on the CMF program page. The Track Record intake is first come, first served.",
+    "status": "confirmed",
+    "url": "https://cmf-fmc.ca/program/slate-development-pilot-program/"
+   },
    "related": [
     "cmf-slate-development-pilot-alternative-access"
    ],
@@ -741,7 +746,12 @@
    "organiser_country": "Australia",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on Screen Australia's application portal: 5pm AEDT, 22 October.",
+    "status": "confirmed",
+    "url": "https://screenaustraliafunding.smartygrants.com.au/QiHYA0WFB2Ek"
+   },
    "related": [],
    "slug": "screen-australia-first-nations-development",
    "sources": [
@@ -1119,7 +1129,7 @@
      "value": null
     }
    ],
-   "official_url": "https://www.nzfilm.co.nz/assets/resources/Feature-Film-Production-Guidelines_Prod-Post_Sep-2026_FINAL.pdf",
+   "official_url": "https://www.nzfilm.co.nz/funding-support-nz-filmmakers/funding/feature-film-production-investment",
    "open_questions": [
     {
      "meanwhile": "Do not market production finance as free grant money.",
@@ -1143,7 +1153,12 @@
    "organiser_country": "New Zealand",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "NZFC lists a 1pm Monday 9 November deadline; book a pre-application hui at least four weeks before you submit.",
+    "status": "confirmed",
+    "url": "https://www.nzfilm.co.nz/funding-support-nz-filmmakers/funding/feature-film-production-investment"
+   },
    "related": [
     "nzfc-post-production",
     "nzfc-production"
@@ -1260,7 +1275,7 @@
      "value": null
     }
    ],
-   "official_url": "https://www.nzfilm.co.nz/assets/resources/Feature-Film-Production-Guidelines_Prod-Post_Sep-2026_FINAL.pdf",
+   "official_url": "https://www.nzfilm.co.nz/funding-support-nz-filmmakers/funding/feature-film-production-investment",
    "open_questions": [
     {
      "meanwhile": "Do not market production finance as free grant money.",
@@ -1284,7 +1299,12 @@
    "organiser_country": "New Zealand",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "NZFC lists a 1pm Monday 9 November deadline; book a pre-application hui at least four weeks before you submit.",
+    "status": "confirmed",
+    "url": "https://www.nzfilm.co.nz/funding-support-nz-filmmakers/funding/feature-film-production-investment"
+   },
    "related": [
     "nzfc-innovation-led-production",
     "nzfc-production"
@@ -1400,7 +1420,7 @@
      "value": null
     }
    ],
-   "official_url": "https://www.nzfilm.co.nz/assets/resources/Feature-Film-Production-Guidelines_Prod-Post_Sep-2026_FINAL.pdf",
+   "official_url": "https://www.nzfilm.co.nz/funding-support-nz-filmmakers/funding/feature-film-production-investment",
    "open_questions": [
     {
      "meanwhile": "Do not market production finance as free grant money.",
@@ -1424,7 +1444,12 @@
    "organiser_country": "New Zealand",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "NZFC lists a 1pm Monday 9 November deadline; book a pre-application hui at least four weeks before you submit.",
+    "status": "confirmed",
+    "url": "https://www.nzfilm.co.nz/funding-support-nz-filmmakers/funding/feature-film-production-investment"
+   },
    "related": [
     "nzfc-innovation-led-production",
     "nzfc-post-production"
@@ -2187,7 +2212,12 @@
    "organiser_country": "India",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on the organiser's call page; no closing time is published.",
+    "status": "confirmed",
+    "url": "https://bengaluru.sciencegallery.com/work-with-us-open-calls/quantum-film-commission-open-call"
+   },
    "related": [],
    "slug": "science-gallery-bengaluru-quantum-film-commission",
    "sources": [
@@ -2300,7 +2330,12 @@
    "organiser_country": "Peru",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on the Ministry of Culture (DAFO) call page: 17 November 2026.",
+    "status": "confirmed",
+    "url": "https://dafo.cultura.pe/convocatorias/fondo-chirapaq-de-apoyo-al-cine-indigena"
+   },
    "related": [],
    "slug": "chirapaq-indigenous-cinema-fund",
    "sources": [
@@ -3420,7 +3455,7 @@
      "value": null
     }
    ],
-   "official_url": "https://convocatorias.imcine.gob.mx/ecamc/",
+   "official_url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php",
    "open_questions": [
     {
      "meanwhile": "Do not add stage ceilings; plan bank charges and a compliant rights window.",
@@ -3436,7 +3471,12 @@
    "organiser_country": "Mexico",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed in IMCINE's rules: 22 October, 17:00 central Mexico time, for all stages.",
+    "status": "confirmed",
+    "url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php"
+   },
    "related": [
     "ecamc-feature-completion",
     "ecamc-feature-development",
@@ -3553,7 +3593,7 @@
      "value": null
     }
    ],
-   "official_url": "https://convocatorias.imcine.gob.mx/ecamc/",
+   "official_url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php",
    "open_questions": [
     {
      "meanwhile": "Do not add stage ceilings; plan bank charges and a compliant rights window.",
@@ -3569,7 +3609,12 @@
    "organiser_country": "Mexico",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed in IMCINE's rules: 22 October, 17:00 central Mexico time, for all stages.",
+    "status": "confirmed",
+    "url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php"
+   },
    "related": [
     "ecamc-feature-completion",
     "ecamc-feature-continuity",
@@ -3686,7 +3731,7 @@
      "value": null
     }
    ],
-   "official_url": "https://convocatorias.imcine.gob.mx/ecamc/",
+   "official_url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php",
    "open_questions": [
     {
      "meanwhile": "Do not add stage ceilings; plan bank charges and a compliant rights window.",
@@ -3702,7 +3747,12 @@
    "organiser_country": "Mexico",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed in IMCINE's rules: 22 October, 17:00 central Mexico time, for all stages.",
+    "status": "confirmed",
+    "url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php"
+   },
    "related": [
     "ecamc-feature-continuity",
     "ecamc-feature-development",
@@ -3819,7 +3869,7 @@
      "value": null
     }
    ],
-   "official_url": "https://convocatorias.imcine.gob.mx/ecamc/",
+   "official_url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php",
    "open_questions": [
     {
      "meanwhile": "Do not add stage ceilings; plan bank charges and a compliant rights window.",
@@ -3835,7 +3885,12 @@
    "organiser_country": "Mexico",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed in IMCINE's rules: 22 October, 17:00 central Mexico time, for all stages.",
+    "status": "confirmed",
+    "url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php"
+   },
    "related": [
     "ecamc-feature-completion",
     "ecamc-feature-continuity",
@@ -3952,7 +4007,7 @@
      "value": null
     }
    ],
-   "official_url": "https://convocatorias.imcine.gob.mx/ecamc/",
+   "official_url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php",
    "open_questions": [
     {
      "meanwhile": "Do not add stage ceilings; plan bank charges and a compliant rights window.",
@@ -3968,7 +4023,12 @@
    "organiser_country": "Mexico",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed in IMCINE's rules: 22 October, 17:00 central Mexico time, for all stages.",
+    "status": "confirmed",
+    "url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php"
+   },
    "related": [
     "ecamc-feature-completion",
     "ecamc-feature-continuity",
@@ -4085,7 +4145,7 @@
      "value": null
     }
    ],
-   "official_url": "https://convocatorias.imcine.gob.mx/ecamc/",
+   "official_url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php",
    "open_questions": [
     {
      "meanwhile": "Do not add stage ceilings; plan bank charges and a compliant rights window.",
@@ -4101,7 +4161,12 @@
    "organiser_country": "Mexico",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed in IMCINE's rules: 22 October, 17:00 central Mexico time, for all stages.",
+    "status": "confirmed",
+    "url": "https://convocatorias.imcine.gob.mx/ecamc/bases_participacion.php"
+   },
    "related": [
     "ecamc-feature-completion",
     "ecamc-feature-continuity",
@@ -4343,7 +4408,12 @@
    "organiser_country": "Paraguay",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline (19 Oct, 07:59) confirmed on the INAP call page and in the Bases; no time zone is stated.",
+    "status": "confirmed",
+    "url": "https://inap.gov.py/fondos-concursables-inap-2026-segundo-llamado/"
+   },
    "related": [
     "inap-second-call-development",
     "inap-second-call-documentary-production",
@@ -4455,7 +4525,12 @@
    "organiser_country": "Paraguay",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline (19 Oct, 07:59) confirmed on the INAP call page and in the Bases; no time zone is stated.",
+    "status": "confirmed",
+    "url": "https://inap.gov.py/fondos-concursables-inap-2026-segundo-llamado/"
+   },
    "related": [
     "inap-second-call-debut-feature",
     "inap-second-call-documentary-production",
@@ -4571,7 +4646,12 @@
    "organiser_country": "Paraguay",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline (19 Oct, 07:59) confirmed on the INAP call page and in the Bases; no time zone is stated.",
+    "status": "confirmed",
+    "url": "https://inap.gov.py/fondos-concursables-inap-2026-segundo-llamado/"
+   },
    "related": [
     "inap-second-call-debut-feature",
     "inap-second-call-development",
@@ -4687,7 +4767,12 @@
    "organiser_country": "Paraguay",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline (19 Oct, 07:59) confirmed on the INAP call page and in the Bases; no time zone is stated.",
+    "status": "confirmed",
+    "url": "https://inap.gov.py/fondos-concursables-inap-2026-segundo-llamado/"
+   },
    "related": [
     "inap-second-call-debut-feature",
     "inap-second-call-development",
@@ -4801,7 +4886,12 @@
    "organiser_country": "Paraguay",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline (19 Oct, 07:59) confirmed on the INAP call page and in the Bases; no time zone is stated.",
+    "status": "confirmed",
+    "url": "https://inap.gov.py/fondos-concursables-inap-2026-segundo-llamado/"
+   },
    "related": [
     "inap-second-call-debut-feature",
     "inap-second-call-development",
@@ -4915,7 +5005,12 @@
    "organiser_country": "Paraguay",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline (19 Oct, 07:59) confirmed on the INAP call page and in the Bases; no time zone is stated.",
+    "status": "confirmed",
+    "url": "https://inap.gov.py/fondos-concursables-inap-2026-segundo-llamado/"
+   },
    "related": [
     "inap-second-call-debut-feature",
     "inap-second-call-development",
@@ -5174,12 +5269,8 @@
    "state": "watch_or_rolling",
    "terms": [
     {
-     "label": "Attendance",
-     "text": "check"
-    },
-    {
-     "label": "Rights",
-     "text": "Do not infer rights terms from a prior cycle."
+     "label": "Obligations",
+     "text": "Fall 2026 closed 2 July. Spring 2027 dates not verified. Non-MENA eligibility differs by film stage."
     }
    ],
    "title": "Doha Film Institute — next grants round",
@@ -5712,7 +5803,7 @@
      "date": "2026-10-02",
      "label": "WIP only — late (elapsed)",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": "23:59",
      "time_note": null,
      "timezone": "Asia/Kolkata"
@@ -5765,10 +5856,6 @@
    ],
    "state": "closed_or_historical",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "in_person"
-    },
     {
      "label": "Rights",
      "text": "Read the full rules and the limits on access to screening materials."
@@ -5858,10 +5945,6 @@
      "text": "Applicant email is printed in the industry catalogue."
     },
     {
-     "label": "Attendance",
-     "text": "not_required"
-    },
-    {
      "label": "Rights",
      "text": "Applicant email is included in the catalogue. Organiser states it does not acquire exploitation rights via the viewing platform."
     }
@@ -5892,34 +5975,79 @@
    "caution": null,
    "check_yourself": [],
    "checked_on": "2026-10-15",
-   "closes": "2026-11-04",
+   "closes": "2027-03-03",
    "dates": [
     {
-     "date": "2026-11-04",
-     "label": "Early",
-     "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
-     "time": "23:59",
+     "date": "2026-07-01",
+     "label": "Opening date",
+     "role": "opening",
+     "role_label": "Opens",
+     "time": null,
      "time_note": null,
-     "timezone": "America/Toronto"
+     "timezone": null
+    },
+    {
+     "date": "2026-11-04",
+     "label": "Early bird deadline",
+     "role": "application_fee_tier_cutoff",
+     "role_label": "Earlier deadline",
+     "time": null,
+     "time_note": null,
+     "timezone": null
     },
     {
      "date": "2026-12-02",
-     "label": "Regular",
+     "label": "Regular deadline",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
-     "time": "23:59",
+     "role_label": "Earlier deadline",
+     "time": null,
      "time_note": null,
-     "timezone": "America/Toronto"
+     "timezone": null
     },
     {
      "date": "2027-01-06",
-     "label": "Late within window",
+     "label": "Late deadline",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
-     "time": "23:59",
+     "role_label": "Earlier deadline",
+     "time": null,
      "time_note": null,
-     "timezone": "America/Toronto"
+     "timezone": null
+    },
+    {
+     "date": "2027-02-03",
+     "label": "Final deadline",
+     "role": "application_fee_tier_cutoff",
+     "role_label": "Earlier deadline",
+     "time": null,
+     "time_note": null,
+     "timezone": null
+    },
+    {
+     "date": "2027-03-03",
+     "label": "I-Missed-The-Deadline deadline",
+     "role": "application_submission_deadline",
+     "role_label": "Closes",
+     "time": null,
+     "time_note": null,
+     "timezone": null
+    },
+    {
+     "date": "2027-04-07",
+     "label": "Notification date",
+     "role": "selection",
+     "role_label": "Selection news",
+     "time": null,
+     "time_note": null,
+     "timezone": null
+    },
+    {
+     "date": "2027-05-22",
+     "label": "Award ceremony",
+     "role": "event_or_context",
+     "role_label": "Event",
+     "time": null,
+     "time_note": null,
+     "timezone": null
     }
    ],
    "fee": {
@@ -5936,19 +6064,24 @@
     "competition"
    ],
    "money": [],
-   "official_url": "https://filmfreeway.com/CanadianShortScreenplayCompetition",
+   "official_url": "https://www.funrepublicpictures.com/the-canadian-short-screenplay-competition/",
    "open_questions": [
     {
      "meanwhile": "Seek a written ruling for licensed adaptations; this is issue spotting, not a legal conclusion.",
      "question": "How are licensed adaptations treated under clauses 5 and 9?"
     }
    ],
-   "opens": null,
+   "opens": "2026-07-01",
    "organiser": "Canadian Short Screenplay Competition — rules",
    "organiser_country": "Canada",
    "pack": "festivals_and_industry",
-   "portal_url": null,
-   "recheck": null,
+   "portal_url": "https://filmfreeway.com/CanadianShortScreenplayCompetition",
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "4 Nov is only the early-bird deadline; entries run to 3 Feb 2027 (final) and 3 Mar 2027 (last chance).",
+    "status": "changed",
+    "url": "https://www.funrepublicpictures.com/the-canadian-short-screenplay-competition/"
+   },
    "related": [],
    "slug": "canadian-short-screenplay-competition",
    "sources": [
@@ -5975,10 +6108,6 @@
     {
      "label": "If top three",
      "text": "Revisions may be requested without further payment."
-    },
-    {
-     "label": "Attendance",
-     "text": "not_required"
     },
     {
      "label": "Rights",
@@ -6011,13 +6140,13 @@
    "caution": null,
    "check_yourself": [],
    "checked_on": "2026-10-15",
-   "closes": "2026-10-29",
+   "closes": "2027-01-04",
    "dates": [
     {
      "date": "2026-10-29",
      "label": "Short early",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": null,
      "timezone": null
@@ -6026,7 +6155,7 @@
      "date": "2026-12-10",
      "label": "Short regular",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": null,
      "timezone": null
@@ -6035,7 +6164,7 @@
      "date": "2027-01-04",
      "label": "Short late",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": null,
      "timezone": null
@@ -6062,7 +6191,12 @@
    "organiser_country": "Canada",
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Early (29 Oct), regular (10 Dec) and late (4 Jan 2027) deadlines confirmed on the Hot Docs submissions page.",
+    "status": "confirmed",
+    "url": "https://hotdocs.ca/industry/submit/submit-a-film"
+   },
    "related": [],
    "slug": "hot-docs-festival-films",
    "sources": [
@@ -6079,10 +6213,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "not_required"
-    },
     {
      "label": "Rights",
      "text": "Long-form online availability in Ontario can defeat premiere eligibility; shorts have different online rules."
@@ -6176,10 +6306,6 @@
    "state": "open_or_published",
    "terms": [
     {
-     "label": "Attendance",
-     "text": "not_required"
-    },
-    {
      "label": "Rights",
      "text": "Feature Mexican premiere generally required. General short wording says Latin American premiere, while animation section rules specify Mexican premiere; apply category-specific rules carefully."
     }
@@ -6218,7 +6344,7 @@
      "date": "2026-10-31",
      "label": "Short early",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": null,
      "timezone": null
@@ -6289,10 +6415,6 @@
    "state": "open_or_published",
    "terms": [
     {
-     "label": "Attendance",
-     "text": "not_required"
-    },
-    {
      "label": "Rights",
      "text": "No prior Colombian public exhibition; read screening and non-exclusive publicity permissions."
     }
@@ -6329,7 +6451,7 @@
      "date": "2026-10-15",
      "label": "International feature early",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": null,
      "timezone": null
@@ -6338,7 +6460,7 @@
      "date": "2026-12-31",
      "label": "International feature regular",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": null,
      "timezone": null
@@ -6347,7 +6469,7 @@
      "date": "2027-01-15",
      "label": "International feature late",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": null,
      "timezone": null
@@ -6410,10 +6532,6 @@
      "text": "Cinema and virtual exhibition permissions required."
     },
     {
-     "label": "Attendance",
-     "text": "not_required"
-    },
-    {
      "label": "Rights",
      "text": "NZ premiere and cinema/virtual screening permissions matter. Runtime wording says short under40/feature over40; exactly40 requires clarification."
     }
@@ -6444,13 +6562,13 @@
    "caution": "Fee currency and African-feature category definitions are not verified",
    "check_yourself": [],
    "checked_on": "2026-10-15",
-   "closes": "2026-11-23",
+   "closes": "2027-01-15",
    "dates": [
     {
      "date": "2026-11-23",
      "label": "Feature early",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": null,
      "timezone": null
@@ -6459,7 +6577,7 @@
      "date": "2027-01-15",
      "label": "Feature regular",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": null,
      "timezone": null
@@ -6510,10 +6628,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "not_required"
-    },
     {
      "label": "Rights",
      "text": "South African premiere excludes prior local cinema, TV or online availability."
@@ -6600,10 +6714,6 @@
    "state": "open_or_published",
    "terms": [
     {
-     "label": "Attendance",
-     "text": "check"
-    },
-    {
      "label": "Rights",
      "text": "Egyptian premiere and applicable regional/category rules must be preserved."
     }
@@ -6681,14 +6791,19 @@
     "market"
    ],
    "money": [],
-   "official_url": "https://industry.hkiff.org.hk/en/faq",
+   "official_url": "https://industry.hkiff.org.hk/en/haf/idp/eligibility-and-selection-criteria",
    "open_questions": [],
    "opens": null,
    "organiser": "HAF25",
    "organiser_country": "Hong Kong",
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed: HAF25 accepts applications from 1 September to 30 October 2026.",
+    "status": "confirmed",
+    "url": "https://industry.hkiff.org.hk/en/haf/idp/eligibility-and-selection-criteria"
+   },
    "related": [],
    "slug": "haf25-in-development",
    "sources": [
@@ -6717,10 +6832,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "in_person"
-    },
     {
      "label": "Rights",
      "text": "Hold project rights; selected projects accept participation/publicity/credit terms. Read current agreement."
@@ -6840,10 +6951,6 @@
      "text": "Required acknowledgement/logo; organiser states it does not take project rights."
     },
     {
-     "label": "Attendance",
-     "text": "in_person"
-    },
-    {
      "label": "Rights",
      "text": "No project-ownership transfer identified in inspected application pages; re-read selection and publicity agreements. The organiser explicitly says it does not take rights in selected projects; the required Hot Docs credit/logo still applies."
     }
@@ -6939,10 +7046,6 @@
    "state": "open_or_published",
    "terms": [
     {
-     "label": "Attendance",
-     "text": "in_person"
-    },
-    {
      "label": "Rights",
      "text": "Read selection/publicity terms; a meeting is not a commission or financing commitment."
     }
@@ -6973,13 +7076,13 @@
    "caution": "Fees conflict: AUD66.50/76.50 on the live page, AUD65/75 in the PDFs",
    "check_yourself": [],
    "checked_on": "2026-10-15",
-   "closes": "2026-11-01",
+   "closes": "2026-11-08",
    "dates": [
     {
      "date": "2026-11-01",
      "label": "Regular — safer live-page date",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": "23:59",
      "time_note": null,
      "timezone": "Australia/Sydney"
@@ -6988,7 +7091,7 @@
      "date": "2026-11-08",
      "label": "Late — live-page fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": "23:59",
      "time_note": null,
      "timezone": "Australia/Sydney"
@@ -7024,7 +7127,12 @@
    "organiser_country": "Australia",
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Regular deadline confirmed; a late deadline at a higher fee runs to 8 November, 23:59 AEDT.",
+    "status": "confirmed",
+    "url": "https://www.aidc.com.au/pitches-marketplace/the-factory-2/"
+   },
    "related": [],
    "slug": "aidc-the-factory",
    "sources": [
@@ -7062,10 +7170,6 @@
     {
      "label": "On submission",
      "text": "Read the scope of the moral-rights waiver."
-    },
-    {
-     "label": "Attendance",
-     "text": "remote"
     },
     {
      "label": "Rights",
@@ -7167,10 +7271,6 @@
    "state": "open_or_published",
    "terms": [
     {
-     "label": "Attendance",
-     "text": "check"
-    },
-    {
      "label": "Rights",
      "text": "Confirm applicant's rights and full current selection terms."
     }
@@ -7265,10 +7365,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "check"
-    },
     {
      "label": "Rights",
      "text": "Read updated rights and financing terms before submission."
@@ -7365,10 +7461,6 @@
    "state": "open_or_published",
    "terms": [
     {
-     "label": "Attendance",
-     "text": "check"
-    },
-    {
      "label": "Rights",
      "text": "Confirm rights chain and selection/publicity terms."
     }
@@ -7455,10 +7547,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "in_person"
-    },
     {
      "label": "Rights",
      "text": "Read completion-award agreements and credit requirements; in-kind services are not unrestricted cash."
@@ -7552,10 +7640,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "check"
-    },
     {
      "label": "Rights",
      "text": "Read lab access, publicity and credit conditions."
@@ -7677,10 +7761,6 @@
    "state": "announced_not_open",
    "terms": [
     {
-     "label": "Attendance",
-     "text": "in_person"
-    },
-    {
      "label": "Rights",
      "text": "Keep screening links private and valid; review selection/publicity agreements."
     }
@@ -7772,10 +7852,6 @@
      "text": "18 months from signing the winner agreement; not a guaranteed co-production."
     },
     {
-     "label": "Attendance",
-     "text": "in_person"
-    },
-    {
      "label": "Rights",
      "text": "Winner grants Mediacorp an 18-month first-refusal right from agreement signing. No guaranteed commission. Submission includes evaluation/publicity permissions."
     }
@@ -7820,7 +7896,7 @@
      "date": "2026-11-13",
      "label": "Early",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": "23:59",
      "time_note": null,
      "timezone": "Pacific/Auckland"
@@ -7829,7 +7905,7 @@
      "date": "2026-12-04",
      "label": "Regular — planning ceiling",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": "23:59",
      "time_note": null,
      "timezone": "Pacific/Auckland"
@@ -7904,10 +7980,6 @@
      "text": "Submission agrees to offer Doc Edge the completed project’s New Zealand premiere unless otherwise agreed in writing. This is not restricted to selected entrants in the printed clause."
     },
     {
-     "label": "Attendance",
-     "text": "remote_approval"
-    },
-    {
      "label": "Rights",
      "text": "Submission terms contain a future New Zealand-premiere offer and completed-project credit obligations, unless the applicable exception is agreed. The agreement begins on submission; performance is later if the project is completed. Read the full clause, not just finalist conditions."
     }
@@ -7944,7 +8016,7 @@
      "date": "2026-10-30",
      "label": "Early",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": "18:00",
      "time_note": null,
      "timezone": null
@@ -7998,10 +8070,6 @@
    "state": "open_or_published",
    "terms": [
     {
-     "label": "Attendance",
-     "text": "in_person"
-    },
-    {
      "label": "Rights",
      "text": "Programme credit/logo obligations and award-specific conditions; equipment/services are not cash."
     }
@@ -8040,7 +8108,7 @@
      "date": "2026-10-31",
      "label": "Feature early",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": null,
      "timezone": null
@@ -8110,10 +8178,6 @@
    "state": "open_or_published",
    "terms": [
     {
-     "label": "Attendance",
-     "text": "in_person"
-    },
-    {
      "label": "Rights",
      "text": "Rights retained subject to non-exclusive promotion and award agreements; no assumption of unrestricted grant money."
     }
@@ -8154,7 +8218,7 @@
      "date": "2026-12-31",
      "label": "Feature / pilot early",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": null,
      "timezone": null
@@ -8206,10 +8270,6 @@
    "state": "open_or_published",
    "terms": [
     {
-     "label": "Attendance",
-     "text": "check"
-    },
-    {
      "label": "Rights",
      "text": "Read current category terms; no full-rights transfer identified in inspected listing. That is not a legal clearance."
     }
@@ -8252,7 +8312,7 @@
      "date": "2026-12-31",
      "label": "Live Pitch early",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": null,
      "timezone": null
@@ -8303,10 +8363,6 @@
    "state": "open_or_published",
    "terms": [
     {
-     "label": "Attendance",
-     "text": "in_person"
-    },
-    {
      "label": "Rights",
      "text": "Review live-pitch visibility and category rights terms before sharing sensitive material."
     }
@@ -8337,11 +8393,11 @@
    "caution": null,
    "check_yourself": [],
    "checked_on": "2026-10-15",
-   "closes": "2026-11-13",
+   "closes": "2026-11-12",
    "dates": [
     {
-     "date": "2026-11-13",
-     "label": "Current Uruguay call",
+     "date": "2026-11-12",
+     "label": "The rules say “before 13 November”",
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
@@ -8375,7 +8431,12 @@
    "organiser_country": "Uruguay",
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "The rules say to apply before 13 November, so 12 November is the last safe day.",
+    "status": "changed",
+    "url": "https://www.joseignaciofilmfestival.com/17/en/generacion-j-bases-y-reglamento"
+   },
    "related": [],
    "slug": "generacion-j-uruguay-call",
    "sources": [
@@ -8392,10 +8453,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "in_person"
-    },
     {
      "label": "Rights",
      "text": "Programme credits/logos and project-information publicity conditions apply."
@@ -8464,7 +8521,7 @@
     "lab"
    ],
    "money": [],
-   "official_url": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=i4rNdlg1aU2f-i9bfr7scuPDQlX1a_NLh30S-uC18D5UOFY3Mk00VzBETzhBUjhDVjhMTDI0V1FaNy4u",
+   "official_url": "https://www.dohafilm.com/en/learning-training/learning/workshops-labs/2026/0c910051-36d5-4f6c-a2e5-2140406daf3c",
    "open_questions": [
     {
      "meanwhile": "Keep partial candidates visible with checks. Do not fill the gaps with search snippets, old editions or assumed global eligibility.",
@@ -8476,7 +8533,12 @@
    "organiser_country": "Qatar / online",
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on the Doha Film Institute's lab page; applications are open.",
+    "status": "confirmed",
+    "url": "https://www.dohafilm.com/en/learning-training/learning/workshops-labs/2026/0c910051-36d5-4f6c-a2e5-2140406daf3c"
+   },
    "related": [],
    "slug": "doha-film-institute-short-script-lab",
    "sources": [
@@ -8498,10 +8560,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "remote"
-    },
     {
      "label": "Rights",
      "text": "Downstream Qumra/funding routes have separate rules; this lab is not guaranteed production funding."
@@ -8570,7 +8628,12 @@
    "organiser_country": "Uruguay",
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on the Fondos de Cultura call page: 19 October, 15:00 Santiago time.",
+    "status": "confirmed",
+    "url": "https://www.fondosdecultura.cl/apoyo-mercados-internacionales-2026-ventana-sur/"
+   },
    "related": [],
    "slug": "chile-ventana-sur-2026-attendance-support",
    "sources": [
@@ -8595,10 +8658,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "in_person"
-    },
     {
      "label": "Rights",
      "text": "This supports attendance in a delegation; it is not selection into Ventana Sur’s project pitches or production financing."
@@ -8672,10 +8731,6 @@
    "state": "legacy_snapshot",
    "terms": [
     {
-     "label": "Attendance",
-     "text": "check"
-    },
-    {
      "label": "Rights",
      "text": "Do not infer rights terms from a prior cycle."
     }
@@ -8745,10 +8800,6 @@
    ],
    "state": "legacy_snapshot",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "check"
-    },
     {
      "label": "Rights",
      "text": "Do not infer rights terms from a prior cycle."
@@ -8821,10 +8872,6 @@
    ],
    "state": "legacy_snapshot",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "check"
-    },
     {
      "label": "Rights",
      "text": "Do not infer rights terms from a prior cycle."
@@ -8904,10 +8951,6 @@
    "state": "legacy_snapshot",
    "terms": [
     {
-     "label": "Attendance",
-     "text": "check"
-    },
-    {
      "label": "Rights",
      "text": "Do not infer rights terms from a prior cycle."
     }
@@ -8977,10 +9020,6 @@
    ],
    "state": "legacy_snapshot",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "check"
-    },
     {
      "label": "Rights",
      "text": "Do not infer rights terms from a prior cycle."
@@ -9053,10 +9092,6 @@
    "state": "legacy_snapshot",
    "terms": [
     {
-     "label": "Attendance",
-     "text": "check"
-    },
-    {
      "label": "Rights",
      "text": "Do not infer rights terms from a prior cycle."
     }
@@ -9126,10 +9161,6 @@
    ],
    "state": "legacy_snapshot",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "check"
-    },
     {
      "label": "Rights",
      "text": "Do not infer rights terms from a prior cycle."
@@ -9223,10 +9254,6 @@
    ],
    "state": "legacy_snapshot",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "check"
-    },
     {
      "label": "Rights",
      "text": "Do not infer rights terms from a prior cycle."
@@ -9504,7 +9531,7 @@
    "caution": null,
    "check_yourself": [],
    "checked_on": "2026-10-16",
-   "closes": "2026-10-27",
+   "closes": "2026-11-24",
    "dates": [
     {
      "date": "2026-09-29",
@@ -9517,9 +9544,9 @@
     },
     {
      "date": "2026-10-27",
-     "label": null,
-     "role": "application_submission_deadline",
-     "role_label": "Closes",
+     "label": "Fast Track",
+     "role": "application_fee_tier_cutoff",
+     "role_label": "Earlier deadline",
      "time": "12:00",
      "time_note": null,
      "timezone": "Europe/London"
@@ -9567,14 +9594,19 @@
      "value": "£6,000"
     }
    ],
-   "official_url": "https://www.bfi.org.uk/get-funding-support/funding-support-international-activity/uk-global-screen-fund/uk-global-screen-fund-international-co-production/applying-uk-global-screen-fund-ukgsf-international-co-production",
+   "official_url": "https://www.bfi.org.uk/get-funding-support/funding-support-international-activity/uk-global-screen-fund/uk-global-screen-fund-ukgsf-international-co-production",
    "open_questions": [],
    "opens": "2026-09-29",
    "organiser": "UK Global Screen Fund",
    "organiser_country": "United Kingdom",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Confirmed: Fast Track applications close midday 27 Oct; all other applications close midday 24 Nov 2026.",
+    "status": "confirmed",
+    "url": "https://www.bfi.org.uk/get-funding-support/funding-support-international-activity/uk-global-screen-fund/uk-global-screen-fund-ukgsf-international-co-production"
+   },
    "related": [
     "uk-global-screen-fund-documentary-animation-tv"
    ],
@@ -9632,7 +9664,7 @@
    "caution": null,
    "check_yourself": [],
    "checked_on": "2026-10-16",
-   "closes": "2026-10-27",
+   "closes": "2026-11-24",
    "dates": [
     {
      "date": "2026-09-29",
@@ -9645,9 +9677,9 @@
     },
     {
      "date": "2026-10-27",
-     "label": null,
-     "role": "application_submission_deadline",
-     "role_label": "Closes",
+     "label": "Fast Track",
+     "role": "application_fee_tier_cutoff",
+     "role_label": "Earlier deadline",
      "time": "12:00",
      "time_note": null,
      "timezone": "Europe/London"
@@ -9697,14 +9729,19 @@
      "value": "£6,000"
     }
    ],
-   "official_url": "https://www.bfi.org.uk/get-funding-support/funding-support-international-activity/uk-global-screen-fund/uk-global-screen-fund-international-co-production/applying-uk-global-screen-fund-ukgsf-international-co-production",
+   "official_url": "https://www.bfi.org.uk/get-funding-support/funding-support-international-activity/uk-global-screen-fund/uk-global-screen-fund-ukgsf-international-co-production",
    "open_questions": [],
    "opens": "2026-09-29",
    "organiser": "UK Global Screen Fund",
    "organiser_country": "United Kingdom",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Confirmed: Fast Track applications close midday 27 Oct; all other applications close midday 24 Nov 2026.",
+    "status": "confirmed",
+    "url": "https://www.bfi.org.uk/get-funding-support/funding-support-international-activity/uk-global-screen-fund/uk-global-screen-fund-ukgsf-international-co-production"
+   },
    "related": [
     "uk-global-screen-fund-feature-co-production"
    ],
@@ -10168,14 +10205,19 @@
      "value": "€70,000"
     }
    ],
-   "official_url": "https://www.cnc.fr/documents/36995/165400/Descriptif%2Bcomplet%2BACM%2Bapr%C3%A8s%2Br%C3%A9alisation%2Bpour%2Bles%2Bd%C3%A9p%C3%B4ts%2Beffectu%C3%A9s%2B%C3%A0%2Bpartir%2Bdu%2B01%2B01%2B2026.pdf/763acbfd-4a48-1baa-dce5-84ab8f2436ae?t=1768559593804",
+   "official_url": "https://www.cnc.fr/professionnels/aides-et-financements/multi-sectoriel/production/aide-aux-cinemas-du-monde_190862",
    "open_questions": [],
    "opens": null,
    "organiser": "CNC",
    "organiser_country": "France",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deposit date of 9 November confirmed on the CNC calendar; the CNC says dates may change.",
+    "status": "confirmed",
+    "url": "https://www.cnc.fr/professionnels/aides-et-financements/multi-sectoriel/production/aide-aux-cinemas-du-monde_190862"
+   },
    "related": [
     "cnc-aide-aux-cinemas-du-monde-pre-filming"
    ],
@@ -10263,14 +10305,19 @@
      "value": "€10,000"
     }
    ],
-   "official_url": "https://www.cnc.fr/documents/36995/144330/Notice%2Bdu%2Bfonds%2Bd%27aide%2B%C3%A0%2Bl%27innovation%2Ben%2Bdocumentaire%2Bde%2Bcr%C3%A9ation.pdf/27dc9e18-2127-74bf-9bb3-6b488eac4d51?t=1789738344786",
+   "official_url": "https://www.cnc.fr/professionnels/aides-et-financements/multi-sectoriel/ecriture-et-developpement/fonds-daide-a-linnovation-en-documentaire-de-creation_2198824",
    "open_questions": [],
    "opens": null,
    "organiser": "CNC",
    "organiser_country": "France",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "The 2 November writing-aid deposit date is confirmed on the CNC fund page.",
+    "status": "confirmed",
+    "url": "https://www.cnc.fr/professionnels/aides-et-financements/multi-sectoriel/ecriture-et-developpement/fonds-daide-a-linnovation-en-documentaire-de-creation_2198824"
+   },
    "related": [
     "cnc-documentary-innovation-development-after-writing-award",
     "cnc-documentary-innovation-enhanced-development"
@@ -10556,14 +10603,19 @@
      "value": "€20,000"
     }
    ],
-   "official_url": "https://www.cnc.fr/professionnels/actualites/le-cnc-reforme-et-renforce-lensemble-de-ses-dispositifs-de-soutien-a-lecriture-et-a-la-preparation-des-longs-metrages-de-cinema_2625934",
+   "official_url": "https://www.cnc.fr/professionnels/aides-et-financements/cinema/ecriture-et-developpement/soutien-au-scenario-aide-a-lecriture_191516",
    "open_questions": [],
    "opens": null,
    "organiser": "CNC",
    "organiser_country": "France",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Confirmed: deposit days are 16 Nov (experienced writers) and 19 Nov (first features), 9:00 to 17:00.",
+    "status": "confirmed",
+    "url": "https://www.cnc.fr/professionnels/aides-et-financements/cinema/ecriture-et-developpement/soutien-au-scenario-aide-a-lecriture_191516"
+   },
    "related": [],
    "slug": "cnc-feature-screenplay-writing",
    "sources": [
@@ -11603,7 +11655,12 @@
    "organiser_country": "Finland",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on the Finnish Film Foundation's deadlines page.",
+    "status": "confirmed",
+    "url": "https://www.ses.fi/en/funding/deadlines/"
+   },
    "related": [
     "finnish-film-foundation-fiction-animation-scriptwriting"
    ],
@@ -11715,7 +11772,12 @@
    "organiser_country": "Finland",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on the Finnish Film Foundation's deadlines page; applications close at 16:00.",
+    "status": "confirmed",
+    "url": "https://www.ses.fi/en/funding/deadlines/"
+   },
    "related": [],
    "slug": "finnish-film-foundation-development-support",
    "sources": [
@@ -11819,7 +11881,12 @@
    "organiser_country": "Finland",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on the Finnish Film Foundation's deadlines page.",
+    "status": "confirmed",
+    "url": "https://www.ses.fi/en/funding/deadlines/"
+   },
    "related": [],
    "slug": "finnish-film-foundation-production-support",
    "sources": [
@@ -12180,7 +12247,12 @@
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed: 3 November 2026, 4 pm CET. The organiser says it will not be extended.",
+    "status": "confirmed",
+    "url": "https://www.torinofilmlab.it/labs/scriptlab---story-editing/scriptlab-2027"
+   },
    "related": [],
    "slug": "torinofilmlab-scriptlab",
    "sources": [
@@ -12226,21 +12298,30 @@
    "dates": [
     {
      "date": "2026-11-05",
-     "label": "TorinoFilmLab FeatureLab",
+     "label": "Deadline, 4.00 pm CET",
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "16:00 CET",
+     "time": "16:00",
+     "time_note": null,
+     "timezone": "Europe/Paris"
+    },
+    {
+     "date": "2027-01-15",
+     "label": "Preselected applicants notified by email",
+     "role": "selection",
+     "role_label": "Selection news",
+     "time": null,
      "time_note": null,
      "timezone": null
     },
     {
      "date": "2027-01-20",
-     "label": "TorinoFilmLab FeatureLab",
+     "label": "Preselected: updated financial plan and timeline due, 2.00 pm CET",
      "role": "selection",
      "role_label": "Selection news",
-     "time": "14:00 CET",
+     "time": "14:00",
      "time_note": null,
-     "timezone": null
+     "timezone": "Europe/Paris"
     }
    ],
    "fee": {
@@ -12294,7 +12375,12 @@
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed: 5 November 2026, 4.00 pm CET.",
+    "status": "confirmed",
+    "url": "https://www.torinofilmlab.it/labs/featurelab/featurelab-2027"
+   },
    "related": [],
    "slug": "torinofilmlab-featurelab",
    "sources": [
@@ -12393,7 +12479,12 @@
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on CPH:DOX's rules page; no closing time is published.",
+    "status": "confirmed",
+    "url": "https://cphdox.dk/forum-rules-and-regulations/"
+   },
    "related": [],
    "slug": "cph-forum",
    "sources": [
@@ -12450,7 +12541,7 @@
      "date": "2026-11-02",
      "label": "Visions du Réel — VdR–Pitching",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": "17:00 CET",
      "time_note": null,
      "timezone": null
@@ -12695,14 +12786,19 @@
      "value": null
     }
    ],
-   "official_url": "https://www.cartoon-media.eu/assets/files/Others/AI-Usage-Policy-CARTOON-2025.pdf",
+   "official_url": "https://www.cartoon-media.eu/movie/submit-your-project/schedule-deadlines",
    "open_questions": [],
    "opens": null,
    "organiser": "Cartoon Movie — call",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Submission deadline of 12 Nov confirmed on the Cartoon Movie schedule page.",
+    "status": "confirmed",
+    "url": "https://www.cartoon-media.eu/movie/submit-your-project/schedule-deadlines"
+   },
    "related": [],
    "slug": "cartoon-movie",
    "sources": [
@@ -12845,7 +12941,12 @@
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed in the official 2027 call; apply through your national correspondent.",
+    "status": "confirmed",
+    "url": "https://www.lecourt-clermont.org/wp-content/uploads/2026/08/EC27_appel_ENG_final.pdf"
+   },
    "related": [
     "euro-connection-immersive-projects"
    ],
@@ -12923,14 +13024,19 @@
      "value": null
     }
    ],
-   "official_url": "https://www.lecourt-clermont.org/wp-content/uploads/2026/08/EC27_appel_ENG_final.pdf",
+   "official_url": "https://forms.gle/pQep3TE7SrX4Jxs19",
    "open_questions": [],
    "opens": null,
    "organiser": "Euro Connection",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on the official immersive-projects application form.",
+    "status": "confirmed",
+    "url": "https://forms.gle/pQep3TE7SrX4Jxs19"
+   },
    "related": [
     "euro-connection"
    ],
@@ -13058,7 +13164,12 @@
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on the organiser's page: 19 October, 23:59 GMT.",
+    "status": "confirmed",
+    "url": "https://www.c21media.net/c21-pitch-content-london-2026/"
+   },
    "related": [
     "c21-content-london-pitch-unscripted"
    ],
@@ -13193,7 +13304,12 @@
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on the organiser's page: 19 October, 23:59 GMT (shared with Scripted).",
+    "status": "confirmed",
+    "url": "https://www.c21media.net/c21-pitch-content-london-2026/"
+   },
    "related": [
     "c21-content-london-pitch-scripted"
    ],
@@ -13316,7 +13432,12 @@
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline (9 Nov) and selection results (16 Dec) confirmed on the Writers Campus page; no time is given.",
+    "status": "confirmed",
+    "url": "https://seriesmania.com/institute/en/program/writers-campus/"
+   },
    "related": [],
    "slug": "series-mania-writers-campus",
    "sources": [
@@ -13449,7 +13570,12 @@
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on the organiser's call page (open call 3 September to 19 October 2026).",
+    "status": "confirmed",
+    "url": "https://www.midpoint-institute.eu/en/detail/midpoint-feature-launch-2027-7CbDOS"
+   },
    "related": [],
    "slug": "midpoint-feature-launch",
    "sources": [
@@ -13618,7 +13744,7 @@
      "date": "2026-12-10",
      "label": "DocsBarcelona Pro",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Not published",
      "timezone": null
@@ -13957,11 +14083,20 @@
    "closes": "2026-10-21",
    "dates": [
     {
+     "date": "2026-09-01",
+     "label": "Call opens",
+     "role": "opening",
+     "role_label": "Opens",
+     "time": null,
+     "time_note": null,
+     "timezone": null
+    },
+    {
      "date": "2026-10-21",
-     "label": "LIM² — Less Is More",
+     "label": "Extended deadline (11.59pm CET as written)",
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "23:59 CET as written; October daylight-saving ambiguity — submit early.",
+     "time": "23:59",
      "time_note": null,
      "timezone": null
     }
@@ -14010,12 +14145,17 @@
    ],
    "official_url": "https://lim-lessismore.eu/the-lim%C2%B2-2027-call-for-projects-is-open/",
    "open_questions": [],
-   "opens": null,
+   "opens": "2026-09-01",
    "organiser": "LIM²",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Extended deadline of 21 Oct, 11.59pm CET, confirmed on the lim² call page; one call covers both programmes.",
+    "status": "confirmed",
+    "url": "https://lim-lessismore.eu/the-lim%C2%B2-2027-call-for-projects-is-open/"
+   },
    "related": [
     "lim2-on-site-programme"
    ],
@@ -14079,11 +14219,20 @@
    "closes": "2026-10-21",
    "dates": [
     {
+     "date": "2026-09-01",
+     "label": "Call opens",
+     "role": "opening",
+     "role_label": "Opens",
+     "time": null,
+     "time_note": null,
+     "timezone": null
+    },
+    {
      "date": "2026-10-21",
-     "label": "LIM² — Less Is More",
+     "label": "Extended deadline (11.59pm CET as written)",
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "23:59 CET as written; October daylight-saving ambiguity — submit early.",
+     "time": "23:59",
      "time_note": null,
      "timezone": null
     }
@@ -14132,12 +14281,17 @@
    ],
    "official_url": "https://lim-lessismore.eu/the-lim%C2%B2-2027-call-for-projects-is-open/",
    "open_questions": [],
-   "opens": null,
+   "opens": "2026-09-01",
    "organiser": "LIM²",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Extended deadline of 21 Oct, 11.59pm CET, confirmed on the lim² call page; one call covers both programmes.",
+    "status": "confirmed",
+    "url": "https://lim-lessismore.eu/the-lim%C2%B2-2027-call-for-projects-is-open/"
+   },
    "related": [
     "lim2-online-programme"
    ],
@@ -14259,7 +14413,12 @@
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on the MIDPOINT Focus Queer 2027 page; no closing time is published.",
+    "status": "confirmed",
+    "url": "https://www.midpoint-institute.eu/en/detail/midpoint-focus-queer-2027-3kReXZ"
+   },
    "related": [],
    "slug": "midpoint-focus-queer",
    "sources": [
@@ -14438,7 +14597,7 @@
      "date": "2026-12-07",
      "label": "Raindance Script Competition",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Not published",
      "timezone": null
@@ -14447,7 +14606,7 @@
      "date": "2027-01-18",
      "label": "Raindance Script Competition",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Not published",
      "timezone": null
@@ -14607,7 +14766,7 @@
      "date": "2026-12-07",
      "label": "Raindance Script Competition",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Not published",
      "timezone": null
@@ -14616,7 +14775,7 @@
      "date": "2027-01-18",
      "label": "Raindance Script Competition",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Not published",
      "timezone": null
@@ -14755,7 +14914,7 @@
      "date": "2026-12-07",
      "label": "Raindance Script Competition",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Not published",
      "timezone": null
@@ -14764,7 +14923,7 @@
      "date": "2027-01-18",
      "label": "Raindance Script Competition",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Not published",
      "timezone": null
@@ -15027,12 +15186,12 @@
    "dates": [
     {
      "date": "2026-11-12",
-     "label": "Le Groupe Ouest — Sélection Annuelle",
+     "label": "23h59 CET",
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "23:59 CET",
+     "time": "23:59",
      "time_note": null,
-     "timezone": null
+     "timezone": "Europe/Paris"
     }
    ],
    "fee": {
@@ -15085,7 +15244,12 @@
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed: 12 November 2026 at 23:59 CET.",
+    "status": "confirmed",
+    "url": "https://www.legroupeouest.com/actualites/selection-annuelle-2027/"
+   },
    "related": [],
    "slug": "le-groupe-ouest-selection-annuelle",
    "sources": [
@@ -15594,10 +15758,6 @@
    "state": "open_or_published",
    "terms": [
     {
-     "label": "Attendance",
-     "text": "confirm"
-    },
-    {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
     },
@@ -15715,10 +15875,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Rights",
-     "text": "retained"
-    },
     {
      "label": "Rights note",
      "text": "Published call says writers retain their work. Review platform submission/hosting terms separately."
@@ -15840,10 +15996,6 @@
    "state": "open_or_published",
    "terms": [
     {
-     "label": "Rights",
-     "text": "retained"
-    },
-    {
      "label": "Rights note",
      "text": "Published programme states the writer retains rights."
     }
@@ -15879,13 +16031,22 @@
    "closes": "2026-11-16",
    "dates": [
     {
+     "date": "2026-09-01",
+     "label": "Opens 14:00 MDT",
+     "role": "opening",
+     "role_label": "Opens",
+     "time": "14:00",
+     "time_note": null,
+     "timezone": "America/Denver"
+    },
+    {
      "date": "2026-11-16",
-     "label": null,
+     "label": "3:30 p.m. PT / 4:30 p.m. MT / 6:30 p.m. ET",
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": null,
+     "time": "16:30",
      "time_note": null,
-     "timezone": null
+     "timezone": "America/Denver"
     }
    ],
    "fee": {
@@ -15922,19 +16083,24 @@
      "value": "$25,000"
     }
    ],
-   "official_url": "https://www.sundance.org/deadlines/",
+   "official_url": "https://apply.sundance.org/prog/2027_graton_fellowship/",
    "open_questions": [
     {
      "meanwhile": null,
      "question": "The full application asset/career specifications were not exposed; public eligibility is useful but not a complete application checklist."
     }
    ],
-   "opens": null,
+   "opens": "2026-09-01",
    "organiser": "Sundance Institute / Graton Resort & Casino",
    "organiser_country": "US",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on Sundance's application portal: 16 November, 3:30pm PT / 4:30pm MT.",
+    "status": "confirmed",
+    "url": "https://apply.sundance.org/prog/2027_graton_fellowship/"
+   },
    "related": [],
    "slug": "sundance-graton-fellowship-2027",
    "sources": [
@@ -15953,7 +16119,7 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "apply.sundance.org",
+     "title": "apply.sundance.org/prog/2027_graton_fellowship",
      "url": "https://apply.sundance.org/prog/2027_graton_fellowship/"
     }
    ],
@@ -15964,10 +16130,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "confirm"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -16013,13 +16175,22 @@
    "closes": "2026-11-03",
    "dates": [
     {
+     "date": "2026-10-13",
+     "label": "Opens 14:00 MDT",
+     "role": "opening",
+     "role_label": "Opens",
+     "time": "14:00",
+     "time_note": null,
+     "timezone": "America/Denver"
+    },
+    {
      "date": "2026-11-03",
-     "label": null,
+     "label": "3:30 p.m. PT / 4:30 p.m. MT / 6:30 p.m. ET",
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": null,
+     "time": "16:30",
      "time_note": null,
-     "timezone": null
+     "timezone": "America/Denver"
     }
    ],
    "fee": {
@@ -16055,19 +16226,24 @@
      "value": null
     }
    ],
-   "official_url": "https://www.sundance.org/deadlines/",
+   "official_url": "https://apply.sundance.org/prog/2027_merata_mita_fellowship/",
    "open_questions": [
     {
      "meanwhile": null,
      "question": "The full application asset/career specifications were not exposed; public eligibility is useful but not a complete application checklist."
     }
    ],
-   "opens": null,
+   "opens": "2026-10-13",
    "organiser": "Sundance Institute",
    "organiser_country": "US",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on Sundance's application portal: 3 November, 3:30pm PT / 4:30pm MT.",
+    "status": "confirmed",
+    "url": "https://apply.sundance.org/prog/2027_merata_mita_fellowship/"
+   },
    "related": [],
    "slug": "sundance-merata-mita-fellowship-2027",
    "sources": [
@@ -16086,7 +16262,7 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "apply.sundance.org",
+     "title": "apply.sundance.org/prog/2027_merata_mita_fellowship",
      "url": "https://apply.sundance.org/prog/2027_merata_mita_fellowship/"
     }
    ],
@@ -16095,10 +16271,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "confirm"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -16194,7 +16366,12 @@
    "organiser_country": "US",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline of 15 Nov confirmed on the WAVE Grant page; no time is given.",
+    "status": "confirmed",
+    "url": "https://www.wavelengthproductions.com/wavegrant"
+   },
    "related": [],
    "slug": "wave-grant-2027",
    "sources": [
@@ -16210,10 +16387,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Rights",
-     "text": "retained"
-    },
     {
      "label": "Rights note",
      "text": "Applicant owns intellectual property and retains editorial/budgetary control under the published programme."
@@ -16320,14 +16493,6 @@
    "state": "open_or_published",
    "terms": [
     {
-     "label": "Payment mechanism",
-     "text": "scheduled_before_production"
-    },
-    {
-     "label": "Rights",
-     "text": "broad_entry_licence"
-    },
-    {
      "label": "Rights note",
      "text": "Entry rules grant a broad, irrevocable, perpetual, worldwide, transferable, non-exclusive royalty-free licence over Program Materials, including derivatives. Winner hosting includes six months exclusive then six months non-exclusive. Obtain advice on the actual submission materials before entering."
     }
@@ -16367,7 +16532,7 @@
    "dates": [
     {
      "date": "2026-10-31",
-     "label": null,
+     "label": "Midnight PT",
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
@@ -16406,7 +16571,7 @@
      "value": "$3,500"
     }
    ],
-   "official_url": "https://form.jotform.com/From_the_Heart/roy-w-dean-grant-application-fall",
+   "official_url": "https://fromtheheartproductions.com/roy-w-dean-film-grants-and-awards/",
    "open_questions": [
     {
      "meanwhile": null,
@@ -16418,7 +16583,12 @@
    "organiser_country": "US",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed: 31 October at midnight Pacific Time (PT).",
+    "status": "confirmed",
+    "url": "https://fromtheheartproductions.com/roy-w-dean-film-grants-and-awards/"
+   },
    "related": [],
    "slug": "roy-w-dean-fall-grant-2026",
    "sources": [
@@ -16448,10 +16618,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Rights",
-     "text": "unverified"
-    },
     {
      "label": "Rights note",
      "text": "Definitive award agreement not inspected."
@@ -16564,10 +16730,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Rights",
-     "text": "unverified"
-    },
     {
      "label": "Rights note",
      "text": "Definitive award agreement not inspected."
@@ -16703,10 +16865,6 @@
    "state": "open_or_published",
    "terms": [
     {
-     "label": "Rights",
-     "text": "unverified"
-    },
-    {
      "label": "Rights note",
      "text": "Definitive award agreement not inspected."
     }
@@ -16791,7 +16949,7 @@
      "value": "$3,000–$7,500"
     }
    ],
-   "official_url": "https://www.nyfa.org/awards-grants/queens-arts-fund-new-work-grant/",
+   "official_url": "https://www.nyc.gov/site/dcla/cultural-funding/funding-for-artists.page",
    "open_questions": [
     {
      "meanwhile": null,
@@ -16811,7 +16969,12 @@
    "organiser_country": "US",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on NYC Cultural Affairs' funding page. NYFA's own grant page blocked our check.",
+    "status": "confirmed",
+    "url": "https://www.nyc.gov/site/dcla/cultural-funding/funding-for-artists.page"
+   },
    "related": [],
    "slug": "queens-arts-fund-new-work-grant-2027",
    "sources": [
@@ -16831,10 +16994,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Rights",
-     "text": "unverified"
-    },
     {
      "label": "Rights note",
      "text": "Definitive award agreement not inspected."
@@ -16929,7 +17088,12 @@
    "organiser_country": "US",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on the Miami Film Festival page: applications run 28 Sept to 6 Nov 2026.",
+    "status": "confirmed",
+    "url": "https://miamifilmfestival.com/the-louies/"
+   },
    "related": [],
    "slug": "the-louies-2027-documentary-feature",
    "sources": [
@@ -16952,10 +17116,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Rights",
-     "text": "unverified"
-    },
     {
      "label": "Rights note",
      "text": "Definitive award agreement not inspected."
@@ -17050,7 +17210,12 @@
    "organiser_country": "US",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on the Miami Film Festival page: applications run 28 Sept to 6 Nov 2026.",
+    "status": "confirmed",
+    "url": "https://miamifilmfestival.com/the-louies/"
+   },
    "related": [],
    "slug": "the-louies-2027-documentary-short",
    "sources": [
@@ -17073,10 +17238,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Rights",
-     "text": "unverified"
-    },
     {
      "label": "Rights note",
      "text": "Definitive award agreement not inspected."
@@ -17170,7 +17331,12 @@
    "organiser_country": "US",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline confirmed on the Miami Film Festival page: applications run 28 Sept to 6 Nov 2026.",
+    "status": "confirmed",
+    "url": "https://miamifilmfestival.com/the-louies/"
+   },
    "related": [],
    "slug": "the-louies-2027-documentary-feature-finishing",
    "sources": [
@@ -17192,10 +17358,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Rights",
-     "text": "unverified"
-    },
     {
      "label": "Rights note",
      "text": "Definitive award agreement not inspected."
@@ -17309,14 +17471,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Payment mechanism",
-     "text": "conditional_reimbursement"
-    },
-    {
-     "label": "Rights",
-     "text": "promotional_licence"
-    },
     {
      "label": "Rights note",
      "text": "Creator ownership retained, with promotional permissions over application material and winner name/likeness. Separate IMGN platform/data terms were not inspected."
@@ -17434,14 +17588,19 @@
      "value": "$100,000"
     }
    ],
-   "official_url": "https://www.filmindependent.org/programs/applications/",
+   "official_url": "https://www.filmindependent.org/programs/artist-development/film-independent-x-humana-foundation-shorts/",
    "open_questions": [],
    "opens": null,
    "organiser": "Film Independent / Humana Foundation",
    "organiser_country": "US",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Non-member (26 Oct) and member (2 Nov) deadlines confirmed on the Film Independent page; no time is given.",
+    "status": "confirmed",
+    "url": "https://www.filmindependent.org/programs/artist-development/film-independent-x-humana-foundation-shorts/"
+   },
    "related": [],
    "slug": "film-independent-x-humana-foundation-shorts",
    "sources": [
@@ -17460,7 +17619,7 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "filmindependent1.submittable.com",
+     "title": "filmindependent1.submittable.com/submit",
      "url": "https://filmindependent1.submittable.com/submit"
     }
    ],
@@ -17469,10 +17628,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "required"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -17592,7 +17747,7 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "tribecafilm.com",
+     "title": "tribecafilm.com/attuntoldstories",
      "url": "https://tribecafilm.com/attuntoldstories"
     }
    ],
@@ -17601,10 +17756,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "required"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -17692,14 +17843,19 @@
      "value": "$10,000"
     }
    ],
-   "official_url": "https://www.thefilmfund.co/",
+   "official_url": "https://www.thefilmfund.co/official-rules/",
    "open_questions": [],
    "opens": null,
    "organiser": "The Film Fund",
    "organiser_country": "US",
    "pack": "funding",
    "portal_url": null,
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Deadline of 17 Nov, 11:59:59 PM Eastern, confirmed in The Film Fund's official rules.",
+    "status": "confirmed",
+    "url": "https://www.thefilmfund.co/official-rules/"
+   },
    "related": [],
    "slug": "the-film-fund-fall-narrative-contest-2026",
    "sources": [
@@ -17721,14 +17877,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Payment mechanism",
-     "text": "reimbursement"
-    },
-    {
-     "label": "Rights",
-     "text": "promotional_licence"
-    },
     {
      "label": "Rights note",
      "text": "Ownership retained but submitted application materials carry a perpetual, transferable and sublicensable promotional licence. Film requires association and executive-producer credits."
@@ -17828,10 +17976,6 @@
    ],
    "state": "watch_or_rolling",
    "terms": [
-    {
-     "label": "Rights",
-     "text": "contract_review"
-    },
     {
      "label": "Rights note",
      "text": "For grants, Perspective says it takes no film rights or editorial control. Aggregate support of $150,000 or more may involve an association credit. An invited co-production is a separate contractual arrangement; do not infer its rights from grant terms."
@@ -17951,10 +18095,6 @@
    ],
    "state": "watch_or_rolling",
    "terms": [
-    {
-     "label": "Rights",
-     "text": "retained"
-    },
     {
      "label": "Rights note",
      "text": "Director-originated project with required intellectual-property and editorial/budgetary control; exact agreement still governs."
@@ -18082,10 +18222,6 @@
    "state": "watch_or_rolling",
    "terms": [
     {
-     "label": "Rights",
-     "text": "retained"
-    },
-    {
      "label": "Rights note",
      "text": "Director-originated project with required intellectual-property and editorial/budgetary control; exact agreement still governs."
     }
@@ -18209,10 +18345,6 @@
    "state": "watch_or_rolling",
    "terms": [
     {
-     "label": "Rights",
-     "text": "retained"
-    },
-    {
      "label": "Rights note",
      "text": "Director-originated project with required intellectual-property and editorial/budgetary control; exact agreement still governs."
     }
@@ -18315,25 +18447,25 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "americanfilmmarket.com",
+     "title": "americanfilmmarket.com/attendee-badges",
      "url": "https://americanfilmmarket.com/attendee-badges/"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "americanfilmmarket.com",
+     "title": "americanfilmmarket.com/sessions/afm-pitch-film",
      "url": "https://americanfilmmarket.com/sessions/afm-pitch-film/"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "americanfilmmarket.com",
+     "title": "americanfilmmarket.com/sessions/…",
      "url": "https://americanfilmmarket.com/sessions/the-afm-pitch-conference-tv-series/"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "americanfilmmarket.com",
+     "title": "americanfilmmarket.com/wp-content/uploads/2026/08/…",
      "url": "https://americanfilmmarket.com/wp-content/uploads/2026/08/AFM-Pitch-Conference-Guide-2026.pdf"
     }
    ],
@@ -18342,10 +18474,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "required"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -18455,25 +18583,25 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "americanfilmmarket.com",
+     "title": "americanfilmmarket.com/attendee-badges",
      "url": "https://americanfilmmarket.com/attendee-badges/"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "americanfilmmarket.com",
+     "title": "americanfilmmarket.com/sessions/afm-pitch-film",
      "url": "https://americanfilmmarket.com/sessions/afm-pitch-film/"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "americanfilmmarket.com",
+     "title": "americanfilmmarket.com/sessions/…",
      "url": "https://americanfilmmarket.com/sessions/the-afm-pitch-conference-tv-series/"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "americanfilmmarket.com",
+     "title": "americanfilmmarket.com/wp-content/uploads/2026/08/…",
      "url": "https://americanfilmmarket.com/wp-content/uploads/2026/08/AFM-Pitch-Conference-Guide-2026.pdf"
     }
    ],
@@ -18482,10 +18610,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "required"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -18531,7 +18655,7 @@
      "date": "2026-10-03",
      "label": "Early fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Midnight US Pacific per organiser; confirm boundary",
      "timezone": null
@@ -18540,7 +18664,7 @@
      "date": "2026-11-16",
      "label": "Regular fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Midnight US Pacific per organiser; confirm boundary",
      "timezone": null
@@ -18621,19 +18745,19 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "stowestorylabs.org",
+     "title": "stowestorylabs.org/fellowships-scholarships",
      "url": "https://stowestorylabs.org/fellowships-scholarships"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "stowestorylabs.org",
+     "title": "stowestorylabs.org/narrative-labs",
      "url": "https://stowestorylabs.org/narrative-labs"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "stowestorylabs.submittable.com",
+     "title": "stowestorylabs.submittable.com/submit/…",
      "url": "https://stowestorylabs.submittable.com/submit/8b11b306-021a-4961-a315-2655d13d10ad/2027-narrative-labs-writers-retreats-fellowships-and-financial-support-applic"
     }
    ],
@@ -18643,10 +18767,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "required"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -18692,7 +18812,7 @@
      "date": "2026-10-03",
      "label": "Early fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Midnight US Pacific per organiser; confirm boundary",
      "timezone": null
@@ -18701,7 +18821,7 @@
      "date": "2026-11-16",
      "label": "Regular fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Midnight US Pacific per organiser; confirm boundary",
      "timezone": null
@@ -18782,25 +18902,25 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "stowestorylabs.org",
+     "title": "stowestorylabs.org/fellowships-scholarships",
      "url": "https://stowestorylabs.org/fellowships-scholarships"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "stowestorylabs.org",
+     "title": "stowestorylabs.org/narrative-labs",
      "url": "https://stowestorylabs.org/narrative-labs"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "stowestorylabs.submittable.com",
+     "title": "stowestorylabs.submittable.com/submit/…",
      "url": "https://stowestorylabs.submittable.com/submit/8b11b306-021a-4961-a315-2655d13d10ad/2027-narrative-labs-writers-retreats-fellowships-and-financial-support-applic"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "stowestorylabs.org",
+     "title": "stowestorylabs.org/writers-retreats",
      "url": "https://stowestorylabs.org/writers-retreats"
     }
    ],
@@ -18809,10 +18929,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "remote"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -18858,7 +18974,7 @@
      "date": "2026-10-25",
      "label": "Late fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Exact hour/zone not established; check portal",
      "timezone": null
@@ -18867,7 +18983,7 @@
      "date": "2026-11-24",
      "label": "Extended fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Exact hour/zone not established; check portal",
      "timezone": null
@@ -18939,25 +19055,25 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "cinestory.org",
+     "title": "cinestory.org/retreat-fellowship-contests/faq-retreat-2",
      "url": "https://cinestory.org/retreat-fellowship-contests/faq-retreat-2/"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "cinestory.org",
+     "title": "cinestory.org/retreat-fellowship-contests/…",
      "url": "https://cinestory.org/retreat-fellowship-contests/tv-retreat-fellowship-contest/"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "cinestory.org",
+     "title": "cinestory.org/submissions/tv-submissions",
      "url": "https://cinestory.org/submissions/tv-submissions/"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "cinestory.org",
+     "title": "cinestory.org/retreat-fellowship-contests/…",
      "url": "https://cinestory.org/retreat-fellowship-contests/scholarship-opportunities/"
     }
    ],
@@ -18966,10 +19082,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "required"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -19073,13 +19185,13 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "sundance.org",
+     "title": "sundance.org/deadlines",
      "url": "https://www.sundance.org/deadlines/"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "sundance.org",
+     "title": "sundance.org/programs/indigenous-program",
      "url": "https://www.sundance.org/programs/indigenous-program/"
     }
    ],
@@ -19088,10 +19200,6 @@
    ],
    "state": "announced_not_open",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "confirm"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -19140,7 +19248,7 @@
      "date": "2026-11-05",
      "label": "Early fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Exact cut-off time not verified; check portal",
      "timezone": null
@@ -19149,7 +19257,7 @@
      "date": "2027-01-07",
      "label": "Regular fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Exact cut-off time not verified; check portal",
      "timezone": null
@@ -19243,19 +19351,19 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "filmfreeway.com",
+     "title": "filmfreeway.com/NantucketFilmFestival",
      "url": "https://filmfreeway.com/NantucketFilmFestival"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "nantucketfilmfestival.org",
+     "title": "nantucketfilmfestival.org/festival-submit",
      "url": "https://nantucketfilmfestival.org/festival-submit/"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "nantucketfilmfestival.org",
+     "title": "nantucketfilmfestival.org/tony-cox-competition",
      "url": "https://nantucketfilmfestival.org/tony-cox-competition/"
     }
    ],
@@ -19264,10 +19372,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "winner_obligation"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -19313,7 +19417,7 @@
      "date": "2026-10-22",
      "label": "Early fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": "23:59 'local time' on site; confirm controlling zone",
      "time_note": null,
      "timezone": null
@@ -19322,7 +19426,7 @@
      "date": "2026-12-02",
      "label": "Regular fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": "23:59 'local time' on site; confirm controlling zone",
      "time_note": null,
      "timezone": null
@@ -19393,13 +19497,13 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "filmfreeway.com",
+     "title": "filmfreeway.com/seriesfestseason13",
      "url": "https://filmfreeway.com/seriesfestseason13"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "seriesfest.com",
+     "title": "seriesfest.com/pitch-a-thon",
      "url": "https://seriesfest.com/pitch-a-thon/"
     }
    ],
@@ -19409,10 +19513,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "required"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -19458,7 +19558,7 @@
      "date": "2026-10-05",
      "label": "Early fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": "07:59:59 America/Chicago",
      "time_note": null,
      "timezone": null
@@ -19476,7 +19576,7 @@
      "date": "2026-11-23",
      "label": "Regular fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": "07:59:59 America/Chicago",
      "time_note": null,
      "timezone": null
@@ -19548,13 +19648,13 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "atxfestival.com",
+     "title": "atxfestival.com/pitch",
      "url": "https://atxfestival.com/pitch"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "atxfestival.com",
+     "title": "atxfestival.com/terms-and-conditions-pc",
      "url": "https://atxfestival.com/terms-and-conditions-pc"
     }
    ],
@@ -19564,10 +19664,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "required"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -19612,21 +19708,84 @@
    "closes": "2026-11-06",
    "dates": [
     {
-     "date": "2026-10-16",
-     "label": "Late fee",
+     "date": "2026-05-29",
+     "label": "Hella Early deadline (11:59 pm EDT)",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
-     "time": null,
+     "role_label": "Earlier deadline",
+     "time": "23:59",
+     "time_note": null,
+     "timezone": null
+    },
+    {
+     "date": "2026-06-26",
+     "label": "Early deadline (11:59 pm EDT)",
+     "role": "application_fee_tier_cutoff",
+     "role_label": "Earlier deadline",
+     "time": "23:59",
+     "time_note": null,
+     "timezone": null
+    },
+    {
+     "date": "2026-09-11",
+     "label": "Regular deadline (11:59 pm EDT)",
+     "role": "application_fee_tier_cutoff",
+     "role_label": "Earlier deadline",
+     "time": "23:59",
+     "time_note": null,
+     "timezone": null
+    },
+    {
+     "date": "2026-10-16",
+     "label": "Late deadline (11:59 pm EDT)",
+     "role": "application_fee_tier_cutoff",
+     "role_label": "Earlier deadline",
+     "time": "23:59",
      "time_note": "Exact cut-off time not verified; check portal",
      "timezone": null
     },
     {
      "date": "2026-11-06",
-     "label": "Extended final",
+     "label": "Extended (final) deadline (11:59 pm EST)",
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": null,
+     "time": "23:59",
      "time_note": "Exact cut-off time not verified; check portal",
+     "timezone": null
+    },
+    {
+     "date": "2027-01-29",
+     "label": "Initial notification (quarterfinalists)",
+     "role": "selection",
+     "role_label": "Selection news",
+     "time": null,
+     "time_note": null,
+     "timezone": null
+    },
+    {
+     "date": "2027-02-12",
+     "label": "Semifinalists announced",
+     "role": "selection",
+     "role_label": "Selection news",
+     "time": null,
+     "time_note": null,
+     "timezone": null
+    },
+    {
+     "date": "2027-03-05",
+     "label": "Finalists announced",
+     "role": "selection",
+     "role_label": "Selection news",
+     "time": null,
+     "time_note": null,
+     "timezone": null
+    },
+    {
+     "date": "2027-04-22",
+     "label": "Festival, 22 April to 2 May 2027",
+     "role": "event_or_context",
+     "role_label": "Event",
+     "time": null,
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -19681,33 +19840,38 @@
      "value": null
     }
    ],
-   "official_url": "https://www.atlantafilmfestival.com/gafilm",
+   "official_url": "https://www.atlantafilmfestival.com/screenplay-submission-faq",
    "open_questions": [],
    "opens": null,
    "organiser": "Atlanta Film Festival",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": "https://filmfreeway.com/ATLFFscreenplaycompetition",
-   "recheck": null,
+   "recheck": {
+    "checked_on": "2026-10-17",
+    "note": "Final deadline confirmed: 6 November 2026 at 11:59 pm EST, per the festival's screenplay FAQ.",
+    "status": "confirmed",
+    "url": "https://www.atlantafilmfestival.com/screenplay-submission-faq"
+   },
    "related": [],
    "slug": "atlanta-film-festival-screenplay-2027",
    "sources": [
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "filmfreeway.com",
+     "title": "filmfreeway.com/ATLFFscreenplaycompetition",
      "url": "https://filmfreeway.com/ATLFFscreenplaycompetition"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "atlantafilmfestival.com",
+     "title": "atlantafilmfestival.com/screenplay-submit",
      "url": "https://www.atlantafilmfestival.com/screenplay-submit"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "atlantafilmfestival.com",
+     "title": "atlantafilmfestival.com/gafilm",
      "url": "https://www.atlantafilmfestival.com/gafilm"
     }
    ],
@@ -19716,10 +19880,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "winner_obligation"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -19765,7 +19925,7 @@
      "date": "2026-10-09",
      "label": "Late fee — historical",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Exact clock not verified",
      "timezone": null
@@ -19859,7 +20019,7 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "filmfreeway.com",
+     "title": "filmfreeway.com/CinequestScreenwritingCompetition",
      "url": "https://filmfreeway.com/CinequestScreenwritingCompetition"
     }
    ],
@@ -19868,10 +20028,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "confirm"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -19965,7 +20121,7 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "filmfreeway.com",
+     "title": "filmfreeway.com/BigSkyPitch",
      "url": "https://filmfreeway.com/BigSkyPitch"
     }
    ],
@@ -19976,10 +20132,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "required"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -20025,7 +20177,7 @@
      "date": "2027-01-15",
      "label": "Early fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Exact cut-off time not verified; check portal",
      "timezone": null
@@ -20105,7 +20257,7 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "filmfreeway.com",
+     "title": "filmfreeway.com/HollyShortsScreenplayContest",
      "url": "https://filmfreeway.com/HollyShortsScreenplayContest"
     }
    ],
@@ -20114,10 +20266,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "confirm"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -20163,7 +20311,7 @@
      "date": "2026-11-15",
      "label": "Early fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Exact cut-off time not verified; check portal",
      "timezone": null
@@ -20172,7 +20320,7 @@
      "date": "2027-01-15",
      "label": "Early fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Exact cut-off time not verified; check portal",
      "timezone": null
@@ -20238,7 +20386,7 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "filmfreeway.com",
+     "title": "filmfreeway.com/RIFilmFest",
      "url": "https://filmfreeway.com/RIFilmFest"
     }
    ],
@@ -20247,10 +20395,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "confirm"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -20353,7 +20497,7 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "filmfreeway.com",
+     "title": "filmfreeway.com/VailScreenplayContest",
      "url": "https://filmfreeway.com/VailScreenplayContest"
     }
    ],
@@ -20362,10 +20506,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "confirm"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -20411,7 +20551,7 @@
      "date": "2026-11-06",
      "label": "Early fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Exact cut-off time not verified; check portal",
      "timezone": null
@@ -20420,7 +20560,7 @@
      "date": "2027-01-08",
      "label": "Regular fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Exact cut-off time not verified; check portal",
      "timezone": null
@@ -20493,7 +20633,7 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "filmfreeway.com",
+     "title": "filmfreeway.com/hollyshortscomedy",
      "url": "https://filmfreeway.com/hollyshortscomedy"
     }
    ],
@@ -20502,10 +20642,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "confirm"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -20551,7 +20687,7 @@
      "date": "2026-11-30",
      "label": "Late fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Exact hour/zone not established; check portal",
      "timezone": null
@@ -20624,13 +20760,13 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "filmfreeway.com",
+     "title": "filmfreeway.com/SedonaInternationalFilmFestival",
      "url": "https://filmfreeway.com/SedonaInternationalFilmFestival"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "sedonafilmfestival.com",
+     "title": "sedonafilmfestival.com/screenplay-competition",
      "url": "https://sedonafilmfestival.com/screenplay-competition/"
     }
    ],
@@ -20639,10 +20775,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "winner_obligation"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -20688,7 +20820,7 @@
      "date": "2026-11-21",
      "label": "Late fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": null,
      "time_note": "Exact hour/zone not established; check portal",
      "timezone": null
@@ -20767,13 +20899,13 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "beverlyhillsfilmfestival.com",
+     "title": "beverlyhillsfilmfestival.com/submission-guidelines",
      "url": "https://beverlyhillsfilmfestival.com/submission-guidelines/"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "filmfreeway.com",
+     "title": "filmfreeway.com/BeverlyHillsFilmFestival",
      "url": "https://filmfreeway.com/BeverlyHillsFilmFestival"
     }
    ],
@@ -20782,10 +20914,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "confirm"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -20831,7 +20959,7 @@
      "date": "2026-10-22",
      "label": "Early fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": "23:59 local time; controlling zone unconfirmed",
      "time_note": null,
      "timezone": null
@@ -20840,7 +20968,7 @@
      "date": "2026-12-02",
      "label": "Regular fee",
      "role": "application_fee_tier_cutoff",
-     "role_label": "Fee tier ends",
+     "role_label": "Earlier deadline",
      "time": "23:59 local time; controlling zone unconfirmed",
      "time_note": null,
      "timezone": null
@@ -20911,13 +21039,13 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "filmfreeway.com",
+     "title": "filmfreeway.com/seriesfestseason13",
      "url": "https://filmfreeway.com/seriesfestseason13"
     },
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "seriesfest.com",
+     "title": "seriesfest.com/pilots-in-progress",
      "url": "https://seriesfest.com/pilots-in-progress/"
     }
    ],
@@ -20926,10 +21054,6 @@
    ],
    "state": "open_or_published",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "confirm"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."
@@ -21042,7 +21166,7 @@
     {
      "checked_on": "2026-10-15",
      "note": null,
-     "title": "tribecafilm.com",
+     "title": "tribecafilm.com/festival/submissions",
      "url": "https://tribecafilm.com/festival/submissions"
     }
    ],
@@ -21052,10 +21176,6 @@
    ],
    "state": "announced_not_open",
    "terms": [
-    {
-     "label": "Attendance",
-     "text": "confirm"
-    },
     {
      "label": "Contract",
      "text": "Selection terms and definitive agreements were not inspected. Read them before accepting an award or granting rights."

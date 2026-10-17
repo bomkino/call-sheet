@@ -30,7 +30,7 @@ ROLE_ORDER = ("opening", "prerequisite", "application_fee_tier_cutoff", "applica
 ROLE_LABELS = {
     "opening": "Opens",
     "prerequisite": "Do first",
-    "application_fee_tier_cutoff": "Fee tier ends",
+    "application_fee_tier_cutoff": "Earlier deadline",
     "application_submission_deadline": "Closes",
     "selection": "Selection news",
     "payment": "Payment due",
@@ -90,6 +90,12 @@ def host(url: str) -> str:
     return (match.group(1).lower().removeprefix("www.") if match else "")
 
 
+def short_url(url: str) -> str:
+    """host/path, trimmed: readable when a source has no title."""
+    rest = re.sub(r"^https?://(www\.)?", "", url).split("?")[0].rstrip("/")
+    return rest if len(rest) <= 60 else rest[:57].rsplit("/", 1)[0] + "/…"
+
+
 def money(amount: Any, currency: Any) -> str | None:
     if amount in (None, "", False):
         return None
@@ -111,7 +117,7 @@ def rights_lines(rows: list[dict[str, Any]]) -> list[dict[str, str]]:
     seen: set[str] = set()
 
     def add(label: str, text: Any) -> None:
-        text = clean(text)
+        text = human(text)
         if not text or text.lower() in {"unknown", "not_recorded", "review_terms", "none"} or text in seen:
             return
         seen.add(text)
@@ -224,9 +230,17 @@ def date_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
             continue
         role = row.get("event_role") or "event_or_context"
         raw = row.get("raw") if isinstance(row.get("raw"), dict) else {}
+        native = " ".join(str(x or "") for x in (row.get("milestone_type"), row.get("kind"), raw.get("kind"), row.get("label"), raw.get("label"))).lower()
+        if role == "application_submission_deadline" and re.search(r"fast[ _-]?track", native):
+            # An optional earlier route, not a round of its own (BFI's UK Global Screen Fund).
+            role, fast_track = "application_fee_tier_cutoff", True
+        else:
+            fast_track = False
         label = clean(row.get("label") or raw.get("label") or row.get("kind") or row.get("milestone_type") or raw.get("kind"))
         if label and re.fullmatch(r"[a-z_]+", label):
             label = None  # machine labels such as final_deadline add nothing to the role
+        if fast_track and not label:
+            label = "Fast Track"
         time = clean(row.get("time") or row.get("time_local") or raw.get("local_time") or raw.get("time"))
         tz = clean(row.get("timezone") or row.get("timezone_text") or raw.get("timezone"))
         time_note = None
@@ -271,7 +285,13 @@ def materials(o: dict[str, Any], rows: list[dict[str, Any]]) -> list[dict[str, A
 
 
 def window(dates: list[dict[str, Any]], as_of: str) -> tuple[str | None, str | None]:
-    deadlines = sorted({d["date"] for d in dates if d["role"] == "application_submission_deadline"}) or sorted({d["date"] for d in dates if d["role"] == "application_fee_tier_cutoff"})
+    """(opens, closes) for the next round.  Several deadlines are several rounds,
+    so the next one counts; fee tiers (early, regular, late) are one round whose
+    last tier is the real cut-off."""
+    deadlines = sorted({d["date"] for d in dates if d["role"] == "application_submission_deadline"})
+    if not deadlines:
+        tiers = sorted({d["date"] for d in dates if d["role"] == "application_fee_tier_cutoff"})
+        deadlines = tiers[-1:]
     upcoming = [d for d in deadlines if d >= as_of]
     closes = upcoming[0] if upcoming else (deadlines[-1] if deadlines else None)
     opens = max((d["date"] for d in dates if d["role"] == "opening" and (closes is None or d["date"] <= closes)), default=None)
@@ -342,6 +362,9 @@ def main(argv: list[str] | None = None) -> int:
     overlay = {e["id"]: e for e in load(REPO / "data/overlay.json")["entries"]}
     rechecks_path = REPO / "data/rechecks.json"
     rechecks = {r["id"]: r for r in (load(rechecks_path)["rechecks"] if rechecks_path.exists() else [])}
+    unknown = sorted(set(rechecks) - {o["id"] for o in opps})
+    if unknown:
+        raise SystemExit(f"rechecks name routes the foundation doesn't have: {unknown[:3]}")
     manifest = load(args.foundation / "manifest.json")
 
     missing = sorted(set(o["id"] for o in opps) - set(overlay))
@@ -368,11 +391,21 @@ def main(argv: list[str] | None = None) -> int:
         dates = date_rows(child.get("deadlines", []) + child.get("milestones", []))
         recheck = rechecks.get(oid)
         if recheck and recheck.get("dates"):
-            # A dated official-page recheck replaces the pack's dates outright.
-            dates = sorted(
-                ({"date": d["date"], "role": d["role"], "role_label": ROLE_LABELS[d["role"]], "label": d.get("label"), "time": d.get("time"), "timezone": d.get("timezone"), "time_note": d.get("time_note")} for d in recheck["dates"]),
-                key=lambda d: (d["date"], ROLE_ORDER.index(d["role"])),
-            )
+            checked = [{"date": d["date"], "role": d["role"], "role_label": ROLE_LABELS[d["role"]], "label": d.get("label"), "time": d.get("time"), "timezone": d.get("timezone"), "time_note": d.get("time_note")} for d in recheck["dates"]]
+            if recheck["status"] == "changed":
+                # The organiser moved things: the official page's dates replace the pack's.
+                dates = checked
+            else:
+                # Confirmed: keep the pack's dates and add the times and zones the page gave.
+                by_key = {(d["date"], d["role"]): d for d in dates}
+                for d in checked:
+                    if (d["date"], d["role"]) in by_key:
+                        prior = by_key[(d["date"], d["role"])]
+                        for field in ("time", "timezone", "label"):
+                            prior[field] = d[field] or prior[field]
+                    else:
+                        dates.append(d)
+            dates = sorted(dates, key=lambda d: (d["date"], ROLE_ORDER.index(d["role"])))
         opens, closes = window(dates, as_of)
         urls = [u for u in as_list(o.get("source_urls")) if isinstance(u, str) and u.startswith("http")]
         official = next((u for u in urls if not any(h in host(u) for h in PORTAL_HOSTS)), urls[0] if urls else None)
@@ -383,10 +416,10 @@ def main(argv: list[str] | None = None) -> int:
         for sid in as_list(o.get("source_ids")):
             s = sources.get(sid)
             if s and s.get("url") and s["url"] not in {x["url"] for x in source_list}:
-                source_list.append({"title": clean(s.get("title")) or host(s["url"]), "url": s["url"], "checked_on": s.get("checked_on") or s.get("attempted_on"), "note": clean(s.get("review_note") or s.get("inspection"))})
+                source_list.append({"title": clean(s.get("title")) or short_url(s["url"]), "url": s["url"], "checked_on": s.get("checked_on") or s.get("attempted_on"), "note": clean(s.get("review_note") or s.get("inspection"))})
         for u in urls:
             if u not in {x["url"] for x in source_list}:
-                source_list.append({"title": host(u), "url": u, "checked_on": as_of, "note": None})
+                source_list.append({"title": short_url(u), "url": u, "checked_on": as_of, "note": None})
         issues = []
         for issue in (o.get("evidence") or {}).get("native_issues", []):
             q = clean(issue.get("question"))
@@ -408,8 +441,8 @@ def main(argv: list[str] | None = None) -> int:
             related.update(families.get((o["region"], o["source_kind"], str(family)), []))
         related.discard(oid)
         state = o.get("application_state") or "unknown"
-        if recheck and recheck.get("state"):
-            state = recheck["state"]
+        if recheck and recheck["status"] == "closed":
+            state = "closed_or_historical"
         calls.append({
             "id": oid,
             "title": clean(o["title"]),
@@ -436,7 +469,7 @@ def main(argv: list[str] | None = None) -> int:
             "portal_url": portal if portal != official else None,
             "sources": source_list[:6],
             "checked_on": as_of,
-            "recheck": {k: recheck[k] for k in ("checked_on", "status", "note", "url") if recheck.get(k)} if recheck else None,
+            "recheck": {k: recheck[k] for k in ("checked_on", "status", "note", "url") if recheck.get(k)} if recheck and recheck["status"] in ("confirmed", "changed", "closed") else None,
             "pack": "funding" if o["source_kind"] == "current" else "festivals_and_industry",
             "related": sorted(r for r in related if r),
         })

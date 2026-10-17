@@ -13,6 +13,7 @@
   --ink: #0e0e0f;
   --muted: #65666e;
   --signal: #e3472d;
+  --signal-text: #c2381f;
   --blue: #0450d4;
   --rule: rgb(14 14 15 / .14);
   --rule-strong: rgb(14 14 15 / .27);
@@ -47,7 +48,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-resolved-theme="light"]) {
-    --paper: #0b0c0e; --panel: #151619; --ink: #f1f0ed; --muted: #a6a7af; --signal: #f34325; --blue: #85a9f8;
+    --paper: #0b0c0e; --panel: #151619; --ink: #f1f0ed; --muted: #a6a7af; --signal: #f34325; --signal-text: #f34325; --blue: #85a9f8;
     --rule: rgb(241 240 237 / .16); --rule-strong: rgb(241 240 237 / .28); --quiet: rgb(241 240 237 / .05);
     --powder: #16202b; --blush: #281920; --lilac: #251b2d; --mint: #19251d; --mint-ink: #afd4b6;
     --butter: #2a2412; --butter-ink: #ecd58a; --grid-line: rgb(241 240 237 / .05); --brand-pink-text: #ef6aba;
@@ -55,7 +56,7 @@
   }
 }
 :root[data-resolved-theme="dark"] {
-  --paper: #0b0c0e; --panel: #151619; --ink: #f1f0ed; --muted: #a6a7af; --signal: #f34325; --blue: #85a9f8;
+  --paper: #0b0c0e; --panel: #151619; --ink: #f1f0ed; --muted: #a6a7af; --signal: #f34325; --signal-text: #f34325; --blue: #85a9f8;
   --rule: rgb(241 240 237 / .16); --rule-strong: rgb(241 240 237 / .28); --quiet: rgb(241 240 237 / .05);
   --powder: #16202b; --blush: #281920; --lilac: #251b2d; --mint: #19251d; --mint-ink: #afd4b6;
   --butter: #2a2412; --butter-ink: #ecd58a; --grid-line: rgb(241 240 237 / .05); --brand-pink-text: #ef6aba;
@@ -250,8 +251,8 @@ html:not(.js) [data-requires-js] { display: none; }
 .cs-month { color: var(--muted); font: 600 .72rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
 .cs-date--none .cs-day { color: var(--muted); }
 .cs-left { min-height: 1em; font: 600 .7rem/1.2 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
-.cs-left.is-soon { color: var(--signal); }
-.cs-left.is-today { color: #fff; background: var(--signal); padding: 4px 6px; }
+.cs-left.is-soon { color: var(--signal-text); }
+.cs-left.is-today { color: #fff; background: var(--signal-text); padding: 4px 6px; }
 .cs-main { display: grid; gap: 6px; min-width: 0; }
 .cs-title { margin: 0; }
 .cs-title a { text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size .3s var(--ease); }
@@ -267,6 +268,9 @@ html:not(.js) [data-requires-js] { display: none; }
 .cs-badge--later { background: var(--powder); border-color: transparent; }
 .cs-badge--check { background: var(--butter); border-color: transparent; color: var(--butter-ink); }
 .cs-badge--closed { color: var(--muted); }
+.cs-badge--checked { background: transparent; border-color: color-mix(in srgb, var(--mint-ink) 45%, transparent); color: var(--mint-ink); }
+.cs-recheck { margin-top: 4px; display: flex; gap: 8px; align-items: flex-start; color: var(--mint-ink); }
+.cs-recheck .cs-icon { width: 18px; height: 18px; margin-top: 1px; }
 .cs-facts { display: contents; }
 .cs-facts > div { min-width: 0; }
 .cs-facts dt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
@@ -536,6 +540,7 @@ body.fab-tucked .pd-whatsapp-fab { opacity: 0; visibility: hidden; pointer-event
   .cs-sheetgrid > div { border-right: 0 !important; border-bottom: 1px solid var(--rule) !important; }
   .cs-sheetgrid > div:last-child { border-bottom: 0 !important; }
   .cs-callactions .button { flex: 1 1 100%; }
+  .cs-callactions .cs-save--big, .cs-callactions [data-ics] { flex: 1 1 calc(50% - 6px); }
   .cs-table th { width: 40%; }
 }
 @keyframes sheet-up { from { transform: translateY(100%); } }

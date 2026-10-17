@@ -174,6 +174,10 @@ FOOTER = """<footer class="footer">
   <a class="pd-whatsapp-fab" href="https://wa.me/message/NR6Z7K3HBOVPJ1" target="_blank" rel="noopener noreferrer" aria-label="Chat with pitch.dog on WhatsApp (opens in a new tab)" title="Chat on WhatsApp"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></svg></a>"""
 
 
+SOCIAL_ALT = "Call Sheet by pitch.dog: a printed call sheet listing three calls, soonest first, beside the words Grants, labs, markets and festivals, sorted by when they close."
+SOCIAL = {"src": ""}
+
+
 def page(*, title: str, description: str, path: str, body: str, css: str, js: str, social_title: str, robots: str = "index, follow, max-image-preview:large", jsonld: dict | None = None) -> str:
     canonical = ORIGIN + path
     ld = f'\n  <script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False, separators=(",", ":"))}</script>' if jsonld else ""
@@ -202,14 +206,16 @@ def page(*, title: str, description: str, path: str, body: str, css: str, js: st
   <meta property="og:description" content="{h(description)}">
   <meta property="og:url" content="{h(canonical)}">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="{ORIGIN}/assets/social-card.png">
+  <meta property="og:image" content="{ORIGIN}{SOCIAL['src']}">
+  <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="pitch.dog">
+  <meta property="og:image:alt" content="{h(SOCIAL_ALT)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{h(social_title)}">
   <meta name="twitter:description" content="{h(description)}">
-  <meta name="twitter:image" content="{ORIGIN}/assets/social-card.png">
+  <meta name="twitter:image" content="{ORIGIN}{SOCIAL['src']}">
+  <meta name="twitter:image:alt" content="{h(SOCIAL_ALT)}">
   <title>{h(title)}</title>{ld}
 </head>
 <body class="cs">
@@ -301,7 +307,7 @@ def call_row(call: dict, as_of: str) -> str:
           <h4 class="cs-title" data-pd-type="title.functional"><a href="{BASE}{h(call['slug'])}/">{h(call['title'])}</a></h4>
           <p class="cs-org" data-pd-type="body.small">{h(org_line(call))}</p>
           <p class="cs-tags" data-pd-type="metadata">{h(tag_line(call))}</p>
-          <p class="cs-badges"><span class="cs-badge" data-badge-state hidden></span>{f'<span class="cs-badge cs-badge--place" data-badge-place>{h(chip)}</span>' if chip else '<span class="cs-badge cs-badge--place" data-badge-place hidden></span>'}</p>
+          <p class="cs-badges"><span class="cs-badge" data-badge-state hidden></span>{f'<span class="cs-badge cs-badge--checked" title="{h(call["recheck"].get("note") or "")}">Rechecked {h(day(call["recheck"]["checked_on"], with_year=False))}</span>' if call.get("recheck") else ''}{f'<span class="cs-badge cs-badge--place" data-badge-place>{h(chip)}</span>' if chip else '<span class="cs-badge cs-badge--place" data-badge-place hidden></span>'}</p>
         </div>
         <dl class="cs-facts">
           <div><dt data-pd-type="metadata">Who can apply</dt><dd data-pd-type="body.small">{h(call['who'])}</dd></div>
@@ -315,6 +321,16 @@ def call_row(call: dict, as_of: str) -> str:
 def chips(name: str, legend: str, options: list[tuple[str, str]], hint: str = "") -> str:
     boxes = "".join(f'<label class="cs-chip"><input type="checkbox" name="{name}" value="{h(v)}"><span>{h(t)}</span></label>' for v, t in options)
     return f'<fieldset class="cs-facet" data-facet="{name}"><legend data-pd-type="metadata">{h(legend)}</legend><div class="cs-chip-row">{boxes}</div>{f"<p class=\"cs-hint\" data-pd-type=\"body.small\">{h(hint)}</p>" if hint else ""}</fieldset>'
+
+
+def recheck_paragraph(calls: list[dict]) -> str:
+    rechecked = [c for c in calls if c.get("recheck")]
+    if not rechecked:
+        return ""
+    when = max(c["recheck"]["checked_on"] for c in rechecked)
+    changed = sum(1 for c in rechecked if c["recheck"]["status"] == "changed")
+    moved = f" {changed} needed correcting and now follow the official page." if changed else ""
+    return f'<p data-pd-type="body.reading">On {h(day(when))} we went back to the official page of every call closing in the next five weeks. {len(rechecked)} carry a <strong>Rechecked</strong> mark.{h(moved)} A few pages wouldn’t let us in; those keep their earlier date and no mark.</p>'
 
 
 def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
@@ -417,6 +433,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
       <div class="section-body">
         <p data-pd-type="lead.section">Every call started on the organiser’s own pages: the call, the guidelines, the FAQ, and the form where we could reach it. In mid-October 2026 we read them for dates, money, fees, who can apply and what to send, and wrote down what we couldn’t find as carefully as what we could.</p>
         <p data-pd-type="body.reading">Then we kept the rough edges. A fee nobody has published says <strong>Not published</strong>, not free. When two official pages disagree on a date, the call page says so. When a rule is unclear, the call stays on your list with a flag instead of quietly disappearing.</p>
+        {recheck_paragraph(calls)}
         <p data-pd-type="body.reading">Calls change between rounds, and the official page always wins. Use this to decide what to check next, then check it there.</p>
       </div>
     </section>
@@ -491,6 +508,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
         "isAccessibleForFree": True,
         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
         "description": "A free list of film and TV grants, labs, markets and festivals, sorted by closing date, with who can apply, what you get, fees and what to bring.",
+        "image": ORIGIN + SOCIAL["src"],
         "codeRepository": "https://github.com/bomkino/call-sheet",
         "creator": {"@id": ORIGIN + "/#organization"},
     }
@@ -557,9 +575,34 @@ def where_detail(call: dict) -> str:
     return h(" ".join(p for p in parts if p))
 
 
+def readable_dates(text: str | None) -> str | None:
+    """'until 2026-11-06' reads as 'until 6 Nov'."""
+    if not text:
+        return text
+    import re
+    return re.sub(r"\b(\d{4}-\d{2}-\d{2})\b", lambda m: day(m.group(1), with_year=False), text)
+
+
+FRIENDLY_ZONES = {
+    "America/Los_Angeles": "Pacific Time (US)",
+    "America/Denver": "Mountain Time (US)",
+    "America/Chicago": "Central Time (US)",
+    "America/New_York": "Eastern Time (US)",
+    "America/Toronto": "Eastern Time (Toronto)",
+    "Europe/London": "UK time",
+    "Europe/Paris": "Central European Time",
+    "Europe/Berlin": "Central European Time",
+    "Europe/Helsinki": "Finnish time",
+    "Australia/Sydney": "Sydney time",
+    "Pacific/Auckland": "New Zealand time",
+}
+
+
 def tz_label(tz: str | None) -> str | None:
     if not tz:
         return None
+    if tz in FRIENDLY_ZONES:
+        return FRIENDLY_ZONES[tz]
     if tz.startswith("Etc/"):
         return tz[4:]
     if "/" in tz:
@@ -588,7 +631,7 @@ def fees_block(call: dict) -> str:
         return '<p data-pd-type="body.default">No entry fee is published in our notes. That isn’t the same as free: check the form before you count on it.</p>'
     def rows(stage: str) -> str:
         items = [i for i in fee["items"] if i["stage"] == stage]
-        return "".join(f'<tr><th scope="row" data-pd-type="body.small">{h(i["label"] or ("Entry fee" if stage == "application" else "Cost"))}</th><td data-pd-type="data">{h(i["amount"] or ("Free" if i["state"] == "free_or_explicit_zero" else "Not published"))}</td><td data-pd-type="body.small">{h(i["note"] or "")}</td></tr>' for i in items)
+        return "".join(f'<tr><th scope="row" data-pd-type="body.small">{h(readable_dates(i["label"]) or ("Entry fee" if stage == "application" else "Cost"))}</th><td data-pd-type="data">{h(i["amount"] or ("Free" if i["state"] == "free_or_explicit_zero" else "Not published"))}</td><td data-pd-type="body.small">{h(i["note"] or "")}</td></tr>' for i in items)
     out = []
     app = rows("application")
     if app:
@@ -600,8 +643,10 @@ def fees_block(call: dict) -> str:
 
 
 def money_block(call: dict) -> str:
-    lines = [m for m in call["money"] if m.get("value") or (m.get("note") and m["note"] != call["get"])]
-    items = "".join(f'<tr><th scope="row" data-pd-type="body.small">{h(m["label"])}</th><td data-pd-type="data">{h(m["value"] or "")}</td><td data-pd-type="body.small">{h(m["note"] or "")}</td></tr>' for m in lines)
+    norm = lambda x: "".join(ch for ch in (x or "").lower() if ch.isalnum())
+    get = norm(call["get"])
+    lines = [m for m in call["money"] if m.get("value") or (m.get("note") and norm(m["note"])[:40] not in get and get[:40] not in norm(m["note"]))]
+    items = "".join(f'<tr><th scope="row" data-pd-type="body.small">{h("Details" if m["label"] == "Note" else m["label"])}</th><td data-pd-type="data">{h(m["value"] or "")}</td><td data-pd-type="body.small">{h(m["note"] or "")}</td></tr>' for m in lines)
     table = f'<table class="cs-table"><tbody>{items}</tbody></table>' if items else ""
     return f'<p data-pd-type="lead.section" class="cs-get">{h(call["get"])}</p>{table}<p class="cs-fineprint" data-pd-type="body.small">Amounts stay in the currency the organiser uses. Caps, totals and alternatives are listed as published; don’t add them up.</p>'
 
@@ -609,7 +654,7 @@ def money_block(call: dict) -> str:
 def bring_block(call: dict) -> str:
     if not call["bring"]:
         return '<p data-pd-type="body.default">The materials list isn’t in our notes. The application form will have it.</p>'
-    items = "".join(f'<li><span data-pd-type="body.default"><strong>{h(b["item"])}</strong>{(" · " + h(b["limit"])) if b.get("limit") else ""}{" <em>(optional)</em>" if b.get("optional") else ""}</span>{f"<span class=\"cs-bring-note\" data-pd-type=\"body.small\">{h(b['note'])}</span>" if b.get("note") else ""}</li>' for b in call["bring"])
+    items = "".join(f'<li><span data-pd-type="body.default">{("<strong>" + h(b["item"]) + "</strong>") if len(b["item"]) <= 60 else h(b["item"])}{(" · " + h(b["limit"])) if b.get("limit") else ""}{" <em>(optional)</em>" if b.get("optional") else ""}</span>{f"<span class=\"cs-bring-note\" data-pd-type=\"body.small\">{h(b['note'])}</span>" if b.get("note") else ""}</li>' for b in call["bring"])
     return f'<ul class="cs-bring">{items}</ul>'
 
 
@@ -640,6 +685,7 @@ def call_page(call: dict, by_slug: dict[str, dict], as_of: str, css: str, js: st
     status = f"""<div class="cs-countdown" data-countdown data-closes="{h(closes or '')}" data-opens="{h(call.get('opens') or '')}" data-state="{h(call['state'])}">
           <p class="cs-countdown-big" data-pd-type="heading.subsection" data-countdown-text>{h(('Closes ' + day(closes)) if closes else ('Rolling, or no fixed date' if call['state'] == 'watch_or_rolling' else 'Dates to come'))}</p>
           <p class="cs-countdown-when" data-pd-type="body.default">{h(long_day(closes) + (', ' + clock if clock else '')) if closes else 'Watch the official page for the next round.'}{h('. Next round: ' + ', '.join(day(d) for d in later_rounds[:2])) if later_rounds else ''}</p>
+          {f'<p class="cs-recheck" data-pd-type="body.small">{icon("check")}<span>Rechecked on the <a href="{h(call["recheck"].get("url") or call.get("official_url") or "")}" rel="noopener">official page</a>, {h(day(call["recheck"]["checked_on"]))}. {h(call["recheck"].get("note") or "")}</span></p>' if call.get("recheck") else ''}
         </div>"""
     caution_items = ([f'<li data-pd-type="body.default">{h(call["caution"])}</li>'] if call.get("caution") else []) + [f'<li data-pd-type="body.default">{h(q["question"])}{f" <span class=\"cs-meanwhile\">Meanwhile: {h(q['meanwhile'])}</span>" if q.get("meanwhile") else ""}</li>' for q in call["open_questions"]]
     caution = f'<aside class="note cs-before" aria-labelledby="before-title"><div><h2 id="before-title" data-pd-type="title.functional">Before you apply</h2><ul>{"".join(caution_items)}</ul></div></aside>' if caution_items else ""
@@ -667,7 +713,7 @@ def call_page(call: dict, by_slug: dict[str, dict], as_of: str, css: str, js: st
     <article class="cs-article" aria-labelledby="call-title">
       <nav class="cs-crumbs" aria-label="Breadcrumb"><a href="{BASE}" data-back>{ph("arrow-left")}<span>All calls</span></a></nav>
       <header class="cs-callhead">
-        <p class="hero-locator cs-locator"><span class="hero-locator-mark" aria-hidden="true"></span><span>{h(kind)}</span>{f'<span aria-hidden="true">·</span><span>{h(call["organiser_country"])}</span>' if call.get("organiser_country") else ''}<span class="hero-locator-rule" aria-hidden="true"></span><span>{h(checked)}</span></p>
+        <p class="hero-locator cs-locator"><span class="hero-locator-mark" aria-hidden="true"></span><span>{h(kind)}</span>{f'<span aria-hidden="true">·</span><span>{h(call["organiser_country"])}</span>' if call.get("organiser_country") else ''}<span class="hero-locator-rule" aria-hidden="true"></span><span class="hero-locator-dot" aria-hidden="true">·</span><span>{h(checked)}</span></p>
         <h1 id="call-title" data-pd-type="heading.section">{h(call['title'])}</h1>
         <p class="cs-callorg" data-pd-type="lead.section">{h(call.get('organiser') or '')}</p>
         {status}
@@ -745,12 +791,16 @@ def main(argv: list[str] | None = None) -> int:
     out.mkdir(parents=True)
     css = asset("call-sheet.css", out)
     js = asset("call-sheet.js", out)
+    SOCIAL["src"] = asset("social/call-sheet-social-card.png", out)
     (out / "index.html").write_text(list_page(calls, as_of, css, js), encoding="utf-8")
     by_slug = {c["slug"]: c for c in calls}
     for call in calls:
         target = out / call["slug"] / "index.html"
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(call_page(call, by_slug, as_of, css, js), encoding="utf-8")
+    urls = [(BASE, as_of)] + [(f"{BASE}{c['slug']}/", (c.get("recheck") or {}).get("checked_on") or c["checked_on"]) for c in calls if c["state"] != "closed_or_historical"]
+    sitemap = "".join(f"<url><loc>{ORIGIN}{h(u)}</loc><lastmod>{d}</lastmod></url>" for u, d in urls)
+    (out / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sitemap}</urlset>\n', encoding="utf-8")
     (out / "data").mkdir()
     shutil.copyfile(REPO / "data/calls.json", out / "data/calls.json")
     build = {"name": "Call Sheet", "source": "https://github.com/bomkino/call-sheet", **git_commit(), "data_as_of": as_of, "calls": len(calls), "built_with": "python3 tools/build_site.py"}
