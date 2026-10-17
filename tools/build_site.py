@@ -646,7 +646,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
             <div class="cs-facet cs-facet--search">
               <label class="cs-facet-label" for="cs-q" data-pd-type="metadata">Search</label>
               <div class="cs-field">
-                <div class="cs-input-wrap">{ph("magnifying-glass")}<input id="cs-q" name="q" type="search" autocomplete="off" spellcheck="false" maxlength="80" placeholder="A name or a word: Sundance, horror, Kenya"></div>
+                <div class="cs-input-wrap">{ph("magnifying-glass")}<input id="cs-q" name="q" type="search" autocomplete="off" spellcheck="false" maxlength="80" placeholder="A name or a word: Sundance, horror, Canada"></div>
               </div>
             </div>
           </div>
