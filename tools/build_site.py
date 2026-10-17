@@ -674,6 +674,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
       </div>
       <p class="cs-excluded" data-excluded hidden></p>
       <p class="cs-listend" data-pd-type="body.default"><span>That’s the list. Applying to one? Most ask for a pitch deck, and we make those.</span> <a href="#pitchdog">Say hello {ph("arrow-right")}</a></p>
+      <nav class="cs-browse" aria-labelledby="browse-title"><h3 id="browse-title" data-pd-type="title.card">Ready-made lists, to bookmark or share</h3>{topic_links(calls, as_of)}</nav>
     </section>
 
     {editions_section(calls, as_of)}
@@ -977,6 +978,7 @@ def call_page(call: dict, by_slug: dict[str, dict], as_of: str, css: str, js: st
         around = sorted((c for c in by_slug.values() if c is not call and c not in related and c.get("closes") and not closed_at(c, as_of)
                          and kinds & (set(c["kinds"]) | set(c["formats"]))), key=lambda c: (not set(call["kinds"]) & set(c["kinds"]), days(c), c["title"]))[:3]
     around_html = "".join(f'<li><a href="{BASE}{h(r["slug"])}/" data-pd-type="title.functional">{title_html(r["title"])}</a><span data-pd-type="body.small">{h("Closes " + day(r["closes"]))}</span></li>' for r in around)
+    mine = [t for t in TOPICS if t["test"](call)]
     recheck = call.get("recheck")
     checked = f"Checked {day(call['checked_on'])}" + (f" · rechecked {day(recheck['checked_on'])}" if recheck else "")
     mail_subject = f"Call Sheet correction: {call['title']}"
@@ -1024,6 +1026,7 @@ def call_page(call: dict, by_slug: dict[str, dict], as_of: str, css: str, js: st
       {block("sources", "Where this comes from", f'<ul class="cs-sourcelist">{sources}</ul><div class="cs-report"><p data-pd-type="body.default">Spotted something out of date?</p><a class="button button--small" href="{h(mailto)}">{icon("mail")}Tell us</a></div>')}
       {block("related", "Related calls", f'<ul class="cs-related">{related_html}</ul>') if related_html else ''}
       {block("around", "Also closing around then", f'<ul class="cs-related">{around_html}</ul>') if around_html else ''}
+      {block("lists", "More lists like this", topic_links(list(by_slug.values()), as_of, mine)) if mine else ''}
       <p class="cs-disclaimer" data-pd-type="body.small">A research snapshot, not legal advice or a promise that the call is open. The official page always wins.</p>
     </article>
   </main>
@@ -1074,6 +1077,171 @@ def not_found_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
                 body=body, css=css, js=js, social_title="Call Sheet — free, by pitch.dog", robots="noindex, follow")
 
 
+
+# ---------------------------------------------------------------- topic pages
+# Ready-made lists for search: one page per kind of project, kind of call, and
+# the countries most of our clients work from.  Each is the main list, filtered.
+
+# Mirrors REGIONS in site/call-sheet.js; the country pages count what the finder shows.
+REGION_CODES = {
+    "EU": "AT BE BG HR CY CZ DK EE FI FR DE GR HU IE IT LV LT LU MT NL PL PT RO SK SI ES SE",
+    "EUROPE": "AT BE BG HR CY CZ DK EE FI FR DE GR HU IE IT LV LT LU MT NL PL PT RO SK SI ES SE AL AD AM AZ BA CH FO GB GE GI IS LI MC MD ME MK NO RS SM TR UA VA XK",
+    "NORDIC": "DK FI IS NO SE FO GL AX",
+    "LATAM": "AR BO BR CL CO CR CU DO EC SV GT HN HT MX NI PA PY PE PR UY VE BZ GY SR GF",
+    "CENTRAL_AMERICA": "BZ CR SV GT HN NI PA",
+    "CARIBBEAN": "AG AI AW BB BL BQ BS CU CW DM DO GD GP HT JM KN KY LC MF MQ MS PR SX TC TT VC VG VI",
+    "IBERO_AMERICA": "AR BO BR CL CO CR CU DO EC SV GT HN MX NI PA PY PE PR UY VE ES PT AD",
+    "AFRICA": "DZ AO BJ BW BF BI CV CM CF TD KM CD CG CI DJ EG GQ ER SZ ET GA GM GH GN GW KE LS LR LY MG MW ML MR MU MA MZ NA NE NG RW ST SN SC SL SO ZA SS SD TZ TG TN UG ZM ZW EH RE YT SH",
+    "MENA": "DZ BH EG IR IQ IL JO KW LB LY MA MR OM PS QA SA SD SY TN AE YE",
+    "ASIA": "AF AM AZ BH BD BT BN KH CN CY GE HK IN ID IR IQ IL JP JO KZ KW KG LA LB MO MY MV MN MM NP KP OM PK PS PH QA SA SG KR LK SY TW TJ TH TL TR TM AE UZ VN YE",
+    "SOUTH_ASIA": "AF BD BT IN MV NP PK LK",
+    "SOUTHEAST_ASIA": "BN KH ID LA MY MM PH SG TH TL VN",
+    "PACIFIC": "AU NZ FJ PG SB VU NC PF WS TO KI TV NR FM MH PW CK NU AS GU MP WF TK",
+}
+
+
+def place_match(where: dict, code: str) -> str:
+    """placeMatch() in site/call-sheet.js: 'yes', 'maybe' (rule unclear) or 'no'."""
+    if code in (where.get("excludes") or []):
+        return "no"
+    if where["scope"] == "worldwide":
+        return "yes"
+    if where["scope"] == "unclear":
+        return "maybe"
+    listed = code in (where.get("countries") or []) or any(code in REGION_CODES.get(r, "").split() for r in where.get("regions") or [])
+    return "yes" if listed else "no"
+
+
+TOPICS = (
+    {"slug": "documentary", "name": "Documentary", "title": "Documentary grants, labs and pitch forums",
+     "intro": "Funds, labs and pitch forums for documentary films, from the first idea to the finished cut.",
+     "test": lambda c: "documentary" in c["formats"], "query": "format=documentary", "feed": "documentary"},
+    {"slug": "short-film", "name": "Short film", "title": "Short film grants, labs and competitions",
+     "intro": "Funds, labs and competitions that take short films and short scripts.",
+     "test": lambda c: "short" in c["formats"], "query": "format=short", "feed": "short"},
+    {"slug": "feature-film", "name": "Feature film", "title": "Feature film grants, labs and markets",
+     "intro": "Development and production money, labs and co-production markets for fiction features.",
+     "test": lambda c: "fiction_feature" in c["formats"], "query": "format=fiction_feature", "feed": "fiction_feature"},
+    {"slug": "tv-series", "name": "TV and series", "title": "TV series grants, labs and pitch competitions",
+     "intro": "Funds, labs and pitch competitions for series, from the pilot script to the co-production.",
+     "test": lambda c: "series" in c["formats"], "query": "format=series", "feed": "series"},
+    {"slug": "animation", "name": "Animation", "title": "Animation grants, labs and markets",
+     "intro": "Funds, labs and markets that take animated features, series and shorts.",
+     "test": lambda c: "animation" in c["formats"], "query": "format=animation", "feed": "animation"},
+    {"slug": "screenwriting", "name": "Screenwriting", "title": "Screenwriting grants, labs and script competitions",
+     "intro": "Calls for projects that are still on the page: writing grants, script labs and screenplay competitions.",
+     "test": lambda c: "writing" in c["stages"], "query": "stage=writing"},
+    {"slug": "grants", "name": "Grants", "title": "Film and TV grants",
+     "intro": "Development, production and finishing money from film funds, agencies and foundations.",
+     "test": lambda c: "grant" in c["kinds"], "query": "kind=grant"},
+    {"slug": "labs", "name": "Labs and fellowships", "title": "Film labs and fellowships",
+     "intro": "Labs, fellowships and residencies, where you get time, mentors and a room of people making work like yours.",
+     "test": lambda c: "lab" in c["kinds"], "query": "kind=lab"},
+    {"slug": "pitch-forums", "name": "Pitch forums", "title": "Film pitch forums and markets",
+     "intro": "Pitch forums, co-production markets and pitch competitions, where you pitch to financiers, broadcasters and sales agents in person.",
+     "test": lambda c: "market" in c["kinds"], "query": "kind=market"},
+    {"slug": "free-to-enter", "name": "Free to enter", "title": "Film grants and labs that are free to enter",
+     "intro": "Calls whose organisers say they’re free to enter. A fee nobody has published doesn’t count; those calls are on the full list, marked Not published.",
+     "test": lambda c: c["fee"]["state"] == "free", "query": "only=free"},
+)
+for _code, _slug, _name in (("US", "us", "the US"), ("GB", "uk", "the UK"), ("CA", "canada", "Canada"), ("AU", "australia", "Australia")):
+    TOPICS += ({"slug": _slug, "name": f"Based in {_name}", "place": _code, "title": f"Film and TV grants and labs for filmmakers in {_name}",
+                "intro": f"Calls that take applicants based in {_name}, including the ones open worldwide. Some test where you live, some your passport, some where your company is registered, so each call says which.",
+                "test": (lambda code: lambda c: place_match(c["where"], code) == "yes")(_code), "query": f"from={_code}"},)
+
+
+def topic_members(topic: dict, calls: list[dict], as_of: str) -> list[dict]:
+    """Calls that haven't closed, soonest first; undated ones last."""
+    return sorted((c for c in calls if not closed_at(c, as_of) and topic["test"](c)), key=lambda c: (c.get("closes") or "9999", c["title"]))
+
+
+def topic_links(calls: list[dict], as_of: str, only: list[dict] | None = None, current: str = "") -> str:
+    items = []
+    for t in only if only is not None else TOPICS:
+        n = len(topic_members(t, calls, as_of))
+        mark = ' aria-current="page"' if t["slug"] == current else ""
+        items.append(f'<li><a href="{BASE}{t["slug"]}/"{mark}><span data-pd-type="title.functional">{h(t["name"])}</span><span class="cs-lists-n" data-pd-type="metadata">{n}</span></a></li>')
+    return f'<ul class="cs-lists">{"".join(items)}</ul>'
+
+
+def topic_page(topic: dict, calls: list[dict], as_of: str, css: str, js: str) -> str:
+    members = topic_members(topic, calls, as_of)
+    path = f"{BASE}{topic['slug']}/"
+    groups: dict[tuple[str, str], list[dict]] = {}
+    for call in members:
+        groups.setdefault(bucket(call, as_of), []).append(call)
+    group_html = "".join(
+        f'<section class="cs-group"><header class="cs-group-head"><h3 class="cs-group-title" data-pd-type="title.card">{h(heading)}</h3><span class="cs-group-count" data-pd-type="metadata">{len(rows)}</span></header><ol class="cs-list">{"".join(call_row(c, as_of) for c in rows)}</ol></section>'
+        for (key, heading), rows in sorted(groups.items()))
+    unclear = ""
+    if topic.get("place"):
+        m = sum(1 for c in calls if not closed_at(c, as_of) and place_match(c["where"], topic["place"]) == "maybe")
+        if m:
+            unclear = f' We left out {m} {"call" if m == 1 else "calls"} whose rules on where you’re based aren’t clear; the full list keeps them, flagged.'
+    feed = f'<a class="button" href="webcal://pitch.dog{BASE}feeds/{topic["feed"]}.ics">{icon("calendar")}Put these deadlines in my calendar</a>' if topic.get("feed") else ""
+    from urllib.parse import quote
+    mailto = "mailto:hello@pitch.dog?subject=" + quote(f"Call Sheet: {topic['title']}") + "&body=" + quote("Hi pitch.dog,\n\nMy project, in a line:\nThe call I’m applying to:\nWhat I have so far:\n")
+    others = [t for t in TOPICS if t["slug"] != topic["slug"]]
+    body = f"""<main id="main" class="cs-callpage cs-topic">
+    <article class="cs-article" aria-labelledby="topic-title">
+      <nav class="cs-crumbs" aria-label="Breadcrumb"><a href="{BASE}">{ph("arrow-left")}<span>All calls</span></a></nav>
+      <header class="cs-callhead">
+        <p class="hero-locator cs-locator"><span class="hero-locator-mark" aria-hidden="true"></span><span>Call Sheet</span><span class="hero-locator-rule" aria-hidden="true"></span><span class="hero-locator-dot" aria-hidden="true">·</span><span>Updated {h(day(as_of))}</span></p>
+        <h1 id="topic-title" data-pd-type="heading.section">{h(topic['title'])}</h1>
+        <p class="cs-callorg" data-pd-type="lead.section">{h(topic['intro'])}</p>
+        <p class="cs-topic-count" data-pd-type="body.default">{len(members)} calls that haven’t closed, soonest deadline first. Each one says who can apply, what you get, what it costs and what to send.{h(unclear)}</p>
+        <div class="button-row cs-callactions">
+          <a class="button button--ink" href="{BASE}?{topic['query']}#calls">Narrow these down {ph("arrow-right")}</a>
+          {feed}
+        </div>
+      </header>
+      <section class="cs-topic-list" aria-labelledby="topic-list-title"><h2 id="topic-list-title" class="sr-only">The calls, soonest first</h2>{group_html}</section>
+      <aside class="cs-help" aria-labelledby="help-title">
+        <div class="cs-help-copy">
+          <p class="eyebrow" data-pd-type="metadata">From pitch.dog, who made this list</p>
+          <h2 id="help-title" data-pd-type="title.card">Found your call? We’ll help with the pitch.</h2>
+          <p data-pd-type="body.default">We design pitch decks, lookbooks, treatments and series bibles for film and TV. Tell us which call and a line about your project, and we’ll tell you how we’d approach it. The list stays free either way.</p>
+        </div>
+        <div class="button-row cs-help-actions">
+          <a class="button button--ink" href="{h(mailto)}">{icon("mail")}Email us</a>
+          <a class="button" href="{WHATSAPP}" target="_blank" rel="noopener noreferrer">WhatsApp us</a>
+          <a class="cs-help-work" href="/work/" data-pd-type="body.small">See decks we’ve made {ph("arrow-right")}</a>
+        </div>
+      </aside>
+      {block("lists", "More lists", topic_links(calls, as_of, others))}
+      <p class="cs-disclaimer" data-pd-type="body.small">A research snapshot, not legal advice or a promise that a call is open. The official page always wins. Updated every month.</p>
+    </article>
+  </main>
+
+  {sheet_ui()}"""
+    url = ORIGIN + path
+    jsonld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {"@type": "CollectionPage", "@id": url, "url": url, "name": topic["title"], "description": topic["intro"], "isPartOf": {"@id": ORIGIN + BASE},
+             "dateModified": as_of, "mainEntity": {"@id": url + "#list"}},
+            {"@type": "ItemList", "@id": url + "#list", "name": topic["title"], "numberOfItems": len(members), "itemListOrder": "https://schema.org/ItemListOrderAscending",
+             "itemListElement": [{"@type": "ListItem", "position": i, "url": f"{ORIGIN}{BASE}{c['slug']}/", "name": c["title"]} for i, c in enumerate(members, 1)]},
+            {"@type": "BreadcrumbList", "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Call Sheet", "item": ORIGIN + BASE},
+                {"@type": "ListItem", "position": 2, "name": topic["title"], "item": url},
+            ]},
+        ],
+    }
+    description = clip(f"{len(members)} calls, soonest deadline first. {topic['intro']}", 158)
+    return page(
+        title=f"{topic['title']}, by deadline · Call Sheet",
+        description=description,
+        path=path,
+        body=body,
+        css=css,
+        js=js,
+        social_title=f"{topic['title']} · Call Sheet",
+        robots="index, follow, max-image-preview:large" if len(members) >= 5 else "noindex, follow",
+        jsonld=jsonld,
+    )
+
+
 def git_commit() -> dict[str, Any]:
     try:
         sha = subprocess.run(["git", "rev-parse", "HEAD"], cwd=REPO, capture_output=True, text=True, check=True).stdout.strip()
@@ -1109,7 +1277,14 @@ def main(argv: list[str] | None = None) -> int:
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(call_page(call, by_slug, as_of, css, js), encoding="utf-8")
     (out / "404.html").write_text(not_found_page(calls, as_of, css, js), encoding="utf-8")
-    urls = [(BASE, as_of)] + [(f"{BASE}{c['slug']}/", (c.get("recheck") or {}).get("checked_on") or c["checked_on"]) for c in calls if not closed_at(c, as_of)]
+    listed = []
+    for topic in TOPICS:
+        assert topic["slug"] not in by_slug, topic["slug"]
+        (out / topic["slug"]).mkdir()
+        (out / topic["slug"] / "index.html").write_text(topic_page(topic, calls, as_of, css, js), encoding="utf-8")
+        if len(topic_members(topic, calls, as_of)) >= 5:
+            listed.append((f"{BASE}{topic['slug']}/", as_of))
+    urls = [(BASE, as_of)] + listed + [(f"{BASE}{c['slug']}/", (c.get("recheck") or {}).get("checked_on") or c["checked_on"]) for c in calls if not closed_at(c, as_of)]
     sitemap = "".join(f"<url><loc>{ORIGIN}{h(u)}</loc><lastmod>{d}</lastmod></url>" for u, d in urls)
     (out / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sitemap}</urlset>\n', encoding="utf-8")
     (out / "data").mkdir()
@@ -1122,7 +1297,7 @@ def main(argv: list[str] | None = None) -> int:
     build = {"name": "Call Sheet", "source": "https://github.com/bomkino/call-sheet", **git_commit(), "data_as_of": as_of, "calls": len(calls),
              "edition": EDITION["edition"], "pages": EDITION["pages"][-1]["colour"], "built_with": "python3 tools/build_site.py"}
     (out / "BUILD.json").write_text(json.dumps(build, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"out": str(out), "pages": len(calls) + 1, "as_of": as_of}))
+    print(json.dumps({"out": str(out), "pages": len(calls) + len(TOPICS) + 1, "as_of": as_of}))
     return 0
 
 

@@ -518,7 +518,8 @@ document.querySelector('[data-sheet-print]')?.addEventListener('click', () => {
 const SEEN = 'pitchdog-call-sheet-seen'
 const newSince = new Set()
 let lastVisit = null
-if (listRows.length) {
+// Only the full list counts as a visit; a ready-made list shows a few calls, not the sheet.
+if (listRows.length && document.querySelector('#cs-groups')) {
   const now = Date.now()
   const current = listRows.map(row => row.dataset.slug)
   let seen = null

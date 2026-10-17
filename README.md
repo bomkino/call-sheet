@@ -18,7 +18,7 @@ private foundation ──export_public_data.py──▶ data/calls.json ──bu
 - `data/edition.json`: which edition this is, the window it covers, and each monthly set of pages with its revision colour (white, blue, pink and on, in the order shooting scripts use). The masthead, the editions strip and the FAQ read it.
 - `brand/`: the Call Sheet identity. Logo, symbol, edition marks, palette and the code that draws them; [brand/README.md](brand/README.md) is the guide.
 - `site/`: `call-sheet.css` and `call-sheet.js`. No framework and no dependencies.
-- `tools/build_site.py`: renders the list page and one page per call into `dist-pitchdog/`, with hashed assets, calendar feeds (`feeds/*.ics`, every upcoming deadline and one per format) and `BUILD.json`.
+- `tools/build_site.py`: renders the list page, one page per call and a ready-made list per topic (`documentary/`, `grants/`, `free-to-enter/`, `us/` and so on, set in `TOPICS`) into `dist-pitchdog/`, with hashed assets, calendar feeds (`feeds/*.ics`, every upcoming deadline and one per format) and `BUILD.json`.
 
 Every page works without JavaScript. The script adds:
 - filters and place matching;
