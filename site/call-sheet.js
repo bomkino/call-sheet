@@ -41,9 +41,7 @@ function setTheme (theme, remember = true) {
   document.querySelector('#theme-icon use')?.setAttribute('href', `/assets/phosphor-sprite.svg#ph-${theme === 'auto' ? 'circle-half' : theme === 'light' ? 'sun' : 'moon'}`)
   document.querySelector('#theme-button')?.setAttribute('aria-label', `Theme: ${label}. Activate to switch to ${next[0].toUpperCase() + next.slice(1)}.`)
   const color = document.querySelector('#theme-color')
-  if (color) color.content = resolved === 'dark' ? '#0b0c0e' : '#f6f5f8'
-  const icon = document.querySelector('#theme-favicon')
-  if (icon) icon.href = resolved === 'dark' ? '/assets/favicon-dark.svg' : '/assets/favicon-light.svg'
+  if (color) color.content = resolved === 'dark' ? '#0e0d0b' : '#f3efe6'
   if (remember) try { localStorage.setItem('pitchdog-theme', theme) } catch {}
 }
 root.classList.add('js')
@@ -295,11 +293,21 @@ document.addEventListener('click', event => {
 
 // Refresh stored snapshots from the current list, so saved calls pick up rechecked dates.
 let refreshed = false
+// A deadline the organiser moved is flagged on the sheet for a while; a round that simply
+// passed, so the next one took over, is not a change.
+function remember (item, fresh, rounds) {
+  const moved = item.closes && fresh.closes && item.closes !== fresh.closes && !rounds.includes(item.closes)
+  return { ...item, ...fresh, ...(moved ? { was: item.closes, movedOn: todayISO } : {}) }
+}
 for (const [slug, item] of Object.entries(sheet.items)) {
   const row = rowBySlug.get(slug)
-  if (row) { sheet.items[slug] = { ...item, ...snapshotFromRow(row) }; refreshed = true }
+  if (row) { sheet.items[slug] = remember(item, snapshotFromRow(row), (row.dataset.rounds || '').split(' ')); refreshed = true }
 }
-if (callPage && sheet.items[callPage.dataset.call]) { sheet.items[callPage.dataset.call] = { ...sheet.items[callPage.dataset.call], ...snapshotFromPage(callPage) }; refreshed = true }
+if (callPage && sheet.items[callPage.dataset.call]) {
+  const rounds = (callPage.querySelector('[data-countdown]')?.dataset.rounds || '').split(' ')
+  sheet.items[callPage.dataset.call] = remember(sheet.items[callPage.dataset.call], snapshotFromPage(callPage), rounds)
+  refreshed = true
+}
 if (refreshed) writeSheet(sheet)
 
 // ------------------------------------------------------------- my sheet UI
@@ -355,6 +363,8 @@ function renderSheet () {
     status.setAttribute('aria-label', `Status of ${title}`)
     const meta = el('span', { className: 'cs-sheet-meta' }, link, org)
     if (left) meta.append(el('span', { className: `cs-left ${left.cls}`, textContent: left.text }))
+    if (item.was && item.movedOn && -daysUntil(item.movedOn) < 45) meta.append(el('span', { className: 'cs-sheet-flag', textContent: `Date changed: was ${shortDate(item.was)}` }))
+    else if (newSince.has(slug)) meta.append(el('span', { className: 'cs-sheet-flag', textContent: 'New on the list' }))
     meta.append(status)
     const remove = el('button', { className: 'cs-sheet-remove', type: 'button', innerHTML: '<svg class="cs-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#cs-close"></use></svg>' })
     remove.dataset.remove = slug
@@ -501,6 +511,29 @@ document.querySelector('[data-sheet-print]')?.addEventListener('click', () => {
   setTimeout(done, 1500)
 })
 
+// --------------------------------------------------------- since last time
+
+// Which calls are new since this browser last opened the list.  The list a visit saw is kept,
+// and after a few hours away it becomes the one to compare with; nothing leaves the browser.
+const SEEN = 'pitchdog-call-sheet-seen'
+const newSince = new Set()
+let lastVisit = null
+if (listRows.length) {
+  const now = Date.now()
+  const current = listRows.map(row => row.dataset.slug)
+  let seen = null
+  try { seen = JSON.parse(localStorage.getItem(SEEN) || 'null') } catch {}
+  const valid = list => Array.isArray(list) && list.every(x => typeof x === 'string')
+  if (!seen || typeof seen.at !== 'number' || !valid(seen.slugs)) seen = { at: now, slugs: current }
+  else if (now - seen.at > 6 * 3600000) seen = { at: now, slugs: current, prev: { at: seen.at, slugs: seen.slugs } }
+  if (seen.prev && typeof seen.prev.at === 'number' && valid(seen.prev.slugs)) {
+    const before = new Set(seen.prev.slugs)
+    for (const slug of current) if (!before.has(slug)) newSince.add(slug)
+    lastVisit = new Date(seen.prev.at)
+  }
+  try { localStorage.setItem(SEEN, JSON.stringify(seen)) } catch {}
+}
+
 // ------------------------------------------------------------ list page
 
 let filters = null
@@ -531,7 +564,8 @@ if (form && groupsHost && listRows.length) {
   more.className = 'button button--small cs-more-filters'
   more.innerHTML = '<svg class="cs-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#cs-sliders"></use></svg><span>More filters</span>'
   more.setAttribute('aria-expanded', 'false')
-  form.querySelector('.cs-filter-top').after(more)
+  more.setAttribute('aria-controls', 'cs-filter-more')
+  form.querySelector('.cs-filter-more').before(more)
   more.addEventListener('click', () => {
     const open = !form.classList.contains('is-expanded')
     form.classList.toggle('is-expanded', open)
@@ -555,12 +589,14 @@ if (form && groupsHost && listRows.length) {
     all: params.get('all') === '1',
     shared: sharedSlugs.filter(slug => rowBySlug.has(slug)),
   }
+  // "New since my last visit" means nothing to a browser with no last visit (a shared link).
+  if (!newSince.size) filters.only = filters.only.filter(v => v !== 'new')
   const missingShared = sharedSlugs.length - filters.shared.length
   form.q.value = filters.q
   if (COUNTRY_CODES.includes(filters.from)) select.value = filters.from
   else filters.from = ''
   for (const facet of facets) form.querySelectorAll(`input[name="${facet}"]`).forEach(box => { box.checked = filters[facet].includes(box.value) })
-  if (filters.format.length || filters.stage.length || filters.kind.length) { form.classList.add('is-expanded'); more.setAttribute('aria-expanded', 'true'); more.querySelector('span').textContent = 'Fewer filters' }
+  if (filters.stage.length || filters.q) { form.classList.add('is-expanded'); more.setAttribute('aria-expanded', 'true'); more.querySelector('span').textContent = 'Fewer filters' }
 
   // Fuzzy enough for typos: a query word matches a word in the call within one edit.
   const near = (a, b) => {
@@ -608,6 +644,9 @@ if (form && groupsHost && listRows.length) {
   const empty = document.querySelector('[data-empty]')
   const excludedEl = document.querySelector('[data-excluded]')
   const filterJump = document.querySelector('[data-filter-jump]')
+  const see = document.querySelector('[data-see]')
+  const startAgain = document.querySelector('[data-clear-finder]')
+  startAgain?.addEventListener('click', () => clear.click())
   // Screen readers hear the result count once typing settles, not every keystroke.
   const announcer = Object.assign(document.createElement('p'), { className: 'sr-only' })
   announcer.setAttribute('aria-live', 'polite')
@@ -619,7 +658,7 @@ if (form && groupsHost && listRows.length) {
     box.className = 'cs-shared'
     box.setAttribute('role', 'status')
     const gone = missingShared ? ` ${missingShared} more ${missingShared === 1 ? 'isn’t' : 'aren’t'} on Call Sheet any more.` : ''
-    box.innerHTML = `<p data-pd-type="body.default"><strong>Someone shared ${filters.shared.length} ${filters.shared.length === 1 ? 'call' : 'calls'} with you.</strong> Showing just those.${gone}</p><div class="button-row"><button class="button button--brand button--small" type="button" data-adopt>Add to my call sheet</button><button class="button button--small" type="button" data-show-all>Show every call</button></div>`
+    box.innerHTML = `<p data-pd-type="body.default"><strong>Someone shared ${filters.shared.length} ${filters.shared.length === 1 ? 'call' : 'calls'} with you.</strong> Showing just those.${gone}</p><div class="button-row"><button class="button button--ink button--small" type="button" data-adopt>Add to my call sheet</button><button class="button button--small" type="button" data-show-all>Show every call</button></div>`
     document.querySelector('.cs-results-head').after(box)
     box.querySelector('[data-adopt]').addEventListener('click', () => {
       for (const slug of filters.shared) if (!saved(slug)) toggleSave(slug)
@@ -636,6 +675,8 @@ if (form && groupsHost && listRows.length) {
   }
 
   function decorate (row, { live, where, place }) {
+    const fresh = row.querySelector('[data-badge-new]')
+    if (fresh) fresh.hidden = !newSince.has(row.dataset.slug) || live === 'closed'
     const left = row.querySelector('[data-left]')
     if (row.dataset.closes && left) {
       const l = leftText(row.dataset.closes)
@@ -707,7 +748,8 @@ if (form && groupsHost && listRows.length) {
         anyOf(filters.kind, row.dataset.kinds.split(' ')) &&
         (!filters.only.includes('open') || info.live === 'open') &&
         (!filters.only.includes('free') || row.dataset.fee === 'free') &&
-        (!savedOnly || saved(row.dataset.slug))
+        (!savedOnly || saved(row.dataset.slug)) &&
+        (!filters.only.includes('new') || newSince.has(row.dataset.slug))
       decorate(row, info)
       if (!base) continue
       if (info.place === 'no' && !filters.all) { excluded++; continue }
@@ -741,6 +783,11 @@ if (form && groupsHost && listRows.length) {
     clear.hidden = !active.length
     empty.hidden = rows.length > 0
     if (filterJump) filterJump.querySelector('span').textContent = active.length ? `Filters (${active.length})` : 'Filters'
+    if (see) {
+      see.querySelector('[data-see-text]').textContent = visible ? `See ${visible} ${visible === 1 ? 'call' : 'calls'}` : 'Nothing fits yet'
+      see.classList.toggle('is-zero', visible === 0)
+      startAgain.hidden = !active.length
+    }
     if (write) announce(`${visible} ${visible === 1 ? 'call' : 'calls'} open or coming up${active.length ? `, filtered by ${active.join(', ')}` : ''}.`)
     if (filters.from && (excluded || filters.all)) {
       excludedEl.hidden = false
@@ -811,6 +858,24 @@ if (form && groupsHost && listRows.length) {
     stale.setAttribute('data-pd-type', 'body.small')
     stale.textContent = `We last checked this list on ${shortDate(document.body.dataset.asOf, true)}, ${Math.round(age / 30.4)} ${Math.round(age / 30.4) === 1 ? 'month' : 'months'} ago. Calls that have closed move to the bottom on their own, but new rounds and changed dates won’t show until we check again. The official page always wins.`
     document.querySelector('.cs-results-head').after(stale)
+  }
+
+  // Back again: say what's new, and offer just those.
+  if (newSince.size && lastVisit) {
+    const chip = form.querySelector('[data-new-chip]')
+    chip.hidden = false
+    chip.querySelector('span').textContent = `New since ${shortDate(lastVisit.toISOString().slice(0, 10))} (${newSince.size})`
+    const box = document.createElement('div')
+    box.className = 'cs-welcome'
+    box.setAttribute('role', 'status')
+    box.innerHTML = `<p data-pd-type="body.default"><strong>Welcome back.</strong> ${newSince.size} ${newSince.size === 1 ? 'call is' : 'calls are'} new since you were last here, on ${shortDate(lastVisit.toISOString().slice(0, 10))}.</p><button class="button button--small" type="button" data-only-new>Show just the new ones</button>`
+    box.querySelector('[data-only-new]').addEventListener('click', () => {
+      form.querySelector('input[name="only"][value="new"]').checked = true
+      filters.only = [...new Set([...filters.only, 'new'])]
+      applyFilters()
+      document.querySelector('#calls').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
+    })
+    document.querySelector('.cs-stage-actions')?.after(box)
   }
 
   applyFilters({ write: false })
@@ -894,12 +959,41 @@ if (callPage) {
   }
 }
 
+// Calendar feeds: Google Calendar wants the https link pasted, not a webcal tap.
+document.querySelector('[data-copy-feed]')?.addEventListener('click', async event => {
+  const url = document.querySelector('[data-feed]')?.dataset.feed
+  if (!url) return
+  try { await navigator.clipboard.writeText(url); event.target.textContent = 'link copied' } catch { prompt('Copy this link:', url) }
+})
+
+// What to bring: ticks stay in this browser, per call.
+const BRING = 'pitchdog-call-sheet-bring'
+const bringList = callPage?.querySelector('.cs-bring')
+if (bringList) {
+  const slug = callPage.dataset.call
+  let ticks = {}
+  try { ticks = JSON.parse(localStorage.getItem(BRING) || '{}') || {} } catch {}
+  const boxes = [...bringList.querySelectorAll('[data-bring]')]
+  const mine = new Set(Array.isArray(ticks[slug]) ? ticks[slug] : [])
+  const progress = callPage.querySelector('[data-bring-progress]')
+  const show = () => { const n = boxes.filter(b => b.checked).length; progress.textContent = n ? (n === boxes.length ? 'All ready.' : `${n} of ${boxes.length} ready.`) : '' }
+  for (const box of boxes) box.checked = mine.has(Number(box.dataset.bring))
+  show()
+  bringList.addEventListener('change', () => {
+    const on = boxes.filter(b => b.checked).map(b => Number(b.dataset.bring))
+    if (on.length) ticks[slug] = on
+    else delete ticks[slug]
+    try { localStorage.setItem(BRING, JSON.stringify(ticks)) } catch { notice('Your browser is blocking storage here, so ticks won’t be kept.') }
+    show()
+  })
+}
+
 // How long ago a page was checked, once that starts to matter.
 for (const el of document.querySelectorAll('[data-age]')) {
   const days = -daysUntil(el.dataset.age)
   if (days < 21) continue
   el.textContent = days < 63 ? `, ${Math.round(days / 7)} weeks ago` : `, ${Math.round(days / 30.4)} months ago`
-  el.closest('.hero-locator')?.classList.add('is-stale')
+  el.closest('.hero-locator, .cs-slip')?.classList.add('is-stale')
 }
 
 syncSaveButtons()

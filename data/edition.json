@@ -1,0 +1,9 @@
+{
+  "about": "Call Sheet comes out a quarter at a time and is rechecked every month. Each monthly update takes the next colour in the order film scripts take their revision pages: white, blue, pink, yellow, green, goldenrod, buff, salmon, cherry. A new edition starts on white again.",
+  "edition": 1,
+  "covers": {"from": "2026-10", "to": "2027-01"},
+  "pages": [
+    {"colour": "White", "published": "2026-10-17", "note": "The first issue: 186 calls, every one not already closed reread on its official page."}
+  ],
+  "next": {"colour": "Blue", "due": "2026-11"}
+}

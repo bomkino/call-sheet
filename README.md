@@ -15,15 +15,21 @@ private foundation ──export_public_data.py──▶ data/calls.json ──bu
 - `data/overlay.json`: the hand-reviewed public layer, one entry per route: who can apply and from where, a plain "who" and "you get" line, format, stage, type and the one thing to check first. Written from the source packs' own wording; `unclear` means the packs don't say.
 - `data/rechecks.json`: dated rechecks against official pages, each date backed by a quote. A recheck's dates replace the pack's dates for that call, and a fee read off the official page replaces the pack's fee. [docs/RECHECKING.md](docs/RECHECKING.md) says how to run one; `tools/merge_rechecks.py` validates and folds them in.
 - `data/calls.json`: the public dataset the site is built from, and the file published at `/call-sheet/data/calls.json`. Generated; edit the overlay, the rechecks or the foundation instead.
+- `data/edition.json`: which edition this is, the window it covers, and each monthly set of pages with its revision colour (white, blue, pink and on, in the order shooting scripts use). The masthead, the editions strip and the FAQ read it.
+- `brand/`: the Call Sheet identity. Logo, symbol, edition marks, palette and the code that draws them; [brand/README.md](brand/README.md) is the guide.
 - `site/`: `call-sheet.css` and `call-sheet.js`. No framework and no dependencies.
-- `tools/build_site.py`: renders the list page and one page per call into `dist-pitchdog/`, with hashed assets and `BUILD.json`.
+- `tools/build_site.py`: renders the list page and one page per call into `dist-pitchdog/`, with hashed assets, calendar feeds (`feeds/*.ics`, every upcoming deadline and one per format) and `BUILD.json`.
 
 Every page works without JavaScript. The script adds:
 - filters and place matching;
 - live countdowns that move to a call's next round once one closes;
 - deadlines shown in the visitor's own time zone;
 - a notice when the snapshot is old;
-- "My call sheet", which is saved in the visitor's browser only.
+- "My call sheet", which is saved in the visitor's browser only, and flags a saved call whose deadline the organiser moved;
+- a **New** tag on calls added since the visitor's last visit, with a filter for just those;
+- a what-to-bring checklist on each call page that remembers its ticks.
+
+All of that stays in the browser. Nothing a visitor types or saves reaches us.
 
 ## Commands
 
@@ -57,9 +63,9 @@ python3 -m unittest discover -s tools -p 'test*.py'
 
 As open as we can make it:
 
-- **Code** (`tools/`, `site/`): [BSD Zero Clause](LICENSE) (0BSD). Use, copy, change and ship it, with no conditions.
+- **Code** (`tools/`, `site/`, `brand/tools/`): [BSD Zero Clause](LICENSE) (0BSD). Use, copy, change and ship it, with no conditions.
 - **Data and writing**: `data/`, the published `calls.json`, the text of the pages and these docs are dedicated to the public domain under [CC0 1.0](LICENSE-DATA). No permission or credit needed.
 
-Two things aren't ours to give away. Text quoted from organisers' pages, which backs each date in `data/rechecks.json`, stays theirs. Organisers' names and the pitch.dog name and logo are trademarks, which no licence grants.
+Two things aren't ours to give away. Text quoted from organisers' pages, which backs each date in `data/rechecks.json`, stays theirs. Organisers' names, and the Call Sheet and pitch.dog names and logos (the drawings in `brand/`), are trademarks, which no licence grants.
 
 The private research foundation behind the data stays private and isn't covered.
