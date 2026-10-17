@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Call Sheet posts · launch set</title>
+<!-- Type: pitch.dog type system 3.0.0 (commit 54207202), social roles only.
+     Lettering inside stamps and the logo are outlines, drawn as artwork. -->
+<link rel="stylesheet" href="/type/dist/pitchdog-system.css">
+<script src="loops.js"></script>
+<script src="free.js"></script>
+<script src="art.js"></script>
+<script src="places.js"></script>
+<style>
+  :root {
+    --paper: #f3efe6; --sheet: #fbf9f3; --ink: #15130f; --toner: #66625a; --marker: #e3472d; --marker-text: #c2381f;
+    --white: #fbf9f3; --blue: #a8c8ea; --pink: #f3b5c8; --yellow: #f4df77; --green: #b5d9a2; --goldenrod: #e6b640; --buff: #e9d5ae; --salmon: #f3a58a; --cherry: #cf3b52;
+    --rule: rgb(21 19 15 / .14); --rule-strong: rgb(21 19 15 / .3);
+    /* paper resting on a surface: contact, near and far shadow */
+    --lift: 0 1px 1px rgb(21 19 15 / .10), 0 4px 8px -2px rgb(21 19 15 / .16), 0 24px 48px -18px rgb(21 19 15 / .42);
+    --lift-dark: 0 1px 1px rgb(0 0 0 / .35), 0 6px 12px -2px rgb(0 0 0 / .4), 0 36px 64px -20px rgb(0 0 0 / .7);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: transparent; }
+  body { font-family: var(--pd-font-body); color: var(--ink); }
+
+  .post { position: relative; overflow: hidden; color: var(--ink); --pd-type-ink: var(--ink); background: var(--g, var(--paper)); }
+  .post.dark { color: var(--paper); --pd-type-ink: var(--paper); }
+  /* light falls from the top left, like a desk lamp; paper tooth over everything */
+  .post::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background: radial-gradient(120% 90% at 18% 0%, rgb(255 255 255 / .22), transparent 60%), radial-gradient(90% 80% at 100% 100%, rgb(21 19 15 / .10), transparent 70%); }
+  .post.dark::before { background: radial-gradient(120% 90% at 18% 0%, rgb(255 255 255 / .07), transparent 60%), radial-gradient(90% 80% at 100% 100%, rgb(0 0 0 / .35), transparent 70%); }
+  .post::after { content: ""; position: absolute; inset: 0; z-index: 9; pointer-events: none; opacity: .5; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .55  0 0 0 0 .5  0 0 0 0 .42  0 0 0 .2 0'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>"); }
+  .post.dark::after { mix-blend-mode: screen; opacity: .16; }
+  .flat .post::before, .flat .post::after { display: none; }
+  /* Figma imports soft masks as solid black, so the vector export blends nothing. */
+  .flat .stamp, .flat .hl::before { mix-blend-mode: normal; }
+  .flat .hl::before { background: rgb(244 223 119); }
+  .flat .cal-page .rings i { background: #b9b3a9; box-shadow: none; }
+
+  .frame { position: absolute; z-index: 2; display: flex; flex-direction: column; }
+  .art { position: absolute; z-index: 1; }                  /* objects live on the canvas, behind the type frame */
+  .top { display: flex; align-items: center; gap: .8em; }
+  .grow { flex: 1 1 auto; min-height: 0; }
+  .foot { display: flex; align-items: center; justify-content: space-between; gap: 1em; position: relative; z-index: 3; }
+  .foot img { height: max(3.2cqb, 40px); width: auto; }
+  .soft { opacity: .72; }
+  .measure { max-inline-size: 12ch; } .wide { max-inline-size: 26ch; }
+  .mt-xs { margin-top: 1.4cqb; } .mt-s { margin-top: 2.4cqb; } .mt-m { margin-top: 3.6cqb; }
+  .chip-dot { width: .75em; height: .75em; border-radius: 50%; background: var(--marker); flex: none; }
+
+  /* the loop */
+  .circ { position: relative; display: inline-block; white-space: nowrap; }
+  .circ > svg.loop { position: absolute; left: var(--l, -12%); top: var(--t, -22%); width: var(--w, 124%); height: var(--h, 148%); overflow: visible; pointer-events: none; }
+  .loop path { fill: var(--loop, var(--marker)); }
+
+  /* paper */
+  .paper { position: relative; background: var(--sheet); color: var(--ink); --pd-type-ink: var(--ink); box-shadow: var(--lift); }
+  .dark .paper { box-shadow: var(--lift-dark); }
+  .ear { clip-path: polygon(0 0, calc(100% - var(--ear, 8cqi)) 0, 100% var(--ear, 8cqi), 100% 100%, 0 100%); }
+  .ear-flap { position: absolute; right: 0; top: 0; width: var(--ear, 8cqi); height: var(--ear, 8cqi); background: var(--flap, var(--marker)); clip-path: polygon(0 0, 100% 100%, 0 100%); filter: drop-shadow(-2px 3px 2px rgb(0 0 0 / .18)); }
+  .ruled { background-image: repeating-linear-gradient(to bottom, transparent 0 calc(var(--lh, 5cqi) - 2px), rgb(21 19 15 / .09) calc(var(--lh, 5cqi) - 2px) var(--lh, 5cqi)); }
+
+  /* the printed list */
+  .list header { display: flex; justify-content: space-between; align-items: center; padding: 3cqi 4cqi 2.4cqi; padding-right: 10cqi; border-bottom: 3px solid var(--ink); }
+  .list header img { height: 6.6cqi; width: auto; }
+  .list header > span { white-space: nowrap; }
+  [data-pd-canvas="landscape"] .list header > span { display: none; }
+  .li { position: relative; display: grid; grid-template-columns: 14cqi 1fr; gap: 3cqi; padding: 2.4cqi 4cqi; border-bottom: 1.5px solid var(--rule); align-items: center; }
+  .li:last-child { border-bottom: 0; }
+  .li .d { position: relative; justify-self: start; display: grid; }
+  .li .d > svg.loop { position: absolute; left: -40%; top: -16%; width: 180%; height: 132%; overflow: visible; }
+  .li .who { margin-top: .35em; }
+  .li.dim { opacity: .55; }
+  .tag { display: inline-block; margin-top: 1cqi; padding: .5em .7em .4em; background: #e5efe2; color: #376246; }
+  .li .row-loop { position: absolute; left: 1.2cqi; right: -1.2cqi; top: -14%; height: 128%; width: auto; overflow: visible; }
+
+  /* stamps: outlined PD Eyebrow, inked unevenly */
+  .stamp { position: absolute; z-index: 2; color: var(--stamp, var(--marker)); filter: url(#ink); mix-blend-mode: multiply; }
+  .stamp svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+  /* browser chaos */
+  .browser { position: absolute; border-radius: 1.6cqi; background: #e6e2da; box-shadow: var(--lift); overflow: hidden; }
+  .browser .bar { height: 5.4cqi; display: flex; align-items: flex-end; gap: .4cqi; padding: 0 1.2cqi 0 9cqi; background: #d9d4ca; position: relative; }
+  .browser .bar::before { content: ""; position: absolute; left: 2cqi; top: 1.9cqi; width: 1.4cqi; height: 1.4cqi; border-radius: 50%; background: #e3472d; box-shadow: 2.2cqi 0 0 #e6b640, 4.4cqi 0 0 #7fb069; }
+  .browser .tab { flex: 1 1 0; min-width: 0; height: 3.6cqi; border-radius: 1cqi 1cqi 0 0; background: #cfc9be; display: flex; align-items: center; gap: .6cqi; padding: 0 .8cqi; }
+  .browser .tab i { width: 1.6cqi; height: 1.6cqi; border-radius: .4cqi; flex: none; background: var(--c, #888); }
+  .browser .tab b { height: .8cqi; flex: 1; border-radius: 1cqi; background: rgb(21 19 15 / .18); }
+  .browser .tab.on { background: #f3f0ea; }
+  .browser .page { padding: 3cqi; display: grid; gap: 1.6cqi; background: #f3f0ea; height: 100%; }
+  .browser .page i { display: block; height: 1.6cqi; border-radius: 1cqi; background: rgb(21 19 15 / .12); }
+
+  /* clocks */
+  .clock { display: grid; justify-items: center; gap: 2.4cqi; }
+  .clock svg { width: 100%; height: auto; overflow: visible; filter: drop-shadow(0 1.2cqi 1.6cqi rgb(21 19 15 / .28)); }
+
+  /* real decks */
+  .slide { position: absolute; aspect-ratio: 16 / 9; border-radius: .6cqi; overflow: hidden; box-shadow: var(--lift-dark); }
+  .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* revision pages */
+  .rev { position: absolute; width: 46cqi; aspect-ratio: 8.5 / 11; --ear: 7cqi; }
+  .rev .paper { position: absolute; inset: 0; padding: 7cqi 5cqi; }
+  .rev .lbl { position: absolute; left: 5cqi; bottom: 4.6cqi; }
+
+  /* little slips and boards */
+  .slip { position: absolute; width: 30cqi; padding: 2.4cqi 2.6cqi; --ear: 4cqi; }
+  .board { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--rule-strong); border: 1.5px solid var(--rule-strong); box-shadow: var(--lift); }
+  .board > div { background: var(--sheet); padding: 3.4cqi 3.6cqi; display: grid; gap: 1.4cqi; align-content: space-between; min-height: 22cqi; }
+  .ticks { list-style: none; display: grid; gap: 2.6cqb; }
+  .ticks li { display: grid; grid-template-columns: 7cqi 1fr; gap: 2.6cqi; align-items: center; }
+  .ticks svg { width: 7cqi; height: 7cqi; overflow: visible; }
+  .ticks svg path { fill: none; stroke: var(--marker); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+  .num { color: var(--marker-text); }
+  .dark .num { color: var(--marker); }
+  .count { font-variant-numeric: tabular-nums; }
+  /* the problem set */
+  .mini { position: relative; width: 100%; aspect-ratio: 4 / 3; background: var(--sheet); border-radius: .5cqi; box-shadow: 0 1px 1px rgb(0 0 0 / .3), 0 .6cqi 1cqi -.3cqi rgb(0 0 0 / .45); padding: 12% 12% 0; display: grid; gap: 10%; align-content: start; }
+  .mini::before { content: ""; width: 22%; aspect-ratio: 1; border-radius: 25%; background: var(--c); }
+  .mini i { display: block; height: .5cqi; border-radius: 1cqi; background: rgb(21 19 15 / .16); }
+  .minis { display: grid; grid-template-columns: repeat(var(--cols, 11), 1fr); gap: var(--gap, 1.3cqi); }
+  .minis .hit { position: relative; z-index: 2; }
+  .minis .hit > svg.loop { position: absolute; left: -45%; top: -55%; width: 190%; height: 210%; overflow: visible; }
+  .cal-page { position: relative; background: var(--sheet); box-shadow: var(--lift); border-radius: 1cqi; overflow: visible; text-align: center; }
+  .cal-page .bind { height: 9cqi; border-radius: 1cqi 1cqi 0 0; background: var(--marker); display: grid; place-items: center; color: var(--sheet); --pd-type-ink: var(--sheet); }
+  .cal-page .body { padding: 5cqi 4cqi 6cqi; display: grid; gap: 1.6cqi; justify-items: center; }
+  .cal-page .rings { position: absolute; top: -2.4cqi; left: 0; right: 0; display: flex; justify-content: space-around; padding: 0 16%; }
+  .cal-page .rings i { width: 2.4cqi; height: 5.4cqi; border-radius: 1.2cqi; background: linear-gradient(90deg, #9c968c, #e8e4dc 45%, #8a847a); box-shadow: 0 .4cqi .6cqi rgb(0 0 0 / .3); }
+  .strike { position: absolute; left: 10%; top: 33%; width: 80%; height: 58%; overflow: visible; }
+  .strike path { fill: none; stroke: var(--marker); stroke-width: 2.4; stroke-linecap: round; opacity: .92; }
+  .pages9 { position: relative; }
+  .pages9 .pg { position: absolute; inset: 0; background: var(--sheet); box-shadow: 0 1px 1px rgb(21 19 15 / .12), 0 2px 4px -1px rgb(21 19 15 / .14); }
+  .pages9 .top9 { position: relative; padding: 4cqi 5cqi 5cqi; display: grid; gap: 1.5cqi; box-shadow: var(--lift); }
+  .pages9 .bar { height: 1.2cqi; border-radius: 1cqi; background: rgb(21 19 15 / .12); }
+  .hl { position: relative; padding: .8cqi 0; }
+  .hl::before { content: ""; position: absolute; left: -1.4cqi; right: -1.4cqi; top: 8%; bottom: 4%; background: rgb(244 223 119 / .85); border-radius: .4em .8em .6em .3em; transform: rotate(-.6deg); mix-blend-mode: multiply; z-index: 0; }
+  .hl > * { position: relative; z-index: 1; }
+  .ww { display: inline-block; margin-top: .9cqi; padding: .45em .65em .35em; border: 1.5px solid var(--rule-strong); }
+
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- uneven stamp ink: a little roughness on the edge and the odd gap -->
+  <filter id="ink" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3" result="d"/>
+    <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="9" result="blot"/>
+    <feColorMatrix in="blot" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.6 1.75" result="mask"/>
+    <feComposite in="d" in2="mask" operator="in" result="m"/>
+    <feComponentTransfer in="m"><feFuncA type="linear" slope=".92"/></feComponentTransfer>
+  </filter>
+</svg>
+<div id="root"></div>
+<script>
+const SAFE = {
+  '1080x1350': ['portrait', 92, 80, 96, 80],
+  '1080x1080': ['square', 80, 80, 80, 80],
+  '1080x1920': ['story', 250, 80, 320, 80],
+  '1200x630': ['landscape', 72, 84, 72, 84],
+  '1600x900': ['landscape', 84, 100, 84, 100],
+}
+const S = (role, text, extra = '') => `<div data-pd-social="${role}" ${extra}>${text}</div>`
+const sp = (role, text, extra = '') => `<span data-pd-social="${role}" ${extra}>${text}</span>`
+function loopSvg (shape = 'wide', cls = 'loop', aspect = 'none') {
+  const L = window.LOOPS[shape]; const [x0, y0, x1, y1] = L.box
+  return `<svg class="${cls}" viewBox="${x0} ${y0} ${x1 - x0} ${y1 - y0}" preserveAspectRatio="${aspect}" aria-hidden="true"><path d="${L.d}"/></svg>`
+}
+const circ = (html, shape = 'wide', box = {}) => `<span class="circ" style="${Object.entries(box).map(([k, v]) => `--${k}:${v}`).join(';')}">${html}${loopSvg(shape)}</span>`
+const tick = `<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 22 C 10 25, 13 29, 15 33 C 20 21, 27 11, 37 4"/></svg>`
+const stampSvg = (key) => { const a = window.ART[key]; const p = a.pad; const h = a.bot - a.top
+  return `<svg viewBox="${-p} ${a.top - p} ${a.w + 2 * p} ${h + 2 * p}" aria-hidden="true"><rect x="${-p * .62}" y="${a.top - p * .62}" width="${a.w + p * 1.24}" height="${h + p * 1.24}" rx="${p * .32}" fill="none" stroke="currentColor" stroke-width="${p * .2}"/><rect x="${-p * .32}" y="${a.top - p * .32}" width="${a.w + p * .64}" height="${h + p * .64}" rx="${p * .18}" fill="none" stroke="currentColor" stroke-width="${p * .07}"/><g fill="currentColor">${a.inner}</g></svg>` }
+const stamp = (key, style) => `<div class="stamp" style="${style}">${stampSvg(key)}</div>`
+const swatch = `<span class="chip-dot"></span>`
+const foot = (left = 'pitch.dog/call-sheet', dark = false) => `<div class="foot">${sp('credit', left)}<img src="/brand/logo/call-sheet-stamp${dark ? '-reverse' : ''}.svg" alt=""></div>`
+const kicker = (text) => `<div class="top">${swatch}${sp('metadata', text, 'class="soft"')}</div>`
+const mon = (iso) => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][+iso.slice(5, 7) - 1]
+const short = (t) => t.replace(' — ', ': ')
+const trim = (t, n = 84) => t.length > n ? t.slice(0, t.lastIndexOf(' ', n - 2)).replace(/[\s,;:\/—–-]+$/, '') + '…' : t
+
+// One row of a printed list. opts: circle (round loop on the date), free (tag), dim
+const li = (day, month, title, sub, o = {}) => `<div class="li${o.dim ? ' dim' : ''}">
+  <div class="d">${sp('headline', day)}${sp('metadata', month, 'class="soft"')}${o.circle ? loopSvg('round') : ''}</div>
+  <div>${S('label', title)}${sub ? S('body', sub, 'class="soft who"') : ''}${o.free ? `<span class="tag">${sp('metadata', 'Free to enter')}</span>` : ''}</div>${o.ring ? loopSvg('long', 'loop row-loop') : ''}</div>`
+const list = (rows, { head = '<img src="/brand/logo/call-sheet-wordmark.svg" alt="Call Sheet">', note = 'Soonest first', style = '' } = {}) =>
+  `<div class="paper ear list" style="${style}"><span class="ear-flap"></span><header>${head}${sp('metadata', note, 'class="soft"')}</header>${rows.join('')}</div>`
+const CALLS = {
+  roy: ['31', 'Oct', 'Roy W. Dean Fall Grant', '$3,500 plus $20,000+ in services'],
+  cnc: ['2', 'Nov', 'CNC documentary innovation: writing', 'A €10,000 award, paid to the author'],
+  merata: ['3', 'Nov', 'Sundance Merata Mita Fellowship', 'A cash grant, a year of support and a trip to Sundance'],
+  tfl: ['3', 'Nov', 'TorinoFilmLab ScriptLab', 'Five modules: Malta, Tartu, online and Turin'],
+  cph: ['3', 'Nov', 'CPH:FORUM', 'A pitch and financier meetings at CPH:DOX'],
+  finn: ['20', 'Oct', 'Finnish Film Foundation: development', 'Up to €250,000'],
+  sa: ['22', 'Oct', 'Screen Australia First Nations Development', 'Up to AUD 65,000 for series'],
+  doha: ['24', 'Oct', 'Doha Film Institute Short Script Lab', 'Online, with one-to-one mentoring'],
+}
+
+/* =================================================================== posts */
+const POSTS = {}
+const P = (id, o) => { POSTS[id] = o }
+
+// 1. Meet Call Sheet. Ink ground; the printed list rises from the bottom edge.
+P('launch', { name: 'Meet Call Sheet.', g: 'var(--ink)', dark: true, sizes: ['1080x1350', '1080x1080', '1080x1920', '1200x630', '1600x900'],
+  alt: 'Meet Call Sheet. Film and TV grants, labs and festivals, sorted by deadline. Free. Below, a printed Call Sheet list rises from the bottom of the frame, with one date circled in red.',
+  render (sz, c) {
+    const rows = [li(...CALLS.cnc), li(...CALLS.merata, { circle: true, free: true }), li(...CALLS.tfl)]
+    if (c === 'landscape') return { frame: `<div class="grow" style="max-width:48%;display:flex;flex-direction:column;justify-content:center">${S('display', 'Meet Call Sheet.')}${S('headline', 'Film and TV grants, labs and festivals, sorted by deadline.', 'class="mt-m soft"')}</div>`,
+      art: `<div class="art" style="right:-2cqi;top:12cqb;width:48cqi;transform:rotate(-3deg)">${list(rows.slice(0, 2))}</div>` }
+    const art = c === 'square'
+      ? `<div class="art" style="left:9cqi;right:-6cqi;top:44cqb;transform:rotate(-3.5deg)">${list([rows[1], rows[2]])}</div>`
+      : c === 'story'
+        ? `<div class="art" style="left:7cqi;right:-5cqi;top:34cqb;transform:rotate(-3deg)">${list(rows)}</div>`
+        : `<div class="art" style="left:7cqi;right:-6cqi;top:40cqb;transform:rotate(-3deg)">${list(rows)}</div>`
+    return { frame: `${kicker('New · Free · From pitch.dog')}${S('display', 'Meet Call Sheet.', 'class="mt-m"')}${S('subhead', 'Film and TV grants, labs and festivals, sorted by deadline. Free.', 'class="mt-s wide soft"')}<div class="grow"></div>${c === 'story' ? foot('pitch.dog/call-sheet', true) : ''}`, art }
+  } })
+
+// 2. Fewer tabs. Blue ground; a browser crammed with tabs, and one calm sheet in front.
+const browser = (n, style) => `<div class="browser" style="${style}"><div class="bar">${Array.from({ length: n }, (_, i) => `<span class="tab${i === 7 ? ' on' : ''}"><i style="--c:${['#e3472d', '#4c7bd9', '#2f2f2f', '#e6b640', '#7fb069', '#b04fbf', '#d9822b', '#3aa6a6'][i % 8]}"></i><b></b></span>`).join('')}</div><div class="page"><i style="width:62%"></i><i style="width:88%"></i><i style="width:74%"></i><i style="width:80%"></i><i style="width:46%"></i></div></div>`
+P('tabs', { name: 'Fewer tabs. More applications.', g: 'var(--blue)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
+  alt: 'Fewer tabs. More applications. A browser window crammed with dozens of tabs sits behind a single printed Call Sheet list.',
+  render (sz, c) {
+    const h = c === 'square' ? 40 : 46
+    return { frame: `${kicker('Call Sheet')}${S('display', 'Fewer tabs. More applications.', 'class="mt-m measure"')}${c === 'square' ? '' : S('subhead', '186 calls in one list, soonest deadline first.', 'class="mt-s wide"')}<div class="grow"></div>${foot()}`,
+      art: `${browser(22, `left:30cqi;right:-14cqi;bottom:${c === 'story' ? 33 : c === 'square' ? 17 : 22}cqb;height:${h}cqi;transform:rotate(4deg)`)}${browser(18, `left:20cqi;right:-8cqi;bottom:${c === 'story' ? 29 : c === 'square' ? 12 : 17}cqb;height:${h}cqi;transform:rotate(-2deg)`)}
+        <div class="art" style="left:8cqi;width:${c === 'square' ? 64 : 72}cqi;bottom:${c === 'story' ? 19 : c === 'square' ? 8 : 13}cqb;transform:rotate(-1.5deg)">${list(c === 'square' ? [li(...CALLS.merata.slice(0, 3), '', { circle: true }), li(...CALLS.tfl.slice(0, 3))] : [li(...CALLS.cnc.slice(0, 3)), li(...CALLS.merata.slice(0, 3), '', { circle: true }), li(...CALLS.tfl.slice(0, 3))])}</div>` }
+  } })
+
+// 3. Twelve calls. Zero entry fees. Yellow ground; a pile of slips, stamped.
+const FREE = window.FREE || []
+P('zero', { name: 'Twelve calls. Zero entry fees.', g: 'var(--yellow)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
+  alt: 'Twelve calls. Zero entry fees. A pile of paper slips, each naming a free-to-enter film call and its date, stamped Free to enter in red.',
+  render (sz, c) {
+    const spots = c === 'square' ? [[4, 0, -4], [36, 2, 3], [66, 0, -2], [8, 21, 2], [38, 22, -3], [66, 20, 4]] : [[4, 0, -4], [36, 3, 3], [66, 0, -2], [6, 17, 2], [37, 19, -3], [67, 17, 4]]
+    const base = c === 'story' ? 52 : c === 'square' ? 42 : 46
+    const slips = FREE.slice(0, 6).map((f, i) => { const [x, y, r] = spots[i]
+      return `<div class="slip paper ear" style="left:${x}cqi;top:${base + y * (c === 'square' ? .9 : 1.1)}cqb;transform:rotate(${r}deg)"><span class="ear-flap" style="--flap:#d8d2c4"></span>${sp('headline', `${+f.closes.slice(8)} ${mon(f.closes)}`)}${S('label', trim(short(f.title), 40), 'class="mt-xs"')}</div>` }).join('')
+    return { frame: `${kicker('Save this')}${S('display', 'Twelve calls. Zero entry fees.', 'class="mt-m measure"')}${S('subhead', 'Free to enter, closing November to January.', 'class="mt-s wide"')}<div class="grow"></div>${foot()}`,
+      art: `<div class="art" style="inset:0">${slips}${stamp('free', `left:${c === 'square' ? 22 : 18}cqi;top:${base + (c === 'square' ? 13 : 12)}cqb;width:${c === 'square' ? 58 : 64}cqi;transform:rotate(-8deg)`)}</div>` }
+  } })
+
+// 4. Paris 16:00. Sydney 02:00. Pink ground; two clocks.
+const clockSvg = (h, m) => { const a = (h % 12 + m / 60) * 30, b = m * 6
+  const ticks = Array.from({ length: 60 }, (_, i) => { const r1 = i % 5 ? 88 : 80; const t = i * 6 * Math.PI / 180; return `<line x1="${(Math.sin(t) * r1).toFixed(2)}" y1="${(-Math.cos(t) * r1).toFixed(2)}" x2="${(Math.sin(t) * 94).toFixed(2)}" y2="${(-Math.cos(t) * 94).toFixed(2)}" stroke="#15130f" stroke-width="${i % 5 ? 1.2 : 3.4}" stroke-linecap="round"/>` }).join('')
+  return `<svg viewBox="-110 -110 220 220" aria-hidden="true"><circle r="104" fill="#15130f"/><circle r="100" fill="#fbf9f3"/>${ticks}
+    <line x1="0" y1="10" x2="0" y2="-52" stroke="#15130f" stroke-width="7" stroke-linecap="round" transform="rotate(${a})"/>
+    <line x1="0" y1="12" x2="0" y2="-80" stroke="#15130f" stroke-width="4.5" stroke-linecap="round" transform="rotate(${b})"/>
+    <line x1="0" y1="18" x2="0" y2="-86" stroke="#e3472d" stroke-width="1.8" stroke-linecap="round" transform="rotate(${b + 1})"/>
+    <circle r="5.5" fill="#15130f"/><circle r="2.4" fill="#e3472d"/></svg>` }
+P('clock', { name: 'Paris 16:00. Sydney 02:00.', g: 'var(--pink)', sizes: ['1080x1350', '1080x1080', '1080x1920', '1200x630', '1600x900'],
+  alt: 'Two clocks. Paris shows 16:00 on Tuesday 3 November; Sydney shows 02:00 on Wednesday 4 November, circled in red. Same deadline. Call Sheet shows it in your time.',
+  render (sz, c) {
+    const clocks = (w) => `<div style="display:grid;grid-template-columns:1fr 1fr;gap:6cqi;width:${w}">
+      <div class="clock">${clockSvg(16, 0)}<div style="text-align:center">${S('headline', 'Paris')}${S('metadata', 'Tue 3 Nov, 16:00', 'class="soft"')}</div></div>
+      <div class="clock" style="position:relative">${clockSvg(2, 0)}<div style="text-align:center">${S('headline', circ('Sydney', 'wide', { l: '-14%', t: '-18%', w: '128%', h: '134%' }))}${S('metadata', 'Wed 4 Nov, 02:00', 'class="soft"')}</div></div></div>`
+    if (c === 'landscape') return { frame: `<div class="grow" style="display:flex;align-items:center;gap:5cqi"><div style="flex:1">${S('display', 'Paris 16:00. Sydney 02:00.')}</div><div style="flex:1.1">${clocks('100%').replace(/Tue 3 Nov, 16:00|Wed 4 Nov, 02:00/g, '')}</div></div>`, art: '' }
+    return { frame: `${kicker('One deadline, two clocks')}${S('display', 'Paris 16:00. Sydney 02:00.', 'class="mt-m measure"')}${S('subhead', 'Same deadline. Call Sheet shows it in your time.', 'class="mt-s wide"')}<div class="grow" style="display:flex;align-items:center;justify-content:center">${clocks(c === 'square' ? '74%' : '100%')}</div>${foot()}`, art: '' }
+  } })
+
+// 5. Circle the one that's yours. Paper ground; a long printed list, one row circled.
+P('circle', { name: 'Circle the one that’s yours.', g: 'var(--paper)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
+  alt: 'Circle the one that’s yours. A long printed list of film calls with one row, the Sundance Merata Mita Fellowship, circled in red marker.',
+  render (sz, c) {
+    const rows = [li(...CALLS.finn.slice(0, 3), '', { dim: true }), li(...CALLS.sa.slice(0, 3), '', { dim: true }), li(...CALLS.doha.slice(0, 3), '', { dim: true }), li(...CALLS.roy.slice(0, 3), '', { dim: true }), li(...CALLS.cnc.slice(0, 3), '', { dim: true }), li(...CALLS.merata.slice(0, 3), '', { ring: true }), li(...CALLS.tfl.slice(0, 3), '', { dim: true }), li(...CALLS.cph.slice(0, 3), '', { dim: true })]
+    const r = c === 'square' ? rows.slice(4, 6) : c === 'story' ? rows.slice(3, 7) : rows.slice(4, 7)
+    return { frame: `${kicker('Call Sheet')}${S('display', 'Circle the one that’s yours.', 'class="mt-m measure"')}${S('subhead', 'Say what you’re making and where you live. We hide the rest.', 'class="mt-s wide soft"')}<div class="grow"></div>${foot()}`,
+      art: `<div class="art" style="left:${c === 'square' ? 40 : 26}cqi;right:-10cqi;top:${c === 'story' ? 40 : c === 'square' ? 42 : 36}cqb;transform:rotate(2.5deg)">${list(r, { note: '186 calls' })}</div>` }
+  } })
+
+// 6. "Not published" isn't free. Salmon ground; a fee line and a stamp.
+P('unknown', { name: '“Not published” isn’t free.', g: 'var(--salmon)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
+  alt: '“Not published” isn’t free. A slip of paper reads Entry fee, and a red stamp across it reads Not published.',
+  render (sz, c) {
+    const w = c === 'square' ? 64 : 76
+    return { frame: `${kicker('House rule no. 1')}${S('display', '“Not published” isn’t free.', 'class="mt-m measure"')}${S('subhead', 'When an organiser hasn’t said, neither do we.', 'class="mt-s wide"')}<div class="grow"></div>${foot()}`,
+      art: `<div class="art" style="left:${c === 'square' ? 30 : 14}cqi;width:${w}cqi;bottom:${c === 'story' ? 28 : c === 'square' ? 14 : 16}cqb;transform:rotate(-2deg)">
+        <div class="paper ear ruled" style="--ear:7cqi;--lh:6cqi;padding:5cqi 6cqi 7cqi"><span class="ear-flap" style="--flap:#d8d2c4"></span>
+          ${S('metadata', 'Entry fee', 'class="soft"')}<div class="mt-xs">${sp('headline', '— — —')}</div>${S('metadata', 'Official page, read 17 Oct', 'class="soft mt-s"')}</div>
+        ${stamp('notpub', `right:-4cqi;top:3cqi;width:${w * .52}cqi;transform:rotate(-11deg)`)}</div>` }
+  } })
+
+// 7. New every month. Ink ground; the month's pages fanned like a hand of cards.
+P('monthly', { name: 'New every month.', g: 'var(--ink)', dark: true, sizes: ['1080x1350', '1080x1080', '1080x1920'],
+  alt: 'New every month. Four script pages fanned out on a dark desk: white for October with a red folded corner, then blue, pink and yellow for the months after.',
+  render (sz, c) {
+    const pages = [['var(--yellow)', 'Jan', 12, 40], ['var(--pink)', 'Dec', 5, 30], ['var(--blue)', 'Nov', -2, 20], ['var(--white)', 'Oct', -9, 10]]
+    const y = c === 'story' ? 44 : c === 'square' ? 38 : 36
+    const s = c === 'square' ? .66 : .86
+    const fan = pages.map(([bg, m, r, x], i) => `<div class="rev" style="left:${x * s + (c === 'square' ? 30 : 6)}cqi;top:${y}cqb;transform:rotate(${r}deg) scale(${s});transform-origin:50% 100%"><div class="paper ear ruled" style="background:${bg};--lh:4.6cqi"><span class="ear-flap" style="--flap:${i === 3 ? 'var(--marker)' : 'rgb(21 19 15 / .28)'}"></span><span class="lbl">${sp('label', m)}</span></div></div>`).join('')
+    return { frame: `${kicker('Edition 1')}${S('display', 'New every month.', 'class="mt-m measure"')}${S('subhead', 'We recheck every call, fix what changed and add new ones.', 'class="mt-s wide soft"')}<div class="grow"></div>${foot('pitch.dog/call-sheet', true)}`, art: `<div class="art" style="inset:0">${fan}</div>` }
+  } })
+
+// 8. Free. No sign-up. No catch. Green ground; three ticked lines.
+P('open', { name: 'Free. No sign-up. No catch.', g: 'var(--green)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
+  alt: 'Free. No sign-up. No catch. Three lines ticked in red: no account or email; your saved calls stay on your device; the code and data are open.',
+  render (sz, c) {
+    return { frame: `${kicker('Call Sheet')}${S('display', 'Free. No <span style="white-space:nowrap">sign-up.</span> No catch.', 'class="mt-m measure"')}<div class="grow" style="display:flex;align-items:center">
+      <div class="paper ear ruled" style="--ear:7cqi;--lh:6cqi;width:100%;padding:5cqi 6cqi;transform:rotate(-1.2deg)"><span class="ear-flap"></span><ul class="ticks">
+        <li>${tick}${S('headline', 'No account, no email.')}</li><li>${tick}${S('headline', 'Your list stays on your device.')}</li><li>${tick}${S('headline', 'The code and data are open.')}</li></ul></div></div>${foot()}`, art: '' }
+  } })
+
+// 9. 125 calls open today. Paper ground; the board.
+P('board', { name: '125 calls open today.', g: 'var(--paper)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
+  alt: 'Call Sheet on 17 October 2026: 125 calls open today, 13 free to enter, and the next deadline, 19 October, circled.',
+  render (sz, c) {
+    return { frame: `${kicker('Updated 17 Oct 2026')}${S('display', '125 calls open today.', 'class="mt-m measure"')}<div class="grow" style="display:flex;align-items:center"><div class="board" style="width:100%">
+      <div>${sp('metric', '125')}${sp('label', 'Open now')}</div><div>${sp('metric', '13')}${sp('label', 'Free to enter')}</div>
+      <div style="grid-column:1/-1"><span>${circ(sp('metric', '19 Oct'), 'wide', { l: '-8%', t: '-14%', w: '116%', h: '126%' })}</span>${sp('label', 'Next deadline')}</div></div></div>
+      ${c === 'square' ? '' : S('body', 'Film and TV grants, labs and festivals. Each one says who can apply, what you get and what it costs.', 'class="soft wide"') + '<div class="mt-m"></div>'}${foot()}`, art: '' }
+  } })
+
+// 10. Found the call? Now the pitch. Ink ground; real pitch.dog decks, fanned.
+P('pitch', { name: 'Found the call? Now the pitch.', g: 'var(--ink)', dark: true, sizes: ['1080x1350', '1080x1080', '1080x1920', '1200x630'],
+  alt: 'Found the call? Now the pitch. Three pitch deck slides made by pitch.dog, for the films Openings, Blueberry Picking and Illuminate, fanned out on a dark desk.',
+  render (sz, c) {
+    const fan = (x, y, w) => `<div class="slide" style="left:${x + 14}cqi;top:${y - 4}cqb;width:${w}cqi;transform:rotate(6deg);transform-origin:20% 100%"><img src="https://pitch.dog/assets/work/illuminate/slide-01.webp" alt=""></div>
+      <div class="slide" style="left:${x + 7}cqi;top:${y - 1}cqb;width:${w}cqi;transform:rotate(1.5deg);transform-origin:20% 100%"><img src="https://pitch.dog/assets/work/blueberry-picking/slide-01.webp" alt=""></div>
+      <div class="slide" style="left:${x}cqi;top:${y + 3}cqb;width:${w}cqi;transform:rotate(-3.5deg);transform-origin:20% 100%"><img src="https://pitch.dog/assets/work/openings/slide-01.webp" alt=""></div>`
+    const head = `Found the call? ${circ('Now the pitch.', 'long', { l: '-5%', t: '-20%', w: '110%', h: '146%' })}`
+    if (c === 'landscape') return { frame: `<div class="grow" style="display:flex;align-items:center"><div style="max-width:46%">${S('display', head)}</div></div>`, art: `<div class="art" style="inset:0">${fan(50, 18, 40)}</div>` }
+    const y = c === 'story' ? 50 : c === 'square' ? 52 : 52
+    return { frame: `${kicker('From pitch.dog, who made Call Sheet')}${S('display', head, 'class="mt-m measure"')}${S('subhead', 'We make the pitch decks these applications ask for. Twelve years, 220+ decks.', 'class="mt-s wide soft"')}<div class="grow"></div>${foot('hello@pitch.dog', true)}`,
+      art: `<div class="art" style="inset:0">${fan(c === 'square' ? 26 : 7, y, c === 'square' ? 58 : 72)}</div>` }
+  } })
+
+// 11. DM us SHEET. Cherry ground, story first.
+P('dm', { name: 'Want the link? DM us SHEET.', g: 'var(--cherry)', dark: true, sizes: ['1080x1920', '1080x1350', '1080x1080'],
+  alt: 'Want the link? DM us the word SHEET, circled, and we’ll send it.',
+  render (sz, c) {
+    return { frame: `${kicker('Call Sheet · free')}<div class="grow" style="display:flex;flex-direction:column;justify-content:center">${S('display', `Want the link? DM us ${circ('SHEET', 'wide', { l: '-10%', t: '-20%', w: '120%', h: '146%', loop: 'var(--paper)' })}`, 'class="measure"')}
+      ${S('subhead', 'A free list of film and TV grants, labs and festivals. We’ll send it straight over.', 'class="mt-m wide soft"')}</div>${foot('Or: pitch.dog/call-sheet', true)}`, art: '' }
+  } })
+
+/* -------------------------------------------------------------- carousels */
+const N = (i, n) => sp('metadata', `${i} / ${n}`, 'class="soft count"')
+const ctop = (label, i, n) => `<div class="top" style="justify-content:space-between"><div class="top">${swatch}${sp('metadata', label, 'class="soft"')}</div>${N(i, n)}</div>`
+const swipe = sp('credit', 'Swipe →')
+const chipsUi = (items) => `<div style="display:flex;flex-wrap:wrap;gap:1.4cqi">${items.map(([t, on]) => `<span class="paper" style="padding:1.6cqi 2.2cqi 1.4cqi;${on ? 'background:var(--ink);color:var(--paper);--pd-type-ink:var(--paper)' : ''}">${on ? '<span class="chip-dot" style="display:inline-block;margin-right:.6em;vertical-align:.05em"></span>' : ''}${sp('metadata', t)}</span>`).join('')}</div>`
+
+const HOW = [
+  { g: 'var(--blue)', html: (c) => `${ctop('How it works', 1, 7)}${S('display', `Find your next grant in a ${circ('minute.', 'wide', { l: '-8%', t: '-20%', w: '116%', h: '146%' })}`, 'class="mt-m measure"')}${S('subhead', 'Call Sheet is a free list of film and TV grants, labs and festivals, sorted by deadline.', 'class="mt-s wide"')}<div class="grow"></div><div class="foot">${sp('credit', 'pitch.dog/call-sheet')}${swipe}</div>` },
+  { html: (c) => `${ctop('Step 1', 2, 7)}${S('display', 'Pick what you’re making.', 'class="mt-m measure"')}<div class="grow" style="display:flex;flex-direction:column;justify-content:center;gap:2.4cqb">${chipsUi([['Fiction feature'], ['Documentary', 1], ['Series'], ['Short'], ['Animation']])}${chipsUi([['Based in: India', 1], ['Grants', 1], ['Labs']])}</div>${S('body', 'And where you live. We hide the calls you can’t apply to.', 'class="soft wide"')}<div class="mt-m"></div>${foot()}` },
+  { html: (c) => `${ctop('Step 2', 3, 7)}${S('display', 'Read what matters.', 'class="mt-m measure"')}<div class="grow" style="display:flex;align-items:center"><div class="paper ear" style="width:100%;padding:4cqi 5cqi;transform:rotate(-1deg)"><span class="ear-flap"></span>
+      ${S('label', 'Sundance Merata Mita Fellowship')}${S('metadata', 'Who can apply', 'class="soft mt-s"')}${S('body', 'Indigenous artists who identify as women, worldwide')}${S('metadata', 'You get', 'class="soft mt-s"')}${S('body', 'A cash grant, a year of support and a trip to Sundance')}
+      ${S('metadata', 'Entry fee', 'class="soft mt-s"')}<div style="margin-top:.8cqi">${circ(sp('label', 'Free to enter'), 'wide', { l: '-12%', t: '-28%', w: '124%', h: '156%' })}</div>${S('metadata', 'Closes', 'class="soft mt-s"')}${S('body', 'Tue 3 Nov, 4:30pm Mountain Time, shown in yours')}</div></div>${foot()}` },
+  { html: (c) => `${ctop('Step 3', 4, 7)}${S('display', 'Save the ones you like.', 'class="mt-m measure"')}<div class="grow" style="display:flex;align-items:center"><div style="width:86%;transform:rotate(-1.5deg)">${list([li(...CALLS.merata.slice(0, 3)), li(...CALLS.tfl.slice(0, 3))], { head: sp('headline', 'My call sheet'), note: '2 saved' })}</div></div>${S('body', 'They stay on your device. No account, no email.', 'class="soft wide"')}<div class="mt-m"></div>${foot()}` },
+  { html: (c) => `${ctop('Step 4', 5, 7)}${S('display', 'Get a nudge before it closes.', 'class="mt-m measure"')}<div class="grow" style="display:flex;align-items:center"><div class="paper" style="width:100%;padding:3cqi;display:grid;grid-template-columns:repeat(7,1fr);gap:1cqi">
+      ${['M', 'T', 'W', 'T', 'F', 'S', 'S'].map(d => `<span style="text-align:center">${sp('metadata', d, 'class="soft"')}</span>`).join('')}${[26, 27, 28, 29, 30, 31, 1, 2, 3, 4, 5, 6, 7, 8].map(n => `<span style="position:relative;aspect-ratio:1;display:grid;place-items:center;border:1.5px solid var(--rule);${n === 3 ? 'background:var(--ink);color:var(--paper);--pd-type-ink:var(--paper)' : n === 27 ? 'background:#f6e7b0' : ''}">${sp('label', n)}${n === 3 ? `<svg class="loop" viewBox="-64.16 -55.7 123.47 109.58" preserveAspectRatio="none" style="position:absolute;left:-30%;top:-28%;width:160%;height:156%;overflow:visible"><path d="${window.LOOPS.round.d}"/></svg>` : ''}</span>`).join('')}</div></div>
+      ${S('body', 'One tap adds the deadline, with a reminder a week before (shaded) and the day before.', 'class="soft wide"')}<div class="mt-m"></div>${foot()}` },
+  { html: (c) => `${ctop('Step 5', 6, 7)}${S('display', 'Tick off what to send.', 'class="mt-m measure"')}<div class="grow" style="display:flex;align-items:center"><div class="paper ear ruled" style="--lh:7cqi;width:100%;padding:3cqi 5cqi;transform:rotate(1deg)"><span class="ear-flap"></span><ul class="ticks">
+      ${[['Logline', 1], ['2-page synopsis', 1], ['Director’s note', 0], ['CVs and past work', 0]].map(([t, on]) => `<li>${on ? tick : '<svg viewBox="0 0 40 40"><rect x="6" y="6" width="28" height="28" rx="2" fill="none" stroke="rgb(21 19 15 / .35)" stroke-width="3"/></svg>'}${S('headline', t, on ? 'style="text-decoration:line-through;text-decoration-color:var(--marker);text-decoration-thickness:.07em;opacity:.55"' : '')}</li>`).join('')}</ul></div></div>${S('body', 'Each call lists what it asks for. Your ticks are saved.', 'class="soft wide"')}<div class="mt-m"></div>${foot()}` },
+  { g: 'var(--ink)', dark: true, html: (c) => `${ctop('And then', 7, 7)}${S('display', 'Come back next month.', 'class="mt-m measure"')}${S('subhead', 'We update the list every month. Anything new since your last visit is tagged New.', 'class="mt-s wide soft"')}<div class="grow"></div><div class="foot">${sp('credit', 'Save this for your next deadline')}<img src="/brand/logo/call-sheet-stamp-reverse.svg" alt=""></div>`,
+    art: (c) => [['var(--pink)', 4, 40], ['var(--blue)', -2, 25], ['var(--white)', -8, 10]].map(([bg, r, x], i) => `<div class="rev" style="left:${x}cqi;top:${c === 'square' ? 50 : 46}cqb;transform:rotate(${r}deg) scale(${c === 'square' ? .5 : .74});transform-origin:50% 0%"><div class="paper ear ruled" style="background:${bg};--lh:4.6cqi"><span class="ear-flap" style="--flap:${i === 2 ? 'var(--marker)' : 'rgb(21 19 15 / .28)'}"></span></div></div>`).join('') },
+]
+
+const FREEC = [
+  { g: 'var(--yellow)', html: (c) => `${ctop('Save this', 1, 6)}${S('display', 'Twelve calls. Zero entry fees.', 'class="mt-m measure"')}${S('subhead', 'Film and TV calls that are free to enter, closing November to January.', 'class="mt-s wide"')}<div class="grow"></div><div class="foot">${sp('credit', 'pitch.dog/call-sheet')}${swipe}</div>`,
+    art: (c) => stamp('free', `left:${c === 'square' ? 14 : 8}cqi;top:${c === 'square' ? 52 : 54}cqb;width:${c === 'square' ? 72 : 84}cqi;transform:rotate(-8deg)`) },
+  ...[0, 1, 2, 3].map(k => ({ html: (c) => `${ctop('Free to enter', k + 2, 6)}<div class="grow" style="display:flex;align-items:center"><div style="width:100%;transform:rotate(${[-1, 1, -1.2, .8][k]}deg)">${list(FREE.slice(k * 3, k * 3 + 3).map(f => li(String(+f.closes.slice(8)), mon(f.closes) + (f.closes.startsWith('2027') ? ' 27' : ''), short(f.title), trim(f.get))), { head: sp('headline', ['November', 'November', 'Nov – Dec', 'Dec – Jan'][k]), note: 'Free to enter' })}</div></div>${foot()}` })),
+  { g: 'var(--ink)', dark: true, html: (c) => `${ctop('Before you apply', 6, 6)}${S('display', 'Check who can apply.', 'class="mt-m measure"')}${S('subhead', 'Some are open to anyone. Some are for one country or one community. Call Sheet says which, and links to the official page.', 'class="mt-s wide soft"')}<div class="grow"></div><div class="foot">${sp('credit', 'pitch.dog/call-sheet')}<img src="/brand/logo/call-sheet-stamp-reverse.svg" alt=""></div>` },
+]
+
+const rule = (i, head, body) => ({ html: (c) => `${ctop(`${i} of 5`, i + 1, 7)}<div class="grow" style="display:flex;flex-direction:column;justify-content:center"><div>${sp('metric', String(i), 'class="num"')}</div>${S('display', head, 'class="mt-m measure"')}${S('subhead', body, 'class="mt-m wide soft"')}</div>${foot()}` })
+const READ = [
+  { g: 'var(--salmon)', html: (c) => `${ctop('Before you apply', 1, 7)}${S('display', `Read this ${circ('before', 'wide', { l: '-10%', t: '-22%', w: '120%', h: '148%' })} you apply.`, 'class="mt-m measure"')}${S('subhead', 'Five bits of small print that sink good applications.', 'class="mt-s wide"')}<div class="grow"></div><div class="foot">${sp('credit', 'pitch.dog/call-sheet')}${swipe}</div>` },
+  rule(1, '“Not published” isn’t free.', 'A fee is only free when the organiser says so, in words. Check the form before you count on zero.'),
+  rule(2, 'Check the city.', '16:00 in Paris on 3 November is 02:00 in Sydney on the 4th. A deadline is a time in a place.'),
+  rule(3, 'Before means before.', '“Before 13 November” means the 12th is your last day.'),
+  rule(4, '“Up to” is a ceiling.', 'Up to €250,000 can also mean up to 90% of your costs. Read what the cap is a cap on.'),
+  rule(5, 'Home, or passport?', 'Some calls test where you live. Some test your citizenship. Some test your company. Know which.'),
+  { g: 'var(--ink)', dark: true, html: (c) => `${ctop('Call Sheet', 7, 7)}<div class="grow" style="display:flex;flex-direction:column;justify-content:center"><img src="/brand/logo/call-sheet-logo-reverse.svg" alt="Call Sheet" style="width:70cqi;max-width:100%;margin-left:-2cqi">${S('headline', 'Shows all five, for every call. Free.', 'class="mt-m measure"')}</div><div class="foot">${sp('credit', 'pitch.dog/call-sheet')}<img src="/brand/logo/call-sheet-stamp-reverse.svg" alt=""></div>` },
+]
+const CAROUSELS = { how: [HOW, 'How Call Sheet works, in seven slides: pick what you’re making, read what matters, save the ones you like, get a nudge before it closes, tick off what to send, and come back next month.'],
+  free: [FREEC, 'Twelve film and TV calls that are free to enter, closing November 2026 to January 2027, on printed call sheets with what each one gives.'],
+  read: [READ, 'Five bits of small print to read before you apply: not published isn’t free; check the city; before means before; up to is a ceiling; home or passport.'] }
+for (const [key, [slides, alt]] of Object.entries(CAROUSELS)) slides.forEach((s, i) => {
+  P(`${key}-${String(i + 1).padStart(2, '0')}`, { name: `${key} ${i + 1}/${slides.length}`, g: s.g || 'var(--paper)', dark: s.dark, sizes: ['1080x1350', '1080x1080'], alt,
+    render: (sz, c) => ({ frame: s.html(c), art: s.art ? s.art(c) : '' }) })
+})
+
+
+/* ------------------------------------------------------- the problem set */
+const miniGrid = (n, cols, hit = -1, gap = '1.3cqi') => `<div class="minis" style="--cols:${cols};--gap:${gap}">${Array.from({ length: n }, (_, i) => `<div class="mini${i === hit ? ' hit' : ''}" style="--c:${['#e3472d', '#4c7bd9', '#2f2f2f', '#e6b640', '#7fb069', '#b04fbf', '#d9822b', '#3aa6a6', '#cf3b52'][(i * 7) % 9]};transform:rotate(${((i * 37) % 7) - 3}deg)"><i style="width:80%"></i><i style="width:56%"></i>${i === hit ? loopSvg('round') : ''}</div>`).join('')}</div>`
+const calPage = (wd, d, m) => `<div class="cal-page"><div class="rings"><i></i><i></i><i></i></div><div class="bind">${sp('label', wd)}</div><div class="body">${sp('metric', d)}${sp('label', m)}</div>
+  <svg class="strike" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M6 8 C 30 34, 62 66, 95 94" style="stroke-width:6"/><path d="M93 5 C 66 34, 38 64, 7 96" style="stroke-width:6"/></svg></div>`
+const page9 = (w) => `<div class="pages9" style="width:${w}">${Array.from({ length: 8 }, (_, i) => `<div class="pg" style="transform:translate(${(8 - i) * .7}cqi, ${(8 - i) * -.9}cqi) rotate(${((i * 3) % 5) - 2}deg)"></div>`).join('')}
+  <div class="pg top9 paper"><div style="display:flex;justify-content:space-between">${sp('metadata', 'Guidelines', 'class="soft"')}${sp('metadata', 'Page 9 of 9', 'class="soft"')}</div>
+  <div class="bar" style="width:92%"></div><div class="bar" style="width:84%"></div><div class="bar" style="width:88%"></div><div class="bar" style="width:60%"></div>
+  <div class="hl">${S('label', '14.3 Applicants must live in France.')}</div><div class="bar" style="width:86%"></div><div class="bar" style="width:72%"></div><div class="bar" style="width:40%"></div></div></div>`
+
+P('day', { name: 'Found it the day after it closed?', g: 'var(--buff)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
+  alt: 'Found it the day after it closed? A desk calendar page for Monday 19 October, crossed out in red marker.',
+  render (sz, c) {
+    const w = c === 'square' ? 46 : 58
+    return { frame: `${kicker('Call Sheet')}${S('display', 'Found it the day after it closed?', 'class="mt-m measure"')}${S('subhead', 'Call Sheet lists film and TV grants, labs and festivals before they close. Soonest first.', 'class="mt-s wide"')}<div class="grow"></div>${foot()}`,
+      art: `<div class="art" style="right:${c === 'square' ? 10 : 12}cqi;width:${w}cqi;top:${c === 'story' ? 48 : c === 'square' ? 45 : 48}cqb;transform:rotate(4deg)">${calPage('Monday', '19', 'October')}</div>` }
+  } })
+
+P('websites', { name: '99 websites. One list.', g: 'var(--ink)', dark: true, sizes: ['1080x1350', '1080x1080', '1080x1920'],
+  alt: '99 websites. One list. A grid of 99 small website cards, one of them circled in red marker.',
+  render (sz, c) {
+    return { frame: `${kicker('Call Sheet')}${S('display', '99 websites. One list.', 'class="mt-m measure"')}${S('subhead', '186 film and TV calls, from Paraguay to Finland, in one free list.', 'class="mt-s wide soft"')}<div class="grow" style="display:flex;align-items:center">${c === 'square' ? `<div style="width:100%">${miniGrid(66, 11, 40, '1.1cqi')}</div>` : `<div style="width:100%">${miniGrid(99, 11, 60)}</div>`}</div>${foot('pitch.dog/call-sheet', true)}`, art: '' }
+  } })
+
+P('page9', { name: 'The rule you needed was on page 9.', g: 'var(--blue)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
+  alt: 'The rule you needed was on page 9. A stack of guideline pages; on the top page, page 9 of 9, one line is highlighted: Applicants must live in France.',
+  render (sz, c) {
+    return { frame: `${kicker('Call Sheet')}${S('display', 'The rule you needed was on page 9.', 'class="mt-m measure"')}${S('subhead', 'Call Sheet puts who can apply on line one.', 'class="mt-s wide"')}<div class="grow"></div>${foot()}`,
+      art: `<div class="art" style="left:${c === 'square' ? 34 : c === 'story' ? 10 : 13}cqi;top:${c === 'story' ? 44 : c === 'square' ? 46 : 47}cqb;transform:rotate(-2.5deg)">${page9(c === 'square' ? '56cqi' : c === 'story' ? '80cqi' : '74cqi')}</div>` }
+  } })
+
+// Based in …? One per country, with the three soonest calls made for it (or open to all).
+const GROUNDS = ['var(--blue)', 'var(--pink)', 'var(--yellow)', 'var(--green)', 'var(--salmon)', 'var(--buff)', 'var(--goldenrod)']
+// Only the countries pitch.dog's clients work from, each with its own list on the site.
+const PLACE_PAGES = { US: 'us', GB: 'uk', CA: 'canada', AU: 'australia' }
+Object.entries(window.PLACES || {}).filter(([code]) => PLACE_PAGES[code]).forEach(([code, pl], i) => {
+  const cap = pl.name[0].toUpperCase() + pl.name.slice(1)
+  P(`place-${code.toLowerCase()}`, { name: `Based in ${pl.name}?`, g: GROUNDS[i % GROUNDS.length], sizes: ['1080x1350', '1080x1920'],
+    alt: `Based in ${pl.name}? ${pl.yes} film and TV calls take filmmakers based in ${pl.name}, as of 17 October 2026. Three of them, with their deadlines: ${pl.soon.map(s => `${s.title}, ${+s.closes.slice(8)} ${mon(s.closes)}`).join('; ')}. See all ${pl.yes} at pitch.dog/call-sheet/${PLACE_PAGES[code]}.`,
+    render (sz, c) {
+      const rows = pl.soon.map(s => `<div class="li"><div class="d">${sp('headline', String(+s.closes.slice(8)))}${sp('metadata', mon(s.closes) + (s.closes.startsWith('2027') ? ' 27' : ''), 'class="soft"')}</div><div>${S('label', trim(short(s.title), 46))}${s.local ? '' : `<span class="ww">${sp('metadata', 'Worldwide')}</span>`}</div></div>`)
+      return { frame: `${kicker('Call Sheet · as of 17 Oct 2026')}${S('display', `Based in ${pl.name}?`, 'class="mt-m measure"')}
+        <div class="mt-m" style="display:flex;align-items:center;gap:4cqi">${circ(sp('metric', String(pl.yes)), 'round', { l: '-16%', t: '-14%', w: '132%', h: '128%' })}${S('body', `film and TV calls take filmmakers based in ${pl.name}.`, 'style="max-inline-size:17ch"')}</div>
+        <div class="grow" style="display:flex;align-items:center"><div style="width:100%;transform:rotate(-1.2deg)">${list(c === 'story' ? rows : rows.slice(0, 2), { note: 'A few of them' })}</div></div>${S('label', `See all ${pl.yes}, soonest first:`, 'class="soft"')}${S('subhead', `pitch.dog/call-sheet/${PLACE_PAGES[code]}`, 'class="mt-xs"')}<div class="mt-m"></div>${foot('Free. No sign-up.')}`, art: '' }
+    } })
+})
+
+const WHY = [
+  { g: 'var(--ink)', dark: true, html: (c) => `${ctop('Call Sheet', 1, 7)}${S('display', `Why good projects ${circ('miss', 'wide', { l: '-10%', t: '-8%', w: '120%', h: '122%' })} good funds.`, 'class="mt-m measure"')}${S('subhead', 'It’s rarely the project.', 'class="mt-s wide soft"')}<div class="grow"></div><div class="foot">${sp('credit', 'pitch.dog/call-sheet')}${swipe}</div>` },
+  { g: 'var(--blue)', html: (c) => `${ctop('Reason 1', 2, 7)}${S('display', 'They’re spread across 99 websites.', 'class="mt-m measure"')}${S('subhead', '186 calls, each on its own site, each with its own rules.', 'class="mt-s wide"')}<div class="grow" style="display:flex;align-items:center"><div style="width:100%">${miniGrid(c === 'square' ? 44 : 66, 11, -1, '1.1cqi')}</div></div>${foot()}` },
+  { g: 'var(--yellow)', html: (c) => `${ctop('Reason 2', 3, 7)}${S('display', 'The rule that rules you out is on page 9.', 'class="mt-m measure"')}${S('subhead', '100 of the 157 open calls are only for certain countries.', 'class="mt-s wide"')}<div class="grow"></div>${foot()}`,
+    art: (c) => `<div class="art" style="left:${c === 'square' ? 30 : 18}cqi;top:${c === 'square' ? 57 : 56}cqb;transform:rotate(-2.5deg)">${page9(c === 'square' ? '46cqi' : '66cqi')}</div>` },
+  { g: 'var(--pink)', html: (c) => `${ctop('Reason 3', 4, 7)}${S('display', 'The deadline is in someone else’s time zone.', 'class="mt-m measure"')}${S('subhead', '16:00 in Paris is 02:00 the next day in Sydney.', 'class="mt-s wide"')}<div class="grow" style="display:flex;align-items:center;justify-content:center"><div style="display:grid;grid-template-columns:1fr 1fr;gap:6cqi;width:${c === 'square' ? 56 : 76}%"><div class="clock">${clockSvg(16, 0)}${S('label', 'Paris')}</div><div class="clock">${clockSvg(2, 0)}${S('label', 'Sydney')}</div></div></div>${foot()}` },
+  { g: 'var(--salmon)', html: (c) => `${ctop('Reason 4', 5, 7)}${S('display', 'The fee isn’t mentioned. Until it is.', 'class="mt-m measure"')}${S('subhead', 'Most calls don’t publish their entry fee at all.', 'class="mt-s wide"')}<div class="grow"></div>${foot()}`,
+    art: (c) => stamp('notpub', `left:${c === 'square' ? 30 : 22}cqi;top:${c === 'square' ? 52 : 52}cqb;width:${c === 'square' ? 40 : 52}cqi;transform:rotate(-10deg)`) },
+  { g: 'var(--paper)', html: (c) => `${ctop('So', 6, 7)}${S('display', 'We put them on one free list.', 'class="mt-m measure"')}<div class="grow" style="display:flex;align-items:center"><div class="paper ear" style="width:100%;padding:3.6cqi 4.6cqi;transform:rotate(-1deg)"><span class="ear-flap"></span>
+      ${S('metadata', 'Who can apply', 'class="soft"')}${S('body', 'On line one, for every call')}${S('metadata', 'Closes', 'class="soft mt-s"')}${S('body', 'In the organiser’s time, and in yours')}${S('metadata', 'Entry fee', 'class="soft mt-s"')}${S('body', 'As published, or a plain “Not published”')}${c === 'square' ? '' : `${S('metadata', 'You get', 'class="soft mt-s"')}${S('body', 'In the organiser’s own words and currency')}`}</div></div>${foot()}` },
+  { g: 'var(--ink)', dark: true, html: (c) => `${ctop('Call Sheet', 7, 7)}<div class="grow" style="display:flex;flex-direction:column;justify-content:center"><img src="/brand/logo/call-sheet-logo-reverse.svg" alt="Call Sheet" style="width:70cqi;max-width:100%;margin-left:-2cqi">${S('headline', 'Find the one that’s yours.', 'class="mt-m measure"')}${S('subhead', 'Free. No sign-up. Updated every month.', 'class="mt-s wide soft"')}</div><div class="foot">${sp('credit', 'pitch.dog/call-sheet')}<img src="/brand/logo/call-sheet-stamp-reverse.svg" alt=""></div>` },
+]
+WHY.forEach((sl, i) => P(`why-${String(i + 1).padStart(2, '0')}`, { name: `why ${i + 1}/7`, g: sl.g, dark: sl.dark, sizes: ['1080x1350', '1080x1080'],
+  alt: 'Why good projects miss good funds: the calls are spread across 99 websites; the rule that rules you out is on page 9; the deadline is in someone else’s time zone; the fee isn’t mentioned. So Call Sheet puts them on one free list.',
+  render: (sz, c) => ({ frame: sl.html(c), art: sl.art ? sl.art(c) : '' }) }))
+
+/* ------------------------------------------------------------------ mount */
+function mount (id, size) {
+  const [w, h] = size.split('x').map(Number)
+  const [canvas, t, r, b, l] = SAFE[size]
+  const p = POSTS[id]
+  const { frame, art } = p.render(size, canvas)
+  return `<div class="post${p.dark ? ' dark' : ''}" data-pd-canvas="${canvas}" style="width:${w}px;height:${h}px;--g:${p.g}" data-id="${id}" data-size="${size}">
+    ${art || ''}<div class="frame" style="inset:${t}px ${r}px ${b}px ${l}px">${frame}</div></div>`
+}
+const q = new URLSearchParams(location.search)
+if (q.get('flat')) document.documentElement.classList.add('flat')
+if (q.get('id')) document.querySelector('#root').innerHTML = mount(q.get('id'), q.get('size'))
+window.MANIFEST = Object.fromEntries(Object.entries(POSTS).map(([id, p]) => [id, { name: p.name, sizes: p.sizes, alt: p.alt }]))
+</script>
+</body>
+</html>

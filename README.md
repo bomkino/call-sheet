@@ -17,6 +17,7 @@ private foundation ──export_public_data.py──▶ data/calls.json ──bu
 - `data/calls.json`: the public dataset the site is built from, and the file published at `/call-sheet/data/calls.json`. Generated; edit the overlay, the rechecks or the foundation instead.
 - `data/edition.json`: which edition this is, the window it covers, and each monthly set of pages with its revision colour (white, blue, pink and on, in the order shooting scripts use). The masthead, the editions strip and the FAQ read it.
 - `brand/`: the Call Sheet identity. Logo, symbol, edition marks, palette and the code that draws them; [brand/README.md](brand/README.md) is the guide.
+- `social/posts/`: the launch and monthly social posts as one live-text template, with the scripts that fill and render it; [social/posts/README.md](social/posts/README.md) says how.
 - `site/`: `call-sheet.css` and `call-sheet.js`. No framework and no dependencies.
 - `tools/build_site.py`: renders the list page, one page per call and a ready-made list per topic (`documentary/`, `grants/`, `free-to-enter/`, `us/` and so on, set in `TOPICS`) into `dist-pitchdog/`, with hashed assets, calendar feeds (`feeds/*.ics`, every upcoming deadline and one per format) and `BUILD.json`.
 
@@ -63,7 +64,7 @@ python3 -m unittest discover -s tools -p 'test*.py'
 
 As open as we can make it:
 
-- **Code** (`tools/`, `site/`, `brand/tools/`): [BSD Zero Clause](LICENSE) (0BSD). Use, copy, change and ship it, with no conditions.
+- **Code** (`tools/`, `site/`, `brand/tools/`, `social/posts/`): [BSD Zero Clause](LICENSE) (0BSD). Use, copy, change and ship it, with no conditions.
 - **Data and writing**: `data/`, the published `calls.json`, the text of the pages and these docs are dedicated to the public domain under [CC0 1.0](LICENSE-DATA). No permission or credit needed.
 
 Two things aren't ours to give away. Text quoted from organisers' pages, which backs each date in `data/rechecks.json`, stays theirs. Organisers' names, and the Call Sheet and pitch.dog names and logos (the drawings in `brand/`), are trademarks, which no licence grants.
