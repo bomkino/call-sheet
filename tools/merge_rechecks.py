@@ -29,7 +29,7 @@ from export_public_data import ROLE_LABELS, money  # noqa: E402
 
 STATUSES = {"confirmed", "changed", "closed", "unreachable"}
 # Costs that come after selection, not the price of applying.
-AFTER_SELECTION = re.compile(r"(?i)select|participa|accredit|badge|tuition|attend|registration fee|if accepted|if chosen|deposit")
+AFTER_SELECTION = re.compile(r"(?i)select|participa|accredit|badge|pass\b|finalist|tuition|attend|registration fee|if accepted|if chosen|deposit|contribution|into production")
 
 
 def problems(result: dict[str, Any], known: set[str]) -> list[str]:
@@ -79,11 +79,13 @@ def fee_from(enrich: dict[str, Any] | None) -> dict[str, Any] | None:
         m = re.fullmatch(r"([A-Z]{3})\s*([\d,.]+)", amount)
         shown = money(m.group(2), m.group(1)) if m else (amount or None)
         label = (item.get("label") or "").strip() or None
+        # A $0 for members or students is a waiver for some, never "free" for all.
+        waived = bool(m) and float(m.group(2).replace(",", "") or 0) == 0
         items.append({
             "stage": "selected" if AFTER_SELECTION.search(label or "") else "application",
             "label": label,
-            "amount": shown,
-            "state": "free_or_explicit_zero" if state == "free" and not shown else "priced" if shown else "unknown_or_conditional",
+            "amount": "Waived" if waived else shown,
+            "state": "unknown_or_conditional" if waived else "free_or_explicit_zero" if state == "free" and not shown else "priced" if shown else "unknown_or_conditional",
             "note": (item.get("note") or "").strip() or None,
         })
     if state == "unknown":
