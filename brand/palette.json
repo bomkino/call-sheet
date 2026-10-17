@@ -1,0 +1,19 @@
+{
+  "paper": {"hex": "#F3EFE6", "use": "The page. Warm photocopy white; the ground for almost everything."},
+  "ink": {"hex": "#15130F", "use": "Type and the symbol's sheet. Toner black, a little warm."},
+  "marker": {"hex": "#E3472D", "use": "The loop and the dog-ear. Never for small text on paper; use marker-text."},
+  "marker-text": {"hex": "#C2381F", "use": "Red text on paper, 4.9:1."},
+  "toner": {"hex": "#6B675E", "use": "Quiet text: labels, dates, captions."},
+  "rule": {"hex": "#15130F24", "use": "Ruled lines and boxes on paper."},
+  "revisions": [
+    {"name": "White", "hex": "#FBF9F3"},
+    {"name": "Blue", "hex": "#A8C8EA"},
+    {"name": "Pink", "hex": "#F3B5C8"},
+    {"name": "Yellow", "hex": "#F4DF77"},
+    {"name": "Green", "hex": "#B5D9A2"},
+    {"name": "Goldenrod", "hex": "#E6B640"},
+    {"name": "Buff", "hex": "#E9D5AE"},
+    {"name": "Salmon", "hex": "#F3A58A"},
+    {"name": "Cherry", "hex": "#CF3B52"}
+  ]
+}

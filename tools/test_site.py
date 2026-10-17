@@ -114,7 +114,26 @@ class BuildTests(unittest.TestCase):
         cls.tmp.cleanup()
 
     def test_one_page_per_call_plus_the_list(self):
-        self.assertEqual(len(self.pages), len(CALLS) + 1)
+        self.assertEqual(len(self.pages), len(CALLS) + len(build_site.TOPICS) + 1)
+
+    def test_topic_pages_list_what_they_say(self):
+        as_of = json.loads((self.out / "BUILD.json").read_text(encoding="utf-8"))["data_as_of"]
+        sitemap = (self.out / "sitemap.xml").read_text(encoding="utf-8")
+        for topic in build_site.TOPICS:
+            source = (self.out / topic["slug"] / "index.html").read_text(encoding="utf-8")
+            members = build_site.topic_members(topic, CALLS, as_of)
+            rows = re.findall(r'<li class="cs-call"[^>]*data-slug="([^"]+)"', source)
+            self.assertEqual(rows, [c["slug"] for c in members], topic["slug"])
+            self.assertIn(f"{len(members)} calls that haven’t closed", source, topic["slug"])
+            ld = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', source).group(1))
+            self.assertEqual(ld["@graph"][1]["numberOfItems"], len(members), topic["slug"])
+            self.assertEqual(f"/call-sheet/{topic['slug']}/<" in sitemap, len(members) >= 5, topic["slug"])
+
+    def test_regions_match_the_finder(self):
+        script = (REPO / "site/call-sheet.js").read_text(encoding="utf-8")
+        block = re.search(r"const REGIONS = \{(.*?)\n\}", script, re.S).group(1)
+        regions = dict(re.findall(r"(\w+): '([^']*)'", block))
+        self.assertEqual(regions, build_site.REGION_CODES)
 
     def test_internal_links_resolve(self):
         for page in self.pages:

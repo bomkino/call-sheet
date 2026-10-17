@@ -79,4 +79,20 @@ Fees work like this:
 
 Read the `data/calls.json` diff before you commit: every changed date should match a quote in `data/rechecks.json`.
 
-Then release as the README describes.
+## 4. Turn the page
+
+Each monthly update is a new set of pages. In `data/edition.json`, add the month to `pages` with the next colour and the day it goes out, and move `next` along:
+
+```json
+"pages": [
+  {"colour": "White", "published": "2026-10-17", "note": "The first issue."},
+  {"colour": "Blue", "published": "2026-11-14", "note": "12 new calls; 9 dates changed."}
+],
+"next": {"colour": "Pink", "due": "2026-12"}
+```
+
+The order is the WGA's for script revisions: white, blue, pink, yellow, green, goldenrod, buff, salmon, cherry. A new quarter's research starts a new edition (`edition` goes up by one, `covers` moves on) and goes back to white.
+
+The colours live in `brand/palette.json`; `brand/editions/` has the symbol in each.
+
+Then release as the README describes. Visitors who come back see a **New** tag on every call they haven't seen, and calendar subscribers get the changed dates on their own.

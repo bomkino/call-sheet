@@ -8,8 +8,9 @@ Universal, the legal code of which follows:
   dataset published at https://pitch.dog/call-sheet/data/calls.json;
 - the text of the pages tools/build_site.py writes, and the documentation in
   this repository;
-- site/social/call-sheet-social-card.png, apart from the pitch.dog name and
-  logo on it.
+- site/social/call-sheet-social-card.png, apart from the Call Sheet and
+  pitch.dog names and logos on it;
+- brand/palette.json and brand/README.md.
 
 Use it for anything, commercial or not, without asking and without credit.
 A link back is always welcome, never required.
@@ -19,10 +20,12 @@ Not covered, because it isn't ours to give:
 - Text quoted from organisers' own pages (the "evidence" fields, and quotes
   inside notes) remains theirs; it is quoted so anyone can check our dates.
 - Names and marks of organisers, festivals and funds.
-- The pitch.dog name and logo. No licence grants trademark rights.
+- The Call Sheet and pitch.dog names and logos, including the drawings in
+  brand/logo, brand/editions, brand/web, brand/avatar and brand/icons. No
+  licence grants trademark rights.
 
-The code (everything under tools/ and site/ except the image above) is under
-the BSD Zero Clause License in LICENSE.
+The code (everything under tools/, site/ and brand/tools/, except the image
+above) is under the BSD Zero Clause License in LICENSE.
 
 -------------------------------------------------------------------------
 
