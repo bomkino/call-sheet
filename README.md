@@ -13,12 +13,17 @@ private foundation ──export_public_data.py──▶ data/calls.json ──bu
 ```
 
 - `data/overlay.json`: the hand-reviewed public layer, one entry per route: who can apply and from where, a plain "who" and "you get" line, format, stage, type and the one thing to check first. Written from the source packs' own wording; `unclear` means the packs don't say.
-- `data/rechecks.json`: dated rechecks against official pages. A recheck's dates replace the pack's dates for that call.
+- `data/rechecks.json`: dated rechecks against official pages, each date backed by a quote. A recheck's dates replace the pack's dates for that call, and a fee read off the official page replaces the pack's fee. [docs/RECHECKING.md](docs/RECHECKING.md) says how to run one; `tools/merge_rechecks.py` validates and folds them in.
 - `data/calls.json`: the public dataset the site is built from, and the file published at `/call-sheet/data/calls.json`. Generated; edit the overlay, the rechecks or the foundation instead.
 - `site/`: `call-sheet.css` and `call-sheet.js`. No framework and no dependencies.
 - `tools/build_site.py`: renders the list page and one page per call into `dist-pitchdog/`, with hashed assets and `BUILD.json`.
 
-Every page works without JavaScript. The script adds filters, live countdowns, place matching and "My call sheet", which is saved in the visitor's browser only.
+Every page works without JavaScript. The script adds:
+- filters and place matching;
+- live countdowns that move to a call's next round once one closes;
+- deadlines shown in the visitor's own time zone;
+- a notice when the snapshot is old;
+- "My call sheet", which is saved in the visitor's browser only.
 
 ## Commands
 
@@ -28,7 +33,7 @@ Python 3.12 or newer, standard library only.
 # Rebuild the public dataset (needs the private foundation, already built)
 python3 tools/export_public_data.py --foundation ../pitchdog-cloudflare-sites/apps/call-sheet/foundation
 
-# Build the site and run the checks
+# Build the site and run the checks (CI runs the same on every pull request)
 python3 tools/build_site.py
 python3 -m unittest discover -s tools -p 'test*.py'
 ```

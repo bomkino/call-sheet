@@ -8118,7 +8118,7 @@
      "label": "Feature final",
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "23:59:59",
+     "time": "23:59",
      "time_note": null,
      "timezone": "America/Bogota"
     }
@@ -9296,7 +9296,7 @@
      "role_label": "Closes",
      "time": null,
      "time_note": null,
-     "timezone": "Etc/GMT"
+     "timezone": null
     }
    ],
    "fee": {
@@ -9441,8 +9441,8 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": "23:59",
-     "time_note": null,
-     "timezone": "applicant_local"
+     "time_note": "your local time",
+     "timezone": null
     }
    ],
    "fee": {
@@ -10067,7 +10067,7 @@
      "role_label": "Closes",
      "time": null,
      "time_note": null,
-     "timezone": "Europe/Paris"
+     "timezone": null
     }
    ],
    "fee": {
@@ -10173,7 +10173,7 @@
      "role_label": "Closes",
      "time": null,
      "time_note": null,
-     "timezone": "Europe/Paris"
+     "timezone": null
     },
     {
      "date": "2027-01-25",
@@ -10182,7 +10182,7 @@
      "role_label": "Closes",
      "time": null,
      "time_note": null,
-     "timezone": "Europe/Paris"
+     "timezone": null
     }
    ],
    "fee": {
@@ -10282,7 +10282,7 @@
      "role_label": "Closes",
      "time": null,
      "time_note": null,
-     "timezone": "Europe/Paris"
+     "timezone": null
     }
    ],
    "fee": {
@@ -10379,7 +10379,7 @@
      "role_label": "Closes",
      "time": null,
      "time_note": null,
-     "timezone": "Europe/Paris"
+     "timezone": null
     }
    ],
    "fee": {
@@ -10546,8 +10546,8 @@
      "label": null,
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "09:00–17:00",
-     "time_note": null,
+     "time": null,
+     "time_note": "09:00–17:00",
      "timezone": "Europe/Paris"
     },
     {
@@ -10555,8 +10555,8 @@
      "label": null,
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "09:00–17:00",
-     "time_note": null,
+     "time": null,
+     "time_note": "09:00–17:00",
      "timezone": "Europe/Paris"
     },
     {
@@ -10564,8 +10564,8 @@
      "label": null,
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "09:00–17:00",
-     "time_note": null,
+     "time": null,
+     "time_note": "09:00–17:00",
      "timezone": "Europe/Paris"
     },
     {
@@ -10573,8 +10573,8 @@
      "label": null,
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "09:00–17:00",
-     "time_note": null,
+     "time": null,
+     "time_note": "09:00–17:00",
      "timezone": "Europe/Paris"
     }
    ],
@@ -10670,7 +10670,7 @@
      "role_label": "Opens",
      "time": null,
      "time_note": null,
-     "timezone": "Europe/Paris"
+     "timezone": null
     },
     {
      "date": "2027-01-08",
@@ -10777,7 +10777,7 @@
      "role_label": "Opens",
      "time": null,
      "time_note": null,
-     "timezone": "Europe/Paris"
+     "timezone": null
     },
     {
      "date": "2027-01-08",
@@ -10895,7 +10895,7 @@
      "role_label": "Opens",
      "time": null,
      "time_note": null,
-     "timezone": "Europe/Paris"
+     "timezone": null
     },
     {
      "date": "2026-11-23",
@@ -12057,7 +12057,7 @@
      "role": "opening",
      "role_label": "Opens",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -12065,9 +12065,9 @@
      "label": "Series Mania Co-Pro Pitching Sessions",
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "23:59 CET",
+     "time": "23:59",
      "time_note": null,
-     "timezone": null
+     "timezone": "Europe/Paris"
     },
     {
      "date": "2027-03-22",
@@ -12075,7 +12075,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -12175,9 +12175,9 @@
      "label": "TorinoFilmLab ScriptLab",
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "16:00 CET",
+     "time": "16:00",
      "time_note": null,
-     "timezone": null
+     "timezone": "Europe/Paris"
     },
     {
      "date": "2026-12-08",
@@ -12185,7 +12185,7 @@
      "role": "selection",
      "role_label": "Selection news",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -12193,9 +12193,9 @@
      "label": "TorinoFilmLab ScriptLab",
      "role": "selection",
      "role_label": "Selection news",
-     "time": "16:00 CET",
+     "time": "16:00",
      "time_note": null,
-     "timezone": null
+     "timezone": "Europe/Paris"
     }
    ],
    "fee": {
@@ -12431,7 +12431,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -12440,7 +12440,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -12542,18 +12542,18 @@
      "label": "Visions du Réel — VdR–Pitching",
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
-     "time": "17:00 CET",
+     "time": "17:00",
      "time_note": null,
-     "timezone": null
+     "timezone": "Europe/Paris"
     },
     {
      "date": "2026-12-15",
      "label": "Visions du Réel — VdR–Pitching",
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "17:00 CET",
+     "time": "17:00",
      "time_note": null,
-     "timezone": null
+     "timezone": "Europe/Paris"
     },
     {
      "date": "2027-03-11",
@@ -12561,7 +12561,7 @@
      "role": "payment",
      "role_label": "Payment due",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -12570,7 +12570,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -12697,7 +12697,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -12706,7 +12706,7 @@
      "role": "payment",
      "role_label": "Payment due",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -12715,7 +12715,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -12724,7 +12724,7 @@
      "role": "payment",
      "role_label": "Payment due",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -12733,7 +12733,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -12886,7 +12886,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -12895,7 +12895,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -13000,7 +13000,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -13090,7 +13090,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -13098,9 +13098,9 @@
      "label": "C21 Content London Pitch",
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "23:59 GMT",
+     "time": "23:59",
      "time_note": null,
-     "timezone": null
+     "timezone": "Etc/GMT"
     },
     {
      "date": "2026-11-03",
@@ -13108,7 +13108,7 @@
      "role": "selection",
      "role_label": "Selection news",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -13117,7 +13117,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -13230,7 +13230,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -13238,9 +13238,9 @@
      "label": "C21 Content London Pitch",
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "23:59 GMT",
+     "time": "23:59",
      "time_note": null,
-     "timezone": null
+     "timezone": "Etc/GMT"
     },
     {
      "date": "2026-11-03",
@@ -13248,7 +13248,7 @@
      "role": "selection",
      "role_label": "Selection news",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -13257,7 +13257,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -13370,7 +13370,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -13379,7 +13379,7 @@
      "role": "selection",
      "role_label": "Selection news",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -13494,7 +13494,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -13503,7 +13503,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -13632,7 +13632,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -13641,7 +13641,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -13737,7 +13737,7 @@
      "role": "opening",
      "role_label": "Opens",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -13746,7 +13746,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -13755,7 +13755,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -13764,7 +13764,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -13862,7 +13862,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -13871,7 +13871,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -13975,7 +13975,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -13984,7 +13984,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -14360,7 +14360,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -14474,9 +14474,9 @@
      "label": "TorinoFilmLab ComedyLab",
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "16:00 CET",
+     "time": "16:00",
      "time_note": null,
-     "timezone": null
+     "timezone": "Europe/Paris"
     },
     {
      "date": "2027-02-25",
@@ -14484,7 +14484,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -14599,7 +14599,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -14608,7 +14608,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -14617,7 +14617,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -14626,7 +14626,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -14768,7 +14768,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -14777,7 +14777,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -14786,7 +14786,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -14795,7 +14795,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -14916,7 +14916,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -14925,7 +14925,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -14934,7 +14934,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -14943,7 +14943,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -15084,9 +15084,9 @@
      "label": "TorinoFilmLab SeriesLab",
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "16:00 CET",
+     "time": "16:00",
      "time_note": null,
-     "timezone": null
+     "timezone": "Europe/Paris"
     }
    ],
    "fee": {
@@ -15303,9 +15303,9 @@
      "label": "TorinoFilmLab — Green Narratives",
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "23:59 CET",
+     "time": "23:59",
      "time_note": null,
-     "timezone": null
+     "timezone": "Europe/Paris"
     },
     {
      "date": "2027-03-15",
@@ -15313,7 +15313,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -15409,7 +15409,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -15418,7 +15418,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -15528,8 +15528,8 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Midnight CET — boundary unconfirmed",
-     "timezone": null
+     "time_note": "midnight; the organiser doesn’t say which side of the day",
+     "timezone": "Europe/Paris"
     },
     {
      "date": "2026-12-21",
@@ -15537,7 +15537,7 @@
      "role": "selection",
      "role_label": "Selection news",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -15546,7 +15546,7 @@
      "role": "event_or_context",
      "role_label": "Event",
      "time": null,
-     "time_note": "Not published",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -15805,7 +15805,7 @@
      "label": null,
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "23:59:00",
+     "time": "23:59",
      "time_note": null,
      "timezone": "America/Los_Angeles"
     }
@@ -16435,7 +16435,7 @@
      "label": null,
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "23:59:00",
+     "time": "23:59",
      "time_note": null,
      "timezone": "America/New_York"
     }
@@ -16659,7 +16659,7 @@
      "label": null,
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "23:59:00",
+     "time": "23:59",
      "time_note": null,
      "timezone": "America/Los_Angeles"
     }
@@ -16790,7 +16790,7 @@
      "label": null,
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "17:00:00",
+     "time": "17:00",
      "time_note": null,
      "timezone": "America/New_York"
     }
@@ -16912,7 +16912,7 @@
      "label": null,
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "17:00:00",
+     "time": "17:00",
      "time_note": null,
      "timezone": "America/New_York"
     }
@@ -17520,7 +17520,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Exact cut-off time not verified; check portal",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -17529,7 +17529,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Exact hour/zone not established; check portal",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -17538,7 +17538,7 @@
      "role": "payment",
      "role_label": "Payment due",
      "time": null,
-     "time_note": "Exact clock not verified",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -17684,7 +17684,7 @@
      "label": null,
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "23:59:00",
+     "time": "23:59",
      "time_note": null,
      "timezone": "America/New_York"
     }
@@ -17809,7 +17809,7 @@
      "label": null,
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "23:59:59",
+     "time": "23:59",
      "time_note": null,
      "timezone": "America/New_York"
     }
@@ -18020,7 +18020,7 @@
      "label": "Jerome — Step 1 CLOSED",
      "role": "prerequisite",
      "role_label": "Do first",
-     "time": "16:00:00",
+     "time": "16:00",
      "time_note": null,
      "timezone": "America/New_York"
     },
@@ -18029,7 +18029,7 @@
      "label": "Jerome New York City Film Production 2027 — Step 2 only",
      "role": "prerequisite",
      "role_label": "Do first",
-     "time": "16:00:00",
+     "time": "16:00",
      "time_note": null,
      "timezone": "America/New_York"
     },
@@ -18038,7 +18038,7 @@
      "label": null,
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "16:00:00",
+     "time": "16:00",
      "time_note": null,
      "timezone": "America/New_York"
     }
@@ -18142,7 +18142,7 @@
      "label": "Jerome — Step 1 CLOSED",
      "role": "prerequisite",
      "role_label": "Do first",
-     "time": "16:00:00",
+     "time": "16:00",
      "time_note": null,
      "timezone": "America/Chicago"
     },
@@ -18151,7 +18151,7 @@
      "label": "Jerome Minnesota Film Production 2027 — Step 2 only",
      "role": "prerequisite",
      "role_label": "Do first",
-     "time": "16:00:00",
+     "time": "16:00",
      "time_note": null,
      "timezone": "America/Chicago"
     },
@@ -18160,7 +18160,7 @@
      "label": null,
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "16:00:00",
+     "time": "16:00",
      "time_note": null,
      "timezone": "America/Chicago"
     }
@@ -18268,7 +18268,7 @@
      "label": "Jerome — Step 1 CLOSED",
      "role": "prerequisite",
      "role_label": "Do first",
-     "time": "16:00:00",
+     "time": "16:00",
      "time_note": null,
      "timezone": "America/Chicago"
     },
@@ -18277,7 +18277,7 @@
      "label": "Jerome Minnesota Filmmaker Mentorship 2027 — Step 2 only",
      "role": "prerequisite",
      "role_label": "Do first",
-     "time": "16:00:00",
+     "time": "16:00",
      "time_note": null,
      "timezone": "America/Chicago"
     },
@@ -18286,7 +18286,7 @@
      "label": null,
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "16:00:00",
+     "time": "16:00",
      "time_note": null,
      "timezone": "America/Chicago"
     }
@@ -18385,7 +18385,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Exact cut-off time not verified; check portal",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -18394,7 +18394,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Exact cut-off time not verified; check portal",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -18521,7 +18521,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Exact cut-off time not verified; check portal",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -18530,7 +18530,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Exact cut-off time not verified; check portal",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -18657,8 +18657,8 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Midnight US Pacific per organiser; confirm boundary",
-     "timezone": null
+     "time_note": "midnight; the organiser doesn’t say which side of the day",
+     "timezone": "America/Los_Angeles"
     },
     {
      "date": "2026-11-16",
@@ -18666,8 +18666,8 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Midnight US Pacific per organiser; confirm boundary",
-     "timezone": null
+     "time_note": "midnight; the organiser doesn’t say which side of the day",
+     "timezone": "America/Los_Angeles"
     },
     {
      "date": "2026-12-02",
@@ -18675,8 +18675,8 @@
      "role": "prerequisite",
      "role_label": "Do first",
      "time": null,
-     "time_note": "Midnight US Pacific; confirm boundary",
-     "timezone": null
+     "time_note": "midnight; the organiser doesn’t say which side of the day",
+     "timezone": "America/Los_Angeles"
     },
     {
      "date": "2026-12-02",
@@ -18684,8 +18684,8 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Midnight US Pacific per organiser; confirm boundary",
-     "timezone": null
+     "time_note": "midnight; the organiser doesn’t say which side of the day",
+     "timezone": "America/Los_Angeles"
     }
    ],
    "fee": {
@@ -18814,8 +18814,8 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Midnight US Pacific per organiser; confirm boundary",
-     "timezone": null
+     "time_note": "midnight; the organiser doesn’t say which side of the day",
+     "timezone": "America/Los_Angeles"
     },
     {
      "date": "2026-11-16",
@@ -18823,8 +18823,8 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Midnight US Pacific per organiser; confirm boundary",
-     "timezone": null
+     "time_note": "midnight; the organiser doesn’t say which side of the day",
+     "timezone": "America/Los_Angeles"
     },
     {
      "date": "2026-12-02",
@@ -18832,8 +18832,8 @@
      "role": "prerequisite",
      "role_label": "Do first",
      "time": null,
-     "time_note": "Midnight US Pacific; confirm boundary",
-     "timezone": null
+     "time_note": "midnight; the organiser doesn’t say which side of the day",
+     "timezone": "America/Los_Angeles"
     },
     {
      "date": "2026-12-02",
@@ -18841,8 +18841,8 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Midnight US Pacific per organiser; confirm boundary",
-     "timezone": null
+     "time_note": "midnight; the organiser doesn’t say which side of the day",
+     "timezone": "America/Los_Angeles"
     }
    ],
    "fee": {
@@ -18976,7 +18976,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Exact hour/zone not established; check portal",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -18985,7 +18985,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Exact hour/zone not established; check portal",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -18994,7 +18994,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Exact hour/zone not established; check portal",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -19129,7 +19129,7 @@
      "role": "opening",
      "role_label": "Opens",
      "time": null,
-     "time_note": "Exact clock not verified",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -19138,7 +19138,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Time not established",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -19250,7 +19250,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Exact cut-off time not verified; check portal",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -19259,7 +19259,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Exact cut-off time not verified; check portal",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -19418,8 +19418,8 @@
      "label": "Early fee",
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
-     "time": "23:59 'local time' on site; confirm controlling zone",
-     "time_note": null,
+     "time": "23:59",
+     "time_note": "local time; the organiser doesn’t name the zone",
      "timezone": null
     },
     {
@@ -19427,8 +19427,8 @@
      "label": "Regular fee",
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
-     "time": "23:59 'local time' on site; confirm controlling zone",
-     "time_note": null,
+     "time": "23:59",
+     "time_note": "local time; the organiser doesn’t name the zone",
      "timezone": null
     },
     {
@@ -19436,8 +19436,8 @@
      "label": null,
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "23:59 'local time' on site; confirm controlling zone",
-     "time_note": null,
+     "time": "23:59",
+     "time_note": "local time; the organiser doesn’t name the zone",
      "timezone": null
     }
    ],
@@ -19559,36 +19559,36 @@
      "label": "Early fee",
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
-     "time": "07:59:59 America/Chicago",
+     "time": "07:59",
      "time_note": null,
-     "timezone": null
+     "timezone": "America/Chicago"
     },
     {
      "date": "2026-11-16",
      "label": "Application waiver request",
      "role": "prerequisite",
      "role_label": "Do first",
-     "time": "23:59 America/Chicago",
+     "time": "23:59",
      "time_note": null,
-     "timezone": null
+     "timezone": "America/Chicago"
     },
     {
      "date": "2026-11-23",
      "label": "Regular fee",
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
-     "time": "07:59:59 America/Chicago",
+     "time": "07:59",
      "time_note": null,
-     "timezone": null
+     "timezone": "America/Chicago"
     },
     {
      "date": "2026-12-14",
      "label": null,
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "07:59:59 America/Chicago",
+     "time": "07:59",
      "time_note": null,
-     "timezone": null
+     "timezone": "America/Chicago"
     }
    ],
    "fee": {
@@ -19740,7 +19740,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": "23:59",
-     "time_note": "Exact cut-off time not verified; check portal",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -19749,7 +19749,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": "23:59",
-     "time_note": "Exact cut-off time not verified; check portal",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -19927,7 +19927,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Exact clock not verified",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -19936,7 +19936,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Exact cut-off time not verified; check portal",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -20075,7 +20075,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Exact cut-off time not verified; check portal",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -20179,7 +20179,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Exact cut-off time not verified; check portal",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -20313,7 +20313,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Exact cut-off time not verified; check portal",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -20322,7 +20322,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Exact cut-off time not verified; check portal",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -20442,7 +20442,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Exact cut-off time not verified; check portal",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -20553,7 +20553,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Exact cut-off time not verified; check portal",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -20562,7 +20562,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Exact cut-off time not verified; check portal",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -20689,7 +20689,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Exact hour/zone not established; check portal",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -20698,7 +20698,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Exact hour/zone not established; check portal",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -20822,7 +20822,7 @@
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
      "time": null,
-     "time_note": "Exact hour/zone not established; check portal",
+     "time_note": null,
      "timezone": null
     },
     {
@@ -20831,7 +20831,7 @@
      "role": "application_submission_deadline",
      "role_label": "Closes",
      "time": null,
-     "time_note": "Exact hour/zone not established; check portal",
+     "time_note": null,
      "timezone": null
     }
    ],
@@ -20960,8 +20960,8 @@
      "label": "Early fee",
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
-     "time": "23:59 local time; controlling zone unconfirmed",
-     "time_note": null,
+     "time": "23:59",
+     "time_note": "local time; the organiser doesn’t name the zone",
      "timezone": null
     },
     {
@@ -20969,8 +20969,8 @@
      "label": "Regular fee",
      "role": "application_fee_tier_cutoff",
      "role_label": "Earlier deadline",
-     "time": "23:59 local time; controlling zone unconfirmed",
-     "time_note": null,
+     "time": "23:59",
+     "time_note": "local time; the organiser doesn’t name the zone",
      "timezone": null
     },
     {
@@ -20978,8 +20978,8 @@
      "label": null,
      "role": "application_submission_deadline",
      "role_label": "Closes",
-     "time": "23:59 local time; controlling zone unconfirmed",
-     "time_note": null,
+     "time": "23:59",
+     "time_note": "local time; the organiser doesn’t name the zone",
      "timezone": null
     }
    ],
@@ -21100,18 +21100,18 @@
      "label": null,
      "role": "opening",
      "role_label": "Opens",
-     "time": "10:00 America/New_York",
+     "time": "10:00",
      "time_note": null,
-     "timezone": null
+     "timezone": "America/New_York"
     },
     {
      "date": "2027-01-27",
      "label": "Official fee checkpoint",
      "role": "event_or_context",
      "role_label": "Event",
-     "time": "23:59 America/New_York",
+     "time": "23:59",
      "time_note": null,
-     "timezone": null
+     "timezone": "America/New_York"
     },
     {
      "date": "2027-02-24",

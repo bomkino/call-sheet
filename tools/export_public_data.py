@@ -177,6 +177,10 @@ def fee_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
         if item["amount"] is None and item["state"] == "unknown_or_conditional" and not item["note"]:
             continue
         items.append(item)
+    return summarise_fee(items)
+
+
+def summarise_fee(items: list[dict[str, Any]]) -> dict[str, Any]:
     application = [i for i in items if i["stage"] == "application"]
     priced = [i for i in application if i["state"] == "priced"]
     free = [i for i in application if i["state"] == "free_or_explicit_zero"]
@@ -204,6 +208,15 @@ def fee_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
     return {"state": state, "summary": summary, "items": [unique[k] for k in sorted(unique)][:8]}
 
 
+def official_fee(recheck: dict[str, Any] | None, packs: dict[str, Any]) -> dict[str, Any]:
+    """A fee read off the official page outranks the packs' notes, except that a page
+    silent on fees doesn't erase a fee the packs found elsewhere (a form, a PDF)."""
+    page = (recheck or {}).get("fee")
+    if not page or (page["state"] == "unknown" and packs["state"] != "unknown"):
+        return packs
+    return {**summarise_fee(page["items"]), "checked_on": recheck["checked_on"]}
+
+
 def amount_lines(rows: list[dict[str, Any]]) -> list[dict[str, str]]:
     lines, seen = [], set()
     for row in rows:
@@ -220,6 +233,44 @@ def amount_lines(rows: list[dict[str, Any]]) -> list[dict[str, str]]:
         seen.add(key)
         lines.append({"label": label or ("Amount" if value else "Note"), "value": value, "note": note if note != value else None})
     return lines[:6]
+
+
+# Zone abbreviations the packs write after a time, as IANA zones the page can convert.
+ZONE_ABBREVIATIONS = {"CET": "Europe/Paris", "CEST": "Europe/Paris", "GMT": "Etc/GMT", "UTC": "Etc/UTC", "BST": "Europe/London",
+                      "ET": "America/New_York", "EST": "America/New_York", "EDT": "America/New_York",
+                      "PT": "America/Los_Angeles", "PST": "America/Los_Angeles", "PDT": "America/Los_Angeles",
+                      "AEDT": "Australia/Sydney", "AEST": "Australia/Sydney", "NZDT": "Pacific/Auckland"}
+# Research notes about a cut-off we couldn't pin down: true, but the page already says to check the time.
+UNPINNED_TIME = re.compile(r"(?i)^(not published|time not established|exact (cut-off time|clock|hour/zone) not (verified|established).*)$")
+
+
+def clock(time: str | None, tz: str | None, note: str | None) -> tuple[str | None, str | None, str | None]:
+    """One shape for cut-off times: 'HH:MM', an IANA zone or None, and a plain note."""
+    if tz == "applicant_local":
+        tz, note = None, note or "your local time"
+    if time:
+        m = re.match(r"^(\d{1,2})[:.](\d{2})(?::\d{2})?\s*(.*)$", time)
+        if m and not re.match(r"^[–-]", m.group(3)):
+            time, rest = f"{int(m.group(1)):02d}:{m.group(2)}", m.group(3).strip()
+            if "/" in rest and " " not in rest:
+                tz = tz or rest
+            elif rest.upper() in ZONE_ABBREVIATIONS:
+                tz = tz or ZONE_ABBREVIATIONS[rest.upper()]
+            elif re.search(r"(?i)local time", rest):
+                note = note or "local time; the organiser doesn’t name the zone"
+        else:
+            time, note = None, note or time  # a window such as 09:00–17:00
+    if note:
+        midnight = re.match(r"(?i)^midnight (US Pacific|CET)", note)
+        if midnight:
+            pacific = midnight.group(1).lower().startswith("us")
+            tz = tz or ("America/Los_Angeles" if pacific else "Europe/Paris")
+            note = "midnight; the organiser doesn’t say which side of the day"
+        elif UNPINNED_TIME.match(note):
+            time, note = None, None  # an unverified 23:59 is a guess, not a cut-off
+    if not time and not note:
+        tz = None
+    return time, tz, note
 
 
 def date_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -256,6 +307,8 @@ def date_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
             continue
         seen.add(key)
         out.append({"date": date, "role": role, "role_label": ROLE_LABELS[role], "label": label, "time": time, "timezone": tz, "time_note": time_note})
+    for d in out:
+        d["time"], d["timezone"], d["time_note"] = clock(d["time"], d["timezone"], d["time_note"])
     return sorted(out, key=lambda d: (d["date"], ROLE_ORDER.index(d["role"])))
 
 
@@ -391,7 +444,8 @@ def main(argv: list[str] | None = None) -> int:
         dates = date_rows(child.get("deadlines", []) + child.get("milestones", []))
         recheck = rechecks.get(oid)
         if recheck and recheck.get("dates"):
-            checked = [{"date": d["date"], "role": d["role"], "role_label": ROLE_LABELS[d["role"]], "label": d.get("label"), "time": d.get("time"), "timezone": d.get("timezone"), "time_note": d.get("time_note")} for d in recheck["dates"]]
+            checked = [{"date": d["date"], "role": d["role"], "role_label": ROLE_LABELS[d["role"]], "label": d.get("label"),
+                        **dict(zip(("time", "timezone", "time_note"), clock(d.get("time"), d.get("timezone"), d.get("time_note"))))} for d in recheck["dates"]]
             if recheck["status"] == "changed":
                 # The organiser moved things: the official page's dates replace the pack's.
                 dates = checked
@@ -406,7 +460,7 @@ def main(argv: list[str] | None = None) -> int:
                     else:
                         dates.append(d)
             dates = sorted(dates, key=lambda d: (d["date"], ROLE_ORDER.index(d["role"])))
-        opens, closes = window(dates, as_of)
+        opens, closes = window(dates, max(as_of, (recheck or {}).get("checked_on") or as_of))
         urls = [u for u in as_list(o.get("source_urls")) if isinstance(u, str) and u.startswith("http")]
         official = next((u for u in urls if not any(h in host(u) for h in PORTAL_HOSTS)), urls[0] if urls else None)
         if recheck and recheck.get("url"):
@@ -460,7 +514,7 @@ def main(argv: list[str] | None = None) -> int:
             "closes": closes,
             "dates": dates,
             "money": amount_lines(child.get("amounts", [])),
-            "fee": fee_summary(child.get("fees", [])),
+            "fee": official_fee(recheck, fee_summary(child.get("fees", []))),
             "bring": materials(o, child.get("materials", [])),
             "check_yourself": questions[:10],
             "open_questions": issues[:6],

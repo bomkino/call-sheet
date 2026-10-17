@@ -83,6 +83,47 @@ const shortDate = (iso, withYear = false) => {
   const year = d.getUTCFullYear() !== toDate(todayISO).getUTCFullYear() || withYear
   return `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()].slice(0, 3)}${year ? ' ' + d.getUTCFullYear() : ''}`
 }
+const longDate = iso => { const d = toDate(iso); return `${d.toLocaleDateString('en-GB', { weekday: 'long', timeZone: 'UTC' })} ${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}` }
+
+// The next closing date: once one round passes, the page moves to the next.
+function nextRound (rounds, fallback) {
+  const list = (rounds || '').split(' ').filter(Boolean)
+  return list.find(d => d >= todayISO) || list[list.length - 1] || fallback || ''
+}
+
+// A cut-off in the organiser's zone as an instant, so it can be shown in the visitor's.
+function zoneOffset (ms, tz) {
+  const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' })
+    .formatToParts(new Date(ms)).map(p => [p.type, p.value]))
+  return Date.UTC(+parts.year, +parts.month - 1, +parts.day, +parts.hour % 24, +parts.minute, +parts.second) - ms
+}
+function instantOf (iso, time, tz) {
+  if (!iso || !/^\d{2}:\d{2}$/.test(time || '') || !tz) return null
+  try {
+    const [y, m, d] = iso.split('-').map(Number)
+    const [hh, mm] = time.split(':').map(Number)
+    const wall = Date.UTC(y, m - 1, d, hh, mm)
+    const first = wall - zoneOffset(wall, tz)
+    return new Date(wall - zoneOffset(first, tz))
+  } catch { return null }
+}
+// Mirrors FRIENDLY_ZONES in tools/build_site.py.
+const ZONES = {
+  'America/Los_Angeles': 'Pacific Time (US)',
+  'America/Denver': 'Mountain Time (US)',
+  'America/Chicago': 'Central Time (US)',
+  'America/New_York': 'Eastern Time (US)',
+  'America/Toronto': 'Eastern Time (Toronto)',
+  'Europe/London': 'UK time',
+  'Europe/Paris': 'Central European Time',
+  'Europe/Berlin': 'Central European Time',
+  'Europe/Helsinki': 'Finnish time',
+  'Australia/Sydney': 'Sydney time',
+  'Pacific/Auckland': 'New Zealand time',
+}
+const zoneName = tz => ZONES[tz] || (tz.startsWith('Etc/') ? tz.slice(4) : tz.includes('/') ? tz.split('/').pop().replace(/_/g, ' ') + ' time' : tz)
+const hereZone = (() => { try { return Intl.DateTimeFormat().resolvedOptions().timeZone || '' } catch { return '' } })()
+
 function leftText (closes) {
   const days = daysUntil(closes)
   if (days < 0) return { text: 'Closed', cls: 'is-closed' }
@@ -162,6 +203,9 @@ function snapshotFromRow (row) {
     closes: row.dataset.closes || null,
     opens: row.dataset.opens || null,
     state: row.dataset.state,
+    time: row.dataset.time || null,
+    tz: row.dataset.tz || null,
+    official: row.dataset.official || '',
     organiser: row.querySelector('.cs-org')?.textContent.trim() || '',
     who: dd[0]?.textContent.trim() || '',
     get: dd[1]?.textContent.trim() || '',
@@ -176,6 +220,8 @@ function snapshotFromPage (main) {
     closes: main.dataset.closes || null,
     opens: main.querySelector('[data-countdown]')?.dataset.opens || null,
     state: main.querySelector('[data-countdown]')?.dataset.state || '',
+    time: main.querySelector('[data-countdown]')?.dataset.time || null,
+    tz: main.querySelector('[data-countdown]')?.dataset.tz || null,
     organiser: main.querySelector('.cs-callorg')?.textContent.trim() || '',
     who: facts['Who can apply'] || '',
     get: facts['You get'] || '',
@@ -185,6 +231,19 @@ function snapshotFromPage (main) {
 }
 
 const listRows = [...document.querySelectorAll('.cs-call')]
+for (const row of listRows) {
+  const closes = nextRound(row.dataset.rounds, row.dataset.closes)
+  if (!closes || closes === row.dataset.closes) continue
+  // A later round: the cut-off time we hold belonged to the one that passed.
+  Object.assign(row.dataset, { closes, time: '', tz: '' })
+  const when = row.querySelector('time.cs-date')
+  if (when) {
+    const d = toDate(closes)
+    when.setAttribute('datetime', closes)
+    when.querySelector('.cs-day').textContent = d.getUTCDate()
+    when.querySelector('.cs-month').textContent = MONTHS[d.getUTCMonth()].slice(0, 3) + (d.getUTCFullYear() !== toDate(todayISO).getUTCFullYear() ? ' ' + d.getUTCFullYear() : '')
+  }
+}
 const rowBySlug = new Map(listRows.map(row => [row.dataset.slug, row]))
 const callPage = document.querySelector('.cs-callpage')
 
@@ -290,22 +349,41 @@ function openSheet () {
   if (dialog && !dialog.open) dialog.showModal()
 }
 
-// Calendar file: one all-day marker per deadline, with a reminder a week before.
+// Calendar file: one marker per deadline, with reminders a week and a day before.  A cut-off
+// with a known time and zone becomes a timed hour ending at it, so it lands right wherever
+// the calendar is; otherwise it's an all-day marker on the organiser's date.
 function icsFor (entries) {
-  const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '')
+  const utc = date => date.toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '')
+  const stamp = utc(new Date())
   const esc = text => String(text || '').replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/[,;]/g, m => '\\' + m)
-  const fold = line => line.length <= 74 ? line : line.match(/.{1,74}/g).join('\r\n ')
+  // Lines fold at 75 octets, not characters: accented titles are longer in UTF-8.
+  const bytes = ch => new TextEncoder().encode(ch).length
+  const fold = line => {
+    const out = []
+    let cur = ''
+    let size = 0
+    for (const ch of line) {
+      if (size + bytes(ch) > (out.length ? 74 : 75)) { out.push(cur); cur = ''; size = 0 }
+      cur += ch
+      size += bytes(ch)
+    }
+    return [...out, cur].join('\r\n ')
+  }
   const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//pitch.dog//Call Sheet//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'X-WR-CALNAME:Call Sheet deadlines']
   for (const [slug, item] of entries) {
     if (!item.closes) continue
     const start = item.closes.replace(/-/g, '')
     const end = new Date(toDate(item.closes).getTime() + 86400000).toISOString().slice(0, 10).replace(/-/g, '')
+    const at = instantOf(item.closes, item.time, item.tz)
     const page = `${location.origin}${BASE}${slug}/`
-    lines.push('BEGIN:VEVENT', `UID:${slug}-${start}@pitch.dog`, `DTSTAMP:${stamp}`, `DTSTART;VALUE=DATE:${start}`, `DTEND;VALUE=DATE:${end}`,
+    const cutoff = at ? `It closes at ${item.time}, ${zoneName(item.tz)}.` : 'Check the exact cut-off time and time zone on the official page before you plan around this date.'
+    lines.push('BEGIN:VEVENT', `UID:${slug}-${start}@pitch.dog`, `DTSTAMP:${stamp}`,
+      ...(at ? [`DTSTART:${utc(new Date(at.getTime() - 3600000))}`, `DTEND:${utc(at)}`] : [`DTSTART;VALUE=DATE:${start}`, `DTEND;VALUE=DATE:${end}`]),
       fold(`SUMMARY:${esc('Deadline: ' + item.title)}`),
-      fold(`DESCRIPTION:${esc(`Check the exact cut-off time and time zone on the official page before you plan around this date.\n\nCall Sheet: ${page}${item.official ? '\nOfficial page: ' + item.official : ''}`)}`),
+      fold(`DESCRIPTION:${esc(`${cutoff}\n\nCall Sheet: ${page}${item.official ? '\nOfficial page: ' + item.official : ''}`)}`),
       fold(`URL:${page}`), 'TRANSP:TRANSPARENT',
-      'BEGIN:VALARM', 'ACTION:DISPLAY', fold(`DESCRIPTION:${esc('A week to go: ' + item.title)}`), 'TRIGGER:-P7D', 'END:VALARM', 'END:VEVENT')
+      'BEGIN:VALARM', 'ACTION:DISPLAY', fold(`DESCRIPTION:${esc('A week to go: ' + item.title)}`), 'TRIGGER:-P7D', 'END:VALARM',
+      'BEGIN:VALARM', 'ACTION:DISPLAY', fold(`DESCRIPTION:${esc('Closes tomorrow: ' + item.title)}`), 'TRIGGER:-P1D', 'END:VALARM', 'END:VEVENT')
   }
   lines.push('END:VCALENDAR')
   return lines.join('\r\n') + '\r\n'
@@ -514,6 +592,13 @@ if (form && groupsHost && listRows.length) {
     badge.textContent = text
     badge.className = `cs-badge ${cls}`
     badge.hidden = false
+    // An early or fast-track cut-off still ahead of the final one.
+    const tierBadge = row.querySelector('[data-badge-tier]')
+    const tier = (row.dataset.tiers || '').split(' ').find(d => d && d >= todayISO && d < row.dataset.closes)
+    if (tierBadge) {
+      tierBadge.hidden = !tier || live === 'closed'
+      if (tier) tierBadge.textContent = `Early deadline ${shortDate(tier)}`
+    }
     const placeBadge = row.querySelector('[data-badge-place]')
     let placeText = ''
     let placeCls = ''
@@ -649,6 +734,16 @@ if (form && groupsHost && listRows.length) {
     new IntersectionObserver(([entry]) => document.body.classList.toggle('fab-tucked', entry.isIntersecting), { rootMargin: '-30% 0px -30% 0px' }).observe(results)
   }
 
+  // An old snapshot says so, rather than passing off stale dates as current.
+  const age = -daysUntil(document.body.dataset.asOf || todayISO)
+  if (age > 45) {
+    const stale = document.createElement('p')
+    stale.className = 'cs-stale'
+    stale.setAttribute('data-pd-type', 'body.small')
+    stale.textContent = `We last checked this list on ${shortDate(document.body.dataset.asOf, true)}, ${Math.round(age / 30.4)} ${Math.round(age / 30.4) === 1 ? 'month' : 'months'} ago. Calls that have closed move to the bottom on their own, but new rounds and changed dates won’t show until we check again. The official page always wins.`
+    document.querySelector('.cs-results-head').after(stale)
+  }
+
   applyFilters({ write: false })
   if (sharedBanner) sharedBanner.scrollIntoView?.({ block: 'center' })
 }
@@ -659,15 +754,33 @@ if (callPage) {
   const box = callPage.querySelector('[data-countdown]')
   const text = box?.querySelector('[data-countdown-text]')
   if (box && text) {
-    const { closes, opens } = box.dataset
-    const live = liveState(box.dataset)
+    const closes = nextRound(box.dataset.rounds, box.dataset.closes)
+    const moved = closes !== box.dataset.closes
+    if (moved) {
+      // The round on the page has passed and the call has another: show that one.
+      Object.assign(box.dataset, { closes, time: '', tz: '' })
+      callPage.dataset.closes = closes
+    }
+    const { opens, time, tz } = box.dataset
+    const at = instantOf(closes, time, tz)
+    const live = at && at < new Date() ? 'closed' : liveState(box.dataset)
+    if (moved) box.querySelector('[data-countdown-when]').textContent = `${longDate(closes)}${live === 'closed' ? '' : '. The earlier round has closed'}.`
     if (live === 'closed' && closes) { text.textContent = `Closed on ${shortDate(closes, true)}`; box.classList.add('is-closed') }
     else if (live === 'later' && opens && opens > todayISO) { text.textContent = `Opens in ${daysUntil(opens)} ${daysUntil(opens) === 1 ? 'day' : 'days'}, ${shortDate(opens)}`; box.classList.add('is-later') }
     else if (closes) {
       const days = daysUntil(closes)
-      text.textContent = days === 0 ? 'Closes today' : days === 1 ? 'Closes tomorrow' : `Closes in ${days} days`
+      const hours = at ? Math.floor((at - new Date()) / 3600000) : null
+      text.textContent = hours !== null && hours < 36 ? (hours < 1 ? 'Closes within the hour' : `Closes in ${hours} ${hours === 1 ? 'hour' : 'hours'}`)
+        : days === 0 ? 'Closes today' : days === 1 ? 'Closes tomorrow' : `Closes in ${days} days`
       if (days <= 7) box.classList.add('is-soon')
       if (live === 'watch') text.textContent += ', if it’s open'
+    }
+    // The same cut-off on the visitor's clock, when their zone differs from the organiser's.
+    const local = box.querySelector('[data-local]')
+    if (at && local && live !== 'closed' && hereZone && zoneOffset(at.getTime(), hereZone) !== zoneOffset(at.getTime(), tz)) {
+      const when = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: hereZone }).format(at)
+      local.textContent = `That’s ${when.replace(' at ', ', ')} where you are (${zoneName(hereZone)}).`
+      local.hidden = false
     }
   }
   let next = false
@@ -696,6 +809,14 @@ if (callPage) {
       else result.textContent = 'Nothing here rules you out. Now check the details on the official page.'
     })
   }
+}
+
+// How long ago a page was checked, once that starts to matter.
+for (const el of document.querySelectorAll('[data-age]')) {
+  const days = -daysUntil(el.dataset.age)
+  if (days < 21) continue
+  el.textContent = days < 63 ? `, ${Math.round(days / 7)} weeks ago` : `, ${Math.round(days / 30.4)} months ago`
+  el.closest('.hero-locator')?.classList.add('is-stale')
 }
 
 syncSaveButtons()

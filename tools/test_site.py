@@ -86,6 +86,15 @@ class DataTests(unittest.TestCase):
             if call["closes"]:
                 self.assertIn(call["closes"], {d["date"] for d in call["dates"] if d["role"] in ("application_submission_deadline", "application_fee_tier_cutoff")}, call["id"])
 
+    def test_cut_off_times_are_clean(self):
+        from zoneinfo import ZoneInfo
+        for call in CALLS:
+            for d in call["dates"]:
+                if d["time"]:
+                    self.assertRegex(d["time"], r"^([01]\d|2[0-3]):[0-5]\d$", call["id"])
+                if d["timezone"]:
+                    ZoneInfo(d["timezone"])  # raises for anything that isn't an IANA zone
+
     def test_every_call_links_somewhere_official(self):
         for call in CALLS:
             self.assertTrue(call["official_url"] and call["official_url"].startswith("https://"), call["id"])
@@ -132,6 +141,15 @@ class BuildTests(unittest.TestCase):
             source = page.read_text(encoding="utf-8")
             for needle in ('class="pd-nav-more"', 'href="/call-sheet/" aria-current="page"', "pitchdog-system-v13.1.1.min.css", 'data-analytics-replay="off"', '<link rel="canonical"', "<h1"):
                 self.assertIn(needle, source, (page, needle))
+
+    def test_rows_carry_every_round(self):
+        source = (self.out / "index.html").read_text(encoding="utf-8")
+        for call in CALLS:
+            row = re.search(r'<li class="cs-call"[^>]*data-slug="%s"[^>]*>' % re.escape(call["slug"]), source).group(0)
+            rounds = re.search(r'data-rounds="([^"]*)"', row).group(1).split()
+            if call["closes"]:
+                self.assertIn(call["closes"], rounds, call["id"])
+            self.assertEqual(rounds, sorted(rounds), call["id"])
 
     def test_closed_calls_are_not_indexed(self):
         for call in CALLS:
