@@ -183,9 +183,8 @@ body.mobile-menu-open { overflow: hidden; }
 .cs-stage-inner { width: min(1120px, calc(100vw - 48px)); margin: auto; display: grid; justify-items: center; text-align: center; }
 .cs-stage h1 { max-inline-size: none; }
 .cs-lede { margin: 26px auto 0; color: var(--muted); max-inline-size: 34ch; }
-.cs-board { width: min(920px, 100%); margin: clamp(36px, 4vw, 56px) 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--rule-strong); background: var(--panel); box-shadow: 8px 8px 0 color-mix(in srgb, var(--ink) 9%, transparent), 0 30px 60px -40px color-mix(in srgb, var(--cs-marker) 50%, transparent); text-align: left; }
-.cs-board > div { padding: 18px 20px 20px; display: grid; gap: 10px; align-content: space-between; }
-.cs-board > div + div { border-left: 1px solid var(--rule); }
+.cs-board { width: min(760px, 100%); margin: clamp(36px, 4vw, 56px) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--rule-strong); background: var(--rule); box-shadow: 8px 8px 0 color-mix(in srgb, var(--ink) 9%, transparent), 0 30px 60px -40px color-mix(in srgb, var(--cs-marker) 50%, transparent); text-align: left; }
+.cs-board > div { padding: 18px 20px 20px; display: grid; gap: 10px; align-content: space-between; background: var(--panel); }
 .cs-board dt { color: var(--muted); text-transform: uppercase; }
 .cs-board dd { white-space: nowrap; }
 .cs-stage-actions { margin-top: clamp(28px, 3vw, 40px); justify-content: center; }
@@ -468,7 +467,7 @@ html:has(body.has-sheetbar) { scroll-padding-bottom: 112px; }
 @keyframes pen { from { stroke-dashoffset: 1; } }
 
 .cs-board-next dd { position: relative; justify-self: start; }
-.cs-board-ring { position: absolute; left: 50%; top: 52%; width: 150%; max-width: none; height: auto; transform: translate(-50%, -50%); overflow: visible; pointer-events: none; }
+.cs-board-ring { position: absolute; left: 50%; top: 55%; width: 130%; max-width: none; height: 138%; transform: translate(-50%, -50%); overflow: visible; pointer-events: none; }
 .js .cs-board-ring .cs-pen { animation: pen .8s cubic-bezier(.55, .08, .3, 1) 1.15s both; }
 
 /* How it works, in three lines. */
@@ -655,8 +654,7 @@ html:has(body.has-sheetbar) { scroll-padding-bottom: 112px; }
   .cs-filters:not(.is-expanded) .cs-filter-more { display: none; }
   .cs-more-filters { display: inline-flex; justify-self: start; }
   .cs-board { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .cs-board > div:nth-child(3) { border-left: 0; }
-  .cs-board > div:nth-child(n + 3) { border-top: 1px solid var(--rule); }
+  .cs-board-next { grid-column: 1 / -1; order: 3; }
   .cs-facts { grid-template-columns: 1fr 1fr; }
   .cs-fact-fee { grid-column: 1 / -1; }
   .cs-sheetgrid { grid-template-columns: 1fr 1fr; }

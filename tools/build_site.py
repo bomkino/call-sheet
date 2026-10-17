@@ -204,7 +204,7 @@ FOOTER = """<footer class="footer">
   </footer>"""
 
 
-SOCIAL_ALT = "Call Sheet by pitch.dog, with the word Call circled in red marker, and Know your call time. Beside it, a printed call sheet lists four calls soonest first, with one date circled."
+SOCIAL_ALT = "Call Sheet by pitch.dog, with the word Call circled in red marker. Find film and TV grants, labs and festivals before they close. Beside it, a printed list of calls, soonest first, with one date circled."
 SOCIAL = {"src": ""}
 BRAND: dict[str, str] = {}
 PALETTE = json.loads((REPO / "brand/palette.json").read_text(encoding="utf-8"))
@@ -433,14 +433,13 @@ def month_name(ym: str) -> str:
 
 
 def edition_slip(as_of: str) -> str:
-    """The masthead line: which edition and which colour of pages this is."""
+    """The masthead line: when the list was last updated, and when the next update is due."""
     page_now = EDITION["pages"][-1]
     colour = next(r["hex"] for r in PALETTE["revisions"] if r["name"] == page_now["colour"])
     nxt = EDITION.get("next") or {}
-    later = f'<span class="cs-slip-next">Next: {h(nxt["colour"].lower())} pages, {h(MONTHS[int(nxt["due"][5:]) - 1])}</span>' if nxt else ""
+    later = f'<span class="cs-slip-rule" aria-hidden="true"></span><a href="#editions">Next update: {h(MONTHS[int(nxt["due"][5:]) - 1])}</a>' if nxt else ""
     return (f'<p class="cs-slip"><span class="cs-slip-swatch" style="--rev: {colour}" aria-hidden="true"></span>'
-            f'<a href="#editions">Edition {EDITION["edition"]} · {h(page_now["colour"].lower())} pages</a>'
-            f'<span class="cs-slip-rule" aria-hidden="true"></span><span>Checked {h(day(as_of))}<span data-age="{h(as_of)}"></span></span>{later}</p>')
+            f'<span>Updated {h(day(as_of))}<span data-age="{h(as_of)}"></span></span>{later}</p>')
 
 
 def editions_section(calls: list[dict], as_of: str) -> str:
@@ -451,25 +450,25 @@ def editions_section(calls: list[dict], as_of: str) -> str:
     for i, rev in enumerate(PALETTE["revisions"][:3]):
         page_ = done.get(rev["name"])
         state = "is-out" if page_ else "is-next" if rev["name"] == nxt else "is-later"
-        when = f'Out {day(page_["published"])}' if page_ else (f"Due {MONTHS[int(EDITION['next']['due'][5:]) - 1]}" if rev["name"] == nxt else "After that")
+        when = f'Out {day(page_["published"])}' if page_ else (f"Due in {MONTHS[int(EDITION['next']['due'][5:]) - 1]}" if rev["name"] == nxt else "After that")
         strip.append(f'<li class="cs-rev {state}" style="--rev: {rev["hex"]}"><span class="cs-rev-page" aria-hidden="true"></span><strong data-pd-type="label">{h(rev["name"])} pages</strong><span data-pd-type="body.small">{h(when)}</span></li>')
     feeds = "".join(f'<li><a class="cs-feed" href="webcal://pitch.dog{BASE}feeds/{key}.ics" data-feed="{ORIGIN}{BASE}feeds/{key}.ics">{icon("calendar")}<span data-pd-type="title.functional">{h(label)}</span><span class="cs-feed-n" data-pd-type="metadata">{feed_count(calls, as_of, fmt)}</span></a></li>' for key, label, fmt in FEEDS)
     return f"""<section class="cs-keep" id="feeds" aria-labelledby="feeds-title">
       <div class="cs-keep-inner">
         <div class="cs-keep-head">
-          <p class="eyebrow" data-pd-type="metadata">Keep up without keeping tabs</p>
-          <h2 id="feeds-title" data-pd-type="heading.section">New pages every month.</h2>
+          <p class="eyebrow" data-pd-type="metadata">Keep up</p>
+          <h2 id="feeds-title" data-pd-type="heading.section">Updated every month.</h2>
         </div>
         <div class="cs-keep-editions" id="editions">
-          <p data-pd-type="lead.section">This is Edition {EDITION['edition']}: calls closing {h(month_name(EDITION['covers']['from']))} to {h(month_name(EDITION['covers']['to']))}. Every month we reread each call’s official page and publish what changed as a new set of pages, coloured the way a shooting script’s revisions are.</p>
+          <p data-pd-type="lead.section">Every month we check each call against its official page, fix what changed and add new ones. This edition covers calls closing {h(month_name(EDITION['covers']['from']))} to {h(month_name(EDITION['covers']['to']))}.</p>
           <ol class="cs-revs">{''.join(strip)}</ol>
-          <p class="cs-hint" data-pd-type="body.small">The next quarter’s calls arrive before this one runs out. Come back when the colour changes, or let your calendar keep up for you.</p>
+          <p class="cs-hint" data-pd-type="body.small">Each update gets the next page colour, the way film scripts mark their changes. When you come back, anything new since your last visit is tagged <strong>New</strong>.</p>
         </div>
         <div class="cs-keep-feeds">
           <h3 data-pd-type="title.card">Every deadline, in your calendar.</h3>
-          <p data-pd-type="body.default">Subscribe once and the dates update themselves with each new set of pages. Pick what you make:</p>
+          <p data-pd-type="body.default">Subscribe once and the dates keep themselves up to date. Pick what you make:</p>
           <ul class="cs-feeds">{feeds}</ul>
-          <p class="cs-hint" data-pd-type="body.small">On an iPhone or a Mac, tap one. In Google Calendar, choose <strong>Other calendars → From URL</strong> and paste the link: <button class="cs-linkbutton" type="button" data-copy-feed>copy the link for every deadline</button>. Prefer to choose call by call? Save them, then use <strong>Add deadlines to calendar</strong> on your sheet.</p>
+          <p class="cs-hint" data-pd-type="body.small">On an iPhone or a Mac, tap one. For Google Calendar, <button class="cs-linkbutton" type="button" data-copy-feed>copy the link</button>, then choose <strong>Other calendars → From URL</strong> and paste it. Only want a few? Save them and add just those.</p>
         </div>
       </div>
     </section>"""
@@ -530,8 +529,6 @@ BRING_ASKS = (
     (re.compile(r"(?i)look ?book|mood ?board"), "a lookbook"),
     (re.compile(r"(?i)series bible|show bible|\bbible\b"), "a series bible"),
     (re.compile(r"(?i)treatment"), "a treatment"),
-    (re.compile(r"(?i)director'?s? (?:statement|note|vision)|statement of intent|note of intent"), "a director’s statement"),
-    (re.compile(r"(?i)one[- ]?pager|one[- ]?sheet"), "a one-pager"),
 )
 # "No bible", "Do not send extra decks": a word that turns the ask around just before it.
 NEGATED = re.compile(r"(?i)(?:\bno|\bnot|n't|\bwithout|\bnever|\bextra|\bsupplemental|\binstead of)\W+(?:\w+\W+){0,2}$")
@@ -555,19 +552,19 @@ def help_block(call: dict) -> str:
     from urllib.parse import quote
     asks = asks_for(call)
     if asks:
-        named = asks[0] if len(asks) == 1 else ", ".join(asks[:-1]) + " and " + asks[-1]
-        lead = f"This call’s list includes {named}. That’s what we make."
+        named = asks[0] if len(asks) == 1 else ", ".join(asks[:-1]) + " or " + asks[-1]
+        lead = f"Need {named} for this? We make those."
     else:
-        lead = "Calls like this are won on the page. Making that page is our day job."
+        lead = "Applying? We help filmmakers get their pitch ready."
     subject = f"Call Sheet: {call['title']}"
     body = (f"Hi pitch.dog,\n\nI'm applying to {call['title']}" + (f" (closes {day(call['closes'])})" if call.get("closes") else "") +
             f".\n{ORIGIN}{BASE}{call['slug']}/\n\nMy project, in a line:\nFormat and stage:\nWhat I have so far:\n")
     mailto = f"mailto:hello@pitch.dog?subject={quote(subject)}&body={quote(body)}"
     return f"""<aside class="cs-help" aria-labelledby="help-title">
         <div class="cs-help-copy">
-          <p class="eyebrow" data-pd-type="metadata">From the people who made this list</p>
+          <p class="eyebrow" data-pd-type="metadata">From pitch.dog, who made this list</p>
           <h2 id="help-title" data-pd-type="title.card">{h(lead)}</h2>
-          <p data-pd-type="body.default">pitch.dog writes and designs pitch decks, lookbooks, treatments and series bibles for film and TV. Send us the call and a line about your project, and we’ll tell you how we’d approach it. No pressure: the list stays free either way.</p>
+          <p data-pd-type="body.default">We design pitch decks, lookbooks, treatments and series bibles for film and TV. Send us this call and a line about your project, and we’ll tell you how we’d approach it. The list stays free either way.</p>
         </div>
         <div class="button-row cs-help-actions">
           <a class="button button--ink" href="{h(mailto)}">{icon("mail")}Send us this call</a>
@@ -579,7 +576,6 @@ def help_block(call: dict) -> str:
 
 def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
     live = [c for c in calls if c.get("closes") and c["closes"] >= as_of and c["state"] != "closed_or_historical"]
-    week = [c for c in live if (dt.date.fromisoformat(c["closes"]) - dt.date.fromisoformat(as_of)).days <= 7]
     open_now = [c for c in live if c["state"] == "open_or_published" and (not c.get("opens") or c["opens"] <= as_of)]
     free_now = [c for c in open_now if c["fee"]["state"] == "free"]
     next_close = min((c["closes"] for c in live), default=None)
@@ -602,24 +598,23 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
       <div class="cs-stage-inner">
         {edition_slip(as_of)}
         <h1 id="page-title" class="cs-logo"><span class="sr-only">Call Sheet</span>{inline_svg("web/logo.svg", "cs-logo-art")}</h1>
-        <p class="cs-tagline" data-pd-type="heading.subsection"><em data-pd-emphasis="head-italic">Know your call time.</em></p>
-        <p class="cs-lede" data-pd-type="lead.hero">Film and TV grants, labs, markets and festivals, sorted by when they close. Who can apply, what you get, what it costs and what to bring.</p>
+        <p class="cs-tagline" data-pd-type="heading.subsection">Find film and TV grants, labs and festivals before they close.</p>
+        <p class="cs-lede" data-pd-type="lead.hero">One free list, soonest deadline first. Each call says who can apply, what you get, what it costs and what to send.</p>
         <dl class="cs-board" aria-label="Today on the call sheet">
           <div><dt data-pd-type="metadata">Open now</dt><dd data-pd-ui="display" data-board="open">{len(open_now)}</dd></div>
-          <div><dt data-pd-type="metadata">Closing in 7 days</dt><dd data-pd-ui="display" data-board="week">{len(week)}</dd></div>
-          <div class="cs-board-next"><dt data-pd-type="metadata">Next deadline</dt><dd data-pd-ui="display"><span data-board="next">{h(day(next_close, with_year=False)) if next_close else '—'}</span>{inline_svg("web/ring.svg", "cs-board-ring")}</dd></div>
-          <div><dt data-pd-type="metadata">Open and free to enter</dt><dd data-pd-ui="display" data-board="free">{len(free_now)}</dd></div>
+          <div class="cs-board-next"><dt data-pd-type="metadata">Next deadline</dt><dd data-pd-ui="display"><span data-board="next">{h(day(next_close, with_year=False)) if next_close else '—'}</span>{inline_svg("web/ring.svg", "cs-board-ring").replace("<svg ", '<svg preserveAspectRatio="none" ', 1)}</dd></div>
+          <div><dt data-pd-type="metadata">Free to enter</dt><dd data-pd-ui="display" data-board="free">{len(free_now)}</dd></div>
         </dl>
-        <div class="button-row cs-stage-actions"><a class="button button--ink button--large" href="#find">Find calls for your project <span aria-hidden="true">↓</span></a><a class="button button--ghost button--large" href="#feeds">Get deadlines in your calendar</a></div>
+        <div class="button-row cs-stage-actions"><a class="button button--ink button--large" href="#find">Find what you can apply to <span aria-hidden="true">↓</span></a><a class="button button--ghost button--large" href="#feeds">Put deadlines in my calendar</a></div>
       </div>
     </section>
 
     <section class="cs-steps" aria-labelledby="steps-title">
       <h2 id="steps-title" class="sr-only">How it works</h2>
       <ol>
-        <li><span class="cs-step-n" data-pd-ui="display" aria-hidden="true">1</span><strong data-pd-type="title.functional">Say what you’re making.</strong><span data-pd-type="body.small">The format, where you’re based, and what you’re after. Calls that rule you out step aside.</span></li>
-        <li><span class="cs-step-n" data-pd-ui="display" aria-hidden="true">2</span><strong data-pd-type="title.functional">Save the ones that fit.</strong><span data-pd-type="body.small">They go on your own call sheet, in this browser. No account, nothing sent to us.</span></li>
-        <li><span class="cs-step-n" data-pd-ui="display" aria-hidden="true">3</span><strong data-pd-type="title.functional">Put the deadlines in your calendar.</strong><span data-pd-type="body.small">With a nudge a week before and the day before. Then go and write the thing.</span></li>
+        <li><span class="cs-step-n" data-pd-ui="display" aria-hidden="true">1</span><strong data-pd-type="title.functional">Pick what you’re making.</strong><span data-pd-type="body.small">And where you live. We hide the calls you can’t apply to.</span></li>
+        <li><span class="cs-step-n" data-pd-ui="display" aria-hidden="true">2</span><strong data-pd-type="title.functional">Save the ones you like.</strong><span data-pd-type="body.small">They stay on this device. No account, no email.</span></li>
+        <li><span class="cs-step-n" data-pd-ui="display" aria-hidden="true">3</span><strong data-pd-type="title.functional">Add the deadlines to your calendar.</strong><span data-pd-type="body.small">You get a reminder a week before, and the day before.</span></li>
       </ol>
     </section>
 
@@ -628,7 +623,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
         <div class="cs-finder-head">
           <p class="eyebrow" data-pd-type="metadata">Find your calls</p>
           <h2 id="find-title" data-pd-type="heading.subsection">What are you making?</h2>
-          <p class="cs-finder-note" data-pd-type="body.small">Pick as many as fit. Everything updates as you go, and the page address keeps your search, so you can bookmark it or send it on.</p>
+          <p class="cs-finder-note" data-pd-type="body.small">Tap everything that fits. The list below changes as you go.</p>
         </div>
         <form class="cs-filters" id="cs-filters" role="search" aria-label="Filter the calls" data-requires-js>
           {chips("format", "Making", format_options)}
@@ -636,7 +631,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
             <label class="cs-facet-label" for="cs-from" data-pd-type="metadata">Based in</label>
             <div class="cs-field">
               <div class="cs-input-wrap">{ph("map-pin")}<select id="cs-from" name="from"><option value="">Anywhere: show everything</option></select></div>
-              <p class="cs-hint" data-pd-type="body.small">Calls that clearly rule you out step aside. The unclear ones stay, flagged to check.</p>
+              <p class="cs-hint" data-pd-type="body.small">We hide calls that rule you out. If a call isn’t clear about it, we keep it and flag it.</p>
             </div>
           </div>
           {chips("kind", "Looking for", list(KIND_FILTERS))}
@@ -647,11 +642,11 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
             <label class="cs-chip cs-chip--new" data-new-chip hidden><input type="checkbox" name="only" value="new"><span data-pd-ui="metadata">New since my last visit</span></label>
           </div></fieldset>
           <div class="cs-filter-more" id="cs-filter-more">
-            {chips("stage", "Where it’s at", stage_options)}
+            {chips("stage", "Stage", stage_options)}
             <div class="cs-facet cs-facet--search">
               <label class="cs-facet-label" for="cs-q" data-pd-type="metadata">Search</label>
               <div class="cs-field">
-                <div class="cs-input-wrap">{ph("magnifying-glass")}<input id="cs-q" name="q" type="search" autocomplete="off" spellcheck="false" maxlength="80" placeholder="A name, a place, a word: Sundance, Kenya, horror"></div>
+                <div class="cs-input-wrap">{ph("magnifying-glass")}<input id="cs-q" name="q" type="search" autocomplete="off" spellcheck="false" maxlength="80" placeholder="A name or a word: Sundance, horror, Kenya"></div>
               </div>
             </div>
           </div>
@@ -678,7 +673,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
         <button class="button button--small" type="button" data-clear-empty>Clear filters</button>
       </div>
       <p class="cs-excluded" data-excluded hidden></p>
-      <p class="cs-listend" data-pd-type="body.default"><span>That’s the sheet. Applying to one of these? Most ask for a deck, a treatment or a lookbook, and that’s what we make.</span> <a href="#pitchdog">Say hello {ph("arrow-right")}</a></p>
+      <p class="cs-listend" data-pd-type="body.default"><span>That’s the list. Applying to one? Most ask for a pitch deck, and we make those.</span> <a href="#pitchdog">Say hello {ph("arrow-right")}</a></p>
     </section>
 
     {editions_section(calls, as_of)}
@@ -717,7 +712,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
       <div class="faq">
         <details><summary data-pd-type="title.functional">Is it really free?</summary><p data-pd-type="body.default">Yes. No price, no account and no email gate. Finding the next call shouldn’t take a week of open tabs, and we’d rather you spent that week on the application.</p></details>
         <details><summary data-pd-type="title.functional">How current is it?</summary><p data-pd-type="body.default">Every call shows the day it was last checked. On {h(day(as_of))} we reread the official page of every call that wasn’t already closed. Dates and terms change between rounds, so treat this as the map and the official page as the ground.</p></details>
-        <details><summary data-pd-type="title.functional">How often does it change?</summary><p data-pd-type="body.default">Every month. We research a quarter at a time (this edition covers calls closing {h(month_name(EDITION['covers']['from']))} to {h(month_name(EDITION['covers']['to']))}) and reread every open call monthly. Each update gets the next colour in the order a shooting script takes its revision pages: white, then blue, pink, yellow and on. When the colour changes, there’s something new. Calls that are new since you last came by wear a <strong>New</strong> tag.</p></details>
+        <details><summary data-pd-type="title.functional">How often is it updated?</summary><p data-pd-type="body.default">Every month. We check each open call against its official page and add new ones, three months ahead at a time. This edition covers calls closing {h(month_name(EDITION['covers']['from']))} to {h(month_name(EDITION['covers']['to']))}. Calls that are new since your last visit are tagged <strong>New</strong>.</p></details>
         <details><summary data-pd-type="title.functional">Does a match mean I’m eligible?</summary><p data-pd-type="body.default">No. It means nothing we found rules you out. Eligibility lives in the details: where you live versus your passport, you versus your company, how much of the budget is already raised. Each call page lists what to check before you apply.</p></details>
         <details><summary data-pd-type="title.functional">Why isn’t my festival or fund here?</summary><p data-pd-type="body.default">This is a curated set of {len(calls)} calls, not a census. If one belongs here, send the link to <a href="mailto:hello@pitch.dog?subject=A%20call%20for%20Call%20Sheet">hello@pitch.dog</a> and we’ll take a look.</p></details>
         <details><summary data-pd-type="title.functional">Do you rank the calls?</summary><p data-pd-type="body.default">No. There’s no prestige score and no guess at your odds. Calls are sorted by closing date, because the deadline is the one thing that won’t wait.</p></details>
@@ -927,7 +922,7 @@ def bring_block(call: dict) -> str:
     if not call["bring"]:
         return '<p data-pd-type="body.default">The materials list isn’t in our notes. The application form will have it.</p>'
     items = "".join(f'''<li><label class="cs-bring-item"><input type="checkbox" data-bring="{i}"><span class="cs-bring-box" aria-hidden="true"></span><span class="cs-bring-text"><span data-pd-type="body.default">{("<strong>" + h(b["item"]) + "</strong>") if len(b["item"]) <= 60 else h(b["item"])}{(" · " + h(b["limit"])) if b.get("limit") else ""}{" <em>(optional)</em>" if b.get("optional") else ""}</span>{f'<span class="cs-bring-note" data-pd-type="body.small">{h(b["note"])}</span>' if b.get("note") else ""}</span></label></li>''' for i, b in enumerate(call["bring"]))
-    return f'<p class="cs-bring-intro" data-pd-type="body.small" data-requires-js>Tick things off as they’re ready. Your ticks stay in this browser. <span class="cs-bring-progress" data-bring-progress></span></p><ul class="cs-bring">{items}</ul>'
+    return f'<p class="cs-bring-intro" data-pd-type="body.small" data-requires-js>Tick things off as you get them ready. We’ll remember on this device. <span class="cs-bring-progress" data-bring-progress></span></p><ul class="cs-bring">{items}</ul>'
 
 
 def checks_block(call: dict) -> str:

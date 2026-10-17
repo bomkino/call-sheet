@@ -839,8 +839,7 @@ if (form && groupsHost && listRows.length) {
     if (row.dataset.closes && row.dataset.closes >= todayISO && (!board.next || row.dataset.closes < board.next)) board.next = row.dataset.closes
   }
   document.querySelector('[data-board="open"]').textContent = board.open
-  document.querySelector('[data-board="week"]').textContent = board.week
-  document.querySelector('[data-board="next"]').textContent = board.next ? shortDate(board.next) : '—'
+    document.querySelector('[data-board="next"]').textContent = board.next ? shortDate(board.next) : '—'
   const freeBoard = document.querySelector('[data-board="free"]')
   if (freeBoard) freeBoard.textContent = board.free
 

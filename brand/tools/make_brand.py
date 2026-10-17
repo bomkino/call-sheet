@@ -210,13 +210,14 @@ def main() -> None:
         files[logo / f"call-sheet-logo{suffix}.svg"] = svg(f'<path d="{d}" fill="{ink}"/><path d="{ring}" fill="{red}"/>', union(box, ring_box), 8, "Call Sheet")
         files[logo / f"call-sheet-wordmark{suffix}.svg"] = svg(f'<path d="{d}" fill="{ink}"/>', box, 6, "Call Sheet")
 
-    # With the line.  The tagline is PD Head italic, a third of the wordmark.
-    tag, tag_box = letters("Know your call time.", 34, wght=520, ital=1, tracking=-.01, y=box[3] + 64)
-    tag_box_x = box[0] + 6
-    tag, tag_box = letters("Know your call time.", 34, wght=520, ital=1, tracking=-.01, x=tag_box_x, y=box[3] + 64)
+    # With the line, in PD Head at about a third of the wordmark, on two lines.
+    line1, b1 = letters("Find film and TV grants, labs", 30, wght=500, tracking=-.015, x=box[0] + 4, y=box[3] + 58)
+    line2, b2 = letters("and festivals before they close.", 30, wght=500, tracking=-.015, x=box[0] + 4, y=box[3] + 92)
+    tag, tag_box = line1 + line2, union(b1, b2)
     for suffix, (ink, red) in list(schemes.items())[:2]:
         files[logo / f"call-sheet-logo-tagline{suffix}.svg"] = svg(
-            f'<path d="{d}" fill="{ink}"/><path d="{ring}" fill="{red}"/><path d="{tag}" fill="{ink}"/>', union(box, ring_box, tag_box), 8, "Call Sheet. Know your call time.")
+            f'<path d="{d}" fill="{ink}"/><path d="{ring}" fill="{red}"/><path d="{tag}" fill="{ink}"/>', union(box, ring_box, tag_box), 8,
+            "Call Sheet. Find film and TV grants, labs and festivals before they close.")
 
     # Endorsed: by pitch.dog, in PD Body Alt, under the end of the wordmark.
     by, by_box = letters("by pitch.dog", 26, file="pd-body-alt-roman.woff2", wght=500, tracking=0)

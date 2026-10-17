@@ -1,6 +1,6 @@
 # Call Sheet, the brand
 
-On a film set, the call sheet tells everyone where to be and when. The call time is the one number nobody misses. Our Call Sheet does the same job for grants, labs, markets and festivals: the deadline is your call time.
+Call Sheet is a free list of film and TV grants, labs and festivals, sorted by deadline. The name comes from the film set, where the call sheet tells everyone where to be and when.
 
 The identity comes from three things everyone who has made a film has done:
 
@@ -8,7 +8,7 @@ The identity comes from three things everyone who has made a film has done:
 - **Fold the corner.** A dog-ear marks the page you'll come back to. It is the Save button made paper, and a small wink at pitch.dog.
 - **Change the colour of the pages.** When a shooting script changes, the new pages come out in the next colour: white, blue, pink, yellow, green, goldenrod, buff, salmon, cherry. Call Sheet comes out the same way. Each edition starts on white, and each monthly update takes the next colour, so a returning visitor can see at a glance that something changed.
 
-The line is **Know your call time.**
+The line says what it is: **Find film and TV grants, labs and festivals before they close.** Say it plainly, everywhere. If a sentence needs the brand story to make sense, it's the wrong sentence.
 
 ## The marks
 
@@ -16,7 +16,7 @@ The line is **Know your call time.**
 | --- | --- |
 | `logo/call-sheet-logo.svg` | The logo. "Call Sheet" with Call circled. Use it wherever there's room. |
 | `logo/call-sheet-logo-reverse.svg` | The logo on ink or a dark photo. |
-| `logo/call-sheet-logo-tagline.svg` | With "Know your call time." for covers, end cards and posters. |
+| `logo/call-sheet-logo-tagline.svg` | With the line, for covers, end cards and posters. |
 | `logo/call-sheet-logo-endorsed.svg` | With "by pitch.dog", where people won't know who made it. |
 | `logo/call-sheet-wordmark.svg` | Without the loop, when the loop would sit on something busy or the logo is under 120 px wide. |
 | `logo/call-sheet-symbol.svg` | The symbol: the circled Cs on a dog-eared sheet. Favicons, app icons and stickers. |
@@ -52,8 +52,8 @@ Red is for the hand: the loop, the dog-ear, a tick. If something is red and wasn
 
 All type comes from the [pitch.dog type system](https://github.com/bomkino/pitchdog-type-system), through its roles. Don't set sizes or weights by hand.
 
-- **PD Head**, heavy and soft, for the logo, display lines and big numbers. Its italic carries the line, "Know your call time."
-- **PD Eyebrow**, the typewriter, for labels written the way a call sheet labels its boxes: CALL TIME, LOCATION, WHAT TO BRING, EDITION 1 · WHITE PAGES.
+- **PD Head**, heavy and soft, for the logo, display lines, the line and big numbers.
+- **PD Eyebrow**, the typewriter, for labels written the way a call sheet labels its boxes: WHO CAN APPLY, YOU GET, WHAT TO BRING, UPDATED 17 OCT.
 - **PD Body** for everything you read.
 
 The logo letters are PD Head at weight 820, outlined. `tools/make_brand.py` draws every SVG here from the type system's font files, so a change to the drawing happens in code, not by hand.
@@ -63,6 +63,8 @@ The logo letters are PD Head at weight 820, outlined. `tools/make_brand.py` draw
 Lay things out like production paperwork: ruled boxes, labels in the corner, one big number or date that matters, and lots of paper. Then let the hand in: one loop, one dog-ear, maybe a tick. Paper grain and a little warmth are welcome. Gradients, glows and stock photos aren't.
 
 ## Voice
+
+Direct and human. Say what it is, who it's for and what to do next, in words anyone would use. One idea per frame, per line, per button. The film-world touches (the loop, the folded corner, the page colours) are for the eye; never make a reader decode them.
 
 Plain, warm, specific, a little funny, and honest about gaps. Say what a call gives, who can apply and when it closes, in that order. "Not published" is not "free". Never "every grant in the world"; say how many, and when we checked.
 
