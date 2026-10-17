@@ -6567,16 +6567,9 @@
       "state": "priced"
      },
      {
-      "amount": "$65",
-      "label": "Final fee",
-      "note": "Deadline 3 February 2027",
-      "stage": "application",
-      "state": "priced"
-     },
-     {
-      "amount": "$75",
-      "label": "I-Missed-The-Deadline fee",
-      "note": "Deadline 3 March 2027; the FAQ (with 2025–26 dates) also lists student fees of USD 30–50",
+      "amount": "$55",
+      "label": "Regular fee",
+      "note": "Deadline 2 December 2026",
       "stage": "application",
       "state": "priced"
      },
@@ -6588,9 +6581,16 @@
       "state": "priced"
      },
      {
-      "amount": "$55",
-      "label": "Regular fee",
-      "note": "Deadline 2 December 2026",
+      "amount": "$65",
+      "label": "Final fee",
+      "note": "Deadline 3 February 2027",
+      "stage": "application",
+      "state": "priced"
+     },
+     {
+      "amount": "$75",
+      "label": "I-Missed-The-Deadline fee",
+      "note": "Deadline 3 March 2027; the FAQ (with 2025–26 dates) also lists student fees of USD 30–50",
       "stage": "application",
       "state": "priced"
      }
@@ -6615,7 +6615,7 @@
     }
    ],
    "opens": "2026-07-01",
-   "organiser": "Canadian Short Screenplay Competition — rules",
+   "organiser": "Canadian Short Screenplay Competition",
    "organiser_country": "Canada",
    "pack": "festivals_and_industry",
    "portal_url": "https://filmfreeway.com/CanadianShortScreenplayCompetition",
@@ -6717,30 +6717,16 @@
     "checked_on": "2026-10-17",
     "items": [
      {
-      "amount": "CAD 70",
-      "label": "Mid-length, feature or episodic series, early deadline fee",
-      "note": "Early deadline 29 October 2026; 13% HST added within Canada",
-      "stage": "application",
-      "state": "priced"
-     },
-     {
-      "amount": "CAD 165",
-      "label": "Mid-length, feature or episodic series, late deadline fee",
-      "note": "Late deadline 4 January 2027; fees are non-refundable",
-      "stage": "application",
-      "state": "priced"
-     },
-     {
-      "amount": "CAD 120",
-      "label": "Mid-length, feature or episodic series, regular deadline fee",
-      "note": "Regular deadline 10 December 2026",
-      "stage": "application",
-      "state": "priced"
-     },
-     {
       "amount": "CAD 35",
       "label": "Short (1–40 min), early deadline fee",
       "note": "Early deadline 29 October 2026; 13% HST added within Canada",
+      "stage": "application",
+      "state": "priced"
+     },
+     {
+      "amount": "CAD 50",
+      "label": "Short (1–40 min), regular deadline fee",
+      "note": "Regular deadline 10 December 2026",
       "stage": "application",
       "state": "priced"
      },
@@ -6752,9 +6738,23 @@
       "state": "priced"
      },
      {
-      "amount": "CAD 50",
-      "label": "Short (1–40 min), regular deadline fee",
+      "amount": "CAD 70",
+      "label": "Mid-length, feature or episodic series, early deadline fee",
+      "note": "Early deadline 29 October 2026; 13% HST added within Canada",
+      "stage": "application",
+      "state": "priced"
+     },
+     {
+      "amount": "CAD 120",
+      "label": "Mid-length, feature or episodic series, regular deadline fee",
       "note": "Regular deadline 10 December 2026",
+      "stage": "application",
+      "state": "priced"
+     },
+     {
+      "amount": "CAD 165",
+      "label": "Mid-length, feature or episodic series, late deadline fee",
+      "note": "Late deadline 4 January 2027; fees are non-refundable",
       "stage": "application",
       "state": "priced"
      }
@@ -7005,15 +7005,8 @@
     "checked_on": "2026-10-17",
     "items": [
      {
-      "amount": "$70",
-      "label": "Feature deadline fee",
-      "note": null,
-      "stage": "application",
-      "state": "priced"
-     },
-     {
-      "amount": "$60",
-      "label": "Feature early-bird fee",
+      "amount": "$30",
+      "label": "Short film early-bird fee",
       "note": null,
       "stage": "application",
       "state": "priced"
@@ -7026,8 +7019,15 @@
       "state": "priced"
      },
      {
-      "amount": "$30",
-      "label": "Short film early-bird fee",
+      "amount": "$60",
+      "label": "Feature early-bird fee",
+      "note": null,
+      "stage": "application",
+      "state": "priced"
+     },
+     {
+      "amount": "$70",
+      "label": "Feature deadline fee",
       "note": null,
       "stage": "application",
       "state": "priced"
@@ -7430,7 +7430,7 @@
    "official_url": "https://www.luxorafricanfilmfestival.com/en/PressZone/News/Luxor%20African%20Film%20Festival%20Opens%20Film%20Submissions%20for%20its%2016th%20Edition",
    "open_questions": [],
    "opens": "2026-08-21",
-   "organiser": "Luxor African Film Festival — 16th edition call",
+   "organiser": "Luxor African Film Festival",
    "organiser_country": "Egypt",
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -7708,7 +7708,7 @@
     }
    ],
    "opens": null,
-   "organiser": "Hot Docs Deal Maker",
+   "organiser": "Hot Docs",
    "organiser_country": "Canada",
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -7843,7 +7843,7 @@
    "official_url": "https://hotdocs.ca/industry/conference/deal-maker/submit-deal-maker",
    "open_questions": [],
    "opens": null,
-   "organiser": "Hot Docs Deal Maker — apply",
+   "organiser": "Hot Docs",
    "organiser_country": "Canada",
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -7933,16 +7933,16 @@
     "checked_on": "2026-10-17",
     "items": [
      {
-      "amount": "AUD 76.50",
-      "label": "Late deadline fee",
-      "note": "Inc GST, per project, by 8 November 2026; the guidelines PDF says AUD 75.00 plus a 2.5% card fee",
+      "amount": "AUD 66.50",
+      "label": "Regular deadline fee",
+      "note": "Inc GST, per project, by 1 November 2026; the guidelines PDF says AUD 65.00 plus a 2.5% card fee",
       "stage": "application",
       "state": "priced"
      },
      {
-      "amount": "AUD 66.50",
-      "label": "Regular deadline fee",
-      "note": "Inc GST, per project, by 1 November 2026; the guidelines PDF says AUD 65.00 plus a 2.5% card fee",
+      "amount": "AUD 76.50",
+      "label": "Late deadline fee",
+      "note": "Inc GST, per project, by 8 November 2026; the guidelines PDF says AUD 75.00 plus a 2.5% card fee",
       "stage": "application",
       "state": "priced"
      },
@@ -8964,16 +8964,16 @@
       "state": "priced"
      },
      {
-      "amount": "NZD 250",
-      "label": "Late fee",
-      "note": "Until 20 December 2026",
+      "amount": "NZD 150",
+      "label": "Regular fee",
+      "note": "Web page says NZ$150; the submission guide PDF says NZ$175",
       "stage": "application",
       "state": "priced"
      },
      {
-      "amount": "NZD 150",
-      "label": "Regular fee",
-      "note": "Web page says NZ$150; the submission guide PDF says NZ$175",
+      "amount": "NZD 250",
+      "label": "Late fee",
+      "note": "Until 20 December 2026",
       "stage": "application",
       "state": "priced"
      }
@@ -9227,15 +9227,15 @@
     "checked_on": "2026-10-17",
     "items": [
      {
-      "amount": "$15",
-      "label": "WIP feature deadline fee",
+      "amount": "$10",
+      "label": "WIP feature early-bird fee",
       "note": null,
       "stage": "application",
       "state": "priced"
      },
      {
-      "amount": "$10",
-      "label": "WIP feature early-bird fee",
+      "amount": "$15",
+      "label": "WIP feature deadline fee",
       "note": null,
       "stage": "application",
       "state": "priced"
@@ -10359,7 +10359,7 @@
    "official_url": "https://twlstories.org/faqs/canada-lab/",
    "open_questions": [],
    "opens": null,
-   "organiser": "The Writers Lab Canada — FAQ",
+   "organiser": "The Writers Lab Canada",
    "organiser_country": "Canada",
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -13744,7 +13744,7 @@
    "official_url": "https://seriesmania.com/forum/en/co-pro-pitching-sessions/",
    "open_questions": [],
    "opens": "2026-10-06",
-   "organiser": "Series Mania Co-Pro Pitching Sessions — call",
+   "organiser": "Series Mania Co-Pro Pitching Sessions",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -13875,7 +13875,7 @@
    "official_url": "https://www.torinofilmlab.it/labs/scriptlab---story-editing/scriptlab-2027",
    "open_questions": [],
    "opens": null,
-   "organiser": "TorinoFilmLab ScriptLab — call",
+   "organiser": "TorinoFilmLab ScriptLab",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -13997,7 +13997,7 @@
    "official_url": "https://www.torinofilmlab.it/labs/featurelab/featurelab-2027",
    "open_questions": [],
    "opens": null,
-   "organiser": "TorinoFilmLab FeatureLab — call",
+   "organiser": "TorinoFilmLab FeatureLab",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -14102,7 +14102,7 @@
    "official_url": "https://cphdox.dk/forum-rules-and-regulations/",
    "open_questions": [],
    "opens": null,
-   "organiser": "CPH:FORUM — call",
+   "organiser": "CPH:FORUM",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -14411,7 +14411,7 @@
    "official_url": "https://www.cartoon-media.eu/movie/submit-your-project/schedule-deadlines",
    "open_questions": [],
    "opens": null,
-   "organiser": "Cartoon Movie — call",
+   "organiser": "Cartoon Movie",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -14561,7 +14561,7 @@
    "official_url": "https://www.lecourt-clermont.org/wp-content/uploads/2026/08/EC27_appel_ENG_final.pdf",
    "open_questions": [],
    "opens": null,
-   "organiser": "Euro Connection — call",
+   "organiser": "Euro Connection",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -15035,15 +15035,15 @@
       "state": "free_or_explicit_zero"
      },
      {
-      "amount": "€1,890",
-      "label": "Tuition fee if selected (duo)",
+      "amount": "€1,090",
+      "label": "Tuition fee if selected (solo)",
       "note": "Incl. VAT; travel, accommodation and meals not included",
       "stage": "selected",
       "state": "priced"
      },
      {
-      "amount": "€1,090",
-      "label": "Tuition fee if selected (solo)",
+      "amount": "€1,890",
+      "label": "Tuition fee if selected (duo)",
       "note": "Incl. VAT; travel, accommodation and meals not included",
       "stage": "selected",
       "state": "priced"
@@ -15070,7 +15070,7 @@
    "official_url": "https://seriesmania.com/institute/en/program/writers-campus/",
    "open_questions": [],
    "opens": null,
-   "organiser": "Series Mania Writers Campus — call",
+   "organiser": "Series Mania Writers Campus",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -15234,7 +15234,7 @@
    "official_url": "https://www.midpoint-institute.eu/en/detail/midpoint-feature-launch-2027-7CbDOS",
    "open_questions": [],
    "opens": null,
-   "organiser": "MIDPOINT Feature Launch — call",
+   "organiser": "MIDPOINT Feature Launch",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -15344,7 +15344,7 @@
    "official_url": "https://filmfestival.gr/en/tidf/tidf-agora/thessaloniki-pitching-forum/",
    "open_questions": [],
    "opens": "2026-09-18",
-   "organiser": "Thessaloniki Pitching Forum — call",
+   "organiser": "Thessaloniki Pitching Forum",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -15496,7 +15496,7 @@
    "official_url": "https://docsbarcelona.com/en/docsbarcelona-2027-opens-the-call-for-submitting-documentaries-for-its-30th-edition/",
    "open_questions": [],
    "opens": "2026-11-20",
-   "organiser": "DocsBarcelona Pro — call",
+   "organiser": "DocsBarcelona Pro",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -16166,7 +16166,7 @@
    "official_url": "https://www.midpoint-institute.eu/en/detail/midpoint-focus-queer-2027-3kReXZ",
    "open_questions": [],
    "opens": null,
-   "organiser": "MIDPOINT Focus Queer — call",
+   "organiser": "MIDPOINT Focus Queer",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -16247,13 +16247,6 @@
     "checked_on": "2026-10-17",
     "items": [
      {
-      "amount": "€2,300",
-      "label": "Extra participation fee for a second team member if selected",
-      "note": "Plus VAT if due; preliminary workshop is free",
-      "stage": "selected",
-      "state": "priced"
-     },
-     {
       "amount": "€3,000",
       "label": "Participation fee if selected, with a project",
       "note": "Plus VAT if due",
@@ -16264,6 +16257,13 @@
       "amount": "€750",
       "label": "Participation fee if selected, without a project",
       "note": "Plus VAT if due",
+      "stage": "selected",
+      "state": "priced"
+     },
+     {
+      "amount": "€2,300",
+      "label": "Extra participation fee for a second team member if selected",
+      "note": "Plus VAT if due; preliminary workshop is free",
       "stage": "selected",
       "state": "priced"
      }
@@ -16289,7 +16289,7 @@
    "official_url": "https://www.torinofilmlab.it/labs/comedylab/comedylab-2027",
    "open_questions": [],
    "opens": null,
-   "organiser": "TorinoFilmLab ComedyLab — call",
+   "organiser": "TorinoFilmLab ComedyLab",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -16387,30 +16387,16 @@
    "fee": {
     "items": [
      {
-      "amount": null,
-      "label": null,
-      "note": "Standard entry; through 2026-12-07. Not a feedback or membership rate.",
-      "stage": "application",
-      "state": "unknown_or_conditional"
-     },
-     {
-      "amount": null,
-      "label": null,
-      "note": "Standard entry; through 2027-01-18. Not a feedback or membership rate.",
-      "stage": "application",
-      "state": "unknown_or_conditional"
-     },
-     {
-      "amount": null,
-      "label": null,
-      "note": "Standard entry; through 2027-03-08. Not a feedback or membership rate.",
-      "stage": "application",
-      "state": "unknown_or_conditional"
-     },
-     {
       "amount": "£50",
       "label": "TV pilot — early entry",
       "note": "Standard entry; through 2026-12-07. Not a feedback or membership rate.",
+      "stage": "application",
+      "state": "priced"
+     },
+     {
+      "amount": "£60",
+      "label": "TV pilot — regular entry",
+      "note": "Standard entry; through 2027-01-18. Not a feedback or membership rate.",
       "stage": "application",
       "state": "priced"
      },
@@ -16422,11 +16408,25 @@
       "state": "priced"
      },
      {
-      "amount": "£60",
-      "label": "TV pilot — regular entry",
+      "amount": null,
+      "label": null,
+      "note": "Standard entry; through 2026-12-07. Not a feedback or membership rate.",
+      "stage": "application",
+      "state": "unknown_or_conditional"
+     },
+     {
+      "amount": null,
+      "label": null,
       "note": "Standard entry; through 2027-01-18. Not a feedback or membership rate.",
       "stage": "application",
-      "state": "priced"
+      "state": "unknown_or_conditional"
+     },
+     {
+      "amount": null,
+      "label": null,
+      "note": "Standard entry; through 2027-03-08. Not a feedback or membership rate.",
+      "stage": "application",
+      "state": "unknown_or_conditional"
      }
     ],
     "state": "priced",
@@ -16568,16 +16568,16 @@
       "state": "priced"
      },
      {
-      "amount": "£90",
-      "label": "Feature — late entry",
-      "note": "Standard entry; through 2027-03-08. Not a feedback or membership rate.",
+      "amount": "£75",
+      "label": "Feature — regular entry",
+      "note": "Standard entry; through 2027-01-18. Not a feedback or membership rate.",
       "stage": "application",
       "state": "priced"
      },
      {
-      "amount": "£75",
-      "label": "Feature — regular entry",
-      "note": "Standard entry; through 2027-01-18. Not a feedback or membership rate.",
+      "amount": "£90",
+      "label": "Feature — late entry",
+      "note": "Standard entry; through 2027-03-08. Not a feedback or membership rate.",
       "stage": "application",
       "state": "priced"
      }
@@ -16714,30 +16714,16 @@
    "fee": {
     "items": [
      {
-      "amount": null,
-      "label": null,
-      "note": "Standard entry; through 2026-12-07. Not a feedback or membership rate.",
-      "stage": "application",
-      "state": "unknown_or_conditional"
-     },
-     {
-      "amount": null,
-      "label": null,
-      "note": "Standard entry; through 2027-01-18. Not a feedback or membership rate.",
-      "stage": "application",
-      "state": "unknown_or_conditional"
-     },
-     {
-      "amount": null,
-      "label": null,
-      "note": "Standard entry; through 2027-03-08. Not a feedback or membership rate.",
-      "stage": "application",
-      "state": "unknown_or_conditional"
-     },
-     {
       "amount": "£35",
       "label": "Short — early entry",
       "note": "Standard entry; through 2026-12-07. Not a feedback or membership rate.",
+      "stage": "application",
+      "state": "priced"
+     },
+     {
+      "amount": "£45",
+      "label": "Short — regular entry",
+      "note": "Standard entry; through 2027-01-18. Not a feedback or membership rate.",
       "stage": "application",
       "state": "priced"
      },
@@ -16749,11 +16735,25 @@
       "state": "priced"
      },
      {
-      "amount": "£45",
-      "label": "Short — regular entry",
+      "amount": null,
+      "label": null,
+      "note": "Standard entry; through 2026-12-07. Not a feedback or membership rate.",
+      "stage": "application",
+      "state": "unknown_or_conditional"
+     },
+     {
+      "amount": null,
+      "label": null,
       "note": "Standard entry; through 2027-01-18. Not a feedback or membership rate.",
       "stage": "application",
-      "state": "priced"
+      "state": "unknown_or_conditional"
+     },
+     {
+      "amount": null,
+      "label": null,
+      "note": "Standard entry; through 2027-03-08. Not a feedback or membership rate.",
+      "stage": "application",
+      "state": "unknown_or_conditional"
      }
     ],
     "state": "priced",
@@ -16915,7 +16915,7 @@
    "official_url": "https://www.torinofilmlab.it/labs/serieslab/serieslab-2027",
    "open_questions": [],
    "opens": null,
-   "organiser": "TorinoFilmLab SeriesLab — call",
+   "organiser": "TorinoFilmLab SeriesLab",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -17219,6 +17219,13 @@
       "state": "free_or_explicit_zero"
      },
      {
+      "amount": "€3,600",
+      "label": "Participation fee if selected, team of two (optionally three) with a project",
+      "note": null,
+      "stage": "selected",
+      "state": "optional"
+     },
+     {
       "amount": "€400",
       "label": "Conference fee if selected, per team member for each on-site module",
       "note": null,
@@ -17231,13 +17238,6 @@
       "note": "Plus EUR 400 conference fee for each on-site module",
       "stage": "selected",
       "state": "priced"
-     },
-     {
-      "amount": "€3,600",
-      "label": "Participation fee if selected, team of two (optionally three) with a project",
-      "note": null,
-      "stage": "selected",
-      "state": "optional"
      }
     ],
     "state": "free",
@@ -17261,7 +17261,7 @@
    "official_url": "https://ceeanimation.eu/workshops/2026-cee-animation-workshop/call/",
    "open_questions": [],
    "opens": null,
-   "organiser": "CEE Animation Workshop — 2027 call",
+   "organiser": "CEE Animation Workshop",
    "organiser_country": null,
    "pack": "festivals_and_industry",
    "portal_url": null,
@@ -17362,13 +17362,6 @@
     "checked_on": "2026-10-17",
     "items": [
      {
-      "amount": "€4,000",
-      "label": "Residential costs if selected, three sessions",
-      "note": "Average; travel not included",
-      "stage": "selected",
-      "state": "priced"
-     },
-     {
       "amount": "€3,000",
       "label": "Tuition fee if selected, European participants",
       "note": null,
@@ -17379,6 +17372,13 @@
       "amount": "€1,500",
       "label": "Tuition fee if selected, participants from outside Europe or MEDIA low-capacity countries",
       "note": null,
+      "stage": "selected",
+      "state": "priced"
+     },
+     {
+      "amount": "€4,000",
+      "label": "Residential costs if selected, three sessions",
+      "note": "Average; travel not included",
       "stage": "selected",
       "state": "priced"
      }
@@ -17467,7 +17467,19 @@
   {
    "bring": [
     {
-     "item": "['Completed pilot PDF with dated cover.', 'Bios about 250 words each; logline up to 50 words; pilot synopsis up to 500; series overview up to 500.', 'Personal and thematic statements up to 250 words each; previous-work links optional.']",
+     "item": "Completed pilot PDF with dated cover.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "Bios about 250 words each; logline up to 50 words; pilot synopsis up to 500; series overview up to 500.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "Personal and thematic statements up to 250 words each; previous-work links optional.",
      "limit": null,
      "note": null,
      "optional": false
@@ -17609,7 +17621,19 @@
   {
    "bring": [
     {
-     "item": "['Existing feature or pilot.', 'Climate qualification description and programme intake questions.', 'If selected: revised draft and short completion report after the mentorship period.']",
+     "item": "Existing feature or pilot.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "Climate qualification description and programme intake questions.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "If selected: revised draft and short completion report after the mentorship period.",
      "limit": null,
      "note": null,
      "optional": false
@@ -17717,7 +17741,13 @@
   {
    "bring": [
     {
-     "item": "['Completed feature sample, not a TV pilot, short, play or prose.', 'Programme questions and new-feature intention; hosted script plus evaluation or approved exemption.']",
+     "item": "Completed feature sample, not a TV pilot, short, play or prose.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "Programme questions and new-feature intention; hosted script plus evaluation or approved exemption.",
      "limit": null,
      "note": null,
      "optional": false
@@ -17854,7 +17884,13 @@
   {
    "bring": [
     {
-     "item": "['Artist/project application and affiliation documentation or agreed documentation process.', 'Full current form and exact media specifications require portal confirmation.']",
+     "item": "Artist/project application and affiliation documentation or agreed documentation process.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "Full current form and exact media specifications require portal confirmation.",
      "limit": null,
      "note": null,
      "optional": false
@@ -18000,7 +18036,7 @@
   {
    "bring": [
     {
-     "item": "['Filmmaker/project application; exact form limits and sample specifications not verified.']",
+     "item": "Filmmaker/project application; exact form limits and sample specifications not verified.",
      "limit": null,
      "note": null,
      "optional": false
@@ -18142,7 +18178,19 @@
   {
    "bring": [
     {
-     "item": "['Script at most ten pages; budget and production schedule.', 'CV, approximately 150-word bio, one-to-three-minute pitch video.', 'Pitch deck optional, not a replacement for the script.']",
+     "item": "Script at most ten pages; budget and production schedule.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "CV, approximately 150-word bio, one-to-three-minute pitch video.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "Pitch deck optional, not a replacement for the script.",
      "limit": null,
      "note": null,
      "optional": false
@@ -18245,7 +18293,37 @@
   {
    "bring": [
     {
-     "item": "['Fiction: full screenplay of at most 12 pages. Documentary: treatment of at most 10 pages. These are not interchangeable.', 'Budget and schedule; a prior directed sample made in 2017 or later, under 40 minutes. A qualifying episodic/music-video sample can be acceptable; a reel, trailer or proof-of-concept alone is not.', 'New short of at most 12 minutes; sample eligibility and the two-short directing-credit requirement are separate checks.', 'Two eligible directorial work samples must be hosted on Vimeo, not on YouTube or general file-sharing platforms; each must satisfy the published sample rules.', 'Director biography/CV, artist statement, mentorship and distribution goals, English application materials and properly cleared documentary access/rights are also required.', 'Hybrid projects are welcomed by the FAQ, but must select the appropriate narrative/documentary application path and its exact screenplay or treatment requirements.']",
+     "item": "Fiction: full screenplay of at most 12 pages. Documentary: treatment of at most 10 pages. These are not interchangeable.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "Budget and schedule; a prior directed sample made in 2017 or later, under 40 minutes. A qualifying episodic/music-video sample can be acceptable; a reel, trailer or proof-of-concept alone is not.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "New short of at most 12 minutes; sample eligibility and the two-short directing-credit requirement are separate checks.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "Two eligible directorial work samples must be hosted on Vimeo, not on YouTube or general file-sharing platforms; each must satisfy the published sample rules.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "Director biography/CV, artist statement, mentorship and distribution goals, English application materials and properly cleared documentary access/rights are also required.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "Hybrid projects are welcomed by the FAQ, but must select the appropriate narrative/documentary application path and its exact screenplay or treatment requirements.",
      "limit": null,
      "note": null,
      "optional": false
@@ -18368,7 +18446,13 @@
   {
    "bring": [
     {
-     "item": "['Cover letter; synopsis/outline; distribution plan; crew biographies; complete project budget.', 'For fiction: one–two-page synopsis/outline and the first ten script pages. For documentary: one–six-page proposal. Work sample is optional.']",
+     "item": "Cover letter; synopsis/outline; distribution plan; crew biographies; complete project budget.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "For fiction: one–two-page synopsis/outline and the first ten script pages. For documentary: one–six-page proposal. Work sample is optional.",
      "limit": null,
      "note": null,
      "optional": false
@@ -18499,7 +18583,13 @@
   {
    "bring": [
     {
-     "item": "['Cover letter; one–two-page synopsis; fundraising and distribution plan; crew information; budget; student identification.', 'A work sample is optional; a reel may be offered where the form permits it. Confirm exact upload fields.']",
+     "item": "Cover letter; one–two-page synopsis; fundraising and distribution plan; crew information; budget; student identification.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "A work sample is optional; a reel may be offered where the form permits it. Confirm exact upload fields.",
      "limit": null,
      "note": null,
      "optional": false
@@ -18617,7 +18707,13 @@
   {
    "bring": [
     {
-     "item": "['Questionnaire, printed mailed request, then complete online project proposal.', 'Budget and public-access plan; follow the live request process for work-sample specifications.']",
+     "item": "Questionnaire, printed mailed request, then complete online project proposal.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "Budget and public-access plan; follow the live request process for work-sample specifications.",
      "limit": null,
      "note": null,
      "optional": false
@@ -18760,7 +18856,19 @@
   {
    "bring": [
     {
-     "item": "['New-work proposal, detailed budget and non-grant contribution; evidence of Queens residence or workspace; public-engagement plan.', 'Work samples may show completed or in-progress work; preliminary plans can be relevant to a new project. Screenwriting is within the literary-arts scope.', 'Use NYFA’s mandatory project-budget template, not a personal spreadsheet template. A virtual public component is allowed if live and primarily serving Queens audiences; a permanent upload alone is not sufficient.']",
+     "item": "New-work proposal, detailed budget and non-grant contribution; evidence of Queens residence or workspace; public-engagement plan.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "Work samples may show completed or in-progress work; preliminary plans can be relevant to a new project. Screenwriting is within the literary-arts scope.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "Use NYFA’s mandatory project-budget template, not a personal spreadsheet template. A virtual public component is allowed if live and primarily serving Queens audiences; a permanent upload alone is not sufficient.",
      "limit": null,
      "note": null,
      "optional": false
@@ -18883,7 +18991,7 @@
   {
    "bring": [
     {
-     "item": "['Project proposal, budget and director experience/work samples; exact lengths and uploads must be confirmed in SlideRoom.']",
+     "item": "Project proposal, budget and director experience/work samples; exact lengths and uploads must be confirmed in SlideRoom.",
      "limit": null,
      "note": null,
      "optional": false
@@ -18998,7 +19106,7 @@
   {
    "bring": [
     {
-     "item": "['Project proposal, budget and director experience/work samples; exact lengths and uploads must be confirmed in SlideRoom.']",
+     "item": "Project proposal, budget and director experience/work samples; exact lengths and uploads must be confirmed in SlideRoom.",
      "limit": null,
      "note": null,
      "optional": false
@@ -19113,7 +19221,7 @@
   {
    "bring": [
     {
-     "item": "['Project proposal, budget and director experience/work samples; exact lengths and uploads must be confirmed in SlideRoom.']",
+     "item": "Project proposal, budget and director experience/work samples; exact lengths and uploads must be confirmed in SlideRoom.",
      "limit": null,
      "note": null,
      "optional": false
@@ -19226,7 +19334,13 @@
   {
    "bring": [
     {
-     "item": "['Grant application and project budget; original project and rights information.', 'A free IMGN account and a production book containing a script breakdown and script coverage. Tutorial features such as scheduling/previsualisation are not silently promoted to mandatory grant attachments.']",
+     "item": "Grant application and project budget; original project and rights information.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "A free IMGN account and a production book containing a script breakdown and script coverage. Tutorial features such as scheduling/previsualisation are not silently promoted to mandatory grant attachments.",
      "limit": null,
      "note": null,
      "optional": false
@@ -19269,15 +19383,15 @@
       "state": "free_or_explicit_zero"
      },
      {
-      "amount": "$45",
-      "label": "Optional fiscal sponsorship, expedited",
+      "amount": "$15",
+      "label": "Optional fiscal sponsorship, standard",
       "note": "Only if you also apply to the optional Fiscal Sponsorship Program",
       "stage": "application",
       "state": "optional"
      },
      {
-      "amount": "$15",
-      "label": "Optional fiscal sponsorship, standard",
+      "amount": "$45",
+      "label": "Optional fiscal sponsorship, expedited",
       "note": "Only if you also apply to the optional Fiscal Sponsorship Program",
       "stage": "application",
       "state": "optional"
@@ -19368,7 +19482,13 @@
   {
    "bring": [
     {
-     "item": "['Script at most fifteen pages OR treatment at most five.', 'Lookbook, $100,000 budget, team statements/CVs and directing samples.']",
+     "item": "Script at most fifteen pages OR treatment at most five.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "Lookbook, $100,000 budget, team statements/CVs and directing samples.",
      "limit": null,
      "note": null,
      "optional": false
@@ -19419,6 +19539,13 @@
     "checked_on": "2026-10-17",
     "items": [
      {
+      "amount": "$65",
+      "label": "Application fee (non-members)",
+      "note": null,
+      "stage": "application",
+      "state": "priced"
+     },
+     {
       "amount": "$45",
       "label": "Application fee (Film Independent Members)",
       "note": null,
@@ -19431,13 +19558,6 @@
       "note": "Free for Filmmaker Pro Members",
       "stage": "application",
       "state": "unknown_or_conditional"
-     },
-     {
-      "amount": "$65",
-      "label": "Application fee (non-members)",
-      "note": null,
-      "stage": "application",
-      "state": "priced"
      }
     ],
     "state": "priced",
@@ -19534,7 +19654,19 @@
   {
    "bring": [
     {
-     "item": "['Full English screenplay with required WGA/copyright registration.', 'Director and producer, $1.2 million production plan/budget.', 'At least five consecutive minutes of the director’s previous work; a montage reel alone is insufficient.']",
+     "item": "Full English screenplay with required WGA/copyright registration.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "Director and producer, $1.2 million production plan/budget.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "At least five consecutive minutes of the director’s previous work; a montage reel alone is insufficient.",
      "limit": null,
      "note": null,
      "optional": false
@@ -19687,7 +19819,13 @@
   {
    "bring": [
     {
-     "item": "['One sentence describing the idea and how funding will be used.', 'If selected: qualifying expenses, production and E&O insurance, completion/delivery evidence.']",
+     "item": "One sentence describing the idea and how funding will be used.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "If selected: qualifying expenses, production and E&O insurance, completion/delivery evidence.",
      "limit": null,
      "note": null,
      "optional": false
@@ -19805,7 +19943,13 @@
   {
    "bring": [
     {
-     "item": "['Letter of inquiry, project/impact strategy, budget and financing context.', 'Samples and additional documents requested through the funder’s subsequent process.']",
+     "item": "Letter of inquiry, project/impact strategy, budget and financing context.",
+     "limit": null,
+     "note": null,
+     "optional": false
+    },
+    {
+     "item": "Samples and additional documents requested through the funder’s subsequent process.",
      "limit": null,
      "note": null,
      "optional": false
@@ -19902,7 +20046,7 @@
   {
    "bring": [
     {
-     "item": "['Invitation to Step 2, proposal, budget, work samples and programme-specific materials.']",
+     "item": "Invitation to Step 2, proposal, budget, work samples and programme-specific materials.",
      "limit": null,
      "note": null,
      "optional": false
@@ -20038,7 +20182,7 @@
   {
    "bring": [
     {
-     "item": "['Invitation to Step 2, proposal, budget, work samples and programme-specific materials.']",
+     "item": "Invitation to Step 2, proposal, budget, work samples and programme-specific materials.",
      "limit": null,
      "note": null,
      "optional": false
@@ -20188,7 +20332,7 @@
   {
    "bring": [
     {
-     "item": "['Invitation to Step 2, proposal, budget, work samples and programme-specific materials.']",
+     "item": "Invitation to Step 2, proposal, budget, work samples and programme-specific materials.",
      "limit": null,
      "note": null,
      "optional": false
@@ -20378,15 +20522,15 @@
     "items": [
      {
       "amount": "$695",
-      "label": "Film pitch · Current page advertised deadline · Mandatory badge, not per pitch (until 2026-10-22)",
-      "note": "Verify the live form before paying for mandatory qualifying access.",
+      "label": "Film pitch · Older PDF deadline — discrepancy · Mandatory badge, not per pitch (until 2026-10-15)",
+      "note": "Known qualifying badge cost; basic badge is insufficient. Count once per attendee; confirm permission to enter both tracks.",
       "stage": "application",
       "state": "priced"
      },
      {
       "amount": "$695",
-      "label": "Film pitch · Older PDF deadline — discrepancy · Mandatory badge, not per pitch (until 2026-10-15)",
-      "note": "Known qualifying badge cost; basic badge is insufficient. Count once per attendee; confirm permission to enter both tracks.",
+      "label": "Film pitch · Current page advertised deadline · Mandatory badge, not per pitch (until 2026-10-22)",
+      "note": "Verify the live form before paying for mandatory qualifying access.",
       "stage": "application",
       "state": "priced"
      }
@@ -20537,15 +20681,15 @@
     "items": [
      {
       "amount": "$695",
-      "label": "TV series pitch · Current page advertised deadline · Mandatory badge, not per pitch (until 2026-10-22)",
-      "note": "Verify the live form before paying for mandatory qualifying access.",
+      "label": "TV series pitch · Older PDF deadline — discrepancy · Mandatory badge, not per pitch (until 2026-10-15)",
+      "note": "Known qualifying badge cost; basic badge is insufficient. Count once per attendee; confirm permission to enter both tracks.",
       "stage": "application",
       "state": "priced"
      },
      {
       "amount": "$695",
-      "label": "TV series pitch · Older PDF deadline — discrepancy · Mandatory badge, not per pitch (until 2026-10-15)",
-      "note": "Known qualifying badge cost; basic badge is insufficient. Count once per attendee; confirm permission to enter both tracks.",
+      "label": "TV series pitch · Current page advertised deadline · Mandatory badge, not per pitch (until 2026-10-22)",
+      "note": "Verify the live form before paying for mandatory qualifying access.",
       "stage": "application",
       "state": "priced"
      }
@@ -20694,16 +20838,16 @@
       "state": "priced"
      },
      {
-      "amount": "$68",
-      "label": "Late deadline fee",
-      "note": "Until 2 December 2026",
+      "amount": "$57",
+      "label": "Regular deadline fee",
+      "note": "Until 16 November 2026",
       "stage": "application",
       "state": "priced"
      },
      {
-      "amount": "$57",
-      "label": "Regular deadline fee",
-      "note": "Until 16 November 2026",
+      "amount": "$68",
+      "label": "Late deadline fee",
+      "note": "Until 2 December 2026",
       "stage": "application",
       "state": "priced"
      },
@@ -20855,16 +20999,16 @@
       "state": "priced"
      },
      {
-      "amount": "$68",
-      "label": "Late deadline fee",
-      "note": "Until 2 December 2026",
+      "amount": "$57",
+      "label": "Regular deadline fee",
+      "note": "Until 16 November 2026",
       "stage": "application",
       "state": "priced"
      },
      {
-      "amount": "$57",
-      "label": "Regular deadline fee",
-      "note": "Until 16 November 2026",
+      "amount": "$68",
+      "label": "Late deadline fee",
+      "note": "Until 2 December 2026",
       "stage": "application",
       "state": "priced"
      },
@@ -21023,6 +21167,13 @@
     "checked_on": "2026-10-17",
     "items": [
      {
+      "amount": "$80",
+      "label": "Late deadline fee",
+      "note": "Until 25 October 2026",
+      "stage": "application",
+      "state": "priced"
+     },
+     {
       "amount": "$90",
       "label": "Extended late deadline fee",
       "note": "Until 24 November 2026",
@@ -21033,13 +21184,6 @@
       "amount": "$95",
       "label": "Final deadline fee",
       "note": "Until 14 December 2026",
-      "stage": "application",
-      "state": "priced"
-     },
-     {
-      "amount": "$80",
-      "label": "Late deadline fee",
-      "note": "Until 25 October 2026",
       "stage": "application",
       "state": "priced"
      },
@@ -21332,20 +21476,6 @@
     "checked_on": "2026-10-17",
     "items": [
      {
-      "amount": "$25",
-      "label": "30-minute episodic or short screenplay, early",
-      "note": "USD 40 regular, USD 60 late, USD 75 final",
-      "stage": "application",
-      "state": "priced"
-     },
-     {
-      "amount": "$35",
-      "label": "60-minute episodic, early",
-      "note": "USD 50 regular, USD 70 late, USD 85 final",
-      "stage": "application",
-      "state": "priced"
-     },
-     {
       "amount": "$45",
       "label": "Feature screenplay, early",
       "note": null,
@@ -21353,8 +21483,8 @@
       "state": "priced"
      },
      {
-      "amount": "$95",
-      "label": "Feature screenplay, final",
+      "amount": "$60",
+      "label": "Feature screenplay, regular",
       "note": null,
       "stage": "application",
       "state": "priced"
@@ -21367,9 +21497,23 @@
       "state": "priced"
      },
      {
-      "amount": "$60",
-      "label": "Feature screenplay, regular",
+      "amount": "$95",
+      "label": "Feature screenplay, final",
       "note": null,
+      "stage": "application",
+      "state": "priced"
+     },
+     {
+      "amount": "$35",
+      "label": "60-minute episodic, early",
+      "note": "USD 50 regular, USD 70 late, USD 85 final",
+      "stage": "application",
+      "state": "priced"
+     },
+     {
+      "amount": "$25",
+      "label": "30-minute episodic or short screenplay, early",
+      "note": "USD 40 regular, USD 60 late, USD 75 final",
       "stage": "application",
       "state": "priced"
      },
@@ -21555,16 +21699,16 @@
       "state": "priced"
      },
      {
-      "amount": "$85",
-      "label": "Final fee",
-      "note": "Standard; student USD 65; FilmFreeway Gold USD 70",
+      "amount": "$65",
+      "label": "Regular fee",
+      "note": "Standard; student USD 45; FilmFreeway Gold USD 50",
       "stage": "application",
       "state": "priced"
      },
      {
-      "amount": "$65",
-      "label": "Regular fee",
-      "note": "Standard; student USD 45; FilmFreeway Gold USD 50",
+      "amount": "$85",
+      "label": "Final fee",
+      "note": "Standard; student USD 65; FilmFreeway Gold USD 70",
       "stage": "application",
       "state": "priced"
      }
@@ -21738,16 +21882,16 @@
       "state": "priced"
      },
      {
-      "amount": "$85",
-      "label": "Late deadline fee",
-      "note": "Until 14 December 2026, 8am CT",
+      "amount": "$65",
+      "label": "Regular deadline fee",
+      "note": "Until 23 November 2026, 8am CT",
       "stage": "application",
       "state": "priced"
      },
      {
-      "amount": "$65",
-      "label": "Regular deadline fee",
-      "note": "Until 23 November 2026, 8am CT",
+      "amount": "$85",
+      "label": "Late deadline fee",
+      "note": "Until 14 December 2026, 8am CT",
       "stage": "application",
       "state": "priced"
      },
@@ -21943,13 +22087,6 @@
    "fee": {
     "items": [
      {
-      "amount": "$140",
-      "label": "Feature script · Extended final (until 2026-11-06)",
-      "note": "Do not upload duplicate/revised entries; no AI writing/development. Calendar final 6 Nov vs introductory prose 5 Dec; conservative planning date.",
-      "stage": "application",
-      "state": "priced"
-     },
-     {
       "amount": "$120",
       "label": "Feature script · Late fee (until 2026-10-16)",
       "note": "Do not upload duplicate/revised entries; no AI writing/development.",
@@ -21957,16 +22094,23 @@
       "state": "priced"
      },
      {
-      "amount": "$110",
-      "label": "Short script · Extended final (until 2026-11-06)",
+      "amount": "$100",
+      "label": "Short script · Late fee (until 2026-10-16)",
+      "note": "Do not upload duplicate/revised entries; no AI writing/development.",
+      "stage": "application",
+      "state": "priced"
+     },
+     {
+      "amount": "$140",
+      "label": "Feature script · Extended final (until 2026-11-06)",
       "note": "Do not upload duplicate/revised entries; no AI writing/development. Calendar final 6 Nov vs introductory prose 5 Dec; conservative planning date.",
       "stage": "application",
       "state": "priced"
      },
      {
-      "amount": "$100",
-      "label": "Short script · Late fee (until 2026-10-16)",
-      "note": "Do not upload duplicate/revised entries; no AI writing/development.",
+      "amount": "$110",
+      "label": "Short script · Extended final (until 2026-11-06)",
+      "note": "Do not upload duplicate/revised entries; no AI writing/development. Calendar final 6 Nov vs introductory prose 5 Dec; conservative planning date.",
       "stage": "application",
       "state": "priced"
      }
@@ -22101,23 +22245,9 @@
       "state": "priced"
      },
      {
-      "amount": "$55",
-      "label": "30-minute TV · Late fee — historical (until 2026-10-09)",
-      "note": "Passed before this snapshot; retained for historical comparison, not available entry pricing.",
-      "stage": "application",
-      "state": "priced"
-     },
-     {
       "amount": "$90",
       "label": "60-minute TV · Final (until 2026-11-13)",
       "note": "Check exact 40-page short boundary. Unoptioned/unsold requirement.",
-      "stage": "application",
-      "state": "priced"
-     },
-     {
-      "amount": "$65",
-      "label": "60-minute TV · Late fee — historical (until 2026-10-09)",
-      "note": "Passed before this snapshot; retained for historical comparison, not available entry pricing.",
       "stage": "application",
       "state": "priced"
      },
@@ -22131,6 +22261,20 @@
      {
       "amount": "$70",
       "label": "Feature script · Late fee — historical (until 2026-10-09)",
+      "note": "Passed before this snapshot; retained for historical comparison, not available entry pricing.",
+      "stage": "application",
+      "state": "priced"
+     },
+     {
+      "amount": "$65",
+      "label": "60-minute TV · Late fee — historical (until 2026-10-09)",
+      "note": "Passed before this snapshot; retained for historical comparison, not available entry pricing.",
+      "stage": "application",
+      "state": "priced"
+     },
+     {
+      "amount": "$55",
+      "label": "30-minute TV · Late fee — historical (until 2026-10-09)",
       "note": "Passed before this snapshot; retained for historical comparison, not available entry pricing.",
       "stage": "application",
       "state": "priced"
@@ -22924,13 +23068,6 @@
    "fee": {
     "items": [
      {
-      "amount": "$85",
-      "label": "Feature · Extended final (until 2026-12-31)",
-      "note": "Arizona writer $10 discount by request; stacking not established.",
-      "stage": "application",
-      "state": "priced"
-     },
-     {
       "amount": "$75",
       "label": "Feature · Late fee (until 2026-11-30)",
       "note": "Arizona writer $10 discount by request; stacking not established.",
@@ -22940,6 +23077,13 @@
      {
       "amount": "$65",
       "label": "TV half-hour · Late fee (until 2026-11-30)",
+      "note": "Arizona writer $10 discount by request; stacking not established.",
+      "stage": "application",
+      "state": "priced"
+     },
+     {
+      "amount": "$85",
+      "label": "Feature · Extended final (until 2026-12-31)",
       "note": "Arizona writer $10 discount by request; stacking not established.",
       "stage": "application",
       "state": "priced"
@@ -23062,15 +23206,15 @@
    "fee": {
     "items": [
      {
-      "amount": "$50",
-      "label": "Feature / short screenplay · Extended final (until 2027-01-05)",
+      "amount": "$45",
+      "label": "Feature / short screenplay · Late fee (until 2026-11-21)",
       "note": "TV script category not verified.",
       "stage": "application",
       "state": "priced"
      },
      {
-      "amount": "$45",
-      "label": "Feature / short screenplay · Late fee (until 2026-11-21)",
+      "amount": "$50",
+      "label": "Feature / short screenplay · Extended final (until 2027-01-05)",
       "note": "TV script category not verified.",
       "stage": "application",
       "state": "priced"
@@ -23238,13 +23382,6 @@
     "checked_on": "2026-10-17",
     "items": [
      {
-      "amount": "$25",
-      "label": "Early Bird fee, FilmFreeway Gold",
-      "note": null,
-      "stage": "application",
-      "state": "priced"
-     },
-     {
       "amount": "$35",
       "label": "Early Bird fee, standard",
       "note": null,
@@ -23252,15 +23389,8 @@
       "state": "priced"
      },
      {
-      "amount": "$15",
-      "label": "Early Bird fee, student",
-      "note": null,
-      "stage": "application",
-      "state": "priced"
-     },
-     {
-      "amount": "$50",
-      "label": "Final fee, FilmFreeway Gold",
+      "amount": "$45",
+      "label": "Regular fee, standard",
       "note": null,
       "stage": "application",
       "state": "priced"
@@ -23273,6 +23403,20 @@
       "state": "priced"
      },
      {
+      "amount": "$15",
+      "label": "Early Bird fee, student",
+      "note": null,
+      "stage": "application",
+      "state": "priced"
+     },
+     {
+      "amount": "$20",
+      "label": "Regular fee, student",
+      "note": null,
+      "stage": "application",
+      "state": "priced"
+     },
+     {
       "amount": "$40",
       "label": "Final fee, student",
       "note": null,
@@ -23280,15 +23424,15 @@
       "state": "priced"
      },
      {
-      "amount": "$35",
-      "label": "Regular fee, FilmFreeway Gold",
+      "amount": "$25",
+      "label": "Early Bird fee, FilmFreeway Gold",
       "note": null,
       "stage": "application",
       "state": "priced"
      },
      {
-      "amount": "$45",
-      "label": "Regular fee, standard",
+      "amount": "$35",
+      "label": "Regular fee, FilmFreeway Gold",
       "note": null,
       "stage": "application",
       "state": "priced"
@@ -23428,16 +23572,16 @@
     "checked_on": "2026-10-17",
     "items": [
      {
-      "amount": "$60",
-      "label": "Extended deadline fee",
-      "note": "Until 24 February 2027",
+      "amount": "$50",
+      "label": "Official deadline fee",
+      "note": "Until 27 January 2027",
       "stage": "application",
       "state": "priced"
      },
      {
-      "amount": "$50",
-      "label": "Official deadline fee",
-      "note": "Until 27 January 2027",
+      "amount": "$60",
+      "label": "Extended deadline fee",
+      "note": "Until 24 February 2027",
       "stage": "application",
       "state": "priced"
      }

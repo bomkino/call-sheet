@@ -1938,7 +1938,8 @@
    },
    "who_line": "Independent production companies worldwide with a doc about 10–75% financed",
    "get_line": "Pitch to a round table of international commissioners and funders, with pitch training",
-   "caution": "Only independent production companies can apply, and each pitch team member must buy a Hot Docs industry pass if selected"
+   "caution": "Only independent production companies can apply, and each pitch team member must buy a Hot Docs industry pass if selected",
+   "organiser": "Hot Docs"
   },
   {
    "id": "opp:atlas:legacy:p03",
@@ -1967,7 +1968,8 @@
    },
    "who_line": "Documentary or factual projects worldwide, development to post, financing not closed",
    "get_line": "One-on-one pitch meetings with matched decision makers over three days",
-   "caution": "If selected, each pitch team member must buy a Hot Docs industry pass, priced only after selection; the form is shared with the Forum"
+   "caution": "If selected, each pitch team member must buy a Hot Docs industry pass, priced only after selection; the form is shared with the Forum",
+   "organiser": "Hot Docs"
   },
   {
    "id": "opp:atlas:legacy:p04",

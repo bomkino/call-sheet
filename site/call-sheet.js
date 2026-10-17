@@ -62,6 +62,8 @@ if (menuToggle && menu) {
     menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu')
     menu.setAttribute('aria-hidden', String(!open))
     menu.inert = !open
+    // The page behind the open menu is out of reach, so Tab stays in the menu.
+    for (const el of document.querySelectorAll('main, .footer, .pd-whatsapp-fab, .cs-sheetbar')) el.inert = open
     document.body.classList.toggle('mobile-menu-open', open)
     if (open) requestAnimationFrame(() => menu.querySelector('a')?.focus())
   }
@@ -140,7 +142,7 @@ function liveState ({ closes, opens, state }) {
   if (!closes) return state === 'watch_or_rolling' ? 'rolling' : 'tbc'
   if (closes < todayISO) return 'closed'
   if (opens && opens > todayISO) return 'later'
-  if (state === 'announced_not_open') return 'later'
+  if (state === 'announced_not_open' && !opens) return 'later'
   if (state === 'watch_or_rolling') return 'watch'
   return 'open'
 }
@@ -176,10 +178,9 @@ function placeMatch (where, code) {
   if (where.scope === 'worldwide') return 'yes'
   if (where.scope === 'unclear') return 'maybe'
   const listed = (where.countries || []).includes(code) || (where.regions || []).some(r => REGION_SETS[r]?.has(code))
-  if (listed) return 'yes'
-  // A national scheme (named countries only) rules out everyone else; a
-  // regional rule that's only partly spelled out is worth a check.
-  return where.confidence === 'stated' || !(where.regions || []).length ? 'no' : 'maybe'
+  // Outside every listed country and region is outside the call; the hidden
+  // ones are a click away ("Show them anyway").
+  return listed ? 'yes' : 'no'
 }
 
 // ------------------------------------------------------------------ store
@@ -187,7 +188,14 @@ function placeMatch (where, code) {
 function readSheet () {
   try {
     const data = JSON.parse(localStorage.getItem(STORE) || '{}')
-    return data && typeof data.items === 'object' ? data : { v: 1, items: {} }
+    if (!data || !data.items || typeof data.items !== 'object' || Array.isArray(data.items)) return { v: 1, items: {} }
+    // Keep only entries that look like ours, with a usable date.
+    const items = {}
+    for (const [slug, item] of Object.entries(data.items)) {
+      if (!/^[a-z0-9-]+$/.test(slug) || !item || typeof item !== 'object') continue
+      items[slug] = { ...item, closes: /^\d{4}-\d{2}-\d{2}$/.test(item.closes || '') ? item.closes : null }
+    }
+    return { v: 1, items }
   } catch { return { v: 1, items: {} } }
 }
 function writeSheet (sheet) {
@@ -255,7 +263,14 @@ function toggleSave (slug) {
     const snap = row ? snapshotFromRow(row) : (callPage?.dataset.call === slug ? snapshotFromPage(callPage) : { title: slug })
     sheet.items[slug] = { ...snap, status: 'shortlist', added: todayISO }
   }
-  writeSheet(sheet)
+  if (!writeSheet(sheet)) {
+    // Storage is blocked (private mode, a full disk): don't pretend it saved.
+    sheet = readSheet()
+    syncSaveButtons(slug)
+    renderSheet()
+    notice('Your browser is blocking storage here (a private window often does), so that call wasn’t saved.')
+    return
+  }
   syncSaveButtons(slug)
   renderSheet()
   const bar = document.querySelector('[data-sheetbar]')
@@ -291,6 +306,18 @@ if (refreshed) writeSheet(sheet)
 
 const dialog = document.querySelector('#cs-sheet')
 const sheetStatus = document.querySelector('[data-sheet-status]')
+function notice (text) {
+  let box = document.querySelector('.cs-notice')
+  if (!box) {
+    box = Object.assign(document.createElement('p'), { className: 'cs-notice' })
+    box.setAttribute('role', 'alert')
+    box.setAttribute('data-pd-type', 'body.small')
+    document.body.append(box)
+  }
+  box.textContent = text
+  clearTimeout(notice.t)
+  notice.t = setTimeout(() => box.remove(), 7000)
+}
 const say = text => { if (sheetStatus) { sheetStatus.textContent = text; clearTimeout(say.t); say.t = setTimeout(() => { sheetStatus.textContent = '' }, 4000) } }
 
 function sortedItems () {
@@ -302,6 +329,7 @@ function renderSheet () {
   const bar = document.querySelector('[data-sheetbar]')
   if (bar) {
     bar.hidden = items.length === 0
+    document.body.classList.toggle('has-sheetbar', items.length > 0)
     bar.querySelector('[data-sheet-count]').textContent = `${items.length} ${items.length === 1 ? 'call' : 'calls'} saved`
     const next = items.map(([, i]) => i.closes).filter(c => c && c >= todayISO).sort()[0]
     bar.querySelector('[data-sheet-next]').textContent = next ? `Next closes ${daysUntil(next) === 0 ? 'today' : daysUntil(next) === 1 ? 'tomorrow' : 'in ' + daysUntil(next) + ' days'}` : 'No upcoming deadlines'
@@ -310,23 +338,28 @@ function renderSheet () {
   if (!list) return
   document.querySelector('[data-sheet-empty]').hidden = items.length > 0
   document.querySelectorAll('[data-sheet-ics], [data-sheet-print], [data-sheet-share], [data-sheet-clear]').forEach(b => { b.disabled = items.length === 0 })
+  const el = (tag, props = {}, ...children) => { const node = Object.assign(document.createElement(tag), props); node.append(...children); return node }
   list.replaceChildren(...items.map(([slug, item]) => {
-    const li = document.createElement('li')
-    li.className = 'cs-sheet-item'
+    const title = item.title || slug
     const d = item.closes ? toDate(item.closes) : null
     const left = item.closes ? leftText(item.closes) : null
-    li.innerHTML = `
-      <span class="cs-date">${d ? `<span class="cs-day">${d.getUTCDate()}</span><span class="cs-month">${MONTHS[d.getUTCMonth()].slice(0, 3)}</span>` : '<span class="cs-day">—</span><span class="cs-month">No date</span>'}</span>
-      <span class="cs-sheet-meta">
-        <a href="${BASE}${encodeURIComponent(slug)}/" data-pd-type="label"></a>
-        <span class="cs-org" data-pd-type="body.small"></span>
-        ${left ? `<span class="cs-left ${left.cls}">${left.text}</span>` : ''}
-        <label><span class="sr-only">Status</span><select data-status="${slug}">${STATUSES.map(([v, t]) => `<option value="${v}"${item.status === v ? ' selected' : ''}>${t}</option>`).join('')}</select></label>
-      </span>
-      <button class="cs-sheet-remove" type="button" data-remove="${slug}" aria-label="Remove from my call sheet"><svg class="cs-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#cs-close"></use></svg></button>`
-    li.querySelector('a').textContent = item.title || slug
-    li.querySelector('.cs-org').textContent = item.organiser || ''
-    return li
+    const date = el('span', { className: 'cs-date' },
+      el('span', { className: 'cs-day', textContent: d ? d.getUTCDate() : '—' }),
+      el('span', { className: 'cs-month', textContent: d ? MONTHS[d.getUTCMonth()].slice(0, 3) : 'No date' }))
+    const link = el('a', { href: `${BASE}${encodeURIComponent(slug)}/`, textContent: title })
+    link.setAttribute('data-pd-type', 'label')
+    const org = el('span', { className: 'cs-org', textContent: item.organiser || '' })
+    org.setAttribute('data-pd-type', 'body.small')
+    const status = el('select', {}, ...STATUSES.map(([v, t]) => el('option', { value: v, textContent: t, selected: item.status === v })))
+    status.dataset.status = slug
+    status.setAttribute('aria-label', `Status of ${title}`)
+    const meta = el('span', { className: 'cs-sheet-meta' }, link, org)
+    if (left) meta.append(el('span', { className: `cs-left ${left.cls}`, textContent: left.text }))
+    meta.append(status)
+    const remove = el('button', { className: 'cs-sheet-remove', type: 'button', innerHTML: '<svg class="cs-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#cs-close"></use></svg>' })
+    remove.dataset.remove = slug
+    remove.setAttribute('aria-label', `Remove ${title} from my call sheet`)
+    return el('li', { className: 'cs-sheet-item' }, date, meta, remove)
   }))
 }
 
@@ -339,7 +372,15 @@ document.addEventListener('change', event => {
 })
 document.addEventListener('click', event => {
   const remove = event.target.closest('[data-remove]')
-  if (remove) toggleSave(remove.dataset.remove)
+  if (remove) {
+    const items = [...document.querySelectorAll('[data-remove]')]
+    const next = items[items.indexOf(remove) + 1] || items[items.indexOf(remove) - 1]
+    const nextSlug = next?.dataset.remove
+    toggleSave(remove.dataset.remove)
+    // Keep focus in the drawer: on the next call's remove button, or the close button.
+    const target = (nextSlug && [...document.querySelectorAll('[data-remove]')].find(b => b.dataset.remove === nextSlug)) || dialog?.querySelector('[data-close-sheet]')
+    target?.focus()
+  }
   if (event.target.closest('[data-open-sheet]')) openSheet()
   if (event.target.closest('[data-close-sheet]')) dialog?.close()
 })
@@ -386,7 +427,7 @@ function icsFor (entries) {
       'BEGIN:VALARM', 'ACTION:DISPLAY', fold(`DESCRIPTION:${esc('Closes tomorrow: ' + item.title)}`), 'TRIGGER:-P1D', 'END:VALARM', 'END:VEVENT')
   }
   lines.push('END:VCALENDAR')
-  return lines.join('\r\n') + '\r\n'
+  return lines.map(line => line.includes('\r\n') ? line : fold(line)).join('\r\n') + '\r\n'
 }
 function download (name, text, type) {
   const url = URL.createObjectURL(new Blob([text], { type }))
@@ -471,7 +512,7 @@ function bucketFor (row, live) {
   if (live === 'closed') return { key: 'z', title: 'Closed for this round', closed: true }
   if (!closes) return { key: 'y', title: 'No fixed date yet' }
   const days = daysUntil(closes)
-  if (days <= 7) return { key: '0', title: days === 0 ? 'Closes today' : 'Closes this week' }
+  if (days <= 7) return { key: '0', title: days === 0 ? 'Closes today' : 'In the next 7 days' }
   const d = toDate(closes)
   const now = toDate(todayISO)
   const sameMonth = d.getUTCFullYear() === now.getUTCFullYear() && d.getUTCMonth() === now.getUTCMonth()
@@ -495,25 +536,31 @@ if (form && groupsHost && listRows.length) {
     const open = !form.classList.contains('is-expanded')
     form.classList.toggle('is-expanded', open)
     more.setAttribute('aria-expanded', String(open))
+    more.querySelector('span').textContent = open ? 'Fewer filters' : 'More filters'
   })
 
   const facets = ['format', 'stage', 'kind', 'only']
   const params = new URLSearchParams(location.search)
+  // Only values the form offers: a hand-edited link can't produce "Filtered: , .".
+  const offered = facet => new Set([...form.querySelectorAll(`input[name="${facet}"]`)].map(box => box.value))
+  const listParam = facet => (params.get(facet) || '').split(',').filter(v => offered(facet).has(v))
+  const sharedSlugs = (params.get('sheet') || '').split(',').filter(Boolean)
   filters = {
-    q: params.get('q') || '',
+    q: (params.get('q') || '').slice(0, 80),
     from: (params.get('from') || '').toUpperCase(),
-    format: (params.get('format') || '').split(',').filter(Boolean),
-    stage: (params.get('stage') || '').split(',').filter(Boolean),
-    kind: (params.get('kind') || '').split(',').filter(Boolean),
-    only: (params.get('only') || '').split(',').filter(Boolean),
+    format: listParam('format'),
+    stage: listParam('stage'),
+    kind: listParam('kind'),
+    only: listParam('only'),
     all: params.get('all') === '1',
-    shared: (params.get('sheet') || '').split(',').filter(slug => rowBySlug.has(slug)),
+    shared: sharedSlugs.filter(slug => rowBySlug.has(slug)),
   }
+  const missingShared = sharedSlugs.length - filters.shared.length
   form.q.value = filters.q
   if (COUNTRY_CODES.includes(filters.from)) select.value = filters.from
   else filters.from = ''
   for (const facet of facets) form.querySelectorAll(`input[name="${facet}"]`).forEach(box => { box.checked = filters[facet].includes(box.value) })
-  if (filters.format.length || filters.stage.length || filters.kind.length) { form.classList.add('is-expanded'); more.setAttribute('aria-expanded', 'true') }
+  if (filters.format.length || filters.stage.length || filters.kind.length) { form.classList.add('is-expanded'); more.setAttribute('aria-expanded', 'true'); more.querySelector('span').textContent = 'Fewer filters' }
 
   // Fuzzy enough for typos: a query word matches a word in the call within one edit.
   const near = (a, b) => {
@@ -528,19 +575,28 @@ if (form && groupsHost && listRows.length) {
     }
     return edits + (a.length - i) + (b.length - j) <= 1
   }
-  const fold = text => text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
-  const words = new Map(listRows.map(row => [row, fold(row.dataset.search).split(/[^a-z0-9]+/).filter(Boolean)]))
-  const countryWords = new Map(countries.map(([code, name]) => [fold(name), code]))
+  const fold = text => text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+  const words = new Map(listRows.map(row => [row, fold(row.dataset.search).split(' ').filter(Boolean)]))
+  // Country names and everyday aliases, so "Kenya" or "UK" in the search box sets the place.
+  const ALIASES = { uk: 'GB', britain: 'GB', 'great britain': 'GB', england: 'GB', scotland: 'GB', wales: 'GB', 'northern ireland': 'GB', us: 'US', usa: 'US', america: 'US', 'united states of america': 'US', uae: 'AE', 'south korea': 'KR', korea: 'KR', holland: 'NL', 'czech republic': 'CZ', turkey: 'TR', 'ivory coast': 'CI', russia: 'RU', palestine: 'PS', kosovo: 'XK' }
+  const placeWords = new Map([...countries.map(([code, name]) => [fold(name), code]), ...Object.entries(ALIASES)])
   function matchesQuery (row, query) {
     if (!query) return true
-    const text = fold(row.dataset.search)
+    // A search that is just a place ("Kenya", "UK") finds what's open to people based there.
+    const place = queryPlace(query)
+    if (place) return placeMatch(JSON.parse(row.dataset.where), place) !== 'no'
+    const text = ` ${fold(row.dataset.search)} `
     const own = words.get(row)
-    return fold(query).split(/[^a-z0-9]+/).filter(Boolean).every(q => {
-      if (text.includes(q)) return true
-      const code = countryWords.get(q)
-      if (code && placeMatch(JSON.parse(row.dataset.where), code) === 'yes' && JSON.parse(row.dataset.where).scope !== 'worldwide') return true
+    return fold(query).split(' ').filter(Boolean).every(q => {
+      if (q === 'free' && row.dataset.fee === 'free') return true
+      // Short words match whole words only: "us" shouldn't find "focus".
+      if (q.length <= 3 ? own.some(w => w === q || (q.length === 3 && w.startsWith(q))) : text.includes(q)) return true
       return q.length >= 4 && own.some(w => near(q, w))
     })
+  }
+  function queryPlace (query) {
+    const code = placeWords.get(fold(query))
+    return code && COUNTRY_CODES.includes(code) ? code : null
   }
   const anyOf = (wanted, have) => !wanted.length || have.includes('any') || wanted.some(w => have.includes(w))
 
@@ -551,12 +607,19 @@ if (form && groupsHost && listRows.length) {
   const clear = document.querySelector('[data-clear]')
   const empty = document.querySelector('[data-empty]')
   const excludedEl = document.querySelector('[data-excluded]')
+  const filterJump = document.querySelector('[data-filter-jump]')
+  // Screen readers hear the result count once typing settles, not every keystroke.
+  const announcer = Object.assign(document.createElement('p'), { className: 'sr-only' })
+  announcer.setAttribute('aria-live', 'polite')
+  document.querySelector('.cs-results-head').append(announcer)
+  const announce = text => { clearTimeout(announce.t); announce.t = setTimeout(() => { announcer.textContent = text }, 600) }
 
   const sharedBanner = filters.shared.length ? (() => {
     const box = document.createElement('div')
     box.className = 'cs-shared'
     box.setAttribute('role', 'status')
-    box.innerHTML = `<p data-pd-type="body.default"><strong>Someone shared ${filters.shared.length} ${filters.shared.length === 1 ? 'call' : 'calls'} with you.</strong> Showing just those.</p><div class="button-row"><button class="button button--brand button--small" type="button" data-adopt>Add to my call sheet</button><button class="button button--small" type="button" data-show-all>Show every call</button></div>`
+    const gone = missingShared ? ` ${missingShared} more ${missingShared === 1 ? 'isn’t' : 'aren’t'} on Call Sheet any more.` : ''
+    box.innerHTML = `<p data-pd-type="body.default"><strong>Someone shared ${filters.shared.length} ${filters.shared.length === 1 ? 'call' : 'calls'} with you.</strong> Showing just those.${gone}</p><div class="button-row"><button class="button button--brand button--small" type="button" data-adopt>Add to my call sheet</button><button class="button button--small" type="button" data-show-all>Show every call</button></div>`
     document.querySelector('.cs-results-head').after(box)
     box.querySelector('[data-adopt]').addEventListener('click', () => {
       for (const slug of filters.shared) if (!saved(slug)) toggleSave(slug)
@@ -604,10 +667,10 @@ if (form && groupsHost && listRows.length) {
     let placeCls = ''
     if (filters.from) {
       const name = countryName(filters.from)
-      if (place === 'yes') placeText = where.scope === 'worldwide' ? 'Open worldwide' : where.subnational ? `${where.subnational} only` : `Open to ${name}`
+      if (place === 'yes') placeText = where.scope === 'worldwide' ? (where.identity ? 'Open in any country' : 'Open worldwide') : where.subnational ? `${where.subnational} only` : `Open to ${name}`
       else if (place === 'maybe') { placeText = 'Check who can apply'; placeCls = 'cs-badge--check' }
       else { placeText = `Not open to ${name}`; placeCls = 'cs-badge--closed' }
-    } else if (where.scope === 'worldwide' && !(where.excludes || []).length) placeText = 'Open worldwide'
+    } else if (where.scope === 'worldwide' && !(where.excludes || []).length && !where.identity) placeText = 'Open worldwide'
     else if (where.scope === 'unclear') { placeText = 'Check who can apply'; placeCls = 'cs-badge--check' }
     placeBadge.textContent = placeText
     placeBadge.className = `cs-badge cs-badge--place ${placeCls}`
@@ -670,13 +733,15 @@ if (form && groupsHost && listRows.length) {
     countEl.textContent = String(visible)
     countEl.parentElement.lastChild.textContent = ` ${visible === 1 ? 'call' : 'calls'}, soonest first`
     const active = []
-    if (filters.q) active.push(`“${filters.q}”`)
+    if (filters.q) active.push(queryPlace(filters.q) ? `open to people based in ${countryName(queryPlace(filters.q))}` : `“${filters.q.length > 40 ? filters.q.slice(0, 40) + '…' : filters.q}”`)
     if (filters.from) active.push(`based in ${countryName(filters.from)}`)
     for (const facet of ['format', 'stage', 'kind']) for (const v of filters[facet]) active.push(form.querySelector(`input[name="${facet}"][value="${v}"]`)?.nextElementSibling.textContent.toLowerCase())
     for (const v of filters.only) active.push(form.querySelector(`input[name="only"][value="${v}"]`)?.nextElementSibling.textContent.toLowerCase())
     noteEl.textContent = (filters.shared.length ? 'A shared call sheet. ' : '') + (active.length ? `Filtered: ${active.join(', ')}.` : filters.shared.length ? '' : 'Every call we track.') + (closedCount ? ` Plus ${closedCount} closed for this round.` : '')
     clear.hidden = !active.length
     empty.hidden = rows.length > 0
+    if (filterJump) filterJump.querySelector('span').textContent = active.length ? `Filters (${active.length})` : 'Filters'
+    if (write) announce(`${visible} ${visible === 1 ? 'call' : 'calls'} open or coming up${active.length ? `, filtered by ${active.join(', ')}` : ''}.`)
     if (filters.from && (excluded || filters.all)) {
       excludedEl.hidden = false
       excludedEl.innerHTML = filters.all
@@ -706,6 +771,7 @@ if (form && groupsHost && listRows.length) {
     applyFilters()
   })
   form.addEventListener('submit', event => event.preventDefault())
+  document.querySelector('[data-clear-empty]')?.addEventListener('click', () => clear.click())
   clear.addEventListener('click', () => {
     Object.assign(filters, { q: '', from: '', format: [], stage: [], kind: [], only: [], all: false })
     form.reset()
@@ -717,21 +783,24 @@ if (form && groupsHost && listRows.length) {
   })
 
   // The board under the title, recounted for the visitor's date.
-  const board = { open: 0, week: 0, next: null }
+  const board = { open: 0, week: 0, next: null, free: 0 }
   for (const row of listRows) {
     const live = liveState({ closes: row.dataset.closes, opens: row.dataset.opens, state: row.dataset.state })
     if (live === 'open') board.open++
+    if (live === 'open' && row.dataset.fee === 'free') board.free++
     if (row.dataset.closes && live !== 'closed' && daysUntil(row.dataset.closes) <= 7) board.week++
     if (row.dataset.closes && row.dataset.closes >= todayISO && (!board.next || row.dataset.closes < board.next)) board.next = row.dataset.closes
   }
   document.querySelector('[data-board="open"]').textContent = board.open
   document.querySelector('[data-board="week"]').textContent = board.week
   document.querySelector('[data-board="next"]').textContent = board.next ? shortDate(board.next) : '—'
+  const freeBoard = document.querySelector('[data-board="free"]')
+  if (freeBoard) freeBoard.textContent = board.free
 
   // The WhatsApp button sits over the save column; tuck it away while the list is on screen.
   const results = document.querySelector('#calls')
   if (results && 'IntersectionObserver' in window) {
-    new IntersectionObserver(([entry]) => document.body.classList.toggle('fab-tucked', entry.isIntersecting), { rootMargin: '-30% 0px -30% 0px' }).observe(results)
+    new IntersectionObserver(([entry]) => document.body.classList.toggle('fab-tucked', entry.isIntersecting), { rootMargin: '0px 0px -15% 0px' }).observe(results)
   }
 
   // An old snapshot says so, rather than passing off stale dates as current.
@@ -745,7 +814,11 @@ if (form && groupsHost && listRows.length) {
   }
 
   applyFilters({ write: false })
-  if (sharedBanner) sharedBanner.scrollIntoView?.({ block: 'center' })
+  if (sharedBanner) {
+    // A shared call that has since closed still shows, in its group, opened.
+    groupsHost.querySelector('details.cs-group--closed')?.setAttribute('open', '')
+    sharedBanner.scrollIntoView?.({ block: 'center' })
+  }
 }
 
 // ------------------------------------------------------------- call page
@@ -765,6 +838,11 @@ if (callPage) {
     const at = instantOf(closes, time, tz)
     const live = at && at < new Date() ? 'closed' : liveState(box.dataset)
     if (moved) box.querySelector('[data-countdown-when]').textContent = `${longDate(closes)}${live === 'closed' ? '' : '. The earlier round has closed'}.`
+    if (live === 'closed') {
+      // Nothing left to put in a calendar.
+      callPage.querySelector('[data-ics]')?.remove()
+      callPage.dataset.closed = 'true'
+    }
     if (live === 'closed' && closes) { text.textContent = `Closed on ${shortDate(closes, true)}`; box.classList.add('is-closed') }
     else if (live === 'later' && opens && opens > todayISO) { text.textContent = `Opens in ${daysUntil(opens)} ${daysUntil(opens) === 1 ? 'day' : 'days'}, ${shortDate(opens)}`; box.classList.add('is-later') }
     else if (closes) {
@@ -787,6 +865,11 @@ if (callPage) {
   for (const item of callPage.querySelectorAll('.cs-timeline-item')) {
     if (item.dataset.date < todayISO) item.classList.add('is-past')
     else if (!next) { item.classList.add('is-next'); next = true }
+  }
+  // The WhatsApp button sits over the action buttons on a phone; tuck it while they're on screen.
+  const actions = callPage.querySelector('.cs-callactions')
+  if (actions && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => document.body.classList.toggle('fab-tucked', entry.isIntersecting)).observe(actions)
   }
   const back = callPage.querySelector('[data-back]')
   back?.addEventListener('click', event => {

@@ -197,7 +197,9 @@ def summarise_fee(items: list[dict[str, Any]]) -> dict[str, Any]:
     else:
         state = "unknown"
     key = lambda i: (i["stage"], i["label"] or "", i["amount"] or "", i["note"] or "")
-    unique = {key(i): i for i in items}
+    unique = {}
+    for i in items:  # in the order the source lists them: early, regular, late
+        unique.setdefault(key(i), i)
     if state == "priced":
         values = sorted({i["amount"] for i in priced if i["amount"]}, key=lambda a: float(re.sub(r"[^0-9.]", "", a) or 0))
         prefixes = {re.match(r"^[^0-9]*", v).group(0) for v in values}
@@ -211,7 +213,8 @@ def summarise_fee(items: list[dict[str, Any]]) -> dict[str, Any]:
         summary = "Free to enter"
     else:
         summary = "Not published"
-    return {"state": state, "summary": summary, "items": [unique[k] for k in sorted(unique)][:8]}
+    ordered = sorted(unique.values(), key=lambda i: i["stage"] != "application")
+    return {"state": state, "summary": summary, "items": ordered[:8]}
 
 
 def official_fee(recheck: dict[str, Any] | None, packs: dict[str, Any]) -> dict[str, Any]:
@@ -337,9 +340,11 @@ def materials(o: dict[str, Any], rows: list[dict[str, Any]]) -> list[dict[str, A
             "optional": str(row.get("requirement") or raw.get("requirement")).lower() == "optional",
             "note": human(raw.get("note")),
         })
-    text = human((o.get("raw") or {}).get("materials"))
-    if text and not out:
-        out.append({"item": text[0].upper() + text[1:], "limit": None, "optional": False, "note": None})
+    if not out:
+        # The packs' own materials field: a note, or a list of them (US funds).
+        for text in (human(x) for x in as_list((o.get("raw") or {}).get("materials"))):
+            if text:
+                out.append({"item": text[0].upper() + text[1:], "limit": None, "optional": False, "note": None})
     return out[:12]
 
 
@@ -520,7 +525,9 @@ def main(argv: list[str] | None = None) -> int:
         calls.append({
             "id": oid,
             "title": clean(o["title"]),
-            "organiser": clean(o.get("provider")),
+            # "TorinoFilmLab ScriptLab — call" names the page the packs read, not the organiser;
+            # the overlay corrects a provider the packs got wrong.
+            "organiser": ov.get("organiser") or re.sub(r"(?i) — (?:\d{4} |\d+(?:st|nd|rd|th) edition )?(?:call|apply|rules|faq)$", "", clean(o.get("provider")) or "") or None,
             "organiser_country": clean(o.get("provider_country")),
             "kinds": ov["kinds"],
             "formats": ov["formats"],

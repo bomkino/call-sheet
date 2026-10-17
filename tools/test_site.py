@@ -153,10 +153,26 @@ class BuildTests(unittest.TestCase):
             self.assertEqual(rounds, sorted(rounds), call["id"])
 
     def test_closed_calls_are_not_indexed(self):
+        as_of = json.loads((self.out / "BUILD.json").read_text(encoding="utf-8"))["data_as_of"]
+        sitemap = (self.out / "sitemap.xml").read_text(encoding="utf-8")
         for call in CALLS:
             source = (self.out / call["slug"] / "index.html").read_text(encoding="utf-8")
-            noindex = 'content="noindex, follow"' in source
-            self.assertEqual(noindex, call["state"] == "closed_or_historical", call["id"])
+            closed = build_site.closed_at(call, as_of)
+            self.assertEqual('content="noindex, follow"' in source, closed, call["id"])
+            self.assertEqual(f"/call-sheet/{call['slug']}/<" in sitemap, not closed, call["id"])
+            if closed:
+                self.assertNotIn("data-ics", source.split('<div class="cs-sheetbar"')[0], call["id"])
+
+    def test_shared_assets_resolve(self):
+        for page in (self.out / "index.html", self.pages[0], self.out / "404.html"):
+            source = page.read_text(encoding="utf-8")
+            for ref in re.findall(r'content="https://pitch\.dog(/call-sheet/assets/[^"]+)"', source) + re.findall(r'(?:href|src)="(/call-sheet/assets/[^"]+)"', source):
+                self.assertTrue((self.out / ref[len("/call-sheet/"):]).is_file(), (page, ref))
+
+    def test_no_python_reprs_in_data(self):
+        for call in CALLS:
+            for item in call["bring"]:
+                self.assertNotRegex(item["item"], r"^\s*\[['\"]", call["id"])
 
 
 if __name__ == "__main__":
