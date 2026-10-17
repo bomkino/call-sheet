@@ -73,8 +73,6 @@ def fee_from(enrich: dict[str, Any] | None) -> dict[str, Any] | None:
     state = {"free": "free", "paid": "priced", "unknown": "unknown"}.get(fee.get("state"))
     if not state:
         return None
-    if state == "unknown":
-        return {"state": "unknown", "items": [], "evidence": (fee.get("evidence") or "").strip()}
     items = []
     for item in fee.get("items") or []:
         amount = str(item.get("amount") or "").strip()
@@ -88,6 +86,9 @@ def fee_from(enrich: dict[str, Any] | None) -> dict[str, Any] | None:
             "state": "free_or_explicit_zero" if state == "free" and not shown else "priced" if shown else "unknown_or_conditional",
             "note": (item.get("note") or "").strip() or None,
         })
+    if state == "unknown":
+        # Silent on the entry fee; a cost for selected projects is still worth keeping.
+        items = [i for i in items if i["stage"] == "selected" and i["amount"]]
     if state == "free" and not any(i["stage"] == "application" for i in items):
         items.append({"stage": "application", "label": "Entry fee", "amount": None, "state": "free_or_explicit_zero", "note": None})
     if state == "priced" and not any(i["stage"] == "application" and i["amount"] for i in items):
