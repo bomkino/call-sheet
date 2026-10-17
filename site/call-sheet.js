@@ -1,0 +1,702 @@
+/*
+ * Call Sheet — pitch.dog
+ *
+ * Every page works without this script.  It adds the site theme and mobile
+ * menu, live countdowns, filtering, and "My call sheet": a shortlist saved
+ * in this browser's localStorage only.  Nothing typed or saved is sent
+ * anywhere.
+ */
+
+const root = document.documentElement
+const BASE = '/call-sheet/'
+const STORE = 'pitchdog-call-sheet'
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+const STATUSES = [
+  ['shortlist', 'Shortlisted'],
+  ['checking', 'Checking'],
+  ['preparing', 'Preparing'],
+  ['applied', 'Applied'],
+  ['watching', 'Watching'],
+  ['no', 'Not for me'],
+]
+
+// ------------------------------------------------------------------ shell
+
+const THEMES = ['auto', 'light', 'dark']
+const darkQuery = matchMedia('(prefers-color-scheme: dark)')
+function storedTheme () {
+  try {
+    const value = localStorage.getItem('pitchdog-theme')
+    if (THEMES.includes(value)) return value
+  } catch {}
+  return 'auto'
+}
+function setTheme (theme, remember = true) {
+  const resolved = theme === 'auto' ? (darkQuery.matches ? 'dark' : 'light') : theme
+  root.dataset.theme = theme
+  root.dataset.resolvedTheme = resolved
+  const label = theme[0].toUpperCase() + theme.slice(1)
+  const next = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length]
+  document.querySelector('#theme-label')?.replaceChildren(label)
+  document.querySelector('#theme-icon use')?.setAttribute('href', `/assets/phosphor-sprite.svg#ph-${theme === 'auto' ? 'circle-half' : theme === 'light' ? 'sun' : 'moon'}`)
+  document.querySelector('#theme-button')?.setAttribute('aria-label', `Theme: ${label}. Activate to switch to ${next[0].toUpperCase() + next.slice(1)}.`)
+  const color = document.querySelector('#theme-color')
+  if (color) color.content = resolved === 'dark' ? '#0b0c0e' : '#f6f5f8'
+  const icon = document.querySelector('#theme-favicon')
+  if (icon) icon.href = resolved === 'dark' ? '/assets/favicon-dark.svg' : '/assets/favicon-light.svg'
+  if (remember) try { localStorage.setItem('pitchdog-theme', theme) } catch {}
+}
+root.classList.add('js')
+setTheme(storedTheme(), false)
+document.querySelector('#theme-button')?.addEventListener('click', () => {
+  const current = root.dataset.theme || 'auto'
+  setTheme(THEMES[(THEMES.indexOf(current) + 1) % THEMES.length])
+})
+darkQuery.addEventListener('change', () => { if ((root.dataset.theme || 'auto') === 'auto') setTheme('auto', false) })
+
+const menuToggle = document.querySelector('#mobile-menu-toggle')
+const menu = document.querySelector('#mobile-menu')
+if (menuToggle && menu) {
+  const setMenu = open => {
+    menuToggle.setAttribute('aria-expanded', String(open))
+    menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu')
+    menu.setAttribute('aria-hidden', String(!open))
+    menu.inert = !open
+    document.body.classList.toggle('mobile-menu-open', open)
+    if (open) requestAnimationFrame(() => menu.querySelector('a')?.focus())
+  }
+  menuToggle.addEventListener('click', () => setMenu(menuToggle.getAttribute('aria-expanded') !== 'true'))
+  menu.querySelectorAll('[data-mobile-menu-close], a').forEach(el => el.addEventListener('click', () => setMenu(false)))
+  addEventListener('keydown', event => {
+    if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') { setMenu(false); menuToggle.focus() }
+  })
+}
+
+// ------------------------------------------------------------------ dates
+
+const pad = n => String(n).padStart(2, '0')
+const todayISO = (() => { const d = new Date(); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}` })()
+const toDate = iso => { const [y, m, d] = iso.split('-').map(Number); return new Date(Date.UTC(y, m - 1, d)) }
+const daysUntil = iso => Math.round((toDate(iso) - toDate(todayISO)) / 86400000)
+const shortDate = (iso, withYear = false) => {
+  const d = toDate(iso)
+  const year = d.getUTCFullYear() !== toDate(todayISO).getUTCFullYear() || withYear
+  return `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()].slice(0, 3)}${year ? ' ' + d.getUTCFullYear() : ''}`
+}
+function leftText (closes) {
+  const days = daysUntil(closes)
+  if (days < 0) return { text: 'Closed', cls: 'is-closed' }
+  if (days === 0) return { text: 'Closes today', cls: 'is-today' }
+  if (days === 1) return { text: '1 day left', cls: 'is-soon' }
+  if (days <= 7) return { text: `${days} days left`, cls: 'is-soon' }
+  if (days < 100) return { text: `${days} days left`, cls: '' }
+  return { text: `${Math.round(days / 30.4)} months left`, cls: '' }
+}
+
+// Whether a call is accepting applications on the visitor's own date.
+function liveState ({ closes, opens, state }) {
+  if (state === 'closed_or_historical') return 'closed'
+  if (!closes) return state === 'watch_or_rolling' ? 'rolling' : 'tbc'
+  if (closes < todayISO) return 'closed'
+  if (opens && opens > todayISO) return 'later'
+  if (state === 'announced_not_open') return 'later'
+  if (state === 'watch_or_rolling') return 'watch'
+  return 'open'
+}
+
+// ---------------------------------------------------------------- places
+
+const REGIONS = {
+  EU: 'AT BE BG HR CY CZ DK EE FI FR DE GR HU IE IT LV LT LU MT NL PL PT RO SK SI ES SE',
+  EUROPE: 'AT BE BG HR CY CZ DK EE FI FR DE GR HU IE IT LV LT LU MT NL PL PT RO SK SI ES SE AL AD AM AZ BA CH FO GB GE GI IS LI MC MD ME MK NO RS SM TR UA VA XK',
+  NORDIC: 'DK FI IS NO SE FO GL AX',
+  LATAM: 'AR BO BR CL CO CR CU DO EC SV GT HN HT MX NI PA PY PE PR UY VE BZ GY SR GF',
+  CENTRAL_AMERICA: 'BZ CR SV GT HN NI PA',
+  CARIBBEAN: 'AG AI AW BB BL BQ BS CU CW DM DO GD GP HT JM KN KY LC MF MQ MS PR SX TC TT VC VG VI',
+  IBERO_AMERICA: 'AR BO BR CL CO CR CU DO EC SV GT HN MX NI PA PY PE PR UY VE ES PT AD',
+  AFRICA: 'DZ AO BJ BW BF BI CV CM CF TD KM CD CG CI DJ EG GQ ER SZ ET GA GM GH GN GW KE LS LR LY MG MW ML MR MU MA MZ NA NE NG RW ST SN SC SL SO ZA SS SD TZ TG TN UG ZM ZW EH RE YT SH',
+  MENA: 'DZ BH EG IR IQ IL JO KW LB LY MA MR OM PS QA SA SD SY TN AE YE',
+  ASIA: 'AF AM AZ BH BD BT BN KH CN CY GE HK IN ID IR IQ IL JP JO KZ KW KG LA LB MO MY MV MN MM NP KP OM PK PS PH QA SA SG KR LK SY TW TJ TH TL TR TM AE UZ VN YE',
+  SOUTH_ASIA: 'AF BD BT IN MV NP PK LK',
+  SOUTHEAST_ASIA: 'BN KH ID LA MY MM PH SG TH TL VN',
+  PACIFIC: 'AU NZ FJ PG SB VU NC PF WS TO KI TV NR FM MH PW CK NU AS GU MP WF TK',
+}
+const REGION_SETS = Object.fromEntries(Object.entries(REGIONS).map(([k, v]) => [k, new Set(v.split(' '))]))
+const COUNTRY_CODES = ('AD AE AF AG AI AL AM AO AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BW BY BZ CA CD CF CG CH CI CK CL CM CN CO CR CU CV CW CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GH GI GL GM GN GP GQ GR GT GU GW GY HK HN HR HT HU ID IE IL IN IQ IR IS IT JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG US UY UZ VA VC VE VG VI VN VU WF WS XK YE YT ZA ZM ZW').split(' ')
+let regionNames = null
+try { regionNames = new Intl.DisplayNames(['en'], { type: 'region' }) } catch {}
+const countryName = code => (code === 'XK' ? 'Kosovo' : (regionNames?.of(code) || code))
+
+// 'yes' when nothing we hold rules the place out, 'maybe' when the rule is
+// unclear or only partly listed, 'no' when the published rule excludes it.
+function placeMatch (where, code) {
+  if (!code) return where.scope === 'unclear' ? 'maybe' : 'yes'
+  if ((where.excludes || []).includes(code)) return 'no'
+  if (where.scope === 'worldwide') return 'yes'
+  if (where.scope === 'unclear') return 'maybe'
+  const listed = (where.countries || []).includes(code) || (where.regions || []).some(r => REGION_SETS[r]?.has(code))
+  if (listed) return 'yes'
+  // A national scheme (named countries only) rules out everyone else; a
+  // regional rule that's only partly spelled out is worth a check.
+  return where.confidence === 'stated' || !(where.regions || []).length ? 'no' : 'maybe'
+}
+
+// ------------------------------------------------------------------ store
+
+function readSheet () {
+  try {
+    const data = JSON.parse(localStorage.getItem(STORE) || '{}')
+    return data && typeof data.items === 'object' ? data : { v: 1, items: {} }
+  } catch { return { v: 1, items: {} } }
+}
+function writeSheet (sheet) {
+  try { localStorage.setItem(STORE, JSON.stringify(sheet)); return true } catch { return false }
+}
+let sheet = readSheet()
+const saved = slug => Boolean(sheet.items[slug])
+
+function snapshotFromRow (row) {
+  const dd = row.querySelectorAll('.cs-facts dd')
+  return {
+    title: row.dataset.title,
+    closes: row.dataset.closes || null,
+    opens: row.dataset.opens || null,
+    state: row.dataset.state,
+    organiser: row.querySelector('.cs-org')?.textContent.trim() || '',
+    who: dd[0]?.textContent.trim() || '',
+    get: dd[1]?.textContent.trim() || '',
+    fee: dd[2]?.textContent.trim() || '',
+  }
+}
+function snapshotFromPage (main) {
+  const facts = {}
+  main.querySelectorAll('.cs-sheetgrid > div').forEach(cell => { facts[cell.querySelector('dt').textContent.trim()] = cell.querySelector('dd').textContent.trim() })
+  return {
+    title: main.dataset.title,
+    closes: main.dataset.closes || null,
+    opens: main.querySelector('[data-countdown]')?.dataset.opens || null,
+    state: main.querySelector('[data-countdown]')?.dataset.state || '',
+    organiser: main.querySelector('.cs-callorg')?.textContent.trim() || '',
+    who: facts['Who can apply'] || '',
+    get: facts['You get'] || '',
+    fee: facts['Entry fee'] || '',
+    official: main.dataset.official || '',
+  }
+}
+
+const listRows = [...document.querySelectorAll('.cs-call')]
+const rowBySlug = new Map(listRows.map(row => [row.dataset.slug, row]))
+const callPage = document.querySelector('.cs-callpage')
+
+function toggleSave (slug) {
+  if (saved(slug)) {
+    delete sheet.items[slug]
+  } else {
+    const row = rowBySlug.get(slug)
+    const snap = row ? snapshotFromRow(row) : (callPage?.dataset.call === slug ? snapshotFromPage(callPage) : { title: slug })
+    sheet.items[slug] = { ...snap, status: 'shortlist', added: todayISO }
+  }
+  writeSheet(sheet)
+  syncSaveButtons(slug)
+  renderSheet()
+  const bar = document.querySelector('[data-sheetbar]')
+  if (bar && saved(slug)) { bar.classList.remove('is-bump'); void bar.offsetWidth; bar.classList.add('is-bump') }
+  if (filters?.only.includes('saved')) applyFilters()
+}
+
+function syncSaveButtons (only) {
+  document.querySelectorAll('[data-save]').forEach(button => {
+    if (only && button.dataset.save !== only) return
+    const on = saved(button.dataset.save)
+    button.setAttribute('aria-pressed', String(on))
+    const text = button.querySelector('.cs-save-text')
+    if (text) text.textContent = on ? 'Saved' : 'Save'
+    if (only && on) { button.classList.remove('is-popping'); void button.offsetWidth; button.classList.add('is-popping') }
+  })
+}
+document.addEventListener('click', event => {
+  const button = event.target.closest('[data-save]')
+  if (button) { event.preventDefault(); toggleSave(button.dataset.save) }
+})
+
+// Refresh stored snapshots from the current list, so saved calls pick up rechecked dates.
+let refreshed = false
+for (const [slug, item] of Object.entries(sheet.items)) {
+  const row = rowBySlug.get(slug)
+  if (row) { sheet.items[slug] = { ...item, ...snapshotFromRow(row) }; refreshed = true }
+}
+if (callPage && sheet.items[callPage.dataset.call]) { sheet.items[callPage.dataset.call] = { ...sheet.items[callPage.dataset.call], ...snapshotFromPage(callPage) }; refreshed = true }
+if (refreshed) writeSheet(sheet)
+
+// ------------------------------------------------------------- my sheet UI
+
+const dialog = document.querySelector('#cs-sheet')
+const sheetStatus = document.querySelector('[data-sheet-status]')
+const say = text => { if (sheetStatus) { sheetStatus.textContent = text; clearTimeout(say.t); say.t = setTimeout(() => { sheetStatus.textContent = '' }, 4000) } }
+
+function sortedItems () {
+  return Object.entries(sheet.items).sort(([, a], [, b]) => (a.closes || '9999').localeCompare(b.closes || '9999') || String(a.title).localeCompare(String(b.title)))
+}
+
+function renderSheet () {
+  const items = sortedItems()
+  const bar = document.querySelector('[data-sheetbar]')
+  if (bar) {
+    bar.hidden = items.length === 0
+    bar.querySelector('[data-sheet-count]').textContent = `${items.length} ${items.length === 1 ? 'call' : 'calls'} saved`
+    const next = items.map(([, i]) => i.closes).filter(c => c && c >= todayISO).sort()[0]
+    bar.querySelector('[data-sheet-next]').textContent = next ? `Next closes ${daysUntil(next) === 0 ? 'today' : daysUntil(next) === 1 ? 'tomorrow' : 'in ' + daysUntil(next) + ' days'}` : 'No upcoming deadlines'
+  }
+  const list = document.querySelector('[data-sheet-list]')
+  if (!list) return
+  document.querySelector('[data-sheet-empty]').hidden = items.length > 0
+  document.querySelectorAll('[data-sheet-ics], [data-sheet-print], [data-sheet-share], [data-sheet-clear]').forEach(b => { b.disabled = items.length === 0 })
+  list.replaceChildren(...items.map(([slug, item]) => {
+    const li = document.createElement('li')
+    li.className = 'cs-sheet-item'
+    const d = item.closes ? toDate(item.closes) : null
+    const left = item.closes ? leftText(item.closes) : null
+    li.innerHTML = `
+      <span class="cs-date">${d ? `<span class="cs-day">${d.getUTCDate()}</span><span class="cs-month">${MONTHS[d.getUTCMonth()].slice(0, 3)}</span>` : '<span class="cs-day">—</span><span class="cs-month">No date</span>'}</span>
+      <span class="cs-sheet-meta">
+        <a href="${BASE}${encodeURIComponent(slug)}/" data-pd-type="label"></a>
+        <span class="cs-org" data-pd-type="body.small"></span>
+        ${left ? `<span class="cs-left ${left.cls}">${left.text}</span>` : ''}
+        <label><span class="sr-only">Status</span><select data-status="${slug}">${STATUSES.map(([v, t]) => `<option value="${v}"${item.status === v ? ' selected' : ''}>${t}</option>`).join('')}</select></label>
+      </span>
+      <button class="cs-sheet-remove" type="button" data-remove="${slug}" aria-label="Remove from my call sheet"><svg class="cs-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#cs-close"></use></svg></button>`
+    li.querySelector('a').textContent = item.title || slug
+    li.querySelector('.cs-org').textContent = item.organiser || ''
+    return li
+  }))
+}
+
+document.addEventListener('change', event => {
+  const select = event.target.closest('[data-status]')
+  if (select && sheet.items[select.dataset.status]) {
+    sheet.items[select.dataset.status].status = select.value
+    writeSheet(sheet)
+  }
+})
+document.addEventListener('click', event => {
+  const remove = event.target.closest('[data-remove]')
+  if (remove) toggleSave(remove.dataset.remove)
+  if (event.target.closest('[data-open-sheet]')) openSheet()
+  if (event.target.closest('[data-close-sheet]')) dialog?.close()
+})
+dialog?.addEventListener('click', event => { if (event.target === dialog) dialog.close() })
+function openSheet () {
+  renderSheet()
+  if (dialog && !dialog.open) dialog.showModal()
+}
+
+// Calendar file: one all-day marker per deadline, with a reminder a week before.
+function icsFor (entries) {
+  const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '')
+  const esc = text => String(text || '').replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/[,;]/g, m => '\\' + m)
+  const fold = line => line.length <= 74 ? line : line.match(/.{1,74}/g).join('\r\n ')
+  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//pitch.dog//Call Sheet//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'X-WR-CALNAME:Call Sheet deadlines']
+  for (const [slug, item] of entries) {
+    if (!item.closes) continue
+    const start = item.closes.replace(/-/g, '')
+    const end = new Date(toDate(item.closes).getTime() + 86400000).toISOString().slice(0, 10).replace(/-/g, '')
+    const page = `${location.origin}${BASE}${slug}/`
+    lines.push('BEGIN:VEVENT', `UID:${slug}-${start}@pitch.dog`, `DTSTAMP:${stamp}`, `DTSTART;VALUE=DATE:${start}`, `DTEND;VALUE=DATE:${end}`,
+      fold(`SUMMARY:${esc('Deadline: ' + item.title)}`),
+      fold(`DESCRIPTION:${esc(`Check the exact cut-off time and time zone on the official page before you plan around this date.\n\nCall Sheet: ${page}${item.official ? '\nOfficial page: ' + item.official : ''}`)}`),
+      fold(`URL:${page}`), 'TRANSP:TRANSPARENT',
+      'BEGIN:VALARM', 'ACTION:DISPLAY', fold(`DESCRIPTION:${esc('A week to go: ' + item.title)}`), 'TRIGGER:-P7D', 'END:VALARM', 'END:VEVENT')
+  }
+  lines.push('END:VCALENDAR')
+  return lines.join('\r\n') + '\r\n'
+}
+function download (name, text, type) {
+  const url = URL.createObjectURL(new Blob([text], { type }))
+  const a = Object.assign(document.createElement('a'), { href: url, download: name })
+  document.body.append(a); a.click(); a.remove()
+  setTimeout(() => URL.revokeObjectURL(url), 1000)
+}
+document.querySelector('[data-sheet-ics]')?.addEventListener('click', () => {
+  const entries = sortedItems().filter(([, i]) => i.closes && i.closes >= todayISO)
+  if (!entries.length) return say('None of your saved calls has an upcoming deadline yet.')
+  download('call-sheet-deadlines.ics', icsFor(entries), 'text/calendar')
+  say(`${entries.length} ${entries.length === 1 ? 'deadline' : 'deadlines'} ready for your calendar.`)
+})
+document.querySelector('[data-ics]')?.addEventListener('click', () => {
+  const slug = callPage.dataset.call
+  download(`${slug}.ics`, icsFor([[slug, snapshotFromPage(callPage)]]), 'text/calendar')
+})
+
+document.querySelector('[data-sheet-share]')?.addEventListener('click', async () => {
+  const url = `${location.origin}${BASE}?sheet=${sortedItems().map(([slug]) => slug).join(',')}`
+  try {
+    if (navigator.share && matchMedia('(pointer: coarse)').matches) await navigator.share({ title: 'My call sheet', url })
+    else { await navigator.clipboard.writeText(url); say('Link copied. Anyone with it sees the same calls, never your notes or statuses.') }
+  } catch { prompt('Copy this link:', url) }
+})
+
+const clearButton = document.querySelector('[data-sheet-clear]')
+clearButton?.addEventListener('click', () => {
+  if (clearButton.dataset.confirm !== '1') {
+    clearButton.dataset.confirm = '1'
+    clearButton.textContent = 'Sure? Clear all'
+    setTimeout(() => { clearButton.dataset.confirm = ''; clearButton.textContent = 'Clear' }, 4000)
+    return
+  }
+  sheet = { v: 1, items: {} }
+  writeSheet(sheet)
+  clearButton.dataset.confirm = ''
+  clearButton.textContent = 'Clear'
+  syncSaveButtons()
+  renderSheet()
+  if (filters?.only.includes('saved')) applyFilters()
+  say('Cleared.')
+})
+
+document.querySelector('[data-sheet-print]')?.addEventListener('click', () => {
+  const holder = document.querySelector('[data-print]')
+  const items = sortedItems()
+  const label = Object.fromEntries(STATUSES)
+  const cell = text => { const td = document.createElement('td'); td.textContent = text || ''; return td }
+  const table = document.createElement('table')
+  table.innerHTML = '<thead><tr><th>Closes</th><th>Call</th><th>Who can apply</th><th>You get</th><th>Entry fee</th><th>Status</th></tr></thead><tbody></tbody>'
+  for (const [slug, item] of items) {
+    const tr = document.createElement('tr')
+    const call = cell(item.title)
+    const link = document.createElement('div'); link.className = 'cs-print-url'; link.textContent = `pitch.dog${BASE}${slug}/`
+    call.append(link)
+    tr.append(cell(item.closes ? shortDate(item.closes, true) : '—'), call, cell(item.who), cell(item.get), cell(item.fee), cell(label[item.status] || ''))
+    table.tBodies[0].append(tr)
+  }
+  const h1 = document.createElement('h1'); h1.textContent = 'Call sheet.'
+  const meta = document.createElement('p'); meta.className = 'cs-print-meta'
+  meta.innerHTML = `<span>Printed ${shortDate(todayISO, true)}</span><span>${items.length} ${items.length === 1 ? 'call' : 'calls'}</span><span>pitch.dog/call-sheet</span>`
+  const foot = document.createElement('p'); foot.className = 'cs-print-foot'
+  foot.textContent = 'A research snapshot, not legal advice. Check every deadline, fee and rule on the official page before you apply.'
+  holder.replaceChildren(h1, meta, table, foot)
+  dialog?.close()
+  document.body.classList.add('cs-printing')
+  const done = () => { document.body.classList.remove('cs-printing'); removeEventListener('afterprint', done) }
+  addEventListener('afterprint', done)
+  print()
+  setTimeout(done, 1500)
+})
+
+// ------------------------------------------------------------ list page
+
+let filters = null
+const form = document.querySelector('#cs-filters')
+const groupsHost = document.querySelector('#cs-groups')
+
+function bucketFor (row, live) {
+  const closes = row.dataset.closes
+  if (live === 'closed') return { key: 'z', title: 'Closed for this round', closed: true }
+  if (!closes) return { key: 'y', title: 'No fixed date yet' }
+  const days = daysUntil(closes)
+  if (days <= 7) return { key: '0', title: days === 0 ? 'Closes today' : 'Closes this week' }
+  const d = toDate(closes)
+  const now = toDate(todayISO)
+  const sameMonth = d.getUTCFullYear() === now.getUTCFullYear() && d.getUTCMonth() === now.getUTCMonth()
+  const title = sameMonth ? `Later in ${MONTHS[d.getUTCMonth()]}` : MONTHS[d.getUTCMonth()] + (d.getUTCFullYear() !== now.getUTCFullYear() ? ' ' + d.getUTCFullYear() : '')
+  return { key: '1' + closes.slice(0, 7), title }
+}
+
+if (form && groupsHost && listRows.length) {
+  const select = form.querySelector('#cs-from')
+  const countries = COUNTRY_CODES.map(code => [code, countryName(code)]).sort((a, b) => a[1].localeCompare(b[1]))
+  for (const [code, name] of countries) select.append(new Option(name, code))
+
+  // A compact "More filters" switch for small screens.
+  const more = document.createElement('button')
+  more.type = 'button'
+  more.className = 'button button--small cs-more-filters'
+  more.innerHTML = '<svg class="cs-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#cs-sliders"></use></svg><span>More filters</span>'
+  more.setAttribute('aria-expanded', 'false')
+  form.querySelector('.cs-filter-top').after(more)
+  more.addEventListener('click', () => {
+    const open = !form.classList.contains('is-expanded')
+    form.classList.toggle('is-expanded', open)
+    more.setAttribute('aria-expanded', String(open))
+  })
+
+  const facets = ['format', 'stage', 'kind', 'only']
+  const params = new URLSearchParams(location.search)
+  filters = {
+    q: params.get('q') || '',
+    from: (params.get('from') || '').toUpperCase(),
+    format: (params.get('format') || '').split(',').filter(Boolean),
+    stage: (params.get('stage') || '').split(',').filter(Boolean),
+    kind: (params.get('kind') || '').split(',').filter(Boolean),
+    only: (params.get('only') || '').split(',').filter(Boolean),
+    all: params.get('all') === '1',
+    shared: (params.get('sheet') || '').split(',').filter(slug => rowBySlug.has(slug)),
+  }
+  form.q.value = filters.q
+  if (COUNTRY_CODES.includes(filters.from)) select.value = filters.from
+  else filters.from = ''
+  for (const facet of facets) form.querySelectorAll(`input[name="${facet}"]`).forEach(box => { box.checked = filters[facet].includes(box.value) })
+  if (filters.format.length || filters.stage.length || filters.kind.length) { form.classList.add('is-expanded'); more.setAttribute('aria-expanded', 'true') }
+
+  // Fuzzy enough for typos: a query word matches a word in the call within one edit.
+  const near = (a, b) => {
+    if (Math.abs(a.length - b.length) > 1) return false
+    let i = 0; let j = 0; let edits = 0
+    while (i < a.length && j < b.length) {
+      if (a[i] === b[j]) { i++; j++; continue }
+      if (++edits > 1) return false
+      if (a.length > b.length) i++
+      else if (b.length > a.length) j++
+      else { i++; j++ }
+    }
+    return edits + (a.length - i) + (b.length - j) <= 1
+  }
+  const fold = text => text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+  const words = new Map(listRows.map(row => [row, fold(row.dataset.search).split(/[^a-z0-9]+/).filter(Boolean)]))
+  const countryWords = new Map(countries.map(([code, name]) => [fold(name), code]))
+  function matchesQuery (row, query) {
+    if (!query) return true
+    const text = fold(row.dataset.search)
+    const own = words.get(row)
+    return fold(query).split(/[^a-z0-9]+/).filter(Boolean).every(q => {
+      if (text.includes(q)) return true
+      const code = countryWords.get(q)
+      if (code && placeMatch(JSON.parse(row.dataset.where), code) === 'yes' && JSON.parse(row.dataset.where).scope !== 'worldwide') return true
+      return q.length >= 4 && own.some(w => near(q, w))
+    })
+  }
+  const anyOf = (wanted, have) => !wanted.length || have.includes('any') || wanted.some(w => have.includes(w))
+
+  const shown = new Map()
+  const groupCache = new Map()
+  const countEl = document.querySelector('[data-count]')
+  const noteEl = document.querySelector('[data-count-note]')
+  const clear = document.querySelector('[data-clear]')
+  const empty = document.querySelector('[data-empty]')
+  const excludedEl = document.querySelector('[data-excluded]')
+
+  const sharedBanner = filters.shared.length ? (() => {
+    const box = document.createElement('div')
+    box.className = 'cs-shared'
+    box.setAttribute('role', 'status')
+    box.innerHTML = `<p data-pd-type="body.default"><strong>Someone shared ${filters.shared.length} ${filters.shared.length === 1 ? 'call' : 'calls'} with you.</strong> Showing just those.</p><div class="button-row"><button class="button button--brand button--small" type="button" data-adopt>Add to my call sheet</button><button class="button button--small" type="button" data-show-all>Show every call</button></div>`
+    document.querySelector('.cs-results-head').after(box)
+    box.querySelector('[data-adopt]').addEventListener('click', () => {
+      for (const slug of filters.shared) if (!saved(slug)) toggleSave(slug)
+      box.querySelector('[data-adopt]').replaceWith(Object.assign(document.createElement('span'), { textContent: 'Added.' }))
+    })
+    box.querySelector('[data-show-all]').addEventListener('click', () => { filters.shared = []; box.remove(); applyFilters() })
+    return box
+  })() : null
+
+  function rowState (row) {
+    const live = liveState({ closes: row.dataset.closes, opens: row.dataset.opens, state: row.dataset.state })
+    const where = JSON.parse(row.dataset.where)
+    return { live, where, place: placeMatch(where, filters.from) }
+  }
+
+  function decorate (row, { live, where, place }) {
+    const left = row.querySelector('[data-left]')
+    if (row.dataset.closes && left) {
+      const l = leftText(row.dataset.closes)
+      left.textContent = l.text
+      left.className = `cs-left ${l.cls}`
+    }
+    const badge = row.querySelector('[data-badge-state]')
+    const states = {
+      open: ['Open now', 'cs-badge--open'],
+      later: [row.dataset.opens && row.dataset.opens > todayISO ? `Opens ${shortDate(row.dataset.opens)}` : 'Not open yet', 'cs-badge--later'],
+      watch: ['Check it’s open', 'cs-badge--check'],
+      rolling: ['Rolling or watch', 'cs-badge--later'],
+      tbc: ['Dates to come', 'cs-badge--later'],
+      closed: ['Closed', 'cs-badge--closed'],
+    }
+    const [text, cls] = states[live]
+    badge.textContent = text
+    badge.className = `cs-badge ${cls}`
+    badge.hidden = false
+    const placeBadge = row.querySelector('[data-badge-place]')
+    let placeText = ''
+    let placeCls = ''
+    if (filters.from) {
+      const name = countryName(filters.from)
+      if (place === 'yes') placeText = where.scope === 'worldwide' ? 'Open worldwide' : where.subnational ? `${where.subnational} only` : `Open to ${name}`
+      else if (place === 'maybe') { placeText = 'Check who can apply'; placeCls = 'cs-badge--check' }
+      else { placeText = `Not open to ${name}`; placeCls = 'cs-badge--closed' }
+    } else if (where.scope === 'worldwide' && !(where.excludes || []).length) placeText = 'Open worldwide'
+    else if (where.scope === 'unclear') { placeText = 'Check who can apply'; placeCls = 'cs-badge--check' }
+    placeBadge.textContent = placeText
+    placeBadge.className = `cs-badge cs-badge--place ${placeCls}`
+    placeBadge.hidden = !placeText
+  }
+
+  function groupFor (bucket) {
+    if (groupCache.has(bucket.key)) return groupCache.get(bucket.key)
+    const el = document.createElement(bucket.closed ? 'details' : 'section')
+    el.className = `cs-group${bucket.closed ? ' cs-group--closed' : ''}`
+    el.dataset.group = bucket.key
+    const head = document.createElement(bucket.closed ? 'summary' : 'header')
+    if (!bucket.closed) head.className = 'cs-group-head'
+    head.innerHTML = '<h3 class="cs-group-title" data-pd-type="title.card"></h3><span class="cs-group-count" data-pd-type="metadata"></span>'
+    head.querySelector('h3').textContent = bucket.title
+    const list = document.createElement('ol')
+    list.className = 'cs-list'
+    el.append(head, list)
+    const entry = { el, list, count: head.querySelector('.cs-group-count'), title: head.querySelector('h3') }
+    groupCache.set(bucket.key, entry)
+    return entry
+  }
+
+  function applyFilters ({ write = true } = {}) {
+    const rows = []
+    let excluded = 0
+    for (const row of listRows) {
+      const info = rowState(row)
+      const savedOnly = filters.only.includes('saved')
+      const base = (filters.shared.length ? filters.shared.includes(row.dataset.slug) : true) &&
+        matchesQuery(row, filters.q) &&
+        anyOf(filters.format, row.dataset.formats.split(' ')) &&
+        anyOf(filters.stage, row.dataset.stages.split(' ')) &&
+        anyOf(filters.kind, row.dataset.kinds.split(' ')) &&
+        (!filters.only.includes('open') || info.live === 'open') &&
+        (!filters.only.includes('free') || row.dataset.fee === 'free') &&
+        (!savedOnly || saved(row.dataset.slug))
+      decorate(row, info)
+      if (!base) continue
+      if (info.place === 'no' && !filters.all) { excluded++; continue }
+      rows.push([row, info])
+    }
+    rows.sort(([a], [b]) => (a.dataset.closes || '9999').localeCompare(b.dataset.closes || '9999') || a.dataset.title.localeCompare(b.dataset.title))
+    const used = new Map()
+    for (const [row, info] of rows) {
+      const bucket = bucketFor(row, info.live)
+      const group = groupFor(bucket)
+      group.title.textContent = bucket.title
+      if (!used.has(bucket.key)) used.set(bucket.key, { group, rows: [] })
+      used.get(bucket.key).rows.push(row)
+    }
+    const ordered = [...used.entries()].sort(([a], [b]) => a.localeCompare(b))
+    groupsHost.replaceChildren(...ordered.map(([, { group, rows: members }]) => {
+      group.list.replaceChildren(...members)
+      group.count.textContent = members.length
+      return group.el
+    }))
+    const visible = rows.filter(([, info]) => info.live !== 'closed').length
+    const closedCount = rows.length - visible
+    countEl.textContent = String(visible)
+    countEl.parentElement.lastChild.textContent = ` ${visible === 1 ? 'call' : 'calls'}, soonest first`
+    const active = []
+    if (filters.q) active.push(`“${filters.q}”`)
+    if (filters.from) active.push(`based in ${countryName(filters.from)}`)
+    for (const facet of ['format', 'stage', 'kind']) for (const v of filters[facet]) active.push(form.querySelector(`input[name="${facet}"][value="${v}"]`)?.nextElementSibling.textContent.toLowerCase())
+    for (const v of filters.only) active.push(form.querySelector(`input[name="only"][value="${v}"]`)?.nextElementSibling.textContent.toLowerCase())
+    noteEl.textContent = (filters.shared.length ? 'A shared call sheet. ' : '') + (active.length ? `Filtered: ${active.join(', ')}.` : filters.shared.length ? '' : 'Every call we track.') + (closedCount ? ` Plus ${closedCount} closed for this round.` : '')
+    clear.hidden = !active.length
+    empty.hidden = rows.length > 0
+    if (filters.from && (excluded || filters.all)) {
+      excludedEl.hidden = false
+      excludedEl.innerHTML = filters.all
+        ? `<span>Showing calls that don’t take applicants based in ${countryName(filters.from)} too.</span><button class="button button--small" type="button" data-toggle-all>Hide them again</button>`
+        : `<span>${excluded} more ${excluded === 1 ? 'call doesn’t' : 'calls don’t'} take applicants based in ${countryName(filters.from)}.</span><button class="button button--small" type="button" data-toggle-all>Show them anyway</button>`
+    } else excludedEl.hidden = true
+    if (write) writeUrl()
+  }
+
+  function writeUrl () {
+    const p = new URLSearchParams()
+    if (filters.q) p.set('q', filters.q)
+    if (filters.from) p.set('from', filters.from)
+    for (const facet of facets) if (filters[facet].length) p.set(facet, filters[facet].join(','))
+    if (filters.all) p.set('all', '1')
+    if (filters.shared.length) p.set('sheet', filters.shared.join(','))
+    const query = p.toString()
+    history.replaceState(null, '', `${location.pathname}${query ? '?' + query : ''}${location.hash}`)
+  }
+
+  let timer
+  form.addEventListener('input', event => {
+    const t = event.target
+    if (t.name === 'q') { filters.q = t.value.trim(); clearTimeout(timer); timer = setTimeout(applyFilters, 120); return }
+    if (t.name === 'from') { filters.from = t.value; filters.all = false }
+    if (facets.includes(t.name)) filters[t.name] = [...form.querySelectorAll(`input[name="${t.name}"]:checked`)].map(b => b.value)
+    applyFilters()
+  })
+  form.addEventListener('submit', event => event.preventDefault())
+  clear.addEventListener('click', () => {
+    Object.assign(filters, { q: '', from: '', format: [], stage: [], kind: [], only: [], all: false })
+    form.reset()
+    applyFilters()
+    form.q.focus()
+  })
+  excludedEl.addEventListener('click', event => {
+    if (event.target.closest('[data-toggle-all]')) { filters.all = !filters.all; applyFilters() }
+  })
+
+  // The board under the title, recounted for the visitor's date.
+  const board = { open: 0, week: 0, next: null }
+  for (const row of listRows) {
+    const live = liveState({ closes: row.dataset.closes, opens: row.dataset.opens, state: row.dataset.state })
+    if (live === 'open') board.open++
+    if (row.dataset.closes && live !== 'closed' && daysUntil(row.dataset.closes) <= 7) board.week++
+    if (row.dataset.closes && row.dataset.closes >= todayISO && (!board.next || row.dataset.closes < board.next)) board.next = row.dataset.closes
+  }
+  document.querySelector('[data-board="open"]').textContent = board.open
+  document.querySelector('[data-board="week"]').textContent = board.week
+  document.querySelector('[data-board="next"]').textContent = board.next ? shortDate(board.next) : '—'
+
+  // The WhatsApp button sits over the save column; tuck it away while the list is on screen.
+  const results = document.querySelector('#calls')
+  if (results && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => document.body.classList.toggle('fab-tucked', entry.isIntersecting), { rootMargin: '-30% 0px -30% 0px' }).observe(results)
+  }
+
+  applyFilters({ write: false })
+  if (sharedBanner) sharedBanner.scrollIntoView?.({ block: 'center' })
+}
+
+// ------------------------------------------------------------- call page
+
+if (callPage) {
+  const box = callPage.querySelector('[data-countdown]')
+  const text = box?.querySelector('[data-countdown-text]')
+  if (box && text) {
+    const { closes, opens } = box.dataset
+    const live = liveState(box.dataset)
+    if (live === 'closed' && closes) { text.textContent = `Closed on ${shortDate(closes, true)}`; box.classList.add('is-closed') }
+    else if (live === 'later' && opens && opens > todayISO) { text.textContent = `Opens in ${daysUntil(opens)} ${daysUntil(opens) === 1 ? 'day' : 'days'}, ${shortDate(opens)}`; box.classList.add('is-later') }
+    else if (closes) {
+      const days = daysUntil(closes)
+      text.textContent = days === 0 ? 'Closes today' : days === 1 ? 'Closes tomorrow' : `Closes in ${days} days`
+      if (days <= 7) box.classList.add('is-soon')
+      if (live === 'watch') text.textContent += ', if it’s open'
+    }
+  }
+  let next = false
+  for (const item of callPage.querySelectorAll('.cs-timeline-item')) {
+    if (item.dataset.date < todayISO) item.classList.add('is-past')
+    else if (!next) { item.classList.add('is-next'); next = true }
+  }
+  const back = callPage.querySelector('[data-back]')
+  back?.addEventListener('click', event => {
+    try {
+      const from = new URL(document.referrer)
+      if (from.origin === location.origin && from.pathname === BASE && history.length > 1) { event.preventDefault(); history.back() }
+    } catch {}
+  })
+  const check = callPage.querySelector('[data-selfcheck]')
+  if (check) {
+    const result = check.querySelector('[data-selfcheck-result]')
+    const total = check.querySelectorAll('.cs-checklist li').length
+    check.addEventListener('change', () => {
+      const answers = [...check.querySelectorAll('input:checked')].map(i => i.value)
+      const no = answers.filter(a => a === 'no').length
+      const unsure = answers.filter(a => a === 'unsure').length
+      if (no) result.textContent = `${no === 1 ? 'One answer rules' : `${no} answers rule`} this out as written. Read the official rules before you spend more time on it.`
+      else if (answers.length < total) result.textContent = `${total - answers.length} still to answer.`
+      else if (unsure) result.textContent = `Nothing rules you out yet. ${unsure} to confirm on the official page.`
+      else result.textContent = 'Nothing here rules you out. Now check the details on the official page.'
+    })
+  }
+}
+
+syncSaveButtons()
+renderSheet()

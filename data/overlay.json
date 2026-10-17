@@ -1,0 +1,5504 @@
+{
+ "about": "Call Sheet's hand-reviewed public layer over the Open Call Foundation. One entry per route, keyed by foundation ID. Written from the source packs' own wording; unclear means the packs do not state it.",
+ "reviewed_on": "2026-10-17",
+ "regions": [
+  "AFRICA",
+  "ASIA",
+  "CARIBBEAN",
+  "CENTRAL_AMERICA",
+  "EU",
+  "EUROPE",
+  "IBERO_AMERICA",
+  "LATAM",
+  "MENA",
+  "NORDIC",
+  "PACIFIC",
+  "SOUTHEAST_ASIA",
+  "SOUTH_ASIA"
+ ],
+ "entries": [
+  {
+   "id": "opp:atlas:current:c01",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "short",
+    "series"
+   ],
+   "stages": [
+    "production"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "",
+    "excludes": []
+   },
+   "who_line": "Check the official rules: not stated in our notes",
+   "get_line": "Stream 1: up to ZAR400,000 for shorts, pilots and web series; jobs/execution conditions apply",
+   "caution": "Closed: the deadline of 7 October 2026 has passed"
+  },
+  {
+   "id": "opp:atlas:current:c02",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "short",
+    "animation"
+   ],
+   "stages": [],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "",
+    "excludes": []
+   },
+   "who_line": "Check the official rules: not stated in our notes",
+   "get_line": "Up to NZD90,000 for short fiction, including animation",
+   "caution": "Closed: the deadline of 12 October 2026 has passed"
+  },
+  {
+   "id": "opp:atlas:current:c03",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [],
+   "stages": [],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "",
+    "excludes": []
+   },
+   "who_line": "Check the official rules: not stated in our notes",
+   "get_line": "Not published in our notes",
+   "caution": "Closed: this was a past call, with a deadline of 19 June 2026"
+  },
+  {
+   "id": "opp:atlas:current:c04",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [],
+   "stages": [
+    "post"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "",
+    "excludes": []
+   },
+   "who_line": "Check the official rules: not stated in our notes",
+   "get_line": "Not published in our notes",
+   "caution": "Closed: the current index marks the Finishing Fund closed"
+  },
+  {
+   "id": "opp:atlas:current:c05",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [],
+   "stages": [
+    "production",
+    "post"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "",
+    "excludes": []
+   },
+   "who_line": "Check the official rules: not stated in our notes",
+   "get_line": "Production or post-production funding for a film (amount not published)",
+   "caution": "Closed or outside the application window when we last checked"
+  },
+  {
+   "id": "opp:atlas:current:c06",
+   "kinds": [
+    "lab",
+    "other_finance"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "",
+    "excludes": []
+   },
+   "who_line": "Check the official rules: not stated in our notes",
+   "get_line": "Documentary mentoring and a commission (amount not published)",
+   "caution": "Closed: the deadline of 20 January 2026 has passed"
+  },
+  {
+   "id": "opp:atlas:current:f01",
+   "kinds": [
+    "other_finance"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "CA"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "company",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Eligible Canadian-controlled production company; company-track criteria apply.",
+    "excludes": []
+   },
+   "who_line": "Canadian-controlled production companies meeting track-record criteria",
+   "get_line": "A repayable development advance for a slate (ceilings not published)",
+   "caution": "Ceilings are withheld while guideline editions are reconciled; check the current guidelines"
+  },
+  {
+   "id": "opp:atlas:current:f02",
+   "kinds": [
+    "other_finance"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "CA"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "company",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Eligible Canadian-controlled production company; company-track criteria apply. Alternative Access is not a writer-without-company route.",
+    "excludes": []
+   },
+   "who_line": "Canadian-controlled production companies; not a route for writers without a company",
+   "get_line": "A repayable development advance for a slate (ceilings not published)",
+   "caution": "Not open yet (opens 24 November 2026); ceilings withheld while guideline editions are reconciled"
+  },
+  {
+   "id": "opp:atlas:current:f03",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "series"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "AU"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": "Australian First Nations creators",
+    "confidence": "partial",
+    "evidence": "Eligible Australian/First Nations creative team; credit and role tests differ for documentary, feature and TV branches.",
+    "excludes": []
+   },
+   "who_line": "Australian First Nations creative teams; ABN and rights conditions apply",
+   "get_line": "Development funding (branch caps not verified in our notes)",
+   "caution": "Terms and caps not verified; credit and role tests differ by branch"
+  },
+  {
+   "id": "opp:atlas:current:f04",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "AU"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Eligible Australian applicant/team, ABN, rights and track record per selected branch.",
+    "excludes": []
+   },
+   "who_line": "Australian applicants or teams with an ABN, rights and a track record",
+   "get_line": "Up to AUD30,000 for documentary development (per the public form)",
+   "caution": "Terms unresolved and intake is rolling: reconfirm budget and intake before applying"
+  },
+  {
+   "id": "opp:atlas:current:f05",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "series"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "AU"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Eligible Australian applicant/team; conditional credit, rights and company tests.",
+    "excludes": []
+   },
+   "who_line": "Australian applicants or teams; credit, rights and company tests apply",
+   "get_line": "Development funding (current cap not verified in our notes)",
+   "caution": "Terms unresolved and intake is rolling: reconfirm budget and intake before applying"
+  },
+  {
+   "id": "opp:atlas:current:f06",
+   "kinds": [
+    "other_finance"
+   ],
+   "formats": [
+    "fiction_feature",
+    "series"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "AU"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Eligible Australian production structure or co-production; branch-specific exceptions apply.",
+    "excludes": []
+   },
+   "who_line": "Australian production structures or co-productions; branch exceptions apply",
+   "get_line": "Production finance (project-specific cap not verified in our notes)",
+   "caution": "Grant or equity terms are unresolved; the finance cap is not verified"
+  },
+  {
+   "id": "opp:atlas:current:f07_innovation",
+   "kinds": [
+    "other_finance"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "NZ"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Eligible NZ producer/project; pre-application hui required.",
+    "excludes": []
+   },
+   "who_line": "Eligible New Zealand producers and projects (lead producer applies)",
+   "get_line": "Up to NZD1,500,000; a grant only if budget ≤NZD1m and request ≤NZD500,000, else equity",
+   "caution": "A pre-application hui is needed at least four weeks ahead; check the timing against 9 November"
+  },
+  {
+   "id": "opp:atlas:current:f07_post",
+   "kinds": [
+    "other_finance"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary"
+   ],
+   "stages": [
+    "post"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "NZ"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Eligible NZ producer/project; pre-application hui required.",
+    "excludes": []
+   },
+   "who_line": "Eligible New Zealand producers and projects (lead producer applies)",
+   "get_line": "Up to NZD500,000; a grant only if budget ≤NZD1m and request ≤NZD500,000, else equity",
+   "caution": "A pre-application hui is needed at least four weeks ahead; check the timing against 9 November"
+  },
+  {
+   "id": "opp:atlas:current:f07_prod",
+   "kinds": [
+    "other_finance"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "NZ"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Eligible NZ producer/project; pre-application hui required.",
+    "excludes": []
+   },
+   "who_line": "Eligible New Zealand producers and projects (lead producer applies)",
+   "get_line": "Up to NZD2,500,000; a grant only if budget ≤NZD1m and request ≤NZD500,000, else equity",
+   "caution": "A pre-application hui is needed at least four weeks ahead; check the timing against 9 November"
+  },
+  {
+   "id": "opp:atlas:current:f08_en_high",
+   "kinds": [
+    "other_finance"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "CA"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Eligible Canadian company and feature project under Telefilm rules.",
+    "excludes": []
+   },
+   "who_line": "Canadian companies with an English-language feature budgeted at CAD3.5m or more",
+   "get_line": "Project-specific production financing (no verified flat cap)",
+   "caution": "Not open yet (opens 24 November 2026); financing terms need project-specific review"
+  },
+  {
+   "id": "opp:atlas:current:f08_en_low_bridge",
+   "kinds": [
+    "other_finance"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "CA"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Eligible Canadian company and feature project under Telefilm rules.",
+    "excludes": []
+   },
+   "who_line": "Canadian companies with a feature project under Telefilm rules",
+   "get_line": "Production financing (current contribution cap not verified)",
+   "caution": "Our notes conflict: the title says low budget, the window text says budgets of CAD3.5m or more"
+  },
+  {
+   "id": "opp:atlas:current:f08_fr",
+   "kinds": [
+    "other_finance"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "CA"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Eligible Canadian company and feature project under Telefilm rules.",
+    "excludes": []
+   },
+   "who_line": "Canadian companies with a feature project under Telefilm rules",
+   "get_line": "Project-specific production financing (no verified flat cap)",
+   "caution": "Our notes conflict: title says French-language, all budgets; window text says English, CAD3.5m+"
+  },
+  {
+   "id": "opp:atlas:current:f09",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "series",
+    "documentary"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "NZ"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "New Zealand public-media content programme.",
+    "excludes": []
+   },
+   "who_line": "Not yet published: awaits the Round Toru brief (a New Zealand public-media programme)",
+   "get_line": "Content funding (round caps not yet published)",
+   "caution": "Round brief pending: applicant rules, platform rules and caps are not yet published"
+  },
+  {
+   "id": "opp:atlas:current:g01",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "post"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "SOUTHEAST_ASIA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Southeast Asian documentary filmmakers; exact applicant test forthcoming.",
+    "excludes": []
+   },
+   "who_line": "Southeast Asian documentary filmmakers; the exact test is not yet published",
+   "get_line": "SGD10,000 (one of three grants)",
+   "caution": "Opens 5 November 2026; the applicant test and contract terms are not yet published"
+  },
+  {
+   "id": "opp:atlas:current:g02",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "short"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "SOUTHEAST_ASIA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Emerging Southeast Asian filmmakers.",
+    "excludes": []
+   },
+   "who_line": "Emerging Southeast Asian filmmakers; exact rules not yet published",
+   "get_line": "SGD10,000 (one of six grants)",
+   "caution": "Opens 5 November 2026; regional applicant rules and contract terms are not yet published"
+  },
+  {
+   "id": "opp:atlas:current:g03",
+   "kinds": [
+    "other_finance"
+   ],
+   "formats": [
+    "short"
+   ],
+   "stages": [
+    "writing",
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "IN"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "nationality",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Emerging filmmaker with previous filmmaking experience; Indian citizen.",
+    "excludes": []
+   },
+   "who_line": "Indian citizens: emerging filmmakers with previous filmmaking experience",
+   "get_line": "INR1,200,000 commissioning support for a short film",
+   "caution": null
+  },
+  {
+   "id": "opp:atlas:current:g04",
+   "kinds": [
+    "grant",
+    "lab"
+   ],
+   "formats": [
+    "short",
+    "series",
+    "animation",
+    "other"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "PE"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": "Indigenous filmmakers and collectives",
+    "confidence": "partial",
+    "evidence": "Peruvian Andean/Amazonian communities; production in Indigenous languages.",
+    "excludes": []
+   },
+   "who_line": "Indigenous filmmakers (18–35) or collectives from Peru's Andean and Amazonian communities",
+   "get_line": "PEN15,000 plus technical and mentoring support (four awards)",
+   "caution": "Our notes are incomplete: get the full rules; production is in Indigenous languages"
+  },
+  {
+   "id": "opp:atlas:current:g05",
+   "kinds": [
+    "lab",
+    "grant"
+   ],
+   "formats": [
+    "series",
+    "animation"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "AU"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Eligible Australian citizen/permanent resident or Australian-controlled company",
+    "excludes": []
+   },
+   "who_line": "Australian citizens, permanent residents or Australian-controlled companies",
+   "get_line": "AUD20,000 per team (up to eight teams) and a place in the incubator",
+   "caution": "This is the Australian route; New Zealand teams use the separate NZ On Air application"
+  },
+  {
+   "id": "opp:atlas:current:g06",
+   "kinds": [
+    "lab",
+    "grant"
+   ],
+   "formats": [
+    "series",
+    "animation"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "NZ"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "New Zealand-based individual or entity at application",
+    "excludes": []
+   },
+   "who_line": "New Zealand-based individuals or entities, with two key creatives including a writer",
+   "get_line": "Phase I: up to NZD22,000 per team (up to four teams)",
+   "caution": "Phase II funding (up to NZD330,000) is by invitation only and not guaranteed"
+  },
+  {
+   "id": "opp:atlas:current:g07",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "CA"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "company",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Eligible Canadian-controlled taxable production company; qualifying MPF licence commitment.",
+    "excludes": []
+   },
+   "who_line": "Canadian-controlled taxable production companies with a qualifying MPF licence",
+   "get_line": "Up to CAD150,000 (under CAD1m eligible costs) or CAD250,000 (CAD1m or more)",
+   "caution": null
+  },
+  {
+   "id": "opp:atlas:current:g08",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "animation"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "NZ"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "NZ citizen/permanent resident holding necessary rights",
+    "excludes": []
+   },
+   "who_line": "NZ citizens or permanent residents holding the rights, with qualifying credits",
+   "get_line": "Normally NZD35,000 per tranche, within a NZD140,000 lifetime development ceiling",
+   "caution": "A pre-application meeting comes first; NZD140,000 is a lifetime ceiling, not one award"
+  },
+  {
+   "id": "opp:atlas:current:g09",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "NZ"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "NZ citizen/permanent resident holding necessary rights",
+    "excludes": []
+   },
+   "who_line": "NZ citizens or permanent residents holding the rights, with qualifying credits",
+   "get_line": "Normally NZD35,000 per tranche, within a NZD140,000 lifetime development ceiling",
+   "caution": "A pre-application meeting comes first; NZD140,000 is a lifetime ceiling, not one award"
+  },
+  {
+   "id": "opp:atlas:current:g10",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "post"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "NZ"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Director and producer both NZ citizens/permanent residents",
+    "excludes": []
+   },
+   "who_line": "Features whose director and producer are both NZ citizens or permanent residents",
+   "get_line": "Up to NZD60,000 to finish a feature",
+   "caution": "Rolling intake after a pre-application meeting; reconfirm budget and intake first"
+  },
+  {
+   "id": "opp:atlas:current:g11",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "series",
+    "short",
+    "immersive"
+   ],
+   "stages": [
+    "post",
+    "finished"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "CA"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": "First Nations, Inuit and Métis-owned companies",
+    "confidence": "stated",
+    "evidence": "Eligible Canadian company with at least 51% First Nations/Inuit/Métis ownership/control",
+    "excludes": []
+   },
+   "who_line": "Canadian companies at least 51% First Nations, Inuit or Métis owned and controlled",
+   "get_line": "Up to CAD50,000 (features/TV) or CAD25,000 (shorts/web/immersive)",
+   "caution": "A missing budget, schedule or cut makes the application immediately ineligible"
+  },
+  {
+   "id": "opp:atlas:current:g12",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "other"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "CA"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": "First Nations, Inuit and Métis artists",
+    "confidence": "partial",
+    "evidence": "Canadian Indigenous arts programme, not a worldwide film fund.",
+    "excludes": []
+   },
+   "who_line": "First Nations, Inuit and Métis artists, groups and organisations (Canadian programme)",
+   "get_line": "Arts project grant (current cap not verified in our notes)",
+   "caution": "Detailed terms pending: check eligibility and the portal's full checklist"
+  },
+  {
+   "id": "opp:atlas:current:g13",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "other"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "CA"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Canadian arts-programme eligibility, not open worldwide.",
+    "excludes": []
+   },
+   "who_line": "Professional artists, groups or organisations meeting Canadian eligibility rules",
+   "get_line": "Arts project grant (current cap not verified in our notes)",
+   "caution": "Terms pending: apply before the project starts and confirm the exact category"
+  },
+  {
+   "id": "opp:atlas:current:g14_cont",
+   "kinds": [
+    "grant",
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "animation"
+   ],
+   "stages": [
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "MX"
+    ],
+    "regions": [
+     "CENTRAL_AMERICA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": "Indigenous and Afro-descendant creators",
+    "confidence": "partial",
+    "evidence": "Mexico and Central America; tax ID or national equivalent and self-identification documentation.",
+    "excludes": []
+   },
+   "who_line": "Indigenous or Afro-descendant directors (18+) from Mexico or Central America",
+   "get_line": "Up to MXN850,000 for feature continuity, plus mentoring and a residency",
+   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
+  },
+  {
+   "id": "opp:atlas:current:g14_dev",
+   "kinds": [
+    "grant",
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "animation"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "MX"
+    ],
+    "regions": [
+     "CENTRAL_AMERICA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": "Indigenous and Afro-descendant creators",
+    "confidence": "partial",
+    "evidence": "Mexico and Central America; tax ID or national equivalent and self-identification documentation.",
+    "excludes": []
+   },
+   "who_line": "Indigenous or Afro-descendant writers or directors (18+) from Mexico or Central America",
+   "get_line": "Up to MXN90,000 for feature development, plus mentoring and a residency",
+   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
+  },
+  {
+   "id": "opp:atlas:current:g14_fin_feature",
+   "kinds": [
+    "grant",
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "animation"
+   ],
+   "stages": [
+    "post"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "MX"
+    ],
+    "regions": [
+     "CENTRAL_AMERICA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": "Indigenous and Afro-descendant creators",
+    "confidence": "partial",
+    "evidence": "Mexico and Central America; tax ID or national equivalent and self-identification documentation.",
+    "excludes": []
+   },
+   "who_line": "Indigenous or Afro-descendant directors (18+) from Mexico or Central America",
+   "get_line": "Up to MXN950,000 for feature completion, plus mentoring and a residency",
+   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
+  },
+  {
+   "id": "opp:atlas:current:g14_fin_short",
+   "kinds": [
+    "grant",
+    "lab"
+   ],
+   "formats": [
+    "short",
+    "animation"
+   ],
+   "stages": [
+    "post"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "MX"
+    ],
+    "regions": [
+     "CENTRAL_AMERICA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": "Indigenous and Afro-descendant creators",
+    "confidence": "partial",
+    "evidence": "Mexico and Central America; tax ID or national equivalent and self-identification documentation.",
+    "excludes": []
+   },
+   "who_line": "Indigenous or Afro-descendant directors (18+) from Mexico or Central America",
+   "get_line": "Up to MXN300,000 for short completion, plus mentoring and a residency",
+   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
+  },
+  {
+   "id": "opp:atlas:current:g14_prod_feature",
+   "kinds": [
+    "grant",
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "animation"
+   ],
+   "stages": [
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "MX"
+    ],
+    "regions": [
+     "CENTRAL_AMERICA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": "Indigenous and Afro-descendant creators",
+    "confidence": "partial",
+    "evidence": "Mexico and Central America; tax ID or national equivalent and self-identification documentation.",
+    "excludes": []
+   },
+   "who_line": "Indigenous or Afro-descendant directors (18+) from Mexico or Central America",
+   "get_line": "Up to MXN1,200,000 for feature production, plus mentoring and a residency",
+   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
+  },
+  {
+   "id": "opp:atlas:current:g14_prod_short",
+   "kinds": [
+    "grant",
+    "lab"
+   ],
+   "formats": [
+    "short",
+    "animation"
+   ],
+   "stages": [
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "MX"
+    ],
+    "regions": [
+     "CENTRAL_AMERICA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": "Indigenous and Afro-descendant creators",
+    "confidence": "partial",
+    "evidence": "Mexico and Central America; tax ID or national equivalent and self-identification documentation.",
+    "excludes": []
+   },
+   "who_line": "Indigenous or Afro-descendant directors (18+) from Mexico or Central America",
+   "get_line": "Up to MXN450,000 for short production, plus mentoring and a residency",
+   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
+  },
+  {
+   "id": "opp:atlas:current:g15",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "animation"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "PY"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "INAP submission requires Paraguayan majority and Argentine minority producer.",
+    "excludes": []
+   },
+   "who_line": "Paraguayan majority producers with a genuine Argentine minority partner",
+   "get_line": "PYG205,555,000 per award (two INAP-side awards)",
+   "caution": "Argentina has separate rules; this 30 December deadline is for the INAP route only"
+  },
+  {
+   "id": "opp:atlas:current:g16_debut",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "PY"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Individual or company with BOTH INAP producer-nationality and project-nationality certificates.",
+    "excludes": []
+   },
+   "who_line": "Producers holding INAP producer- and project-nationality certificates (Paraguay)",
+   "get_line": "Up to PYG260,000,000 for a debut feature",
+   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
+  },
+  {
+   "id": "opp:atlas:current:g16_dev",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "PY"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Individual or company with BOTH INAP producer-nationality and project-nationality certificates.",
+    "excludes": []
+   },
+   "who_line": "Producers holding INAP producer- and project-nationality certificates (Paraguay)",
+   "get_line": "Up to PYG70,000,000 for development",
+   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
+  },
+  {
+   "id": "opp:atlas:current:g16_doc",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "PY"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Individual or company with BOTH INAP producer-nationality and project-nationality certificates.",
+    "excludes": []
+   },
+   "who_line": "Producers holding INAP producer- and project-nationality certificates (Paraguay)",
+   "get_line": "Up to PYG290,000,000 for documentary production",
+   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
+  },
+  {
+   "id": "opp:atlas:current:g16_fiction",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "PY"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Individual or company with BOTH INAP producer-nationality and project-nationality certificates.",
+    "excludes": []
+   },
+   "who_line": "Producers holding INAP producer- and project-nationality certificates (Paraguay)",
+   "get_line": "Up to PYG600,000,000 for fiction production",
+   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
+  },
+  {
+   "id": "opp:atlas:current:g16_minority",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [],
+   "stages": [],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "PY"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Individual or company with BOTH INAP producer-nationality and project-nationality certificates.",
+    "excludes": []
+   },
+   "who_line": "Producers holding INAP producer- and project-nationality certificates (Paraguay)",
+   "get_line": "Up to PYG260,000,000 for a minority co-production",
+   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
+  },
+  {
+   "id": "opp:atlas:current:g16_short",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "short"
+   ],
+   "stages": [
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "PY"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Individual or company with BOTH INAP producer-nationality and project-nationality certificates.",
+    "excludes": []
+   },
+   "who_line": "Producers holding INAP producer- and project-nationality certificates (Paraguay)",
+   "get_line": "Up to PYG70,000,000 for short production",
+   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
+  },
+  {
+   "id": "opp:atlas:current:w01",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "",
+    "excludes": []
+   },
+   "who_line": "Check the official rules: not stated in our notes",
+   "get_line": "Not published in our notes",
+   "caution": "Watch only: no verified open call, and current fund rules could not be verified"
+  },
+  {
+   "id": "opp:atlas:current:w02",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "CA"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Music-documentary support with Canadian connection.",
+    "excludes": []
+   },
+   "who_line": "Music documentaries with a Canadian connection; details not verified",
+   "get_line": "Not published in our notes",
+   "caution": "Watch only: no verified in-window deadline or current award"
+  },
+  {
+   "id": "opp:atlas:current:w03",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [],
+   "stages": [],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Includes specific MENA series-development/web-series branches as well as film.",
+    "excludes": []
+   },
+   "who_line": "Varies by branch; some series-development branches are MENA-specific",
+   "get_line": "Not published in our notes",
+   "caution": "Watch only: the next round is not announced; no verified deadline or award"
+  },
+  {
+   "id": "opp:atlas:current:w04",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [],
+   "stages": [
+    "post"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "Regional film postproduction support.",
+    "excludes": []
+   },
+   "who_line": "Check the official rules: the region is not defined in our notes",
+   "get_line": "Not published in our notes",
+   "caution": "Watch only: the 2027 post-production call is not announced or verified"
+  },
+  {
+   "id": "opp:atlas:current:w05",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "development",
+    "post"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "CARIBBEAN",
+     "CENTRAL_AMERICA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": "Women-led projects",
+    "confidence": "partial",
+    "evidence": "Women-led Central American/Caribbean feature development and postproduction.",
+    "excludes": []
+   },
+   "who_line": "Women-led projects from Central America or the Caribbean; rules not verified",
+   "get_line": "Not published in our notes",
+   "caution": "Watch only: no verified in-window deadline or current award"
+  },
+  {
+   "id": "opp:atlas:current:w06",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [],
+   "stages": [
+    "production",
+    "post"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "Potential national film production/postproduction subsidy routes.",
+    "excludes": []
+   },
+   "who_line": "Check the official rules: a national scheme, applicant test not in our notes",
+   "get_line": "Not published in our notes",
+   "caution": "Watch only: no verified in-window deadline or current award"
+  },
+  {
+   "id": "opp:atlas:current:w07",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "National film/TV development and production support.",
+    "excludes": []
+   },
+   "who_line": "Check the official rules: a national scheme, applicant test not in our notes",
+   "get_line": "Not published in our notes",
+   "caution": "Watch only: no verified in-window deadline or current award"
+  },
+  {
+   "id": "opp:atlas:current:w08",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "AFRICA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "East African documentary lead.",
+    "excludes": []
+   },
+   "who_line": "East African documentaries; applicant rules not verified",
+   "get_line": "Not published in our notes",
+   "caution": "Watch only: no verified in-window deadline or current award"
+  },
+  {
+   "id": "opp:atlas:current:w09",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "Potential national feature-film support.",
+    "excludes": []
+   },
+   "who_line": "Check the official rules: a national scheme, applicant test not in our notes",
+   "get_line": "Not published in our notes",
+   "caution": "Watch only: no verified in-window deadline or current award"
+  },
+  {
+   "id": "opp:atlas:current:w10",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "NP"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Nepal documentary support lead.",
+    "excludes": []
+   },
+   "who_line": "Noted only as Nepal documentary support; applicant rules not verified",
+   "get_line": "Not published in our notes",
+   "caution": "Watch only: no verified in-window deadline or current award"
+  },
+  {
+   "id": "opp:atlas:legacy:a01",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "animation"
+   ],
+   "stages": [
+    "post"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide fiction rough cuts; documentaries and finished films excluded.",
+    "excludes": []
+   },
+   "who_line": "Fiction feature teams worldwide with a rough cut; director and editor both attend",
+   "get_line": "Rough-cut mentoring for the director and editor",
+   "caution": "Elapsed: the 2026 entry window has passed, and runtime rules conflict"
+  },
+  {
+   "id": "opp:atlas:legacy:a02",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "short",
+    "animation"
+   ],
+   "stages": [
+    "post",
+    "finished"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide films in post-production or completed.",
+    "excludes": []
+   },
+   "who_line": "Films from anywhere in post-production or completed; paid entry",
+   "get_line": "A paid listing on the industry viewing platform (not a merit selection)",
+   "caution": "Elapsed: the 2026 entry window has passed"
+  },
+  {
+   "id": "opp:atlas:legacy:c01",
+   "kinds": [
+    "competition"
+   ],
+   "formats": [
+    "short"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide; English original short script up to 15 pages",
+    "excludes": []
+   },
+   "who_line": "Writers worldwide with an unproduced English short script of up to 15 pages",
+   "get_line": "Not published in our notes",
+   "caution": null
+  },
+  {
+   "id": "opp:atlas:legacy:f01",
+   "kinds": [
+    "festival"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "post",
+    "finished"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "International documentary.",
+    "excludes": []
+   },
+   "who_line": "Documentaries from anywhere completed after 1 January 2026; Ontario/Toronto premiere",
+   "get_line": "Festival selection and screening; not project finance",
+   "caution": null
+  },
+  {
+   "id": "opp:atlas:legacy:f02",
+   "kinds": [
+    "festival"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "short",
+    "animation"
+   ],
+   "stages": [
+    "finished"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "IBERO_AMERICA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Section-specific: Ibero-American fiction/documentary routes; global animation and some thematic sections.",
+    "excludes": []
+   },
+   "who_line": "Ibero-American fiction and docs; animation and some thematic sections open globally",
+   "get_line": "Festival selection and screening",
+   "caution": "Section-specific eligibility and premiere rules still need confirmation"
+  },
+  {
+   "id": "opp:atlas:legacy:f03",
+   "kinds": [
+    "festival"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "short",
+    "animation"
+   ],
+   "stages": [
+    "finished"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "International film sections are broader than regional competitions/WIP.",
+    "excludes": []
+   },
+   "who_line": "Films completed 2026–27 with a Colombian premiere; section rules vary",
+   "get_line": "Festival selection and screening",
+   "caution": "Rules vary by section, and the 70-minute short/feature boundary is unclear"
+  },
+  {
+   "id": "opp:atlas:legacy:f04",
+   "kinds": [
+    "festival"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "post",
+    "finished"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "International and New Zealand fee categories differ.",
+    "excludes": []
+   },
+   "who_line": "Documentaries completed from 1 January 2026, with a New Zealand premiere",
+   "get_line": "Festival selection and screening",
+   "caution": "The final 2027 screening schedule is not yet confirmed"
+  },
+  {
+   "id": "opp:atlas:legacy:f05",
+   "kinds": [
+    "festival"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "short",
+    "animation"
+   ],
+   "stages": [
+    "finished"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "AFRICA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Open feature/documentary submissions are African films; non-African features are by invitation. Shorts welcome worldwide.",
+    "excludes": []
+   },
+   "who_line": "African features and documentaries; shorts from anywhere; South African premiere",
+   "get_line": "Festival selection and screening",
+   "caution": "Fee currency and African-feature category definitions are not verified"
+  },
+  {
+   "id": "opp:atlas:legacy:f06",
+   "kinds": [
+    "festival"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "short",
+    "animation"
+   ],
+   "stages": [
+    "finished"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "AFRICA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "African-director long/short routes; diaspora long films by African directors outside the continent concern Africa.",
+    "excludes": []
+   },
+   "who_line": "African directors, including diaspora directors with long films about Africa",
+   "get_line": "Festival selection and screening",
+   "caution": "Full section requirements and the entry fee could not be verified"
+  },
+  {
+   "id": "opp:atlas:legacy:p01",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "fiction_feature",
+    "animation"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "ASIA"
+    ],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Asian elements or Asian director/producer per FAQ.",
+    "excludes": []
+   },
+   "who_line": "Feature teams with director, producer and company attached; Asian link required",
+   "get_line": "A place in the HAF co-production market (other benefits not in our notes)",
+   "caution": "Borderline Asian-link eligibility needs confirming against current-cycle rules"
+  },
+  {
+   "id": "opp:atlas:legacy:p02",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "writing",
+    "development",
+    "production",
+    "post"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Independent production company; international nonfiction.",
+    "excludes": []
+   },
+   "who_line": "Independent production companies worldwide with a doc about 10–75% financed",
+   "get_line": "A financing pitch at the Hot Docs Forum",
+   "caution": "Published market-financing rules for the rough-cut route conflict; confirm with the organiser"
+  },
+  {
+   "id": "opp:atlas:legacy:p03",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "writing",
+    "development",
+    "production",
+    "post"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "International documentary/factual projects in development through post-production whose financing is not closed.",
+    "excludes": []
+   },
+   "who_line": "Documentary or factual projects worldwide, development to post, financing not closed",
+   "get_line": "Curated industry meetings for the project",
+   "caution": null
+  },
+  {
+   "id": "opp:atlas:legacy:p04",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "writing",
+    "development",
+    "production",
+    "post"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide rights-holders aged 18+.",
+    "excludes": []
+   },
+   "who_line": "Rights-holders worldwide (18+) with a doc feature, one-hour single or factual series",
+   "get_line": "A pitch at The FACTory, AIDC, Sydney",
+   "caution": "Fees conflict: AUD66.50/76.50 on the live page, AUD65/75 in the PDFs"
+  },
+  {
+   "id": "opp:atlas:legacy:p05",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "IBERO_AMERICA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Ibero-American framing and detailed finance/company-share gates require full current rules; do not infer eligibility from venue.",
+    "excludes": []
+   },
+   "who_line": "Feature projects in development; Ibero-American framing, rules not verified",
+   "get_line": "A place in the co-production meetings (up to 15 projects)",
+   "caution": "Territorial, financing and company-share rules could not be verified"
+  },
+  {
+   "id": "opp:atlas:legacy:p06",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "series",
+    "documentary"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "IBERO_AMERICA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Ibero-American fiction/documentary series in development.",
+    "excludes": []
+   },
+   "who_line": "Ibero-American fiction or documentary series in development, with a pilot draft",
+   "get_line": "A place in the Episodio 0 series-development market",
+   "caution": "Regulations have changed substantially; financing and category rules not verified"
+  },
+  {
+   "id": "opp:atlas:legacy:p07",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "fiction_feature",
+    "animation"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "Full territorial/unshot/financing conditions need current-rule confirmation.",
+    "excludes": []
+   },
+   "who_line": "Horror, fantasy or science-fiction feature projects; territorial rules not verified",
+   "get_line": "A pitch slot at Pitch Guadalajara: Género Fantástico",
+   "caution": "Territorial, unshot-project and financing rules could not be verified"
+  },
+  {
+   "id": "opp:atlas:legacy:p08",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "fiction_feature",
+    "animation"
+   ],
+   "stages": [
+    "post"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "IBERO_AMERICA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Ibero-American fiction feature in final post-production, needing completion support.",
+    "excludes": []
+   },
+   "who_line": "Ibero-American fiction features in final post-production",
+   "get_line": "A work-in-progress showcase place, seeking completion support",
+   "caution": null
+  },
+  {
+   "id": "opp:atlas:legacy:p09",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "post"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "IBERO_AMERICA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Ibero-American directors working on a documentary's first or second cut.",
+    "excludes": []
+   },
+   "who_line": "Ibero-American directors with a documentary at first or second cut",
+   "get_line": "A place in the documentary editing lab",
+   "caution": "Full current duration and category rules could not be verified"
+  },
+  {
+   "id": "opp:atlas:legacy:p10",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "fiction_feature",
+    "animation"
+   ],
+   "stages": [
+    "production",
+    "post"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "ASIA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Asian link per FAQ, subject to current-call clarification.",
+    "excludes": []
+   },
+   "who_line": "Fiction or animated features with footage, director, producer, company; Asian link",
+   "get_line": "A place in the HAF Work-in-Progress market (other benefits not in our notes)",
+   "caution": "Opens 2 November 2026; the Asian-link rule awaits current-call clarification"
+  },
+  {
+   "id": "opp:atlas:legacy:p11",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "company",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Production company/content platform NOT registered in Singapore.",
+    "excludes": [
+     "SG"
+    ]
+   },
+   "who_line": "Production companies or platforms anywhere except Singapore (not lone writers)",
+   "get_line": "A co-production pitch to Mediacorp at ATF on 3 December 2026",
+   "caution": "This entry gives no application deadline; another of our notes puts it in October 2026"
+  },
+  {
+   "id": "opp:atlas:legacy:p12",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "writing",
+    "development",
+    "production",
+    "post"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide rights-holders aged 18+",
+    "excludes": []
+   },
+   "who_line": "Rights-holders worldwide (18+) with a doc over 40 minutes or a factual series",
+   "get_line": "A pitch slot at Doc Edge Pitch 2027 (dates to be announced)",
+   "caution": "The regular fee conflicts: NZD150 on the webpage, NZD175 in the guide"
+  },
+  {
+   "id": "opp:atlas:legacy:p13",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "IBERO_AMERICA"
+    ],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Ibero-American director–producer team",
+    "excludes": []
+   },
+   "who_line": "Ibero-American director–producer teams; director has made at most one fiction feature",
+   "get_line": "A development-lab place for the director–producer team",
+   "caution": null
+  },
+  {
+   "id": "opp:atlas:legacy:p14",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "short"
+   ],
+   "stages": [
+    "post"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "CO"
+    ],
+    "regions": [
+     "IBERO_AMERICA"
+    ],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Ibero-American director AND Ibero-American lead production company for feature WIP. Shorts WIP is Colombian.",
+    "excludes": []
+   },
+   "who_line": "Features: Ibero-American director and lead company. Shorts: Colombian projects",
+   "get_line": "A work-in-progress showcase place; one project representative attends",
+   "caution": null
+  },
+  {
+   "id": "opp:atlas:legacy:p15",
+   "kinds": [
+    "competition",
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "animation",
+    "series"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "International screenplay/pilot route open to men and women",
+    "excludes": []
+   },
+   "who_line": "Screenwriters worldwide of any gender; female-protagonist scripts preferred",
+   "get_line": "Not published in our notes",
+   "caution": "Script category rules need a current-form check; fee currency not verified"
+  },
+  {
+   "id": "opp:atlas:legacy:p16",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "series"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "National/international writers pitching features, series, limited series, documentaries or web-series",
+    "excludes": []
+   },
+   "who_line": "Writers in Canada or abroad pitching features, series or documentaries",
+   "get_line": "A live pitch slot at Female Eye",
+   "caution": "Live-pitch eligibility needs a current-form check; fee currency not verified"
+  },
+  {
+   "id": "opp:atlas:legacy:p17",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "UY"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "born in Uruguay OR resident for more than five years",
+    "excludes": []
+   },
+   "who_line": "Writer-directors aged 32 or under, born in Uruguay or resident more than five years",
+   "get_line": "A lab place (ten places overall; not all are open through this call)",
+   "caution": null
+  },
+  {
+   "id": "opp:atlas:legacy:p18",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "short"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "Detailed nationality/residency, age and script-stage requirements were not fully retrievable.",
+    "excludes": []
+   },
+   "who_line": "Short-script writers at intermediate or advanced level (English); other rules unverified",
+   "get_line": "A place in an online short-script lab; a QAR 1,000 participation fee applies",
+   "caution": "Nationality, residency and script eligibility could not be verified"
+  },
+  {
+   "id": "opp:atlas:legacy:s01",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "animation",
+    "series",
+    "short"
+   ],
+   "stages": [
+    "writing",
+    "production",
+    "post",
+    "finished"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "CL"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Annual rules admit adults with Chilean nationality or a Chile-issued identity document, and eligible Chilean legal entities.",
+    "excludes": []
+   },
+   "who_line": "Chilean nationals, holders of a Chile-issued ID, or Chilean legal entities (18+)",
+   "get_line": "Support to attend Ventana Sur, Montevideo (amount not published)",
+   "caution": "Check the current call's administrative conditions and amendments"
+  },
+  {
+   "id": "opp:atlas:legacy:w01",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "International English-language feature-concept lab.",
+    "excludes": []
+   },
+   "who_line": "Writers with an English-language feature concept; international lab",
+   "get_line": "A place in a feature-concept lab (2027 terms not published)",
+   "caution": "Watch: the call opens December 2026; no closing date verified, and 2026 fees don't apply"
+  },
+  {
+   "id": "opp:atlas:legacy:w02",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "",
+    "excludes": []
+   },
+   "who_line": "Writers with a completed English-language feature draft; other rules not in our notes",
+   "get_line": "A place in a script revision lab (2027 terms not published)",
+   "caution": "Watch: opens January 2027, no verified closing date; past accommodation and meals not promised"
+  },
+  {
+   "id": "opp:atlas:legacy:w03",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "animation"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "AFRICA"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "African creative/team eligibility must be rechecked for 2027.",
+    "excludes": []
+   },
+   "who_line": "African creative teams in past cycles; 2027 eligibility not yet published",
+   "get_line": "Not published in our notes",
+   "caution": "Watch: no 2027 call verified; the 2026 cycle closed on 1 February 2026"
+  },
+  {
+   "id": "opp:atlas:legacy:w04",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "short",
+    "series"
+   ],
+   "stages": [
+    "writing",
+    "production",
+    "post"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "nationality",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Eligibility varies by nationality, format and production stage.",
+    "excludes": []
+   },
+   "who_line": "Varies by nationality, format and stage; check the next round's rules",
+   "get_line": "Not published in our notes",
+   "caution": "Watch: no spring 2027 deadline verified; the Fall 2026 round ran 22 June–2 July 2026"
+  },
+  {
+   "id": "opp:atlas:legacy:x01",
+   "kinds": [
+    "market",
+    "festival"
+   ],
+   "formats": [
+    "fiction_feature",
+    "animation",
+    "documentary"
+   ],
+   "stages": [
+    "writing",
+    "production",
+    "post",
+    "finished"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "",
+    "excludes": []
+   },
+   "who_line": "Check the official rules: not stated in our notes",
+   "get_line": "Not published in our notes",
+   "caution": "No 2026 festival or Souk; the next edition is in Q4 2027, dates to be announced"
+  },
+  {
+   "id": "opp:atlas:legacy:x02",
+   "kinds": [
+    "competition"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "",
+    "excludes": []
+   },
+   "who_line": "Check the official rules: not stated in our notes",
+   "get_line": "Not published in our notes",
+   "caution": "Closed: applications ended 31 July 2026; 31 January 2027 is notification, not a deadline"
+  },
+  {
+   "id": "opp:atlas:legacy:x03",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "series"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "",
+    "excludes": []
+   },
+   "who_line": "Check the official rules: not stated in our notes",
+   "get_line": "A place in the lab, 19–22 January 2027",
+   "caution": "Closed: applications ended 24 September 2026"
+  },
+  {
+   "id": "opp:atlas:legacy:x04",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "",
+    "excludes": []
+   },
+   "who_line": "Check the official rules: not stated in our notes",
+   "get_line": "A place in the screenplay lab, 12–15 January 2027",
+   "caution": "Closed: new entries ended 30 June 2026"
+  },
+  {
+   "id": "opp:atlas:legacy:x05",
+   "kinds": [
+    "market",
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "animation",
+    "documentary",
+    "series",
+    "short"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "",
+    "excludes": []
+   },
+   "who_line": "Check the official rules: not stated in our notes",
+   "get_line": "Not published in our notes",
+   "caution": "Closed: these ATF calls ended in September 2026; their December events are not deadlines"
+  },
+  {
+   "id": "opp:europe:current:g01",
+   "kinds": [
+    "grant",
+    "competition"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "nationality",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide, age 18+.",
+    "excludes": []
+   },
+   "who_line": "Directors 18+ anywhere making a first 50+ min documentary, executive producer attached",
+   "get_line": "Main prize £120,000; runner-up development prize £25,000",
+   "caution": "Funding is not guaranteed to finalists; you need an entity or fiscal sponsor to receive payment"
+  },
+  {
+   "id": "opp:europe:current:g02",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "production",
+    "post"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "EUROPE"
+    ],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "MEDIA-country company plus eligible IBF-country director and non-European co-producer; setting/location and ownership tests apply.",
+    "excludes": []
+   },
+   "who_line": "European minority co-producer, with an IBF-country director and non-European co-producer",
+   "get_line": "Up to €40,000; total film budget no more than €600,000",
+   "caution": "IBF director-country, setting and ownership tests apply and are not listed in our notes"
+  },
+  {
+   "id": "opp:europe:current:g03",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "GB"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "company",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Qualifying UK lead applicant within an international co-production.",
+    "excludes": []
+   },
+   "who_line": "UK independent production company leading an international co-production",
+   "get_line": "Up to £300,000, non-recoupable, capped at 50% of the UK contribution",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:current:g04",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary",
+    "animation",
+    "series"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "GB"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "company",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Qualifying UK lead applicant within an international co-production.",
+    "excludes": []
+   },
+   "who_line": "UK independent production company leading an international co-production",
+   "get_line": "Up to £300,000, non-recoupable, capped at 50% of the UK contribution",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:current:g05",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "series",
+    "other"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "EUROPE"
+    ],
+    "subnational": null,
+    "test": "company",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "MEDIA-eligible company ownership and control; substantial cross-border distribution track record.",
+    "excludes": []
+   },
+   "who_line": "Independent MEDIA-country production company with a cross-border distribution record",
+   "get_line": "€90,000–€510,000 per slate of 3–5 works, not per single project",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:current:g06",
+   "kinds": [
+    "grant",
+    "other_finance"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "EUROPE"
+    ],
+    "subnational": null,
+    "test": "company",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "At least two qualifying member-state co-producers; treaty/share rules apply.",
+    "excludes": []
+   },
+   "who_line": "Co-producers from at least two qualifying member states; treaty and share rules apply",
+   "get_line": "Up to €150,000, non-refundable, in this lower-award branch",
+   "caution": "Above €150,000 the whole award becomes an advance on receipts, not a grant"
+  },
+  {
+   "id": "opp:europe:current:g07",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "animation"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "FR"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "French-company applicant and eligible international feature; nationality, language and treaty specifics require the current guide.",
+    "excludes": []
+   },
+   "who_line": "French production company with an international co-producer on an eligible feature",
+   "get_line": "Up to €300,000; up to €500,000 for a qualifying French-initiated film budgeted €2.5m+",
+   "caution": "Nationality, language and treaty rules need the current CNC guide; a French co-producer's name is not enough"
+  },
+  {
+   "id": "opp:europe:current:g08",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "post"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "FR"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "French producer and international co-production; previous ACM pre-filming rejection required.",
+    "excludes": []
+   },
+   "who_line": "French producer of an international co-production previously refused ACM pre-filming aid",
+   "get_line": "Up to €70,000 in finishing support",
+   "caution": "Only open after an ACM pre-filming rejection; older sources quote a €50,000 cap"
+  },
+  {
+   "id": "opp:europe:current:g09",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "FR"
+    ],
+    "regions": [
+     "EU"
+    ],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Eligible French/EU/EEA or specified European treaty-country citizenship/residence",
+    "excludes": []
+   },
+   "who_line": "Documentary authors with French, EU/EEA or listed treaty-country citizenship or residence",
+   "get_line": "A fixed €10,000 writing award",
+   "caution": "Check the current legal country list; being 'European' in general is not enough"
+  },
+  {
+   "id": "opp:europe:current:g10",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "FR"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "company",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "confirm French establishment in current guide.",
+    "excludes": []
+   },
+   "who_line": "Production company receives the funds; an author may start the application",
+   "get_line": "Published average of €50,000; not a maximum or a guaranteed amount",
+   "caution": "The company's French establishment needs confirming in the current guide"
+  },
+  {
+   "id": "opp:europe:current:g11",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "company",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "",
+    "excludes": []
+   },
+   "who_line": "Production company on a project with a recent CNC documentary-writing award",
+   "get_line": "Published average of €18,000; not a cap",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:current:g12",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "Verify personal eligibility and first/experienced college.",
+    "excludes": []
+   },
+   "who_line": "Writers, no production company; film mainly in French or a regional language of France",
+   "get_line": "Up to €30,000 per project, with up to €20,000 for the principal author",
+   "caution": "November reform: the updated form and terms need reconfirming before you apply"
+  },
+  {
+   "id": "opp:europe:current:g13",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "series",
+    "other"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "FR"
+    ],
+    "regions": [
+     "EUROPE"
+    ],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "French or qualifying European/treaty citizenship; permanent-residence equivalence has specific documentation rules.",
+    "excludes": []
+   },
+   "who_line": "Authors with French or qualifying European/treaty citizenship, or equivalent residence",
+   "get_line": "A fixed €7,500 for the concept",
+   "caution": "Claiming residence instead of citizenship needs specific documents; check the rules"
+  },
+  {
+   "id": "opp:europe:current:g14",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "series",
+    "other"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "FR"
+    ],
+    "regions": [
+     "EUROPE"
+    ],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "French or qualifying European/treaty citizenship; permanent-residence equivalence has specific documentation rules.",
+    "excludes": []
+   },
+   "who_line": "Authors with French or qualifying European/treaty citizenship, or equivalent residence",
+   "get_line": "Fixed by format: €15,000 short/digital series, €30,000 series over 26 min, €25,000 TV single",
+   "caution": "Check the exact format category and consultant allocation before applying"
+  },
+  {
+   "id": "opp:europe:current:g15",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "animation",
+    "series"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "nationality/residence and French dossier rules need current-form confirmation.",
+    "excludes": []
+   },
+   "who_line": "Literary or graphic authors; at least one meeting professional/education criteria",
+   "get_line": "A fixed €5,000",
+   "caution": "Nationality, residence and French dossier rules need confirming on the current form"
+  },
+  {
+   "id": "opp:europe:current:g16",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "DE"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "German residence/business base or qualifying EU/EEA applicant with German establishment.",
+    "excludes": []
+   },
+   "who_line": "Individual writers living or established in Germany; not the writer's company",
+   "get_line": "Up to €15,000 living-cost grant; up to €2,500 consultancy, approved separately",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:current:g17",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "animation"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "DE"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Same German-base and professional/producer-alternative rules as treatment funding.",
+    "excludes": []
+   },
+   "who_line": "Individual writers with a German base who meet FFA professional rules",
+   "get_line": "Up to €20,000 a stage, two stages (€40,000); complex animation up to €25,000 a stage",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:current:g18",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "short"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "DE"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "German-base applicant and substantial German cultural character",
+    "excludes": []
+   },
+   "who_line": "German-based producer of a children's short (max 30 min) with German cultural character",
+   "get_line": "Up to €40,000",
+   "caution": "Check whether FFA or Kuratorium junger deutscher Film handles your project"
+  },
+  {
+   "id": "opp:europe:current:g19",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "DE"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Substantial German cultural character and German financial leadership",
+    "excludes": []
+   },
+   "who_line": "German-based producer with financial lead on a film of substantial German character",
+   "get_line": "Up to €1 million, non-repayable",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:current:g20",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "DE"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Substantial German cultural character and German financial leadership",
+    "excludes": []
+   },
+   "who_line": "German-based producer with financial lead on a film of substantial German character",
+   "get_line": "Normally up to €500,000; up to €1 million in exceptional cases",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:current:g21",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "animation",
+    "short",
+    "series"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "FI"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Domestic-film purpose; professional credentials and Finnish-bank/application requirements.",
+    "excludes": []
+   },
+   "who_line": "Professional writers or writing groups on a domestic Finnish film",
+   "get_line": "€2,000 per grant month, up to 12 months or €24,000 per project, not per writer",
+   "caution": "No passport rule is stated, but foreign-based projects need clearance first"
+  },
+  {
+   "id": "opp:europe:current:g22",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "FI"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Domestic-film purpose; professional credentials and Finnish-bank/application requirements.",
+    "excludes": []
+   },
+   "who_line": "Professional writers or writing groups on a domestic Finnish film",
+   "get_line": "€2,000 per grant month, up to 12 months or €24,000 per project, not per writer",
+   "caution": "No passport rule is stated, but foreign-based projects need clearance first"
+  },
+  {
+   "id": "opp:europe:current:g23",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "short",
+    "series"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "FI"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "company",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Finland-registered production company",
+    "excludes": []
+   },
+   "who_line": "Finland-registered production company with the rights; not sole traders or associations",
+   "get_line": "Up to €250,000 and 90% of approved costs; counts towards later production support",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:current:g24",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "short",
+    "series"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "FI"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Finnish company with rights, stable finances, distribution and credible domestic/co-production contribution.",
+    "excludes": []
+   },
+   "who_line": "Finnish production company with rights, stable finances and distribution in place",
+   "get_line": "Up to €1,200,000 and 90% of approved costs, including any development support",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:current:g25",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "AT",
+     "CH"
+    ],
+    "regions": [
+     "EU"
+    ],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Austrian citizenship OR residence in Austria; EU/EEA/Swiss nationals are equated with Austrian nationals.",
+    "excludes": []
+   },
+   "who_line": "Experienced authors who are Austrian, EU/EEA or Swiss nationals, or live in Austria",
+   "get_line": "Up to €12,000 for a solo author; up to €15,000 for several authors or with an adviser",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:legacy:eu01",
+   "kinds": [
+    "market",
+    "competition"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "company",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide company applications.",
+    "excludes": []
+   },
+   "who_line": "Production companies anywhere with a first-run live-action fiction series; rights held",
+   "get_line": "International pitch, curated meetings, two accreditations; competitive award up to €50,000",
+   "caution": "The award is competitive and paid in conditional stages, not guaranteed or upfront"
+  },
+  {
+   "id": "opp:europe:legacy:eu02",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide",
+    "excludes": []
+   },
+   "who_line": "Writers and directors anywhere with an early feature idea and no screenplay draft yet",
+   "get_line": "Script development and a final industry presentation",
+   "caution": "An existing screenplay draft makes the project ineligible"
+  },
+  {
+   "id": "opp:europe:legacy:eu03",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "animation"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide",
+    "excludes": []
+   },
+   "who_line": "Teams anywhere on a director's first or second feature, with at least a first draft",
+   "get_line": "Creative and production development; a chance at competitive awards",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:legacy:eu04",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide",
+    "excludes": []
+   },
+   "who_line": "Documentary teams anywhere with a 52+ min feature, a series or a hybrid project",
+   "get_line": "Pitching and curated industry meetings",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:legacy:eu05",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide",
+    "excludes": []
+   },
+   "who_line": "Teams anywhere with a nonfiction or hybrid feature over 60 min; no TV series",
+   "get_line": "Pitch preparation and tailored meetings",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:legacy:eu06",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "animation"
+   ],
+   "stages": [
+    "writing",
+    "development",
+    "production",
+    "post"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "EUROPE"
+    ],
+    "subnational": null,
+    "test": "company",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Eligible European production companies; UK lead producers explicitly excluded",
+    "excludes": []
+   },
+   "who_line": "Eligible European production companies; UK lead producers are excluded",
+   "get_line": "Access to financing and distribution for animated features",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:legacy:eu07",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "short"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "EUROPE"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Use the official national/territorial correspondent table, not a blanket country count. Baltics and Kosovo use nomination routes; Ukraine has specific exceptions.",
+    "excludes": []
+   },
+   "who_line": "Short-film projects with funding already secured, entered via a national correspondent",
+   "get_line": "Hospitality if selected, plus international co-production meetings",
+   "caution": "Check the official correspondent table: Baltics and Kosovo use nominations, Ukraine has exceptions"
+  },
+  {
+   "id": "opp:europe:legacy:eu07_xr",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "immersive"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "EU"
+    ],
+    "subnational": null,
+    "test": "company",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Production company based in the European Union",
+    "excludes": []
+   },
+   "who_line": "EU-based production company with a partly funded narrative XR project up to 45 min",
+   "get_line": "Hospitality if selected, plus international co-production meetings",
+   "caution": "Use the separate immersive form; production must start no earlier than June 2027"
+  },
+  {
+   "id": "opp:europe:legacy:eu08_s",
+   "kinds": [
+    "competition",
+    "market"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "company",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide; established production company/producer",
+    "excludes": []
+   },
+   "who_line": "Established producers anywhere with a market-ready scripted series and finance committed",
+   "get_line": "Exposure to buyers and a chance at a marketing package",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:legacy:eu08_u",
+   "kinds": [
+    "competition",
+    "market"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "company",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide; established production company/producer",
+    "excludes": []
+   },
+   "who_line": "Established producers anywhere with a market-ready unscripted series or format",
+   "get_line": "Exposure to buyers and a chance at a marketing package",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:legacy:eu09",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "EUROPE"
+    ],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Eligible European nationality or long-term residence; not a worldwide open call",
+    "excludes": []
+   },
+   "who_line": "Writers with eligible European nationality or long-term residence; not open worldwide",
+   "get_line": "Writer development and Forum access",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:legacy:eu10",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "EUROPE"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "CEE focus; other countries considered; non-European projects need European co-production intent",
+    "excludes": []
+   },
+   "who_line": "CEE focus, others considered; non-European projects need European co-production intent",
+   "get_line": "Story and production development, plus industry meetings",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:legacy:eu11",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "outsiders expressly welcome to apply",
+    "excludes": []
+   },
+   "who_line": "Documentary teams anywhere; focus on SE Europe, Eastern Mediterranean and North Africa",
+   "get_line": "Pitch lab, meetings and five hotel nights",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:legacy:eu12",
+   "kinds": [
+    "market",
+    "lab"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "development",
+    "post"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "2027 track-specific eligibility pending",
+    "excludes": []
+   },
+   "who_line": "Check the official rules: 2027 eligibility is not yet published",
+   "get_line": "Pitch, development and meeting tracks; details not yet published",
+   "caution": "Announced but not yet open; eligibility and required materials are still pending"
+  },
+  {
+   "id": "opp:europe:legacy:eu13",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "International submissions",
+    "excludes": []
+   },
+   "who_line": "TV series teams from anywhere; further funding and budget conditions apply",
+   "get_line": "Co-producer, financing and distribution meetings",
+   "caution": "Check the general regulations for funding and budget conditions; 2027 fees are unconfirmed"
+  },
+  {
+   "id": "opp:europe:legacy:eu13_f",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "International submissions",
+    "excludes": []
+   },
+   "who_line": "First to third features, anywhere; also experienced directors seeking SE European partners",
+   "get_line": "Co-producer, financing and distribution meetings",
+   "caution": "Check the general regulations for funding and budget conditions; 2027 fees are unconfirmed"
+  },
+  {
+   "id": "opp:europe:legacy:eu14_o",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "CA",
+     "DZ",
+     "EG",
+     "JO",
+     "LB",
+     "MA",
+     "PS",
+     "TN"
+    ],
+    "regions": [
+     "MENA"
+    ],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Nationality OR residence in the specific call list, including Canada, Algeria, Egypt, Jordan, Lebanon, Morocco, Palestine, Tunisia and other listed countries",
+    "excludes": []
+   },
+   "who_line": "Nationals or residents of listed countries, e.g. Canada, Egypt, Morocco, Tunisia",
+   "get_line": "One three-hour masterclass and two three-hour toolbox sessions, online",
+   "caution": "Check the full country list; the 21 October 23:59 CET deadline is unclear around the clock change, so submit early"
+  },
+  {
+   "id": "opp:europe:legacy:eu14_r",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "CA",
+     "DZ",
+     "EG",
+     "JO",
+     "LB",
+     "MA",
+     "PS",
+     "TN"
+    ],
+    "regions": [
+     "MENA"
+    ],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Nationality OR residence in the specific call list, including Canada, Algeria, Egypt, Jordan, Lebanon, Morocco, Palestine, Tunisia and other listed countries",
+    "excludes": []
+   },
+   "who_line": "Nationals or residents of listed countries, e.g. Canada, Egypt, Morocco, Tunisia",
+   "get_line": "Residential programme if separately selected; a free online option also exists",
+   "caution": "Check the full country list; the 21 October 23:59 CET deadline is unclear around the clock change, so submit early"
+  },
+  {
+   "id": "opp:europe:legacy:eu15",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "EUROPE"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": "projects centring LGBTQ themes or characters",
+    "confidence": "partial",
+    "evidence": "International; non-European projects should seek European co-production",
+    "excludes": []
+   },
+   "who_line": "Open internationally; non-European projects should seek a European co-producer",
+   "get_line": "Story development and a presentation at Karlovy Vary",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:legacy:eu16",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide",
+    "excludes": []
+   },
+   "who_line": "Writers and creators anywhere developing a comedy feature",
+   "get_line": "Comedy craft development and an industry-facing presentation",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:legacy:eu17",
+   "kinds": [
+    "competition"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide; no attached producer required",
+    "excludes": []
+   },
+   "who_line": "Writers anywhere with a finished, unproduced English-language TV pilot script",
+   "get_line": "Script recognition and industry circulation; not financing",
+   "caution": "The script PDF must be anonymous: no title page or identifying details"
+  },
+  {
+   "id": "opp:europe:legacy:eu17_f",
+   "kinds": [
+    "competition"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide; no attached producer required",
+    "excludes": []
+   },
+   "who_line": "Writers anywhere with a finished, unproduced English-language feature script (60+ pages)",
+   "get_line": "Script recognition and industry circulation; not financing",
+   "caution": "The script PDF must be anonymous: no title page or identifying details"
+  },
+  {
+   "id": "opp:europe:legacy:eu17_s",
+   "kinds": [
+    "competition"
+   ],
+   "formats": [
+    "short"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide; no attached producer required",
+    "excludes": []
+   },
+   "who_line": "Writers anywhere with a finished, unproduced English-language short script (max 40 pages)",
+   "get_line": "Script recognition and industry circulation; not financing",
+   "caution": "The script PDF must be anonymous: no title page or identifying details"
+  },
+  {
+   "id": "opp:europe:legacy:eu18",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [],
+    "regions": [
+     "EUROPE"
+    ],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "European professionals or international team with European co-production potential",
+    "excludes": []
+   },
+   "who_line": "European professionals, or international teams with European co-production potential",
+   "get_line": "Pilot and series development, with a final industry presentation",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:legacy:eu19",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "animation"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "nationality",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Any nationality; working French required.",
+    "excludes": []
+   },
+   "who_line": "Writers of any nationality with working French; the film can be in any language",
+   "get_line": "Year-long feature writing development; eight projects are selected",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:legacy:eu20",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide.",
+    "excludes": []
+   },
+   "who_line": "Writers anywhere with a fiction feature at treatment stage, not a finished screenplay",
+   "get_line": "Feature development through sustainable and inclusive narrative practice",
+   "caution": null
+  },
+  {
+   "id": "opp:europe:legacy:eu21",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "animation"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Current 2027 regulations allow worldwide applications",
+    "excludes": []
+   },
+   "who_line": "Animation teams anywhere; low-production-capacity European countries get priority",
+   "get_line": "Creative and production development, plus animation industry connections",
+   "caution": "Listed deadline was 15 October 2026 and has passed; check whether entries are still accepted"
+  },
+  {
+   "id": "opp:europe:legacy:eu22",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide producers.",
+    "excludes": []
+   },
+   "who_line": "Documentary producers anywhere with a project in development, not yet fully financed",
+   "get_line": "Producer and project development, consultations and international industry meetings",
+   "caution": "Fees depend on your location; producers in non-MEDIA European countries should verify their rate"
+  },
+  {
+   "id": "opp:us:current:g01",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Any nationality or residency; English pilot and application.",
+    "excludes": []
+   },
+   "who_line": "Writers of any nationality or residency, with an English-language pilot",
+   "get_line": "A $17,000 grant (one award)",
+   "caution": null
+  },
+  {
+   "id": "opp:us:current:g02",
+   "kinds": [
+    "grant",
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "series"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": "climate-related stories",
+    "confidence": "unclear",
+    "evidence": "Residency and full platform eligibility were not resolved by the accessible sources.",
+    "excludes": []
+   },
+   "who_line": "Writers with a climate-related feature or pilot; residency rules not confirmed",
+   "get_line": "A $20,000 award (three fellows) and a mentorship period",
+   "caution": "Residency rules not confirmed; free hosting and evaluation are not universal (sponsored slots)"
+  },
+  {
+   "id": "opp:us:current:g03",
+   "kinds": [
+    "grant",
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "Residency and co-author rules need confirmation in the live programme.",
+    "excludes": []
+   },
+   "who_line": "Feature writers; residency and co-author rules not confirmed",
+   "get_line": "$10,000 and mentorship to write a new original feature (one fellow)",
+   "caution": "Needs a paid Black List hosted script and evaluation unless exempted; evaluation price unverified"
+  },
+  {
+   "id": "opp:us:current:g04",
+   "kinds": [
+    "grant",
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "short"
+   ],
+   "stages": [
+    "development",
+    "production",
+    "post"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": "California-based tribal affiliation or descent",
+    "confidence": "partial",
+    "evidence": "Affiliation or lineal descent from a California-based tribe, not simply California residence.",
+    "excludes": []
+   },
+   "who_line": "Artists affiliated with or descended from a California-based tribe",
+   "get_line": "$25,000 per fellow (two fellows), plus mentorship and festival participation",
+   "caution": "Full form and media specs not confirmed; check the portal and tribal paperwork rules"
+  },
+  {
+   "id": "opp:us:current:g05",
+   "kinds": [
+    "grant",
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": "Indigenous women",
+    "confidence": "stated",
+    "evidence": "Indigenous artists who identify as women, internationally.",
+    "excludes": []
+   },
+   "who_line": "Indigenous artists who identify as women, worldwide",
+   "get_line": "A cash grant (amount not published), plus mentorship and festival participation",
+   "caution": "Current cash amount is not published; do not rely on past-year figures"
+  },
+  {
+   "id": "opp:us:current:g06",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "short"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "US"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "residence",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "US resident with proof.",
+    "excludes": []
+   },
+   "who_line": "US residents, with proof of residence",
+   "get_line": "A $5,000 grant (five awards), plus mentorship and in-kind support",
+   "caution": "Any gender restriction is unconfirmed; check the full form before applying"
+  },
+  {
+   "id": "opp:us:current:g07",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary",
+    "short"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "US",
+     "CA"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "residence",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Legal residents of the 50 US states/DC or Canada; age 18 and local age of majority.",
+    "excludes": []
+   },
+   "who_line": "Legal residents of the 50 US states, DC or Canada, aged 18 or over",
+   "get_line": "A $60,000 grant (five awards), plus in-kind support, mentorship and distribution",
+   "caution": "Deadline listed as 16 October 2026; rights terms are flagged for review"
+  },
+  {
+   "id": "opp:us:current:g08",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "short",
+    "series"
+   ],
+   "stages": [
+    "development",
+    "production",
+    "post"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "International applicants accepted.",
+    "excludes": []
+   },
+   "who_line": "Filmmakers anywhere (international applicants accepted)",
+   "get_line": "A $3,500 grant plus in-kind support (one award)",
+   "caution": null
+  },
+  {
+   "id": "opp:us:current:g09",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "short"
+   ],
+   "stages": [
+    "development",
+    "production",
+    "post"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": "student filmmakers",
+    "confidence": "stated",
+    "evidence": "worldwide",
+    "excludes": []
+   },
+   "who_line": "Student filmmakers, worldwide (student ID required)",
+   "get_line": "A $3,000 grant plus in-kind support (one award)",
+   "caution": null
+  },
+  {
+   "id": "opp:us:current:g10",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "short",
+    "series",
+    "other"
+   ],
+   "stages": [
+    "development",
+    "production",
+    "post",
+    "finished"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "US"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Eligible US-resident individual with SSN, or qualifying US nonprofit/fiscal-sponsor route",
+    "excludes": []
+   },
+   "who_line": "US residents with an SSN, or US nonprofits and fiscal sponsors",
+   "get_line": "A grant of up to $3,500",
+   "caution": null
+  },
+  {
+   "id": "opp:us:current:g11",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "short",
+    "series",
+    "other"
+   ],
+   "stages": [
+    "writing",
+    "development",
+    "production",
+    "post",
+    "finished"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "US"
+    ],
+    "regions": [],
+    "subnational": "Queens",
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Queens resident or year-round full-time studio holder with lease; designated collective lead may apply.",
+    "excludes": []
+   },
+   "who_line": "Queens residents, or artists with a year-round Queens studio lease",
+   "get_line": "50–100% of a requested $3,000–$7,500 (no guaranteed $3,000 minimum)",
+   "caution": null
+  },
+  {
+   "id": "opp:us:current:g12",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "US"
+    ],
+    "regions": [],
+    "subnational": "Miami-Dade County",
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Permanent Miami-Dade County resident AND US citizen or permanent resident; age 18+.",
+    "excludes": []
+   },
+   "who_line": "Miami-Dade County residents who are US citizens or permanent residents, 18+",
+   "get_line": "A $50,000 grant (one award)",
+   "caution": "Application fee not established; check the SlideRoom form before applying"
+  },
+  {
+   "id": "opp:us:current:g13",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "US"
+    ],
+    "regions": [],
+    "subnational": "Miami-Dade County",
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Permanent Miami-Dade County resident AND US citizen or permanent resident; age 18+.",
+    "excludes": []
+   },
+   "who_line": "Miami-Dade County residents who are US citizens or permanent residents, 18+",
+   "get_line": "A $10,000 grant (three awards)",
+   "caution": "Application fee not established; check the SlideRoom form before applying"
+  },
+  {
+   "id": "opp:us:current:g14",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "post"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "US"
+    ],
+    "regions": [],
+    "subnational": "Miami-Dade County",
+    "test": "mixed",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Permanent Miami-Dade County resident AND US citizen or permanent resident; age 18+.",
+    "excludes": []
+   },
+   "who_line": "Miami-Dade County residents who are US citizens or permanent residents, 18+",
+   "get_line": "A $10,000 finishing grant (two awards)",
+   "caution": "Application fee not established; check the SlideRoom form before applying"
+  },
+  {
+   "id": "opp:us:current:g15",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "short"
+   ],
+   "stages": [
+    "development",
+    "production",
+    "post"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "US"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "residence",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Legal resident of the 50 US states/DC, age 18+.",
+    "excludes": []
+   },
+   "who_line": "Legal residents of the 50 US states or DC, aged 18 or over",
+   "get_line": "A $4,500 grant (one award)",
+   "caution": null
+  },
+  {
+   "id": "opp:us:current:g16",
+   "kinds": [
+    "other_finance"
+   ],
+   "formats": [
+    "documentary",
+    "short"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "US"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "residence",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Physical US presence and unrestricted lawful work rights throughout the programme.",
+    "excludes": []
+   },
+   "who_line": "Director–producer teams physically in the US with unrestricted work rights",
+   "get_line": "A $100,000 all-in production budget per team, five teams (not a personal grant)",
+   "caution": "Non-member deadline is 26 October ($65); the 2 November deadline is for members ($45)"
+  },
+  {
+   "id": "opp:us:current:g17",
+   "kinds": [
+    "other_finance",
+    "competition"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "US",
+     "PR"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "residence",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Qualifying applicant resides in the US or Puerto Rico; verify all core-team conditions.",
+    "excludes": []
+   },
+   "who_line": "Applicants living in the US or Puerto Rico; core-team conditions apply",
+   "get_line": "One $1.2 million production award; four other finalists get $15,000 each",
+   "caution": "Check every core-team condition in the rules, not only the lead applicant's residence"
+  },
+  {
+   "id": "opp:us:current:g18",
+   "kinds": [
+    "other_finance",
+    "competition"
+   ],
+   "formats": [
+    "short"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "worldwide",
+    "excludes": []
+   },
+   "who_line": "Filmmakers worldwide",
+   "get_line": "Up to $10,000 against qualifying costs; the amount depends on the entry pool",
+   "caution": "Paid as reimbursement: winners must show expenses, production and E&O insurance and delivery"
+  },
+  {
+   "id": "opp:us:current:g19",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "production",
+    "post",
+    "finished"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "Projects worldwide considered case by case.",
+    "excludes": []
+   },
+   "who_line": "Documentary projects worldwide, considered case by case",
+   "get_line": "Typically $25,000–$150,000; the amount is set through review, not promised",
+   "caution": "Eligibility is decided case by case; the process starts with a rolling letter of inquiry"
+  },
+  {
+   "id": "opp:us:current:g20",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "short",
+    "other"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "US"
+    ],
+    "regions": [],
+    "subnational": "New York City",
+    "test": "residence",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "New York City resident with SSN or ITIN; residency continues through the grant period. US citizenship is not the test.",
+    "excludes": []
+   },
+   "who_line": "New York City residents with an SSN or ITIN (citizenship not required)",
+   "get_line": "A grant of up to $30,000",
+   "caution": "This deadline is for applicants invited to Step 2 only (continuation stage)"
+  },
+  {
+   "id": "opp:us:current:g21",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "short",
+    "other"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "US"
+    ],
+    "regions": [],
+    "subnational": "Minnesota",
+    "test": "residence",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Minnesota resident with SSN or ITIN; residency continues through the grant period. US citizenship is not the test.",
+    "excludes": []
+   },
+   "who_line": "Minnesota residents with an SSN or ITIN (citizenship not required)",
+   "get_line": "A grant of up to $30,000",
+   "caution": "This deadline is for applicants invited to Step 2 only (continuation stage)"
+  },
+  {
+   "id": "opp:us:current:g22",
+   "kinds": [
+    "grant",
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "short",
+    "other"
+   ],
+   "stages": [
+    "development",
+    "production"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "US"
+    ],
+    "regions": [],
+    "subnational": "Minnesota",
+    "test": "residence",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Minnesota resident with SSN or ITIN; residency continues through the grant period. US citizenship is not the test.",
+    "excludes": []
+   },
+   "who_line": "Minnesota residents with an SSN or ITIN (citizenship not required)",
+   "get_line": "A grant of up to $10,000",
+   "caution": "This deadline is for applicants invited to Step 2 only (continuation stage)"
+  },
+  {
+   "id": "opp:us:legacy:a01",
+   "kinds": [
+    "grant"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "International applicants under published programme rules; 18+; teams ≤2.",
+    "excludes": []
+   },
+   "who_line": "Writers worldwide, 18+, solo or in teams of two; career limits apply",
+   "get_line": "A $17,000 grant plus craft support for one writer or two-person team",
+   "caution": "Check US credit, exclusive attachment and ownership limits before applying"
+  },
+  {
+   "id": "opp:us:legacy:a02f",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "No US-residency restriction found.",
+    "excludes": []
+   },
+   "who_line": "Platinum or +Sessions badge holders with a narrative feature; no US-only rule found",
+   "get_line": "Live industry feedback and market exposure; no guaranteed financing",
+   "caution": "Deadline conflict: 22 October (session page) vs 15 October (PDF); a paid badge is required"
+  },
+  {
+   "id": "opp:us:legacy:a02t",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "No US-residency restriction found.",
+    "excludes": []
+   },
+   "who_line": "Platinum or +Sessions badge holders with a scripted series; no US-only rule found",
+   "get_line": "Live industry feedback and market exposure; no guaranteed financing (new in 2026)",
+   "caution": "Deadline conflict: 22 October (session page) vs 15 October (PDF); a paid badge is required"
+  },
+  {
+   "id": "opp:us:legacy:a03",
+   "kinds": [
+    "other_finance"
+   ],
+   "formats": [
+    "documentary",
+    "short"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "US"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "residence",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "US-based director + producer; physically in US and unrestricted lawful work rights throughout.",
+    "excludes": []
+   },
+   "who_line": "US-based director–producer teams with US work rights and prior credits",
+   "get_line": "A $100,000 budget to make a short, with development and production support (five teams)",
+   "caution": "Non-member deadline is 26 October; 2 November is for members only"
+  },
+  {
+   "id": "opp:us:legacy:a04",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "series"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "Confirm international circumstances in chosen US session.",
+    "excludes": []
+   },
+   "who_line": "Writers, solo or in pairs, no industry background needed; non-US rules unconfirmed",
+   "get_line": "A four-day pitch and story lab with peer script notes (paid; aid is selective)",
+   "caution": "Paid programme with selective aid; mentors do not read scripts at the Narrative Lab"
+  },
+  {
+   "id": "opp:us:legacy:a04r",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "series"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "International participation needs confirmation",
+    "excludes": []
+   },
+   "who_line": "Writers, solo or in pairs; international participation not confirmed",
+   "get_line": "A five-day remote retreat with one-to-one script notes and peer feedback (paid)",
+   "caution": "Paid programme with selective scholarships; a well-developed full draft is needed by the retreat"
+  },
+  {
+   "id": "opp:us:legacy:a05",
+   "kinds": [
+    "competition",
+    "lab"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "18+, worldwide.",
+    "excludes": []
+   },
+   "who_line": "Writers worldwide, 18+, with writing earnings of $25,000 or less in five years",
+   "get_line": "Retreat mentor sessions; one Grand Fellow gets $3k, mentorship and free tuition/housing",
+   "caution": "Invitees other than the Grand Fellow generally pay additional retreat fees"
+  },
+  {
+   "id": "opp:us:legacy:a06",
+   "kinds": [
+    "grant",
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary",
+    "short",
+    "series"
+   ],
+   "stages": [],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": "California-based tribal affiliation or descent",
+    "confidence": "partial",
+    "evidence": "Artists from federally/nonfederally recognised California-based tribes, with tribal affiliation/lineal-descent proof or required paperwork support. NOT a general California-residency test.",
+    "excludes": []
+   },
+   "who_line": "Artists affiliated with or descended from a California-based tribe",
+   "get_line": "$25k each for two fellows, plus yearlong support, mentorship and festival engagement",
+   "caution": "Full form fields not inspected (login only); tribal affiliation paperwork is required"
+  },
+  {
+   "id": "opp:us:legacy:a07",
+   "kinds": [
+    "grant",
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary"
+   ],
+   "stages": [],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": "Indigenous women aiming to direct features",
+    "confidence": "stated",
+    "evidence": "US and international Indigenous artists who identify as women and endeavour to direct feature films.",
+    "excludes": []
+   },
+   "who_line": "Indigenous women who aim to direct feature films, in the US or internationally",
+   "get_line": "A cash grant (amount not published), yearlong support, mentorship and festival engagement",
+   "caution": "The 2027 grant amount is not published; do not rely on past-year figures"
+  },
+  {
+   "id": "opp:us:legacy:a08",
+   "kinds": [
+    "lab"
+   ],
+   "formats": [
+    "fiction_feature",
+    "series"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "US",
+     "CA"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "residence",
+    "identity": "Indigenous communities in the US and Canada",
+    "confidence": "stated",
+    "evidence": "US-based Native American, Native Hawaiian, Alaska Native and Indigenous communities; Canada-based First Nations, Métis and Inuit communities.",
+    "excludes": []
+   },
+   "who_line": "US- or Canada-based Indigenous artists (Native, First Nations, Métis, Inuit); no teams",
+   "get_line": "Creative support, adviser feedback and roundtables; no cash award stated",
+   "caution": "Not open yet: applications open 1 December 2026 and the 2027 form is not published"
+  },
+  {
+   "id": "opp:us:legacy:f01",
+   "kinds": [
+    "other_finance",
+    "competition"
+   ],
+   "formats": [
+    "fiction_feature"
+   ],
+   "stages": [
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "US",
+     "PR"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "residence",
+    "identity": "underrepresented communities (programme criteria)",
+    "confidence": "stated",
+    "evidence": "Applying director/key producer must meet US or Puerto Rico residency and age 18+ rules",
+    "excludes": []
+   },
+   "who_line": "Director/key producer living in the US or Puerto Rico, 18+; first or second feature",
+   "get_line": "One $1.2m production award; four other finalists get $15,000 development grants",
+   "caution": "The award is a production/premiere pathway, not unrestricted cash; contract terms not verified"
+  },
+  {
+   "id": "opp:us:legacy:f02",
+   "kinds": [
+    "competition"
+   ],
+   "formats": [
+    "fiction_feature",
+    "short",
+    "series"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "International writers accepted",
+    "excludes": []
+   },
+   "who_line": "Writers worldwide with an unproduced English-language script",
+   "get_line": "Feature prize $4,000 or $5,000 (sources conflict); TV $2,000; short $1,000",
+   "caution": "Feature prize conflicts ($4,000 vs $5,000) and co-written feature eligibility is unclear"
+  },
+  {
+   "id": "opp:us:legacy:f03",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide submissions welcomed in general rules",
+    "excludes": []
+   },
+   "who_line": "Series creators worldwide, with English-language materials",
+   "get_line": "Virtual prep, a 5-minute pitch and 7 minutes of industry feedback (no commission promised)",
+   "caution": null
+  },
+  {
+   "id": "opp:us:legacy:f04",
+   "kinds": [
+    "competition",
+    "lab"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "writing",
+    "development"
+   ],
+   "where": {
+    "scope": "listed",
+    "countries": [
+     "US"
+    ],
+    "regions": [],
+    "subnational": null,
+    "test": "residence",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Legal residents of the 50 US states or DC only; age of majority.",
+    "excludes": []
+   },
+   "who_line": "Legal residents of the 50 US states or DC, of age of majority",
+   "get_line": "Ten finalists get live feedback, a year-long mentorship and industry meetings",
+   "caution": null
+  },
+  {
+   "id": "opp:us:legacy:f05",
+   "kinds": [
+    "competition"
+   ],
+   "formats": [
+    "fiction_feature",
+    "short",
+    "series"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Writers worldwide",
+    "excludes": []
+   },
+   "who_line": "Writers worldwide with an unoptioned, unproduced English script (no AI use)",
+   "get_line": "Cash prizes (amounts not stated), mentor meetings, scene readings and festival access",
+   "caution": "Deadline conflict: calendar says 6 November, introductory text says 5 December 2026"
+  },
+  {
+   "id": "opp:us:legacy:f06",
+   "kinds": [
+    "competition"
+   ],
+   "formats": [
+    "fiction_feature",
+    "short",
+    "series"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "no US-residency restriction found in published rules.",
+    "excludes": []
+   },
+   "who_line": "Writers with an unoptioned English script; no US-residency rule found",
+   "get_line": "Feature prize $5,000; other category winners $1,000; industry-facing events",
+   "caution": "Short-script limit is inconsistent at 40 pages; confirm if yours is exactly 40"
+  },
+  {
+   "id": "opp:us:legacy:f07",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "documentary"
+   ],
+   "stages": [
+    "development",
+    "production",
+    "post"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "No US-residency restriction found.",
+    "excludes": []
+   },
+   "who_line": "Feature documentary teams seeking funding, no distribution deal; no US-only rule found",
+   "get_line": "A 10-minute pitch, 10 minutes of funder feedback, prep and festival access; no funding promised",
+   "caution": null
+  },
+  {
+   "id": "opp:us:legacy:f08",
+   "kinds": [
+    "competition"
+   ],
+   "formats": [
+    "fiction_feature",
+    "short",
+    "series"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "partial",
+    "evidence": "worldwide short-screenplay call. Category limits and rights terms apply.",
+    "excludes": []
+   },
+   "who_line": "Writers worldwide with English scripts; category limits apply",
+   "get_line": "TV winner: option via 88th Street; feature: Alta Global consultation; Female Short: $1,000",
+   "caution": "Rights terms apply (the TV prize is an option); check category rules before entering"
+  },
+  {
+   "id": "opp:us:legacy:f09",
+   "kinds": [
+    "competition"
+   ],
+   "formats": [
+    "fiction_feature",
+    "short",
+    "series"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide; English; unproduced work with rights controlled by applicant.",
+    "excludes": []
+   },
+   "who_line": "Writers worldwide who control the rights to an unproduced English script",
+   "get_line": "Festival-linked screenplay recognition; no production funding or sale verified",
+   "caution": "Short-script page limit not confirmed; check your entry category"
+  },
+  {
+   "id": "opp:us:legacy:f10",
+   "kinds": [
+    "competition"
+   ],
+   "formats": [
+    "fiction_feature",
+    "short",
+    "series"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "No US-residency restriction found",
+    "excludes": []
+   },
+   "who_line": "Writers with unproduced scripts; no US-residency rule found in our notes",
+   "get_line": "Top scripts recommended to industry contacts; no sale or production award verified",
+   "caution": "Marked on hold in our notes; short page limit conflicts (59 vs 60), so check before paying"
+  },
+  {
+   "id": "opp:us:legacy:f11",
+   "kinds": [
+    "competition"
+   ],
+   "formats": [
+    "fiction_feature",
+    "short",
+    "series"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": "comedy scripts only",
+    "confidence": "partial",
+    "evidence": "International festival call; check script-specific form for unusual eligibility cases.",
+    "excludes": []
+   },
+   "who_line": "Comedy writers; general international call, script rules not confirmed",
+   "get_line": "Genre recognition; the feature winner's package includes software and an industry meeting",
+   "caution": "Eligibility comes from the general festival call; check the script-specific form"
+  },
+  {
+   "id": "opp:us:legacy:f12",
+   "kinds": [
+    "competition"
+   ],
+   "formats": [
+    "fiction_feature",
+    "short",
+    "series"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "Worldwide; English; under-18s need guardian permission.",
+    "excludes": []
+   },
+   "who_line": "Writers worldwide with unsold, unoptioned English scripts",
+   "get_line": "Category winners get a VIP pass, up to four hotel nights, a table read and coverage",
+   "caution": "Short-script page cap not verified; check before entering a short"
+  },
+  {
+   "id": "opp:us:legacy:f13",
+   "kinds": [
+    "competition"
+   ],
+   "formats": [
+    "fiction_feature",
+    "short"
+   ],
+   "stages": [
+    "writing"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "Unknown — confirm script rules",
+    "excludes": []
+   },
+   "who_line": "Script rights holders; residence rules not stated in our notes",
+   "get_line": "Three screenplay awards, including the Golden Palm; no cash, option or production stated",
+   "caution": "Script eligibility and page limits not verified in public rules; confirm first"
+  },
+  {
+   "id": "opp:us:legacy:p01",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "series"
+   ],
+   "stages": [
+    "post"
+   ],
+   "where": {
+    "scope": "worldwide",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "stated",
+    "evidence": "General worldwide call; partially produced pilot; control screening rights.",
+    "excludes": []
+   },
+   "who_line": "Series creators worldwide with a near-complete pilot rough cut and screening rights",
+   "get_line": "Screening plus audience and creator feedback; any in-kind awards unconfirmed",
+   "caution": "Page mentions in-kind awards but says the category is not juried; confirm before relying on a prize"
+  },
+  {
+   "id": "opp:us:legacy:p02",
+   "kinds": [
+    "market"
+   ],
+   "formats": [
+    "fiction_feature",
+    "documentary"
+   ],
+   "stages": [
+    "production",
+    "post"
+   ],
+   "where": {
+    "scope": "unclear",
+    "countries": [],
+    "regions": [],
+    "subnational": null,
+    "test": "unknown",
+    "identity": null,
+    "confidence": "unclear",
+    "evidence": "Confirm project residency and premiere rules.",
+    "excludes": []
+   },
+   "who_line": "Feature fiction or documentary teams with no prior festival or WIP showcase",
+   "get_line": "A WIP showcase and two days of industry meetings (about 8–10 projects selected)",
+   "caution": "Not open until 5 January 2027 (official deadline 27 January); premiere and residency rules unconfirmed"
+  }
+ ]
+}
