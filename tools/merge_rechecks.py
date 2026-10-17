@@ -29,7 +29,9 @@ from export_public_data import ROLE_LABELS, money  # noqa: E402
 
 STATUSES = {"confirmed", "changed", "closed", "unreachable"}
 # Costs that come after selection, not the price of applying.
-AFTER_SELECTION = re.compile(r"(?i)select|participa|accredit|badge|pass\b|finalist|tuition|attend|registration fee|if accepted|if chosen|deposit|contribution|into production")
+AFTER_SELECTION = re.compile(r"(?i)select|participation|accredit|badge|pass\b|finalist|tuition|attend|registration fee|admit|invited|if accepted|if chosen|deposit|contribution|into production")
+# Add-ons and discounts: listed, but not part of what it costs to enter.
+OPTIONAL = re.compile(r"(?i)optional|surcharge|feedback|analysis|discount|% off")
 
 
 def problems(result: dict[str, Any], known: set[str]) -> list[str]:
@@ -85,15 +87,15 @@ def fee_from(enrich: dict[str, Any] | None) -> dict[str, Any] | None:
             "stage": "selected" if AFTER_SELECTION.search(label or "") else "application",
             "label": label,
             "amount": "Waived" if waived else shown,
-            "state": "unknown_or_conditional" if waived else "free_or_explicit_zero" if state == "free" and not shown else "priced" if shown else "unknown_or_conditional",
+            "state": "unknown_or_conditional" if waived else "optional" if OPTIONAL.search(f"{label} {shown}") else "free_or_explicit_zero" if state == "free" and not shown else "priced" if shown else "unknown_or_conditional",
             "note": (item.get("note") or "").strip() or None,
         })
     if state == "unknown":
         # Silent on the entry fee; a cost for selected projects is still worth keeping.
         items = [i for i in items if i["stage"] == "selected" and i["amount"]]
-    if state == "free" and not any(i["stage"] == "application" for i in items):
-        items.append({"stage": "application", "label": "Entry fee", "amount": None, "state": "free_or_explicit_zero", "note": None})
-    if state == "priced" and not any(i["stage"] == "application" and i["amount"] for i in items):
+    if state == "free" and not any(i["stage"] == "application" and i["state"] == "free_or_explicit_zero" for i in items):
+        items.insert(0, {"stage": "application", "label": "Entry fee", "amount": None, "state": "free_or_explicit_zero", "note": None})
+    if state == "priced" and not any(i["stage"] == "application" and i["state"] == "priced" for i in items):
         state = "unknown"  # "paid" with no application amount we can show isn't a fee yet
     return {"state": state, "items": items, "evidence": (fee.get("evidence") or "").strip()}
 

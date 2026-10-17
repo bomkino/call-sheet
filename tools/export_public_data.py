@@ -27,6 +27,8 @@ SCHEMA_VERSION = "1.0.0"
 PORTAL_HOSTS = ("filmfreeway.com", "festhome.com", "shortfilmdepot.com", "withoutabox.com")
 
 ROLE_ORDER = ("opening", "prerequisite", "application_fee_tier_cutoff", "application_submission_deadline", "selection", "payment", "event_or_context")
+# The roles that make up an application window, as opposed to what happens after it.
+WINDOW_ROLES = {"opening", "prerequisite", "application_fee_tier_cutoff", "application_submission_deadline"}
 ROLE_LABELS = {
     "opening": "Opens",
     "prerequisite": "Do first",
@@ -446,12 +448,23 @@ def main(argv: list[str] | None = None) -> int:
         if recheck and recheck.get("dates"):
             checked = [{"date": d["date"], "role": d["role"], "role_label": ROLE_LABELS[d["role"]], "label": d.get("label"),
                         **dict(zip(("time", "timezone", "time_note"), clock(d.get("time"), d.get("timezone"), d.get("time_note"))))} for d in recheck["dates"]]
+            by_key = {(d["date"], d["role"]): d for d in dates}
             if recheck["status"] == "changed":
                 # The organiser moved things: the official page's dates replace the pack's.
                 dates = checked
+            elif any(d["role"] in WINDOW_ROLES for d in checked):
+                # Confirmed, with the round as the page states it: its window replaces the pack's
+                # (so a stale prerequisite or a mislabelled tier goes), and the pack keeps the
+                # selection and event dates the page didn't restate.  A zone the pack inferred
+                # survives where the page gave the same time without naming one.
+                for d in checked:
+                    prior = by_key.get((d["date"], d["role"]))
+                    if prior and (not d["time"] or d["time"] == prior["time"]):
+                        d["time"], d["timezone"] = d["time"] or prior["time"], d["timezone"] or prior["timezone"]
+                restated = {d["role"] for d in checked}
+                dates = [d for d in dates if d["role"] not in WINDOW_ROLES and d["role"] not in restated] + checked
             else:
                 # Confirmed: keep the pack's dates and add the times and zones the page gave.
-                by_key = {(d["date"], d["role"]): d for d in dates}
                 for d in checked:
                     if (d["date"], d["role"]) in by_key:
                         prior = by_key[(d["date"], d["role"])]

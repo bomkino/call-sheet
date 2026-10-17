@@ -64,10 +64,20 @@ TEST_SENTENCES = {
 }
 # Names for the places the overlay uses; tests fail if a new code appears without one.
 COUNTRY_NAMES = {
-    "AT": "Austria", "AU": "Australia", "CA": "Canada", "CH": "Switzerland", "CL": "Chile", "CO": "Colombia",
-    "DE": "Germany", "DZ": "Algeria", "EG": "Egypt", "FI": "Finland", "FR": "France", "GB": "the UK", "IN": "India",
-    "JO": "Jordan", "LB": "Lebanon", "MA": "Morocco", "MX": "Mexico", "NP": "Nepal", "NZ": "New Zealand", "PE": "Peru",
-    "PR": "Puerto Rico", "PS": "Palestine", "PY": "Paraguay", "SG": "Singapore", "TN": "Tunisia", "US": "the US", "UY": "Uruguay",
+    "AG": "Antigua and Barbuda", "AL": "Albania", "AM": "Armenia", "AT": "Austria", "AU": "Australia", "AW": "Aruba",
+    "AZ": "Azerbaijan", "BA": "Bosnia and Herzegovina", "BB": "Barbados", "BE": "Belgium", "BG": "Bulgaria", "BZ": "Belize",
+    "CA": "Canada", "CH": "Switzerland", "CL": "Chile", "CO": "Colombia", "CR": "Costa Rica", "CU": "Cuba", "CY": "Cyprus",
+    "CZ": "Czechia", "DE": "Germany", "DK": "Denmark", "DO": "the Dominican Republic", "DZ": "Algeria", "EE": "Estonia",
+    "EG": "Egypt", "ES": "Spain", "FI": "Finland", "FO": "the Faroe Islands", "FR": "France", "GB": "the UK", "GD": "Grenada",
+    "GE": "Georgia", "GP": "Guadeloupe", "GR": "Greece", "GT": "Guatemala", "HN": "Honduras", "HR": "Croatia", "HT": "Haiti",
+    "HU": "Hungary", "IE": "Ireland", "IL": "Israel", "IN": "India", "IS": "Iceland", "IT": "Italy", "JM": "Jamaica",
+    "JO": "Jordan", "LB": "Lebanon", "LI": "Liechtenstein", "LT": "Lithuania", "LU": "Luxembourg", "LV": "Latvia",
+    "LY": "Libya", "MA": "Morocco", "MD": "Moldova", "ME": "Montenegro", "MK": "North Macedonia", "MQ": "Martinique",
+    "MT": "Malta", "MX": "Mexico", "NI": "Nicaragua", "NL": "the Netherlands", "NO": "Norway", "NP": "Nepal",
+    "NZ": "New Zealand", "PA": "Panama", "PE": "Peru", "PL": "Poland", "PR": "Puerto Rico", "PS": "Palestine",
+    "PT": "Portugal", "PY": "Paraguay", "RO": "Romania", "RS": "Serbia", "SE": "Sweden", "SG": "Singapore", "SI": "Slovenia",
+    "SK": "Slovakia", "SV": "El Salvador", "SY": "Syria", "TN": "Tunisia", "TR": "Türkiye", "TT": "Trinidad and Tobago",
+    "UA": "Ukraine", "US": "the US", "UY": "Uruguay", "XK": "Kosovo",
 }
 REGION_NAMES = {
     "EU": "the EU", "EUROPE": "Europe", "NORDIC": "the Nordic countries", "LATAM": "Latin America",
@@ -348,8 +358,16 @@ def recheck_paragraph(calls: list[dict]) -> str:
         return ""
     when = max(c["recheck"]["checked_on"] for c in rechecked)
     changed = sum(1 for c in rechecked if c["recheck"]["status"] == "changed")
-    moved = f" {changed} needed correcting and now follow the official page." if changed else ""
-    return f'<p data-pd-type="body.reading">On {h(day(when))} we went back to the official page of every call closing in the next five weeks. {len(rechecked)} carry a <strong>Rechecked</strong> mark.{h(moved)} A few pages wouldn’t let us in; those keep their earlier date and no mark.</p>'
+    closed = sum(1 for c in rechecked if c["recheck"]["status"] == "closed")
+    blocked = sum(1 for c in calls if not c.get("recheck") and c["state"] != "closed_or_historical")
+    parts = [f"On {day(when)} we went back to the official page of every call that wasn’t already closed, and read it again for the dates, the fee, who can apply and what you get. {len(rechecked)} calls carry a <strong>Rechecked</strong> mark."]
+    if changed:
+        parts.append(f"{changed} needed correcting and now follow the official page.")
+    if closed:
+        parts.append(f"{closed} turned out to have closed, and say so.")
+    if blocked:
+        parts.append(f"{blocked} {'page' if blocked == 1 else 'pages'} wouldn’t let us in, mostly behind FilmFreeway’s bot check; those keep their earlier date and no mark.")
+    return f'<p data-pd-type="body.reading">{" ".join(parts)}</p>'
 
 
 def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
@@ -477,7 +495,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
       </div>
       <div class="faq">
         <details><summary data-pd-type="title.functional">Is it really free?</summary><p data-pd-type="body.default">Yes. No price, no account and no email gate. Finding the next call shouldn’t take a week of open tabs, and we’d rather you spent that week on the application.</p></details>
-        <details><summary data-pd-type="title.functional">How current is it?</summary><p data-pd-type="body.default">Every call shows the day it was last checked: mid-October 2026 for most, later where we’ve rechecked the official page. Dates and terms change between rounds, so treat this as the map and the official page as the ground.</p></details>
+        <details><summary data-pd-type="title.functional">How current is it?</summary><p data-pd-type="body.default">Every call shows the day it was last checked. On {h(day(as_of))} we reread the official page of every call that wasn’t already closed, and we recheck at least once a month. Dates and terms change between rounds, so treat this as the map and the official page as the ground.</p></details>
         <details><summary data-pd-type="title.functional">Does a match mean I’m eligible?</summary><p data-pd-type="body.default">No. It means nothing we found rules you out. Eligibility lives in the details: where you live versus your passport, you versus your company, how much of the budget is already raised. Each call page lists what to check before you apply.</p></details>
         <details><summary data-pd-type="title.functional">Why isn’t my festival or fund here?</summary><p data-pd-type="body.default">This is a curated set of {len(calls)} calls, not a census. If one belongs here, send the link to <a href="mailto:hello@pitch.dog?subject=A%20call%20for%20Call%20Sheet">hello@pitch.dog</a> and we’ll take a look.</p></details>
         <details><summary data-pd-type="title.functional">Do you rank the calls?</summary><p data-pd-type="body.default">No. There’s no prestige score and no guess at your odds. Calls are sorted by closing date, because the deadline is the one thing that won’t wait.</p></details>
@@ -586,7 +604,8 @@ def where_detail(call: dict) -> str:
         parts = [f"Limited to {place}."]
     else:
         parts = ["Our notes don’t say where applicants must be based. Check the official rules."]
-    parts.append(TEST_SENTENCES.get(w.get("test") or "unknown", ""))
+    if w["scope"] != "worldwide":
+        parts.append(TEST_SENTENCES.get(w.get("test") or "unknown", ""))
     if w.get("identity"):
         parts.append(f"Also limited to {w['identity'][0].lower() + w['identity'][1:]}.")
     if w.get("confidence") == "partial":

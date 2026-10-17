@@ -1,5 +1,5 @@
 {
- "about": "Call Sheet's hand-reviewed public layer over the Open Call Foundation. One entry per route, keyed by foundation ID. Written from the source packs' own wording; unclear means the packs do not state it.",
+ "about": "Call Sheet's hand-reviewed public layer over the Open Call Foundation. One entry per route, keyed by foundation ID. Written from the source packs' own wording and, where a where.evidence quote is given, from the official page as read on the reviewed_on date; unclear means neither states it.",
  "reviewed_on": "2026-10-17",
  "regions": [
   "AFRICA",
@@ -186,11 +186,11 @@
     "test": "company",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Eligible Canadian-controlled production company; company-track criteria apply.",
+    "evidence": "An Eligible Track Record Applicant: a. has received a funding commitment from the CMF in the past five (5) Program years (2021-2022 to 2025-2026) for at least: one (1) development project and one (1) production project; OR two (2) production projects. AND b. meets the applicable minimum CMF-reported gross sales requirement noted in Addendum A. / (Core Guidelines 3.1) an Eligible Applicant to the CMF is either a for-profit (i.e., a taxable Canadian corporation, within the meaning of Canada's Income Tax Act) production company or a Canadian Broadcaster (defined in Appendix A) that: a) is Canadia",
     "excludes": []
    },
    "who_line": "Canadian-controlled production companies meeting track-record criteria",
-   "get_line": "A repayable development advance for a slate (ceilings not published)",
+   "get_line": "Interest-free repayable advance of CAD 75,000, or CAD 100,000 for drama, across up to five projects",
    "caution": "Ceilings are withheld while guideline editions are reconciled; check the current guidelines"
   },
   {
@@ -214,11 +214,11 @@
     "test": "company",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Eligible Canadian-controlled production company; company-track criteria apply. Alternative Access is not a writer-without-company route.",
+    "evidence": "Programme page: \"Declaration of Canadian status of the organization and corporate information (if applicable)\". Slate Development Pilot Program Guidelines 2026-2027 (PDF): \"An annual growth in gross revenue over the four (4) year period\" ... \"Applicants must demonstrate sales in a minimum of one (1) territory throughout the world, between 2020 and 2025.\"",
     "excludes": []
    },
    "who_line": "Canadian-controlled production companies; not a route for writers without a company",
-   "get_line": "A repayable development advance for a slate (ceilings not published)",
+   "get_line": "Up to CAD 75,000 slate development allocation, spread over up to five projects",
    "caution": "Not open yet (opens 24 November 2026); ceilings withheld while guideline editions are reconciled"
   },
   {
@@ -242,13 +242,13 @@
     "regions": [],
     "subnational": null,
     "test": "mixed",
-    "identity": "Australian First Nations creators",
-    "confidence": "partial",
-    "evidence": "Eligible Australian/First Nations creative team; credit and role tests differ for documentary, feature and TV branches.",
+    "identity": "Australian Aboriginal and Torres Strait Islander creators",
+    "confidence": "stated",
+    "evidence": "\"a sole applicant must be an Australian Aboriginal or a Torres Strait Islander practitioner; projects must have Australian Aboriginal and/or Torres Strait Islander practitioners in key creative roles – at least as writer and director\" / \"Applicants and their projects must meet: the general eligibility requirements set out in Screen Australia’s Terms of Trade\" / Application form: \"Australian citizen/permanent resident *\" and \"Must be an ABN.\"",
     "excludes": []
    },
-   "who_line": "Australian First Nations creative teams; ABN and rights conditions apply",
-   "get_line": "Development funding (branch caps not verified in our notes)",
+   "who_line": "First Nations Australian writers, directors and producers with eligible credits",
+   "get_line": "Development funding up to AUD 30,000 (docs), AUD 45,000 (features) or AUD 65,000 (TV series)",
    "caution": "Terms and caps not verified; credit and role tests differ by branch"
   },
   {
@@ -271,12 +271,12 @@
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Eligible Australian applicant/team, ABN, rights and track record per selected branch.",
+    "confidence": "stated",
+    "evidence": "This program is open to individuals (either alone or as part of a team of co-applicants) and Australian companies: | An individual applicant must be an Australian citizen or Australian permanent resident (holding a permanent visa). | have an Australian Business Number (ABN); and",
     "excludes": []
    },
-   "who_line": "Australian applicants or teams with an ABN, rights and a track record",
-   "get_line": "Up to AUD30,000 for documentary development (per the public form)",
+   "who_line": "Australian citizens, permanent residents and Australian companies with an ABN",
+   "get_line": "Up to A$30,000 per application to develop a documentary",
    "caution": "Terms unresolved and intake is rolling: reconfirm budget and intake before applying"
   },
   {
@@ -301,12 +301,12 @@
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Eligible Australian applicant/team; conditional credit, rights and company tests.",
+    "confidence": "stated",
+    "evidence": "Guidelines PDF: \"an applicant company must be an incorporated company carrying on business in Australia, with its central management and control in Australia.\" … \"an individual applicant must be an Australian citizen or Australian permanent resident (holding a permanent visa).\" … \"have an Australian Business Number (ABN).\"",
     "excludes": []
    },
-   "who_line": "Australian applicants or teams; credit, rights and company tests apply",
-   "get_line": "Development funding (current cap not verified in our notes)",
+   "who_line": "Australian companies, or Australian citizens and permanent residents, with an ABN",
+   "get_line": "AUD 10,000 to AUD 50,000 development funding per application",
    "caution": "Terms unresolved and intake is rolling: reconfirm budget and intake before applying"
   },
   {
@@ -331,12 +331,12 @@
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Eligible Australian production structure or co-production; branch-specific exceptions apply.",
+    "confidence": "stated",
+    "evidence": "Form preview PDF (download.pdf): \"the applicant company is an incorporated company carrying on business in Australia, with its central management and control in Australia and/or the individual applicant or co-applicant is an Australian citizen or Australian permanent resident (holding a permanent visa)\" ... \"has significant Australian content (SAC) or is an Official Co-Production\"",
     "excludes": []
    },
-   "who_line": "Australian production structures or co-productions; branch exceptions apply",
-   "get_line": "Production finance (project-specific cap not verified in our notes)",
+   "who_line": "Australian companies, citizens or permanent residents; significant Australian content",
+   "get_line": "Production funding for drama; Creative First feature requests up to AUD 500,000",
    "caution": "Grant or equity terms are unresolved; the finance cap is not verified"
   },
   {
@@ -361,12 +361,12 @@
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Eligible NZ producer/project; pre-application hui required.",
+    "confidence": "stated",
+    "evidence": "You are eligible to apply for Production Investment if you: are a New Zealand citizen or permanent resident; and either: have a film with significant New Zealand content (as set out in section 18 of the NZFC Act 1978); OR intend to structure the film as an official co-production [...] will be the lead New Zealand producer of the film",
     "excludes": []
    },
-   "who_line": "Eligible New Zealand producers and projects (lead producer applies)",
-   "get_line": "Up to NZD1,500,000; a grant only if budget ≤NZD1m and request ≤NZD500,000, else equity",
+   "who_line": "NZ citizen or permanent-resident lead producers; NZ content or an official co-production",
+   "get_line": "Up to NZD 1,500,000 for an Innovation-led film; a grant if budget ≤NZD 1m and ask ≤NZD 500,000",
    "caution": "A pre-application hui is needed at least four weeks ahead; check the timing against 9 November"
   },
   {
@@ -390,12 +390,12 @@
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Eligible NZ producer/project; pre-application hui required.",
+    "confidence": "stated",
+    "evidence": "You are eligible to apply for Production Investment if you: are a New Zealand citizen or permanent resident; and either: have a film with significant New Zealand content (as set out in section 18 of the NZFC Act 1978); OR intend to structure the film as an official co-production ... will be the lead New Zealand producer of the film",
     "excludes": []
    },
-   "who_line": "Eligible New Zealand producers and projects (lead producer applies)",
-   "get_line": "Up to NZD500,000; a grant only if budget ≤NZD1m and request ≤NZD500,000, else equity",
+   "who_line": "NZ citizen or permanent-resident lead producers; significant NZ content or official co-pro",
+   "get_line": "Up to NZD 500,000 for post-production: a grant if the budget is NZD 1m or less, else equity",
    "caution": "A pre-application hui is needed at least four weeks ahead; check the timing against 9 November"
   },
   {
@@ -420,12 +420,12 @@
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Eligible NZ producer/project; pre-application hui required.",
+    "confidence": "stated",
+    "evidence": "\"You are eligible to apply for Production Investment if you: are a New Zealand citizen or permanent resident; and either: have a film with significant New Zealand content (as set out in section 18 of the NZFC Act 1978); OR intend to structure the film as an official co-production\" / \"will be the lead New Zealand producer of the film\" / \"have an established New Zealand distributor attached\"",
     "excludes": []
    },
-   "who_line": "Eligible New Zealand producers and projects (lead producer applies)",
-   "get_line": "Up to NZD2,500,000; a grant only if budget ≤NZD1m and request ≤NZD500,000, else equity",
+   "who_line": "NZ citizen or permanent resident lead producers of a feature with significant NZ content",
+   "get_line": "Up to NZD 2.5m (NZD 500,000 for post); a grant if budget ≤ NZD 1m and ask ≤ NZD 500,000, else equity",
    "caution": "A pre-application hui is needed at least four weeks ahead; check the timing against 9 November"
   },
   {
@@ -447,14 +447,14 @@
     ],
     "regions": [],
     "subnational": null,
-    "test": "mixed",
+    "test": "company",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Eligible Canadian company and feature project under Telefilm rules.",
+    "evidence": "Canadian audiovisual production companies who: … Have their head office in Canada. … Carry out their activities in Canada. … Projects produced in languages other than French and English must be submitted during the opening periods applicable to English-language projects.",
     "excludes": []
    },
    "who_line": "Canadian companies with an English-language feature budgeted at CAD3.5m or more",
-   "get_line": "Project-specific production financing (no verified flat cap)",
+   "get_line": "Production or post-production financing for a Canadian feature film of 75 minutes or more",
    "caution": "Not open yet (opens 24 November 2026); financing terms need project-specific review"
   },
   {
@@ -476,14 +476,14 @@
     ],
     "regions": [],
     "subnational": null,
-    "test": "mixed",
+    "test": "company",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Eligible Canadian company and feature project under Telefilm rules.",
+    "evidence": "Canadian audiovisual production companies who: … Have their head office in Canada. … Carry out their activities in Canada. … Projects produced in languages other than French and English must be submitted during the opening periods applicable to English-language projects.",
     "excludes": []
    },
    "who_line": "Canadian companies with a feature project under Telefilm rules",
-   "get_line": "Production financing (current contribution cap not verified)",
+   "get_line": "Production or post-production financing for a Canadian feature film of 75 minutes or more",
    "caution": "Our notes conflict: the title says low budget, the window text says budgets of CAD3.5m or more"
   },
   {
@@ -505,14 +505,14 @@
     ],
     "regions": [],
     "subnational": null,
-    "test": "mixed",
+    "test": "company",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Eligible Canadian company and feature project under Telefilm rules.",
+    "evidence": "Canadian audiovisual production companies who: … Have their head office in Canada. … Carry out their activities in Canada. … French-language projects at all budget levels",
     "excludes": []
    },
    "who_line": "Canadian companies with a feature project under Telefilm rules",
-   "get_line": "Project-specific production financing (no verified flat cap)",
+   "get_line": "Production or post-production financing for a Canadian feature film of 75 minutes or more",
    "caution": "Our notes conflict: title says French-language, all budgets; window text says English, CAD3.5m+"
   },
   {
@@ -565,12 +565,12 @@
     "subnational": null,
     "test": "unknown",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Southeast Asian documentary filmmakers; exact applicant test forthcoming.",
+    "confidence": "stated",
+    "evidence": "\"supports feature documentary projects that surface underserved voices and overlooked realities across Southeast Asia\" ... \"backing feature documentaries in late edit or finishing stages\"",
     "excludes": []
    },
-   "who_line": "Southeast Asian documentary filmmakers; the exact test is not yet published",
-   "get_line": "SGD10,000 (one of three grants)",
+   "who_line": "Feature documentaries about Southeast Asia in late edit or finishing",
+   "get_line": "SGD 10,000 cash each for three documentaries in late edit or finishing",
    "caution": "Opens 5 November 2026; the applicant test and contract terms are not yet published"
   },
   {
@@ -594,12 +594,12 @@
     "subnational": null,
     "test": "unknown",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Emerging Southeast Asian filmmakers.",
+    "confidence": "stated",
+    "evidence": "\"a launchpad for the brightest emerging filmmaking voices from Southeast Asia\"",
     "excludes": []
    },
-   "who_line": "Emerging Southeast Asian filmmakers; exact rules not yet published",
-   "get_line": "SGD10,000 (one of six grants)",
+   "who_line": "Emerging Southeast Asian filmmakers making short films",
+   "get_line": "SGD 10,000 cash each for six short films",
    "caution": "Opens 5 November 2026; regional applicant rules and contract terms are not yet published"
   },
   {
@@ -625,11 +625,11 @@
     "test": "nationality",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Emerging filmmaker with previous filmmaking experience; Indian citizen.",
+    "evidence": "The commission will be open to emerging filmmakers from India only. Candidates should provide proof of prior experience in making films. Only citizens of India can apply and the films should showcase stories from the country.",
     "excludes": []
    },
    "who_line": "Indian citizens: emerging filmmakers with previous filmmaking experience",
-   "get_line": "INR1,200,000 commissioning support for a short film",
+   "get_line": "A ₹12 lakh (INR 1,200,000) commissioning grant paid in three stages, plus mentorship",
    "caution": null
   },
   {
@@ -655,14 +655,14 @@
     ],
     "regions": [],
     "subnational": null,
-    "test": "unknown",
+    "test": "mixed",
     "identity": "Indigenous filmmakers and collectives",
-    "confidence": "partial",
-    "evidence": "Peruvian Andean/Amazonian communities; production in Indigenous languages.",
+    "confidence": "stated",
+    "evidence": "2.1 Personas: Que se autorreconozcan como integrantes de un pueblo indígena. Que sean jóvenes, hombres y mujeres indígenas entre 18 y 35 años con residencia en Perú. / 2.2 Organizaciones y colectivos indígenas de Perú: Comunidades indígenas andinas y amazónicas. ... Es requisito indispensable que las organizaciones y colectivos postulantes cuenten con personería jurídica inscrita en la Superintendencia Nacional de Registros Públicos (SUNARP) y Registro Único de Contribuyente (RUC), o cuenten con el aval de una institución legalmente constituida en el Perú",
     "excludes": []
    },
-   "who_line": "Indigenous filmmakers (18–35) or collectives from Peru's Andean and Amazonian communities",
-   "get_line": "PEN15,000 plus technical and mentoring support (four awards)",
+   "who_line": "Indigenous people aged 18–35 living in Peru, and Indigenous organisations and collectives",
+   "get_line": "PEN 15,000 each (four awards), a Lima workshop with travel and stay covered, and mentoring",
    "caution": "Our notes are incomplete: get the full rules; production is in Indigenous languages"
   },
   {
@@ -689,11 +689,11 @@
     "test": "mixed",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Eligible Australian citizen/permanent resident or Australian-controlled company",
+    "evidence": "SmartyGrants form preview: \"the applicant company is an incorporated company carrying on business in Australia, with its central management and control in Australia and/or the individual applicant or co-applicant is an Australian citizen or Australian permanent resident (holding a permanent visa)\" … \"the team consists of at least two key creatives, which includes at least one writer or writer/creator\" … Screen Australia page: \"NZ On Air will also participate in this second iteration of the Initiative, selecting and bringing their own New Zealand based teams\"",
     "excludes": []
    },
    "who_line": "Australian citizens, permanent residents or Australian-controlled companies",
-   "get_line": "AUD20,000 per team (up to eight teams) and a place in the incubator",
+   "get_line": "AUD 20,000 per team, mentoring and a Melbourne workshop; up to three teams get production funding",
    "caution": "This is the Australian route; New Zealand teams use the separate NZ On Air application"
   },
   {
@@ -720,11 +720,11 @@
     "test": "mixed",
     "identity": null,
     "confidence": "stated",
-    "evidence": "New Zealand-based individual or entity at application",
+    "evidence": "\"The applicant is a New Zealand-based individual or entity. Any entity contracted for development or production funding must be registered in New Zealand and meet NZ On Air’s contracting requirements.\"",
     "excludes": []
    },
    "who_line": "New Zealand-based individuals or entities, with two key creatives including a writer",
-   "get_line": "Phase I: up to NZD22,000 per team (up to four teams)",
+   "get_line": "Up to NZD 22,000 development funding, a Melbourne workshop and mentoring",
    "caution": "Phase II funding (up to NZD330,000) is by invitation only and not guaranteed"
   },
   {
@@ -749,11 +749,11 @@
     "test": "company",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Eligible Canadian-controlled taxable production company; qualifying MPF licence commitment.",
+    "evidence": "Guidelines PDF: \"“Canadian Independent Production Company” - Is a for-profit (i.e., a taxable Canadian corporation, within the meaning of Canada’s Income Tax Act) production company that is Canadian-controlled as determined in sections 26 to 28 of the Investment Canada Act and has its head office in Canada\" | \"Applications supported by a Major Production Funder for submission to the Bell Fund must equally adhere to these Guidelines including meeting all eligibility requirements.\"",
     "excludes": []
    },
    "who_line": "Canadian-controlled taxable production companies with a qualifying MPF licence",
-   "get_line": "Up to CAD150,000 (under CAD1m eligible costs) or CAD250,000 (CAD1m or more)",
+   "get_line": "Non-repayable funding up to CAD 150,000–250,000 for production, plus up to CAD 25,000",
    "caution": null
   },
   {
@@ -779,11 +779,11 @@
     "test": "mixed",
     "identity": null,
     "confidence": "stated",
-    "evidence": "NZ citizen/permanent resident holding necessary rights",
+    "evidence": "Guidelines PDF: \"You are eligible to apply for this Fund if you are: ☐ a New Zealand citizen or permanent resident; and\"",
     "excludes": []
    },
    "who_line": "NZ citizens or permanent residents holding the rights, with qualifying credits",
-   "get_line": "Normally NZD35,000 per tranche, within a NZD140,000 lifetime development ceiling",
+   "get_line": "Up to NZ$35,000 per tranche, capped at NZ$140,000 in total per project",
    "caution": "A pre-application meeting comes first; NZD140,000 is a lifetime ceiling, not one award"
   },
   {
@@ -808,11 +808,11 @@
     "test": "mixed",
     "identity": null,
     "confidence": "stated",
-    "evidence": "NZ citizen/permanent resident holding necessary rights",
+    "evidence": "\"You are eligible to apply for this Fund if you are: a New Zealand citizen or permanent resident; and the owner of the rights in the project or have an option to acquire those rights; and a writer, director, or producer who has at least 80 minutes of documentary content\"",
     "excludes": []
    },
    "who_line": "NZ citizens or permanent residents holding the rights, with qualifying credits",
-   "get_line": "Normally NZD35,000 per tranche, within a NZD140,000 lifetime development ceiling",
+   "get_line": "Development funding of up to $35,000 per tranche, capped at $140,000 per project",
    "caution": "A pre-application meeting comes first; NZD140,000 is a lifetime ceiling, not one award"
   },
   {
@@ -836,11 +836,11 @@
     "test": "mixed",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Director and producer both NZ citizens/permanent residents",
+    "evidence": "the individuals who hold the roles of director and producer of the feature film are New Zealand citizens or permanent residents; | your feature film has not received NZFC Production or Post-Production funding; | has a total production budget of less than $1,000,000",
     "excludes": []
    },
    "who_line": "Features whose director and producer are both NZ citizens or permanent residents",
-   "get_line": "Up to NZD60,000 to finish a feature",
+   "get_line": "A non-recoupable grant of up to NZD 60,000 to finish the feature",
    "caution": "Rolling intake after a pre-application meeting; reconfirm budget and intake first"
   },
   {
@@ -866,13 +866,13 @@
     "regions": [],
     "subnational": null,
     "test": "mixed",
-    "identity": "First Nations, Inuit and Métis-owned companies",
+    "identity": "First Nations, Inuit and Métis",
     "confidence": "stated",
-    "evidence": "Eligible Canadian company with at least 51% First Nations/Inuit/Métis ownership/control",
+    "evidence": "Indigenous-controlled: minimum 51% ownership by person/s who are First Nations, Inuit or Métis who is/are Canadian citizens or permanent residents of Canada; | All applicants must be citizens or permanent residents of Canada.",
     "excludes": []
    },
    "who_line": "Canadian companies at least 51% First Nations, Inuit or Métis owned and controlled",
-   "get_line": "Up to CAD50,000 (features/TV) or CAD25,000 (shorts/web/immersive)",
+   "get_line": "Up to CAD 50,000 for features and series, or CAD 25,000 for shorts, web and immersive",
    "caution": "A missing budget, schedule or cut makes the application immediately ineligible"
   },
   {
@@ -900,8 +900,8 @@
     "evidence": "Canadian Indigenous arts programme, not a worldwide film fund.",
     "excludes": []
    },
-   "who_line": "First Nations, Inuit and Métis artists, groups and organisations (Canadian programme)",
-   "get_line": "Arts project grant (current cap not verified in our notes)",
+   "who_line": "First Nations, Inuit and Métis individuals, groups and organisations",
+   "get_line": "Project funding for activities of up to one year; no amount stated on this page",
    "caution": "Detailed terms pending: check eligibility and the portal's full checklist"
   },
   {
@@ -925,12 +925,12 @@
     "subnational": null,
     "test": "unknown",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Canadian arts-programme eligibility, not open worldwide.",
+    "confidence": "stated",
+    "evidence": "Explore and Create page: \"Canadian artists, groups and arts organizations to develop, create and share artistic works\"",
     "excludes": []
    },
-   "who_line": "Professional artists, groups or organisations meeting Canadian eligibility rules",
-   "get_line": "Arts project grant (current cap not verified in our notes)",
+   "who_line": "Canadian artists, groups and arts organisations",
+   "get_line": "Grant to develop, create and share artistic works at any stage of the creative process",
    "caution": "Terms pending: apply before the project starts and confirm the exact category"
   },
   {
@@ -949,20 +949,27 @@
    "where": {
     "scope": "listed",
     "countries": [
-     "MX"
+     "BZ",
+     "CR",
+     "GT",
+     "HN",
+     "MX",
+     "NI",
+     "PA",
+     "SV"
     ],
     "regions": [
      "CENTRAL_AMERICA"
     ],
     "subnational": null,
-    "test": "unknown",
-    "identity": "Indigenous and Afro-descendant creators",
-    "confidence": "partial",
-    "evidence": "Mexico and Central America; tax ID or national equivalent and self-identification documentation.",
+    "test": "mixed",
+    "identity": "Indigenous and Afro-descendant creators (self-identified)",
+    "confidence": "stated",
+    "evidence": "\"En esta convocatoria podrán participar: Las personas físicas de México y de Centroamérica de 18 años en adelante que provengan de los pueblos indígenas o afrodescendientes por autoadscripción en términos del artículo 2 de la Constitución Política de los Estados Unidos Mexicanos. En el caso de las personas físicas mexicanas que cuenten con su Registro Federal de Contribuyentes (RFC) y en el caso de personas físicas de países de Centroamérica, se aceptará la documentación equivalente emitida en su país de origen.\" / \"(Belice, Costa Rica, El Salvador, Guatemala, Honduras, Nicaragua, Panamá)\" / \"",
     "excludes": []
    },
-   "who_line": "Indigenous or Afro-descendant directors (18+) from Mexico or Central America",
-   "get_line": "Up to MXN850,000 for feature continuity, plus mentoring and a residency",
+   "who_line": "Indigenous or Afro-descendant people aged 18+ from Mexico or Central America",
+   "get_line": "Up to MXN 850,000 to continue a feature with a rough cut, plus mentoring and a residency",
    "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
   },
   {
@@ -981,20 +988,27 @@
    "where": {
     "scope": "listed",
     "countries": [
-     "MX"
+     "BZ",
+     "CR",
+     "GT",
+     "HN",
+     "MX",
+     "NI",
+     "PA",
+     "SV"
     ],
     "regions": [
      "CENTRAL_AMERICA"
     ],
     "subnational": null,
     "test": "unknown",
-    "identity": "Indigenous and Afro-descendant creators",
-    "confidence": "partial",
-    "evidence": "Mexico and Central America; tax ID or national equivalent and self-identification documentation.",
+    "identity": "Indigenous or Afro-descendant creators (self-identified)",
+    "confidence": "stated",
+    "evidence": "En esta convocatoria podrán participar: Las personas físicas de México y de Centroamérica de 18 años en adelante que provengan de los pueblos indígenas o afrodescendientes por autoadscripción [...] En la Etapa 1 (Desarrollo inicial de la obra), la autora o el autor del guion, aunque no asuma la dirección de la obra. [...] (Belice, Costa Rica, El Salvador, Guatemala, Honduras, Nicaragua, Panamá)",
     "excludes": []
    },
-   "who_line": "Indigenous or Afro-descendant writers or directors (18+) from Mexico or Central America",
-   "get_line": "Up to MXN90,000 for feature development, plus mentoring and a residency",
+   "who_line": "Indigenous or Afro-descendant screenwriters (18+) from Mexico or Central America",
+   "get_line": "Up to MXN 90,000 for feature development, plus a mentor, learning sessions and the ECAMC residency",
    "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
   },
   {
@@ -1021,12 +1035,12 @@
     "subnational": null,
     "test": "unknown",
     "identity": "Indigenous and Afro-descendant creators",
-    "confidence": "partial",
-    "evidence": "Mexico and Central America; tax ID or national equivalent and self-identification documentation.",
+    "confidence": "stated",
+    "evidence": "En esta convocatoria podrán participar: Las personas físicas de México y de Centroamérica de 18 años en adelante que provengan de los pueblos indígenas o afrodescendientes por autoadscripción ... No podrán participar en esta convocatoria como responsables de un proyecto las personas no indígenas o que no sean afrodescendientes ... No podrán participar en esta convocatoria las personas morales, ni asociaciones o sociedades civiles. / Etapa 4. Conclusión de la obra. Se podrán registrar aquellos proyectos de cortometraje o largometraje ... que cuenten con un corte final de edición (imagen)",
     "excludes": []
    },
-   "who_line": "Indigenous or Afro-descendant directors (18+) from Mexico or Central America",
-   "get_line": "Up to MXN950,000 for feature completion, plus mentoring and a residency",
+   "who_line": "Indigenous or Afro-descendant directors 18+, Mexico or Central America, with a final cut",
+   "get_line": "Up to MXN 950,000 to finish a feature, plus a mentor, learning sessions and the ECAMC residency",
    "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
   },
   {
@@ -1045,20 +1059,27 @@
    "where": {
     "scope": "listed",
     "countries": [
-     "MX"
+     "BZ",
+     "CR",
+     "GT",
+     "HN",
+     "MX",
+     "NI",
+     "PA",
+     "SV"
     ],
     "regions": [
      "CENTRAL_AMERICA"
     ],
     "subnational": null,
-    "test": "unknown",
-    "identity": "Indigenous and Afro-descendant creators",
-    "confidence": "partial",
-    "evidence": "Mexico and Central America; tax ID or national equivalent and self-identification documentation.",
+    "test": "mixed",
+    "identity": "Indigenous and Afro-descendant creators (self-identified)",
+    "confidence": "stated",
+    "evidence": "\"En esta convocatoria podrán participar: Las personas físicas de México y de Centroamérica de 18 años en adelante que provengan de los pueblos indígenas o afrodescendientes por autoadscripción en términos del artículo 2 de la Constitución Política de los Estados Unidos Mexicanos. En el caso de las personas físicas mexicanas que cuenten con su Registro Federal de Contribuyentes (RFC) y en el caso de personas físicas de países de Centroamérica, se aceptará la documentación equivalente emitida en su país de origen.\" / \"(Belice, Costa Rica, El Salvador, Guatemala, Honduras, Nicaragua, Panamá)\" / \"",
     "excludes": []
    },
-   "who_line": "Indigenous or Afro-descendant directors (18+) from Mexico or Central America",
-   "get_line": "Up to MXN300,000 for short completion, plus mentoring and a residency",
+   "who_line": "Indigenous or Afro-descendant people aged 18+ from Mexico or Central America",
+   "get_line": "Up to MXN 300,000 to finish a short with a final cut, plus mentoring and a residency",
    "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
   },
   {
@@ -1077,20 +1098,27 @@
    "where": {
     "scope": "listed",
     "countries": [
-     "MX"
+     "BZ",
+     "CR",
+     "GT",
+     "HN",
+     "MX",
+     "NI",
+     "PA",
+     "SV"
     ],
     "regions": [
      "CENTRAL_AMERICA"
     ],
     "subnational": null,
     "test": "unknown",
-    "identity": "Indigenous and Afro-descendant creators",
-    "confidence": "partial",
-    "evidence": "Mexico and Central America; tax ID or national equivalent and self-identification documentation.",
+    "identity": "Indigenous or Afro-descendant creators (self-identified)",
+    "confidence": "stated",
+    "evidence": "En esta convocatoria podrán participar: Las personas físicas de México y de Centroamérica de 18 años en adelante que provengan de los pueblos indígenas o afrodescendientes por autoadscripción [...] En la Etapa 2, para proyectos de largometraje, solamente las y los directores que cuentan con al menos un cortometraje con créditos de dirección [...] (Belice, Costa Rica, El Salvador, Guatemala, Honduras, Nicaragua, Panamá)",
     "excludes": []
    },
-   "who_line": "Indigenous or Afro-descendant directors (18+) from Mexico or Central America",
-   "get_line": "Up to MXN1,200,000 for feature production, plus mentoring and a residency",
+   "who_line": "Indigenous or Afro-descendant directors with a short credit, Mexico or Central America",
+   "get_line": "Up to MXN 1,200,000 to make a feature, plus a mentor, learning sessions and the ECAMC residency",
    "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
   },
   {
@@ -1117,12 +1145,12 @@
     "subnational": null,
     "test": "unknown",
     "identity": "Indigenous and Afro-descendant creators",
-    "confidence": "partial",
-    "evidence": "Mexico and Central America; tax ID or national equivalent and self-identification documentation.",
+    "confidence": "stated",
+    "evidence": "En esta convocatoria podrán participar: Las personas físicas de México y de Centroamérica de 18 años en adelante que provengan de los pueblos indígenas o afrodescendientes por autoadscripción ... No podrán participar en esta convocatoria como responsables de un proyecto las personas no indígenas o que no sean afrodescendientes ... No podrán participar en esta convocatoria las personas morales, ni asociaciones o sociedades civiles.",
     "excludes": []
    },
-   "who_line": "Indigenous or Afro-descendant directors (18+) from Mexico or Central America",
-   "get_line": "Up to MXN450,000 for short production, plus mentoring and a residency",
+   "who_line": "Indigenous or Afro-descendant directors 18+ from Mexico or Central America",
+   "get_line": "Up to MXN 450,000 to make a short, plus a mentor, learning sessions and the ECAMC residency",
    "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
   },
   {
@@ -1149,11 +1177,11 @@
     "test": "mixed",
     "identity": null,
     "confidence": "stated",
-    "evidence": "INAP submission requires Paraguayan majority and Argentine minority producer.",
+    "evidence": "\"Podrán postularse ante el INAP empresas, instituciones y productores independientes paraguayos del sector audiovisual,\"",
     "excludes": []
    },
    "who_line": "Paraguayan majority producers with a genuine Argentine minority partner",
-   "get_line": "PYG205,555,000 per award (two INAP-side awards)",
+   "get_line": "USD 35,000 co-development award; two Paraguayan and two Argentine projects are chosen",
    "caution": "Argentina has separate rules; this 30 December deadline is for the INAP route only"
   },
   {
@@ -1174,12 +1202,12 @@
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Individual or company with BOTH INAP producer-nationality and project-nationality certificates.",
+    "confidence": "stated",
+    "evidence": "\"La presente convocatoria está dirigida a empresas, instituciones y productores independientes (persona física) paraguayos del sector audiovisual\" / \"podrán aplicar los productores, instituciones y empresas, siempre y cuando cuenten con el correspondiente Certificado de Nacionalidad otorgado por el INAP\" / \"En caso de que el productor sea una persona física, deberá ser paraguayo o tener al menos 5 años de residencia comprobada en el país.\" / \"Certificado de nacionalidad del proyecto, otorgado por el INAP.\"",
     "excludes": []
    },
-   "who_line": "Producers holding INAP producer- and project-nationality certificates (Paraguay)",
-   "get_line": "Up to PYG260,000,000 for a debut feature",
+   "who_line": "Paraguayan producers or companies with INAP producer and project nationality certificates",
+   "get_line": "Up to PYG 260,000,000 for one debut feature; 70% repayable from net revenue",
    "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
   },
   {
@@ -1200,12 +1228,12 @@
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Individual or company with BOTH INAP producer-nationality and project-nationality certificates.",
+    "confidence": "stated",
+    "evidence": "La presente convocatoria está dirigida a empresas, instituciones y productores independientes (persona física) paraguayos del sector audiovisual [...] 1) La empresa, institución o productora deberá estar legalmente constituida y contar con RUC cuya actividad económica debe corresponder a la producción en el ámbito audiovisual, en el territorio nacional. 2) En caso de que el productor sea una persona física, deberá ser paraguayo o tener al menos 5 años de residencia comprobada en el país. [...] 3. Certificado de nacionalidad del productor, institución o empresa otorgado por el INAP. 4. Certific",
     "excludes": []
    },
-   "who_line": "Producers holding INAP producer- and project-nationality certificates (Paraguay)",
-   "get_line": "Up to PYG70,000,000 for development",
+   "who_line": "Paraguayan producers or firms holding INAP producer and project nationality certificates",
+   "get_line": "Up to PYG 70,000,000 for development (up to four projects); 70% repayable from net income",
    "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
   },
   {
@@ -1228,12 +1256,12 @@
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Individual or company with BOTH INAP producer-nationality and project-nationality certificates.",
+    "confidence": "stated",
+    "evidence": "La presente convocatoria está dirigida a empresas, instituciones y productores independientes (persona física) paraguayos del sector audiovisual ... podrán aplicar los productores, instituciones y empresas, siempre y cuando cuenten con el correspondiente Certificado de Nacionalidad otorgado por el INAP ... 1) La empresa, institución o productora deberá estar legalmente constituida y contar con RUC ... en el territorio nacional. 2) En caso de que el productor sea una persona física, deberá ser paraguayo o tener al menos 5 años de residencia comprobada en el país. / 3. Certificado de nacionalida",
     "excludes": []
    },
-   "who_line": "Producers holding INAP producer- and project-nationality certificates (Paraguay)",
-   "get_line": "Up to PYG290,000,000 for documentary production",
+   "who_line": "Paraguayan producers or companies with INAP producer and project nationality certificates",
+   "get_line": "Up to PYG 290,000,000 for one feature documentary; 70% repayable if the film earns net income",
    "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
   },
   {
@@ -1256,12 +1284,12 @@
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Individual or company with BOTH INAP producer-nationality and project-nationality certificates.",
+    "confidence": "stated",
+    "evidence": "\"La presente convocatoria está dirigida a empresas, instituciones y productores independientes (persona física) paraguayos del sector audiovisual\" / \"podrán aplicar los productores, instituciones y empresas, siempre y cuando cuenten con el correspondiente Certificado de Nacionalidad otorgado por el INAP\" / \"En caso de que el productor sea una persona física, deberá ser paraguayo o tener al menos 5 años de residencia comprobada en el país.\" / \"Certificado de nacionalidad del proyecto, otorgado por el INAP.\"",
     "excludes": []
    },
-   "who_line": "Producers holding INAP producer- and project-nationality certificates (Paraguay)",
-   "get_line": "Up to PYG600,000,000 for fiction production",
+   "who_line": "Paraguayan producers or companies with INAP producer and project nationality certificates",
+   "get_line": "Up to PYG 600,000,000 each for up to four fiction features; 70% repayable from net revenue",
    "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
   },
   {
@@ -1280,12 +1308,12 @@
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Individual or company with BOTH INAP producer-nationality and project-nationality certificates.",
+    "confidence": "stated",
+    "evidence": "La presente convocatoria está dirigida a empresas, instituciones y productores independientes (persona física) paraguayos del sector audiovisual [...] 2) En caso de que el productor sea una persona física, deberá ser paraguayo o tener al menos 5 años de residencia comprobada en el país. [...] 2.1.4. Largometraje de Coproducción Minoritaria: Largometraje tanto de ficción como documental [...] en el cual la participación paraguaya en la financiación del proyecto sea minoritaria, y que porcentualmente no sea inferior al 10 %.",
     "excludes": []
    },
-   "who_line": "Producers holding INAP producer- and project-nationality certificates (Paraguay)",
-   "get_line": "Up to PYG260,000,000 for a minority co-production",
+   "who_line": "Paraguayan producers or firms with INAP certificates, as minority partner (at least 10%)",
+   "get_line": "Up to PYG 260,000,000 for one minority co-production; 70% repayable from net income",
    "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
   },
   {
@@ -1308,12 +1336,12 @@
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Individual or company with BOTH INAP producer-nationality and project-nationality certificates.",
+    "confidence": "stated",
+    "evidence": "La presente convocatoria está dirigida a empresas, instituciones y productores independientes (persona física) paraguayos del sector audiovisual ... podrán aplicar los productores, instituciones y empresas, siempre y cuando cuenten con el correspondiente Certificado de Nacionalidad otorgado por el INAP ... 1) La empresa, institución o productora deberá estar legalmente constituida y contar con RUC ... en el territorio nacional. 2) En caso de que el productor sea una persona física, deberá ser paraguayo o tener al menos 5 años de residencia comprobada en el país. / 3. Certificado de nacionalida",
     "excludes": []
    },
-   "who_line": "Producers holding INAP producer- and project-nationality certificates (Paraguay)",
-   "get_line": "Up to PYG70,000,000 for short production",
+   "who_line": "Paraguayan producers or companies with INAP producer and project nationality certificates",
+   "get_line": "Up to PYG 70,000,000 for one short film; 70% repayable if the film earns net income",
    "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
   },
   {
@@ -1326,18 +1354,20 @@
    ],
    "stages": [],
    "where": {
-    "scope": "unclear",
-    "countries": [],
+    "scope": "listed",
+    "countries": [
+     "IN"
+    ],
     "regions": [],
     "subnational": null,
-    "test": "unknown",
+    "test": "nationality",
     "identity": null,
-    "confidence": "unclear",
-    "evidence": "",
+    "confidence": "stated",
+    "evidence": "alteff.in/film-fund: \"Emerging and established Indian filmmakers with a strong environmental or impact-driven story aligned with the theme of coexistence are invited to apply.\" docresi.org: \"Applicants must be nationals of an Asian country, and the principal filming location of the submitted project must be in an Asian country.\"",
     "excludes": []
    },
-   "who_line": "Check the official rules: not stated in our notes",
-   "get_line": "Not published in our notes",
+   "who_line": "Indian documentary filmmakers with a feature on the 2026 theme of coexistence",
+   "get_line": "Share of an INR 1.2 crore fund for up to three projects, with mentorship and impact support",
    "caution": "Watch only: no verified open call, and current fund rules could not be verified"
   },
   {
@@ -1350,20 +1380,18 @@
    ],
    "stages": [],
    "where": {
-    "scope": "listed",
-    "countries": [
-     "CA"
-    ],
+    "scope": "worldwide",
+    "countries": [],
     "regions": [],
     "subnational": null,
-    "test": "unknown",
+    "test": "company",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Music-documentary support with Canadian connection.",
+    "confidence": "stated",
+    "evidence": "Be a corporation unaffiliated with any licensed network or programming undertaking. … International production companies making films about Canadian musical artists (max. 1 per year*) … Canadian productions, co-pros or treaty productions making films about Canadian musical artists … Canadian productions, co-pros or treaty productions making films about International musical artists (max. 1 per year*)",
     "excludes": []
    },
-   "who_line": "Music documentaries with a Canadian connection; details not verified",
-   "get_line": "Not published in our notes",
+   "who_line": "Music documentary producers; non-Canadian companies only for films on Canadian artists",
+   "get_line": "Development advance up to CAD 15,000 or production grant up to CAD 60,000; shorts up to CAD 30,000",
    "caution": "Watch only: no verified in-window deadline or current award"
   },
   {
@@ -1374,18 +1402,18 @@
    "formats": [],
    "stages": [],
    "where": {
-    "scope": "unclear",
+    "scope": "worldwide",
     "countries": [],
     "regions": [],
     "subnational": null,
-    "test": "unknown",
+    "test": "nationality",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Includes specific MENA series-development/web-series branches as well as film.",
+    "confidence": "stated",
+    "evidence": "Feature Films Guideline PDF (DFI26-FeatureFilmsGuideline-EN.pdf): \"A project’s eligibility is determined by the director’s Nationality\" … \"The director attached must be a first or second-time filmmaker\" … \"Established (2+ features) MENA directors can only apply for post- production funding.\"",
     "excludes": []
    },
-   "who_line": "Varies by branch; some series-development branches are MENA-specific",
-   "get_line": "Not published in our notes",
+   "who_line": "First or second-time feature directors anywhere; established MENA directors for post only",
+   "get_line": "Narrative feature grants up to USD 20,000 development, USD 100,000 production, USD 75,000 post",
    "caution": "Watch only: the next round is not announced; no verified deadline or award"
   },
   {
@@ -1398,18 +1426,22 @@
     "post"
    ],
    "where": {
-    "scope": "unclear",
+    "scope": "listed",
     "countries": [],
-    "regions": [],
+    "regions": [
+     "AFRICA",
+     "ASIA",
+     "MENA"
+    ],
     "subnational": null,
-    "test": "unknown",
+    "test": "nationality",
     "identity": null,
-    "confidence": "unclear",
-    "evidence": "Regional film postproduction support.",
+    "confidence": "stated",
+    "evidence": "\"Feature-length (60 minutes or more) fiction, documentary, or animation projects from directors of Arab nationality/origin, African and Asian nationalities.\"",
     "excludes": []
    },
-   "who_line": "Check the official rules: the region is not defined in our notes",
-   "get_line": "Not published in our notes",
+   "who_line": "Directors of Arab nationality or origin, or African or Asian nationality; 60+ min features",
+   "get_line": "Post-production grant to get a feature completed and ready for distribution",
    "caution": "Watch only: the 2027 post-production call is not announced or verified"
   },
   {
@@ -1426,20 +1458,40 @@
    ],
    "where": {
     "scope": "listed",
-    "countries": [],
+    "countries": [
+     "AG",
+     "AW",
+     "BB",
+     "BZ",
+     "CR",
+     "CU",
+     "DO",
+     "GD",
+     "GP",
+     "GT",
+     "HN",
+     "HT",
+     "JM",
+     "MQ",
+     "NI",
+     "PA",
+     "PR",
+     "SV",
+     "TT"
+    ],
     "regions": [
      "CARIBBEAN",
      "CENTRAL_AMERICA"
     ],
     "subnational": null,
-    "test": "unknown",
-    "identity": "Women-led projects",
-    "confidence": "partial",
-    "evidence": "Women-led Central American/Caribbean feature development and postproduction.",
+    "test": "residence",
+    "identity": "Women filmmakers aged 25 or over",
+    "confidence": "stated",
+    "evidence": "Eligible Countries: Antigua, Aruba, Barbados, Belize, Costa Rica, Cuba, El Salvador, Grenada, Guadeloupe, Guatemala, Haiti, Honduras, Jamaica, Martinique, Nicaragua, Panama, Puerto Rico, the Dominican Republic, and Trinidad & Tobago. | Applicants must be women, 25 years or older, and residents of one of the eligible countries. | Must have directed at least one short film.",
     "excludes": []
    },
-   "who_line": "Women-led projects from Central America or the Caribbean; rules not verified",
-   "get_line": "Not published in our notes",
+   "who_line": "Women aged 25 or over living in Central America or the Caribbean",
+   "get_line": "A share of $15,000 in total across development and post-production awards",
    "caution": "Watch only: no verified in-window deadline or current award"
   },
   {
@@ -1453,18 +1505,20 @@
     "post"
    ],
    "where": {
-    "scope": "unclear",
-    "countries": [],
+    "scope": "listed",
+    "countries": [
+     "MX"
+    ],
     "regions": [],
     "subnational": null,
-    "test": "unknown",
+    "test": "mixed",
     "identity": null,
-    "confidence": "unclear",
-    "evidence": "Potential national film production/postproduction subsidy routes.",
+    "confidence": "stated",
+    "evidence": "Podrán participar personas físicas o morales mexicanas cuya actividad u objeto social sea la producción cinematográfica o audiovisual | PDF: \"Los proyectos deberán ser presentados por personas físicas … nacidas en México o naturalizadas mexicanas, o por personas morales mexicanas, … o por escuelas de cine o audiovisual con RVOE.\"",
     "excludes": []
    },
-   "who_line": "Check the official rules: a national scheme, applicant test not in our notes",
-   "get_line": "Not published in our notes",
+   "who_line": "Mexican-born or naturalised individuals, Mexican companies and accredited film schools",
+   "get_line": "Post-production support up to MXN 2m for features or MXN 200,000 for shorts (2026 terms)",
    "caution": "Watch only: no verified in-window deadline or current award"
   },
   {
@@ -1488,8 +1542,8 @@
     "evidence": "National film/TV development and production support.",
     "excludes": []
    },
-   "who_line": "Check the official rules: a national scheme, applicant test not in our notes",
-   "get_line": "Not published in our notes",
+   "who_line": "Individuals, companies and organisations making South African screen content, by tier",
+   "get_line": "Development, production and post-production funding by experience tier; no amounts on this page",
    "caution": "Watch only: no verified in-window deadline or current award"
   },
   {
@@ -1510,12 +1564,12 @@
     "subnational": null,
     "test": "unknown",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "East African documentary lead.",
+    "confidence": "stated",
+    "evidence": "\"Director + Producer pairs from East Africa\" ... \"Films up to 20 minutes\" ... \"with at least 80% shot locally\"",
     "excludes": []
    },
-   "who_line": "East African documentaries; applicant rules not verified",
-   "get_line": "Not published in our notes",
+   "who_line": "Director and producer pairs from East Africa making short films (2025 round)",
+   "get_line": "Up to EUR 20,000 for a short film, with mentoring and industry support (2025 round)",
    "caution": "Watch only: no verified in-window deadline or current award"
   },
   {
@@ -1528,18 +1582,20 @@
    ],
    "stages": [],
    "where": {
-    "scope": "unclear",
-    "countries": [],
+    "scope": "listed",
+    "countries": [
+     "SG"
+    ],
     "regions": [],
     "subnational": null,
-    "test": "unknown",
+    "test": "company",
     "identity": null,
-    "confidence": "unclear",
-    "evidence": "Potential national feature-film support.",
+    "confidence": "stated",
+    "evidence": "CFP Brief PDF (updated 1 October 2026): \"Be a Singapore-registered company.\" | \"SG refers to Singapore Citizen/Permanent Resident.\"",
     "excludes": []
    },
-   "who_line": "Check the official rules: a national scheme, applicant test not in our notes",
-   "get_line": "Not published in our notes",
+   "who_line": "Singapore-registered companies with Singapore talent, in four project categories",
+   "get_line": "Route to an IMDA grant of up to SGD 300,000 to SGD 1.2m, depending on category",
    "caution": "Watch only: no verified in-window deadline or current award"
   },
   {
@@ -1560,12 +1616,12 @@
     "subnational": null,
     "test": "unknown",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Nepal documentary support lead.",
+    "confidence": "stated",
+    "evidence": "\"invites young Nepali filmmakers to apply\" ... \"Applicant must from Nepal\" ... \"Applicants must be filmmakers who are yet to make a feature length documentary\"",
     "excludes": []
    },
-   "who_line": "Noted only as Nepal documentary support; applicant rules not verified",
-   "get_line": "Not published in our notes",
+   "who_line": "Nepali filmmakers who have not yet made a feature-length documentary",
+   "get_line": "NPR 200,000 each for three short documentaries, with mentoring (2026 round)",
    "caution": "Watch only: no verified in-window deadline or current award"
   },
   {
@@ -1644,11 +1700,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Worldwide; English original short script up to 15 pages",
+    "evidence": "\"The Canadian Short Screenplay Competition (CSSC) is open to writers of any nationality from any country worldwide.\" / \"must not have been previously optioned, sold or produced\" / \"not more than 15 pages in length\" / \"written in the English language\"",
     "excludes": []
    },
    "who_line": "Writers worldwide with an unproduced English short script of up to 15 pages",
-   "get_line": "Not published in our notes",
+   "get_line": "Top three: option-purchase deals of CAD 1,000 or 500 and Crystal Awards; a chance of production",
    "caution": null
   },
   {
@@ -1671,11 +1727,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "International documentary.",
+    "evidence": "All films must have been completed after January 1, 2026 [...] Hot Docs accepts Canadian and international documentaries of all lengths and subject matter.",
     "excludes": []
    },
    "who_line": "Documentaries from anywhere completed after 1 January 2026; Ontario/Toronto premiere",
-   "get_line": "Festival selection and screening; not project finance",
+   "get_line": "Festival selection and screening; selected films can compete for jury and audience awards",
    "caution": null
   },
   {
@@ -1693,20 +1749,18 @@
     "finished"
    ],
    "where": {
-    "scope": "listed",
+    "scope": "worldwide",
     "countries": [],
-    "regions": [
-     "IBERO_AMERICA"
-    ],
+    "regions": [],
     "subnational": null,
-    "test": "unknown",
+    "test": "production",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Section-specific: Ibero-American fiction/documentary routes; global animation and some thematic sections.",
+    "confidence": "stated",
+    "evidence": "\"invites producers and filmmakers from Mexico, Ibero-America, and other regions of the world to submit their films\" ... \"having their Mexican Premiere during the 42nd edition of FICG will be considered\"",
     "excludes": []
    },
-   "who_line": "Ibero-American fiction and docs; animation and some thematic sections open globally",
-   "get_line": "Festival selection and screening",
+   "who_line": "Films with a Mexican premiere; Mexican, Ibero-American and international sections",
+   "get_line": "Mayahuel awards, with cash prizes of up to MXN 500,000 in the top sections",
    "caution": "Section-specific eligibility and premiere rules still need confirmation"
   },
   {
@@ -1724,18 +1778,18 @@
     "finished"
    ],
    "where": {
-    "scope": "unclear",
+    "scope": "worldwide",
     "countries": [],
     "regions": [],
     "subnational": null,
-    "test": "unknown",
+    "test": "production",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "International film sections are broader than regional competitions/WIP.",
+    "confidence": "stated",
+    "evidence": "FICCI66 Terms and Conditions PDF: \"Section for feature films and short films with legal and cultural nationality from countries other than Colombia and Ibero-America (United States, Canada, non-Iberian Europe, Africa, Asia, and Oceania)\" \"Only productions, audiovisual exercises, or pieces produced and/or premiered worldwide in the years 2026 and 2027 will be considered.\" \"Productions submitted for selection by the curatorial committee must not have had previous exhibitions in Colombia under any form of public communication, analog or digital.\"",
     "excludes": []
    },
-   "who_line": "Films completed 2026–27 with a Colombian premiere; section rules vary",
-   "get_line": "Festival selection and screening",
+   "who_line": "Films of any nationality made or premiered in 2026–2027 and not yet shown in Colombia",
+   "get_line": "Competition prizes from a pool of up to USD 100,000 shared across sections and WIP",
    "caution": "Rules vary by section, and the 70-minute short/feature boundary is unclear"
   },
   {
@@ -1762,7 +1816,7 @@
     "excludes": []
    },
    "who_line": "Documentaries completed from 1 January 2026, with a New Zealand premiere",
-   "get_line": "Festival selection and screening",
+   "get_line": "Festival screening; the Best International Feature winner can qualify for Oscar consideration",
    "caution": "The final 2027 screening schedule is not yet confirmed"
   },
   {
@@ -1786,14 +1840,14 @@
      "AFRICA"
     ],
     "subnational": null,
-    "test": "unknown",
+    "test": "production",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Open feature/documentary submissions are African films; non-African features are by invitation. Shorts welcome worldwide.",
+    "confidence": "stated",
+    "evidence": "only submissions from African countries are accepted for feature fiction and documentary. Feature-length films produced outside of Africa, for features and documentaries are solicited – while international short and student films are accepted. | Films must have been completed after 1 January 2026 to be eligible for submission.",
     "excludes": []
    },
-   "who_line": "African features and documentaries; shorts from anywhere; South African premiere",
-   "get_line": "Festival selection and screening",
+   "who_line": "African feature fiction and documentaries; shorts and student films from any country",
+   "get_line": "Screening at DIFF, Southern Africa's only Oscar-qualifying festival, and its awards",
    "caution": "Fee currency and African-feature category definitions are not verified"
   },
   {
@@ -1817,14 +1871,14 @@
      "AFRICA"
     ],
     "subnational": null,
-    "test": "unknown",
-    "identity": null,
-    "confidence": "partial",
-    "evidence": "African-director long/short routes; diaspora long films by African directors outside the continent concern Africa.",
+    "test": "mixed",
+    "identity": "African directors, including the diaspora",
+    "confidence": "stated",
+    "evidence": "the Long Film Competition (narrative, documentary, and animation) for films exceeding 60 minutes; the Short Film Competition (documentary / narrative / animation), with films in both competitions required to be by African directors; the Diaspora Film Competition for long narrative or documentary films, dedicated to African directors living outside the continent who make films about Africa through a global lens; and the Upper Egypt Film Competition for directors from the governorates of Qena and Luxor.",
     "excludes": []
    },
-   "who_line": "African directors, including diaspora directors with long films about Africa",
-   "get_line": "Festival selection and screening",
+   "who_line": "African directors, including the diaspora; a separate strand for Qena and Luxor directors",
+   "get_line": "A competition screening at the 16th festival in Luxor; prizes are not stated on this page",
    "caution": "Full section requirements and the entry fee could not be verified"
   },
   {
@@ -1849,12 +1903,12 @@
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Asian elements or Asian director/producer per FAQ.",
+    "confidence": "stated",
+    "evidence": "(FAQ) The HAF is open to full length feature fictional film projects with Asian elements or Asian in key creative roles such as directors and producers that are looking for co-producers, investors, sales agents and funders. / A full-length (running time of 60 minutes or longer) live-action or animated film* project with an attached director, producer, and production company; With a proposed budget and not fully financed; ... At script development or pre-production stage",
     "excludes": []
    },
-   "who_line": "Feature teams with director, producer and company attached; Asian link required",
-   "get_line": "A place in the HAF co-production market (other benefits not in our notes)",
+   "who_line": "Feature teams with director, producer and company, and Asian elements or Asian creatives",
+   "get_line": "Travel and stay for the three-day Hong Kong financing forum, investor meetings and award eligibility",
    "caution": "Borderline Asian-link eligibility needs confirming against current-cycle rules"
   },
   {
@@ -1876,14 +1930,14 @@
     "countries": [],
     "regions": [],
     "subnational": null,
-    "test": "unknown",
+    "test": "company",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Independent production company; international nonfiction.",
+    "evidence": "\"Independent production companies are eligible to enter documentary projects currently in development or production.\" \"Only independent production companies will be considered.\" FAQ (hotdocs.ca/faq/pitch-faqs): \"No. The Hot Docs Forum and Deal Maker are international events, and you do not require any Canadian link within your film or funding structure.\"",
     "excludes": []
    },
    "who_line": "Independent production companies worldwide with a doc about 10–75% financed",
-   "get_line": "A financing pitch at the Hot Docs Forum",
+   "get_line": "Pitch to a round table of international commissioners and funders, with pitch training",
    "caution": "Published market-financing rules for the rough-cut route conflict; confirm with the organiser"
   },
   {
@@ -1908,11 +1962,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "International documentary/factual projects in development through post-production whose financing is not closed.",
+    "evidence": "\"In development, production or post-production\" \"Please note: Projects must have not yet closed financing.\" FAQ (hotdocs.ca/faq/pitch-faqs): \"No. The Hot Docs Forum and Deal Maker are international events, and you do not require any Canadian link within your film or funding structure.\"",
     "excludes": []
    },
    "who_line": "Documentary or factual projects worldwide, development to post, financing not closed",
-   "get_line": "Curated industry meetings for the project",
+   "get_line": "One-on-one pitch meetings with matched decision makers over three days",
    "caution": null
   },
   {
@@ -1937,11 +1991,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Worldwide rights-holders aged 18+.",
+    "evidence": "\"Australian and international filmmakers are eligible to apply.\" / \"Applicants must be the rights holder in the work.\" / \"Applicants must be 18 years of age or over.\" / \"Entry is open to feature films, singles, and series.\"",
     "excludes": []
    },
    "who_line": "Rights-holders worldwide (18+) with a doc feature, one-hour single or factual series",
-   "get_line": "A pitch at The FACTory, AIDC, Sydney",
+   "get_line": "A live pitch to decision makers at AIDC 2027 in Sydney, plus mentoring and one-to-one meetings",
    "caution": "Fees conflict: AUD66.50/76.50 on the live page, AUD65/75 in the PDFs"
   },
   {
@@ -1964,14 +2018,14 @@
      "IBERO_AMERICA"
     ],
     "subnational": null,
-    "test": "unknown",
+    "test": "production",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Ibero-American framing and detailed finance/company-share gates require full current rules; do not infer eligibility from venue.",
+    "confidence": "stated",
+    "evidence": "\"La convocatoria está dirigida a largometrajes iberoamericanos de ficción, documental o animación que aún no hayan iniciado su etapa de rodaje y cuya duración estimada sea superior a los 70 minutos.\" \"al menos el 20% de su estructura de financiamiento asegurada al momento de la inscripción\"",
     "excludes": []
    },
-   "who_line": "Feature projects in development; Ibero-American framing, rules not verified",
-   "get_line": "A place in the co-production meetings (up to 15 projects)",
+   "who_line": "Ibero-American features over 70 min, not yet shot, with 20% of financing secured",
+   "get_line": "One-to-one meetings, two free accreditations, up to four nights' lodging, partner prizes",
    "caution": "Territorial, financing and company-share rules could not be verified"
   },
   {
@@ -1994,14 +2048,14 @@
      "IBERO_AMERICA"
     ],
     "subnational": null,
-    "test": "unknown",
+    "test": "production",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Ibero-American fiction/documentary series in development.",
+    "confidence": "stated",
+    "evidence": "This call for entries is exclusively open to fiction and documentary series from the Ibero-American region that are actively in the development phase and submit a complete dossier, including the first written draft of their pilot episode.",
     "excludes": []
    },
-   "who_line": "Ibero-American fiction or documentary series in development, with a pilot draft",
-   "get_line": "A place in the Episodio 0 series-development market",
+   "who_line": "Ibero-American fiction and documentary series in development, with a pilot draft",
+   "get_line": "A place among up to 7 series projects in the Episode 0 activity at FICG 42",
    "caution": "Regulations have changed substantially; financing and category rules not verified"
   },
   {
@@ -2028,8 +2082,8 @@
     "evidence": "Full territorial/unshot/financing conditions need current-rule confirmation.",
     "excludes": []
    },
-   "who_line": "Horror, fantasy or science-fiction feature projects; territorial rules not verified",
-   "get_line": "A pitch slot at Pitch Guadalajara: Género Fantástico",
+   "who_line": "Horror, terror and sci-fi feature film projects in development",
+   "get_line": "A pitch at FICG 42 and meetings with producers, funders, buyers and sales agents",
    "caution": "Territorial, unshot-project and financing rules could not be verified"
   },
   {
@@ -2051,14 +2105,14 @@
      "IBERO_AMERICA"
     ],
     "subnational": null,
-    "test": "unknown",
+    "test": "production",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Ibero-American fiction feature in final post-production, needing completion support.",
+    "evidence": "event which seeks to contribute to the conclusion of Ibero-American feature films in their final post-production stage. | Up to seven narrative films in post-production stage in search of funding for their conclusion will be screened | Films registered in this section in prior editions will not be received.",
     "excludes": []
    },
    "who_line": "Ibero-American fiction features in final post-production",
-   "get_line": "A work-in-progress showcase place, seeking completion support",
+   "get_line": "Industry screening at FICG 42, catalogue listing, two badges and possible lodging for 3 nights",
    "caution": null
   },
   {
@@ -2082,11 +2136,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Ibero-American directors working on a documentary's first or second cut.",
+    "evidence": "DocuLab: documentary lab is open to directors from Ibero-American countries with a first or second cut of their films to be analysed at individual screening sessions.",
     "excludes": []
    },
    "who_line": "Ibero-American directors with a documentary at first or second cut",
-   "get_line": "A place in the documentary editing lab",
+   "get_line": "Analysis of a first or second cut in individual screening sessions",
    "caution": "Full current duration and category rules could not be verified"
   },
   {
@@ -2115,8 +2169,8 @@
     "evidence": "Asian link per FAQ, subject to current-call clarification.",
     "excludes": []
    },
-   "who_line": "Fiction or animated features with footage, director, producer, company; Asian link",
-   "get_line": "A place in the HAF Work-in-Progress market (other benefits not in our notes)",
+   "who_line": "Feature projects of 60+ minutes in production or post, with director, producer and company",
+   "get_line": "A 10-minute presentation to investors, sales agents and programmers, plus private meetings",
    "caution": "Opens 2 November 2026; the Asian-link rule awaits current-call clarification"
   },
   {
@@ -2138,14 +2192,14 @@
     "subnational": null,
     "test": "company",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Production company/content platform NOT registered in Singapore.",
+    "confidence": "stated",
+    "evidence": "Who can apply? Applications are open to: International production companies ; and/or Owners or operators of content platforms , excluding entities or businesses registered in Singapore | Be new, original scripted formats.",
     "excludes": [
      "SG"
     ]
    },
-   "who_line": "Production companies or platforms anywhere except Singapore (not lone writers)",
-   "get_line": "A co-production pitch to Mediacorp at ATF on 3 December 2026",
+   "who_line": "Production companies and platforms outside Singapore with an original scripted series",
+   "get_line": "SGD 20,000 cash prize for the winner and a possible co-production with Mediacorp",
    "caution": "This entry gives no application deadline; another of our notes puts it in October 2026"
   },
   {
@@ -2170,11 +2224,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Worldwide rights-holders aged 18+",
+    "evidence": "Guide PDF: \"Open to filmmakers from Aotearoa New Zealand and internationally.\" \"Applicants must be 18 years of age or older.\" \"Feature documentaries and one-off factual projects must be longer than 40 minutes.\" \"Documentary series are eligible.\"",
     "excludes": []
    },
    "who_line": "Rights-holders worldwide (18+) with a doc over 40 minutes or a factual series",
-   "get_line": "A pitch slot at Doc Edge Pitch 2027 (dates to be announced)",
+   "get_line": "Pitch at Doc Edge 2027 with two Industry accreditations, mentoring and workshops",
    "caution": "The regular fee conflicts: NZD150 on the webpage, NZD175 in the guide"
   },
   {
@@ -2198,12 +2252,12 @@
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Ibero-American director–producer team",
+    "confidence": "stated",
+    "evidence": "\"the call is open to director-producer duos developing a fiction feature film project from an Ibero-American country.\" ... \"Directors must have been born in, or have resided for at least three years in, any Ibero-American country\"",
     "excludes": []
    },
-   "who_line": "Ibero-American director–producer teams; director has made at most one fiction feature",
-   "get_line": "A development-lab place for the director–producer team",
+   "who_line": "Ibero-American director and producer pairs with a fiction feature in development",
+   "get_line": "Online and in-person lab in José Ignacio; awards include a USD 50,000 development fund",
    "caution": null
   },
   {
@@ -2231,11 +2285,11 @@
     "test": "mixed",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Ibero-American director AND Ibero-American lead production company for feature WIP. Shorts WIP is Colombian.",
+    "evidence": "FICCI66 Terms and Conditions PDF: \"It is aimed at Colombian fiction feature films, Colombian documentary feature films, and/or Colombian essay feature films; Colombian fiction short films, Colombian documentary short films, and/or Colombian essay short films; as well as Ibero-American documentary, fiction, and/or essay feature films that are in an advanced stage of editing and ready to move to the next phase of post-production.\" \"In this section, films by Ibero-American or Colombian directors may participate, whose main production company is based in an Ibero-American country or in Colombia.\"",
     "excludes": []
    },
    "who_line": "Features: Ibero-American director and lead company. Shorts: Colombian projects",
-   "get_line": "A work-in-progress showcase place; one project representative attends",
+   "get_line": "Post-production services for each category winner and a private industry screening",
    "caution": null
   },
   {
@@ -2292,7 +2346,7 @@
     "excludes": []
    },
    "who_line": "Writers in Canada or abroad pitching features, series or documentaries",
-   "get_line": "A live pitch slot at Female Eye",
+   "get_line": "Top pitch wins a $1,500 cash prize, a $10,000 Sunbelt Rentals equipment grant and an award",
    "caution": "Live-pitch eligibility needs a current-form check; fee currency not verified"
   },
   {
@@ -2317,11 +2371,11 @@
     "test": "mixed",
     "identity": null,
     "confidence": "stated",
-    "evidence": "born in Uruguay OR resident for more than five years",
+    "evidence": "This call is specifically for the five participants from Uruguay. [...] Be a writer-director. Have a fiction feature film project in development. Have been born in Uruguay or have resided in Uruguay for more than five years. Be no older than 32 years of age at the application deadline.",
     "excludes": []
    },
    "who_line": "Writer-directors aged 32 or under, born in Uruguay or resident more than five years",
-   "get_line": "A lab place (ten places overall; not all are open through this call)",
+   "get_line": "A place on a four-day lab in José Ignacio plus an online session; accommodation and meals covered",
    "caution": null
   },
   {
@@ -2336,18 +2390,18 @@
     "writing"
    ],
    "where": {
-    "scope": "unclear",
+    "scope": "worldwide",
     "countries": [],
     "regions": [],
     "subnational": null,
     "test": "unknown",
     "identity": null,
-    "confidence": "unclear",
-    "evidence": "Detailed nationality/residency, age and script-stage requirements were not fully retrievable.",
+    "confidence": "stated",
+    "evidence": "Applicants must be adults (aged 18+) who have written and directed at least one short film. ... Applicants from Qatar and the MENA region, including the diaspora, as well as DFI grantees from any region, are prioritised for participation. We also warmly encourage applications from emerging countries and regions. Applicants must be comfortable writing and speaking in English.",
     "excludes": []
    },
-   "who_line": "Short-script writers at intermediate or advanced level (English); other rules unverified",
-   "get_line": "A place in an online short-script lab; a QAR 1,000 participation fee applies",
+   "who_line": "Writer-directors 18+ with a short made, working in English; Qatar and MENA prioritised",
+   "get_line": "A place in an online short-script lab with one-to-one mentoring, 30 Nov–12 Dec 2026 (eight projects)",
    "caution": "Nationality, residency and script eligibility could not be verified"
   },
   {
@@ -2378,11 +2432,11 @@
     "test": "mixed",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Annual rules admit adults with Chilean nationality or a Chile-issued identity document, and eligible Chilean legal entities.",
+    "evidence": "\"Personas Naturales: De nacionalidad chilena o extranjera con cédula de identidad otorgada por el Servicio de Registro Civil e Identificación de Chile, que sean mayores de 18 años.\" / \"Personas Jurídicas: Chilenas de derecho público o privado, con o sin fines de lucro.\" / \"Para postular al mercado Ventana Sur ... tanto el responsable como el asistente al mercado ... deberán ser productor o director o guionista que tengan la calidad de emergente.\"",
     "excludes": []
    },
    "who_line": "Chilean nationals, holders of a Chile-issued ID, or Chilean legal entities (18+)",
-   "get_line": "Support to attend Ventana Sur, Montevideo (amount not published)",
+   "get_line": "Accreditation, one return flight and up to 4 nights' lodging for Ventana Sur, Montevideo (6 places)",
    "caution": "Check the current call's administrative conditions and amendments"
   },
   {
@@ -2403,12 +2457,12 @@
     "subnational": null,
     "test": "unknown",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "International English-language feature-concept lab.",
+    "confidence": "stated",
+    "evidence": "The lab gives independent filmmakers from around the world the opportunity to work intensively on the creative development of their projects | Professional writers or writer/directors developing a narrative feature film are eligible to apply.",
     "excludes": []
    },
-   "who_line": "Writers with an English-language feature concept; international lab",
-   "get_line": "A place in a feature-concept lab (2027 terms not published)",
+   "who_line": "Professional writers and writer-directors developing a narrative feature, from anywhere",
+   "get_line": "Two-week online lab with a facilitator, one-on-one meetings and peer workshops",
    "caution": "Watch: the call opens December 2026; no closing date verified, and 2026 fees don't apply"
   },
   {
@@ -2423,18 +2477,18 @@
     "writing"
    ],
    "where": {
-    "scope": "unclear",
+    "scope": "worldwide",
     "countries": [],
     "regions": [],
     "subnational": null,
     "test": "unknown",
     "identity": null,
-    "confidence": "unclear",
-    "evidence": "",
+    "confidence": "stated",
+    "evidence": "The Script Revision Lab offers filmmakers from around the world the opportunity to work intensively on their feature-length narrative scripts … Professional writers or writer/directors developing a narrative feature film … Only completed narrative feature scripts ready for the revision process … All applicants must have a good knowledge of English.",
     "excludes": []
    },
-   "who_line": "Writers with a completed English-language feature draft; other rules not in our notes",
-   "get_line": "A place in a script revision lab (2027 terms not published)",
+   "who_line": "Professional writers or writer-directors with a finished feature script, from anywhere",
+   "get_line": "Two-week residential script lab in Mexico with online follow-up; accommodation and meals included",
    "caution": "Watch: opens January 2027, no verified closing date; past accommodation and meals not promised"
   },
   {
@@ -2542,17 +2596,17 @@
     "writing"
    ],
    "where": {
-    "scope": "unclear",
+    "scope": "worldwide",
     "countries": [],
     "regions": [],
     "subnational": null,
     "test": "unknown",
-    "identity": null,
-    "confidence": "unclear",
-    "evidence": "",
+    "identity": "Women and gender-diverse writers",
+    "confidence": "stated",
+    "evidence": "The contest is open to women and gender-diverse screenwriters. | Submissions can be from anywhere in the world but must be written in English.",
     "excludes": []
    },
-   "who_line": "Check the official rules: not stated in our notes",
+   "who_line": "Women and gender-diverse screenwriters from anywhere, writing in English",
    "get_line": "Not published in our notes",
    "caution": "Closed: applications ended 31 July 2026; 31 January 2027 is notification, not a deadline"
   },
@@ -2569,18 +2623,20 @@
     "writing"
    ],
    "where": {
-    "scope": "unclear",
-    "countries": [],
+    "scope": "listed",
+    "countries": [
+     "CA"
+    ],
     "regions": [],
     "subnational": null,
-    "test": "unknown",
-    "identity": null,
-    "confidence": "unclear",
-    "evidence": "",
+    "test": "mixed",
+    "identity": "Women and nonbinary writers aged 40 or over",
+    "confidence": "stated",
+    "evidence": "\"Open to Canadian citizens or permanent residents who are women and nonbinary writers aged 40 or over.\"",
     "excludes": []
    },
-   "who_line": "Check the official rules: not stated in our notes",
-   "get_line": "A place in the lab, 19–22 January 2027",
+   "who_line": "Canadian women and nonbinary writers aged 40+, citizens or permanent residents",
+   "get_line": "Four-day screenwriting intensive in Toronto with mentors, then follow-up support to June 2027",
    "caution": "Closed: applications ended 24 September 2026"
   },
   {
@@ -2595,18 +2651,20 @@
     "writing"
    ],
    "where": {
-    "scope": "unclear",
+    "scope": "listed",
     "countries": [],
-    "regions": [],
+    "regions": [
+     "ASIA"
+    ],
     "subnational": null,
-    "test": "unknown",
+    "test": "nationality",
     "identity": null,
-    "confidence": "unclear",
-    "evidence": "",
+    "confidence": "stated",
+    "evidence": "\"The director must be a citizen of an Asian country (by birth)\" ... \"The project must be a feature-length fiction film\"",
     "excludes": []
    },
-   "who_line": "Check the official rules: not stated in our notes",
-   "get_line": "A place in the screenplay lab, 12–15 January 2027",
+   "who_line": "Directors who are citizens of an Asian country by birth, with an original fiction feature",
+   "get_line": "Online mentoring and pitching; prize money withdrawn this year, winners get certificates",
    "caution": "Closed: new entries ended 30 June 2026"
   },
   {
@@ -2636,8 +2694,8 @@
     "evidence": "",
     "excludes": []
    },
-   "who_line": "Check the official rules: not stated in our notes",
-   "get_line": "Not published in our notes",
+   "who_line": "Varies: Asian or European animation teams, or projects with a strong Asian element",
+   "get_line": "A pitch slot at ATF in Singapore, 1 to 4 December 2026, with market access",
    "caution": "Closed: these ATF calls ended in September 2026; their December events are not deadlines"
   },
   {
@@ -2658,14 +2716,14 @@
     "countries": [],
     "regions": [],
     "subnational": null,
-    "test": "nationality",
+    "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Worldwide, age 18+.",
+    "evidence": "\"Must be the filmmaker or filmmakers’ first 50+ minute documentary film where they own the director or co-director credit\" \"Open to filmmakers from anywhere in the world.\" \"No, all of our awards are open to applicants of all ages (18+).\"",
     "excludes": []
    },
    "who_line": "Directors 18+ anywhere making a first 50+ min documentary, executive producer attached",
-   "get_line": "Main prize £120,000; runner-up development prize £25,000",
+   "get_line": "GBP 120,000 funding for the winner and a GBP 25,000 development award for the runner-up",
    "caution": "Funding is not guaranteed to finalists; you need an entity or fiscal sponsor to receive payment"
   },
   {
@@ -2684,17 +2742,18 @@
     "scope": "listed",
     "countries": [],
     "regions": [
+     "EU",
      "EUROPE"
     ],
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "MEDIA-country company plus eligible IBF-country director and non-European co-producer; setting/location and ownership tests apply.",
+    "confidence": "stated",
+    "evidence": "The applicant should be a minority producer in the project and should be an audiovisual entity established in one of the countries participating in the MEDIA Sub-program and owned—either directly or by majority participation—by nationals from such countries. | The project should have a director (or directors) with nationality from a country on the IBF Europe Country List and who preferably lives and works in a listed country.",
     "excludes": []
    },
-   "who_line": "European minority co-producer, with an IBF-country director and non-European co-producer",
-   "get_line": "Up to €40,000; total film budget no more than €600,000",
+   "who_line": "European minority co-producers of documentaries by directors from IBF-listed countries",
+   "get_line": "Up to €40,000 per documentary, ideally from late production onwards",
    "caution": "IBF director-country, setting and ownership tests apply and are not listed in our notes"
   },
   {
@@ -2715,14 +2774,14 @@
     ],
     "regions": [],
     "subnational": null,
-    "test": "company",
+    "test": "mixed",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Qualifying UK lead applicant within an international co-production.",
+    "evidence": "Applications must be made by a producer who is resident in the UK and is leading an independent UK production company. [...] be a limited company registered and centrally managed in the UK [...] Feature film international co-productions, including drama, animation and documentary, in any genre and in any language, where the UK producer is a “minority” co-producing partner",
     "excludes": []
    },
    "who_line": "UK independent production company leading an international co-production",
-   "get_line": "Up to £300,000, non-recoupable, capped at 50% of the UK contribution",
+   "get_line": "Up to £300,000 non-recoupable (max 50% of UK contribution), plus up to £6,000 for sustainability",
    "caution": null
   },
   {
@@ -2745,14 +2804,14 @@
     ],
     "regions": [],
     "subnational": null,
-    "test": "company",
+    "test": "mixed",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Qualifying UK lead applicant within an international co-production.",
+    "evidence": "Applications must be made by a producer who is resident in the UK and is leading an independent UK production company. / be a limited company registered and centrally managed in the UK and in good standing / Television international co-productions in animation or documentary only, in any language.",
     "excludes": []
    },
    "who_line": "UK independent production company leading an international co-production",
-   "get_line": "Up to £300,000, non-recoupable, capped at 50% of the UK contribution",
+   "get_line": "Non-recoupable grant of up to £300,000, capped at 50% of the UK financial contribution",
    "caution": null
   },
   {
@@ -2772,17 +2831,18 @@
     "scope": "listed",
     "countries": [],
     "regions": [
+     "EU",
      "EUROPE"
     ],
     "subnational": null,
     "test": "company",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "MEDIA-eligible company ownership and control; substantial cross-border distribution track record.",
+    "confidence": "stated",
+    "evidence": "be established in one of the countries participating fully in the MEDIA strand and owned directly or indirectly, wholly or by majority participation, by nationals from such countries | be independent European audiovisual production companies that can demonstrate recent experience in producing internationally distributed works",
     "excludes": []
    },
-   "who_line": "Independent MEDIA-country production company with a cross-border distribution record",
-   "get_line": "€90,000–€510,000 per slate of 3–5 works, not per single project",
+   "who_line": "Independent European production companies with recent internationally distributed work",
+   "get_line": "Lump-sum grant of €90,000 to €510,000 to develop a slate of three to five works",
    "caution": null
   },
   {
@@ -2811,8 +2871,8 @@
     "evidence": "At least two qualifying member-state co-producers; treaty/share rules apply.",
     "excludes": []
    },
-   "who_line": "Co-producers from at least two qualifying member states; treaty and share rules apply",
-   "get_line": "Up to €150,000, non-refundable, in this lower-award branch",
+   "who_line": "Independent producers co-producing from at least two Eurimages member states",
+   "get_line": "Grant of up to €150,000; larger awards are advances on receipts, capped at €500,000",
    "caution": "Above €150,000 the whole award becomes an advance on receipts, not a grant"
   },
   {
@@ -2837,12 +2897,12 @@
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "French-company applicant and eligible international feature; nationality, language and treaty specifics require the current guide.",
+    "confidence": "stated",
+    "evidence": "\"La société de production déposant la demande d’aide doit être établie en France\" \"Les projets présentés doivent entrer dans le cadre d’une coproduction entre la société de production française déposant la demande d’aide et une ou plusieurs sociétés de production basées à l’étranger\" \"L’œuvre doit être réalisée par un ressortissant étranger (ou français, mais dans ce cas, l’œuvre cinématographique ne peut pas être d’expression originale française).\"",
     "excludes": []
    },
-   "who_line": "French production company with an international co-producer on an eligible feature",
-   "get_line": "Up to €300,000; up to €500,000 for a qualifying French-initiated film budgeted €2.5m+",
+   "who_line": "French-based producer co-producing with a foreign company; foreign-national director",
+   "get_line": "Pre-filming grant of up to €300,000, or €500,000 for French-initiated films over €2.5m",
    "caution": "Nationality, language and treaty rules need the current CNC guide; a French co-producer's name is not enough"
   },
   {
@@ -2863,14 +2923,14 @@
     ],
     "regions": [],
     "subnational": null,
-    "test": "mixed",
+    "test": "company",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "French producer and international co-production; previous ACM pre-filming rejection required.",
+    "confidence": "stated",
+    "evidence": "\"Avoir fait l’objet d’un refus d’attribution d’une aide aux cinémas du monde avant réalisation\" / \"Être réalisée par un ressortissant d’un pays étranger\" / \"La société de production déposante : Doit être établie en France\" / \"un contrat de coproduction ... conclu entre la ou les sociétés de production établies en France et la ou les sociétés de production établies à l’étranger\"",
     "excludes": []
    },
-   "who_line": "French producer of an international co-production previously refused ACM pre-filming aid",
-   "get_line": "Up to €70,000 in finishing support",
+   "who_line": "France-based producers of a foreign director's co-production refused ACM pre-filming aid",
+   "get_line": "Up to €70,000 in post-filming aid, at least 60% of it spent on eligible French costs",
    "caution": "Only open after an ACM pre-filming rejection; older sources quote a €50,000 cap"
   },
   {
@@ -2893,14 +2953,14 @@
      "EU"
     ],
     "subnational": null,
-    "test": "mixed",
+    "test": "nationality",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Eligible French/EU/EEA or specified European treaty-country citizenship/residence",
+    "confidence": "stated",
+    "evidence": "Le porteur de projet peut : être seul ou accompagné d’un ou plusieurs coauteurs ; être français ou assimilé (cf. annexe 1 liste des pays éligibles). [...] Annexe 1 : liste des pays éligibles • Etats membres de l’Union Européenne, • Etats partie à la convention sur la télévision transfrontière du Conseil de l’Europe [...] • Etats tiers européens, avec lesquels Union Européenne a conclu des accords ayant trait au secteur audiovisuel.",
     "excludes": []
    },
-   "who_line": "Documentary authors with French, EU/EEA or listed treaty-country citizenship or residence",
-   "get_line": "A fixed €10,000 writing award",
+   "who_line": "Documentary authors who are French or from listed EU and European treaty countries",
+   "get_line": "A fixed €10,000 writing award, paid directly to the author or authors",
    "caution": "Check the current legal country list; being 'European' in general is not enough"
   },
   {
@@ -2924,12 +2984,12 @@
     "subnational": null,
     "test": "company",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "confirm French establishment in current guide.",
+    "confidence": "stated",
+    "evidence": "L’aide au développement renforcé, d’un montant moyen de 50 000 €, peut être demandée par des auteurs ou des entreprises de production, mais est attribuée aux entreprises de production. | PDF notice: « Les entreprises de production doivent : - être établies en France » ; « Les projets doivent : - être écrits en langue française. »",
     "excludes": []
    },
-   "who_line": "Production company receives the funds; an author may start the application",
-   "get_line": "Published average of €50,000; not a maximum or a guaranteed amount",
+   "who_line": "Production companies established in France, for documentaries written in French",
+   "get_line": "Average €50,000 to fund a first shoot and a rough edit of a creative documentary",
    "caution": "The company's French establishment needs confirming in the current guide"
   },
   {
@@ -2944,18 +3004,20 @@
     "development"
    ],
    "where": {
-    "scope": "unclear",
-    "countries": [],
+    "scope": "listed",
+    "countries": [
+     "FR"
+    ],
     "regions": [],
     "subnational": null,
     "test": "company",
     "identity": null,
-    "confidence": "unclear",
-    "evidence": "",
+    "confidence": "stated",
+    "evidence": "L’aide au développement, d’un montant moyen de 18 000 €, s’adresse aux entreprises de production pour le financement du développement d’un projet ayant bénéficié de l’aide à l’écriture dans les douze mois précédant la demande. | PDF notice: « Les entreprises de production doivent : - être établies en France »",
     "excludes": []
    },
-   "who_line": "Production company on a project with a recent CNC documentary-writing award",
-   "get_line": "Published average of €18,000; not a cap",
+   "who_line": "French-based producers of projects given the Fund's writing award in the last 12 months",
+   "get_line": "Average €18,000 for scouting, technical tests, script work and finding finance",
    "caution": null
   },
   {
@@ -2970,18 +3032,22 @@
     "writing"
    ],
    "where": {
-    "scope": "unclear",
-    "countries": [],
-    "regions": [],
+    "scope": "listed",
+    "countries": [
+     "FR"
+    ],
+    "regions": [
+     "EU"
+    ],
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "unclear",
-    "evidence": "Verify personal eligibility and first/experienced college.",
+    "confidence": "stated",
+    "evidence": "L'aide à l'écriture est destinée uniquement aux auteurs ou auteurs-réalisateurs, non accompagnés par une société de production. / la langue de tournage des projets proposés doit être intégralement ou principalement le français ou une langue régionale en usage en France. / Non, il n'est pas nécessaire d'habiter en France mais il faut avoir la nationalité française ou celle d'un Etat membre de l'UE (ou accords spécifiques, voir la liste des pays éligibles dans la notice). Si l'auteur ne répond pas aux critères de nationalité, il faudra impérativement qu'il ait la qualité de résident en France",
     "excludes": []
    },
-   "who_line": "Writers, no production company; film mainly in French or a regional language of France",
-   "get_line": "Up to €30,000 per project, with up to €20,000 for the principal author",
+   "who_line": "Writers without a producer; French or EU nationals or France residents; film in French",
+   "get_line": "Up to €30,000 per project, with up to €20,000 per author",
    "caution": "November reform: the updated form and terms need reconfirming before you apply"
   },
   {
@@ -3002,17 +3068,18 @@
      "FR"
     ],
     "regions": [
+     "EU",
      "EUROPE"
     ],
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "French or qualifying European/treaty citizenship; permanent-residence equivalence has specific documentation rules.",
+    "confidence": "stated",
+    "evidence": "Fiction - écriture - Guide d'accompagnement 2026 (PDF): \"Tous les auteurs ainsi que, le cas échéant, consultant des projets doivent avoir la nationalité française ou la qualité de résidents permanents (carte d’une validité d’au moins 10 ans : les titres de séjour pluriannuels ne sont pas acceptés) ou la nationalité d’un Etat membre de la Communauté européenne\"; \"Les projets doivent être écrits en langue française.\" Page: \"Au moins un(e) des auteur(e)s du projet doit justifier d’au moins de nos critères d’éligibilité\"",
     "excludes": []
    },
-   "who_line": "Authors with French or qualifying European/treaty citizenship, or equivalent residence",
-   "get_line": "A fixed €7,500 for the concept",
+   "who_line": "Writers of French, EU or other European nationality, or French permanent residents",
+   "get_line": "Flat-rate grant of EUR 7,500 to develop a series concept",
    "caution": "Claiming residence instead of citizenship needs specific documents; check the rules"
   },
   {
@@ -3034,17 +3101,18 @@
      "FR"
     ],
     "regions": [
+     "EU",
      "EUROPE"
     ],
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "French or qualifying European/treaty citizenship; permanent-residence equivalence has specific documentation rules.",
+    "confidence": "stated",
+    "evidence": "Fiction - écriture - Guide d'accompagnement 2026 (PDF): \"Tous les auteurs ainsi que, le cas échéant, consultant des projets doivent avoir la nationalité française ou la qualité de résidents permanents (carte d’une validité d’au moins 10 ans : les titres de séjour pluriannuels ne sont pas acceptés) ou la nationalité d’un Etat membre de la Communauté européenne\"; \"Les projets doivent être écrits en langue française.\" Page: \"Au moins un(e) des auteur(e)s du projet doit justifier d’au moins de nos critères d’éligibilité\"",
     "excludes": []
    },
-   "who_line": "Authors with French or qualifying European/treaty citizenship, or equivalent residence",
-   "get_line": "Fixed by format: €15,000 short/digital series, €30,000 series over 26 min, €25,000 TV single",
+   "who_line": "Writers of French, EU or other European nationality, or French permanent residents",
+   "get_line": "Flat-rate writing grant of EUR 15,000 to 30,000 by format, optionally with a script consultant",
    "caution": "Check the exact format category and consultant allocation before applying"
   },
   {
@@ -3060,18 +3128,23 @@
     "writing"
    ],
    "where": {
-    "scope": "unclear",
-    "countries": [],
-    "regions": [],
+    "scope": "listed",
+    "countries": [
+     "FR"
+    ],
+    "regions": [
+     "EU",
+     "EUROPE"
+    ],
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "unclear",
-    "evidence": "nationality/residence and French dossier rules need current-form confirmation.",
+    "confidence": "stated",
+    "evidence": "PDF 'Animation - pré-concept - Guide d'accompagnement' (13 novembre 2025): « Tous les auteurs des projets doivent avoir la nationalité française ou la qualité de résidents permanents (carte d’une validité d’au moins 10 ans : les titres de séjour pluriannuels ne sont pas acceptés) ou la nationalité d’un Etat membre de la Communauté européenne, d’un Etat partie à la convention européenne sur la télévision transfrontière du Conseil de l’Europe, d’un Etat tiers européen avec lequel la Communauté européenne a conclu des accords ayant trait au secteur audiovisuel. » ; « Les projets doivent être écri",
     "excludes": []
    },
-   "who_line": "Literary or graphic authors; at least one meeting professional/education criteria",
-   "get_line": "A fixed €5,000",
+   "who_line": "French or European nationals, or 10-year French residents; projects written in French",
+   "get_line": "A flat €5,000 for the literary or graphic concept of an animated series of 7+ minute episodes",
    "caution": "Nationality, residence and French dossier rules need confirming on the current form"
   },
   {
@@ -3095,11 +3168,11 @@
     "test": "mixed",
     "identity": null,
     "confidence": "stated",
-    "evidence": "German residence/business base or qualifying EU/EEA applicant with German establishment.",
+    "evidence": "Eine Treatment- oder Drehbuchförderung können Autor*innen beantragen, die vor Antragstellung mindestens ein Drehbuch für einen programmfüllenden Spielfilm oder ein Serienformat oder ein Treatment für einen Dokumentarfilm entwickelt haben, das zur Produktion und Auswertung in Deutschland oder einem anderen Mitgliedstaat der Europäischen Union oder einem anderen Vertragsstaat des Abkommens über den Europäischen Wirtschaftsraum oder einem gleichgestellten Staat gelangt ist. oder ein Theaterstück, Roman oder anderes langes literarisches Erzeugnis außerhalb des Selbstverlages veröffentlicht haben …",
     "excludes": []
    },
    "who_line": "Individual writers living or established in Germany; not the writer's company",
-   "get_line": "Up to €15,000 living-cost grant; up to €2,500 consultancy, approved separately",
+   "get_line": "Up to €15,000 to write a treatment, plus up to €2,500 for script consultancy",
    "caution": null
   },
   {
@@ -3124,11 +3197,11 @@
     "test": "mixed",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Same German-base and professional/producer-alternative rules as treatment funding.",
+    "evidence": "Eine Treatment- oder Drehbuchförderung können Autor*innen beantragen, die vor Antragstellung mindestens ein Drehbuch für einen programmfüllenden Spielfilm oder ein Serienformat oder ein Treatment für einen Dokumentarfilm entwickelt haben, das zur Produktion und Auswertung in Deutschland oder einem anderen Mitgliedstaat der Europäischen Union oder einem anderen Vertragsstaat des Abkommens über den Europäischen Wirtschaftsraum oder einem gleichgestellten Staat gelangt ist. oder ein Theaterstück, Roman oder anderes langes literarisches Erzeugnis außerhalb des Selbstverlages veröffentlicht haben …",
     "excludes": []
    },
    "who_line": "Individual writers with a German base who meet FFA professional rules",
-   "get_line": "Up to €20,000 a stage, two stages (€40,000); complex animation up to €25,000 a stage",
+   "get_line": "Up to €40,000 in two phases for a screenplay, plus up to €10,000 for consultancy",
    "caution": null
   },
   {
@@ -3152,11 +3225,11 @@
     "test": "mixed",
     "identity": null,
     "confidence": "stated",
-    "evidence": "German-base applicant and substantial German cultural character",
+    "evidence": "Antragsberechtigt bei der FFA sind nur Hersteller*innen von Kurzfilmen, die nicht die Antragsvoraussetzungen des Kuratoriums junger deutscher Film erfüllen. Dies bedeutet eine Antragsberechtigung bei der jurybasierten kulturellen Kurzfilmförderung des Bundes besteht nur, wenn Antragstellende als Referenzen mindestens zwei programmfüllende Filme oder Kurzfilme nachweisen können … | Die beantragende Person muss ihren Wohnsitz oder Geschäftssitz in Deutschland haben oder, bei Sitz in einem anderen EU-Mitgliedstaat oder einem Vertragsstaat des EWR, eine Niederlassung in Deutschland besitzen.",
     "excludes": []
    },
    "who_line": "German-based producer of a children's short (max 30 min) with German cultural character",
-   "get_line": "Up to €40,000",
+   "get_line": "Up to €40,000 to produce a short film of up to 30 minutes",
    "caution": "Check whether FFA or Kuratorium junger deutscher Film handles your project"
   },
   {
@@ -3177,14 +3250,14 @@
     ],
     "regions": [],
     "subnational": null,
-    "test": "mixed",
+    "test": "company",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Substantial German cultural character and German financial leadership",
+    "evidence": "\"Antragsberechtigt sind Hersteller*innen von programmfüllenden Spiel- und Dokumentarfilmen mit Wohnsitz oder Geschäftssitz in Deutschland. Bei Sitz in einem anderen EU-Mitgliedsstaat oder einem Vertragsstaat des EWR müssen Hersteller*innen eine Niederlassung in Deutschland besitzen.\"",
     "excludes": []
    },
    "who_line": "German-based producer with financial lead on a film of substantial German character",
-   "get_line": "Up to €1 million, non-repayable",
+   "get_line": "Non-repayable production grant of up to €1 million for a fiction feature",
    "caution": null
   },
   {
@@ -3205,14 +3278,14 @@
     ],
     "regions": [],
     "subnational": null,
-    "test": "mixed",
+    "test": "company",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Substantial German cultural character and German financial leadership",
+    "evidence": "\"Antragsberechtigt sind Hersteller*innen von programmfüllenden Spiel- und Dokumentarfilmen mit Wohnsitz oder Geschäftssitz in Deutschland. Bei Sitz in einem anderen EU-Mitgliedsstaat oder einem Vertragsstaat des EWR müssen Hersteller*innen eine Niederlassung in Deutschland besitzen.\"",
     "excludes": []
    },
    "who_line": "German-based producer with financial lead on a film of substantial German character",
-   "get_line": "Normally up to €500,000; up to €1 million in exceptional cases",
+   "get_line": "Non-repayable production grant of up to €500,000, or up to €1 million in exceptional cases",
    "caution": null
   },
   {
@@ -3242,8 +3315,8 @@
     "evidence": "Domestic-film purpose; professional credentials and Finnish-bank/application requirements.",
     "excludes": []
    },
-   "who_line": "Professional writers or writing groups on a domestic Finnish film",
-   "get_line": "€2,000 per grant month, up to 12 months or €24,000 per project, not per writer",
+   "who_line": "Professional scriptwriters or writing groups, for Finnish film production",
+   "get_line": "Grant of up to €24,000, paid at €2,000 per grant month",
    "caution": "No passport rule is stated, but foreign-based projects need clearance first"
   },
   {
@@ -3266,12 +3339,12 @@
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Domestic-film purpose; professional credentials and Finnish-bank/application requirements.",
+    "confidence": "stated",
+    "evidence": "\"Käsikirjoitusapurahaa voidaan myöntää ammattimaiselle käsikirjoittajalle tai työryhmälle käsikirjoitussuunnitelman mukaiseen työhön.\" / \"Käsikirjoitusapurahan tarkoituksena on edistää korkeatasoista, monipuolista ja omaperäistä kotimaista elokuvatuotantoa.\" / Support guide: \"The support is paid to the applicant's Finnish bank account in two instalments\"",
     "excludes": []
    },
-   "who_line": "Professional writers or writing groups on a domestic Finnish film",
-   "get_line": "€2,000 per grant month, up to 12 months or €24,000 per project, not per writer",
+   "who_line": "Professional scriptwriters or writing groups developing a Finnish documentary",
+   "get_line": "€2,000 a month for up to 12 months, at most €24,000 per film, to write a documentary",
    "caution": "No passport rule is stated, but foreign-based projects need clearance first"
   },
   {
@@ -3297,11 +3370,11 @@
     "test": "company",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Finland-registered production company",
+    "evidence": "Development support may be granted to a film production company registered in Finland (registered company: limited liability company, general partnership, limited partnership, co-operative) with the professional and financial prerequisites to produce films and to manage their commercial rights in Finland. For example, a private trader, company name (toiminimi) or a registered association are not registered companies in Finland. [...] development and production support cannot be granted to a television or streaming company",
     "excludes": []
    },
    "who_line": "Finland-registered production company with the rights; not sole traders or associations",
-   "get_line": "Up to €250,000 and 90% of approved costs; counts towards later production support",
+   "get_line": "Up to €250,000 and up to 90% of approved costs; counts towards later production support",
    "caution": null
   },
   {
@@ -3325,14 +3398,14 @@
     ],
     "regions": [],
     "subnational": null,
-    "test": "mixed",
+    "test": "company",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Finnish company with rights, stable finances, distribution and credible domestic/co-production contribution.",
+    "evidence": "Production support may be granted to a film production company registered in Finland (registered company: limited liability company, general partnership, limited partnership, co-operative) with the professional and financial prerequisites to produce films and to manage their commercial rights in Finland.",
     "excludes": []
    },
    "who_line": "Finnish production company with rights, stable finances and distribution in place",
-   "get_line": "Up to €1,200,000 and 90% of approved costs, including any development support",
+   "get_line": "Up to €1,200,000, covering up to 90% of approved costs, including any development support",
    "caution": null
   },
   {
@@ -3352,7 +3425,10 @@
     "scope": "listed",
     "countries": [
      "AT",
-     "CH"
+     "CH",
+     "IS",
+     "LI",
+     "NO"
     ],
     "regions": [
      "EU"
@@ -3360,12 +3436,12 @@
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Austrian citizenship OR residence in Austria; EU/EEA/Swiss nationals are equated with Austrian nationals.",
+    "confidence": "stated",
+    "evidence": "Stoffentwicklung für Autor*innen page: \"qualifizierten Autor*innen (mit nachzuweisender Berufserfahrung)\" … \"Die*der Autor*in muss die österreichische Staatsbürgerschaft besitzen oder ihren*seinen Wohnsitz im Inland haben. Staatsangehörige von Vertragsparteien des AEUV (EU) und des EWR (Island, Liechtenstein und Norwegen) oder der Schweiz sind österreichischen Staatsbürger*innen gleichgestellt.\"",
     "excludes": []
    },
-   "who_line": "Experienced authors who are Austrian, EU/EEA or Swiss nationals, or live in Austria",
-   "get_line": "Up to €12,000 for a solo author; up to €15,000 for several authors or with an adviser",
+   "who_line": "Experienced writers living in Austria or with Austrian, EU, EEA or Swiss citizenship",
+   "get_line": "Script development grant of up to EUR 12,000, or up to EUR 15,000 with several writers",
    "caution": null
   },
   {
@@ -3388,11 +3464,11 @@
     "test": "company",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Worldwide company applications.",
+    "evidence": "\"Any producer or distributor with a drama series seeking international financing and co-production partners.\" Rules and regulations PDF: \"Projects must be submitted by a legal entity, production or distribution company. Applications submitted by individuals will not be accepted.\"",
     "excludes": []
    },
    "who_line": "Production companies anywhere with a first-run live-action fiction series; rights held",
-   "get_line": "International pitch, curated meetings, two accreditations; competitive award up to €50,000",
+   "get_line": "Pitch to industry in Lille; the best project wins up to EUR 50,000, paid in stages",
    "caution": "The award is competitive and paid in conditional stages, not guaranteed or upfront"
   },
   {
@@ -3414,11 +3490,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Worldwide",
+    "evidence": "\"ScriptLab is open to both experienced and emerging writer/directors, or teams of writer and director, from all over the world\" / \"Applicants need to have at least one previous work as a director\" / \"projects who already have drafts of the screenplay, will not be considered\"",
     "excludes": []
    },
    "who_line": "Writers and directors anywhere with an early feature idea and no screenplay draft yet",
-   "get_line": "Script development and a final industry presentation",
+   "get_line": "Five script development modules in Malta, Tartu, online and Turin, ending at the TFL Meeting Event",
    "caution": "An existing screenplay draft makes the project ineligible"
   },
   {
@@ -3443,11 +3519,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Worldwide",
+    "evidence": "FeatureLab is open to creative teams of director and producer (together with a scriptwriter, if on board) from all over the world, developing their 1st or 2nd feature film projects. [...] At least a first draft of the script in English must be presented when applying",
     "excludes": []
    },
    "who_line": "Teams anywhere on a director's first or second feature, with at least a first draft",
-   "get_line": "Creative and production development; a chance at competitive awards",
+   "get_line": "Three workshops, industry meetings and a chance at production awards of up to €50,000",
    "caution": null
   },
   {
@@ -3469,11 +3545,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Worldwide",
+    "evidence": "Projects must be feature-length films (52+ minutes) or series / CPH:FORUM has a natural emphasis on Scandinavia and Europe but is open to film projects from independent documentary filmmakers, fiction filmmakers, journalists, activists and visual artists worldwide",
     "excludes": []
    },
    "who_line": "Documentary teams anywhere with a 52+ min feature, a series or a hybrid project",
-   "get_line": "Pitching and curated industry meetings",
+   "get_line": "A pitch and financier meetings at CPH:DOX, free accreditation for two, and pitch-award eligibility",
    "caution": null
   },
   {
@@ -3495,11 +3571,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Worldwide",
+    "evidence": "T&C PDF: \"Projects should be planned as a feature length film (duration over 60’.\" \"Projects from all over the world are eligible.\" \"Hybrid projects are eligible.\" \"Directors must have completed a minimum of one short film.\"",
     "excludes": []
    },
    "who_line": "Teams anywhere with a nonfiction or hybrid feature over 60 min; no TV series",
-   "get_line": "Pitch preparation and tailored meetings",
+   "get_line": "Pitch to industry in Nyon with roundtables and one-to-one meetings; may qualify for €20,000 award",
    "caution": null
   },
   {
@@ -3518,19 +3594,35 @@
    ],
    "where": {
     "scope": "listed",
-    "countries": [],
+    "countries": [
+     "AL",
+     "AM",
+     "BA",
+     "GE",
+     "IS",
+     "LI",
+     "MD",
+     "ME",
+     "MK",
+     "NO",
+     "RS",
+     "UA",
+     "XK"
+    ],
     "regions": [
-     "EUROPE"
+     "EU"
     ],
     "subnational": null,
     "test": "company",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Eligible European production companies; UK lead producers explicitly excluded",
-    "excludes": []
+    "confidence": "stated",
+    "evidence": "\"Any European producer whose registered office is located in a country associated with Creative Europe MEDIA can present a new animation project at Cartoon Movie.\" / \"the 27 EU countries + Albania, Bosnia and Herzegovina, Iceland, Liechtenstein, Montenegro, North Macedonia, Norwa, Serbia and Ukraine.\" / \"CARTOON also considers eligible projects submitted by production companies based in Armenia, Georgia, Kosovo and Moldova.\" / \"Projects submitted by UK-based production companies as main producers are not eligible.\" / \"Only independent production companies can submit a project.\"",
+    "excludes": [
+     "GB"
+    ]
    },
-   "who_line": "Eligible European production companies; UK lead producers are excluded",
-   "get_line": "Access to financing and distribution for animated features",
+   "who_line": "Independent producers based in Creative Europe MEDIA countries; UK lead producers excluded",
+   "get_line": "A pitching session at Cartoon Movie 2027 in Bordeaux, 2–4 March",
    "caution": null
   },
   {
@@ -3546,19 +3638,47 @@
    ],
    "where": {
     "scope": "listed",
-    "countries": [],
-    "regions": [
-     "EUROPE"
+    "countries": [
+     "AT",
+     "BE",
+     "BG",
+     "CY",
+     "CZ",
+     "DE",
+     "EE",
+     "ES",
+     "FI",
+     "FR",
+     "GR",
+     "HR",
+     "HU",
+     "IE",
+     "IT",
+     "LT",
+     "LV",
+     "MD",
+     "MT",
+     "NL",
+     "NO",
+     "PL",
+     "PT",
+     "RO",
+     "SE",
+     "SI",
+     "SK",
+     "UA",
+     "XK"
     ],
+    "regions": [],
     "subnational": null,
-    "test": "unknown",
+    "test": "company",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Use the official national/territorial correspondent table, not a blanket country count. Baltics and Kosovo use nomination routes; Ukraine has specific exceptions.",
+    "confidence": "stated",
+    "evidence": "Producers with a company based in one of the countries associated to Euro Connection 2027 may apply by email no later than October 20, 2026, to the national correspondent in their country [...] The project must have partial funding* secured from an external source. [...] For Kosovo, the finalist project will be nominated with the results of the Short Film Forum [...] For Baltic countries (Estonia, Latvia, Lithuania), the winning project of the Baltic Pitching Forum [...] will be selected [...] Associated countries and national correspondants’ contacts for Euro Connection 2027 [...] AUSTRIA [..",
     "excludes": []
    },
-   "who_line": "Short-film projects with funding already secured, entered via a national correspondent",
-   "get_line": "Hospitality if selected, plus international co-production meetings",
+   "who_line": "Short-film producers with a company in an associated European country and outside funding",
+   "get_line": "Pitch training and co-production meetings in Clermont-Ferrand; €160 travel grant, hotel and meals",
    "caution": "Check the official correspondent table: Baltics and Kosovo use nominations, Ukraine has exceptions"
   },
   {
@@ -3582,11 +3702,11 @@
     "test": "company",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Production company based in the European Union",
+    "evidence": "May apply: Narrative AR/VR/XR projects with a maximum duration of 45 minutes. Presented by a production company based in the European Union. With initial/partial funding secured. Whose production will not start before June 2027.",
     "excludes": []
    },
    "who_line": "EU-based production company with a partly funded narrative XR project up to 45 min",
-   "get_line": "Hospitality if selected, plus international co-production meetings",
+   "get_line": "An invitation to pitch in Clermont-Ferrand in February 2027 (up to four XR projects selected)",
    "caution": "Use the separate immersive form; production must start no earlier than June 2027"
   },
   {
@@ -3613,7 +3733,7 @@
     "excludes": []
    },
    "who_line": "Established producers anywhere with a market-ready scripted series and finance committed",
-   "get_line": "Exposure to buyers and a chance at a marketing package",
+   "get_line": "A live pitch at Content London on 1 December 2026; the winner gets a £20,000 C21 marketing package",
    "caution": null
   },
   {
@@ -3640,7 +3760,7 @@
     "excludes": []
    },
    "who_line": "Established producers anywhere with a market-ready unscripted series or format",
-   "get_line": "Exposure to buyers and a chance at a marketing package",
+   "get_line": "A live pitch to buyers at Content London; the winner gets a £20,000 C21Media marketing package",
    "caution": null
   },
   {
@@ -3656,19 +3776,58 @@
    ],
    "where": {
     "scope": "listed",
-    "countries": [],
-    "regions": [
-     "EUROPE"
+    "countries": [
+     "AL",
+     "AT",
+     "BA",
+     "BE",
+     "BG",
+     "CH",
+     "CY",
+     "CZ",
+     "DE",
+     "DK",
+     "EE",
+     "ES",
+     "FI",
+     "FR",
+     "GB",
+     "GR",
+     "HR",
+     "HU",
+     "IE",
+     "IS",
+     "IT",
+     "LI",
+     "LT",
+     "LU",
+     "LV",
+     "MD",
+     "ME",
+     "MK",
+     "MT",
+     "NL",
+     "NO",
+     "PL",
+     "PT",
+     "RO",
+     "RS",
+     "SE",
+     "SI",
+     "SK",
+     "UA",
+     "XK"
     ],
+    "regions": [],
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Eligible European nationality or long-term residence; not a worldwide open call",
+    "confidence": "stated",
+    "evidence": "Hold nationality or a long-term residence permit from one of the following countries: Albania, Austria, Belgium, Bosnia and Herzegovina, Bulgaria, Croatia, Republic of Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Kosovo, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Moldova, Montenegro, the Netherlands, North Macedonia, Norway, Poland, Portugal, Romania, Serbia, Slovakia, Slovenia, Spain, Sweden, Switzerland, Ukraine or the United Kingdom. / The project must not be attached to a production company or television channel/str",
     "excludes": []
    },
-   "who_line": "Writers with eligible European nationality or long-term residence; not open worldwide",
-   "get_line": "Writer development and Forum access",
+   "who_line": "Professional screenwriters from listed European countries, with no producer attached",
+   "get_line": "Mentoring, a four-day workshop in Lille, and a pitch and accreditation at Series Mania Forum",
    "caution": null
   },
   {
@@ -3683,20 +3842,18 @@
     "writing"
    ],
    "where": {
-    "scope": "listed",
+    "scope": "worldwide",
     "countries": [],
-    "regions": [
-     "EUROPE"
-    ],
+    "regions": [],
     "subnational": null,
     "test": "unknown",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "CEE focus; other countries considered; non-European projects need European co-production intent",
+    "confidence": "stated",
+    "evidence": "\"CREATIVE TEAMS of writer and/or director of first or second feature film, and producer (max. of 3 participants per team).\" / \"Special focus on projects coming from Central and Eastern Europe.\" / \"Global eligibility: non-European projects should demonstrate an intention to co-produce with a European country.\"",
     "excludes": []
    },
-   "who_line": "CEE focus, others considered; non-European projects need European co-production intent",
-   "get_line": "Story and production development, plus industry meetings",
+   "who_line": "1st or 2nd feature teams worldwide; CEE focus; non-Europeans need a European co-pro",
+   "get_line": "Three workshops, pitching at Karlovy Vary IFF and a chance at a €10,000 development award",
    "caution": null
   },
   {
@@ -3711,18 +3868,55 @@
     "development"
    ],
    "where": {
-    "scope": "worldwide",
-    "countries": [],
+    "scope": "listed",
+    "countries": [
+     "AL",
+     "AM",
+     "BA",
+     "BG",
+     "CY",
+     "CZ",
+     "DZ",
+     "EG",
+     "ES",
+     "FR",
+     "GE",
+     "GR",
+     "HR",
+     "HU",
+     "IL",
+     "IT",
+     "JO",
+     "LB",
+     "LY",
+     "MA",
+     "MD",
+     "ME",
+     "MK",
+     "MT",
+     "PL",
+     "PS",
+     "PT",
+     "RO",
+     "RS",
+     "SI",
+     "SK",
+     "SY",
+     "TN",
+     "TR",
+     "UA",
+     "XK"
+    ],
     "regions": [],
     "subnational": null,
-    "test": "unknown",
+    "test": "production",
     "identity": null,
     "confidence": "stated",
-    "evidence": "outsiders expressly welcome to apply",
+    "evidence": "\"Countries eligible to participate (as major production country or as a co-production country) are: Albania, Algeria, Armenia, Bosnia – Herzegovina, Bulgaria, Croatia, Cyprus, Czech Republic, Egypt, France, Georgia, Greece, Hungary, Israel, Italy, Jordan, Kosovo*, Lebanon, Libya, Malta, Moldova, Montenegro, Morocco, North Macedonia, Palestine, Poland, Portugal, Romania, Serbia, Slovak Republic, Slovenia, Spain, Syria, Tunisia, Turkey, Ukraine.\" \"Do you have a documentary that is not from the eligible countries but you think Thessaloniki Pitching Forum is a good launching platform for you? You ",
     "excludes": []
    },
    "who_line": "Documentary teams anywhere; focus on SE Europe, Eastern Mediterranean and North Africa",
-   "get_line": "Pitch lab, meetings and five hotel nights",
+   "get_line": "Online lab, public pitch and one-to-one meetings, five nights' lodging and cash awards",
    "caution": null
   },
   {
@@ -3749,8 +3943,8 @@
     "evidence": "2027 track-specific eligibility pending",
     "excludes": []
    },
-   "who_line": "Check the official rules: 2027 eligibility is not yet published",
-   "get_line": "Pitch, development and meeting tracks; details not yet published",
+   "who_line": "Non-fiction projects at different stages of development",
+   "get_line": "Pitching, meetings, training and artistic consultancy programmes at DocsBarcelona Pro",
    "caution": "Announced but not yet open; eligibility and required materials are still pending"
   },
   {
@@ -3772,11 +3966,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "International submissions",
+    "evidence": "Regulations page: \"TV Series - Fiction series in development looking for partners and financing.\" … \"Applications are accepted worldwide.\"",
     "excludes": []
    },
    "who_line": "TV series teams from anywhere; further funding and budget conditions apply",
-   "get_line": "Co-producer, financing and distribution meetings",
+   "get_line": "A pitch to co-producers at Sofia Meetings, with industry awards for selected projects",
    "caution": "Check the general regulations for funding and budget conditions; 2027 fees are unconfirmed"
   },
   {
@@ -3798,11 +3992,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "International submissions",
+    "evidence": "Regulations page: \"Fiction Feature Films - first, second, or third feature fiction films in development or pre-production seeking co-production partners.\" … \"Maximum total budget: €6 million\" … \"Applications are accepted worldwide.\" … Call page: \"We also select projects of more established directors who are looking for partners in Southeastern Europe.\"",
     "excludes": []
    },
    "who_line": "First to third features, anywhere; also experienced directors seeking SE European partners",
-   "get_line": "Co-producer, financing and distribution meetings",
+   "get_line": "A pitch to co-producers, sales agents and distributors, with industry awards",
    "caution": "Check the general regulations for funding and budget conditions; 2027 fees are unconfirmed"
   },
   {
@@ -3819,27 +4013,72 @@
    "where": {
     "scope": "listed",
     "countries": [
+     "AL",
+     "AM",
+     "AT",
+     "AZ",
+     "BA",
+     "BE",
+     "BG",
      "CA",
+     "CH",
+     "CY",
+     "CZ",
+     "DE",
+     "DK",
      "DZ",
+     "EE",
      "EG",
+     "ES",
+     "FI",
+     "FO",
+     "FR",
+     "GB",
+     "GE",
+     "GR",
+     "HR",
+     "HU",
+     "IE",
+     "IS",
+     "IT",
      "JO",
      "LB",
+     "LI",
+     "LT",
+     "LU",
+     "LV",
      "MA",
+     "MD",
+     "ME",
+     "MK",
+     "MT",
+     "NL",
+     "NO",
+     "PL",
      "PS",
-     "TN"
+     "PT",
+     "RO",
+     "RS",
+     "SE",
+     "SI",
+     "SK",
+     "TN",
+     "TR",
+     "UA",
+     "XK"
     ],
     "regions": [
-     "MENA"
+     "EU"
     ],
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Nationality OR residence in the specific call list, including Canada, Algeria, Egypt, Jordan, Lebanon, Morocco, Palestine, Tunisia and other listed countries",
+    "confidence": "stated",
+    "evidence": "lim² welcomes applications from writer-directors who: are developing their first, second or third fiction feature film; [...] are from, or currently reside in, the European Union, a Eurimages country, a non-EU country participating in the Creative Europe Programme, or the United Kingdom. [...] Applicants must be from, or reside in, one of the following countries: Albania, Algeria, Armenia, Austria, Azerbaijan, Belgium, Bosnia and Herzegovina, Bulgaria, Canada, Croatia, Cyprus, Czech Republic, Denmark, Egypt, Estonia, Faroe Islands, Finland, France, Georgia, Germany, Greece, Hungary, Iceland, I",
     "excludes": []
    },
-   "who_line": "Nationals or residents of listed countries, e.g. Canada, Egypt, Morocco, Tunisia",
-   "get_line": "One three-hour masterclass and two three-hour toolbox sessions, online",
+   "who_line": "Writer-directors of a first to third fiction feature, from or living in listed countries",
+   "get_line": "One 3-hour online masterclass and two 3-hour Toolbox sessions, plus the lim² Family network",
    "caution": "Check the full country list; the 21 October 23:59 CET deadline is unclear around the clock change, so submit early"
   },
   {
@@ -3856,27 +4095,72 @@
    "where": {
     "scope": "listed",
     "countries": [
+     "AL",
+     "AM",
+     "AT",
+     "AZ",
+     "BA",
+     "BE",
+     "BG",
      "CA",
+     "CH",
+     "CY",
+     "CZ",
+     "DE",
+     "DK",
      "DZ",
+     "EE",
      "EG",
+     "ES",
+     "FI",
+     "FO",
+     "FR",
+     "GB",
+     "GE",
+     "GR",
+     "HR",
+     "HU",
+     "IE",
+     "IS",
+     "IT",
      "JO",
      "LB",
+     "LI",
+     "LT",
+     "LU",
+     "LV",
      "MA",
+     "MD",
+     "ME",
+     "MK",
+     "MT",
+     "NL",
+     "NO",
+     "PL",
      "PS",
-     "TN"
+     "PT",
+     "RO",
+     "RS",
+     "SE",
+     "SI",
+     "SK",
+     "TN",
+     "TR",
+     "UA",
+     "XK"
     ],
     "regions": [
-     "MENA"
+     "EU"
     ],
     "subnational": null,
     "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "Nationality OR residence in the specific call list, including Canada, Algeria, Egypt, Jordan, Lebanon, Morocco, Palestine, Tunisia and other listed countries",
+    "confidence": "stated",
+    "evidence": "are developing their first, second or third fiction feature film; ... are from, or currently reside in, the European Union, a Eurimages country, a non-EU country participating in the Creative Europe Programme, or the United Kingdom. / Applicants must be from, or reside in, one of the following countries: Albania, Algeria, Armenia, Austria, Azerbaijan, Belgium, Bosnia and Herzegovina, Bulgaria, Canada, Croatia, Cyprus, Czech Republic, Denmark, Egypt, Estonia, Faroe Islands, Finland, France, Georgia, Germany, Greece, Hungary, Iceland, Ireland, Italy, Jordan, Kosovo, Latvia, Lebanon, Liechtenstei",
     "excludes": []
    },
-   "who_line": "Nationals or residents of listed countries, e.g. Canada, Egypt, Morocco, Tunisia",
-   "get_line": "Residential programme if separately selected; a free online option also exists",
+   "who_line": "Writer-directors of a first to third fiction feature, from or living in listed countries",
+   "get_line": "Three one-week residential workshops in Brittany, online meetings, development support and lim² meet",
    "caution": "Check the full country list; the 21 October 23:59 CET deadline is unclear around the clock change, so submit early"
   },
   {
@@ -3891,20 +4175,18 @@
     "writing"
    ],
    "where": {
-    "scope": "listed",
+    "scope": "worldwide",
     "countries": [],
-    "regions": [
-     "EUROPE"
-    ],
+    "regions": [],
     "subnational": null,
     "test": "unknown",
-    "identity": "projects centring LGBTQ themes or characters",
-    "confidence": "partial",
-    "evidence": "International; non-European projects should seek European co-production",
+    "identity": "Projects centring LGBTQ+ characters or themes",
+    "confidence": "stated",
+    "evidence": "\"CREATIVE TEAMS of writer and/or director and producer (max. of 3 participants per team).\" / \"Projects with LGBTQ+ character(s) and/or themes central to the story\" / \"Global eligibility: non-European projects should demonstrate an intention to co-produce with a European country.\"",
     "excludes": []
    },
-   "who_line": "Open internationally; non-European projects should seek a European co-producer",
-   "get_line": "Story development and a presentation at Karlovy Vary",
+   "who_line": "Writer/director and producer teams anywhere with an LGBTQ+-centred fiction feature",
+   "get_line": "Two workshops, online consultations, pitching at Karlovy Vary IFF and a chance at a €10,000 award",
    "caution": null
   },
   {
@@ -3926,11 +4208,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Worldwide",
+    "evidence": "ComedyLab is open to both experienced and emerging writer/directors, or teams of writer and director, from all over the world. It is possible to apply as an individual or as a team of two.",
     "excludes": []
    },
    "who_line": "Writers and creators anywhere developing a comedy feature",
-   "get_line": "Comedy craft development and an industry-facing presentation",
+   "get_line": "Script and production development for up to 4 comedy features over three residential modules",
    "caution": null
   },
   {
@@ -3952,11 +4234,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Worldwide; no attached producer required",
+    "evidence": "\"Writers from all countries are eligible to submit.\" ... \"All scripts must be submitted in English, or include a full English translation.\"",
     "excludes": []
    },
    "who_line": "Writers anywhere with a finished, unproduced English-language TV pilot script",
-   "get_line": "Script recognition and industry circulation; not financing",
+   "get_line": "Industry Discovery List for 8-10 TV scripts; category winners get a Script Angel consultation",
    "caution": "The script PDF must be anonymous: no title page or identifying details"
   },
   {
@@ -3978,11 +4260,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Worldwide; no attached producer required",
+    "evidence": "\"Writers from all countries are eligible to submit.\" ... \"All scripts must be submitted in English, or include a full English translation.\"",
     "excludes": []
    },
    "who_line": "Writers anywhere with a finished, unproduced English-language feature script (60+ pages)",
-   "get_line": "Script recognition and industry circulation; not financing",
+   "get_line": "Industry Discovery List for 4-5 feature scripts; the winner gets a Script Angel consultation",
    "caution": "The script PDF must be anonymous: no title page or identifying details"
   },
   {
@@ -4004,11 +4286,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Worldwide; no attached producer required",
+    "evidence": "\"Writers from all countries are eligible to submit.\" ... \"All scripts must be submitted in English, or include a full English translation.\"",
     "excludes": []
    },
    "who_line": "Writers anywhere with a finished, unproduced English-language short script (max 40 pages)",
-   "get_line": "Script recognition and industry circulation; not financing",
+   "get_line": "Industry Discovery List for 4-5 short scripts; the winner gets a Script Angel consultation",
    "caution": "The script PDF must be anonymous: no title page or identifying details"
   },
   {
@@ -4023,20 +4305,18 @@
     "development"
    ],
    "where": {
-    "scope": "listed",
+    "scope": "worldwide",
     "countries": [],
-    "regions": [
-     "EUROPE"
-    ],
+    "regions": [],
     "subnational": null,
-    "test": "unknown",
+    "test": "mixed",
     "identity": null,
-    "confidence": "partial",
-    "evidence": "European professionals or international team with European co-production potential",
+    "confidence": "stated",
+    "evidence": "SeriesLab is open to teams of European writers or writer-directors and their producers, and to teams of international writers or writer-directors and their producers working on a project with European co-production potential.",
     "excludes": []
    },
-   "who_line": "European professionals, or international teams with European co-production potential",
-   "get_line": "Pilot and series development, with a final industry presentation",
+   "who_line": "European writer–producer teams, or teams elsewhere with European co-production potential",
+   "get_line": "Six-month series lab with three residential workshops and a final industry pitch",
    "caution": null
   },
   {
@@ -4056,14 +4336,14 @@
     "countries": [],
     "regions": [],
     "subnational": null,
-    "test": "nationality",
+    "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Any nationality; working French required.",
+    "evidence": "aux scénaristes et auteur·ices-réalisateur·rices de court ou long-métrage (fiction ou documentaire) ayant donné lieu à une sélection en festival(s) de niveau national ou international de Catégorie 1 [...] Faut-il être français·e pour candidater ? Non. Il n’y a pas de condition de nationalité pour candidater à la Sélection Annuelle. En revanche, le ou la candidat·e doit être en mesure d’écrire et de s’exprimer en français.",
     "excludes": []
    },
    "who_line": "Writers of any nationality with working French; the film can be in any language",
-   "get_line": "Year-long feature writing development; eight projects are selected",
+   "get_line": "Writing coaching for eight features: three Brittany residencies with board and lodging covered",
    "caution": null
   },
   {
@@ -4085,11 +4365,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Worldwide.",
+    "evidence": "\"The workshop is open to scriptwriters, directors and producers coming from all over the world\" ... \"must be in the shape of a feature film project at a treatment stage of development\"",
     "excludes": []
    },
    "who_line": "Writers anywhere with a fiction feature at treatment stage, not a finished screenplay",
-   "get_line": "Feature development through sustainable and inclusive narrative practice",
+   "get_line": "Three online modules with group script tutoring on inclusive, climate-aware stories",
    "caution": null
   },
   {
@@ -4112,11 +4392,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Current 2027 regulations allow worldwide applications",
+    "evidence": "Regulations PDF: \"The programme is open to all participants.\" \"Special consideration will be given to the participants from European low production capacity countries.\" Call page: \"The workshop is aimed at teams with a project in development (producer and scriptwriter and/or director/art director with an animation project of any format in development\"",
     "excludes": []
    },
    "who_line": "Animation teams anywhere; low-production-capacity European countries get priority",
-   "get_line": "Creative and production development, plus animation industry connections",
+   "get_line": "Year-long programme of four one-week modules, plus badges for CEE Animation Forum 2027",
    "caution": "Listed deadline was 15 October 2026 and has passed; check whether entries are still accepted"
   },
   {
@@ -4135,14 +4415,14 @@
     "countries": [],
     "regions": [],
     "subnational": null,
-    "test": "unknown",
+    "test": "residence",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Worldwide producers.",
+    "evidence": "EURODOC call PDF: \"Any producer with several years of practice, who has already produced at least one feature-length documentary film.\" \"This program is for mid-career producers worldwide.\" \"70% are European residents (or residents from member countries of the Creative Europe Program*)\" \"30% are non-European residents;\"",
     "excludes": []
    },
    "who_line": "Documentary producers anywhere with a project in development, not yet fully financed",
-   "get_line": "Producer and project development, consultations and international industry meetings",
+   "get_line": "Three residential week-long sessions in Europe, online mentoring and meetings with decision makers",
    "caution": "Fees depend on your location; producers in non-MEDIA European countries should verify their rate"
   },
   {
@@ -4162,14 +4442,14 @@
     "countries": [],
     "regions": [],
     "subnational": null,
-    "test": "mixed",
+    "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Any nationality or residency; English pilot and application.",
+    "evidence": "\"Applicants must be 18 years of age or older at time of application. Applicants of any nationality or residency are eligible.\"",
     "excludes": []
    },
    "who_line": "Writers of any nationality or residency, with an English-language pilot",
-   "get_line": "A $17,000 grant (one award)",
+   "get_line": "USD 17,000 grant and creative craft support for one series",
    "caution": null
   },
   {
@@ -4198,7 +4478,7 @@
     "excludes": []
    },
    "who_line": "Writers with a climate-related feature or pilot; residency rules not confirmed",
-   "get_line": "A $20,000 award (three fellows) and a mentorship period",
+   "get_line": "Funding for selected writing teams to revise a climate-related feature screenplay or pilot",
    "caution": "Residency rules not confirmed; free hosting and evaluation are not universal (sponsored slots)"
   },
   {
@@ -4214,18 +4494,20 @@
     "writing"
    ],
    "where": {
-    "scope": "unclear",
-    "countries": [],
+    "scope": "listed",
+    "countries": [
+     "US"
+    ],
     "regions": [],
     "subnational": null,
-    "test": "unknown",
-    "identity": null,
-    "confidence": "unclear",
-    "evidence": "Residency and co-author rules need confirmation in the live programme.",
+    "test": "mixed",
+    "identity": "Writers aged 18 to 25",
+    "confidence": "stated",
+    "evidence": "\"the Collyer Fellowship is open to US citizens and legal permanent residents only.\" ... \"for screenwriters between the ages of 18-25 who will be no older than 25 years of age as of December 31, 2026.\"",
     "excludes": []
    },
-   "who_line": "Feature writers; residency and co-author rules not confirmed",
-   "get_line": "$10,000 and mentorship to write a new original feature (one fellow)",
+   "who_line": "US citizens and permanent residents aged 18 to 25 with an original feature script",
+   "get_line": "USD 10,000 stipend and a year of mentoring by a prominent screenwriter",
    "caution": "Needs a paid Black List hosted script and evaluation unless exempted; evaluation price unverified"
   },
   {
@@ -4245,18 +4527,20 @@
     "post"
    ],
    "where": {
-    "scope": "unclear",
-    "countries": [],
+    "scope": "listed",
+    "countries": [
+     "US"
+    ],
     "regions": [],
     "subnational": null,
     "test": "unknown",
-    "identity": "California-based tribal affiliation or descent",
-    "confidence": "partial",
-    "evidence": "Affiliation or lineal descent from a California-based tribe, not simply California residence.",
+    "identity": "Artists from California-based tribes",
+    "confidence": "stated",
+    "evidence": "Eligibility: Artists who are from a California-based tribe. / serves to cultivate a stage for artists from federally and nonfederally recognized California Native tribes to tell their stories through film.",
     "excludes": []
    },
-   "who_line": "Artists affiliated with or descended from a California-based tribe",
-   "get_line": "$25,000 per fellow (two fellows), plus mentorship and festival participation",
+   "who_line": "Artists from federally or non-federally recognised California-based tribes",
+   "get_line": "$25,000 cash grant each (two fellows), plus a year of support, mentorship and a Sundance trip",
    "caution": "Full form and media specs not confirmed; check the portal and tribal paperwork rules"
   },
   {
@@ -4280,11 +4564,11 @@
     "test": "unknown",
     "identity": "Indigenous women",
     "confidence": "stated",
-    "evidence": "Indigenous artists who identify as women, internationally.",
+    "evidence": "\"This opportunity is open to U.S.-based and international Indigenous artists who identify as women\" / \"are endeavoring to direct a feature film\"",
     "excludes": []
    },
    "who_line": "Indigenous artists who identify as women, worldwide",
-   "get_line": "A cash grant (amount not published), plus mentorship and festival participation",
+   "get_line": "A cash grant (amount not stated), a year of support, mentorship and a trip to Sundance",
    "caution": "Current cash amount is not published; do not rely on past-year figures"
   },
   {
@@ -4308,11 +4592,11 @@
     "test": "residence",
     "identity": null,
     "confidence": "stated",
-    "evidence": "US resident with proof.",
+    "evidence": "This project must be the applicant’s scripted directorial debut. [...] Applicants must be based in the United States and will be required to provide proof of residency. [...] Directing duos or teams are not eligible.",
     "excludes": []
    },
    "who_line": "US residents, with proof of residence",
-   "get_line": "A $5,000 grant (five awards), plus mentorship and in-kind support",
+   "get_line": "A $5,000 seed grant (five awards), plus mentorship and in-kind colouring services",
    "caution": "Any gender restriction is unconfirmed; check the full form before applying"
   },
   {
@@ -4330,19 +4614,21 @@
    "where": {
     "scope": "listed",
     "countries": [
-     "US",
-     "CA"
+     "CA",
+     "US"
     ],
     "regions": [],
     "subnational": null,
     "test": "residence",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Legal residents of the 50 US states/DC or Canada; age 18 and local age of majority.",
-    "excludes": []
+    "evidence": "The Vimeo Short Film Grant is open to directors who are residents of the US and Canada only. | The Vimeo Short Film Grant is intended for emerging filmmakers who have directed at least two short films, but have yet to direct a feature film. | is open only to legal residents of the 50 United States, the District of Columbia (excluding Puerto Rico, and all U.S. territories and possessions), and Canada",
+    "excludes": [
+     "PR"
+    ]
    },
    "who_line": "Legal residents of the 50 US states, DC or Canada, aged 18 or over",
-   "get_line": "A $60,000 grant (five awards), plus in-kind support, mentorship and distribution",
+   "get_line": "USD 60,000 production grant, Panavision camera package, mentorship and release on Vimeo",
    "caution": "Deadline listed as 16 October 2026; rights terms are flagged for review"
   },
   {
@@ -4369,11 +4655,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "International applicants accepted.",
+    "evidence": "Budget Must Be Under $500,000 Open to Filmmakers from Any Country For Any Phase of Production from Development to Post-Production / (FAQ) Yes, you can live anywhere in the world and enter any of our grants. But, you may not be able to use all the benefits of the specific grant you have won unless you are filming in the US.",
     "excludes": []
    },
    "who_line": "Filmmakers anywhere (international applicants accepted)",
-   "get_line": "A $3,500 grant plus in-kind support (one award)",
+   "get_line": "A $3,500 cheque plus $20,000+ in services and discounts (one winner)",
    "caution": null
   },
   {
@@ -4397,13 +4683,13 @@
     "regions": [],
     "subnational": null,
     "test": "unknown",
-    "identity": "student filmmakers",
+    "identity": "Students",
     "confidence": "stated",
-    "evidence": "worldwide",
+    "evidence": "\"The grant seeks films from student filmmakers enrolled in university, college, community college, extension courses, or high school\" \"Student Filmmakers from any country are welcome to apply.\" \"must be budgeted at $50,000 or less\"",
     "excludes": []
    },
    "who_line": "Student filmmakers, worldwide (student ID required)",
-   "get_line": "A $3,000 grant plus in-kind support (one award)",
+   "get_line": "$3,000 cash plus donated services and products",
    "caution": null
   },
   {
@@ -4431,14 +4717,14 @@
     ],
     "regions": [],
     "subnational": null,
-    "test": "mixed",
+    "test": "residence",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Eligible US-resident individual with SSN, or qualifying US nonprofit/fiscal-sponsor route",
+    "evidence": "Prospective applicants page: \"Grants from the The Puffin Foundation can only be awarded to US residents with a social security number, or to US based non-profits (including fiscal sponsors).\"",
     "excludes": []
    },
    "who_line": "US residents with an SSN, or US nonprofits and fiscal sponsors",
-   "get_line": "A grant of up to $3,500",
+   "get_line": "Grant of up to USD 3,500",
    "caution": null
   },
   {
@@ -4467,10 +4753,10 @@
     ],
     "regions": [],
     "subnational": "Queens",
-    "test": "mixed",
+    "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Queens resident or year-round full-time studio holder with lease; designated collective lead may apply.",
+    "evidence": "\"The New York Foundation for the Arts currently administers the Queens Arts Fund, providing grants to artists and arts organizations within Queens.\"",
     "excludes": []
    },
    "who_line": "Queens residents, or artists with a year-round Queens studio lease",
@@ -4499,11 +4785,11 @@
     "test": "mixed",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Permanent Miami-Dade County resident AND US citizen or permanent resident; age 18+.",
+    "evidence": "Applicants must be full-time residents of Miami-Dade County, 18 years of age or older and a U.S. citizen or permanent resident. Feature documentary applicants will have previously completed, at minimum, a short documentary. [...] Currently, this application is only open to residents of Miami-Dade County.",
     "excludes": []
    },
    "who_line": "Miami-Dade County residents who are US citizens or permanent residents, 18+",
-   "get_line": "A $50,000 grant (one award)",
+   "get_line": "A $50,000 grant for a documentary of 50 minutes or more (one award), plus free archive access",
    "caution": "Application fee not established; check the SlideRoom form before applying"
   },
   {
@@ -4528,11 +4814,11 @@
     "test": "mixed",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Permanent Miami-Dade County resident AND US citizen or permanent resident; age 18+.",
+    "evidence": "Applicants must be full-time residents of Miami-Dade County, 18 years of age or older and a U.S. citizen or permanent resident. ... Short documentary applicants can be first time directors but must have previously crewed on a short film and received a credit on the film.",
     "excludes": []
    },
    "who_line": "Miami-Dade County residents who are US citizens or permanent residents, 18+",
-   "get_line": "A $10,000 grant (three awards)",
+   "get_line": "$10,000 each for three 8–12 min short documentaries, plus free use of the Wolfson archive",
    "caution": "Application fee not established; check the SlideRoom form before applying"
   },
   {
@@ -4556,11 +4842,11 @@
     "test": "mixed",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Permanent Miami-Dade County resident AND US citizen or permanent resident; age 18+.",
+    "evidence": "\"Applicants must be permanent Miami-Dade County residents, age 18 or older, and U.S. citizens or permanent residents.\"",
     "excludes": []
    },
    "who_line": "Miami-Dade County residents who are US citizens or permanent residents, 18+",
-   "get_line": "A $10,000 finishing grant (two awards)",
+   "get_line": "$10,000 to finish a feature documentary in post-production (two awards), plus archive access",
    "caution": "Application fee not established; check the SlideRoom form before applying"
   },
   {
@@ -4588,11 +4874,11 @@
     "test": "residence",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Legal resident of the 50 US states/DC, age 18+.",
+    "evidence": "\"Applications are open to U.S.-based filmmakers (50 states + DC), 18 and older.\"",
     "excludes": []
    },
    "who_line": "Legal residents of the 50 US states or DC, aged 18 or over",
-   "get_line": "A $4,500 grant (one award)",
+   "get_line": "USD 4,500 grant for one independent narrative or documentary project",
    "caution": null
   },
   {
@@ -4617,11 +4903,11 @@
     "test": "residence",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Physical US presence and unrestricted lawful work rights throughout the programme.",
+    "evidence": "Qualified applicants will be director-producer teams with compelling past work and current projects. Directors must have directed at least two short films or one feature film. Producers must have produced at least two short films or one feature film. [...] Can I apply if I am outside the United States? No, applicants must be physically present in the United States. [...] Participation is contingent upon your unrestricted right to work lawfully in the United States throughout the duration of the program.",
     "excludes": []
    },
    "who_line": "Director–producer teams physically in the US with unrestricted work rights",
-   "get_line": "A $100,000 all-in production budget per team, five teams (not a personal grant)",
+   "get_line": "A $100,000 all-in production budget per team (five teams); Film Independent owns the film",
    "caution": "Non-member deadline is 26 October ($65); the 2 November deadline is for members ($45)"
   },
   {
@@ -4639,19 +4925,19 @@
    "where": {
     "scope": "listed",
     "countries": [
-     "US",
-     "PR"
+     "PR",
+     "US"
     ],
     "regions": [],
     "subnational": null,
     "test": "residence",
-    "identity": null,
+    "identity": "Writer or director from, or with stories about, an underrepresented community",
     "confidence": "stated",
-    "evidence": "Qualifying applicant resides in the US or Puerto Rico; verify all core-team conditions.",
+    "evidence": "Applicant(s) must be at least 18 years old and reside in the U.S. or Puerto Rico. … Current students are not eligible to apply. … A screenwriter and/or director attached to the project should be from an underrepresented community in the film industry or have a connection to, or stories about, such community.",
     "excludes": []
    },
    "who_line": "Applicants living in the US or Puerto Rico; core-team conditions apply",
-   "get_line": "One $1.2 million production award; four other finalists get $15,000 each",
+   "get_line": "USD 1.2m to make the winning feature; the four other finalists get USD 15,000 each",
    "caution": "Check every core-team condition in the rules, not only the lead applicant's residence"
   },
   {
@@ -4674,11 +4960,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "worldwide",
+    "evidence": "The Contests are open to all writers and filmmakers at all levels who are at least eighteen (18) years of age or older at the time of entry. Entrants from anywhere in the world are eligible, except where prohibited by law in the state, province or country where the Entrant is located.",
     "excludes": []
    },
    "who_line": "Filmmakers worldwide",
-   "get_line": "Up to $10,000 against qualifying costs; the amount depends on the entry pool",
+   "get_line": "Up to $10,000, reimbursed against short-film production costs; the amount depends on entries",
    "caution": "Paid as reimbursement: winners must show expenses, production and E&O insurance and delivery"
   },
   {
@@ -4705,8 +4991,8 @@
     "evidence": "Projects worldwide considered case by case.",
     "excludes": []
    },
-   "who_line": "Documentary projects worldwide, considered case by case",
-   "get_line": "Typically $25,000–$150,000; the amount is set through review, not promised",
+   "who_line": "Documentary projects on complex social, cultural or political issues",
+   "get_line": "Grants typically $25,000 to $150,000 per documentary project",
    "caution": "Eligibility is decided case by case; the process starts with a rolling letter of inquiry"
   },
   {
@@ -4734,11 +5020,11 @@
     "test": "residence",
     "identity": null,
     "confidence": "stated",
-    "evidence": "New York City resident with SSN or ITIN; residency continues through the grant period. US citizenship is not the test.",
+    "evidence": "This grant supports eligible New York City-based early career film directors | Yes, if you have established your primary residency in New York City, are still a resident at the application deadline and plan to continue to be residents of New York City for at least 183 days during the grant period of May 2027 through April 2029",
     "excludes": []
    },
    "who_line": "New York City residents with an SSN or ITIN (citizenship not required)",
-   "get_line": "A grant of up to $30,000",
+   "get_line": "A production grant of up to USD 30,000",
    "caution": "This deadline is for applicants invited to Step 2 only (continuation stage)"
   },
   {
@@ -4766,11 +5052,11 @@
     "test": "residence",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Minnesota resident with SSN or ITIN; residency continues through the grant period. US citizenship is not the test.",
+    "evidence": "\"This grant supports eligible Minnesota-based early career film directors\"",
     "excludes": []
    },
    "who_line": "Minnesota residents with an SSN or ITIN (citizenship not required)",
-   "get_line": "A grant of up to $30,000",
+   "get_line": "Production grant of up to USD 30,000",
    "caution": "This deadline is for applicants invited to Step 2 only (continuation stage)"
   },
   {
@@ -4799,11 +5085,11 @@
     "test": "residence",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Minnesota resident with SSN or ITIN; residency continues through the grant period. US citizenship is not the test.",
+    "evidence": "\"Yes, if you have established your primary residency in Minnesota, are still a resident at the application deadline, and plan to remain a resident in Minnesota through April 2029.\" \"Anyone with an SSN (social security number) or an ITIN (Individual Taxpayer Identification Number) is eligible to apply\"",
     "excludes": []
    },
    "who_line": "Minnesota residents with an SSN or ITIN (citizenship not required)",
-   "get_line": "A grant of up to $10,000",
+   "get_line": "Up to $10,000 for self-designed mentorship with experienced film professionals",
    "caution": "This deadline is for applicants invited to Step 2 only (continuation stage)"
   },
   {
@@ -4855,8 +5141,8 @@
     "evidence": "No US-residency restriction found.",
     "excludes": []
    },
-   "who_line": "Platinum or +Sessions badge holders with a narrative feature; no US-only rule found",
-   "get_line": "Live industry feedback and market exposure; no guaranteed financing",
+   "who_line": "AFM attendees with a Platinum or + Sessions badge, pitching a narrative feature film",
+   "get_line": "A live pitch to an executive panel at AFM, with on-stage feedback",
    "caution": "Deadline conflict: 22 October (session page) vs 15 October (PDF); a paid badge is required"
   },
   {
@@ -4881,8 +5167,8 @@
     "evidence": "No US-residency restriction found.",
     "excludes": []
    },
-   "who_line": "Platinum or +Sessions badge holders with a scripted series; no US-only rule found",
-   "get_line": "Live industry feedback and market exposure; no guaranteed financing (new in 2026)",
+   "who_line": "AFM attendees with a Platinum or + Sessions badge, pitching a scripted or limited series",
+   "get_line": "A live pitch to a television executive panel at AFM, with on-stage critique",
    "caution": "Deadline conflict: 22 October (session page) vs 15 October (PDF); a paid badge is required"
   },
   {
@@ -4938,8 +5224,8 @@
     "evidence": "Confirm international circumstances in chosen US session.",
     "excludes": []
    },
-   "who_line": "Writers, solo or in pairs, no industry background needed; non-US rules unconfirmed",
-   "get_line": "A four-day pitch and story lab with peer script notes (paid; aid is selective)",
+   "who_line": "Emerging screenwriters, filmmakers and creative producers; no industry background needed",
+   "get_line": "Four-day lab in Stowe, Vermont with mentor pitch tables, peer script notes and workshops",
    "caution": "Paid programme with selective aid; mentors do not read scripts at the Narrative Lab"
   },
   {
@@ -4965,8 +5251,8 @@
     "evidence": "International participation needs confirmation",
     "excludes": []
    },
-   "who_line": "Writers, solo or in pairs; international participation not confirmed",
-   "get_line": "A five-day remote retreat with one-to-one script notes and peer feedback (paid)",
+   "who_line": "Writers with a well-developed first draft of a feature or TV pilot by the retreat",
+   "get_line": "Five-day online retreat, 25–29 June 2027, with three one-on-one mentor script sessions",
    "caution": "Paid programme with selective scholarships; a well-developed full draft is needed by the retreat"
   },
   {
@@ -4989,11 +5275,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "18+, worldwide.",
+    "evidence": "To earn the opportunity to attend the TV Retreat, writers must submit an original pilot episode teleplay in one of the TV divisions of the TV Retreat & Fellowship Contest. | (FAQ page) Do you accept international entries? Yes, we accept entries from all countries.",
     "excludes": []
    },
    "who_line": "Writers worldwide, 18+, with writing earnings of $25,000 or less in five years",
-   "get_line": "Retreat mentor sessions; one Grand Fellow gets $3k, mentorship and free tuition/housing",
+   "get_line": "Fellow: USD 3,000, a 12-month mentorship and a free retreat place; finalists invited for a fee",
    "caution": "Invitees other than the Grand Fellow generally pay additional retreat fees"
   },
   {
@@ -5065,19 +5351,19 @@
    "where": {
     "scope": "listed",
     "countries": [
-     "US",
-     "CA"
+     "CA",
+     "US"
     ],
     "regions": [],
     "subnational": null,
-    "test": "residence",
-    "identity": "Indigenous communities in the US and Canada",
+    "test": "unknown",
+    "identity": "Indigenous filmmakers",
     "confidence": "stated",
-    "evidence": "US-based Native American, Native Hawaiian, Alaska Native and Indigenous communities; Canada-based First Nations, Métis and Inuit communities.",
+    "evidence": "sundance.org/deadlines/: \"The Native Lab provides direct support to emerging filmmakers from U.S.-based Native American, Native Hawaiian, Alaskan Native, and Indigenous communities and Canada-based Indigenous Canadian (First Nations, Métis, and Inuit) communities.\" ... \"our opportunities are limited to those who identify themselves as Indigenous.\"",
     "excludes": []
    },
    "who_line": "US- or Canada-based Indigenous artists (Native, First Nations, Métis, Inuit); no teams",
-   "get_line": "Creative support, adviser feedback and roundtables; no cash award stated",
+   "get_line": "Lab in Santa Fe with one-to-one advisor feedback on feature or episodic scripts",
    "caution": "Not open yet: applications open 1 December 2026 and the 2027 form is not published"
   },
   {
@@ -5131,11 +5417,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "International writers accepted",
+    "evidence": "I don’t live in the USA. Can I submit a script? How do I pay the submission fee? … Yes, as long as the script is submitted in English. … Screenplays may not have been produced; … Do you accept scripts written in collaboration? … Yes, we do accept collaborations",
     "excludes": []
    },
    "who_line": "Writers worldwide with an unproduced English-language script",
-   "get_line": "Feature prize $4,000 or $5,000 (sources conflict); TV $2,000; short $1,000",
+   "get_line": "Feature winner: USD 5,000, a month-long Almanack retreat on Nantucket and a festival trip",
    "caution": "Feature prize conflicts ($4,000 vs $5,000) and co-written feature eligibility is unclear"
   },
   {
@@ -5162,7 +5448,7 @@
     "excludes": []
    },
    "who_line": "Series creators worldwide, with English-language materials",
-   "get_line": "Virtual prep, a 5-minute pitch and 7 minutes of industry feedback (no commission promised)",
+   "get_line": "A live five-minute pitch with panel feedback, after a two-part virtual pitching workshop",
    "caution": null
   },
   {
@@ -5188,11 +5474,13 @@
     "test": "residence",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Legal residents of the 50 US states or DC only; age of majority.",
-    "excludes": []
+    "evidence": "The Competition is open only to individuals who at the time of entry are legal residents of one of the fifty United States or the District of Columbia and who have reached the age of majority in their state at the time of entry . | Void in Puerto Rico and all other U.S. and foreign territories and possessions | Who Should Not Apply: Writers who have been staffed on a TV show or paid to develop a project by a studio, network, or production company.",
+    "excludes": [
+     "PR"
+    ]
    },
    "who_line": "Legal residents of the 50 US states or DC, of age of majority",
-   "get_line": "Ten finalists get live feedback, a year-long mentorship and industry meetings",
+   "get_line": "Ten finalists pitch live at ATX TV Festival and join a year-long mentorship programme",
    "caution": null
   },
   {
@@ -5216,11 +5504,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Writers worldwide",
+    "evidence": "\"I live outside of the US, can I still submit to the competition? Of course! In fact, many past winners are not from the United States.\" / \"Writers of any age are welcome.\" / \"the use of artificial intelligence (A.I.) tools or software in the creation, development, or writing of the screenplay is strictly prohibited.\"",
     "excludes": []
    },
    "who_line": "Writers worldwide with an unoptioned, unproduced English script (no AI use)",
-   "get_line": "Cash prizes (amounts not stated), mentor meetings, scene readings and festival access",
+   "get_line": "Cash prizes of $250–500, travel stipend, two nights' lodging, mentoring or a retreat, and a badge",
    "caution": "Deadline conflict: calendar says 6 November, introductory text says 5 December 2026"
   },
   {
@@ -5247,8 +5535,8 @@
     "evidence": "no US-residency restriction found in published rules.",
     "excludes": []
    },
-   "who_line": "Writers with an unoptioned English script; no US-residency rule found",
-   "get_line": "Feature prize $5,000; other category winners $1,000; industry-facing events",
+   "who_line": "Screenwriters with screenplays or teleplays of any genre and length",
+   "get_line": "Finalists are honoured at the Cinequest Writers Celebration with industry events",
    "caution": "Short-script limit is inconsistent at 40 pages; confirm if yours is exactly 40"
   },
   {
@@ -5275,8 +5563,8 @@
     "evidence": "No US-residency restriction found.",
     "excludes": []
    },
-   "who_line": "Feature documentary teams seeking funding, no distribution deal; no US-only rule found",
-   "get_line": "A 10-minute pitch, 10 minutes of funder feedback, prep and festival access; no funding promised",
+   "who_line": "Teams with a feature documentary work in progress, any form or subject",
+   "get_line": "A 10-minute pitch to commissioning editors and funders, with feedback and 1-1 coaching",
    "caution": null
   },
   {
@@ -5359,8 +5647,8 @@
     "evidence": "No US-residency restriction found",
     "excludes": []
    },
-   "who_line": "Writers with unproduced scripts; no US-residency rule found in our notes",
-   "get_line": "Top scripts recommended to industry contacts; no sale or production award verified",
+   "who_line": "Original, unproduced English-language features, shorts and TV pilots",
+   "get_line": "Networking and film industry access through the Vail Film Festival",
    "caution": "Marked on hold in our notes; short page limit conflicts (59 vs 60), so check before paying"
   },
   {
@@ -5412,11 +5700,11 @@
     "test": "unknown",
     "identity": null,
     "confidence": "stated",
-    "evidence": "Worldwide; English; under-18s need guardian permission.",
+    "evidence": "\"All writers from all countries are welcome to submit; however, all screenplays must be submitted in English\"",
     "excludes": []
    },
    "who_line": "Writers worldwide with unsold, unoptioned English scripts",
-   "get_line": "Category winners get a VIP pass, up to four hotel nights, a table read and coverage",
+   "get_line": "First place per category: VIP pass, up to 4 hotel nights, table read, award, TV interview, coverage",
    "caution": "Short-script page cap not verified; check before entering a short"
   },
   {
@@ -5442,8 +5730,8 @@
     "evidence": "Unknown — confirm script rules",
     "excludes": []
    },
-   "who_line": "Script rights holders; residence rules not stated in our notes",
-   "get_line": "Three screenplay awards, including the Golden Palm; no cash, option or production stated",
+   "who_line": "Screenplays of any genre; who may enter is not stated on the festival site",
+   "get_line": "Golden Palm Screenplay Award, plus first and second runner-up awards",
    "caution": "Script eligibility and page limits not verified in public rules; confirm first"
   },
   {
@@ -5469,7 +5757,7 @@
     "excludes": []
    },
    "who_line": "Series creators worldwide with a near-complete pilot rough cut and screening rights",
-   "get_line": "Screening plus audience and creator feedback; any in-kind awards unconfirmed",
+   "get_line": "Rough-cut screening with audience feedback; page also lists a $25K in-kind post award",
    "caution": "Page mentions in-kind awards but says the category is not juried; confirm before relying on a prize"
   },
   {
@@ -5496,8 +5784,8 @@
     "evidence": "Confirm project residency and premiere rules.",
     "excludes": []
    },
-   "who_line": "Feature fiction or documentary teams with no prior festival or WIP showcase",
-   "get_line": "A WIP showcase and two days of industry meetings (about 8–10 projects selected)",
+   "who_line": "Fiction or documentary features in late production or post, not shown at a prior WIP",
+   "get_line": "Sneak-peek showcase for industry at Tribeca Pitch Market, plus two days of one-on-one meetings",
    "caution": "Not open until 5 January 2027 (official deadline 27 January); premiere and residency rules unconfirmed"
   }
  ]

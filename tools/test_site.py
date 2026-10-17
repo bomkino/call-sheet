@@ -69,7 +69,8 @@ class DataTests(unittest.TestCase):
         for call in CALLS:
             fee = call["fee"]
             if fee["summary"] == "Free to enter":
-                application = [i for i in fee["items"] if i["stage"] == "application"]
+                # Optional add-ons (feedback, fiscal sponsorship) aren't the price of entering.
+                application = [i for i in fee["items"] if i["stage"] == "application" and i["state"] != "optional"]
                 self.assertTrue(application, call["id"])
                 self.assertTrue(all(i["state"] == "free_or_explicit_zero" for i in application), call["id"])
             for item in fee["items"]:
