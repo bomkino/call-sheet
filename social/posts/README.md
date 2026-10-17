@@ -31,14 +31,14 @@ cd /tmp/posts && node path/to/call-sheet/social/posts/render.mjs [id or prefix] 
 | Based in…? | `place-us`, `place-gb`, `place-ca`, `place-au` | 4:5, 9:16 |
 | Singles | `launch`, `tabs`, `zero`, `clock`, `circle`, `unknown`, `monthly`, `open`, `board`, `pitch`, `dm` | 4:5, 1:1, 9:16 (and link-preview sizes for some) |
 | Carousels | `how-01`–`07`, `free-01`–`06`, `read-01`–`07` | 4:5, 1:1 |
-| YouTube thumbnails | `thumb-a`, `thumb-b` | 1280×720 |
+| YouTube thumbnails | `thumb-a`, `thumb-b` (use for the explainer), `thumb-c` | 1280×720 |
 
 The "Based in…?" posts cover only the countries pitch.dog's clients work from. Each links to its own list on the site, such as pitch.dog/call-sheet/us, and that page shows exactly the calls the number counts. `PLACES` in `make_data.py` names the three calls each post shows. They're picked by hand, must be open countrywide (no city, state or identity limit), and the script stops if one no longer fits.
 
 ## Each month
 
 1. Update the data, rebuild the site, then run `make_data.py`.
-2. Check the dated posts: `board`, the `free` carousel, `zero`, `clock`, the `place` posts and `thumb-b`. Swap any featured call that has closed.
+2. Check the dated posts: `board`, the `free` carousel, `zero`, `clock` and the `place` posts. Swap any featured call that has closed.
 3. Render, look at every PNG, and read `report.json`.
 4. For Figma, render with `--pdf`, convert each PDF with `pdftocairo -svg`, and import the SVGs. They arrive as vectors at 75% scale (PDF points), so scale each frame back up to its pixel size.
 
