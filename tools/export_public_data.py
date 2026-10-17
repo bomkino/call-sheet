@@ -146,6 +146,10 @@ def rights_lines(rows: list[dict[str, Any]]) -> list[dict[str, str]]:
     return lines[:8]
 
 
+# Add-ons and discounts: listed with the fees, but not part of what it costs to enter.
+OPTIONAL_FEE = re.compile(r"(?i)optional|surcharge|feedback|analysis|discount|% off|company time")
+
+
 def fee_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
     """Application fees first; selected-participant charges kept separate."""
     items = []
@@ -159,7 +163,7 @@ def fee_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
         # Entry fees only.  Deposits, accreditation, tuition, penalties and
         # production-triggered contributions are real costs, but not the price
         # of applying, so they sit with the costs for selected participants.
-        selected = bool(re.search(r"select|participa|accredit|registration|hotel|attend|deposit|tuition|housing|penalt|contingen|production|withdraw|travel", described, re.I))
+        selected = bool(re.search(r"select|shortlist|participa|accredit|registration|hotel|attend|deposit|tuition|housing|penalt|contingen|production|withdraw|travel", described, re.I))
         label_parts = [clean(raw.get("category")), clean(raw.get("kind") or raw.get("component"))]
         unit = str(row.get("unit") or "")
         if unit.lower() not in {"per_project", "per_application", "unknown", "per project", "standard", ""}:
@@ -173,7 +177,7 @@ def fee_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
             "stage": "selected" if selected else "application",
             "label": label,
             "amount": money(row.get("amount"), row.get("currency")),
-            "state": row.get("normalized_state") or "unknown_or_conditional",
+            "state": "optional" if OPTIONAL_FEE.search(f"{described} {label or ''}") else row.get("normalized_state") or "unknown_or_conditional",
             "note": human(row.get("condition")),
         }
         if item["amount"] is None and item["state"] == "unknown_or_conditional" and not item["note"]:
@@ -510,6 +514,9 @@ def main(argv: list[str] | None = None) -> int:
         state = o.get("application_state") or "unknown"
         if recheck and recheck["status"] == "closed":
             state = "closed_or_historical"
+        elif recheck and recheck["status"] == "changed" and closes and closes >= recheck["checked_on"]:
+            # A round the official page shows live (or about to open) is no longer a watch item.
+            state = "announced_not_open" if opens and opens > recheck["checked_on"] else "open_or_published"
         calls.append({
             "id": oid,
             "title": clean(o["title"]),

@@ -25,13 +25,11 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "tools"))
-from export_public_data import ROLE_LABELS, money  # noqa: E402
+from export_public_data import OPTIONAL_FEE as OPTIONAL, ROLE_LABELS, money  # noqa: E402
 
 STATUSES = {"confirmed", "changed", "closed", "unreachable"}
 # Costs that come after selection, not the price of applying.
-AFTER_SELECTION = re.compile(r"(?i)select|participation|accredit|badge|pass\b|finalist|tuition|attend|registration fee|admit|invited|if accepted|if chosen|deposit|contribution|into production")
-# Add-ons and discounts: listed, but not part of what it costs to enter.
-OPTIONAL = re.compile(r"(?i)optional|surcharge|feedback|analysis|discount|% off")
+AFTER_SELECTION = re.compile(r"(?i)select|participation|accredit|badge|pass\b|finalist|tuition|attend|registration fee|admit|invited|if accepted|if chosen|deposit|contribution|into production|shortlist|withdraw|penalt|cancel")
 
 
 def problems(result: dict[str, Any], known: set[str]) -> list[str]:

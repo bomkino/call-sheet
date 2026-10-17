@@ -3,7 +3,7 @@
  "calls": [
   {
    "bring": [],
-   "caution": "Closed: the deadline of 7 October 2026 has passed",
+   "caution": "This round closed on 7 October; we have no date for the next one, so check with the NFVF",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-07",
@@ -83,7 +83,7 @@
   },
   {
    "bring": [],
-   "caution": "Closed: the deadline of 12 October 2026 has passed",
+   "caution": "This round closed on 12 October; we have no date for the next one, so check with the NZFC",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-12",
@@ -161,7 +161,7 @@
   },
   {
    "bring": [],
-   "caution": "Closed: this was a past call, with a deadline of 19 June 2026",
+   "caution": "The 2026 Cinema round closed on 19 June; we have no date for the next one, so check with AFAC",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-06-19",
@@ -236,7 +236,7 @@
   },
   {
    "bring": [],
-   "caution": "Closed: the current index marks the Finishing Fund closed",
+   "caution": "The ISO lists the 2026/27 Finishing Fund as closed; we have no reopening date, so check with the ISO",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": null,
@@ -303,7 +303,7 @@
   },
   {
    "bring": [],
-   "caution": "Closed or outside the application window when we last checked",
+   "caution": "Closed or outside its application window when last checked; we have no date for the next window, so check with Purin Pictures",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": null,
@@ -371,7 +371,7 @@
   },
   {
    "bring": [],
-   "caution": "Closed: the deadline of 20 January 2026 has passed",
+   "caution": "Doc_Commune 2026 closed on 20 January; we have no date for the next round, so check with PSBT",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-01-20",
@@ -456,7 +456,7 @@
      "optional": false
     }
    ],
-   "caution": "Ceilings are withheld while guideline editions are reconciled; check the current guidelines",
+   "caution": "Only companies with recent CMF funding and the minimum gross sales qualify, and this intake is first come, first served, so apply early",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-11-12",
@@ -578,7 +578,7 @@
      "optional": false
     }
    ],
-   "caution": "Not open yet (opens 24 November 2026); ceilings withheld while guideline editions are reconciled",
+   "caution": "Only Canadian-controlled companies with four years of revenue growth and sales in at least one territory between 2020 and 2025 qualify",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-12-08",
@@ -700,7 +700,7 @@
      "optional": false
     }
    ],
-   "caution": "Terms and caps not verified; credit and role tests differ by branch",
+   "caution": "Writer and director must both be Aboriginal or Torres Strait Islander, and feature caps rise to AUD 45,000 only with a producer attached",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-22",
@@ -811,7 +811,7 @@
      "optional": false
     }
    ],
-   "caution": "Terms unresolved and intake is rolling: reconfirm budget and intake before applying",
+   "caution": "Check the guidelines for whether this funding is a grant or must be repaid; we couldn't confirm the terms on the official pages",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": null,
@@ -906,7 +906,7 @@
      "optional": false
     }
    ],
-   "caution": "Terms unresolved and intake is rolling: reconfirm budget and intake before applying",
+   "caution": "Check the guidelines for whether this funding is a grant or must be repaid; we couldn't confirm the terms on the official pages",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": null,
@@ -998,7 +998,7 @@
      "optional": false
     }
    ],
-   "caution": "Grant or equity terms are unresolved; the finance cap is not verified",
+   "caution": "Creative First requests can reach AUD 500,000 only if direct funding plus the producer offset stay within 60% of the budget",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-12-03",
@@ -1100,7 +1100,7 @@
      "optional": false
     }
    ],
-   "caution": "A pre-application hui is needed at least four weeks ahead; check the timing against 9 November",
+   "caution": "You need a hui with the NZFC at least four weeks before applying, which for 9 November meant by 12 October; ask the NZFC first if you've missed it",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-11-09",
@@ -1247,7 +1247,7 @@
      "optional": false
     }
    ],
-   "caution": "A pre-application hui is needed at least four weeks ahead; check the timing against 9 November",
+   "caution": "You need a hui with the NZFC at least four weeks before applying, which for 9 November meant by 12 October; ask the NZFC first if you've missed it",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-11-09",
@@ -1393,7 +1393,7 @@
      "optional": false
     }
    ],
-   "caution": "A pre-application hui is needed at least four weeks ahead; check the timing against 9 November",
+   "caution": "You need an established New Zealand distributor attached and a hui with the NZFC at least four weeks before applying (by 12 October for 9 November)",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-11-09",
@@ -1540,7 +1540,7 @@
      "optional": false
     }
    ],
-   "caution": "Not open yet (opens 24 November 2026); financing terms need project-specific review",
+   "caution": "Only production companies with a head office in Canada can apply; if you miss 8 December, a second window runs 30 March to 13 April 2027",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-12-08",
@@ -1642,7 +1642,7 @@
     "subnational": null,
     "test": "company"
    },
-   "who": "Canadian companies with an English-language feature budgeted at CAD3.5m or more"
+   "who": "Canadian production companies; English or other-language features of CAD 3.5m or more"
   },
   {
    "bring": [
@@ -1653,7 +1653,7 @@
      "optional": false
     }
    ],
-   "caution": "Our notes conflict: the title says low budget, the window text says budgets of CAD3.5m or more",
+   "caution": "This is Telefilm's only window for English-language features under CAD 3.5m, Indigenous Stream included, and only companies based in Canada can apply",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2027-02-09",
@@ -1755,7 +1755,7 @@
     "subnational": null,
     "test": "company"
    },
-   "who": "Canadian companies with a feature project under Telefilm rules"
+   "who": "Canadian production companies; English or other-language features under CAD 3.5m"
   },
   {
    "bring": [
@@ -1766,7 +1766,7 @@
      "optional": false
     }
    ],
-   "caution": "Our notes conflict: title says French-language, all budgets; window text says English, CAD3.5m+",
+   "caution": "Only production companies with a head office in Canada can apply; if you miss 8 December, a second French-language window runs 22 June to 6 July 2027",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-12-08",
@@ -1868,7 +1868,7 @@
     "subnational": null,
     "test": "company"
    },
-   "who": "Canadian companies with a feature project under Telefilm rules"
+   "who": "Canadian production companies with French-language feature projects, any budget"
   },
   {
    "bring": [
@@ -1879,7 +1879,7 @@
      "optional": false
     }
    ],
-   "caution": "Round brief pending: applicant rules, platform rules and caps are not yet published",
+   "caution": "The Round Toru brief isn't out yet, so applicant and platform rules and funding caps are unknown; read it before you plan an application",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2027-01-28",
@@ -2004,7 +2004,7 @@
      "optional": false
     }
    ],
-   "caution": "Opens 5 November 2026; the applicant test and contract terms are not yet published",
+   "caution": "Eligibility, fee, premiere and rights terms for 2026 aren't published yet; read them when the call opens on 5 November",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-12-05",
@@ -2114,7 +2114,7 @@
      "optional": false
     }
    ],
-   "caution": "Opens 5 November 2026; regional applicant rules and contract terms are not yet published",
+   "caution": "Eligibility, fee, premiere and rights terms for 2026 aren't published yet; read them when the call opens on 5 November",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-12-05",
@@ -2225,7 +2225,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Only citizens of India can apply, with proof of earlier films, and half the ₹12 lakh is paid only at the final cut and post-production stage",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-20",
@@ -2340,7 +2340,7 @@
      "optional": false
     }
    ],
-   "caution": "Our notes are incomplete: get the full rules; production is in Indigenous languages",
+   "caution": "Selected projects get a 45-day production period; get the full rules and check when that clock starts before you commit",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-11-17",
@@ -2464,7 +2464,7 @@
      "optional": false
     }
    ],
-   "caution": "This is the Australian route; New Zealand teams use the separate NZ On Air application",
+   "caution": "You must watch the pre-recorded webinar before submitting, and teams need at least two key creatives, including a writer",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-11-26",
@@ -2617,7 +2617,7 @@
      "optional": false
     }
    ],
-   "caution": "Phase II funding (up to NZD330,000) is by invitation only and not guaranteed",
+   "caution": "You must register on the NZ On Air portal before deadline day, so by 25 November, to submit by 4pm NZDT on 26 November",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-11-26",
@@ -2783,7 +2783,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Only Canadian-controlled, for-profit production companies with a head office in Canada can apply, with a Major Production Funder backing the project",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-12-02",
@@ -2939,7 +2939,7 @@
      "optional": false
     }
    ],
-   "caution": "A pre-application meeting comes first; NZD140,000 is a lifetime ceiling, not one award",
+   "caution": "You must hold a 15-minute hui with the NZFC funding team before you apply; email development@nzfilm.co.nz to book one",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": null,
@@ -3048,7 +3048,7 @@
      "optional": false
     }
    ],
-   "caution": "A pre-application meeting comes first; NZD140,000 is a lifetime ceiling, not one award",
+   "caution": "You need at least 80 minutes of documentary credits and must hold a 15-minute hui with the NZFC before you apply",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": null,
@@ -3156,7 +3156,7 @@
      "optional": false
     }
    ],
-   "caution": "Rolling intake after a pre-application meeting; reconfirm budget and intake first",
+   "caution": "Only for features budgeted under NZD 1m that haven't had NZFC production or post-production funding; book a hui before you apply",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": null,
@@ -3250,7 +3250,7 @@
      "optional": false
     }
    ],
-   "caution": "A missing budget, schedule or cut makes the application immediately ineligible",
+   "caution": "The fund can close without notice before 1 March 2027 once its money is allocated, so apply as early as you can",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2027-03-01",
@@ -3383,7 +3383,7 @@
      "optional": false
     }
    ],
-   "caution": "Detailed terms pending: check eligibility and the portal's full checklist",
+   "caution": "No amount is published for this stream, so check the current cap and eligibility on the Canada Council portal before 25 November",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-11-25",
@@ -3495,7 +3495,7 @@
      "optional": false
     }
    ],
-   "caution": "Terms pending: apply before the project starts and confirm the exact category",
+   "caution": "Apply before your project starts: results usually come within five months, so leave enough time",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": null,
@@ -3597,7 +3597,7 @@
      "optional": false
     }
    ],
-   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras",
+   "caution": "Only individuals can apply, not companies or associations, and your feature must already have a rough cut or first assembly",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-22",
@@ -3743,7 +3743,7 @@
      "optional": false
     }
    ],
-   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras",
+   "caution": "Only individuals can apply, not companies; for development, the screenwriter applies even if they won't direct",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-22",
@@ -3889,7 +3889,7 @@
      "optional": false
     }
    ],
-   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras",
+   "caution": "Only individuals can apply, not companies or associations, and the feature must already have a final picture cut",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-22",
@@ -4028,7 +4028,7 @@
      "optional": false
     }
    ],
-   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras",
+   "caution": "Only individuals can apply, not companies, and the short must already have a final cut; Mexican applicants also need an RFC",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-22",
@@ -4174,7 +4174,7 @@
      "optional": false
     }
    ],
-   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras",
+   "caution": "For a feature you must already have directed at least one short, and only individuals can apply, not companies",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-22",
@@ -4320,7 +4320,7 @@
      "optional": false
     }
    ],
-   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras",
+   "caution": "Only individuals can apply, not companies or associations, and Mexican applicants need an RFC tax registration",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-22",
@@ -4459,7 +4459,7 @@
      "optional": false
     }
    ],
-   "caution": "Argentina has separate rules; this 30 December deadline is for the INAP route only",
+   "caution": "Closes at 07:59 on 30 December with no time zone given, so treat 29 December as your deadline; Argentine partners follow INCAA's rules",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-12-30",
@@ -4589,7 +4589,7 @@
      "optional": false
     }
    ],
-   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules",
+   "caution": "Your director must not have directed and commercially released a feature, and the call closes at 07:59 on 19 October with no time zone given",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-19",
@@ -4709,7 +4709,7 @@
      "optional": false
     }
    ],
-   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules",
+   "caution": "Closes at 07:59 on 19 October with no time zone given, and you need INAP nationality certificates for both the producer and the project",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-19",
@@ -4829,7 +4829,7 @@
      "optional": false
     }
    ],
-   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules",
+   "caution": "Closes at 07:59 on 19 October with no time zone given, and you need INAP nationality certificates for both the producer and the project",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-19",
@@ -4951,7 +4951,7 @@
      "optional": false
     }
    ],
-   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules",
+   "caution": "Closes at 07:59 on 19 October with no time zone given, and you need INAP nationality certificates for both the producer and the project",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-19",
@@ -5073,7 +5073,7 @@
      "optional": false
     }
    ],
-   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules",
+   "caution": "Closes at 07:59 on 19 October with no time zone given, and you need INAP nationality certificates for both the producer and the project",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-19",
@@ -5191,7 +5191,7 @@
      "optional": false
     }
    ],
-   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules",
+   "caution": "Closes at 07:59 on 19 October with no time zone given, and you need INAP nationality certificates for both the producer and the project",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-19",
@@ -5306,7 +5306,7 @@
   },
   {
    "bring": [],
-   "caution": "Watch only: no verified open call, and current fund rules could not be verified",
+   "caution": "We show Docedge Kolkata's 10 December deadline, but ALT EFF's own key-dates panel says 1 December, so apply by 1 December to be safe",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-12-10",
@@ -5433,7 +5433,7 @@
     }
    ],
    "stages": [],
-   "state": "watch_or_rolling",
+   "state": "announced_not_open",
    "terms": [
     {
      "label": "Obligations",
@@ -5458,7 +5458,7 @@
   },
   {
    "bring": [],
-   "caution": "Watch only: no verified in-window deadline or current award",
+   "caution": "The last round closed on 11 December 2025; Hot Docs says details of the next round will be out in late October or early November",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2025-12-11",
@@ -5556,7 +5556,7 @@
      "optional": false
     }
    ],
-   "caution": "Watch only: the next round is not announced; no verified deadline or award",
+   "caution": "The Fall 2026 grants round closed on 2 July; no next round announced when we checked on 17 October",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-07-02",
@@ -5649,7 +5649,7 @@
   },
   {
    "bring": [],
-   "caution": "Watch only: the 2027 post-production call is not announced or verified",
+   "caution": "No 2027 post-production call is announced yet; the fund's calendar lists 6 to 27 January and 6 to 21 July cycles without a year, so confirm first",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": null,
@@ -5726,7 +5726,7 @@
   },
   {
    "bring": [],
-   "caution": "Watch only: no verified in-window deadline or current award",
+   "caution": "The 2025–26 call closed on 7 January; no next call announced when we checked on 17 October, though the last one opened on 7 November",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-01-07",
@@ -5844,7 +5844,7 @@
   },
   {
    "bring": [],
-   "caution": "Watch only: no verified in-window deadline or current award",
+   "caution": "FOCINE 2026 closed on 30 January; the 2027 call wasn't published when we checked on 17 October (the 2026 call opened on 2 January)",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-01-30",
@@ -5939,7 +5939,7 @@
   },
   {
    "bring": [],
-   "caution": "Watch only: no verified in-window deadline or current award",
+   "caution": "Cycle 1 of 2026/27 closed on 6 July; no next cycle announced when we checked on 17 October",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-07-06",
@@ -6032,7 +6032,7 @@
   },
   {
    "bring": [],
-   "caution": "Watch only: no verified in-window deadline or current award",
+   "caution": "The 2025 round is finished and no new eAccelerate call was announced when we checked on 17 October",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": null,
@@ -6107,7 +6107,7 @@
   },
   {
    "bring": [],
-   "caution": "Watch only: no verified in-window deadline or current award",
+   "caution": "Only Singapore-registered companies can apply, and selection after the pitch only invites you to make a formal grant application",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-30",
@@ -6193,7 +6193,7 @@
     }
    ],
    "stages": [],
-   "state": "watch_or_rolling",
+   "state": "open_or_published",
    "terms": [
     {
      "label": "Obligations",
@@ -6218,7 +6218,7 @@
   },
   {
    "bring": [],
-   "caution": "Watch only: no verified in-window deadline or current award",
+   "caution": "The 2026 round has closed; KIMFF says applications open in December but gave no date for the next call when we checked on 17 October",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": null,
@@ -6300,7 +6300,7 @@
      "optional": false
     }
    ],
-   "caution": "Elapsed: the 2026 entry window has passed, and runtime rules conflict",
+   "caution": "The 2026 WIP Lab entry window closed on 2 October; we have no date for the next edition, so check with Film Bazaar",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-02",
@@ -6390,7 +6390,7 @@
      "optional": false
     }
    ],
-   "caution": "Elapsed: the 2026 entry window has passed",
+   "caution": "The 2026 Viewing Room entry window closed on 2 October; we have no date for the next edition, so check with Film Bazaar",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-02",
@@ -6478,7 +6478,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "The top three prizes are option and purchase deals for your script (CAD 1,000 or CAD 500), and production is not guaranteed",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2027-03-03",
@@ -6680,7 +6680,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Feature entry fees rise from CAD 70 by 29 October to CAD 165 by 4 January, plus 13% HST within Canada, and are non-refundable",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2027-01-04",
@@ -6828,7 +6828,7 @@
      "optional": false
     }
    ],
-   "caution": "Section-specific eligibility and premiere rules still need confirmation",
+   "caution": "Short-film entries closed on 16 October; features can still enter until 6pm Central Mexico time on 31 October and need a Mexican premiere",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-31",
@@ -6968,7 +6968,7 @@
      "optional": false
     }
    ],
-   "caution": "Rules vary by section, and the 70-minute short/feature boundary is unclear",
+   "caution": "Your film must not have been shown publicly in Colombia in any form, analogue or digital, before FICCI 66",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-29",
@@ -7126,7 +7126,7 @@
      "optional": false
     }
    ],
-   "caution": "The final 2027 screening schedule is not yet confirmed",
+   "caution": "We couldn't load Doc Edge's entry page on 17 October, so confirm deadlines and fees there, and the category if your film runs exactly 40 minutes",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2027-01-31",
@@ -7244,7 +7244,7 @@
      "optional": false
     }
    ],
-   "caution": "Fee currency and African-feature category definitions are not verified",
+   "caution": "DIFF limits feature fiction and documentaries to African countries but also says non-African features are solicited, so check before entering one",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2027-01-15",
@@ -7376,7 +7376,7 @@
      "optional": false
     }
    ],
-   "caution": "Full section requirements and the entry fee could not be verified",
+   "caution": "Only films produced in 2026 and not yet screened in Egypt can enter, and the main competitions require African directors",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-12-15",
@@ -7503,7 +7503,7 @@
      "optional": false
     }
    ],
-   "caution": "Borderline Asian-link eligibility needs confirming against current-cycle rules",
+   "caution": "You need a director, producer and production company attached, and the project must have Asian elements or Asian key creatives",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-30",
@@ -7646,7 +7646,7 @@
      "optional": false
     }
    ],
-   "caution": "Published market-financing rules for the rough-cut route conflict; confirm with the organiser",
+   "caution": "Only independent production companies can apply, and each pitch team member must buy a Hot Docs industry pass if selected",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-12-10",
@@ -7786,7 +7786,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "If selected, each pitch team member must buy a Hot Docs industry pass, priced only after selection; the form is shared with the Forum",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-12-10",
@@ -7905,7 +7905,7 @@
      "optional": false
     }
    ],
-   "caution": "Fees conflict: AUD66.50/76.50 on the live page, AUD65/75 in the PDFs",
+   "caution": "If selected, you must buy an AIDC 2027 All Access Pass to take part (10% off for selected teams); its price isn't stated",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-08",
@@ -8054,7 +8054,7 @@
      "optional": false
     }
    ],
-   "caution": "Territorial, financing and company-share rules could not be verified",
+   "caution": "Applications for the 24th Co-production Meeting closed on 16 October; no next call announced when we checked on 17 October",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-16",
@@ -8187,7 +8187,7 @@
      "optional": false
     }
    ],
-   "caution": "Regulations have changed substantially; financing and category rules not verified",
+   "caution": "Episode 0 registration closed on 16 October; no next call announced when we checked on 17 October",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-16",
@@ -8288,7 +8288,7 @@
      "optional": false
     }
    ],
-   "caution": "Territorial, unshot-project and financing rules could not be verified",
+   "caution": "Fantastic Genre pitch submissions closed on 16 October; no next call announced when we checked on 17 October",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-16",
@@ -8395,7 +8395,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Films entered in an earlier Guadalajara Construye can't apply again, and travel and food costs are yours even if selected",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-27",
@@ -8507,7 +8507,7 @@
      "optional": false
     }
    ],
-   "caution": "Full current duration and category rules could not be verified",
+   "caution": "Only Ibero-American directors with a documentary already at first or second cut can apply; check the full rules for any length limits",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-27",
@@ -8629,7 +8629,7 @@
      "optional": false
     }
    ],
-   "caution": "Opens 2 November 2026; the Asian-link rule awaits current-call clarification",
+   "caution": "You need a director, producer and production company attached; confirm the Asian-link rule, which the WIP page doesn't spell out",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-12-16",
@@ -8773,7 +8773,7 @@
      "optional": false
     }
    ],
-   "caution": "This entry gives no application deadline; another of our notes puts it in October 2026",
+   "caution": "The 2026 call closed on 16 October after an extension; no 2027 edition announced when we checked on 17 October",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-16",
@@ -8911,7 +8911,7 @@
      "optional": false
     }
    ],
-   "caution": "The regular fee conflicts: NZD150 on the webpage, NZD175 in the guide",
+   "caution": "The regular fee is NZD 150 on Doc Edge's web page but NZD 175 in its submission guide; we show the web page figure",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-12-20",
@@ -9068,7 +9068,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "The rules give 27 November at 6pm but also say apply before 27 November, so treat 26 November as your deadline",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-27",
@@ -9190,7 +9190,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "WIP features need a lead production company based in an Ibero-American country, and only Colombian projects can enter the shorts strand",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-29",
@@ -9337,7 +9337,7 @@
      "optional": false
     }
    ],
-   "caution": "Script category rules need a current-form check; fee currency not verified",
+   "caution": "We couldn't load Female Eye's FilmFreeway page on 17 October, so confirm the deadline, categories and fee currency there before entering",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-12-31",
@@ -9432,7 +9432,7 @@
      "optional": true
     }
    ],
-   "caution": "Live-pitch eligibility needs a current-form check; fee currency not verified",
+   "caution": "Live Pitch 2026 entries closed on 16 October; no 2027 pitch call announced when we checked on 17 October",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-16",
@@ -9533,7 +9533,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "The rules say to apply before 13 November, so treat 12 November as your last day",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-12",
@@ -9635,7 +9635,7 @@
      "optional": false
     }
    ],
-   "caution": "Nationality, residency and script eligibility could not be verified",
+   "caution": "There is a QAR 1,000 lab fee, and the page doesn't say whether you pay it when applying or only if selected",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-24",
@@ -9741,7 +9741,7 @@
      "optional": false
     }
    ],
-   "caution": "Check the current call's administrative conditions and amendments",
+   "caution": "Both the applicant and the person attending must be emerging producers, directors or screenwriters; support is in kind, not cash",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-19",
@@ -9842,7 +9842,7 @@
      "optional": false
     }
    ],
-   "caution": "Watch: the call opens December 2026; no closing date verified, and 2026 fees don't apply",
+   "caution": "The 2026 call has closed and the next opens in December; last time, accepted writers paid a USD 1,500 lab fee",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": null,
@@ -9933,7 +9933,7 @@
      "optional": false
     }
    ],
-   "caution": "Watch: opens January 2027, no verified closing date; past accommodation and meals not promised",
+   "caution": "The 2026 call has closed and the next opens in January 2027; last time, accepted writers paid a USD 3,750 participation fee",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": null,
@@ -10024,7 +10024,7 @@
      "optional": false
     }
    ],
-   "caution": "Watch: no 2027 call verified; the 2026 cycle closed on 1 February 2026",
+   "caution": "We couldn't load Durban FilmMart's application page on 17 October; the 2026 cycle closed on 1 February, so check there for the 2027 call and deadline",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": null,
@@ -10099,7 +10099,7 @@
      "optional": false
     }
    ],
-   "caution": "No 2026 festival or Souk; the next edition is in Q4 2027, dates to be announced",
+   "caution": "There is no 2026 festival or Souk; the sixth edition is set for late 2027 and its submission process is not yet announced",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": null,
@@ -10181,7 +10181,7 @@
      "optional": false
     }
    ],
-   "caution": "Closed: applications ended 31 July 2026; 31 January 2027 is notification, not a deadline",
+   "caution": "The 2027 competition closed on 31 July; 31 January 2027 is the notification date, not a deadline, and no next round is announced",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-07-31",
@@ -10276,7 +10276,7 @@
      "optional": false
     }
    ],
-   "caution": "Closed: applications ended 24 September 2026",
+   "caution": "Applications closed on 24 September; no next call announced when we checked on 17 October",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-09-24",
@@ -10414,7 +10414,7 @@
      "optional": false
     }
    ],
-   "caution": "Closed: new entries ended 30 June 2026",
+   "caution": "Entries closed on 30 June and no next call is announced; the previously announced prize money won't be paid this year",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-06-30",
@@ -10520,7 +10520,7 @@
      "optional": false
     }
    ],
-   "caution": "Closed: these ATF calls ended in September 2026; their December events are not deadlines",
+   "caution": "These ATF calls closed in September, the last on 29 September; no 2027 calls announced when we checked on 17 October",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-09-29",
@@ -10657,7 +10657,7 @@
   },
   {
    "bring": [],
-   "caution": "Funding is not guaranteed to finalists; you need an entity or fiscal sponsor to receive payment",
+   "caution": "The film must be your first documentary of 50 minutes or more as director or co-director",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2027-01-22",
@@ -10800,7 +10800,7 @@
   },
   {
    "bring": [],
-   "caution": "IBF director-country, setting and ownership tests apply and are not listed in our notes",
+   "caution": "You must be the European minority co-producer and the director must be from an IBF-listed country; 2027 rules are final only after 15 November",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2027-01-15",
@@ -10915,7 +10915,7 @@
   },
   {
    "bring": [],
-   "caution": null,
+   "caution": "The UK producer must be the minority partner in the co-production, and both deadlines are at midday UK time, not midnight",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-11-24",
@@ -11037,11 +11037,11 @@
     "subnational": null,
     "test": "mixed"
    },
-   "who": "UK independent production company leading an international co-production"
+   "who": "UK-resident producers leading a UK company, as minority partner on a feature co-production"
   },
   {
    "bring": [],
-   "caution": null,
+   "caution": "Only animation or documentary TV co-productions qualify, led by a UK-resident producer of a UK limited company; deadlines are at midday",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-11-24",
@@ -11169,7 +11169,7 @@
   },
   {
    "bring": [],
-   "caution": null,
+   "caution": "Shooting on any slate project can't start until at least 10 months after the deadline, so not before 1 October 2027",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-12-01",
@@ -11442,7 +11442,7 @@
   },
   {
    "bring": [],
-   "caution": "Nationality, language and treaty rules need the current CNC guide; a French co-producer's name is not enough",
+   "caution": "Only applications filed on the deposit day (23 November) count, and the CNC may close deposits early if too many arrive",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-11-23",
@@ -11563,7 +11563,7 @@
   },
   {
    "bring": [],
-   "caution": "Only open after an ACM pre-filming rejection; older sources quote a €50,000 cap",
+   "caution": "Only films already refused ACM pre-filming aid can apply, and at least 60% of the aid must go on eligible French costs",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-11-09",
@@ -11673,7 +11673,7 @@
   },
   {
    "bring": [],
-   "caution": "Check the current legal country list; being 'European' in general is not enough",
+   "caution": "Authors must be French or nationals of a country on the CNC's eligible list (EU and some other European states), so check the list",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-11-02",
@@ -11771,7 +11771,7 @@
   },
   {
    "bring": [],
-   "caution": "The company's French establishment needs confirming in the current guide",
+   "caution": "Applications are taken on a single filing day, 7 December, and the aid goes only to production companies established in France",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-12-07",
@@ -11868,7 +11868,7 @@
   },
   {
    "bring": [],
-   "caution": null,
+   "caution": "Only for projects that won the fund's writing award in the 12 months before you apply, through a production company established in France",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": null,
@@ -11954,7 +11954,7 @@
   },
   {
    "bring": [],
-   "caution": "November reform: the updated form and terms need reconfirming before you apply",
+   "caution": "Deposits are taken only from 9:00 to 17:00 on one day: 16 November for experienced writers, 19 November for first features",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-11-16",
@@ -12081,7 +12081,7 @@
   },
   {
    "bring": [],
-   "caution": "Claiming residence instead of citizenship needs specific documents; check the rules",
+   "caution": "If you're not French or EU, you need a French resident card valid for at least 10 years; multi-year residence permits don't count",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2027-01-08",
@@ -12213,7 +12213,7 @@
   },
   {
    "bring": [],
-   "caution": "Check the exact format category and consultant allocation before applying",
+   "caution": "The filing window is only 7 to 8 January, and non-EU authors need a French resident card valid for at least 10 years",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2027-01-08",
@@ -12356,7 +12356,7 @@
   },
   {
    "bring": [],
-   "caution": "Nationality, residence and French dossier rules need confirming on the current form",
+   "caution": "Non-European authors need a French resident card valid for 10 years (multi-year permits don't count), and projects must be written in French",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-11-23",
@@ -12484,7 +12484,7 @@
   },
   {
    "bring": [],
-   "caution": null,
+   "caution": "15 December is only for children's films; feature fiction and documentary treatments are due by 23:59 on 29 January 2027",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-12-15",
@@ -12611,7 +12611,7 @@
   },
   {
    "bring": [],
-   "caution": null,
+   "caution": "15 December is only for children's films; feature fiction screenplays are due by 23:59 on 29 January 2027",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-12-15",
@@ -12754,7 +12754,7 @@
   },
   {
    "bring": [],
-   "caution": "Check whether FFA or Kuratorium junger deutscher Film handles your project",
+   "caution": "The FFA only takes producers with at least two earlier features or shorts as references; newer producers go to the Kuratorium junger deutscher Film",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-12-15",
@@ -12856,7 +12856,7 @@
   },
   {
    "bring": [],
-   "caution": null,
+   "caution": "You need a home or business base in Germany, or a German branch if your company is elsewhere in the EU or EEA",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-12-15",
@@ -12964,7 +12964,7 @@
   },
   {
    "bring": [],
-   "caution": null,
+   "caution": "You need a home or business base in Germany, or a German branch if your company is elsewhere in the EU or EEA",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-12-15",
@@ -13077,7 +13077,7 @@
   },
   {
    "bring": [],
-   "caution": "No passport rule is stated, but foreign-based projects need clearance first",
+   "caution": "No nationality rule is stated, but the grant supports Finnish film production, so check with the Finnish Film Foundation if you're based abroad",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2027-01-13",
@@ -13201,7 +13201,7 @@
   },
   {
    "bring": [],
-   "caution": "No passport rule is stated, but foreign-based projects need clearance first",
+   "caution": "The grant is paid into a Finnish bank account and supports Finnish film production; applications close at 16:00 Helsinki time on 21 October",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-21",
@@ -13322,7 +13322,7 @@
   },
   {
    "bring": [],
-   "caution": null,
+   "caution": "Only Finland-registered production companies qualify; sole traders, registered associations and TV or streaming companies can't apply",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-20",
@@ -13432,7 +13432,7 @@
   },
   {
    "bring": [],
-   "caution": null,
+   "caution": "Only film production companies registered in Finland can apply, and development support already received counts towards the €1,200,000 cap",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-10-20",
@@ -13547,7 +13547,7 @@
   },
   {
    "bring": [],
-   "caution": null,
+   "caution": "You must show professional writing experience, and only applications complete by 17:00 Vienna time on 24 November go to February's meeting",
    "check_yourself": [],
    "checked_on": "2026-10-16",
    "closes": "2026-11-24",
@@ -13669,7 +13669,7 @@
      "optional": false
     }
    ],
-   "caution": "The award is competitive and paid in conditional stages, not guaranteed or upfront",
+   "caution": "Only companies can apply, not individuals, and the €50,000 prize is paid in stages, with €15,000 after the 2027 Forum",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-30",
@@ -13803,7 +13803,7 @@
      "optional": false
     }
    ],
-   "caution": "An existing screenplay draft makes the project ineligible",
+   "caution": "Projects that already have a screenplay draft aren't eligible, and if selected you pay a €3,000 participation fee (plus VAT if due)",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-03",
@@ -13923,7 +13923,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Selected teams pay a €3,500 participation fee (plus VAT if due), and you must submit at least a first draft of the script in English",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-05",
@@ -14046,7 +14046,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "The DKK 250 entry fee is non-refundable, but it's waived for projects from DAC-list countries and some low-capacity European countries",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-03",
@@ -14159,7 +14159,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Selected projects pay a CHF 360 participation fee and must attend on-site pitch training in Nyon on 11 April 2027",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-12-15",
@@ -14321,7 +14321,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Selected teams pay €950 per person (excluding VAT), and pulling out after 8 January 2027 costs €1,000",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-12",
@@ -14376,22 +14376,22 @@
     "checked_on": "2026-10-17",
     "items": [
      {
-      "amount": "€1,000",
-      "label": "Withdrawal fee after 8 January 2027",
-      "note": "If a selected project withdraws",
-      "stage": "application",
-      "state": "priced"
-     },
-     {
       "amount": "€950",
       "label": "Participation fee if selected",
       "note": "Per person, excl. VAT, incl. registration and admin costs; EUR 350 deposit; no submission fee is mentioned",
       "stage": "selected",
       "state": "priced"
+     },
+     {
+      "amount": "€1,000",
+      "label": "Withdrawal fee after 8 January 2027",
+      "note": "If a selected project withdraws",
+      "stage": "selected",
+      "state": "priced"
      }
     ],
-    "state": "priced",
-    "summary": "€1,000"
+    "state": "unknown",
+    "summary": "Not published"
    },
    "formats": [
     "animation"
@@ -14513,7 +14513,7 @@
      "optional": false
     }
    ],
-   "caution": "Check the official correspondent table: Baltics and Kosovo use nominations, Ukraine has exceptions",
+   "caution": "You apply by email through your country's national correspondent; Baltic and Kosovo projects come only through nominating forums",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-20",
@@ -14732,7 +14732,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "You need at least one confirmed external funding commitment, and finalists must buy a Content London pass (£399 at the discounted rate)",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-19",
@@ -14866,7 +14866,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Finalists must buy a Content London pass, at a discounted £399, to pitch; entries close at 23:59 GMT on 19 October",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-19",
@@ -15000,7 +15000,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Applying is free, but selected writers pay €1,090 (solo) or €1,890 (duo) in tuition, plus their own travel, lodging and meals",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-09",
@@ -15164,7 +15164,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Selected participants pay €1,800 each for the three workshops, plus travel, and shortlisted projects pay €100 for a feedback session",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-19",
@@ -15196,13 +15196,13 @@
       "label": "Company Time fee",
       "note": "Producers' follow-up workshop; covers accommodation and tuition",
       "stage": "application",
-      "state": "priced"
+      "state": "optional"
      },
      {
       "amount": "€100",
       "label": "Online Feedback Session fee if shortlisted",
       "note": "Per project; about 20 projects shortlisted",
-      "stage": "application",
+      "stage": "selected",
       "state": "optional"
      },
      {
@@ -15213,8 +15213,8 @@
       "state": "priced"
      }
     ],
-    "state": "priced",
-    "summary": "€400"
+    "state": "unknown",
+    "summary": "Not published"
    },
    "formats": [
     "fiction_feature"
@@ -15287,7 +15287,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Entries must be received by 25 November and no time is given, so send yours a day or two early",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-25",
@@ -15429,7 +15429,7 @@
      "optional": false
     }
    ],
-   "caution": "Announced but not yet open; eligibility and required materials are still pending",
+   "caution": "There's a registration fee, reduced until 10 December, but the amounts and eligibility rules weren't published when we checked on 17 October",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2027-01-20",
@@ -15545,7 +15545,7 @@
      "optional": false
     }
    ],
-   "caution": "Check the general regulations for funding and budget conditions; 2027 fees are unconfirmed",
+   "caution": "Email your materials by 1 December; the regulations page still shows last year's 15 December deadline, so go by the call page",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-12-01",
@@ -15664,7 +15664,7 @@
      "optional": false
     }
    ],
-   "caution": "Check the general regulations for funding and budget conditions; 2027 fees are unconfirmed",
+   "caution": "Total budgets must be €6 million or less; email materials by 1 December, as the regulations page still shows last year's 15 December date",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-12-01",
@@ -15951,7 +15951,7 @@
      "optional": false
     }
    ],
-   "caution": "Check the full country list; the 21 October 23:59 CET deadline is unclear around the clock change, so submit early",
+   "caution": "Selected writer-directors pay a €900 participation fee plus their own travel; the deadline is 11.59pm CET on 21 October",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-21",
@@ -16119,7 +16119,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Selected participants pay €1,200 each, plus travel, and non-European projects must plan a co-production with a European country",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-19",
@@ -16219,7 +16219,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "If selected with a project you pay €3,000 (plus VAT if due), and the 4pm CET deadline on 30 November won't be extended",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-30",
@@ -16843,7 +16843,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Selected teams of two pay €3,500 (plus VAT if due), with some half-fee scholarships, and the 4pm CET deadline won't be extended",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-12-16",
@@ -16963,7 +16963,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Taking part is free, but if your film goes into production you pay a €6,000 contribution on the first day of shooting",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-12",
@@ -17071,7 +17071,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Selected teams pay €2,000 (plus VAT if due), with some half-fee scholarships, and projects must be at treatment stage",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-12-04",
@@ -17184,7 +17184,7 @@
      "optional": false
     }
    ],
-   "caution": "Listed deadline was 15 October 2026 and has passed; check whether entries are still accepted",
+   "caution": "The 2027 workshop call closed on 15 October; no next call announced when we checked on 17 October",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-15",
@@ -17316,7 +17316,7 @@
      "optional": false
     }
    ],
-   "caution": "Fees depend on your location; producers in non-MEDIA European countries should verify their rate",
+   "caution": "You must have produced a feature documentary, and selected producers pay €3,000 tuition (€1,500 outside Europe) plus about €4,000 residential costs",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-23",
@@ -17473,7 +17473,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Entries up to 3 December need the deadline waiver code EpSloanGrantX121426 on FilmFreeway",
    "check_yourself": [
     "Is the project clear of conflicting exclusive deals, distribution and third-party ownership restrictions?",
     "Are the applicant’s prior credits clear of the FAQ’s US-produced pilot/pitch exclusion?",
@@ -17615,7 +17615,7 @@
      "optional": false
     }
    ],
-   "caution": "Residency rules not confirmed; free hosting and evaluation are not universal (sponsored slots)",
+   "caution": "The partner page we checked gives no cut-off time or eligibility rules, so confirm both, and any Black List fees, on the Black List",
    "check_yourself": [
     "Is there an existing feature/pilot and a specific plan to revise it through climate storytelling?"
    ],
@@ -17723,7 +17723,7 @@
      "optional": false
     }
    ],
-   "caution": "Needs a paid Black List hosted script and evaluation unless exempted; evaluation price unverified",
+   "caution": "Open to US citizens and permanent residents aged 18 to 25 only; you need a paid Black List hosting and evaluation unless you get a fee waiver",
    "check_yourself": [
     "Will the fellowship produce a NEW feature screenplay, not simply revise the submitted sample?"
    ],
@@ -17860,7 +17860,7 @@
      "optional": false
     }
    ],
-   "caution": "Full form and media specs not confirmed; check the portal and tribal paperwork rules",
+   "caution": "Applications close at 3:30pm PT (6:30pm ET) on 16 November, not midnight, so submit earlier in the day",
    "check_yourself": [
     "Does the applicant meet the California-based tribal affiliation/lineal-descendancy requirement?"
    ],
@@ -18006,7 +18006,7 @@
      "optional": false
     }
    ],
-   "caution": "Current cash amount is not published; do not rely on past-year figures",
+   "caution": "Applications close at 3:30pm PT on 3 November, not midnight, and the 2027 cash grant amount isn't published",
    "check_yourself": [
     "Is the applicant endeavouring to direct a feature film?",
     "Does the applicant self-identify as an Indigenous woman?"
@@ -18148,7 +18148,7 @@
      "optional": false
     }
    ],
-   "caution": "Any gender restriction is unconfirmed; check the full form before applying",
+   "caution": "Only for your scripted directorial debut, and directing duos or teams can't apply",
    "check_yourself": [
     "Is this the applicant’s first scripted directorial short, excluding prior student films?",
     "Is this NOT a current degree/student-film project?",
@@ -18251,7 +18251,7 @@
      "optional": false
     }
    ],
-   "caution": "Deadline listed as 16 October 2026; rights terms are flagged for review",
+   "caution": "The 2026 grant closed on 16 October; winners are announced on 15 March 2027 and no next round was announced when we checked",
    "check_yourself": [
     "Is this an individual/directing-team entry, with all participants eligible and no excluded company/insider applicant?",
     "Is the applicant at least the age of majority where they live?",
@@ -18374,7 +18374,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Your budget must be under $500,000, and winners filming outside the US may not be able to use all the donated services",
    "check_yourself": [
     "Does the project make the programme’s required positive social contribution?"
    ],
@@ -18505,7 +18505,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Your film must be budgeted at $50,000 or less; check with From the Heart before entering a series rather than a film",
    "check_yourself": [
     "Is the applicant currently enrolled in a qualifying school/course?",
     "Does the project make the required positive social contribution?"
@@ -18623,7 +18623,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "You must complete the initial questionnaire by 20 November (paper requests postmarked by 25 November) before sending your proposal by 16 December",
    "check_yourself": [
     "Are BOTH the application writing and submitted project material clear of prohibited generative-AI use?",
     "Does the project meet Puffin’s public/social benefit and underrepresented-voice purpose?",
@@ -18766,7 +18766,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Watch the free information session before applying: the page calls it both required and recommended",
    "check_yourself": [
     "Is this new 2027 artistic work with live public engagement for Queens audiences (in person in Queens, or a qualifying live virtual event)?",
     "Is this an eligible artistic/public-benefit project rather than industrial/commercial entertainment?",
@@ -18889,7 +18889,7 @@
      "optional": false
     }
    ],
-   "caution": "Application fee not established; check the SlideRoom form before applying",
+   "caution": "Only full-time Miami-Dade County residents who have already completed a short documentary can apply",
    "check_yourself": [
     "Does the applicant meet the current Miami-Dade residency requirement?",
     "Has the applicant previously completed a documentary short?",
@@ -19004,7 +19004,7 @@
      "optional": false
     }
    ],
-   "caution": "Application fee not established; check the SlideRoom form before applying",
+   "caution": "First-time directors can apply, but you need a crew credit on a short film and must live full-time in Miami-Dade County",
    "check_yourself": [
     "Does the applicant have the required filmmaking experience, even if a first-time director?",
     "Does the applicant meet the current Miami-Dade residency requirement?",
@@ -19119,7 +19119,7 @@
      "optional": false
     }
    ],
-   "caution": "Application fee not established; check the SlideRoom form before applying",
+   "caution": "Check the application form for any fee and the closing time on 6 November; neither is published on the festival page",
    "check_yourself": [
     "Does the applicant meet the current Miami-Dade residency requirement?",
     "Is the documentary connected to South Florida as required?",
@@ -19232,7 +19232,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "There is a separate IMGN platform agreement, so check what rights it takes over material you upload before applying",
    "check_yourself": [
     "Does the applicant hold original, unencumbered rights or the exact permission required for this route?"
    ],
@@ -19540,7 +19540,7 @@
      "optional": false
     }
    ],
-   "caution": "Check every core-team condition in the rules, not only the lead applicant's residence",
+   "caution": "Current students can't apply, and an attached writer or director must be from, or connected to, an underrepresented community",
    "check_yourself": [
     "Is this the director’s first or second scripted feature?",
     "Does the directing sample include at least five consecutive minutes, not just a montage reel?",
@@ -19693,7 +19693,7 @@
      "optional": false
     }
    ],
-   "caution": "Paid as reimbursement: winners must show expenses, production and E&O insurance and delivery",
+   "caution": "The prize, up to $10,000 and set by the number of entries, is paid as reimbursement of expenses you submit within 120 days",
    "check_yourself": [
     "Can the team meet the insurance, expense documentation, 120-day and credit requirements?",
     "Will this film NOT already have been produced before the contest ends?",
@@ -19811,7 +19811,7 @@
      "optional": false
     }
    ],
-   "caution": "Eligibility is decided case by case; the process starts with a rolling letter of inquiry",
+   "caution": "Start with a letter of inquiry; replies can take up to six months, so allow for that in your production schedule",
    "check_yourself": [
     "Does the documentary have a concrete social-impact strategy and producing-capacity plan?"
    ],
@@ -19908,7 +19908,7 @@
      "optional": false
     }
    ],
-   "caution": "This deadline is for applicants invited to Step 2 only (continuation stage)",
+   "caution": "Step 1 closed on 1 October, so only applicants invited after it can submit Step 2, before 4pm Eastern on 24 November",
    "check_yourself": [
     "Is the applicant the eligible generative director with the required original creative and editorial control?",
     "Does the applicant satisfy the early-career definition or a documented programme exception?",
@@ -20044,7 +20044,7 @@
      "optional": false
     }
    ],
-   "caution": "This deadline is for applicants invited to Step 2 only (continuation stage)",
+   "caution": "Step 1 closed on 1 October, so only applicants invited after it can submit Step 2, before 4pm Central on 24 November",
    "check_yourself": [
     "Is the applicant the eligible generative director with the required original creative and editorial control?",
     "Does the applicant satisfy the early-career definition or a documented programme exception?",
@@ -20194,7 +20194,7 @@
      "optional": false
     }
    ],
-   "caution": "This deadline is for applicants invited to Step 2 only (continuation stage)",
+   "caution": "Step 1 closed on 1 October, so only applicants invited after it can submit Step 2, before 4pm Central on 24 November",
    "check_yourself": [
     "Is the applicant the eligible generative director with the required original creative and editorial control?",
     "Does the applicant satisfy the early-career definition or a documented programme exception?",
@@ -20332,7 +20332,7 @@
      "optional": false
     }
    ],
-   "caution": "Deadline conflict: 22 October (session page) vs 15 October (PDF); a paid badge is required",
+   "caution": "You need an AFM Platinum or + Sessions badge to submit, from $695 to $1,395 when we checked; no separate pitch fee is stated",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-22",
@@ -20491,7 +20491,7 @@
      "optional": false
     }
    ],
-   "caution": "Deadline conflict: 22 October (session page) vs 15 October (PDF); a paid badge is required",
+   "caution": "You need an AFM Platinum or + Sessions badge to submit, from $695 to $1,395 when we checked; no separate pitch fee is stated",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-22",
@@ -20650,7 +20650,7 @@
      "optional": false
     }
    ],
-   "caution": "Paid programme with selective aid; mentors do not read scripts at the Narrative Lab",
+   "caution": "If admitted you pay a $2,750 lab fee plus travel and lodging; for aid, tick the financial support question on your application",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-12-02",
@@ -20811,7 +20811,7 @@
      "optional": false
     }
    ],
-   "caution": "Paid programme with selective scholarships; a well-developed full draft is needed by the retreat",
+   "caution": "If admitted you pay a $1,800 retreat fee; there's no separate scholarship form, so ask for financial support on your application",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-12-02",
@@ -20977,7 +20977,7 @@
      "optional": false
     }
    ],
-   "caution": "Invitees other than the Grand Fellow generally pay additional retreat fees",
+   "caution": "Finalists and division winners invited to the retreat pay $2,800 (teams $4,600); only the TV Fellow attends free",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-12-14",
@@ -21159,7 +21159,7 @@
      "optional": false
     }
    ],
-   "caution": "Not open yet: applications open 1 December 2026 and the 2027 form is not published",
+   "caution": "The application window runs only from 1 to 22 December, with no closing time given, so submit early",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-12-22",
@@ -21286,7 +21286,7 @@
      "optional": false
     }
    ],
-   "caution": "Feature prize conflicts ($4,000 vs $5,000) and co-written feature eligibility is unclear",
+   "caution": "Feature entry fees rise from $45 by 5 November to $95 by 4 March, and scripts over 125 pages cost $1 more per extra page",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2027-03-04",
@@ -21484,7 +21484,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "The $50 early-bird fee ends on 22 October and rises to $85 by the final deadline; students and FilmFreeway Gold members pay less",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2027-01-05",
@@ -21658,7 +21658,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "Not for writers already staffed or paid to develop TV, and entries close at 7:59am Central on 14 December, or earlier if the cap is reached",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-12-14",
@@ -21853,7 +21853,7 @@
      "optional": false
     }
    ],
-   "caution": "Deadline conflict: calendar says 6 November, introductory text says 5 December 2026",
+   "caution": "Scripts made with any AI tools are banned, and the final deadline is 6 November at 11:59pm EST, not 5 December",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-06",
@@ -22067,7 +22067,7 @@
      "optional": false
     }
    ],
-   "caution": "Short-script limit is inconsistent at 40 pages; confirm if yours is exactly 40",
+   "caution": "We couldn't load Cinequest's FilmFreeway page on 17 October, so confirm the 13 November deadline and fees there, and the limit if your short is 40 pages",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-13",
@@ -22215,7 +22215,7 @@
      "optional": false
     }
    ],
-   "caution": null,
+   "caution": "The 19 February 2027 pitch location isn't announced yet, so check you can attend in person before paying to enter",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-11-01",
@@ -22351,7 +22351,7 @@
      "optional": false
     }
    ],
-   "caution": "Rights terms apply (the TV prize is an option); check category rules before entering",
+   "caution": "We couldn't load the FilmFreeway page on 17 October, so confirm the deadline and category rules there; note the TV prize is an option on your script",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2027-06-01",
@@ -22396,7 +22396,7 @@
       "label": "Short + 1-page feedback · Early fee · Optional feedback bundle (until 2027-01-15)",
       "note": "Category-specific outcomes; TV option is not the feature prize. Early checkpoint; final 1 June 2027.",
       "stage": "application",
-      "state": "priced"
+      "state": "optional"
      },
      {
       "amount": "$45",
@@ -22407,7 +22407,7 @@
      }
     ],
     "state": "priced",
-    "summary": "$40–70"
+    "summary": "$40–50"
    },
    "formats": [
     "fiction_feature",
@@ -22485,7 +22485,7 @@
      "optional": false
     }
    ],
-   "caution": "Short-script page limit not confirmed; check your entry category",
+   "caution": "We couldn't load the FilmFreeway page on 17 October, so confirm the deadline, fees and short-script page limit there before entering",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2027-07-01",
@@ -22614,7 +22614,7 @@
      "optional": false
     }
    ],
-   "caution": "Marked on hold in our notes; short page limit conflicts (59 vs 60), so check before paying",
+   "caution": "We couldn't load the FilmFreeway page on 17 October, so confirm the contest is open, the 31 October deadline and the short-script page limit",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-10-31",
@@ -22725,7 +22725,7 @@
      "optional": false
     }
    ],
-   "caution": "Eligibility comes from the general festival call; check the script-specific form",
+   "caution": "We couldn't load the FilmFreeway page on 17 October, so confirm the deadline and the script-specific rules there before entering",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2027-03-05",
@@ -22861,7 +22861,7 @@
      "optional": false
     }
    ],
-   "caution": "Short-script page cap not verified; check before entering a short",
+   "caution": "The festival page lists no entry fees and no closing time for 31 December, so check both on the entry platform before paying",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2026-12-31",
@@ -23035,7 +23035,7 @@
      "optional": false
     }
    ],
-   "caution": "Script eligibility and page limits not verified in public rules; confirm first",
+   "caution": "We couldn't load the submission guidelines on 17 October, and who may enter isn't stated, so confirm the deadline and rules before paying",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2027-01-05",
@@ -23382,7 +23382,7 @@
      "optional": false
     }
    ],
-   "caution": "Not open until 5 January 2027 (official deadline 27 January); premiere and residency rules unconfirmed",
+   "caution": "Projects already showcased at any festival or works-in-progress event can't apply; submissions open on 5 January 2027",
    "check_yourself": [],
    "checked_on": "2026-10-15",
    "closes": "2027-02-24",

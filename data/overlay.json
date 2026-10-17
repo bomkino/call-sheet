@@ -42,7 +42,7 @@
    },
    "who_line": "Check the official rules: not stated in our notes",
    "get_line": "Stream 1: up to ZAR400,000 for shorts, pilots and web series; jobs/execution conditions apply",
-   "caution": "Closed: the deadline of 7 October 2026 has passed"
+   "caution": "This round closed on 7 October; we have no date for the next one, so check with the NFVF"
   },
   {
    "id": "opp:atlas:current:c02",
@@ -67,7 +67,7 @@
    },
    "who_line": "Check the official rules: not stated in our notes",
    "get_line": "Up to NZD90,000 for short fiction, including animation",
-   "caution": "Closed: the deadline of 12 October 2026 has passed"
+   "caution": "This round closed on 12 October; we have no date for the next one, so check with the NZFC"
   },
   {
    "id": "opp:atlas:current:c03",
@@ -89,7 +89,7 @@
    },
    "who_line": "Check the official rules: not stated in our notes",
    "get_line": "Not published in our notes",
-   "caution": "Closed: this was a past call, with a deadline of 19 June 2026"
+   "caution": "The 2026 Cinema round closed on 19 June; we have no date for the next one, so check with AFAC"
   },
   {
    "id": "opp:atlas:current:c04",
@@ -113,7 +113,7 @@
    },
    "who_line": "Check the official rules: not stated in our notes",
    "get_line": "Not published in our notes",
-   "caution": "Closed: the current index marks the Finishing Fund closed"
+   "caution": "The ISO lists the 2026/27 Finishing Fund as closed; we have no reopening date, so check with the ISO"
   },
   {
    "id": "opp:atlas:current:c05",
@@ -138,7 +138,7 @@
    },
    "who_line": "Check the official rules: not stated in our notes",
    "get_line": "Production or post-production funding for a film (amount not published)",
-   "caution": "Closed or outside the application window when we last checked"
+   "caution": "Closed or outside its application window when last checked; we have no date for the next window, so check with Purin Pictures"
   },
   {
    "id": "opp:atlas:current:c06",
@@ -163,7 +163,7 @@
    },
    "who_line": "Check the official rules: not stated in our notes",
    "get_line": "Documentary mentoring and a commission (amount not published)",
-   "caution": "Closed: the deadline of 20 January 2026 has passed"
+   "caution": "Doc_Commune 2026 closed on 20 January; we have no date for the next round, so check with PSBT"
   },
   {
    "id": "opp:atlas:current:f01",
@@ -191,7 +191,7 @@
    },
    "who_line": "Canadian-controlled production companies meeting track-record criteria",
    "get_line": "Interest-free repayable advance of CAD 75,000, or CAD 100,000 for drama, across up to five projects",
-   "caution": "Ceilings are withheld while guideline editions are reconciled; check the current guidelines"
+   "caution": "Only companies with recent CMF funding and the minimum gross sales qualify, and this intake is first come, first served, so apply early"
   },
   {
    "id": "opp:atlas:current:f02",
@@ -219,7 +219,7 @@
    },
    "who_line": "Canadian-controlled production companies; not a route for writers without a company",
    "get_line": "Up to CAD 75,000 slate development allocation, spread over up to five projects",
-   "caution": "Not open yet (opens 24 November 2026); ceilings withheld while guideline editions are reconciled"
+   "caution": "Only Canadian-controlled companies with four years of revenue growth and sales in at least one territory between 2020 and 2025 qualify"
   },
   {
    "id": "opp:atlas:current:f03",
@@ -249,7 +249,7 @@
    },
    "who_line": "First Nations Australian writers, directors and producers with eligible credits",
    "get_line": "Development funding up to AUD 30,000 (docs), AUD 45,000 (features) or AUD 65,000 (TV series)",
-   "caution": "Terms and caps not verified; credit and role tests differ by branch"
+   "caution": "Writer and director must both be Aboriginal or Torres Strait Islander, and feature caps rise to AUD 45,000 only with a producer attached"
   },
   {
    "id": "opp:atlas:current:f04",
@@ -277,7 +277,7 @@
    },
    "who_line": "Australian citizens, permanent residents and Australian companies with an ABN",
    "get_line": "Up to A$30,000 per application to develop a documentary",
-   "caution": "Terms unresolved and intake is rolling: reconfirm budget and intake before applying"
+   "caution": "Check the guidelines for whether this funding is a grant or must be repaid; we couldn't confirm the terms on the official pages"
   },
   {
    "id": "opp:atlas:current:f05",
@@ -307,7 +307,7 @@
    },
    "who_line": "Australian companies, or Australian citizens and permanent residents, with an ABN",
    "get_line": "AUD 10,000 to AUD 50,000 development funding per application",
-   "caution": "Terms unresolved and intake is rolling: reconfirm budget and intake before applying"
+   "caution": "Check the guidelines for whether this funding is a grant or must be repaid; we couldn't confirm the terms on the official pages"
   },
   {
    "id": "opp:atlas:current:f06",
@@ -337,7 +337,7 @@
    },
    "who_line": "Australian companies, citizens or permanent residents; significant Australian content",
    "get_line": "Production funding for drama; Creative First feature requests up to AUD 500,000",
-   "caution": "Grant or equity terms are unresolved; the finance cap is not verified"
+   "caution": "Creative First requests can reach AUD 500,000 only if direct funding plus the producer offset stay within 60% of the budget"
   },
   {
    "id": "opp:atlas:current:f07_innovation",
@@ -367,7 +367,7 @@
    },
    "who_line": "NZ citizen or permanent-resident lead producers; NZ content or an official co-production",
    "get_line": "Up to NZD 1,500,000 for an Innovation-led film; a grant if budget ≤NZD 1m and ask ≤NZD 500,000",
-   "caution": "A pre-application hui is needed at least four weeks ahead; check the timing against 9 November"
+   "caution": "You need a hui with the NZFC at least four weeks before applying, which for 9 November meant by 12 October; ask the NZFC first if you've missed it"
   },
   {
    "id": "opp:atlas:current:f07_post",
@@ -396,7 +396,7 @@
    },
    "who_line": "NZ citizen or permanent-resident lead producers; significant NZ content or official co-pro",
    "get_line": "Up to NZD 500,000 for post-production: a grant if the budget is NZD 1m or less, else equity",
-   "caution": "A pre-application hui is needed at least four weeks ahead; check the timing against 9 November"
+   "caution": "You need a hui with the NZFC at least four weeks before applying, which for 9 November meant by 12 October; ask the NZFC first if you've missed it"
   },
   {
    "id": "opp:atlas:current:f07_prod",
@@ -426,7 +426,7 @@
    },
    "who_line": "NZ citizen or permanent resident lead producers of a feature with significant NZ content",
    "get_line": "Up to NZD 2.5m (NZD 500,000 for post); a grant if budget ≤ NZD 1m and ask ≤ NZD 500,000, else equity",
-   "caution": "A pre-application hui is needed at least four weeks ahead; check the timing against 9 November"
+   "caution": "You need an established New Zealand distributor attached and a hui with the NZFC at least four weeks before applying (by 12 October for 9 November)"
   },
   {
    "id": "opp:atlas:current:f08_en_high",
@@ -453,9 +453,9 @@
     "evidence": "Canadian audiovisual production companies who: … Have their head office in Canada. … Carry out their activities in Canada. … Projects produced in languages other than French and English must be submitted during the opening periods applicable to English-language projects.",
     "excludes": []
    },
-   "who_line": "Canadian companies with an English-language feature budgeted at CAD3.5m or more",
+   "who_line": "Canadian production companies; English or other-language features of CAD 3.5m or more",
    "get_line": "Production or post-production financing for a Canadian feature film of 75 minutes or more",
-   "caution": "Not open yet (opens 24 November 2026); financing terms need project-specific review"
+   "caution": "Only production companies with a head office in Canada can apply; if you miss 8 December, a second window runs 30 March to 13 April 2027"
   },
   {
    "id": "opp:atlas:current:f08_en_low_bridge",
@@ -482,9 +482,9 @@
     "evidence": "Canadian audiovisual production companies who: … Have their head office in Canada. … Carry out their activities in Canada. … Projects produced in languages other than French and English must be submitted during the opening periods applicable to English-language projects.",
     "excludes": []
    },
-   "who_line": "Canadian companies with a feature project under Telefilm rules",
+   "who_line": "Canadian production companies; English or other-language features under CAD 3.5m",
    "get_line": "Production or post-production financing for a Canadian feature film of 75 minutes or more",
-   "caution": "Our notes conflict: the title says low budget, the window text says budgets of CAD3.5m or more"
+   "caution": "This is Telefilm's only window for English-language features under CAD 3.5m, Indigenous Stream included, and only companies based in Canada can apply"
   },
   {
    "id": "opp:atlas:current:f08_fr",
@@ -511,9 +511,9 @@
     "evidence": "Canadian audiovisual production companies who: … Have their head office in Canada. … Carry out their activities in Canada. … French-language projects at all budget levels",
     "excludes": []
    },
-   "who_line": "Canadian companies with a feature project under Telefilm rules",
+   "who_line": "Canadian production companies with French-language feature projects, any budget",
    "get_line": "Production or post-production financing for a Canadian feature film of 75 minutes or more",
-   "caution": "Our notes conflict: title says French-language, all budgets; window text says English, CAD3.5m+"
+   "caution": "Only production companies with a head office in Canada can apply; if you miss 8 December, a second French-language window runs 22 June to 6 July 2027"
   },
   {
    "id": "opp:atlas:current:f09",
@@ -543,7 +543,7 @@
    },
    "who_line": "Not yet published: awaits the Round Toru brief (a New Zealand public-media programme)",
    "get_line": "Content funding (round caps not yet published)",
-   "caution": "Round brief pending: applicant rules, platform rules and caps are not yet published"
+   "caution": "The Round Toru brief isn't out yet, so applicant and platform rules and funding caps are unknown; read it before you plan an application"
   },
   {
    "id": "opp:atlas:current:g01",
@@ -571,7 +571,7 @@
    },
    "who_line": "Feature documentaries about Southeast Asia in late edit or finishing",
    "get_line": "SGD 10,000 cash each for three documentaries in late edit or finishing",
-   "caution": "Opens 5 November 2026; the applicant test and contract terms are not yet published"
+   "caution": "Eligibility, fee, premiere and rights terms for 2026 aren't published yet; read them when the call opens on 5 November"
   },
   {
    "id": "opp:atlas:current:g02",
@@ -600,7 +600,7 @@
    },
    "who_line": "Emerging Southeast Asian filmmakers making short films",
    "get_line": "SGD 10,000 cash each for six short films",
-   "caution": "Opens 5 November 2026; regional applicant rules and contract terms are not yet published"
+   "caution": "Eligibility, fee, premiere and rights terms for 2026 aren't published yet; read them when the call opens on 5 November"
   },
   {
    "id": "opp:atlas:current:g03",
@@ -630,7 +630,7 @@
    },
    "who_line": "Indian citizens: emerging filmmakers with previous filmmaking experience",
    "get_line": "A ₹12 lakh (INR 1,200,000) commissioning grant paid in three stages, plus mentorship",
-   "caution": null
+   "caution": "Only citizens of India can apply, with proof of earlier films, and half the ₹12 lakh is paid only at the final cut and post-production stage"
   },
   {
    "id": "opp:atlas:current:g04",
@@ -663,7 +663,7 @@
    },
    "who_line": "Indigenous people aged 18–35 living in Peru, and Indigenous organisations and collectives",
    "get_line": "PEN 15,000 each (four awards), a Lima workshop with travel and stay covered, and mentoring",
-   "caution": "Our notes are incomplete: get the full rules; production is in Indigenous languages"
+   "caution": "Selected projects get a 45-day production period; get the full rules and check when that clock starts before you commit"
   },
   {
    "id": "opp:atlas:current:g05",
@@ -694,7 +694,7 @@
    },
    "who_line": "Australian citizens, permanent residents or Australian-controlled companies",
    "get_line": "AUD 20,000 per team, mentoring and a Melbourne workshop; up to three teams get production funding",
-   "caution": "This is the Australian route; New Zealand teams use the separate NZ On Air application"
+   "caution": "You must watch the pre-recorded webinar before submitting, and teams need at least two key creatives, including a writer"
   },
   {
    "id": "opp:atlas:current:g06",
@@ -725,7 +725,7 @@
    },
    "who_line": "New Zealand-based individuals or entities, with two key creatives including a writer",
    "get_line": "Up to NZD 22,000 development funding, a Melbourne workshop and mentoring",
-   "caution": "Phase II funding (up to NZD330,000) is by invitation only and not guaranteed"
+   "caution": "You must register on the NZ On Air portal before deadline day, so by 25 November, to submit by 4pm NZDT on 26 November"
   },
   {
    "id": "opp:atlas:current:g07",
@@ -754,7 +754,7 @@
    },
    "who_line": "Canadian-controlled taxable production companies with a qualifying MPF licence",
    "get_line": "Non-repayable funding up to CAD 150,000–250,000 for production, plus up to CAD 25,000",
-   "caution": null
+   "caution": "Only Canadian-controlled, for-profit production companies with a head office in Canada can apply, with a Major Production Funder backing the project"
   },
   {
    "id": "opp:atlas:current:g08",
@@ -784,7 +784,7 @@
    },
    "who_line": "NZ citizens or permanent residents holding the rights, with qualifying credits",
    "get_line": "Up to NZ$35,000 per tranche, capped at NZ$140,000 in total per project",
-   "caution": "A pre-application meeting comes first; NZD140,000 is a lifetime ceiling, not one award"
+   "caution": "You must hold a 15-minute hui with the NZFC funding team before you apply; email development@nzfilm.co.nz to book one"
   },
   {
    "id": "opp:atlas:current:g09",
@@ -813,7 +813,7 @@
    },
    "who_line": "NZ citizens or permanent residents holding the rights, with qualifying credits",
    "get_line": "Development funding of up to $35,000 per tranche, capped at $140,000 per project",
-   "caution": "A pre-application meeting comes first; NZD140,000 is a lifetime ceiling, not one award"
+   "caution": "You need at least 80 minutes of documentary credits and must hold a 15-minute hui with the NZFC before you apply"
   },
   {
    "id": "opp:atlas:current:g10",
@@ -841,7 +841,7 @@
    },
    "who_line": "Features whose director and producer are both NZ citizens or permanent residents",
    "get_line": "A non-recoupable grant of up to NZD 60,000 to finish the feature",
-   "caution": "Rolling intake after a pre-application meeting; reconfirm budget and intake first"
+   "caution": "Only for features budgeted under NZD 1m that haven't had NZFC production or post-production funding; book a hui before you apply"
   },
   {
    "id": "opp:atlas:current:g11",
@@ -873,7 +873,7 @@
    },
    "who_line": "Canadian companies at least 51% First Nations, Inuit or Métis owned and controlled",
    "get_line": "Up to CAD 50,000 for features and series, or CAD 25,000 for shorts, web and immersive",
-   "caution": "A missing budget, schedule or cut makes the application immediately ineligible"
+   "caution": "The fund can close without notice before 1 March 2027 once its money is allocated, so apply as early as you can"
   },
   {
    "id": "opp:atlas:current:g12",
@@ -902,7 +902,7 @@
    },
    "who_line": "First Nations, Inuit and Métis individuals, groups and organisations",
    "get_line": "Project funding for activities of up to one year; no amount stated on this page",
-   "caution": "Detailed terms pending: check eligibility and the portal's full checklist"
+   "caution": "No amount is published for this stream, so check the current cap and eligibility on the Canada Council portal before 25 November"
   },
   {
    "id": "opp:atlas:current:g13",
@@ -931,7 +931,7 @@
    },
    "who_line": "Canadian artists, groups and arts organisations",
    "get_line": "Grant to develop, create and share artistic works at any stage of the creative process",
-   "caution": "Terms pending: apply before the project starts and confirm the exact category"
+   "caution": "Apply before your project starts: results usually come within five months, so leave enough time"
   },
   {
    "id": "opp:atlas:current:g14_cont",
@@ -970,7 +970,7 @@
    },
    "who_line": "Indigenous or Afro-descendant people aged 18+ from Mexico or Central America",
    "get_line": "Up to MXN 850,000 to continue a feature with a rough cut, plus mentoring and a residency",
-   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
+   "caution": "Only individuals can apply, not companies or associations, and your feature must already have a rough cut or first assembly"
   },
   {
    "id": "opp:atlas:current:g14_dev",
@@ -1009,7 +1009,7 @@
    },
    "who_line": "Indigenous or Afro-descendant screenwriters (18+) from Mexico or Central America",
    "get_line": "Up to MXN 90,000 for feature development, plus a mentor, learning sessions and the ECAMC residency",
-   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
+   "caution": "Only individuals can apply, not companies; for development, the screenwriter applies even if they won't direct"
   },
   {
    "id": "opp:atlas:current:g14_fin_feature",
@@ -1041,7 +1041,7 @@
    },
    "who_line": "Indigenous or Afro-descendant directors 18+, Mexico or Central America, with a final cut",
    "get_line": "Up to MXN 950,000 to finish a feature, plus a mentor, learning sessions and the ECAMC residency",
-   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
+   "caution": "Only individuals can apply, not companies or associations, and the feature must already have a final picture cut"
   },
   {
    "id": "opp:atlas:current:g14_fin_short",
@@ -1080,7 +1080,7 @@
    },
    "who_line": "Indigenous or Afro-descendant people aged 18+ from Mexico or Central America",
    "get_line": "Up to MXN 300,000 to finish a short with a final cut, plus mentoring and a residency",
-   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
+   "caution": "Only individuals can apply, not companies, and the short must already have a final cut; Mexican applicants also need an RFC"
   },
   {
    "id": "opp:atlas:current:g14_prod_feature",
@@ -1119,7 +1119,7 @@
    },
    "who_line": "Indigenous or Afro-descendant directors with a short credit, Mexico or Central America",
    "get_line": "Up to MXN 1,200,000 to make a feature, plus a mentor, learning sessions and the ECAMC residency",
-   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
+   "caution": "For a feature you must already have directed at least one short, and only individuals can apply, not companies"
   },
   {
    "id": "opp:atlas:current:g14_prod_short",
@@ -1151,7 +1151,7 @@
    },
    "who_line": "Indigenous or Afro-descendant directors 18+ from Mexico or Central America",
    "get_line": "Up to MXN 450,000 to make a short, plus a mentor, learning sessions and the ECAMC residency",
-   "caution": "Each stage has its own ceiling; the amounts are alternatives, not extras"
+   "caution": "Only individuals can apply, not companies or associations, and Mexican applicants need an RFC tax registration"
   },
   {
    "id": "opp:atlas:current:g15",
@@ -1182,7 +1182,7 @@
    },
    "who_line": "Paraguayan majority producers with a genuine Argentine minority partner",
    "get_line": "USD 35,000 co-development award; two Paraguayan and two Argentine projects are chosen",
-   "caution": "Argentina has separate rules; this 30 December deadline is for the INAP route only"
+   "caution": "Closes at 07:59 on 30 December with no time zone given, so treat 29 December as your deadline; Argentine partners follow INCAA's rules"
   },
   {
    "id": "opp:atlas:current:g16_debut",
@@ -1208,7 +1208,7 @@
    },
    "who_line": "Paraguayan producers or companies with INAP producer and project nationality certificates",
    "get_line": "Up to PYG 260,000,000 for one debut feature; 70% repayable from net revenue",
-   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
+   "caution": "Your director must not have directed and commercially released a feature, and the call closes at 07:59 on 19 October with no time zone given"
   },
   {
    "id": "opp:atlas:current:g16_dev",
@@ -1234,7 +1234,7 @@
    },
    "who_line": "Paraguayan producers or firms holding INAP producer and project nationality certificates",
    "get_line": "Up to PYG 70,000,000 for development (up to four projects); 70% repayable from net income",
-   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
+   "caution": "Closes at 07:59 on 19 October with no time zone given, and you need INAP nationality certificates for both the producer and the project"
   },
   {
    "id": "opp:atlas:current:g16_doc",
@@ -1262,7 +1262,7 @@
    },
    "who_line": "Paraguayan producers or companies with INAP producer and project nationality certificates",
    "get_line": "Up to PYG 290,000,000 for one feature documentary; 70% repayable if the film earns net income",
-   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
+   "caution": "Closes at 07:59 on 19 October with no time zone given, and you need INAP nationality certificates for both the producer and the project"
   },
   {
    "id": "opp:atlas:current:g16_fiction",
@@ -1290,7 +1290,7 @@
    },
    "who_line": "Paraguayan producers or companies with INAP producer and project nationality certificates",
    "get_line": "Up to PYG 600,000,000 each for up to four fiction features; 70% repayable from net revenue",
-   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
+   "caution": "Closes at 07:59 on 19 October with no time zone given, and you need INAP nationality certificates for both the producer and the project"
   },
   {
    "id": "opp:atlas:current:g16_minority",
@@ -1314,7 +1314,7 @@
    },
    "who_line": "Paraguayan producers or firms with INAP certificates, as minority partner (at least 10%)",
    "get_line": "Up to PYG 260,000,000 for one minority co-production; 70% repayable from net income",
-   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
+   "caution": "Closes at 07:59 on 19 October with no time zone given, and you need INAP nationality certificates for both the producer and the project"
   },
   {
    "id": "opp:atlas:current:g16_short",
@@ -1342,7 +1342,7 @@
    },
    "who_line": "Paraguayan producers or companies with INAP producer and project nationality certificates",
    "get_line": "Up to PYG 70,000,000 for one short film; 70% repayable if the film earns net income",
-   "caution": "Closes 19 October 2026, 07:59; full terms pending, so check this line's own rules"
+   "caution": "Closes at 07:59 on 19 October with no time zone given, and you need INAP nationality certificates for both the producer and the project"
   },
   {
    "id": "opp:atlas:current:w01",
@@ -1368,7 +1368,7 @@
    },
    "who_line": "Indian documentary filmmakers with a feature on the 2026 theme of coexistence",
    "get_line": "Share of an INR 1.2 crore fund for up to three projects, with mentorship and impact support",
-   "caution": "Watch only: no verified open call, and current fund rules could not be verified"
+   "caution": "We show Docedge Kolkata's 10 December deadline, but ALT EFF's own key-dates panel says 1 December, so apply by 1 December to be safe"
   },
   {
    "id": "opp:atlas:current:w02",
@@ -1392,7 +1392,7 @@
    },
    "who_line": "Music documentary producers; non-Canadian companies only for films on Canadian artists",
    "get_line": "Development advance up to CAD 15,000 or production grant up to CAD 60,000; shorts up to CAD 30,000",
-   "caution": "Watch only: no verified in-window deadline or current award"
+   "caution": "The last round closed on 11 December 2025; Hot Docs says details of the next round will be out in late October or early November"
   },
   {
    "id": "opp:atlas:current:w03",
@@ -1414,7 +1414,7 @@
    },
    "who_line": "First or second-time feature directors anywhere; established MENA directors for post only",
    "get_line": "Narrative feature grants up to USD 20,000 development, USD 100,000 production, USD 75,000 post",
-   "caution": "Watch only: the next round is not announced; no verified deadline or award"
+   "caution": "The Fall 2026 grants round closed on 2 July; no next round announced when we checked on 17 October"
   },
   {
    "id": "opp:atlas:current:w04",
@@ -1442,7 +1442,7 @@
    },
    "who_line": "Directors of Arab nationality or origin, or African or Asian nationality; 60+ min features",
    "get_line": "Post-production grant to get a feature completed and ready for distribution",
-   "caution": "Watch only: the 2027 post-production call is not announced or verified"
+   "caution": "No 2027 post-production call is announced yet; the fund's calendar lists 6 to 27 January and 6 to 21 July cycles without a year, so confirm first"
   },
   {
    "id": "opp:atlas:current:w05",
@@ -1492,7 +1492,7 @@
    },
    "who_line": "Women aged 25 or over living in Central America or the Caribbean",
    "get_line": "A share of $15,000 in total across development and post-production awards",
-   "caution": "Watch only: no verified in-window deadline or current award"
+   "caution": "The 2025–26 call closed on 7 January; no next call announced when we checked on 17 October, though the last one opened on 7 November"
   },
   {
    "id": "opp:atlas:current:w06",
@@ -1519,7 +1519,7 @@
    },
    "who_line": "Mexican-born or naturalised individuals, Mexican companies and accredited film schools",
    "get_line": "Post-production support up to MXN 2m for features or MXN 200,000 for shorts (2026 terms)",
-   "caution": "Watch only: no verified in-window deadline or current award"
+   "caution": "FOCINE 2026 closed on 30 January; the 2027 call wasn't published when we checked on 17 October (the 2026 call opened on 2 January)"
   },
   {
    "id": "opp:atlas:current:w07",
@@ -1544,7 +1544,7 @@
    },
    "who_line": "Individuals, companies and organisations making South African screen content, by tier",
    "get_line": "Development, production and post-production funding by experience tier; no amounts on this page",
-   "caution": "Watch only: no verified in-window deadline or current award"
+   "caution": "Cycle 1 of 2026/27 closed on 6 July; no next cycle announced when we checked on 17 October"
   },
   {
    "id": "opp:atlas:current:w08",
@@ -1570,7 +1570,7 @@
    },
    "who_line": "Director and producer pairs from East Africa making short films (2025 round)",
    "get_line": "Up to EUR 20,000 for a short film, with mentoring and industry support (2025 round)",
-   "caution": "Watch only: no verified in-window deadline or current award"
+   "caution": "The 2025 round is finished and no new eAccelerate call was announced when we checked on 17 October"
   },
   {
    "id": "opp:atlas:current:w09",
@@ -1596,7 +1596,7 @@
    },
    "who_line": "Singapore-registered companies with Singapore talent, in four project categories",
    "get_line": "Route to an IMDA grant of up to SGD 300,000 to SGD 1.2m, depending on category",
-   "caution": "Watch only: no verified in-window deadline or current award"
+   "caution": "Only Singapore-registered companies can apply, and selection after the pitch only invites you to make a formal grant application"
   },
   {
    "id": "opp:atlas:current:w10",
@@ -1622,7 +1622,7 @@
    },
    "who_line": "Nepali filmmakers who have not yet made a feature-length documentary",
    "get_line": "NPR 200,000 each for three short documentaries, with mentoring (2026 round)",
-   "caution": "Watch only: no verified in-window deadline or current award"
+   "caution": "The 2026 round has closed; KIMFF says applications open in December but gave no date for the next call when we checked on 17 October"
   },
   {
    "id": "opp:atlas:legacy:a01",
@@ -1649,7 +1649,7 @@
    },
    "who_line": "Fiction feature teams worldwide with a rough cut; director and editor both attend",
    "get_line": "Rough-cut mentoring for the director and editor",
-   "caution": "Elapsed: the 2026 entry window has passed, and runtime rules conflict"
+   "caution": "The 2026 WIP Lab entry window closed on 2 October; we have no date for the next edition, so check with Film Bazaar"
   },
   {
    "id": "opp:atlas:legacy:a02",
@@ -1679,7 +1679,7 @@
    },
    "who_line": "Films from anywhere in post-production or completed; paid entry",
    "get_line": "A paid listing on the industry viewing platform (not a merit selection)",
-   "caution": "Elapsed: the 2026 entry window has passed"
+   "caution": "The 2026 Viewing Room entry window closed on 2 October; we have no date for the next edition, so check with Film Bazaar"
   },
   {
    "id": "opp:atlas:legacy:c01",
@@ -1705,7 +1705,7 @@
    },
    "who_line": "Writers worldwide with an unproduced English short script of up to 15 pages",
    "get_line": "Top three: option-purchase deals of CAD 1,000 or 500 and Crystal Awards; a chance of production",
-   "caution": null
+   "caution": "The top three prizes are option and purchase deals for your script (CAD 1,000 or CAD 500), and production is not guaranteed"
   },
   {
    "id": "opp:atlas:legacy:f01",
@@ -1732,7 +1732,7 @@
    },
    "who_line": "Documentaries from anywhere completed after 1 January 2026; Ontario/Toronto premiere",
    "get_line": "Festival selection and screening; selected films can compete for jury and audience awards",
-   "caution": null
+   "caution": "Feature entry fees rise from CAD 70 by 29 October to CAD 165 by 4 January, plus 13% HST within Canada, and are non-refundable"
   },
   {
    "id": "opp:atlas:legacy:f02",
@@ -1761,7 +1761,7 @@
    },
    "who_line": "Films with a Mexican premiere; Mexican, Ibero-American and international sections",
    "get_line": "Mayahuel awards, with cash prizes of up to MXN 500,000 in the top sections",
-   "caution": "Section-specific eligibility and premiere rules still need confirmation"
+   "caution": "Short-film entries closed on 16 October; features can still enter until 6pm Central Mexico time on 31 October and need a Mexican premiere"
   },
   {
    "id": "opp:atlas:legacy:f03",
@@ -1790,7 +1790,7 @@
    },
    "who_line": "Films of any nationality made or premiered in 2026–2027 and not yet shown in Colombia",
    "get_line": "Competition prizes from a pool of up to USD 100,000 shared across sections and WIP",
-   "caution": "Rules vary by section, and the 70-minute short/feature boundary is unclear"
+   "caution": "Your film must not have been shown publicly in Colombia in any form, analogue or digital, before FICCI 66"
   },
   {
    "id": "opp:atlas:legacy:f04",
@@ -1817,7 +1817,7 @@
    },
    "who_line": "Documentaries completed from 1 January 2026, with a New Zealand premiere",
    "get_line": "Festival screening; the Best International Feature winner can qualify for Oscar consideration",
-   "caution": "The final 2027 screening schedule is not yet confirmed"
+   "caution": "We couldn't load Doc Edge's entry page on 17 October, so confirm deadlines and fees there, and the category if your film runs exactly 40 minutes"
   },
   {
    "id": "opp:atlas:legacy:f05",
@@ -1848,7 +1848,7 @@
    },
    "who_line": "African feature fiction and documentaries; shorts and student films from any country",
    "get_line": "Screening at DIFF, Southern Africa's only Oscar-qualifying festival, and its awards",
-   "caution": "Fee currency and African-feature category definitions are not verified"
+   "caution": "DIFF limits feature fiction and documentaries to African countries but also says non-African features are solicited, so check before entering one"
   },
   {
    "id": "opp:atlas:legacy:f06",
@@ -1879,7 +1879,7 @@
    },
    "who_line": "African directors, including the diaspora; a separate strand for Qena and Luxor directors",
    "get_line": "A competition screening at the 16th festival in Luxor; prizes are not stated on this page",
-   "caution": "Full section requirements and the entry fee could not be verified"
+   "caution": "Only films produced in 2026 and not yet screened in Egypt can enter, and the main competitions require African directors"
   },
   {
    "id": "opp:atlas:legacy:p01",
@@ -1909,7 +1909,7 @@
    },
    "who_line": "Feature teams with director, producer and company, and Asian elements or Asian creatives",
    "get_line": "Travel and stay for the three-day Hong Kong financing forum, investor meetings and award eligibility",
-   "caution": "Borderline Asian-link eligibility needs confirming against current-cycle rules"
+   "caution": "You need a director, producer and production company attached, and the project must have Asian elements or Asian key creatives"
   },
   {
    "id": "opp:atlas:legacy:p02",
@@ -1938,7 +1938,7 @@
    },
    "who_line": "Independent production companies worldwide with a doc about 10–75% financed",
    "get_line": "Pitch to a round table of international commissioners and funders, with pitch training",
-   "caution": "Published market-financing rules for the rough-cut route conflict; confirm with the organiser"
+   "caution": "Only independent production companies can apply, and each pitch team member must buy a Hot Docs industry pass if selected"
   },
   {
    "id": "opp:atlas:legacy:p03",
@@ -1967,7 +1967,7 @@
    },
    "who_line": "Documentary or factual projects worldwide, development to post, financing not closed",
    "get_line": "One-on-one pitch meetings with matched decision makers over three days",
-   "caution": null
+   "caution": "If selected, each pitch team member must buy a Hot Docs industry pass, priced only after selection; the form is shared with the Forum"
   },
   {
    "id": "opp:atlas:legacy:p04",
@@ -1996,7 +1996,7 @@
    },
    "who_line": "Rights-holders worldwide (18+) with a doc feature, one-hour single or factual series",
    "get_line": "A live pitch to decision makers at AIDC 2027 in Sydney, plus mentoring and one-to-one meetings",
-   "caution": "Fees conflict: AUD66.50/76.50 on the live page, AUD65/75 in the PDFs"
+   "caution": "If selected, you must buy an AIDC 2027 All Access Pass to take part (10% off for selected teams); its price isn't stated"
   },
   {
    "id": "opp:atlas:legacy:p05",
@@ -2026,7 +2026,7 @@
    },
    "who_line": "Ibero-American features over 70 min, not yet shot, with 20% of financing secured",
    "get_line": "One-to-one meetings, two free accreditations, up to four nights' lodging, partner prizes",
-   "caution": "Territorial, financing and company-share rules could not be verified"
+   "caution": "Applications for the 24th Co-production Meeting closed on 16 October; no next call announced when we checked on 17 October"
   },
   {
    "id": "opp:atlas:legacy:p06",
@@ -2056,7 +2056,7 @@
    },
    "who_line": "Ibero-American fiction and documentary series in development, with a pilot draft",
    "get_line": "A place among up to 7 series projects in the Episode 0 activity at FICG 42",
-   "caution": "Regulations have changed substantially; financing and category rules not verified"
+   "caution": "Episode 0 registration closed on 16 October; no next call announced when we checked on 17 October"
   },
   {
    "id": "opp:atlas:legacy:p07",
@@ -2084,7 +2084,7 @@
    },
    "who_line": "Horror, terror and sci-fi feature film projects in development",
    "get_line": "A pitch at FICG 42 and meetings with producers, funders, buyers and sales agents",
-   "caution": "Territorial, unshot-project and financing rules could not be verified"
+   "caution": "Fantastic Genre pitch submissions closed on 16 October; no next call announced when we checked on 17 October"
   },
   {
    "id": "opp:atlas:legacy:p08",
@@ -2113,7 +2113,7 @@
    },
    "who_line": "Ibero-American fiction features in final post-production",
    "get_line": "Industry screening at FICG 42, catalogue listing, two badges and possible lodging for 3 nights",
-   "caution": null
+   "caution": "Films entered in an earlier Guadalajara Construye can't apply again, and travel and food costs are yours even if selected"
   },
   {
    "id": "opp:atlas:legacy:p09",
@@ -2141,7 +2141,7 @@
    },
    "who_line": "Ibero-American directors with a documentary at first or second cut",
    "get_line": "Analysis of a first or second cut in individual screening sessions",
-   "caution": "Full current duration and category rules could not be verified"
+   "caution": "Only Ibero-American directors with a documentary already at first or second cut can apply; check the full rules for any length limits"
   },
   {
    "id": "opp:atlas:legacy:p10",
@@ -2171,7 +2171,7 @@
    },
    "who_line": "Feature projects of 60+ minutes in production or post, with director, producer and company",
    "get_line": "A 10-minute presentation to investors, sales agents and programmers, plus private meetings",
-   "caution": "Opens 2 November 2026; the Asian-link rule awaits current-call clarification"
+   "caution": "You need a director, producer and production company attached; confirm the Asian-link rule, which the WIP page doesn't spell out"
   },
   {
    "id": "opp:atlas:legacy:p11",
@@ -2200,7 +2200,7 @@
    },
    "who_line": "Production companies and platforms outside Singapore with an original scripted series",
    "get_line": "SGD 20,000 cash prize for the winner and a possible co-production with Mediacorp",
-   "caution": "This entry gives no application deadline; another of our notes puts it in October 2026"
+   "caution": "The 2026 call closed on 16 October after an extension; no 2027 edition announced when we checked on 17 October"
   },
   {
    "id": "opp:atlas:legacy:p12",
@@ -2229,7 +2229,7 @@
    },
    "who_line": "Rights-holders worldwide (18+) with a doc over 40 minutes or a factual series",
    "get_line": "Pitch at Doc Edge 2027 with two Industry accreditations, mentoring and workshops",
-   "caution": "The regular fee conflicts: NZD150 on the webpage, NZD175 in the guide"
+   "caution": "The regular fee is NZD 150 on Doc Edge's web page but NZD 175 in its submission guide; we show the web page figure"
   },
   {
    "id": "opp:atlas:legacy:p13",
@@ -2258,7 +2258,7 @@
    },
    "who_line": "Ibero-American director and producer pairs with a fiction feature in development",
    "get_line": "Online and in-person lab in José Ignacio; awards include a USD 50,000 development fund",
-   "caution": null
+   "caution": "The rules give 27 November at 6pm but also say apply before 27 November, so treat 26 November as your deadline"
   },
   {
    "id": "opp:atlas:legacy:p14",
@@ -2290,7 +2290,7 @@
    },
    "who_line": "Features: Ibero-American director and lead company. Shorts: Colombian projects",
    "get_line": "Post-production services for each category winner and a private industry screening",
-   "caution": null
+   "caution": "WIP features need a lead production company based in an Ibero-American country, and only Colombian projects can enter the shorts strand"
   },
   {
    "id": "opp:atlas:legacy:p15",
@@ -2319,7 +2319,7 @@
    },
    "who_line": "Screenwriters worldwide of any gender; female-protagonist scripts preferred",
    "get_line": "Not published in our notes",
-   "caution": "Script category rules need a current-form check; fee currency not verified"
+   "caution": "We couldn't load Female Eye's FilmFreeway page on 17 October, so confirm the deadline, categories and fee currency there before entering"
   },
   {
    "id": "opp:atlas:legacy:p16",
@@ -2347,7 +2347,7 @@
    },
    "who_line": "Writers in Canada or abroad pitching features, series or documentaries",
    "get_line": "Top pitch wins a $1,500 cash prize, a $10,000 Sunbelt Rentals equipment grant and an award",
-   "caution": "Live-pitch eligibility needs a current-form check; fee currency not verified"
+   "caution": "Live Pitch 2026 entries closed on 16 October; no 2027 pitch call announced when we checked on 17 October"
   },
   {
    "id": "opp:atlas:legacy:p17",
@@ -2376,7 +2376,7 @@
    },
    "who_line": "Writer-directors aged 32 or under, born in Uruguay or resident more than five years",
    "get_line": "A place on a four-day lab in José Ignacio plus an online session; accommodation and meals covered",
-   "caution": null
+   "caution": "The rules say to apply before 13 November, so treat 12 November as your last day"
   },
   {
    "id": "opp:atlas:legacy:p18",
@@ -2402,7 +2402,7 @@
    },
    "who_line": "Writer-directors 18+ with a short made, working in English; Qatar and MENA prioritised",
    "get_line": "A place in an online short-script lab with one-to-one mentoring, 30 Nov–12 Dec 2026 (eight projects)",
-   "caution": "Nationality, residency and script eligibility could not be verified"
+   "caution": "There is a QAR 1,000 lab fee, and the page doesn't say whether you pay it when applying or only if selected"
   },
   {
    "id": "opp:atlas:legacy:s01",
@@ -2437,7 +2437,7 @@
    },
    "who_line": "Chilean nationals, holders of a Chile-issued ID, or Chilean legal entities (18+)",
    "get_line": "Accreditation, one return flight and up to 4 nights' lodging for Ventana Sur, Montevideo (6 places)",
-   "caution": "Check the current call's administrative conditions and amendments"
+   "caution": "Both the applicant and the person attending must be emerging producers, directors or screenwriters; support is in kind, not cash"
   },
   {
    "id": "opp:atlas:legacy:w01",
@@ -2463,7 +2463,7 @@
    },
    "who_line": "Professional writers and writer-directors developing a narrative feature, from anywhere",
    "get_line": "Two-week online lab with a facilitator, one-on-one meetings and peer workshops",
-   "caution": "Watch: the call opens December 2026; no closing date verified, and 2026 fees don't apply"
+   "caution": "The 2026 call has closed and the next opens in December; last time, accepted writers paid a USD 1,500 lab fee"
   },
   {
    "id": "opp:atlas:legacy:w02",
@@ -2489,7 +2489,7 @@
    },
    "who_line": "Professional writers or writer-directors with a finished feature script, from anywhere",
    "get_line": "Two-week residential script lab in Mexico with online follow-up; accommodation and meals included",
-   "caution": "Watch: opens January 2027, no verified closing date; past accommodation and meals not promised"
+   "caution": "The 2026 call has closed and the next opens in January 2027; last time, accepted writers paid a USD 3,750 participation fee"
   },
   {
    "id": "opp:atlas:legacy:w03",
@@ -2519,7 +2519,7 @@
    },
    "who_line": "African creative teams in past cycles; 2027 eligibility not yet published",
    "get_line": "Not published in our notes",
-   "caution": "Watch: no 2027 call verified; the 2026 cycle closed on 1 February 2026"
+   "caution": "We couldn't load Durban FilmMart's application page on 17 October; the 2026 cycle closed on 1 February, so check there for the 2027 call and deadline"
   },
   {
    "id": "opp:atlas:legacy:w04",
@@ -2582,7 +2582,7 @@
    },
    "who_line": "Check the official rules: not stated in our notes",
    "get_line": "Not published in our notes",
-   "caution": "No 2026 festival or Souk; the next edition is in Q4 2027, dates to be announced"
+   "caution": "There is no 2026 festival or Souk; the sixth edition is set for late 2027 and its submission process is not yet announced"
   },
   {
    "id": "opp:atlas:legacy:x02",
@@ -2608,7 +2608,7 @@
    },
    "who_line": "Women and gender-diverse screenwriters from anywhere, writing in English",
    "get_line": "Not published in our notes",
-   "caution": "Closed: applications ended 31 July 2026; 31 January 2027 is notification, not a deadline"
+   "caution": "The 2027 competition closed on 31 July; 31 January 2027 is the notification date, not a deadline, and no next round is announced"
   },
   {
    "id": "opp:atlas:legacy:x03",
@@ -2637,7 +2637,7 @@
    },
    "who_line": "Canadian women and nonbinary writers aged 40+, citizens or permanent residents",
    "get_line": "Four-day screenwriting intensive in Toronto with mentors, then follow-up support to June 2027",
-   "caution": "Closed: applications ended 24 September 2026"
+   "caution": "Applications closed on 24 September; no next call announced when we checked on 17 October"
   },
   {
    "id": "opp:atlas:legacy:x04",
@@ -2665,7 +2665,7 @@
    },
    "who_line": "Directors who are citizens of an Asian country by birth, with an original fiction feature",
    "get_line": "Online mentoring and pitching; prize money withdrawn this year, winners get certificates",
-   "caution": "Closed: new entries ended 30 June 2026"
+   "caution": "Entries closed on 30 June and no next call is announced; the previously announced prize money won't be paid this year"
   },
   {
    "id": "opp:atlas:legacy:x05",
@@ -2696,7 +2696,7 @@
    },
    "who_line": "Varies: Asian or European animation teams, or projects with a strong Asian element",
    "get_line": "A pitch slot at ATF in Singapore, 1 to 4 December 2026, with market access",
-   "caution": "Closed: these ATF calls ended in September 2026; their December events are not deadlines"
+   "caution": "These ATF calls closed in September, the last on 29 September; no 2027 calls announced when we checked on 17 October"
   },
   {
    "id": "opp:europe:current:g01",
@@ -2724,7 +2724,7 @@
    },
    "who_line": "Directors 18+ anywhere making a first 50+ min documentary, executive producer attached",
    "get_line": "GBP 120,000 funding for the winner and a GBP 25,000 development award for the runner-up",
-   "caution": "Funding is not guaranteed to finalists; you need an entity or fiscal sponsor to receive payment"
+   "caution": "The film must be your first documentary of 50 minutes or more as director or co-director"
   },
   {
    "id": "opp:europe:current:g02",
@@ -2754,7 +2754,7 @@
    },
    "who_line": "European minority co-producers of documentaries by directors from IBF-listed countries",
    "get_line": "Up to €40,000 per documentary, ideally from late production onwards",
-   "caution": "IBF director-country, setting and ownership tests apply and are not listed in our notes"
+   "caution": "You must be the European minority co-producer and the director must be from an IBF-listed country; 2027 rules are final only after 15 November"
   },
   {
    "id": "opp:europe:current:g03",
@@ -2780,9 +2780,9 @@
     "evidence": "Applications must be made by a producer who is resident in the UK and is leading an independent UK production company. [...] be a limited company registered and centrally managed in the UK [...] Feature film international co-productions, including drama, animation and documentary, in any genre and in any language, where the UK producer is a “minority” co-producing partner",
     "excludes": []
    },
-   "who_line": "UK independent production company leading an international co-production",
+   "who_line": "UK-resident producers leading a UK company, as minority partner on a feature co-production",
    "get_line": "Up to £300,000 non-recoupable (max 50% of UK contribution), plus up to £6,000 for sustainability",
-   "caution": null
+   "caution": "The UK producer must be the minority partner in the co-production, and both deadlines are at midday UK time, not midnight"
   },
   {
    "id": "opp:europe:current:g04",
@@ -2812,7 +2812,7 @@
    },
    "who_line": "UK independent production company leading an international co-production",
    "get_line": "Non-recoupable grant of up to £300,000, capped at 50% of the UK financial contribution",
-   "caution": null
+   "caution": "Only animation or documentary TV co-productions qualify, led by a UK-resident producer of a UK limited company; deadlines are at midday"
   },
   {
    "id": "opp:europe:current:g05",
@@ -2843,7 +2843,7 @@
    },
    "who_line": "Independent European production companies with recent internationally distributed work",
    "get_line": "Lump-sum grant of €90,000 to €510,000 to develop a slate of three to five works",
-   "caution": null
+   "caution": "Shooting on any slate project can't start until at least 10 months after the deadline, so not before 1 October 2027"
   },
   {
    "id": "opp:europe:current:g06",
@@ -2903,7 +2903,7 @@
    },
    "who_line": "French-based producer co-producing with a foreign company; foreign-national director",
    "get_line": "Pre-filming grant of up to €300,000, or €500,000 for French-initiated films over €2.5m",
-   "caution": "Nationality, language and treaty rules need the current CNC guide; a French co-producer's name is not enough"
+   "caution": "Only applications filed on the deposit day (23 November) count, and the CNC may close deposits early if too many arrive"
   },
   {
    "id": "opp:europe:current:g08",
@@ -2931,7 +2931,7 @@
    },
    "who_line": "France-based producers of a foreign director's co-production refused ACM pre-filming aid",
    "get_line": "Up to €70,000 in post-filming aid, at least 60% of it spent on eligible French costs",
-   "caution": "Only open after an ACM pre-filming rejection; older sources quote a €50,000 cap"
+   "caution": "Only films already refused ACM pre-filming aid can apply, and at least 60% of the aid must go on eligible French costs"
   },
   {
    "id": "opp:europe:current:g09",
@@ -2961,7 +2961,7 @@
    },
    "who_line": "Documentary authors who are French or from listed EU and European treaty countries",
    "get_line": "A fixed €10,000 writing award, paid directly to the author or authors",
-   "caution": "Check the current legal country list; being 'European' in general is not enough"
+   "caution": "Authors must be French or nationals of a country on the CNC's eligible list (EU and some other European states), so check the list"
   },
   {
    "id": "opp:europe:current:g10",
@@ -2990,7 +2990,7 @@
    },
    "who_line": "Production companies established in France, for documentaries written in French",
    "get_line": "Average €50,000 to fund a first shoot and a rough edit of a creative documentary",
-   "caution": "The company's French establishment needs confirming in the current guide"
+   "caution": "Applications are taken on a single filing day, 7 December, and the aid goes only to production companies established in France"
   },
   {
    "id": "opp:europe:current:g11",
@@ -3018,7 +3018,7 @@
    },
    "who_line": "French-based producers of projects given the Fund's writing award in the last 12 months",
    "get_line": "Average €18,000 for scouting, technical tests, script work and finding finance",
-   "caution": null
+   "caution": "Only for projects that won the fund's writing award in the 12 months before you apply, through a production company established in France"
   },
   {
    "id": "opp:europe:current:g12",
@@ -3048,7 +3048,7 @@
    },
    "who_line": "Writers without a producer; French or EU nationals or France residents; film in French",
    "get_line": "Up to €30,000 per project, with up to €20,000 per author",
-   "caution": "November reform: the updated form and terms need reconfirming before you apply"
+   "caution": "Deposits are taken only from 9:00 to 17:00 on one day: 16 November for experienced writers, 19 November for first features"
   },
   {
    "id": "opp:europe:current:g13",
@@ -3080,7 +3080,7 @@
    },
    "who_line": "Writers of French, EU or other European nationality, or French permanent residents",
    "get_line": "Flat-rate grant of EUR 7,500 to develop a series concept",
-   "caution": "Claiming residence instead of citizenship needs specific documents; check the rules"
+   "caution": "If you're not French or EU, you need a French resident card valid for at least 10 years; multi-year residence permits don't count"
   },
   {
    "id": "opp:europe:current:g14",
@@ -3113,7 +3113,7 @@
    },
    "who_line": "Writers of French, EU or other European nationality, or French permanent residents",
    "get_line": "Flat-rate writing grant of EUR 15,000 to 30,000 by format, optionally with a script consultant",
-   "caution": "Check the exact format category and consultant allocation before applying"
+   "caution": "The filing window is only 7 to 8 January, and non-EU authors need a French resident card valid for at least 10 years"
   },
   {
    "id": "opp:europe:current:g15",
@@ -3145,7 +3145,7 @@
    },
    "who_line": "French or European nationals, or 10-year French residents; projects written in French",
    "get_line": "A flat €5,000 for the literary or graphic concept of an animated series of 7+ minute episodes",
-   "caution": "Nationality, residence and French dossier rules need confirming on the current form"
+   "caution": "Non-European authors need a French resident card valid for 10 years (multi-year permits don't count), and projects must be written in French"
   },
   {
    "id": "opp:europe:current:g16",
@@ -3173,7 +3173,7 @@
    },
    "who_line": "Individual writers living or established in Germany; not the writer's company",
    "get_line": "Up to €15,000 to write a treatment, plus up to €2,500 for script consultancy",
-   "caution": null
+   "caution": "15 December is only for children's films; feature fiction and documentary treatments are due by 23:59 on 29 January 2027"
   },
   {
    "id": "opp:europe:current:g17",
@@ -3202,7 +3202,7 @@
    },
    "who_line": "Individual writers with a German base who meet FFA professional rules",
    "get_line": "Up to €40,000 in two phases for a screenplay, plus up to €10,000 for consultancy",
-   "caution": null
+   "caution": "15 December is only for children's films; feature fiction screenplays are due by 23:59 on 29 January 2027"
   },
   {
    "id": "opp:europe:current:g18",
@@ -3230,7 +3230,7 @@
    },
    "who_line": "German-based producer of a children's short (max 30 min) with German cultural character",
    "get_line": "Up to €40,000 to produce a short film of up to 30 minutes",
-   "caution": "Check whether FFA or Kuratorium junger deutscher Film handles your project"
+   "caution": "The FFA only takes producers with at least two earlier features or shorts as references; newer producers go to the Kuratorium junger deutscher Film"
   },
   {
    "id": "opp:europe:current:g19",
@@ -3258,7 +3258,7 @@
    },
    "who_line": "German-based producer with financial lead on a film of substantial German character",
    "get_line": "Non-repayable production grant of up to €1 million for a fiction feature",
-   "caution": null
+   "caution": "You need a home or business base in Germany, or a German branch if your company is elsewhere in the EU or EEA"
   },
   {
    "id": "opp:europe:current:g20",
@@ -3286,7 +3286,7 @@
    },
    "who_line": "German-based producer with financial lead on a film of substantial German character",
    "get_line": "Non-repayable production grant of up to €500,000, or up to €1 million in exceptional cases",
-   "caution": null
+   "caution": "You need a home or business base in Germany, or a German branch if your company is elsewhere in the EU or EEA"
   },
   {
    "id": "opp:europe:current:g21",
@@ -3317,7 +3317,7 @@
    },
    "who_line": "Professional scriptwriters or writing groups, for Finnish film production",
    "get_line": "Grant of up to €24,000, paid at €2,000 per grant month",
-   "caution": "No passport rule is stated, but foreign-based projects need clearance first"
+   "caution": "No nationality rule is stated, but the grant supports Finnish film production, so check with the Finnish Film Foundation if you're based abroad"
   },
   {
    "id": "opp:europe:current:g22",
@@ -3345,7 +3345,7 @@
    },
    "who_line": "Professional scriptwriters or writing groups developing a Finnish documentary",
    "get_line": "€2,000 a month for up to 12 months, at most €24,000 per film, to write a documentary",
-   "caution": "No passport rule is stated, but foreign-based projects need clearance first"
+   "caution": "The grant is paid into a Finnish bank account and supports Finnish film production; applications close at 16:00 Helsinki time on 21 October"
   },
   {
    "id": "opp:europe:current:g23",
@@ -3375,7 +3375,7 @@
    },
    "who_line": "Finland-registered production company with the rights; not sole traders or associations",
    "get_line": "Up to €250,000 and up to 90% of approved costs; counts towards later production support",
-   "caution": null
+   "caution": "Only Finland-registered production companies qualify; sole traders, registered associations and TV or streaming companies can't apply"
   },
   {
    "id": "opp:europe:current:g24",
@@ -3406,7 +3406,7 @@
    },
    "who_line": "Finnish production company with rights, stable finances and distribution in place",
    "get_line": "Up to €1,200,000, covering up to 90% of approved costs, including any development support",
-   "caution": null
+   "caution": "Only film production companies registered in Finland can apply, and development support already received counts towards the €1,200,000 cap"
   },
   {
    "id": "opp:europe:current:g25",
@@ -3442,7 +3442,7 @@
    },
    "who_line": "Experienced writers living in Austria or with Austrian, EU, EEA or Swiss citizenship",
    "get_line": "Script development grant of up to EUR 12,000, or up to EUR 15,000 with several writers",
-   "caution": null
+   "caution": "You must show professional writing experience, and only applications complete by 17:00 Vienna time on 24 November go to February's meeting"
   },
   {
    "id": "opp:europe:legacy:eu01",
@@ -3469,7 +3469,7 @@
    },
    "who_line": "Production companies anywhere with a first-run live-action fiction series; rights held",
    "get_line": "Pitch to industry in Lille; the best project wins up to EUR 50,000, paid in stages",
-   "caution": "The award is competitive and paid in conditional stages, not guaranteed or upfront"
+   "caution": "Only companies can apply, not individuals, and the €50,000 prize is paid in stages, with €15,000 after the 2027 Forum"
   },
   {
    "id": "opp:europe:legacy:eu02",
@@ -3495,7 +3495,7 @@
    },
    "who_line": "Writers and directors anywhere with an early feature idea and no screenplay draft yet",
    "get_line": "Five script development modules in Malta, Tartu, online and Turin, ending at the TFL Meeting Event",
-   "caution": "An existing screenplay draft makes the project ineligible"
+   "caution": "Projects that already have a screenplay draft aren't eligible, and if selected you pay a €3,000 participation fee (plus VAT if due)"
   },
   {
    "id": "opp:europe:legacy:eu03",
@@ -3524,7 +3524,7 @@
    },
    "who_line": "Teams anywhere on a director's first or second feature, with at least a first draft",
    "get_line": "Three workshops, industry meetings and a chance at production awards of up to €50,000",
-   "caution": null
+   "caution": "Selected teams pay a €3,500 participation fee (plus VAT if due), and you must submit at least a first draft of the script in English"
   },
   {
    "id": "opp:europe:legacy:eu04",
@@ -3550,7 +3550,7 @@
    },
    "who_line": "Documentary teams anywhere with a 52+ min feature, a series or a hybrid project",
    "get_line": "A pitch and financier meetings at CPH:DOX, free accreditation for two, and pitch-award eligibility",
-   "caution": null
+   "caution": "The DKK 250 entry fee is non-refundable, but it's waived for projects from DAC-list countries and some low-capacity European countries"
   },
   {
    "id": "opp:europe:legacy:eu05",
@@ -3576,7 +3576,7 @@
    },
    "who_line": "Teams anywhere with a nonfiction or hybrid feature over 60 min; no TV series",
    "get_line": "Pitch to industry in Nyon with roundtables and one-to-one meetings; may qualify for €20,000 award",
-   "caution": null
+   "caution": "Selected projects pay a CHF 360 participation fee and must attend on-site pitch training in Nyon on 11 April 2027"
   },
   {
    "id": "opp:europe:legacy:eu06",
@@ -3623,7 +3623,7 @@
    },
    "who_line": "Independent producers based in Creative Europe MEDIA countries; UK lead producers excluded",
    "get_line": "A pitching session at Cartoon Movie 2027 in Bordeaux, 2–4 March",
-   "caution": null
+   "caution": "Selected teams pay €950 per person (excluding VAT), and pulling out after 8 January 2027 costs €1,000"
   },
   {
    "id": "opp:europe:legacy:eu07",
@@ -3679,7 +3679,7 @@
    },
    "who_line": "Short-film producers with a company in an associated European country and outside funding",
    "get_line": "Pitch training and co-production meetings in Clermont-Ferrand; €160 travel grant, hotel and meals",
-   "caution": "Check the official correspondent table: Baltics and Kosovo use nominations, Ukraine has exceptions"
+   "caution": "You apply by email through your country's national correspondent; Baltic and Kosovo projects come only through nominating forums"
   },
   {
    "id": "opp:europe:legacy:eu07_xr",
@@ -3734,7 +3734,7 @@
    },
    "who_line": "Established producers anywhere with a market-ready scripted series and finance committed",
    "get_line": "A live pitch at Content London on 1 December 2026; the winner gets a £20,000 C21 marketing package",
-   "caution": null
+   "caution": "You need at least one confirmed external funding commitment, and finalists must buy a Content London pass (£399 at the discounted rate)"
   },
   {
    "id": "opp:europe:legacy:eu08_u",
@@ -3761,7 +3761,7 @@
    },
    "who_line": "Established producers anywhere with a market-ready unscripted series or format",
    "get_line": "A live pitch to buyers at Content London; the winner gets a £20,000 C21Media marketing package",
-   "caution": null
+   "caution": "Finalists must buy a Content London pass, at a discounted £399, to pitch; entries close at 23:59 GMT on 19 October"
   },
   {
    "id": "opp:europe:legacy:eu09",
@@ -3828,7 +3828,7 @@
    },
    "who_line": "Professional screenwriters from listed European countries, with no producer attached",
    "get_line": "Mentoring, a four-day workshop in Lille, and a pitch and accreditation at Series Mania Forum",
-   "caution": null
+   "caution": "Applying is free, but selected writers pay €1,090 (solo) or €1,890 (duo) in tuition, plus their own travel, lodging and meals"
   },
   {
    "id": "opp:europe:legacy:eu10",
@@ -3854,7 +3854,7 @@
    },
    "who_line": "1st or 2nd feature teams worldwide; CEE focus; non-Europeans need a European co-pro",
    "get_line": "Three workshops, pitching at Karlovy Vary IFF and a chance at a €10,000 development award",
-   "caution": null
+   "caution": "Selected participants pay €1,800 each for the three workshops, plus travel, and shortlisted projects pay €100 for a feedback session"
   },
   {
    "id": "opp:europe:legacy:eu11",
@@ -3917,7 +3917,7 @@
    },
    "who_line": "Documentary teams anywhere; focus on SE Europe, Eastern Mediterranean and North Africa",
    "get_line": "Online lab, public pitch and one-to-one meetings, five nights' lodging and cash awards",
-   "caution": null
+   "caution": "Entries must be received by 25 November and no time is given, so send yours a day or two early"
   },
   {
    "id": "opp:europe:legacy:eu12",
@@ -3945,7 +3945,7 @@
    },
    "who_line": "Non-fiction projects at different stages of development",
    "get_line": "Pitching, meetings, training and artistic consultancy programmes at DocsBarcelona Pro",
-   "caution": "Announced but not yet open; eligibility and required materials are still pending"
+   "caution": "There's a registration fee, reduced until 10 December, but the amounts and eligibility rules weren't published when we checked on 17 October"
   },
   {
    "id": "opp:europe:legacy:eu13",
@@ -3971,7 +3971,7 @@
    },
    "who_line": "TV series teams from anywhere; further funding and budget conditions apply",
    "get_line": "A pitch to co-producers at Sofia Meetings, with industry awards for selected projects",
-   "caution": "Check the general regulations for funding and budget conditions; 2027 fees are unconfirmed"
+   "caution": "Email your materials by 1 December; the regulations page still shows last year's 15 December deadline, so go by the call page"
   },
   {
    "id": "opp:europe:legacy:eu13_f",
@@ -3997,7 +3997,7 @@
    },
    "who_line": "First to third features, anywhere; also experienced directors seeking SE European partners",
    "get_line": "A pitch to co-producers, sales agents and distributors, with industry awards",
-   "caution": "Check the general regulations for funding and budget conditions; 2027 fees are unconfirmed"
+   "caution": "Total budgets must be €6 million or less; email materials by 1 December, as the regulations page still shows last year's 15 December date"
   },
   {
    "id": "opp:europe:legacy:eu14_o",
@@ -4161,7 +4161,7 @@
    },
    "who_line": "Writer-directors of a first to third fiction feature, from or living in listed countries",
    "get_line": "Three one-week residential workshops in Brittany, online meetings, development support and lim² meet",
-   "caution": "Check the full country list; the 21 October 23:59 CET deadline is unclear around the clock change, so submit early"
+   "caution": "Selected writer-directors pay a €900 participation fee plus their own travel; the deadline is 11.59pm CET on 21 October"
   },
   {
    "id": "opp:europe:legacy:eu15",
@@ -4187,7 +4187,7 @@
    },
    "who_line": "Writer/director and producer teams anywhere with an LGBTQ+-centred fiction feature",
    "get_line": "Two workshops, online consultations, pitching at Karlovy Vary IFF and a chance at a €10,000 award",
-   "caution": null
+   "caution": "Selected participants pay €1,200 each, plus travel, and non-European projects must plan a co-production with a European country"
   },
   {
    "id": "opp:europe:legacy:eu16",
@@ -4213,7 +4213,7 @@
    },
    "who_line": "Writers and creators anywhere developing a comedy feature",
    "get_line": "Script and production development for up to 4 comedy features over three residential modules",
-   "caution": null
+   "caution": "If selected with a project you pay €3,000 (plus VAT if due), and the 4pm CET deadline on 30 November won't be extended"
   },
   {
    "id": "opp:europe:legacy:eu17",
@@ -4317,7 +4317,7 @@
    },
    "who_line": "European writer–producer teams, or teams elsewhere with European co-production potential",
    "get_line": "Six-month series lab with three residential workshops and a final industry pitch",
-   "caution": null
+   "caution": "Selected teams of two pay €3,500 (plus VAT if due), with some half-fee scholarships, and the 4pm CET deadline won't be extended"
   },
   {
    "id": "opp:europe:legacy:eu19",
@@ -4344,7 +4344,7 @@
    },
    "who_line": "Writers of any nationality with working French; the film can be in any language",
    "get_line": "Writing coaching for eight features: three Brittany residencies with board and lodging covered",
-   "caution": null
+   "caution": "Taking part is free, but if your film goes into production you pay a €6,000 contribution on the first day of shooting"
   },
   {
    "id": "opp:europe:legacy:eu20",
@@ -4370,7 +4370,7 @@
    },
    "who_line": "Writers anywhere with a fiction feature at treatment stage, not a finished screenplay",
    "get_line": "Three online modules with group script tutoring on inclusive, climate-aware stories",
-   "caution": null
+   "caution": "Selected teams pay €2,000 (plus VAT if due), with some half-fee scholarships, and projects must be at treatment stage"
   },
   {
    "id": "opp:europe:legacy:eu21",
@@ -4397,7 +4397,7 @@
    },
    "who_line": "Animation teams anywhere; low-production-capacity European countries get priority",
    "get_line": "Year-long programme of four one-week modules, plus badges for CEE Animation Forum 2027",
-   "caution": "Listed deadline was 15 October 2026 and has passed; check whether entries are still accepted"
+   "caution": "The 2027 workshop call closed on 15 October; no next call announced when we checked on 17 October"
   },
   {
    "id": "opp:europe:legacy:eu22",
@@ -4423,7 +4423,7 @@
    },
    "who_line": "Documentary producers anywhere with a project in development, not yet fully financed",
    "get_line": "Three residential week-long sessions in Europe, online mentoring and meetings with decision makers",
-   "caution": "Fees depend on your location; producers in non-MEDIA European countries should verify their rate"
+   "caution": "You must have produced a feature documentary, and selected producers pay €3,000 tuition (€1,500 outside Europe) plus about €4,000 residential costs"
   },
   {
    "id": "opp:us:current:g01",
@@ -4450,7 +4450,7 @@
    },
    "who_line": "Writers of any nationality or residency, with an English-language pilot",
    "get_line": "USD 17,000 grant and creative craft support for one series",
-   "caution": null
+   "caution": "Entries up to 3 December need the deadline waiver code EpSloanGrantX121426 on FilmFreeway"
   },
   {
    "id": "opp:us:current:g02",
@@ -4479,7 +4479,7 @@
    },
    "who_line": "Writers with a climate-related feature or pilot; residency rules not confirmed",
    "get_line": "Funding for selected writing teams to revise a climate-related feature screenplay or pilot",
-   "caution": "Residency rules not confirmed; free hosting and evaluation are not universal (sponsored slots)"
+   "caution": "The partner page we checked gives no cut-off time or eligibility rules, so confirm both, and any Black List fees, on the Black List"
   },
   {
    "id": "opp:us:current:g03",
@@ -4508,7 +4508,7 @@
    },
    "who_line": "US citizens and permanent residents aged 18 to 25 with an original feature script",
    "get_line": "USD 10,000 stipend and a year of mentoring by a prominent screenwriter",
-   "caution": "Needs a paid Black List hosted script and evaluation unless exempted; evaluation price unverified"
+   "caution": "Open to US citizens and permanent residents aged 18 to 25 only; you need a paid Black List hosting and evaluation unless you get a fee waiver"
   },
   {
    "id": "opp:us:current:g04",
@@ -4541,7 +4541,7 @@
    },
    "who_line": "Artists from federally or non-federally recognised California-based tribes",
    "get_line": "$25,000 cash grant each (two fellows), plus a year of support, mentorship and a Sundance trip",
-   "caution": "Full form and media specs not confirmed; check the portal and tribal paperwork rules"
+   "caution": "Applications close at 3:30pm PT (6:30pm ET) on 16 November, not midnight, so submit earlier in the day"
   },
   {
    "id": "opp:us:current:g05",
@@ -4569,7 +4569,7 @@
    },
    "who_line": "Indigenous artists who identify as women, worldwide",
    "get_line": "A cash grant (amount not stated), a year of support, mentorship and a trip to Sundance",
-   "caution": "Current cash amount is not published; do not rely on past-year figures"
+   "caution": "Applications close at 3:30pm PT on 3 November, not midnight, and the 2027 cash grant amount isn't published"
   },
   {
    "id": "opp:us:current:g06",
@@ -4597,7 +4597,7 @@
    },
    "who_line": "US residents, with proof of residence",
    "get_line": "A $5,000 seed grant (five awards), plus mentorship and in-kind colouring services",
-   "caution": "Any gender restriction is unconfirmed; check the full form before applying"
+   "caution": "Only for your scripted directorial debut, and directing duos or teams can't apply"
   },
   {
    "id": "opp:us:current:g07",
@@ -4629,7 +4629,7 @@
    },
    "who_line": "Legal residents of the 50 US states, DC or Canada, aged 18 or over",
    "get_line": "USD 60,000 production grant, Panavision camera package, mentorship and release on Vimeo",
-   "caution": "Deadline listed as 16 October 2026; rights terms are flagged for review"
+   "caution": "The 2026 grant closed on 16 October; winners are announced on 15 March 2027 and no next round was announced when we checked"
   },
   {
    "id": "opp:us:current:g08",
@@ -4660,7 +4660,7 @@
    },
    "who_line": "Filmmakers anywhere (international applicants accepted)",
    "get_line": "A $3,500 cheque plus $20,000+ in services and discounts (one winner)",
-   "caution": null
+   "caution": "Your budget must be under $500,000, and winners filming outside the US may not be able to use all the donated services"
   },
   {
    "id": "opp:us:current:g09",
@@ -4690,7 +4690,7 @@
    },
    "who_line": "Student filmmakers, worldwide (student ID required)",
    "get_line": "$3,000 cash plus donated services and products",
-   "caution": null
+   "caution": "Your film must be budgeted at $50,000 or less; check with From the Heart before entering a series rather than a film"
   },
   {
    "id": "opp:us:current:g10",
@@ -4725,7 +4725,7 @@
    },
    "who_line": "US residents with an SSN, or US nonprofits and fiscal sponsors",
    "get_line": "Grant of up to USD 3,500",
-   "caution": null
+   "caution": "You must complete the initial questionnaire by 20 November (paper requests postmarked by 25 November) before sending your proposal by 16 December"
   },
   {
    "id": "opp:us:current:g11",
@@ -4761,7 +4761,7 @@
    },
    "who_line": "Queens residents, or artists with a year-round Queens studio lease",
    "get_line": "50–100% of a requested $3,000–$7,500 (no guaranteed $3,000 minimum)",
-   "caution": null
+   "caution": "Watch the free information session before applying: the page calls it both required and recommended"
   },
   {
    "id": "opp:us:current:g12",
@@ -4790,7 +4790,7 @@
    },
    "who_line": "Miami-Dade County residents who are US citizens or permanent residents, 18+",
    "get_line": "A $50,000 grant for a documentary of 50 minutes or more (one award), plus free archive access",
-   "caution": "Application fee not established; check the SlideRoom form before applying"
+   "caution": "Only full-time Miami-Dade County residents who have already completed a short documentary can apply"
   },
   {
    "id": "opp:us:current:g13",
@@ -4819,7 +4819,7 @@
    },
    "who_line": "Miami-Dade County residents who are US citizens or permanent residents, 18+",
    "get_line": "$10,000 each for three 8–12 min short documentaries, plus free use of the Wolfson archive",
-   "caution": "Application fee not established; check the SlideRoom form before applying"
+   "caution": "First-time directors can apply, but you need a crew credit on a short film and must live full-time in Miami-Dade County"
   },
   {
    "id": "opp:us:current:g14",
@@ -4847,7 +4847,7 @@
    },
    "who_line": "Miami-Dade County residents who are US citizens or permanent residents, 18+",
    "get_line": "$10,000 to finish a feature documentary in post-production (two awards), plus archive access",
-   "caution": "Application fee not established; check the SlideRoom form before applying"
+   "caution": "Check the application form for any fee and the closing time on 6 November; neither is published on the festival page"
   },
   {
    "id": "opp:us:current:g15",
@@ -4879,7 +4879,7 @@
    },
    "who_line": "Legal residents of the 50 US states or DC, aged 18 or over",
    "get_line": "USD 4,500 grant for one independent narrative or documentary project",
-   "caution": null
+   "caution": "There is a separate IMGN platform agreement, so check what rights it takes over material you upload before applying"
   },
   {
    "id": "opp:us:current:g16",
@@ -4938,7 +4938,7 @@
    },
    "who_line": "Applicants living in the US or Puerto Rico; core-team conditions apply",
    "get_line": "USD 1.2m to make the winning feature; the four other finalists get USD 15,000 each",
-   "caution": "Check every core-team condition in the rules, not only the lead applicant's residence"
+   "caution": "Current students can't apply, and an attached writer or director must be from, or connected to, an underrepresented community"
   },
   {
    "id": "opp:us:current:g18",
@@ -4965,7 +4965,7 @@
    },
    "who_line": "Filmmakers worldwide",
    "get_line": "Up to $10,000, reimbursed against short-film production costs; the amount depends on entries",
-   "caution": "Paid as reimbursement: winners must show expenses, production and E&O insurance and delivery"
+   "caution": "The prize, up to $10,000 and set by the number of entries, is paid as reimbursement of expenses you submit within 120 days"
   },
   {
    "id": "opp:us:current:g19",
@@ -4993,7 +4993,7 @@
    },
    "who_line": "Documentary projects on complex social, cultural or political issues",
    "get_line": "Grants typically $25,000 to $150,000 per documentary project",
-   "caution": "Eligibility is decided case by case; the process starts with a rolling letter of inquiry"
+   "caution": "Start with a letter of inquiry; replies can take up to six months, so allow for that in your production schedule"
   },
   {
    "id": "opp:us:current:g20",
@@ -5025,7 +5025,7 @@
    },
    "who_line": "New York City residents with an SSN or ITIN (citizenship not required)",
    "get_line": "A production grant of up to USD 30,000",
-   "caution": "This deadline is for applicants invited to Step 2 only (continuation stage)"
+   "caution": "Step 1 closed on 1 October, so only applicants invited after it can submit Step 2, before 4pm Eastern on 24 November"
   },
   {
    "id": "opp:us:current:g21",
@@ -5057,7 +5057,7 @@
    },
    "who_line": "Minnesota residents with an SSN or ITIN (citizenship not required)",
    "get_line": "Production grant of up to USD 30,000",
-   "caution": "This deadline is for applicants invited to Step 2 only (continuation stage)"
+   "caution": "Step 1 closed on 1 October, so only applicants invited after it can submit Step 2, before 4pm Central on 24 November"
   },
   {
    "id": "opp:us:current:g22",
@@ -5090,7 +5090,7 @@
    },
    "who_line": "Minnesota residents with an SSN or ITIN (citizenship not required)",
    "get_line": "Up to $10,000 for self-designed mentorship with experienced film professionals",
-   "caution": "This deadline is for applicants invited to Step 2 only (continuation stage)"
+   "caution": "Step 1 closed on 1 October, so only applicants invited after it can submit Step 2, before 4pm Central on 24 November"
   },
   {
    "id": "opp:us:legacy:a01",
@@ -5143,7 +5143,7 @@
    },
    "who_line": "AFM attendees with a Platinum or + Sessions badge, pitching a narrative feature film",
    "get_line": "A live pitch to an executive panel at AFM, with on-stage feedback",
-   "caution": "Deadline conflict: 22 October (session page) vs 15 October (PDF); a paid badge is required"
+   "caution": "You need an AFM Platinum or + Sessions badge to submit, from $695 to $1,395 when we checked; no separate pitch fee is stated"
   },
   {
    "id": "opp:us:legacy:a02t",
@@ -5169,7 +5169,7 @@
    },
    "who_line": "AFM attendees with a Platinum or + Sessions badge, pitching a scripted or limited series",
    "get_line": "A live pitch to a television executive panel at AFM, with on-stage critique",
-   "caution": "Deadline conflict: 22 October (session page) vs 15 October (PDF); a paid badge is required"
+   "caution": "You need an AFM Platinum or + Sessions badge to submit, from $695 to $1,395 when we checked; no separate pitch fee is stated"
   },
   {
    "id": "opp:us:legacy:a03",
@@ -5226,7 +5226,7 @@
    },
    "who_line": "Emerging screenwriters, filmmakers and creative producers; no industry background needed",
    "get_line": "Four-day lab in Stowe, Vermont with mentor pitch tables, peer script notes and workshops",
-   "caution": "Paid programme with selective aid; mentors do not read scripts at the Narrative Lab"
+   "caution": "If admitted you pay a $2,750 lab fee plus travel and lodging; for aid, tick the financial support question on your application"
   },
   {
    "id": "opp:us:legacy:a04r",
@@ -5253,7 +5253,7 @@
    },
    "who_line": "Writers with a well-developed first draft of a feature or TV pilot by the retreat",
    "get_line": "Five-day online retreat, 25–29 June 2027, with three one-on-one mentor script sessions",
-   "caution": "Paid programme with selective scholarships; a well-developed full draft is needed by the retreat"
+   "caution": "If admitted you pay a $1,800 retreat fee; there's no separate scholarship form, so ask for financial support on your application"
   },
   {
    "id": "opp:us:legacy:a05",
@@ -5280,7 +5280,7 @@
    },
    "who_line": "Writers worldwide, 18+, with writing earnings of $25,000 or less in five years",
    "get_line": "Fellow: USD 3,000, a 12-month mentorship and a free retreat place; finalists invited for a fee",
-   "caution": "Invitees other than the Grand Fellow generally pay additional retreat fees"
+   "caution": "Finalists and division winners invited to the retreat pay $2,800 (teams $4,600); only the TV Fellow attends free"
   },
   {
    "id": "opp:us:legacy:a06",
@@ -5364,7 +5364,7 @@
    },
    "who_line": "US- or Canada-based Indigenous artists (Native, First Nations, Métis, Inuit); no teams",
    "get_line": "Lab in Santa Fe with one-to-one advisor feedback on feature or episodic scripts",
-   "caution": "Not open yet: applications open 1 December 2026 and the 2027 form is not published"
+   "caution": "The application window runs only from 1 to 22 December, with no closing time given, so submit early"
   },
   {
    "id": "opp:us:legacy:f01",
@@ -5422,7 +5422,7 @@
    },
    "who_line": "Writers worldwide with an unproduced English-language script",
    "get_line": "Feature winner: USD 5,000, a month-long Almanack retreat on Nantucket and a festival trip",
-   "caution": "Feature prize conflicts ($4,000 vs $5,000) and co-written feature eligibility is unclear"
+   "caution": "Feature entry fees rise from $45 by 5 November to $95 by 4 March, and scripts over 125 pages cost $1 more per extra page"
   },
   {
    "id": "opp:us:legacy:f03",
@@ -5449,7 +5449,7 @@
    },
    "who_line": "Series creators worldwide, with English-language materials",
    "get_line": "A live five-minute pitch with panel feedback, after a two-part virtual pitching workshop",
-   "caution": null
+   "caution": "The $50 early-bird fee ends on 22 October and rises to $85 by the final deadline; students and FilmFreeway Gold members pay less"
   },
   {
    "id": "opp:us:legacy:f04",
@@ -5481,7 +5481,7 @@
    },
    "who_line": "Legal residents of the 50 US states or DC, of age of majority",
    "get_line": "Ten finalists pitch live at ATX TV Festival and join a year-long mentorship programme",
-   "caution": null
+   "caution": "Not for writers already staffed or paid to develop TV, and entries close at 7:59am Central on 14 December, or earlier if the cap is reached"
   },
   {
    "id": "opp:us:legacy:f05",
@@ -5509,7 +5509,7 @@
    },
    "who_line": "Writers worldwide with an unoptioned, unproduced English script (no AI use)",
    "get_line": "Cash prizes of $250–500, travel stipend, two nights' lodging, mentoring or a retreat, and a badge",
-   "caution": "Deadline conflict: calendar says 6 November, introductory text says 5 December 2026"
+   "caution": "Scripts made with any AI tools are banned, and the final deadline is 6 November at 11:59pm EST, not 5 December"
   },
   {
    "id": "opp:us:legacy:f06",
@@ -5537,7 +5537,7 @@
    },
    "who_line": "Screenwriters with screenplays or teleplays of any genre and length",
    "get_line": "Finalists are honoured at the Cinequest Writers Celebration with industry events",
-   "caution": "Short-script limit is inconsistent at 40 pages; confirm if yours is exactly 40"
+   "caution": "We couldn't load Cinequest's FilmFreeway page on 17 October, so confirm the 13 November deadline and fees there, and the limit if your short is 40 pages"
   },
   {
    "id": "opp:us:legacy:f07",
@@ -5565,7 +5565,7 @@
    },
    "who_line": "Teams with a feature documentary work in progress, any form or subject",
    "get_line": "A 10-minute pitch to commissioning editors and funders, with feedback and 1-1 coaching",
-   "caution": null
+   "caution": "The 19 February 2027 pitch location isn't announced yet, so check you can attend in person before paying to enter"
   },
   {
    "id": "opp:us:legacy:f08",
@@ -5593,7 +5593,7 @@
    },
    "who_line": "Writers worldwide with English scripts; category limits apply",
    "get_line": "TV winner: option via 88th Street; feature: Alta Global consultation; Female Short: $1,000",
-   "caution": "Rights terms apply (the TV prize is an option); check category rules before entering"
+   "caution": "We couldn't load the FilmFreeway page on 17 October, so confirm the deadline and category rules there; note the TV prize is an option on your script"
   },
   {
    "id": "opp:us:legacy:f09",
@@ -5621,7 +5621,7 @@
    },
    "who_line": "Writers worldwide who control the rights to an unproduced English script",
    "get_line": "Festival-linked screenplay recognition; no production funding or sale verified",
-   "caution": "Short-script page limit not confirmed; check your entry category"
+   "caution": "We couldn't load the FilmFreeway page on 17 October, so confirm the deadline, fees and short-script page limit there before entering"
   },
   {
    "id": "opp:us:legacy:f10",
@@ -5649,7 +5649,7 @@
    },
    "who_line": "Original, unproduced English-language features, shorts and TV pilots",
    "get_line": "Networking and film industry access through the Vail Film Festival",
-   "caution": "Marked on hold in our notes; short page limit conflicts (59 vs 60), so check before paying"
+   "caution": "We couldn't load the FilmFreeway page on 17 October, so confirm the contest is open, the 31 October deadline and the short-script page limit"
   },
   {
    "id": "opp:us:legacy:f11",
@@ -5677,7 +5677,7 @@
    },
    "who_line": "Comedy writers; general international call, script rules not confirmed",
    "get_line": "Genre recognition; the feature winner's package includes software and an industry meeting",
-   "caution": "Eligibility comes from the general festival call; check the script-specific form"
+   "caution": "We couldn't load the FilmFreeway page on 17 October, so confirm the deadline and the script-specific rules there before entering"
   },
   {
    "id": "opp:us:legacy:f12",
@@ -5705,7 +5705,7 @@
    },
    "who_line": "Writers worldwide with unsold, unoptioned English scripts",
    "get_line": "First place per category: VIP pass, up to 4 hotel nights, table read, award, TV interview, coverage",
-   "caution": "Short-script page cap not verified; check before entering a short"
+   "caution": "The festival page lists no entry fees and no closing time for 31 December, so check both on the entry platform before paying"
   },
   {
    "id": "opp:us:legacy:f13",
@@ -5732,7 +5732,7 @@
    },
    "who_line": "Screenplays of any genre; who may enter is not stated on the festival site",
    "get_line": "Golden Palm Screenplay Award, plus first and second runner-up awards",
-   "caution": "Script eligibility and page limits not verified in public rules; confirm first"
+   "caution": "We couldn't load the submission guidelines on 17 October, and who may enter isn't stated, so confirm the deadline and rules before paying"
   },
   {
    "id": "opp:us:legacy:p01",
@@ -5786,7 +5786,7 @@
    },
    "who_line": "Fiction or documentary features in late production or post, not shown at a prior WIP",
    "get_line": "Sneak-peek showcase for industry at Tribeca Pitch Market, plus two days of one-on-one meetings",
-   "caution": "Not open until 5 January 2027 (official deadline 27 January); premiere and residency rules unconfirmed"
+   "caution": "Projects already showcased at any festival or works-in-progress event can't apply; submissions open on 5 January 2027"
   }
  ]
 }

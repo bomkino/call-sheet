@@ -792,7 +792,7 @@
    "dates": [],
    "note": "Submission deadline of 12 Nov confirmed on the Cartoon Movie schedule page.",
    "fee": {
-    "state": "priced",
+    "state": "unknown",
     "items": [
      {
       "stage": "selected",
@@ -802,7 +802,7 @@
       "note": "Per person, excl. VAT, incl. registration and admin costs; EUR 350 deposit; no submission fee is mentioned"
      },
      {
-      "stage": "application",
+      "stage": "selected",
       "label": "Withdrawal fee after 8 January 2027",
       "amount": "€1,000",
       "state": "priced",
@@ -929,10 +929,10 @@
    "dates": [],
    "note": "Deadline confirmed on the organiser's call page (open call 3 September to 19 October 2026).",
    "fee": {
-    "state": "priced",
+    "state": "unknown",
     "items": [
      {
-      "stage": "application",
+      "stage": "selected",
       "label": "Online Feedback Session fee if shortlisted",
       "amount": "€100",
       "state": "optional",
@@ -949,7 +949,7 @@
       "stage": "application",
       "label": "Company Time fee",
       "amount": "€400",
-      "state": "priced",
+      "state": "optional",
       "note": "Producers' follow-up workshop; covers accommodation and tuition"
      }
     ],
