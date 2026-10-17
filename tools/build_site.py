@@ -64,10 +64,20 @@ TEST_SENTENCES = {
 }
 # Names for the places the overlay uses; tests fail if a new code appears without one.
 COUNTRY_NAMES = {
-    "AT": "Austria", "AU": "Australia", "CA": "Canada", "CH": "Switzerland", "CL": "Chile", "CO": "Colombia",
-    "DE": "Germany", "DZ": "Algeria", "EG": "Egypt", "FI": "Finland", "FR": "France", "GB": "the UK", "IN": "India",
-    "JO": "Jordan", "LB": "Lebanon", "MA": "Morocco", "MX": "Mexico", "NP": "Nepal", "NZ": "New Zealand", "PE": "Peru",
-    "PR": "Puerto Rico", "PS": "Palestine", "PY": "Paraguay", "SG": "Singapore", "TN": "Tunisia", "US": "the US", "UY": "Uruguay",
+    "AG": "Antigua and Barbuda", "AL": "Albania", "AM": "Armenia", "AT": "Austria", "AU": "Australia", "AW": "Aruba",
+    "AZ": "Azerbaijan", "BA": "Bosnia and Herzegovina", "BB": "Barbados", "BE": "Belgium", "BG": "Bulgaria", "BZ": "Belize",
+    "CA": "Canada", "CH": "Switzerland", "CL": "Chile", "CO": "Colombia", "CR": "Costa Rica", "CU": "Cuba", "CY": "Cyprus",
+    "CZ": "Czechia", "DE": "Germany", "DK": "Denmark", "DO": "the Dominican Republic", "DZ": "Algeria", "EE": "Estonia",
+    "EG": "Egypt", "ES": "Spain", "FI": "Finland", "FO": "the Faroe Islands", "FR": "France", "GB": "the UK", "GD": "Grenada",
+    "GE": "Georgia", "GP": "Guadeloupe", "GR": "Greece", "GT": "Guatemala", "HN": "Honduras", "HR": "Croatia", "HT": "Haiti",
+    "HU": "Hungary", "IE": "Ireland", "IL": "Israel", "IN": "India", "IS": "Iceland", "IT": "Italy", "JM": "Jamaica",
+    "JO": "Jordan", "LB": "Lebanon", "LI": "Liechtenstein", "LT": "Lithuania", "LU": "Luxembourg", "LV": "Latvia",
+    "LY": "Libya", "MA": "Morocco", "MD": "Moldova", "ME": "Montenegro", "MK": "North Macedonia", "MQ": "Martinique",
+    "MT": "Malta", "MX": "Mexico", "NI": "Nicaragua", "NL": "the Netherlands", "NO": "Norway", "NP": "Nepal",
+    "NZ": "New Zealand", "PA": "Panama", "PE": "Peru", "PL": "Poland", "PR": "Puerto Rico", "PS": "Palestine",
+    "PT": "Portugal", "PY": "Paraguay", "RO": "Romania", "RS": "Serbia", "SE": "Sweden", "SG": "Singapore", "SI": "Slovenia",
+    "SK": "Slovakia", "SV": "El Salvador", "SY": "Syria", "TN": "Tunisia", "TR": "Türkiye", "TT": "Trinidad and Tobago",
+    "UA": "Ukraine", "US": "the US", "UY": "Uruguay", "XK": "Kosovo",
 }
 REGION_NAMES = {
     "EU": "the EU", "EUROPE": "Europe", "NORDIC": "the Nordic countries", "LATAM": "Latin America",
@@ -103,7 +113,7 @@ def asset(name: str, out: Path) -> str:
     target = out / "assets" / f"{stem}.{digest}.{ext}"
     target.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(source, target)
-    return f"{BASE}assets/{target.name}"
+    return BASE + target.relative_to(out).as_posix()
 
 
 def icon(name: str, cls: str = "cs-icon") -> str:
@@ -170,12 +180,13 @@ FOOTER = """<footer class="footer">
       <span>Made with care. Usually with Spotty, Luna, and Juno nearby.</span>
       <span>Call Sheet is free · <a href="https://github.com/bomkino/call-sheet">Source</a> · <a href="/">Home</a> · <a href="mailto:hello@pitch.dog">hello@pitch.dog</a></span>
     </div>
-  </footer>
-  <a class="pd-whatsapp-fab" href="https://wa.me/message/NR6Z7K3HBOVPJ1" target="_blank" rel="noopener noreferrer" aria-label="Chat with pitch.dog on WhatsApp (opens in a new tab)" title="Chat on WhatsApp"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></svg></a>"""
+    <a class="pd-whatsapp-fab" href="https://wa.me/message/NR6Z7K3HBOVPJ1" target="_blank" rel="noopener noreferrer" aria-label="Chat with pitch.dog on WhatsApp (opens in a new tab)" title="Chat on WhatsApp"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></svg></a>
+  </footer>"""
 
 
 SOCIAL_ALT = "Call Sheet by pitch.dog: a printed call sheet listing three calls, soonest first, beside the words Grants, labs, markets and festivals, sorted by when they close."
 SOCIAL = {"src": ""}
+AS_OF = {"date": ""}
 
 
 def page(*, title: str, description: str, path: str, body: str, css: str, js: str, social_title: str, robots: str = "index, follow, max-image-preview:large", jsonld: dict | None = None) -> str:
@@ -218,12 +229,14 @@ def page(*, title: str, description: str, path: str, body: str, css: str, js: st
   <meta name="twitter:image:alt" content="{h(SOCIAL_ALT)}">
   <title>{h(title)}</title>{ld}
 </head>
-<body class="cs">
+<body class="cs" data-as-of="{AS_OF['date']}">
+  <!--email_off-->
   {SPRITE}
   <a class="skip" href="#main">Skip to content</a>
   {nav()}
   {body}
   {FOOTER}
+  <!--/email_off-->
 </body>
 </html>
 """
@@ -234,6 +247,11 @@ def page(*, title: str, description: str, path: str, body: str, css: str, js: st
 
 def kinds_text(call: dict) -> str:
     return KIND_LABELS.get(call["kinds"][0], "") if call["kinds"] else ""
+
+
+def tag_spans(call: dict) -> str:
+    """The tag line as separate no-wrap tags, so a line never breaks inside one or ends on a dot."""
+    return '<span class="cs-tagrow">' + "".join(f'<span>{h(t)}</span>' for t in tag_line(call).split(" · ") if t) + "</span>"
 
 
 def tag_line(call: dict) -> str:
@@ -249,30 +267,64 @@ def tag_line(call: dict) -> str:
 def bucket(call: dict, as_of: str) -> tuple[str, str]:
     """(sort key, heading) for the no-JavaScript grouping.  The script regroups by the visitor's date."""
     closes = call.get("closes")
-    if call["state"] == "closed_or_historical" or (closes and closes < as_of):
+    if closed_at(call, as_of):
         return ("9", "Closed for this round")
     if not closes:
         return ("8", "No fixed date yet")
     days = (dt.date.fromisoformat(closes) - dt.date.fromisoformat(as_of)).days
     if days <= 7:
-        return ("0", "Closes this week")
+        return ("0", "In the next 7 days")
     d = dt.date.fromisoformat(closes)
     return (f"1{closes[:7]}", MONTHS[d.month - 1] + ("" if d.year == dt.date.fromisoformat(as_of).year else f" {d.year}"))
 
 
 def where_chip(call: dict) -> str:
     w = call["where"]
-    if w["scope"] == "worldwide" and not w.get("excludes"):
+    if w["scope"] == "worldwide" and not w.get("excludes") and not w.get("identity"):
         return "Open worldwide"
     if w["scope"] == "unclear":
         return "Check who can apply"
     return ""
 
 
+def rounds(call: dict) -> list[str]:
+    """Every closing date the call has, so the page can move to the next round once one passes.
+    Fee tiers (early, regular, late) are one round whose last tier is the cut-off."""
+    deadlines = sorted({d["date"] for d in call["dates"] if d["role"] == "application_submission_deadline"})
+    if not deadlines:
+        deadlines = sorted({d["date"] for d in call["dates"] if d["role"] == "application_fee_tier_cutoff"})[-1:]
+    return deadlines
+
+
+def closed_at(call: dict, as_of: str) -> bool:
+    """Closed on the build date: marked closed, or every round has passed."""
+    every = rounds(call)
+    return call["state"] == "closed_or_historical" or bool(every and every[-1] < as_of)
+
+
+def title_html(title: str) -> str:
+    """A title never starts a line with its dash."""
+    return h(title).replace(" — ", "&nbsp;— ")
+
+
+def clip(text: str, limit: int) -> str:
+    """Cut at a word boundary, for meta descriptions."""
+    if len(text) <= limit:
+        return text
+    return text[: text.rfind(" ", 0, limit - 1)].rstrip(" ,;:.") + "…"
+
+
+def norm(text: str | None) -> str:
+    return "".join(ch for ch in (text or "").lower() if ch.isalnum())
+
+
+def deadline_on(call: dict, iso: str | None) -> dict:
+    return next((d for d in call["dates"] if d["date"] == iso and d["role"] in ("application_submission_deadline", "application_fee_tier_cutoff")), {}) if iso else {}
+
+
 def org_line(call: dict) -> str:
     """Organiser and country, without repeating an organiser the title already names."""
     org = call.get("organiser") or ""
-    norm = lambda t: "".join(ch for ch in t.lower() if ch.isalnum())
     if org and norm(call["title"]).startswith(norm(org)):
         org = ""
     return " · ".join(x for x in (org, call.get("organiser_country")) if x)
@@ -290,24 +342,29 @@ def call_row(call: dict, as_of: str) -> str:
         "data-kinds": " ".join(call["kinds"]),
         "data-formats": " ".join(call["formats"]),
         "data-stages": " ".join(call["stages"]),
+        "data-rounds": " ".join(rounds(call)),
+        "data-tiers": " ".join(sorted({d["date"] for d in call["dates"] if d["role"] == "application_fee_tier_cutoff"})),
+        "data-time": deadline_on(call, closes).get("time") or "",
+        "data-tz": deadline_on(call, closes).get("timezone") or "",
+        "data-official": call.get("official_url") or "",
         "data-fee": call["fee"]["state"],
-        "data-where": json.dumps({k: call["where"].get(k) for k in ("scope", "countries", "regions", "excludes", "confidence", "subnational")}, separators=(",", ":")),
+        "data-where": json.dumps({k: call["where"].get(k) for k in ("scope", "countries", "regions", "excludes", "confidence", "subnational", "identity")}, separators=(",", ":")),
         "data-search": " ".join(x for x in (call["title"], call.get("organiser"), call.get("organiser_country"), call["who"], call["get"], tag_line(call)) if x).lower(),
     }
     attrs = " ".join(f'{k}="{h(v)}"' for k, v in data.items())
     if closes:
         d = dt.date.fromisoformat(closes)
-        when = f'<time class="cs-date" datetime="{closes}"><span class="cs-day">{d.day}</span><span class="cs-month">{MONTHS[d.month - 1][:3]}{"" if d.year == dt.date.fromisoformat(as_of).year else " " + str(d.year)}</span></time><span class="cs-left" data-left></span>'
+        when = f'<time class="cs-date" datetime="{closes}"><span class="cs-day">{d.day}</span><span class="cs-month" data-pd-ui="metadata">{MONTHS[d.month - 1][:3]}{"" if d.year == dt.date.fromisoformat(as_of).year else " " + str(d.year)}</span></time><span class="cs-left" data-pd-ui="badge" data-left></span>'
     else:
-        when = f'<span class="cs-date cs-date--none"><span class="cs-day">—</span><span class="cs-month">{"Rolling" if call["state"] == "watch_or_rolling" else "TBC"}</span></span><span class="cs-left" data-left></span>'
+        when = f'<span class="cs-date cs-date--none"><span class="cs-day">—</span><span class="cs-month" data-pd-ui="metadata">{"Rolling" if call["state"] == "watch_or_rolling" else "TBC"}</span></span><span class="cs-left" data-pd-ui="badge" data-left></span>'
     chip = where_chip(call)
     return f"""<li class="cs-call" {attrs}>
         <div class="cs-when">{when}</div>
         <div class="cs-main">
-          <h4 class="cs-title" data-pd-type="title.functional"><a href="{BASE}{h(call['slug'])}/">{h(call['title'])}</a></h4>
+          <h4 class="cs-title" data-pd-type="title.functional"><a href="{BASE}{h(call['slug'])}/">{title_html(call['title'])}</a></h4>
           <p class="cs-org" data-pd-type="body.small">{h(org_line(call))}</p>
-          <p class="cs-tags" data-pd-type="metadata">{h(tag_line(call))}</p>
-          <p class="cs-badges"><span class="cs-badge" data-badge-state hidden></span>{f'<span class="cs-badge cs-badge--checked" title="{h(call["recheck"].get("note") or "")}">Rechecked {h(day(call["recheck"]["checked_on"], with_year=False))}</span>' if call.get("recheck") else ''}{f'<span class="cs-badge cs-badge--place" data-badge-place>{h(chip)}</span>' if chip else '<span class="cs-badge cs-badge--place" data-badge-place hidden></span>'}</p>
+          <p class="cs-tags" data-pd-type="metadata">{tag_spans(call)}</p>{f'<p class="cs-limit" data-pd-type="body.small">Only for {h(call["where"]["identity"][0].lower() + call["where"]["identity"][1:])}</p>' if call["where"].get("identity") else ''}
+          <p class="cs-badges"><span class="cs-badge" data-pd-ui="badge" data-badge-state hidden></span><span class="cs-badge cs-badge--tier" data-pd-ui="badge" data-badge-tier hidden></span>{f'<span class="cs-badge cs-badge--checked" data-pd-ui="badge" title="{h(call["recheck"].get("note") or "")}">Rechecked {h(day(call["recheck"]["checked_on"], with_year=False))}</span>' if call.get("recheck") else ''}{f'<span class="cs-badge cs-badge--place" data-pd-ui="badge" data-badge-place>{h(chip)}</span>' if chip else '<span class="cs-badge cs-badge--place" data-pd-ui="badge" data-badge-place hidden></span>'}</p>
         </div>
         <dl class="cs-facts">
           <div><dt data-pd-type="metadata">Who can apply</dt><dd data-pd-type="body.small">{h(call['who'])}</dd></div>
@@ -319,7 +376,7 @@ def call_row(call: dict, as_of: str) -> str:
 
 
 def chips(name: str, legend: str, options: list[tuple[str, str]], hint: str = "") -> str:
-    boxes = "".join(f'<label class="cs-chip"><input type="checkbox" name="{name}" value="{h(v)}"><span>{h(t)}</span></label>' for v, t in options)
+    boxes = "".join(f'<label class="cs-chip"><input type="checkbox" name="{name}" value="{h(v)}"><span data-pd-ui="metadata">{h(t)}</span></label>' for v, t in options)
     return f'<fieldset class="cs-facet" data-facet="{name}"><legend data-pd-type="metadata">{h(legend)}</legend><div class="cs-chip-row">{boxes}</div>{f"<p class=\"cs-hint\" data-pd-type=\"body.small\">{h(hint)}</p>" if hint else ""}</fieldset>'
 
 
@@ -329,15 +386,23 @@ def recheck_paragraph(calls: list[dict]) -> str:
         return ""
     when = max(c["recheck"]["checked_on"] for c in rechecked)
     changed = sum(1 for c in rechecked if c["recheck"]["status"] == "changed")
-    moved = f" {changed} needed correcting and now follow the official page." if changed else ""
-    return f'<p data-pd-type="body.reading">On {h(day(when))} we went back to the official page of every call closing in the next five weeks. {len(rechecked)} carry a <strong>Rechecked</strong> mark.{h(moved)} A few pages wouldn’t let us in; those keep their earlier date and no mark.</p>'
+    closed = sum(1 for c in rechecked if c["recheck"]["status"] == "closed")
+    blocked = sum(1 for c in calls if not c.get("recheck") and c["state"] != "closed_or_historical")
+    parts = [f"On {day(when)} we went back to the official page of every call that wasn’t already closed, and read it again for the dates, the fee, who can apply and what you get. {len(rechecked)} calls carry a <strong>Rechecked</strong> mark."]
+    if changed:
+        parts.append(f"{changed} needed correcting and now follow the official page.")
+    if closed:
+        parts.append(f"{closed} turned out to have closed, and say so.")
+    if blocked:
+        parts.append(f"{blocked} {'page' if blocked == 1 else 'pages'} wouldn’t let us in, mostly behind FilmFreeway’s bot check; those keep their earlier date and no mark.")
+    return f'<p data-pd-type="body.reading">{" ".join(parts)}</p>'
 
 
 def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
     live = [c for c in calls if c.get("closes") and c["closes"] >= as_of and c["state"] != "closed_or_historical"]
     week = [c for c in live if (dt.date.fromisoformat(c["closes"]) - dt.date.fromisoformat(as_of)).days <= 7]
     open_now = [c for c in live if c["state"] == "open_or_published" and (not c.get("opens") or c["opens"] <= as_of)]
-    countries = {c["organiser_country"] for c in calls if c.get("organiser_country")}
+    free_now = [c for c in open_now if c["fee"]["state"] == "free"]
     next_close = min((c["closes"] for c in live), default=None)
     groups: dict[tuple[str, str], list[dict]] = {}
     for call in sorted(calls, key=lambda c: (c.get("closes") or "9999", c["title"])):
@@ -356,14 +421,14 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
     body = f"""<main id="main">
     <section class="stage cs-stage" aria-labelledby="page-title">
       <div class="cs-stage-inner">
-        <p class="hero-locator"><span class="hero-locator-mark" aria-hidden="true"></span><span>Free tool</span><a class="badge badge--beta" href="#faq">Beta</a><span class="hero-locator-rule" aria-hidden="true"></span><span class="hero-locator-dot" aria-hidden="true">·</span><span>Checked {h(day(as_of))}</span></p>
+        <p class="hero-locator"><span class="hero-locator-mark" aria-hidden="true"></span><span>Free tool</span><a class="badge badge--beta" href="#faq">Beta</a><span class="hero-locator-rule" aria-hidden="true"></span><span class="hero-locator-dot" aria-hidden="true">·</span><span>Checked {h(day(as_of))}<span data-age="{h(as_of)}"></span></span></p>
         <h1 id="page-title" data-pd-type="display.hero">Call Sheet.</h1>
         <p class="cs-lede" data-pd-type="lead.hero">Film and TV grants, labs, markets and festivals, sorted by when they close. Who can apply, what you get, what it costs and what to bring.</p>
         <dl class="cs-board" aria-label="Today on the call sheet">
-          <div><dt data-pd-type="metadata">Open now</dt><dd data-pd-type="metric" data-board="open">{len(open_now)}</dd></div>
-          <div><dt data-pd-type="metadata">Closing in 7 days</dt><dd data-pd-type="metric" data-board="week">{len(week)}</dd></div>
-          <div><dt data-pd-type="metadata">Next call time</dt><dd data-pd-type="metric" data-board="next">{h(day(next_close, with_year=False)) if next_close else '—'}</dd></div>
-          <div><dt data-pd-type="metadata">Organiser countries</dt><dd data-pd-type="metric">{len(countries)}</dd></div>
+          <div><dt data-pd-type="metadata">Open now</dt><dd data-pd-ui="display" data-board="open">{len(open_now)}</dd></div>
+          <div><dt data-pd-type="metadata">Closing in 7 days</dt><dd data-pd-ui="display" data-board="week">{len(week)}</dd></div>
+          <div><dt data-pd-type="metadata">Next deadline</dt><dd data-pd-ui="display" data-board="next">{h(day(next_close, with_year=False)) if next_close else '—'}</dd></div>
+          <div><dt data-pd-type="metadata">Open and free to enter</dt><dd data-pd-ui="display" data-board="free">{len(free_now)}</dd></div>
         </dl>
         <div class="button-row cs-stage-actions"><a class="button button--brand button--large" href="#find">Find your calls <span aria-hidden="true">↓</span></a><a class="button button--ghost button--large" href="#how">How we check</a></div>
       </div>
@@ -387,7 +452,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
           <div class="cs-filter-top">
             <div class="cs-field cs-field--search">
               <label for="cs-q" data-pd-type="metadata">Search</label>
-              <div class="cs-input-wrap">{ph("magnifying-glass")}<input id="cs-q" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="Try documentary, Kenya or Sundance"></div>
+              <div class="cs-input-wrap">{ph("magnifying-glass")}<input id="cs-q" name="q" type="search" autocomplete="off" spellcheck="false" maxlength="80" placeholder="Try documentary or Kenya"></div>
             </div>
             <div class="cs-field cs-field--place">
               <label for="cs-from" data-pd-type="metadata">Where are you based?</label>
@@ -399,9 +464,9 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
           {chips("stage", "Where it’s at", stage_options)}
           {chips("kind", "Looking for", list(KIND_FILTERS))}
           <fieldset class="cs-facet cs-facet--toggles" data-facet="only"><legend data-pd-type="metadata">Only show</legend><div class="cs-chip-row">
-            <label class="cs-chip"><input type="checkbox" name="only" value="open"><span>Open now</span></label>
-            <label class="cs-chip"><input type="checkbox" name="only" value="free"><span>Free to enter</span></label>
-            <label class="cs-chip"><input type="checkbox" name="only" value="saved"><span>My saved calls</span></label>
+            <label class="cs-chip"><input type="checkbox" name="only" value="open"><span data-pd-ui="metadata">Open now</span></label>
+            <label class="cs-chip"><input type="checkbox" name="only" value="free"><span data-pd-ui="metadata">Free to enter</span></label>
+            <label class="cs-chip"><input type="checkbox" name="only" value="saved"><span data-pd-ui="metadata">My saved calls</span></label>
           </div></fieldset>
         </form>
         <noscript><p class="cs-noscript" data-pd-type="body.default">Filters need JavaScript. Every call is listed below, soonest first.</p></noscript>
@@ -411,7 +476,8 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
     <section class="cs-results" id="calls" aria-labelledby="calls-title">
       <div class="cs-results-head">
         <h2 id="calls-title" class="cs-count" data-pd-type="title.functional"><span data-count>{len(calls)}</span> calls, soonest first</h2>
-        <p class="cs-count-note" data-pd-type="body.small" data-count-note aria-live="polite"></p>
+        <p class="cs-count-note" data-pd-type="body.small" data-count-note></p>
+        <a class="button button--small cs-filter-jump" href="#find" data-filter-jump>{icon('sliders')}<span>Filters</span></a>
         <button class="button button--small" type="button" data-clear hidden>Clear filters</button>
         <div class="cs-colheads" aria-hidden="true"><span data-pd-type="metadata">Closes</span><span data-pd-type="metadata">Call</span><span data-pd-type="metadata">Who can apply</span><span data-pd-type="metadata">You get</span><span data-pd-type="metadata">Entry fee</span><span></span></div>
       </div>
@@ -421,6 +487,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
       <div class="cs-empty" data-empty hidden>
         <p data-pd-type="title.card">Nothing fits all of that.</p>
         <p data-pd-type="body.default">Loosen a filter, or <a href="mailto:hello@pitch.dog?subject=A%20call%20for%20Call%20Sheet">tell us about a call we’re missing</a>.</p>
+        <button class="button button--small" type="button" data-clear-empty>Clear filters</button>
       </div>
       <p class="cs-excluded" data-excluded hidden></p>
     </section>
@@ -458,7 +525,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
       </div>
       <div class="faq">
         <details><summary data-pd-type="title.functional">Is it really free?</summary><p data-pd-type="body.default">Yes. No price, no account and no email gate. Finding the next call shouldn’t take a week of open tabs, and we’d rather you spent that week on the application.</p></details>
-        <details><summary data-pd-type="title.functional">How current is it?</summary><p data-pd-type="body.default">Every call shows the day it was last checked: mid-October 2026 for most, later where we’ve rechecked the official page. Dates and terms change between rounds, so treat this as the map and the official page as the ground.</p></details>
+        <details><summary data-pd-type="title.functional">How current is it?</summary><p data-pd-type="body.default">Every call shows the day it was last checked. On {h(day(as_of))} we reread the official page of every call that wasn’t already closed, and we recheck at least once a month. Dates and terms change between rounds, so treat this as the map and the official page as the ground.</p></details>
         <details><summary data-pd-type="title.functional">Does a match mean I’m eligible?</summary><p data-pd-type="body.default">No. It means nothing we found rules you out. Eligibility lives in the details: where you live versus your passport, you versus your company, how much of the budget is already raised. Each call page lists what to check before you apply.</p></details>
         <details><summary data-pd-type="title.functional">Why isn’t my festival or fund here?</summary><p data-pd-type="body.default">This is a curated set of {len(calls)} calls, not a census. If one belongs here, send the link to <a href="mailto:hello@pitch.dog?subject=A%20call%20for%20Call%20Sheet">hello@pitch.dog</a> and we’ll take a look.</p></details>
         <details><summary data-pd-type="title.functional">Do you rank the calls?</summary><p data-pd-type="body.default">No. There’s no prestige score and no guess at your odds. Calls are sorted by closing date, because the deadline is the one thing that won’t wait.</p></details>
@@ -498,19 +565,21 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
   </main>
 
   {sheet_ui()}"""
+    about = "A free list of film and TV grants, labs, markets and festivals, sorted by closing date, with who can apply, what you get, fees and what to bring."
     jsonld = {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Call Sheet",
-        "url": ORIGIN + BASE,
-        "applicationCategory": "ReferenceApplication",
-        "operatingSystem": "Any modern web browser",
-        "isAccessibleForFree": True,
-        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-        "description": "A free list of film and TV grants, labs, markets and festivals, sorted by closing date, with who can apply, what you get, fees and what to bring.",
-        "image": ORIGIN + SOCIAL["src"],
-        "codeRepository": "https://github.com/bomkino/call-sheet",
-        "creator": {"@id": ORIGIN + "/#organization"},
+        "@graph": [
+            {"@type": "WebPage", "@id": ORIGIN + BASE, "url": ORIGIN + BASE, "name": "Call Sheet", "description": about, "dateModified": as_of,
+             "mainEntity": {"@id": ORIGIN + BASE + "#app"}},
+            {"@type": "WebApplication", "@id": ORIGIN + BASE + "#app", "name": "Call Sheet", "url": ORIGIN + BASE,
+             "applicationCategory": "ReferenceApplication", "operatingSystem": "Any modern web browser", "isAccessibleForFree": True,
+             "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": about, "image": ORIGIN + SOCIAL["src"],
+             "codeRepository": "https://github.com/bomkino/call-sheet", "creator": {"@type": "Organization", "name": "pitch.dog", "url": ORIGIN + "/"}},
+            {"@type": "Dataset", "@id": ORIGIN + BASE + "#data", "name": "Call Sheet: film and TV calls",
+             "description": f"{len(calls)} film and TV grants, labs, markets and festivals with typed dates, fees, eligibility and sources, each checked against the organiser's page. Research snapshot, not legal advice.",
+             "url": ORIGIN + BASE, "isAccessibleForFree": True, "dateModified": as_of, "creator": {"@type": "Organization", "name": "pitch.dog", "url": ORIGIN + "/"},
+             "distribution": {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": ORIGIN + BASE + "data/calls.json"}},
+        ],
     }
     return page(
         title="Call Sheet — film and TV grants, labs and festivals by deadline, free · pitch.dog",
@@ -567,7 +636,8 @@ def where_detail(call: dict) -> str:
         parts = [f"Limited to {place}."]
     else:
         parts = ["Our notes don’t say where applicants must be based. Check the official rules."]
-    parts.append(TEST_SENTENCES.get(w.get("test") or "unknown", ""))
+    if w["scope"] != "worldwide":
+        parts.append(TEST_SENTENCES.get(w.get("test") or "unknown", ""))
     if w.get("identity"):
         parts.append(f"Also limited to {w['identity'][0].lower() + w['identity'][1:]}.")
     if w.get("confidence") == "partial":
@@ -614,11 +684,14 @@ def dates_block(call: dict) -> str:
     if not call["dates"]:
         return '<p data-pd-type="body.default">No dates published in our notes yet. Watch the official page for the next round.</p>'
     rows = []
+    single_round = not any(d["role"] == "application_submission_deadline" for d in call["dates"])
     for d in call["dates"]:
         when = h(long_day(d["date"]))
+        # The last fee tier of a single round is its closing date, not an earlier one.
+        role_label = "Closes" if single_round and d["role"] == "application_fee_tier_cutoff" and d["date"] == call.get("closes") else d["role_label"]
         clock = " ".join(x for x in (d.get("time"), tz_label(d.get("timezone"))) if x)
         rows.append(f"""<li class="cs-timeline-item cs-role--{h(d['role'])}" data-date="{h(d['date'])}">
-            <span class="cs-timeline-role" data-pd-type="metadata">{h(d['role_label'])}</span>
+            <span class="cs-timeline-role" data-pd-type="metadata">{h(role_label)}</span>
             <span class="cs-timeline-date" data-pd-type="title.functional"><time datetime="{h(d['date'])}">{when}</time></span>
             <span class="cs-timeline-note" data-pd-type="body.small">{h(' · '.join(x for x in (d.get('label'), clock, d.get('time_note')) if x))}</span>
           </li>""")
@@ -628,6 +701,8 @@ def dates_block(call: dict) -> str:
 def fees_block(call: dict) -> str:
     fee = call["fee"]
     if not fee["items"]:
+        if fee.get("checked_on"):
+            return f'<p data-pd-type="body.default">The official page didn’t state an entry fee when we read it on {h(day(fee["checked_on"]))}. That isn’t the same as free: check the form before you count on it.</p>'
         return '<p data-pd-type="body.default">No entry fee is published in our notes. That isn’t the same as free: check the form before you count on it.</p>'
     def rows(stage: str) -> str:
         items = [i for i in fee["items"] if i["stage"] == stage]
@@ -639,6 +714,8 @@ def fees_block(call: dict) -> str:
     sel = rows("selected")
     if sel:
         out.append(f'<h3 class="cs-subhead" data-pd-type="metadata">If you’re selected, or later</h3><table class="cs-table"><tbody>{sel}</tbody></table>')
+    if fee.get("checked_on"):
+        out.append(f'<p class="cs-fineprint" data-pd-type="body.small">From the official page, {h(day(fee["checked_on"]))}.</p>')
     return "".join(out)
 
 
@@ -662,7 +739,7 @@ def checks_block(call: dict) -> str:
     qs = list(call["check_yourself"])
     if not qs:
         return ""
-    items = "".join(f'<li><span class="cs-check-q" data-pd-type="body.default">{h(q)}</span><span class="cs-check-a" role="group" aria-label="Your answer"><label><input type="radio" name="q{i}" value="yes"><span>Yes</span></label><label><input type="radio" name="q{i}" value="no"><span>No</span></label><label><input type="radio" name="q{i}" value="unsure"><span>Not sure</span></label></span></li>' for i, q in enumerate(qs))
+    items = "".join(f'<li><fieldset class="cs-check-set"><legend class="cs-check-q" data-pd-type="body.default">{h(q)}</legend><span class="cs-check-a"><label><input type="radio" name="q{i}" value="yes"><span data-pd-ui="metadata">Yes</span></label><label><input type="radio" name="q{i}" value="no"><span data-pd-ui="metadata">No</span></label><label><input type="radio" name="q{i}" value="unsure"><span data-pd-ui="metadata">Not sure</span></label></span></fieldset></li>' for i, q in enumerate(qs))
     return f"""<div class="cs-selfcheck" data-selfcheck>
           <h3 class="cs-subhead" data-pd-type="metadata">Check yourself</h3>
           <p data-pd-type="body.small">Questions from the published rules. Your answers stay on this page and vanish when you leave.</p>
@@ -679,12 +756,21 @@ def call_page(call: dict, by_slug: dict[str, dict], as_of: str, css: str, js: st
     kind = kinds_text(call)
     closes = call.get("closes")
     path = f"{BASE}{call['slug']}/"
-    deadline = next((d for d in call["dates"] if d["date"] == closes and d["role"] in ("application_submission_deadline", "application_fee_tier_cutoff")), None)
-    clock = " ".join(x for x in ((deadline or {}).get("time"), tz_label((deadline or {}).get("timezone"))) if x)
+    deadline = deadline_on(call, closes)
+    clock = " ".join(x for x in (deadline.get("time"), tz_label(deadline.get("timezone")), deadline.get("time_note")) if x)
     later_rounds = sorted({d["date"] for d in call["dates"] if d["role"] == "application_submission_deadline" and closes and d["date"] > closes})
-    status = f"""<div class="cs-countdown" data-countdown data-closes="{h(closes or '')}" data-opens="{h(call.get('opens') or '')}" data-state="{h(call['state'])}">
-          <p class="cs-countdown-big" data-pd-type="heading.subsection" data-countdown-text>{h(('Closes ' + day(closes)) if closes else ('Rolling, or no fixed date' if call['state'] == 'watch_or_rolling' else 'Dates to come'))}</p>
-          <p class="cs-countdown-when" data-pd-type="body.default">{h(long_day(closes) + (', ' + clock if clock else '')) if closes else 'Watch the official page for the next round.'}{h('. Next round: ' + ', '.join(day(d) for d in later_rounds[:2])) if later_rounds else ''}</p>
+    closed = closed_at(call, as_of)
+    if closed:
+        big = f"Closed on {day(closes)}" if closes else "Closed for this round"
+        when = (call.get("recheck") or {}).get("note") if (call.get("recheck") or {}).get("status") == "closed" else "Watch the official page for the next round."
+    else:
+        big = ("Closes " + day(closes)) if closes else ("Rolling, or no fixed date" if call["state"] == "watch_or_rolling" else "Dates to come")
+        when = (long_day(closes) + (", " + clock if clock else "")) if closes else "Watch the official page for the next round."
+        when += (". Next round: " + ", ".join(day(d) for d in later_rounds[:2])) if later_rounds else ""
+    status = f"""<div class="cs-countdown{' is-closed' if closed else ''}" data-countdown data-closes="{h(closes or '')}" data-opens="{h(call.get('opens') or '')}" data-state="{h(call['state'])}" data-rounds="{h(' '.join(rounds(call)))}" data-time="{h(deadline.get('time') or '')}" data-tz="{h(deadline.get('timezone') or '')}">
+          <p class="cs-countdown-big" data-pd-type="heading.subsection" data-countdown-text>{h(big)}</p>
+          <p class="cs-countdown-when" data-pd-type="body.default" data-countdown-when>{h(when)}</p>
+          <p class="cs-countdown-local" data-pd-type="body.small" data-local hidden></p>
           {f'<p class="cs-recheck" data-pd-type="body.small">{icon("check")}<span>Rechecked on the <a href="{h(call["recheck"].get("url") or call.get("official_url") or "")}" rel="noopener">official page</a>, {h(day(call["recheck"]["checked_on"]))}. {h(call["recheck"].get("note") or "")}</span></p>' if call.get("recheck") else ''}
         </div>"""
     caution_items = ([f'<li data-pd-type="body.default">{h(call["caution"])}</li>'] if call.get("caution") else []) + [f'<li data-pd-type="body.default">{h(q["question"])}{f" <span class=\"cs-meanwhile\">Meanwhile: {h(q['meanwhile'])}</span>" if q.get("meanwhile") else ""}</li>' for q in call["open_questions"]]
@@ -692,7 +778,15 @@ def call_page(call: dict, by_slug: dict[str, dict], as_of: str, css: str, js: st
     terms = "".join(f'<tr><th scope="row" data-pd-type="body.small">{h(t["label"])}</th><td data-pd-type="body.small">{h(t["text"])}</td></tr>' for t in call["terms"])
     sources = "".join(f'<li><a href="{h(s["url"])}" rel="noopener" data-pd-type="body.default">{h(s["title"])} {ph("arrow-up-right")}</a><span data-pd-type="body.small">{h(("Checked " + day(s["checked_on"])) if s.get("checked_on") else "")}{h(". " + s["note"]) if s.get("note") else ""}</span></li>' for s in call["sources"])
     related = [by_slug[r] for r in call["related"] if r in by_slug]
-    related_html = "".join(f'<li><a href="{BASE}{h(r["slug"])}/" data-pd-type="title.functional">{h(r["title"])}</a><span data-pd-type="body.small">{h(("Closes " + day(r["closes"])) if r.get("closes") else "No fixed date")}</span></li>' for r in related)
+    related_html = "".join(f'<li><a href="{BASE}{h(r["slug"])}/" data-pd-type="title.functional">{title_html(r["title"])}</a><span data-pd-type="body.small">{h(("Closes " + day(r["closes"])) if r.get("closes") else "No fixed date")}</span></li>' for r in related)
+    # Other open calls for the same kind of project, closing nearest this one.
+    around = []
+    if closes and not closed:
+        kinds = set(call["kinds"]) | (set(call["formats"]) - {"any", "other"})
+        days = lambda c: abs((dt.date.fromisoformat(c["closes"]) - dt.date.fromisoformat(closes)).days)
+        around = sorted((c for c in by_slug.values() if c is not call and c not in related and c.get("closes") and not closed_at(c, as_of)
+                         and kinds & (set(c["kinds"]) | set(c["formats"]))), key=lambda c: (not set(call["kinds"]) & set(c["kinds"]), days(c), c["title"]))[:3]
+    around_html = "".join(f'<li><a href="{BASE}{h(r["slug"])}/" data-pd-type="title.functional">{title_html(r["title"])}</a><span data-pd-type="body.small">{h("Closes " + day(r["closes"]))}</span></li>' for r in around)
     recheck = call.get("recheck")
     checked = f"Checked {day(call['checked_on'])}" + (f" · rechecked {day(recheck['checked_on'])}" if recheck else "")
     mail_subject = f"Call Sheet correction: {call['title']}"
@@ -713,16 +807,17 @@ def call_page(call: dict, by_slug: dict[str, dict], as_of: str, css: str, js: st
     <article class="cs-article" aria-labelledby="call-title">
       <nav class="cs-crumbs" aria-label="Breadcrumb"><a href="{BASE}" data-back>{ph("arrow-left")}<span>All calls</span></a></nav>
       <header class="cs-callhead">
-        <p class="hero-locator cs-locator"><span class="hero-locator-mark" aria-hidden="true"></span><span>{h(kind)}</span>{f'<span aria-hidden="true">·</span><span>{h(call["organiser_country"])}</span>' if call.get("organiser_country") else ''}<span class="hero-locator-rule" aria-hidden="true"></span><span class="hero-locator-dot" aria-hidden="true">·</span><span>{h(checked)}</span></p>
-        <h1 id="call-title" data-pd-type="heading.section">{h(call['title'])}</h1>
-        <p class="cs-callorg" data-pd-type="lead.section">{h(call.get('organiser') or '')}</p>
+        <p class="hero-locator cs-locator"><span class="hero-locator-mark" aria-hidden="true"></span><span>{h(kind)}</span>{f'<span aria-hidden="true">·</span><span>{h(call["organiser_country"])}</span>' if call.get("organiser_country") else ''}<span class="hero-locator-rule" aria-hidden="true"></span><span class="hero-locator-dot" aria-hidden="true">·</span><span>{h(checked)}<span data-age="{h((recheck or {}).get('checked_on') or call['checked_on'])}"></span></span></p>
+        <h1 id="call-title" data-pd-type="heading.section">{title_html(call['title'])}</h1>
+        {f'<p class="cs-callorg" data-pd-type="lead.section">{h(call["organiser"])}</p>' if call.get("organiser") and not norm(call["title"]).startswith(norm(call["organiser"])) else ''}
         {status}
         <div class="button-row cs-callactions">
           {f'<a class="button button--brand button--large" href="{h(call["official_url"])}" rel="noopener">Official page {ph("arrow-up-right")}</a>' if call.get("official_url") else ''}
           {portal}
           <button class="button button--large cs-save cs-save--big" type="button" data-save="{h(call['slug'])}" aria-pressed="false">{icon('bookmark', 'cs-icon cs-save-off')}{icon('bookmark-fill', 'cs-icon cs-save-on')}<span class="cs-save-text">Save</span></button>
-          {f'<button class="button button--large" type="button" data-ics>{icon("calendar")}Add to calendar</button>' if closes else ''}
+          {f'<button class="button button--large" type="button" data-ics>{icon("calendar")}Add to calendar</button>' if closes and not closed else ''}
         </div>
+        {f'<p class="cs-print-only" data-pd-type="body.small">Official page: {h(call["official_url"])}</p>' if call.get("official_url") else ''}
       </header>
 
       <dl class="cs-sheetgrid">{facts_html}</dl>
@@ -737,26 +832,28 @@ def call_page(call: dict, by_slug: dict[str, dict], as_of: str, css: str, js: st
       {block("terms", "Terms to read first", f'<table class="cs-table cs-table--two"><tbody>{terms}</tbody></table><p class="cs-fineprint" data-pd-type="body.small">Our notes, not legal advice. Read the contract before you accept a place or grant any rights.</p>') if terms else ''}
       {block("sources", "Where this comes from", f'<ul class="cs-sourcelist">{sources}</ul><div class="cs-report"><p data-pd-type="body.default">Spotted something out of date?</p><a class="button button--small" href="{h(mailto)}">{icon("mail")}Tell us</a></div>')}
       {block("related", "Related calls", f'<ul class="cs-related">{related_html}</ul>') if related_html else ''}
+      {block("around", "Also closing around then", f'<ul class="cs-related">{around_html}</ul>') if around_html else ''}
       <p class="cs-disclaimer" data-pd-type="body.small">A research snapshot, not legal advice or a promise that the call is open. The official page always wins.</p>
     </article>
   </main>
 
   {sheet_ui()}"""
-    noindex = call["state"] == "closed_or_historical"
+    noindex = closed
     jsonld = {
         "@context": "https://schema.org",
         "@graph": [
-            {"@type": "WebPage", "@id": ORIGIN + path, "url": ORIGIN + path, "name": call["title"], "isPartOf": {"@id": ORIGIN + BASE}, "dateModified": (recheck or {}).get("checked_on") or call["checked_on"]},
+            {"@type": "WebPage", "@id": ORIGIN + path, "url": ORIGIN + path, "name": call["title"], "description": clip(call["get"], 200), "isPartOf": {"@id": ORIGIN + BASE}, "dateModified": (recheck or {}).get("checked_on") or call["checked_on"]},
             {"@type": "BreadcrumbList", "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "Call Sheet", "item": ORIGIN + BASE},
                 {"@type": "ListItem", "position": 2, "name": call["title"], "item": ORIGIN + path},
             ]},
         ],
     }
-    description = f"{call['title']}: {call['who']}. {call['get']}." + (f" Closes {day(closes)}." if closes else "") + " Dates, fees and what to bring, on Call Sheet by pitch.dog."
+    lead = ("Closed for this round. " if closed else f"Closes {day(closes)}. " if closes else "")
+    description = clip(f"{lead}{call['get']}. For {call['who'][0].lower() + call['who'][1:]}.", 158)
     return page(
-        title=f"{call['title']} — {('closes ' + day(closes)) if closes else 'Call Sheet'} · pitch.dog",
-        description=description[:300],
+        title=f"{call['title']} · {'closed' if closed else ('closes ' + day(closes, with_year=False)) if closes else 'no fixed date'} · Call Sheet",
+        description=description,
         path=path,
         body=body,
         css=css,
@@ -765,6 +862,25 @@ def call_page(call: dict, by_slug: dict[str, dict], as_of: str, css: str, js: st
         robots="noindex, follow" if noindex else "index, follow, max-image-preview:large",
         jsonld=jsonld,
     )
+
+
+def not_found_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
+    """Cloudflare Pages serves the nearest 404.html, so a mistyped call URL lands here."""
+    soon = sorted((c for c in calls if c.get("closes") and not closed_at(c, as_of)), key=lambda c: (c["closes"], c["title"]))[:5]
+    items = "".join(f'<li><a href="{BASE}{h(c["slug"])}/" data-pd-type="title.functional">{title_html(c["title"])}</a><span data-pd-type="body.small">{h("Closes " + day(c["closes"]))}</span></li>' for c in soon)
+    body = f"""<main id="main" class="cs-callpage">
+    <article class="cs-article cs-notfound" aria-labelledby="call-title">
+      <header class="cs-callhead">
+        <p class="hero-locator cs-locator"><span class="hero-locator-mark" aria-hidden="true"></span><span>Call Sheet</span></p>
+        <h1 id="call-title" data-pd-type="heading.section">That call isn’t on the sheet.</h1>
+        <p class="cs-callorg" data-pd-type="lead.section">It may have moved, closed for good, or never been here. The list has every call we track, soonest first.</p>
+        <div class="button-row cs-callactions"><a class="button button--brand button--large" href="{BASE}">All calls {ph("arrow-right")}</a><a class="button button--large" href="mailto:hello@pitch.dog?subject=A%20missing%20call%20on%20Call%20Sheet">Tell us what you were after</a></div>
+      </header>
+      {block("soon", "Closing soonest", f'<ul class="cs-related">{items}</ul>') if items else ''}
+    </article>
+  </main>"""
+    return page(title="Not found · Call Sheet", description="This page isn’t on Call Sheet. Every call we track is on the list, soonest first.", path=BASE + "404.html",
+                body=body, css=css, js=js, social_title="Call Sheet — free, by pitch.dog", robots="noindex, follow")
 
 
 def git_commit() -> dict[str, Any]:
@@ -785,6 +901,7 @@ def main(argv: list[str] | None = None) -> int:
     rechecks = [c["recheck"]["checked_on"] for c in calls if c.get("recheck")]
     as_of = max([payload["research_as_of"], *rechecks])
 
+    AS_OF["date"] = as_of
     out = args.out
     if out.exists():
         shutil.rmtree(out)
@@ -798,7 +915,8 @@ def main(argv: list[str] | None = None) -> int:
         target = out / call["slug"] / "index.html"
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(call_page(call, by_slug, as_of, css, js), encoding="utf-8")
-    urls = [(BASE, as_of)] + [(f"{BASE}{c['slug']}/", (c.get("recheck") or {}).get("checked_on") or c["checked_on"]) for c in calls if c["state"] != "closed_or_historical"]
+    (out / "404.html").write_text(not_found_page(calls, as_of, css, js), encoding="utf-8")
+    urls = [(BASE, as_of)] + [(f"{BASE}{c['slug']}/", (c.get("recheck") or {}).get("checked_on") or c["checked_on"]) for c in calls if not closed_at(c, as_of)]
     sitemap = "".join(f"<url><loc>{ORIGIN}{h(u)}</loc><lastmod>{d}</lastmod></url>" for u, d in urls)
     (out / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sitemap}</urlset>\n', encoding="utf-8")
     (out / "data").mkdir()

@@ -27,6 +27,8 @@ SCHEMA_VERSION = "1.0.0"
 PORTAL_HOSTS = ("filmfreeway.com", "festhome.com", "shortfilmdepot.com", "withoutabox.com")
 
 ROLE_ORDER = ("opening", "prerequisite", "application_fee_tier_cutoff", "application_submission_deadline", "selection", "payment", "event_or_context")
+# The roles that make up an application window, as opposed to what happens after it.
+WINDOW_ROLES = {"opening", "prerequisite", "application_fee_tier_cutoff", "application_submission_deadline"}
 ROLE_LABELS = {
     "opening": "Opens",
     "prerequisite": "Do first",
@@ -144,6 +146,10 @@ def rights_lines(rows: list[dict[str, Any]]) -> list[dict[str, str]]:
     return lines[:8]
 
 
+# Add-ons and discounts: listed with the fees, but not part of what it costs to enter.
+OPTIONAL_FEE = re.compile(r"(?i)optional|surcharge|feedback|analysis|discount|% off|company time")
+
+
 def fee_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
     """Application fees first; selected-participant charges kept separate."""
     items = []
@@ -157,7 +163,7 @@ def fee_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
         # Entry fees only.  Deposits, accreditation, tuition, penalties and
         # production-triggered contributions are real costs, but not the price
         # of applying, so they sit with the costs for selected participants.
-        selected = bool(re.search(r"select|participa|accredit|registration|hotel|attend|deposit|tuition|housing|penalt|contingen|production|withdraw|travel", described, re.I))
+        selected = bool(re.search(r"select|shortlist|participa|accredit|registration|hotel|attend|deposit|tuition|housing|penalt|contingen|production|withdraw|travel", described, re.I))
         label_parts = [clean(raw.get("category")), clean(raw.get("kind") or raw.get("component"))]
         unit = str(row.get("unit") or "")
         if unit.lower() not in {"per_project", "per_application", "unknown", "per project", "standard", ""}:
@@ -171,12 +177,16 @@ def fee_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
             "stage": "selected" if selected else "application",
             "label": label,
             "amount": money(row.get("amount"), row.get("currency")),
-            "state": row.get("normalized_state") or "unknown_or_conditional",
+            "state": "optional" if OPTIONAL_FEE.search(f"{described} {label or ''}") else row.get("normalized_state") or "unknown_or_conditional",
             "note": human(row.get("condition")),
         }
         if item["amount"] is None and item["state"] == "unknown_or_conditional" and not item["note"]:
             continue
         items.append(item)
+    return summarise_fee(items)
+
+
+def summarise_fee(items: list[dict[str, Any]]) -> dict[str, Any]:
     application = [i for i in items if i["stage"] == "application"]
     priced = [i for i in application if i["state"] == "priced"]
     free = [i for i in application if i["state"] == "free_or_explicit_zero"]
@@ -187,7 +197,9 @@ def fee_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
     else:
         state = "unknown"
     key = lambda i: (i["stage"], i["label"] or "", i["amount"] or "", i["note"] or "")
-    unique = {key(i): i for i in items}
+    unique = {}
+    for i in items:  # in the order the source lists them: early, regular, late
+        unique.setdefault(key(i), i)
     if state == "priced":
         values = sorted({i["amount"] for i in priced if i["amount"]}, key=lambda a: float(re.sub(r"[^0-9.]", "", a) or 0))
         prefixes = {re.match(r"^[^0-9]*", v).group(0) for v in values}
@@ -201,7 +213,17 @@ def fee_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
         summary = "Free to enter"
     else:
         summary = "Not published"
-    return {"state": state, "summary": summary, "items": [unique[k] for k in sorted(unique)][:8]}
+    ordered = sorted(unique.values(), key=lambda i: i["stage"] != "application")
+    return {"state": state, "summary": summary, "items": ordered[:8]}
+
+
+def official_fee(recheck: dict[str, Any] | None, packs: dict[str, Any]) -> dict[str, Any]:
+    """A fee read off the official page outranks the packs' notes, except that a page
+    silent on fees doesn't erase a fee the packs found elsewhere (a form, a PDF)."""
+    page = (recheck or {}).get("fee")
+    if not page or (page["state"] == "unknown" and packs["state"] != "unknown"):
+        return packs
+    return {**summarise_fee(page["items"]), "checked_on": recheck["checked_on"]}
 
 
 def amount_lines(rows: list[dict[str, Any]]) -> list[dict[str, str]]:
@@ -220,6 +242,44 @@ def amount_lines(rows: list[dict[str, Any]]) -> list[dict[str, str]]:
         seen.add(key)
         lines.append({"label": label or ("Amount" if value else "Note"), "value": value, "note": note if note != value else None})
     return lines[:6]
+
+
+# Zone abbreviations the packs write after a time, as IANA zones the page can convert.
+ZONE_ABBREVIATIONS = {"CET": "Europe/Paris", "CEST": "Europe/Paris", "GMT": "Etc/GMT", "UTC": "Etc/UTC", "BST": "Europe/London",
+                      "ET": "America/New_York", "EST": "America/New_York", "EDT": "America/New_York",
+                      "PT": "America/Los_Angeles", "PST": "America/Los_Angeles", "PDT": "America/Los_Angeles",
+                      "AEDT": "Australia/Sydney", "AEST": "Australia/Sydney", "NZDT": "Pacific/Auckland"}
+# Research notes about a cut-off we couldn't pin down: true, but the page already says to check the time.
+UNPINNED_TIME = re.compile(r"(?i)^(not published|time not established|exact (cut-off time|clock|hour/zone) not (verified|established).*)$")
+
+
+def clock(time: str | None, tz: str | None, note: str | None) -> tuple[str | None, str | None, str | None]:
+    """One shape for cut-off times: 'HH:MM', an IANA zone or None, and a plain note."""
+    if tz == "applicant_local":
+        tz, note = None, note or "your local time"
+    if time:
+        m = re.match(r"^(\d{1,2})[:.](\d{2})(?::\d{2})?\s*(.*)$", time)
+        if m and not re.match(r"^[–-]", m.group(3)):
+            time, rest = f"{int(m.group(1)):02d}:{m.group(2)}", m.group(3).strip()
+            if "/" in rest and " " not in rest:
+                tz = tz or rest
+            elif rest.upper() in ZONE_ABBREVIATIONS:
+                tz = tz or ZONE_ABBREVIATIONS[rest.upper()]
+            elif re.search(r"(?i)local time", rest):
+                note = note or "local time; the organiser doesn’t name the zone"
+        else:
+            time, note = None, note or time  # a window such as 09:00–17:00
+    if note:
+        midnight = re.match(r"(?i)^midnight (US Pacific|CET)", note)
+        if midnight:
+            pacific = midnight.group(1).lower().startswith("us")
+            tz = tz or ("America/Los_Angeles" if pacific else "Europe/Paris")
+            note = "midnight; the organiser doesn’t say which side of the day"
+        elif UNPINNED_TIME.match(note):
+            time, note = None, None  # an unverified 23:59 is a guess, not a cut-off
+    if not time and not note:
+        tz = None
+    return time, tz, note
 
 
 def date_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -256,6 +316,8 @@ def date_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
             continue
         seen.add(key)
         out.append({"date": date, "role": role, "role_label": ROLE_LABELS[role], "label": label, "time": time, "timezone": tz, "time_note": time_note})
+    for d in out:
+        d["time"], d["timezone"], d["time_note"] = clock(d["time"], d["timezone"], d["time_note"])
     return sorted(out, key=lambda d: (d["date"], ROLE_ORDER.index(d["role"])))
 
 
@@ -278,9 +340,11 @@ def materials(o: dict[str, Any], rows: list[dict[str, Any]]) -> list[dict[str, A
             "optional": str(row.get("requirement") or raw.get("requirement")).lower() == "optional",
             "note": human(raw.get("note")),
         })
-    text = human((o.get("raw") or {}).get("materials"))
-    if text and not out:
-        out.append({"item": text[0].upper() + text[1:], "limit": None, "optional": False, "note": None})
+    if not out:
+        # The packs' own materials field: a note, or a list of them (US funds).
+        for text in (human(x) for x in as_list((o.get("raw") or {}).get("materials"))):
+            if text:
+                out.append({"item": text[0].upper() + text[1:], "limit": None, "optional": False, "note": None})
     return out[:12]
 
 
@@ -391,13 +455,25 @@ def main(argv: list[str] | None = None) -> int:
         dates = date_rows(child.get("deadlines", []) + child.get("milestones", []))
         recheck = rechecks.get(oid)
         if recheck and recheck.get("dates"):
-            checked = [{"date": d["date"], "role": d["role"], "role_label": ROLE_LABELS[d["role"]], "label": d.get("label"), "time": d.get("time"), "timezone": d.get("timezone"), "time_note": d.get("time_note")} for d in recheck["dates"]]
+            checked = [{"date": d["date"], "role": d["role"], "role_label": ROLE_LABELS[d["role"]], "label": d.get("label"),
+                        **dict(zip(("time", "timezone", "time_note"), clock(d.get("time"), d.get("timezone"), d.get("time_note"))))} for d in recheck["dates"]]
+            by_key = {(d["date"], d["role"]): d for d in dates}
             if recheck["status"] == "changed":
                 # The organiser moved things: the official page's dates replace the pack's.
                 dates = checked
+            elif any(d["role"] in WINDOW_ROLES for d in checked):
+                # Confirmed, with the round as the page states it: its window replaces the pack's
+                # (so a stale prerequisite or a mislabelled tier goes), and the pack keeps the
+                # selection and event dates the page didn't restate.  A zone the pack inferred
+                # survives where the page gave the same time without naming one.
+                for d in checked:
+                    prior = by_key.get((d["date"], d["role"]))
+                    if prior and (not d["time"] or d["time"] == prior["time"]):
+                        d["time"], d["timezone"] = d["time"] or prior["time"], d["timezone"] or prior["timezone"]
+                restated = {d["role"] for d in checked}
+                dates = [d for d in dates if d["role"] not in WINDOW_ROLES and d["role"] not in restated] + checked
             else:
                 # Confirmed: keep the pack's dates and add the times and zones the page gave.
-                by_key = {(d["date"], d["role"]): d for d in dates}
                 for d in checked:
                     if (d["date"], d["role"]) in by_key:
                         prior = by_key[(d["date"], d["role"])]
@@ -406,7 +482,7 @@ def main(argv: list[str] | None = None) -> int:
                     else:
                         dates.append(d)
             dates = sorted(dates, key=lambda d: (d["date"], ROLE_ORDER.index(d["role"])))
-        opens, closes = window(dates, as_of)
+        opens, closes = window(dates, max(as_of, (recheck or {}).get("checked_on") or as_of))
         urls = [u for u in as_list(o.get("source_urls")) if isinstance(u, str) and u.startswith("http")]
         official = next((u for u in urls if not any(h in host(u) for h in PORTAL_HOSTS)), urls[0] if urls else None)
         if recheck and recheck.get("url"):
@@ -443,10 +519,15 @@ def main(argv: list[str] | None = None) -> int:
         state = o.get("application_state") or "unknown"
         if recheck and recheck["status"] == "closed":
             state = "closed_or_historical"
+        elif recheck and recheck["status"] == "changed" and closes and closes >= recheck["checked_on"]:
+            # A round the official page shows live (or about to open) is no longer a watch item.
+            state = "announced_not_open" if opens and opens > recheck["checked_on"] else "open_or_published"
         calls.append({
             "id": oid,
             "title": clean(o["title"]),
-            "organiser": clean(o.get("provider")),
+            # "TorinoFilmLab ScriptLab — call" names the page the packs read, not the organiser;
+            # the overlay corrects a provider the packs got wrong.
+            "organiser": ov.get("organiser") or re.sub(r"(?i) — (?:\d{4} |\d+(?:st|nd|rd|th) edition )?(?:call|apply|rules|faq)$", "", clean(o.get("provider")) or "") or None,
             "organiser_country": clean(o.get("provider_country")),
             "kinds": ov["kinds"],
             "formats": ov["formats"],
@@ -460,7 +541,7 @@ def main(argv: list[str] | None = None) -> int:
             "closes": closes,
             "dates": dates,
             "money": amount_lines(child.get("amounts", [])),
-            "fee": fee_summary(child.get("fees", [])),
+            "fee": official_fee(recheck, fee_summary(child.get("fees", []))),
             "bring": materials(o, child.get("materials", [])),
             "check_yourself": questions[:10],
             "open_questions": issues[:6],

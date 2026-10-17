@@ -69,7 +69,8 @@ class DataTests(unittest.TestCase):
         for call in CALLS:
             fee = call["fee"]
             if fee["summary"] == "Free to enter":
-                application = [i for i in fee["items"] if i["stage"] == "application"]
+                # Optional add-ons (feedback, fiscal sponsorship) aren't the price of entering.
+                application = [i for i in fee["items"] if i["stage"] == "application" and i["state"] != "optional"]
                 self.assertTrue(application, call["id"])
                 self.assertTrue(all(i["state"] == "free_or_explicit_zero" for i in application), call["id"])
             for item in fee["items"]:
@@ -85,6 +86,15 @@ class DataTests(unittest.TestCase):
                 self.assertRegex(d["date"], r"^\d{4}-\d{2}-\d{2}$")
             if call["closes"]:
                 self.assertIn(call["closes"], {d["date"] for d in call["dates"] if d["role"] in ("application_submission_deadline", "application_fee_tier_cutoff")}, call["id"])
+
+    def test_cut_off_times_are_clean(self):
+        from zoneinfo import ZoneInfo
+        for call in CALLS:
+            for d in call["dates"]:
+                if d["time"]:
+                    self.assertRegex(d["time"], r"^([01]\d|2[0-3]):[0-5]\d$", call["id"])
+                if d["timezone"]:
+                    ZoneInfo(d["timezone"])  # raises for anything that isn't an IANA zone
 
     def test_every_call_links_somewhere_official(self):
         for call in CALLS:
@@ -133,11 +143,36 @@ class BuildTests(unittest.TestCase):
             for needle in ('class="pd-nav-more"', 'href="/call-sheet/" aria-current="page"', "pitchdog-system-v13.1.1.min.css", 'data-analytics-replay="off"', '<link rel="canonical"', "<h1"):
                 self.assertIn(needle, source, (page, needle))
 
+    def test_rows_carry_every_round(self):
+        source = (self.out / "index.html").read_text(encoding="utf-8")
+        for call in CALLS:
+            row = re.search(r'<li class="cs-call"[^>]*data-slug="%s"[^>]*>' % re.escape(call["slug"]), source).group(0)
+            rounds = re.search(r'data-rounds="([^"]*)"', row).group(1).split()
+            if call["closes"]:
+                self.assertIn(call["closes"], rounds, call["id"])
+            self.assertEqual(rounds, sorted(rounds), call["id"])
+
     def test_closed_calls_are_not_indexed(self):
+        as_of = json.loads((self.out / "BUILD.json").read_text(encoding="utf-8"))["data_as_of"]
+        sitemap = (self.out / "sitemap.xml").read_text(encoding="utf-8")
         for call in CALLS:
             source = (self.out / call["slug"] / "index.html").read_text(encoding="utf-8")
-            noindex = 'content="noindex, follow"' in source
-            self.assertEqual(noindex, call["state"] == "closed_or_historical", call["id"])
+            closed = build_site.closed_at(call, as_of)
+            self.assertEqual('content="noindex, follow"' in source, closed, call["id"])
+            self.assertEqual(f"/call-sheet/{call['slug']}/<" in sitemap, not closed, call["id"])
+            if closed:
+                self.assertNotIn("data-ics", source.split('<div class="cs-sheetbar"')[0], call["id"])
+
+    def test_shared_assets_resolve(self):
+        for page in (self.out / "index.html", self.pages[0], self.out / "404.html"):
+            source = page.read_text(encoding="utf-8")
+            for ref in re.findall(r'content="https://pitch\.dog(/call-sheet/assets/[^"]+)"', source) + re.findall(r'(?:href|src)="(/call-sheet/assets/[^"]+)"', source):
+                self.assertTrue((self.out / ref[len("/call-sheet/"):]).is_file(), (page, ref))
+
+    def test_no_python_reprs_in_data(self):
+        for call in CALLS:
+            for item in call["bring"]:
+                self.assertNotRegex(item["item"], r"^\s*\[['\"]", call["id"])
 
 
 if __name__ == "__main__":
