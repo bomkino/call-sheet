@@ -55,4 +55,11 @@ python3 -m unittest discover -s tools -p 'test*.py'
 
 ## Licence
 
-No licence has been chosen yet for the code or the data. Ask hello@pitch.dog before reusing either.
+As open as we can make it:
+
+- **Code** (`tools/`, `site/`): [BSD Zero Clause](LICENSE) (0BSD). Use, copy, change and ship it, with no conditions.
+- **Data and writing**: `data/`, the published `calls.json`, the text of the pages and these docs are dedicated to the public domain under [CC0 1.0](LICENSE-DATA). No permission or credit needed.
+
+Two things aren't ours to give away. Text quoted from organisers' pages, which backs each date in `data/rechecks.json`, stays theirs. Organisers' names and the pitch.dog name and logo are trademarks, which no licence grants.
+
+The private research foundation behind the data stays private and isn't covered.
