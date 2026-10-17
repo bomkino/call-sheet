@@ -560,6 +560,12 @@ def main(argv: list[str] | None = None) -> int:
     out = {
         "schema_version": SCHEMA_VERSION,
         "about": "Call Sheet by pitch.dog: film and TV grants, labs, markets and festivals. Research snapshot, not legal advice; the official page always wins.",
+        "licence": {
+            "data": "CC0-1.0",
+            "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+            "note": "Dedicated to the public domain: use it for anything, no permission or credit needed. Text quoted from organisers' pages stays theirs.",
+            "code": "0BSD, https://github.com/bomkino/call-sheet",
+        },
         "research_as_of": max(c["checked_on"] for c in calls),
         "foundation_schema": manifest.get("schema_version"),
         "foundation_archives": [{"package_path": a["package_path"], "sha256": a["sha256"]} for a in manifest.get("archives", [])],

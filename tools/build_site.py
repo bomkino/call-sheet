@@ -178,7 +178,7 @@ def nav() -> str:
 FOOTER = """<footer class="footer">
     <div class="footer-inner">
       <span>Made with care. Usually with Spotty, Luna, and Juno nearby.</span>
-      <span>Call Sheet is free · <a href="https://github.com/bomkino/call-sheet">Source</a> · <a href="/">Home</a> · <a href="mailto:hello@pitch.dog">hello@pitch.dog</a></span>
+      <span>Call Sheet is free and open · <a href="https://github.com/bomkino/call-sheet">Code (0BSD)</a> · <a href="/call-sheet/data/calls.json">Data (CC0)</a> · <a href="mailto:hello@pitch.dog">hello@pitch.dog</a></span>
     </div>
     <a class="pd-whatsapp-fab" href="https://wa.me/message/NR6Z7K3HBOVPJ1" target="_blank" rel="noopener noreferrer" aria-label="Chat with pitch.dog on WhatsApp (opens in a new tab)" title="Chat on WhatsApp"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></svg></a>
   </footer>"""
@@ -511,7 +511,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
         <h2 id="principles-title" data-pd-type="heading.section">Free. Dated. Unranked. Private.</h2>
       </div>
       <ul class="cs-cards">
-        <li class="cs-card cs-card--powder"><p class="eyebrow" data-pd-type="metadata">Free</p><h3 data-pd-type="title.card">No price, no account.</h3><p data-pd-type="body.default">Nothing here costs money, and nothing on the list paid to be on it.</p></li>
+        <li class="cs-card cs-card--powder"><p class="eyebrow" data-pd-type="metadata">Free</p><h3 data-pd-type="title.card">No price, no account.</h3><p data-pd-type="body.default">Nothing here costs money, nothing on the list paid to be on it, and the data and code are open for anyone to reuse.</p></li>
         <li class="cs-card cs-card--mint"><p class="eyebrow" data-pd-type="metadata">Dated</p><h3 data-pd-type="title.card">Every date says what it is.</h3><p data-pd-type="body.default">Opening, deadline, fee change, selection or event, never one dressed up as another. Each call shows the day we last checked it.</p></li>
         <li class="cs-card cs-card--lilac"><p class="eyebrow" data-pd-type="metadata">Unranked</p><h3 data-pd-type="title.card">No prestige score, no odds.</h3><p data-pd-type="body.default">The closing date sets the order. You set the priorities.</p></li>
         <li class="cs-card cs-card--blush"><p class="eyebrow" data-pd-type="metadata">Private</p><h3 data-pd-type="title.card">Your searches stay with you.</h3><p data-pd-type="body.default">Filters live in the page address, saved calls in this browser. Neither reaches us.</p></li>
@@ -531,7 +531,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
         <details><summary data-pd-type="title.functional">Do you rank the calls?</summary><p data-pd-type="body.default">No. There’s no prestige score and no guess at your odds. Calls are sorted by closing date, because the deadline is the one thing that won’t wait.</p></details>
         <details><summary data-pd-type="title.functional">What happens to what I type?</summary><p data-pd-type="body.default">Nothing leaves your browser. Filters are kept in the page address, so you can bookmark or share a search. Saved calls stay in this browser until you clear them. Like every pitch.dog page, this one counts visits, without your searches or saved calls.</p></details>
         <details><summary data-pd-type="title.functional">I found a mistake.</summary><p data-pd-type="body.default">Thank you. Every call page has a button that starts an email to us with the call already named. Tell us what changed and where you saw it.</p></details>
-        <details><summary data-pd-type="title.functional">Can I use the data?</summary><p data-pd-type="body.default">You can read all of it at <a href="{BASE}data/calls.json">calls.json</a>. If you’d like to reuse it somewhere, ask us first: we haven’t picked a licence yet.</p></details>
+        <details><summary data-pd-type="title.functional">Can I use the data?</summary><p data-pd-type="body.default">Yes, for anything, without asking. The whole dataset is at <a href="{BASE}data/calls.json">calls.json</a>, dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="license noopener">CC0</a>. The code is on <a href="https://github.com/bomkino/call-sheet">GitHub</a> under 0BSD, about as open as a licence gets. A link back is welcome, never required. Quotes from organisers’ pages stay theirs.</p></details>
       </div>
     </section>
 
@@ -574,10 +574,12 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
             {"@type": "WebApplication", "@id": ORIGIN + BASE + "#app", "name": "Call Sheet", "url": ORIGIN + BASE,
              "applicationCategory": "ReferenceApplication", "operatingSystem": "Any modern web browser", "isAccessibleForFree": True,
              "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": about, "image": ORIGIN + SOCIAL["src"],
-             "codeRepository": "https://github.com/bomkino/call-sheet", "creator": {"@type": "Organization", "name": "pitch.dog", "url": ORIGIN + "/"}},
+             "codeRepository": "https://github.com/bomkino/call-sheet", "license": "https://opensource.org/license/0bsd",
+             "creator": {"@type": "Organization", "name": "pitch.dog", "url": ORIGIN + "/"}},
             {"@type": "Dataset", "@id": ORIGIN + BASE + "#data", "name": "Call Sheet: film and TV calls",
              "description": f"{len(calls)} film and TV grants, labs, markets and festivals with typed dates, fees, eligibility and sources, each checked against the organiser's page. Research snapshot, not legal advice.",
-             "url": ORIGIN + BASE, "isAccessibleForFree": True, "dateModified": as_of, "creator": {"@type": "Organization", "name": "pitch.dog", "url": ORIGIN + "/"},
+             "url": ORIGIN + BASE, "isAccessibleForFree": True, "license": "https://creativecommons.org/publicdomain/zero/1.0/", "dateModified": as_of,
+             "creator": {"@type": "Organization", "name": "pitch.dog", "url": ORIGIN + "/"},
              "distribution": {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": ORIGIN + BASE + "data/calls.json"}},
         ],
     }
