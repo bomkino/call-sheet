@@ -595,7 +595,7 @@ const CATCH = [
   slide('Catch 2', 'You win an option, not a film.', 'The Canadian Short Screenplay Competition’s top prizes are option deals of CAD 1,000 or 500. Production isn’t guaranteed.',
     (c) => `<div style="width:${sq(c, 64, 60)}cqi;transform:rotate(-1.5deg)">${sheetDoc('Option agreement', [ln('Option fee', 'CAD 1,000'), ln('Production', 'Not guaranteed'), `<div class="sign">${sp('headline', '×')}<span></span></div>`])}</div>`, { g: 'var(--blue)', z: [1.15, 1] }),
   slide('Catch 3', 'Picked? Now buy a pass.', 'At Hot Docs Forum, everyone on a selected pitch team buys an industry pass. The price comes after selection.',
-    (c) => `<div style="transform:rotate(3deg)">${pass(sq(c, 40, 30))}</div>`, { g: 'var(--pink)' }),
+    (c) => `<div style="transform:rotate(3deg)">${pass(sq(c, 40, 34))}</div>`, { g: 'var(--pink)', z: [1, .74] }),
   slide('Catch 4', 'No AI. None at all.', 'Atlanta Film Festival’s screenplay competition bans scripts made with any AI tools. Final deadline 6 November.',
     (c) => `<div style="position:relative;transform:rotate(-2deg)">${scriptPages(sq(c, '56cqi', '44cqi'), 'Int. Office – Day', '1.')}${sticky('No AI tools.', `position:absolute;right:${sq(c, -6, -4)}cqi;bottom:${sq(c, -1, -2)}cqi;transform:rotate(6deg)`)}</div>`, { g: 'var(--green)', z: [1.2, 1] }),
   slide('Catch 5', 'Take your name off it.', 'Raindance’s script competition wants an anonymous PDF: no title page, nothing that says who you are.',
