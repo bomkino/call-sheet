@@ -682,8 +682,10 @@ html:has(body.has-sheetbar) { scroll-padding-bottom: 112px; }
   .cs-call { grid-template-columns: 62px minmax(0, 1fr) 44px; padding: 18px 0; }
   .cs-day { font-size: 1.9rem; }
   .cs-facts { grid-template-columns: 1fr; gap: 10px; }
-  /* Shorter rows on a phone: two lines each for who and what, the rest on the call page. */
+  /* Shorter rows on a phone: two lines for who can apply, three for what you get so an amount
+     isn't cut mid-number, the rest on the call page. */
   .cs-facts > div:not(.cs-fact-fee) dd { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .cs-facts > div:nth-child(2) dd { -webkit-line-clamp: 3; }
   .cs-fact-fee dt, .cs-fact-fee dd { display: inline; }
   .cs-fact-fee dt { margin-right: 8px; }
   .cs-badge--checked { display: none; }

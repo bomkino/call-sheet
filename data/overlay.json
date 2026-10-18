@@ -4933,7 +4933,7 @@
     "regions": [],
     "subnational": null,
     "test": "residence",
-    "identity": "Writer or director from, or with stories about, an underrepresented community",
+    "identity": "Writers or directors from, or telling stories about, an underrepresented community",
     "confidence": "stated",
     "evidence": "Applicant(s) must be at least 18 years old and reside in the U.S. or Puerto Rico. … Current students are not eligible to apply. … A screenwriter and/or director attached to the project should be from an underrepresented community in the film industry or have a connection to, or stories about, such community.",
     "excludes": []
@@ -5672,7 +5672,7 @@
     "regions": [],
     "subnational": null,
     "test": "unknown",
-    "identity": "comedy scripts only",
+    "identity": "comedy scripts",
     "confidence": "partial",
     "evidence": "International festival call; check script-specific form for unusual eligibility cases.",
     "excludes": []

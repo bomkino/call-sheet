@@ -554,6 +554,51 @@ function bucketFor (row, live) {
   return { key: '1' + closes.slice(0, 7), title }
 }
 
+// The countdown, the state and any early cut-off on a row, for the visitor's date.
+function markRow (row, live) {
+  const left = row.querySelector('[data-left]')
+  if (row.dataset.closes && left) {
+    const l = leftText(row.dataset.closes)
+    left.textContent = l.text
+    left.className = `cs-left ${l.cls}`
+  }
+  const badge = row.querySelector('[data-badge-state]')
+  const states = {
+    open: ['Open now', 'cs-badge--open'],
+    later: [row.dataset.opens && row.dataset.opens > todayISO ? `Opens ${shortDate(row.dataset.opens)}` : 'Not open yet', 'cs-badge--later'],
+    watch: ['Check it’s open', 'cs-badge--check'],
+    rolling: ['Rolling or watch', 'cs-badge--later'],
+    tbc: ['Dates to come', 'cs-badge--later'],
+    closed: ['Closed', 'cs-badge--closed'],
+  }
+  const [text, cls] = states[live]
+  badge.textContent = text
+  badge.className = `cs-badge ${cls}`
+  badge.hidden = false
+  // An early or fast-track cut-off still ahead of the final one.
+  const tierBadge = row.querySelector('[data-badge-tier]')
+  const tier = (row.dataset.tiers || '').split(' ').find(d => d && d >= todayISO && d < row.dataset.closes)
+  if (tierBadge) {
+    tierBadge.hidden = !tier || live === 'closed'
+    if (tier) tierBadge.textContent = `Early deadline ${shortDate(tier)}`
+  }
+}
+
+// An empty group with its heading, the way the build writes them.
+function newGroup (bucket) {
+  const el = document.createElement(bucket.closed ? 'details' : 'section')
+  el.className = `cs-group${bucket.closed ? ' cs-group--closed' : ''}`
+  el.dataset.group = bucket.key
+  const head = document.createElement(bucket.closed ? 'summary' : 'header')
+  if (!bucket.closed) head.className = 'cs-group-head'
+  head.innerHTML = '<h3 class="cs-group-title" data-pd-type="title.card"></h3><span class="cs-group-count" data-pd-type="metadata"></span>'
+  head.querySelector('h3').textContent = bucket.title
+  const list = document.createElement('ol')
+  list.className = 'cs-list'
+  el.append(head, list)
+  return { el, list, count: head.querySelector('.cs-group-count'), title: head.querySelector('h3') }
+}
+
 if (form && groupsHost && listRows.length) {
   const select = form.querySelector('#cs-from')
   const countries = COUNTRY_CODES.map(code => [code, countryName(code)]).sort((a, b) => a[1].localeCompare(b[1]))
@@ -678,32 +723,7 @@ if (form && groupsHost && listRows.length) {
   function decorate (row, { live, where, place }) {
     const fresh = row.querySelector('[data-badge-new]')
     if (fresh) fresh.hidden = !newSince.has(row.dataset.slug) || live === 'closed'
-    const left = row.querySelector('[data-left]')
-    if (row.dataset.closes && left) {
-      const l = leftText(row.dataset.closes)
-      left.textContent = l.text
-      left.className = `cs-left ${l.cls}`
-    }
-    const badge = row.querySelector('[data-badge-state]')
-    const states = {
-      open: ['Open now', 'cs-badge--open'],
-      later: [row.dataset.opens && row.dataset.opens > todayISO ? `Opens ${shortDate(row.dataset.opens)}` : 'Not open yet', 'cs-badge--later'],
-      watch: ['Check it’s open', 'cs-badge--check'],
-      rolling: ['Rolling or watch', 'cs-badge--later'],
-      tbc: ['Dates to come', 'cs-badge--later'],
-      closed: ['Closed', 'cs-badge--closed'],
-    }
-    const [text, cls] = states[live]
-    badge.textContent = text
-    badge.className = `cs-badge ${cls}`
-    badge.hidden = false
-    // An early or fast-track cut-off still ahead of the final one.
-    const tierBadge = row.querySelector('[data-badge-tier]')
-    const tier = (row.dataset.tiers || '').split(' ').find(d => d && d >= todayISO && d < row.dataset.closes)
-    if (tierBadge) {
-      tierBadge.hidden = !tier || live === 'closed'
-      if (tier) tierBadge.textContent = `Early deadline ${shortDate(tier)}`
-    }
+    markRow(row, live)
     const placeBadge = row.querySelector('[data-badge-place]')
     let placeText = ''
     let placeCls = ''
@@ -721,17 +741,7 @@ if (form && groupsHost && listRows.length) {
 
   function groupFor (bucket) {
     if (groupCache.has(bucket.key)) return groupCache.get(bucket.key)
-    const el = document.createElement(bucket.closed ? 'details' : 'section')
-    el.className = `cs-group${bucket.closed ? ' cs-group--closed' : ''}`
-    el.dataset.group = bucket.key
-    const head = document.createElement(bucket.closed ? 'summary' : 'header')
-    if (!bucket.closed) head.className = 'cs-group-head'
-    head.innerHTML = '<h3 class="cs-group-title" data-pd-type="title.card"></h3><span class="cs-group-count" data-pd-type="metadata"></span>'
-    head.querySelector('h3').textContent = bucket.title
-    const list = document.createElement('ol')
-    list.className = 'cs-list'
-    el.append(head, list)
-    const entry = { el, list, count: head.querySelector('.cs-group-count'), title: head.querySelector('h3') }
+    const entry = newGroup(bucket)
     groupCache.set(bucket.key, entry)
     return entry
   }
@@ -835,7 +845,8 @@ if (form && groupsHost && listRows.length) {
   for (const row of listRows) {
     const live = liveState({ closes: row.dataset.closes, opens: row.dataset.opens, state: row.dataset.state })
     if (live === 'open') board.open++
-    if (live === 'open' && row.dataset.fee === 'free') board.free++
+    // Counts what the Free to enter list holds: free and not closed, open yet or not.
+    if (live !== 'closed' && row.dataset.fee === 'free') board.free++
     if (row.dataset.closes && live !== 'closed' && daysUntil(row.dataset.closes) <= 7) board.week++
     if (row.dataset.closes && row.dataset.closes >= todayISO && (!board.next || row.dataset.closes < board.next)) board.next = row.dataset.closes
   }
@@ -884,6 +895,40 @@ if (form && groupsHost && listRows.length) {
     groupsHost.querySelector('details.cs-group--closed')?.setAttribute('open', '')
     sharedBanner.scrollIntoView?.({ block: 'center' })
   }
+}
+
+// ------------------------------------------------------- ready-made lists
+
+// A ready-made list is built on one day and read on others: mark each call for the visitor's
+// date, regroup the way the full list does, and move calls that have closed to the bottom.
+const topicList = document.querySelector('.cs-topic-list')
+if (topicList && listRows.length) {
+  const rows = listRows.map(row => [row, liveState({ closes: row.dataset.closes, opens: row.dataset.opens, state: row.dataset.state })])
+  rows.sort(([a], [b]) => (a.dataset.closes || '9999').localeCompare(b.dataset.closes || '9999') || a.dataset.title.localeCompare(b.dataset.title))
+  const used = new Map()
+  for (const [row, live] of rows) {
+    markRow(row, live)
+    const bucket = bucketFor(row, live)
+    if (!used.has(bucket.key)) used.set(bucket.key, { group: newGroup(bucket), rows: [] })
+    // As on the full list, the latest call names the group: "Closes today" only if all do.
+    used.get(bucket.key).group.title.textContent = bucket.title
+    used.get(bucket.key).rows.push(row)
+  }
+  topicList.querySelectorAll('.cs-group').forEach(el => el.remove())
+  for (const [, { group, rows: members }] of [...used.entries()].sort(([a], [b]) => a.localeCompare(b))) {
+    group.list.replaceChildren(...members)
+    group.count.textContent = members.length
+    topicList.append(group.el)
+  }
+  const open = rows.filter(([, live]) => live !== 'closed').length
+  const count = topicList.closest('.cs-topic')?.querySelector('[data-topic-count]')
+  if (count) count.textContent = `${open} ${open === 1 ? 'call that hasn’t' : 'calls that haven’t'} closed`
+}
+
+// Ready-made list counts, wherever they appear: a call drops out once its last round has closed.
+for (const el of document.querySelectorAll('.cs-lists-n[data-ends]')) {
+  const passed = el.dataset.ends.split(' ').filter(d => d && d < todayISO).length
+  if (passed) el.textContent = Math.max(0, Number(el.textContent) - passed)
 }
 
 // ------------------------------------------------------------- call page

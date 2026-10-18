@@ -96,6 +96,22 @@ class DataTests(unittest.TestCase):
                 if d["timezone"]:
                     ZoneInfo(d["timezone"])  # raises for anything that isn't an IANA zone
 
+    def test_identity_lines_keep_their_capitals(self):
+        # First words that are proper nouns, so "Only for" keeps the capital.  A new capitalised
+        # first word belongs here or in build_site.PLAIN_STARTS.
+        proper = {"African", "Australian", "First", "Indigenous"}
+        for call in CALLS:
+            identity = call["where"].get("identity")
+            if not identity:
+                continue
+            first = identity.split(" ", 1)[0]
+            self.assertTrue(first[0].islower() or first in proper or first.lower() in build_site.PLAIN_STARTS, (call["id"], identity))
+            if first in proper:
+                self.assertEqual(build_site.mid_sentence(identity), identity, call["id"])
+        self.assertEqual(build_site.mid_sentence("Women and nonbinary writers"), "women and nonbinary writers")
+        for kept in ("LGBTQ+ stories", "US residents", "First Nations, Inuit and Métis", "Indigenous women", "African directors"):
+            self.assertEqual(build_site.mid_sentence(kept), kept)
+
     def test_every_call_links_somewhere_official(self):
         for call in CALLS:
             self.assertTrue(call["official_url"] and call["official_url"].startswith("https://"), call["id"])
@@ -187,6 +203,73 @@ class BuildTests(unittest.TestCase):
             source = page.read_text(encoding="utf-8")
             for ref in re.findall(r'content="https://pitch\.dog(/call-sheet/assets/[^"]+)"', source) + re.findall(r'(?:href|src)="(/call-sheet/assets/[^"]+)"', source):
                 self.assertTrue((self.out / ref[len("/call-sheet/"):]).is_file(), (page, ref))
+
+    def test_identity_lines_read_right_on_the_page(self):
+        import html
+        source = (self.out / "index.html").read_text(encoding="utf-8")
+        for call in CALLS:
+            identity = call["where"].get("identity")
+            if identity:
+                self.assertIn(f"Only for {html.escape(build_site.mid_sentence(identity), quote=True)}</p>", source, call["id"])
+        for broken in ("Only for australian", "Only for first Nations", "Only for indigenous", "Only for african", "Only for comedy scripts only"):
+            self.assertNotIn(broken, source)
+
+    def test_call_descriptions_keep_who_as_written(self):
+        import html
+        for call in CALLS:
+            source = (self.out / call["slug"] / "index.html").read_text(encoding="utf-8")
+            description = html.unescape(re.search(r'<meta name="description" content="([^"]*)"', source).group(1))
+            self.assertLessEqual(len(description), 158, call["id"])
+            if "Who can apply: " in description:
+                tail = description.split("Who can apply: ", 1)[1].removesuffix("…")
+                self.assertTrue((call["who"] + ".").startswith(tail), (call["id"], description))
+
+    def test_titles_and_descriptions_fit_search_results(self):
+        import html
+        for page in [self.out / "index.html"] + [self.out / t["slug"] / "index.html" for t in build_site.TOPICS]:
+            source = page.read_text(encoding="utf-8")
+            title = html.unescape(re.search(r"<title>(.*?)</title>", source).group(1))
+            self.assertLessEqual(len(title), 60, (page, title))
+        as_of = json.loads((self.out / "BUILD.json").read_text(encoding="utf-8"))["data_as_of"]
+        for topic in build_site.TOPICS:
+            source = (self.out / topic["slug"] / "index.html").read_text(encoding="utf-8")
+            description = html.unescape(re.search(r'<meta name="description" content="([^"]*)"', source).group(1))
+            self.assertFalse(description.endswith("…"), (topic["slug"], description))
+            self.assertTrue(description.startswith(f"{len(build_site.topic_members(topic, CALLS, as_of))} "), topic["slug"])
+
+    def test_pitch_copy_claims_only_what_the_data_shows(self):
+        source = (self.out / "index.html").read_text(encoding="utf-8")
+        for claim in ("Most ask for a pitch deck", "Most of these calls ask"):
+            self.assertNotIn(claim, source)
+        self.assertIn("Applying to one? If it asks for a deck, a treatment or a pitch, we make those.", source)
+        self.assertIn("Some of these calls ask for a deck, a treatment or a pitch.", source)
+        as_of = json.loads((self.out / "BUILD.json").read_text(encoding="utf-8"))["data_as_of"]
+        self.assertTrue(any(build_site.asks_for(c) for c in CALLS if not build_site.closed_at(c, as_of)))
+
+    def test_free_board_counts_the_free_list(self):
+        source = (self.out / "index.html").read_text(encoding="utf-8")
+        board = re.search(r'data-board="free">(\d+)<', source).group(1)
+        chip = re.search(r'href="/call-sheet/free-to-enter/"><span[^>]*>Free to enter</span><span class="cs-lists-n"[^>]*>(\d+)<', source).group(1)
+        self.assertEqual(board, chip)
+
+    def test_list_counts_carry_closing_dates(self):
+        as_of = json.loads((self.out / "BUILD.json").read_text(encoding="utf-8"))["data_as_of"]
+        source = (self.out / "index.html").read_text(encoding="utf-8")
+        for topic in build_site.TOPICS:
+            members = build_site.topic_members(topic, CALLS, as_of)
+            ends, n = re.search(r'href="/call-sheet/%s/"><span[^>]*>[^<]*</span><span class="cs-lists-n"[^>]*data-ends="([^"]*)">(\d+)<' % topic["slug"], source).groups()
+            self.assertEqual(int(n), len(members), topic["slug"])
+            self.assertEqual(ends.split(), [build_site.rounds(c)[-1] for c in members if build_site.rounds(c)], topic["slug"])
+
+    def test_edition_window_names_later_calls(self):
+        as_of = json.loads((self.out / "BUILD.json").read_text(encoding="utf-8"))["data_as_of"]
+        edition = json.loads((REPO / "data/edition.json").read_text(encoding="utf-8"))
+        later = [c for c in CALLS if c["closes"] and c["closes"][:7] > edition["covers"]["to"] and not build_site.closed_at(c, as_of)]
+        source = (self.out / "index.html").read_text(encoding="utf-8")
+        self.assertNotIn("This edition covers calls closing", source)
+        self.assertIn("This edition is built around calls closing", source)
+        if later:
+            self.assertEqual(source.count(f"plus {len(later)} later"), 2)
 
     def test_no_python_reprs_in_data(self):
         for call in CALLS:
