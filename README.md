@@ -26,7 +26,7 @@ Every page works without JavaScript. The script adds:
 - live countdowns that move to a call's next round once one closes;
 - deadlines shown in the visitor's own time zone;
 - a notice when the snapshot is old;
-- "My call sheet", which is saved in the visitor's browser only, and flags a saved call whose deadline the organiser moved;
+- "My shortlist", which is saved in the visitor's browser only, and flags a saved opportunity whose deadline the organiser moved;
 - a **New** tag on calls added since the visitor's last visit, with a filter for just those;
 - a what-to-bring checklist on each call page that remembers its ticks.
 

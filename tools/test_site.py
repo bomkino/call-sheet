@@ -162,7 +162,7 @@ class BuildTests(unittest.TestCase):
             members = build_site.topic_members(topic, CALLS, as_of)
             rows = re.findall(r'<li class="cs-call"[^>]*data-slug="([^"]+)"', source)
             self.assertEqual(rows, [c["slug"] for c in members], topic["slug"])
-            self.assertIn(f"{len(members)} calls that haven’t closed", source, topic["slug"])
+            self.assertIn(f"{len(members)} opportunities that haven’t closed", source, topic["slug"])
             ld = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', source).group(1))
             self.assertEqual(ld["@graph"][1]["numberOfItems"], len(members), topic["slug"])
             self.assertEqual(f"/call-sheet/{topic['slug']}/<" in sitemap, len(members) >= 5, topic["slug"])
@@ -328,10 +328,10 @@ class BuildTests(unittest.TestCase):
 
     def test_pitch_copy_claims_only_what_the_data_shows(self):
         source = (self.out / "index.html").read_text(encoding="utf-8")
-        for claim in ("Most ask for a pitch deck", "Most of these calls ask"):
+        for claim in ("Most ask for a pitch deck", "Most of these calls ask", "Most of these opportunities ask"):
             self.assertNotIn(claim, source)
         self.assertIn("Applying to one? If it asks for a deck, a treatment or a pitch, we make those.", source)
-        self.assertIn("Some of these calls ask for a deck, a treatment or a pitch.", source)
+        self.assertIn("Some of these opportunities ask for a deck, a treatment or a pitch.", source)
         as_of = json.loads((self.out / "BUILD.json").read_text(encoding="utf-8"))["data_as_of"]
         self.assertTrue(any(build_site.asks_for(c) for c in CALLS if not build_site.closed_at(c, as_of)))
 
@@ -357,7 +357,7 @@ class BuildTests(unittest.TestCase):
         later = [c for c in CALLS if c["closes"] and c["closes"][:7] > edition["covers"]["to"] and not build_site.closed_at(c, as_of)]
         source = (self.out / "index.html").read_text(encoding="utf-8")
         self.assertNotIn("This edition covers calls closing", source)
-        self.assertIn("This edition is built around calls closing", source)
+        self.assertIn("This edition is built around opportunities closing", source)
         if later:
             self.assertEqual(source.count(f"plus {len(later)} later"), 2)
 

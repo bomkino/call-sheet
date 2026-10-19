@@ -2,7 +2,7 @@
  * Call Sheet — pitch.dog
  *
  * Every page works without this script.  It adds the site theme and mobile
- * menu, live countdowns, filtering, and "My call sheet": a shortlist saved
+ * menu, live countdowns, filtering, and "My shortlist", saved
  * in this browser's localStorage only.  Nothing typed or saved is sent
  * anywhere.
  */
@@ -299,7 +299,7 @@ function toggleSave (slug) {
     sheet = readSheet()
     syncSaveButtons(slug)
     renderSheet()
-    notice('Your browser is blocking storage here (a private window often does), so that call wasn’t saved.')
+    notice('Your browser is blocking storage here (a private window often does), so it wasn’t saved.')
     return
   }
   syncSaveButtons(slug)
@@ -375,7 +375,7 @@ function renderSheet () {
   if (bar) {
     bar.hidden = items.length === 0
     document.body.classList.toggle('has-sheetbar', items.length > 0)
-    bar.querySelector('[data-sheet-count]').textContent = `${items.length} ${items.length === 1 ? 'call' : 'calls'} saved`
+    bar.querySelector('[data-sheet-count]').textContent = `${items.length} saved`
     const next = items.map(([, i]) => i).filter(upcoming).map(i => i.closes).sort()[0]
     bar.querySelector('[data-sheet-next]').textContent = next ? `Next closes ${daysUntil(next) <= 0 ? 'today' : daysUntil(next) === 1 ? 'tomorrow' : 'in ' + daysUntil(next) + ' days'}` : 'No upcoming deadlines'
   }
@@ -405,7 +405,7 @@ function renderSheet () {
     meta.append(status)
     const remove = el('button', { className: 'cs-sheet-remove', type: 'button', innerHTML: '<svg class="cs-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#cs-close"></use></svg>' })
     remove.dataset.remove = slug
-    remove.setAttribute('aria-label', `Remove ${title} from my call sheet`)
+    remove.setAttribute('aria-label', `Remove ${title} from my shortlist`)
     return el('li', { className: 'cs-sheet-item' }, date, meta, remove)
   }))
 }
@@ -484,7 +484,7 @@ function download (name, text, type) {
 }
 document.querySelector('[data-sheet-ics]')?.addEventListener('click', () => {
   const entries = sortedItems().filter(([, i]) => upcoming(i))
-  if (!entries.length) return say('None of your saved calls has an upcoming deadline yet.')
+  if (!entries.length) return say('Nothing on your shortlist has an upcoming deadline yet.')
   download('call-sheet-deadlines.ics', icsFor(entries), 'text/calendar')
   say(`${entries.length} ${entries.length === 1 ? 'deadline' : 'deadlines'} ready for your calendar.`)
 })
@@ -496,8 +496,8 @@ document.querySelector('[data-ics]')?.addEventListener('click', () => {
 document.querySelector('[data-sheet-share]')?.addEventListener('click', async () => {
   const url = `${location.origin}${BASE}?sheet=${sortedItems().map(([slug]) => slug).join(',')}`
   try {
-    if (navigator.share && matchMedia('(pointer: coarse)').matches) await navigator.share({ title: 'My call sheet', url })
-    else { await navigator.clipboard.writeText(url); say('Link copied. Anyone with it sees the same calls, never your notes or statuses.') }
+    if (navigator.share && matchMedia('(pointer: coarse)').matches) await navigator.share({ title: 'My shortlist', url })
+    else { await navigator.clipboard.writeText(url); say('Link copied. Anyone with it sees the same opportunities, never your notes or statuses.') }
   } catch { prompt('Copy this link:', url) }
 })
 
@@ -525,7 +525,7 @@ document.querySelector('[data-sheet-print]')?.addEventListener('click', () => {
   const label = Object.fromEntries(STATUSES)
   const cell = text => { const td = document.createElement('td'); td.textContent = text || ''; return td }
   const table = document.createElement('table')
-  table.innerHTML = '<thead><tr><th>Closes</th><th>Call</th><th>Who can apply</th><th>You get</th><th>Entry fee</th><th>Status</th></tr></thead><tbody></tbody>'
+  table.innerHTML = '<thead><tr><th>Closes</th><th>Opportunity</th><th>Who can apply</th><th>You get</th><th>Entry fee</th><th>Status</th></tr></thead><tbody></tbody>'
   for (const [slug, item] of items) {
     const tr = document.createElement('tr')
     const call = cell(item.title)
@@ -534,9 +534,9 @@ document.querySelector('[data-sheet-print]')?.addEventListener('click', () => {
     tr.append(cell(item.closes ? shortDate(item.closes, true) : '—'), call, cell(item.who), cell(item.get), cell(item.fee), cell(label[item.status] || ''))
     table.tBodies[0].append(tr)
   }
-  const h1 = document.createElement('h1'); h1.textContent = 'Call sheet.'
+  const h1 = document.createElement('h1'); h1.textContent = 'My shortlist.'
   const meta = document.createElement('p'); meta.className = 'cs-print-meta'
-  meta.innerHTML = `<span>Printed ${shortDate(todayISO, true)}</span><span>${items.length} ${items.length === 1 ? 'call' : 'calls'}</span><span>pitch.dog/call-sheet</span>`
+  meta.innerHTML = `<span>Printed ${shortDate(todayISO, true)}</span><span>${items.length} ${items.length === 1 ? 'opportunity' : 'opportunities'}</span><span>pitch.dog/call-sheet</span>`
   const foot = document.createElement('p'); foot.className = 'cs-print-foot'
   foot.textContent = 'A research snapshot, not legal advice. Check every deadline, fee and rule on the official page before you apply.'
   holder.replaceChildren(h1, meta, table, foot)
@@ -741,7 +741,7 @@ if (form && groupsHost && listRows.length) {
     box.className = 'cs-shared'
     box.setAttribute('role', 'status')
     const gone = missingShared ? ` ${missingShared} more ${missingShared === 1 ? 'isn’t' : 'aren’t'} on Call Sheet any more.` : ''
-    box.innerHTML = `<p data-pd-type="body.default"><strong>Someone shared ${filters.shared.length} ${filters.shared.length === 1 ? 'call' : 'calls'} with you.</strong> Showing just those.${gone}</p><div class="button-row"><button class="button button--ink button--small" type="button" data-adopt>Add to my call sheet</button><button class="button button--small" type="button" data-show-all>Show every call</button></div>`
+    box.innerHTML = `<p data-pd-type="body.default"><strong>Someone shared ${filters.shared.length} ${filters.shared.length === 1 ? 'opportunity' : 'opportunities'} with you.</strong> Showing just those.${gone}</p><div class="button-row"><button class="button button--ink button--small" type="button" data-adopt>Add to my shortlist</button><button class="button button--small" type="button" data-show-all>Show the full list</button></div>`
     document.querySelector('.cs-results-head').after(box)
     box.querySelector('[data-adopt]').addEventListener('click', () => {
       for (const slug of filters.shared) if (!saved(slug)) toggleSave(slug)
@@ -821,27 +821,27 @@ if (form && groupsHost && listRows.length) {
     const visible = rows.filter(([, info]) => info.live !== 'closed').length
     const closedCount = rows.length - visible
     countEl.textContent = String(visible)
-    countEl.parentElement.lastChild.textContent = ` ${visible === 1 ? 'call' : 'calls'}, soonest first`
+    countEl.parentElement.lastChild.textContent = ` ${visible === 1 ? 'opportunity' : 'opportunities'}, soonest first`
     const active = []
     if (filters.q) active.push(queryPlace(filters.q) ? `open to people based in ${countryName(queryPlace(filters.q))}` : `“${filters.q.length > 40 ? filters.q.slice(0, 40) + '…' : filters.q}”`)
     if (filters.from) active.push(`based in ${countryName(filters.from)}`)
     for (const facet of ['format', 'stage', 'kind']) for (const v of filters[facet]) active.push(form.querySelector(`input[name="${facet}"][value="${v}"]`)?.nextElementSibling.textContent.toLowerCase())
     for (const v of filters.only) active.push(form.querySelector(`input[name="only"][value="${v}"]`)?.nextElementSibling.textContent.toLowerCase())
-    noteEl.textContent = (filters.shared.length ? 'A shared call sheet. ' : '') + (active.length ? `Filtered: ${active.join(', ')}.` : filters.shared.length ? '' : 'Every call we track.') + (closedCount ? ` Plus ${closedCount} closed for this round.` : '')
+    noteEl.textContent = (filters.shared.length ? 'A shared shortlist. ' : '') + (active.length ? `Filtered: ${active.join(', ')}.` : filters.shared.length ? '' : 'Every opportunity we track.') + (closedCount ? ` Plus ${closedCount} closed for this round.` : '')
     clear.hidden = !active.length
     empty.hidden = rows.length > 0
     if (filterJump) filterJump.querySelector('span').textContent = active.length ? `Filters (${active.length})` : 'Filters'
     if (see) {
-      see.querySelector('[data-see-text]').textContent = visible ? `See ${visible} ${visible === 1 ? 'call' : 'calls'}` : 'Nothing fits yet'
+      see.querySelector('[data-see-text]').textContent = visible ? `See ${visible} ${visible === 1 ? 'opportunity' : 'opportunities'}` : 'Nothing fits yet'
       see.classList.toggle('is-zero', visible === 0)
       startAgain.hidden = !active.length
     }
-    if (write) announce(`${visible} ${visible === 1 ? 'call' : 'calls'} open or coming up${active.length ? `, filtered by ${active.join(', ')}` : ''}.`)
+    if (write) announce(`${visible} ${visible === 1 ? 'opportunity' : 'opportunities'} open or coming up${active.length ? `, filtered by ${active.join(', ')}` : ''}.`)
     if (filters.from && (excluded || filters.all)) {
       excludedEl.hidden = false
       excludedEl.innerHTML = filters.all
-        ? `<span>Showing calls that don’t take applicants based in ${countryName(filters.from)} too.</span><button class="button button--small" type="button" data-toggle-all>Hide them again</button>`
-        : `<span>${excluded} more ${excluded === 1 ? 'call doesn’t' : 'calls don’t'} take applicants based in ${countryName(filters.from)}.</span><button class="button button--small" type="button" data-toggle-all>Show them anyway</button>`
+        ? `<span>Showing opportunities that don’t take applicants based in ${countryName(filters.from)} too.</span><button class="button button--small" type="button" data-toggle-all>Hide them again</button>`
+        : `<span>${excluded} more ${excluded === 1 ? 'opportunity doesn’t' : 'opportunities don’t'} take applicants based in ${countryName(filters.from)}.</span><button class="button button--small" type="button" data-toggle-all>Show them anyway</button>`
     } else excludedEl.hidden = true
     if (write) writeUrl()
   }
@@ -904,7 +904,7 @@ if (form && groupsHost && listRows.length) {
     const stale = document.createElement('p')
     stale.className = 'cs-stale'
     stale.setAttribute('data-pd-type', 'body.small')
-    stale.textContent = `We last checked this list on ${shortDate(document.body.dataset.asOf, true)}, ${Math.round(age / 30.4)} ${Math.round(age / 30.4) === 1 ? 'month' : 'months'} ago. Calls that have closed move to the bottom on their own, but new rounds and changed dates won’t show until we check again. The official page always wins.`
+    stale.textContent = `We last checked this list on ${shortDate(document.body.dataset.asOf, true)}, ${Math.round(age / 30.4)} ${Math.round(age / 30.4) === 1 ? 'month' : 'months'} ago. Anything that has closed moves to the bottom on its own, but new rounds and changed dates won’t show until we check again. The official page always wins.`
     document.querySelector('.cs-results-head').after(stale)
   }
 
@@ -916,7 +916,7 @@ if (form && groupsHost && listRows.length) {
     const box = document.createElement('div')
     box.className = 'cs-welcome'
     box.setAttribute('role', 'status')
-    box.innerHTML = `<p data-pd-type="body.default"><strong>Welcome back.</strong> ${newSince.size} ${newSince.size === 1 ? 'call is' : 'calls are'} new since you were last here, on ${shortDate(lastVisit.toISOString().slice(0, 10))}.</p><button class="button button--small" type="button" data-only-new>Show just the new ones</button>`
+    box.innerHTML = `<p data-pd-type="body.default"><strong>Welcome back.</strong> ${newSince.size} ${newSince.size === 1 ? 'opportunity is' : 'opportunities are'} new since you were last here, on ${shortDate(lastVisit.toISOString().slice(0, 10))}.</p><button class="button button--small" type="button" data-only-new>Show just the new ones</button>`
     box.querySelector('[data-only-new]').addEventListener('click', () => {
       form.querySelector('input[name="only"][value="new"]').checked = true
       filters.only = [...new Set([...filters.only, 'new'])]
@@ -959,7 +959,7 @@ if (topicList && listRows.length) {
   }
   const open = rows.filter(([, live]) => live !== 'closed').length
   const count = topicList.closest('.cs-topic')?.querySelector('[data-topic-count]')
-  if (count) count.textContent = `${open} ${open === 1 ? 'call that hasn’t' : 'calls that haven’t'} closed`
+  if (count) count.textContent = `${open} ${open === 1 ? 'opportunity that hasn’t' : 'opportunities that haven’t'} closed`
 }
 
 // Ready-made list counts, wherever they appear: a call drops out once its last round has closed.
