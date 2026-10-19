@@ -239,8 +239,8 @@
 
   /* a carousel's thread: one marker line that leaves each slide where the next one picks it up */
   .thread { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; overflow: visible; pointer-events: none; }
-  .thread path { fill: none; stroke: var(--marker); stroke-width: 1.15cqi; stroke-linecap: round; stroke-linejoin: round; }
-  .tape { position: absolute; z-index: 3; width: 13cqi; height: 4.4cqi; background: rgb(243 236 214 / .78); box-shadow: 0 1px 2px rgb(21 19 15 / .18); clip-path: polygon(2% 8%, 10% 0, 22% 9%, 35% 1%, 48% 8%, 62% 0, 76% 7%, 90% 0, 100% 10%, 98% 92%, 88% 100%, 74% 93%, 60% 100%, 46% 92%, 32% 100%, 18% 93%, 6% 100%, 0 90%); }
+  .thread path { fill: none; stroke: var(--marker); stroke-width: 1.3cqi; stroke-linecap: round; stroke-linejoin: round; }
+  .tape { position: absolute; z-index: 3; width: 13cqi; height: 4.4cqi; background: rgb(226 210 168 / .82); box-shadow: 0 1px 2px rgb(21 19 15 / .18); clip-path: polygon(2% 8%, 10% 0, 22% 9%, 35% 1%, 48% 8%, 62% 0, 76% 7%, 90% 0, 100% 10%, 98% 92%, 88% 100%, 74% 93%, 60% 100%, 46% 92%, 32% 100%, 18% 93%, 6% 100%, 0 90%); }
 
 </style>
 </head>
@@ -498,12 +498,12 @@ const HOW = [
   { g: 'var(--blue)', html: (c) => `${ctop('How it works', 1, 7)}${S('display', `Find your next grant in a ${circ('minute.', 'wide', { ml: '.18em', l: '-8%', t: '-13%', w: '121%', h: '134%' })}`, 'class="mt-m measure"')}${S('subhead', 'Call Sheet is a free list of film and TV grants, labs and festivals, sorted by deadline.', 'class="mt-s wide"')}<div class="grow"></div><div class="foot">${sp('credit', 'Call Sheet, by pitch.dog')}${swipe}</div>` },
   // Steps 1 to 5: one zone, one thread, the ground warming from paper to pink before the ink close.
   tgrid('Step 1', 'Pick what you’re making.', 'And where you live. We hide the opportunities you can’t apply to.',
-    (c) => `<div style="zoom:${sq(c, 1.22, 1)};position:relative;width:74cqi;margin-left:6cqi;transform:rotate(-1.5deg)"><div class="paper ear" style="--ear:6cqi;padding:4cqi 4.6cqi 4.4cqi;display:grid;gap:1.4cqi"><span class="ear-flap"></span>
-      ${S('metadata', 'What are you making?', 'class="soft"')}${chipsUi([['Fiction feature'], ['Documentary', 1], ['Series'], ['Short'], ['Animation']].slice(0, sq(c, 5, 4)))}
-      ${S('metadata', 'Where are you based?', 'class="soft mt-xs"')}${chipsUi([['The US'], ['The UK', 1], ['Canada'], ['Australia']])}</div>${tape('left:-4cqi;top:-1.6cqi;transform:rotate(-24deg)')}</div>`,
+    (c) => `<div style="zoom:${sq(c, 1.2, 1)};position:relative;width:${sq(c, 72, 84)}cqi;margin-left:4cqi;transform:rotate(-1.5deg)"><div class="paper ear" style="--ear:6cqi;padding:4cqi 4.6cqi 4.4cqi;display:grid;gap:1.4cqi"><span class="ear-flap"></span>
+      ${S('metadata', 'What are you making?', 'class="soft"')}${chipsUi([['Fiction feature'], ['Documentary', 1], ['Series'], ['Short'], ['Animation']])}
+      ${S('metadata', 'Where are you based?', 'class="soft mt-xs"')}${chipsUi([['The US'], ['The UK', 1], ['Canada'], ['Australia']].slice(0, sq(c, 3, 4)))}</div>${tape('left:-4cqi;top:-1.6cqi;transform:rotate(-24deg)')}</div>`,
     { g: 'var(--paper)', thread: [[[-2, 70], [30, 66], [70, 72], [102, 69]], [[-2, 72], [30, 68], [70, 74], [102, 71]]] }),
   tgrid('Step 2', 'Read what matters.', '',
-    (c) => `<div style="zoom:${sq(c, 1.12, .92)};position:relative;width:78cqi;transform:rotate(1deg)"><div class="paper ear" style="--ear:6cqi;padding:4cqi 5cqi 4.4cqi"><span class="ear-flap"></span>
+    (c) => `<div style="zoom:${sq(c, .95, 1.04)};position:relative;width:80cqi;transform:rotate(1deg)"><div class="paper ear" style="--ear:6cqi;padding:3.4cqi 5cqi 3.6cqi"><span class="ear-flap"></span>
       ${S('label', 'Sundance Merata Mita Fellowship')}${S('metadata', 'Who can apply', 'class="soft mt-s"')}${S('body', 'Indigenous artists who identify as women, worldwide')}${c === 'square' ? '' : `${S('metadata', 'You get', 'class="soft mt-s"')}${S('body', 'A cash grant, a year of support and a trip to Sundance')}`}
       ${S('metadata', 'Entry fee', 'class="soft mt-s"')}<div style="margin-top:.8cqi">${circ(sp('label', 'Free to enter'), 'wide', { l: '-12%', t: '-28%', w: '124%', h: '156%' })}</div>${S('metadata', 'Closes', 'class="soft mt-s"')}${S('body', 'Tue 3 Nov, 4:30pm Mountain Time, shown in yours')}</div>${tape('right:9cqi;top:-2cqi;transform:rotate(8deg)')}</div>`,
     { g: 'var(--buff)', thread: [[[-2, 69], [24, 74], [74, 62], [102, 64]], [[-2, 71], [24, 76], [74, 64], [102, 66]]] }),
@@ -517,7 +517,7 @@ const HOW = [
   tgrid('Step 5', 'Tick off what to send.', 'Most opportunities list what they ask for. Your&nbsp;ticks are saved.',
     (c) => `<div style="position:relative;width:${sq(c, 80, 72)}cqi;transform:rotate(-1deg)"><div class="paper ear ruled" style="--lh:${sq(c, 7, 6)}cqi;padding:3cqi 5cqi"><span class="ear-flap"></span><ul class="ticks">
       ${[['Logline', 1], ['2-page synopsis', 1], ['Director’s note', 0], ['CVs and past work', 0]].map(([t, on]) => `<li>${on ? tick : box}${S('headline', t, on ? 'style="text-decoration:line-through;text-decoration-color:var(--marker);text-decoration-thickness:.07em;opacity:.55"' : '')}</li>`).join('')}</ul></div>${tape('left:30cqi;top:-2cqi;transform:rotate(-4deg)')}</div>`,
-    { g: 'var(--pink)', thread: [[[-2, 67], [20, 62], [60, 80], [86, 84], [92, 78], [88, 73], [84, 79], [97, 86]], [[-2, 69], [20, 64], [60, 82], [86, 86], [92, 80], [88, 75], [84, 81], [97, 88]]] }),
+    { g: 'var(--pink)', thread: [[[-2, 67], [20, 62], [56, 80], [80, 86], [93, 83]], [[-2, 69], [20, 64], [56, 82], [80, 88], [93, 85]]] }),
   closer(),
 ]
 

@@ -20,7 +20,7 @@
     .firstfilm-card { position: absolute; background: var(--sheet); box-shadow: var(--lift); padding: 2.6cqi 2.2cqi 3cqi; display: grid; gap: 1.1cqi; align-content: start; }
     .firstfilm-form { position: relative; background: var(--sheet); box-shadow: var(--lift); padding: 4cqi 4.6cqi 4.4cqi; display: grid; gap: .2cqi; }
     .firstfilm-form .head { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 1.6cqi; margin-bottom: 1cqi; border-bottom: .3cqi solid var(--ink); }
-    .firstfilm-form .row { display: grid; grid-template-columns: 4cqi 1fr auto; gap: 2cqi; align-items: baseline; padding: 1.5cqi 0; border-bottom: 1.5px solid var(--rule); }
+    .firstfilm-form .row { display: grid; grid-template-columns: 4cqi 1fr auto; gap: 2cqi; align-items: baseline; padding: 1.2cqi 0; border-bottom: 1.5px solid var(--rule); }
     .firstfilm-form .row:last-of-type { border-bottom: 0; }
     .firstfilm-id { position: relative; background: var(--sheet); border-radius: 2cqi; overflow: hidden; box-shadow: var(--lift); }
     .firstfilm-id .band { display: flex; justify-content: space-between; align-items: center; background: var(--marker); color: var(--sheet); --pd-type-ink: var(--sheet); padding: 2.4cqi 3.4cqi; }
@@ -120,7 +120,7 @@
     card('Directing debut', '$5,000 for your directing debut.', ['The WAVE Grant backs five first scripted films, each by a solo director.'], 'US residents only. Closes 15 November.',
       five, { g: 'var(--yellow)', n: 2, route: [{ cx: 966, dip: 60 }, { cx: 980, dip: 30, r: 40 }] }),
     card('Aged 18 to 25', '18 to 25? $10,000 and a mentor.', ['The Michael Collyer Fellowship, for an original feature script. US citizens and green-card holders.'], 'Closes 8 January.',
-      (c) => `<div style="transform:rotate(1.5deg);zoom:${sq(c, 1, .8)};margin-left:${sq(c, 12, 14)}cqi">${form(70)}</div>`,
+      (c) => `<div style="transform:rotate(1.5deg);zoom:${sq(c, .96, .76)};margin-left:${sq(c, 12, 14)}cqi">${form(70)}</div>`,
       { g: 'var(--blue)', n: 3, route: [{ cx: 112, dip: -30 }, { cx: 104, dip: 30, r: 40 }] }),
     card('Students', 'Still a student?', ['The Carole Dorothy Joyce Student Grant gives $3,000 plus donated services, for films budgeted at $50,000 or less.'], 'Closes 30 November.',
       (c) => `<div style="transform:rotate(-3deg);zoom:${sq(c, 1, .78)};margin-right:${sq(c, 10, 14)}cqi">${idDoc(60)}</div>`,

@@ -5,9 +5,9 @@
   const HOLE = '#b98f2f'        // the desk seen through a perforation, in the strip's shadow
   document.head.insertAdjacentHTML('beforeend', `<style>
     .cv-stages-strip { position: absolute; z-index: 1; transform-origin: 0 50%; box-shadow: var(--lift); }
-    .cv-stages-strip svg, .cv-stages-ink svg, .cv-stages-tool svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .cv-stages-strip > svg, .cv-stages-ink > svg, .cv-stages-tool > svg { display: block; width: 100%; height: auto; overflow: visible; }
     .cv-stages-ink { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
-    .cv-stages-ink svg { height: 100%; }
+    .cv-stages-ink > svg { height: 100%; }
     .cv-stages-tool { position: absolute; z-index: 2; transform-origin: 0 50%; }
     .cv-stages-head [data-pd-social="display"] { font-size: 13.2cqi; line-height: .86; }
   </style>`)

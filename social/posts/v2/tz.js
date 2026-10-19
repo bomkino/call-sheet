@@ -36,35 +36,33 @@
   // The standard grid: kicker, display headline, subhead lines, the object centred below, footer.
   const page = (label, head, subs, obj, o = {}) => ({ g: o.g, dark: o.dark,
     html: (c, i, n) => `${ctop(label, i, n)}${S('display', head, `class="mt-m" style="max-inline-size:${o.hw || '15ch'}"`)}
-      ${subs.map((t, k) => S('subhead', t, `class="${k ? '' : 'mt-s'} wide"`)).join('')}
+      ${subs.map((t, k) => S('subhead', t, `class="${k ? '' : 'mt-s'}" style="max-inline-size:${o.sw || '32ch'}"`)).join('')}
       <div class="grow" style="display:flex;align-items:center;justify-content:center;padding-top:${o.pt ?? 3}cqb">${typeof obj === 'function' ? obj(c) : obj}</div>
       ${i === 1 ? `<div class="foot">${sp('credit', 'Call Sheet, by pitch.dog')}${swipe}</div>` : foot()}` })
 
   // 2. The list, soonest first, with the closing time worked out for someone in London.
   const row = (d, m, title, time, mark) => `<div class="tz-row"><div class="d">${sp('headline', d)}${sp('metadata', m, 'class="soft"')}</div>${S('label', title)}
-    <div class="t"><span ${mark ? `data-tz="${mark}"` : ''}>${sp('headline', time)}</span>${sp('metadata', 'Your time', 'class="soft"')}</div></div>`
+    <div class="t" ${mark ? `data-tz="${mark}"` : ''}>${sp('headline', time)}${sp('metadata', 'Your time', 'class="soft"')}</div></div>`
   const tzList = (c) => `<div style="width:100%;transform:rotate(-1.2deg)"><div class="paper ear list tz-list"><span class="ear-flap"></span>
     <header><img src="/brand/logo/call-sheet-wordmark.svg" alt="Call Sheet">${sp('metadata', 'Your time: London', 'class="soft"')}</header>
     ${row('3', 'Nov', 'TorinoFilmLab ScriptLab', '15:00')}${row('3', 'Nov', 'Sundance Merata Mita Fellowship', '23:30', 'a')}${c === 'square' ? '' : row('5', 'Nov', 'TorinoFilmLab FeatureLab', '15:00')}</div></div>`
 
   // 3. Midnight there is breakfast here.
-  const clocks = (c) => `<div class="tz-clocks" style="width:${P_(c, 84, 62)}cqi;gap:${P_(c, 10, 9)}cqi">
-    <div class="clock" style="transform:rotate(-3deg)">${clockSvg(0, 0)}<div class="cap">${S('label', 'Midnight there')}${S('metadata', 'Los Angeles', 'class="soft"')}</div></div>
-    <div class="clock" style="transform:rotate(2deg)">${clockSvg(8, 0)}<div class="cap"><span data-tz="a">${S('label', '08:00 here')}</span>${S('metadata', 'London', 'class="soft"')}</div></div></div>`
+  const clocks = (c) => `<div class="tz-clocks" style="width:${P_(c, 70, 52)}cqi;gap:${P_(c, 12, 10)}cqi">
+    <div class="clock" data-tz="c1" style="transform:rotate(-3deg)">${clockSvg(0, 0)}<div class="cap">${S('label', 'Midnight there')}${S('metadata', 'Los Angeles', 'class="soft"')}</div></div>
+    <div class="clock" data-tz="c2" style="transform:rotate(2deg)">${clockSvg(8, 0)}<div class="cap"><span data-tz="a">${S('label', '08:00 here')}</span>${S('metadata', 'London', 'class="soft"')}</div></div></div>`
 
   // 4. The filters.
   const chips = (k, items) => `<div class="sec">${S('metadata', k, 'class="soft"')}<div class="row">${items.map(([t, on, mark]) => `<span class="chip${on ? ' on' : ''}" ${mark ? `data-tz="${mark}"` : ''}>${sp('label', t)}</span>`).join('')}</div></div>`
   const filters = (c) => `<div class="tz-panel" style="width:100%;transform:rotate(1deg)">
-    ${c === 'square' ? '' : `<div class="head"><img src="/brand/logo/call-sheet-wordmark.svg" alt="Call Sheet">${sp('metadata', 'Filters', 'class="soft"')}</div>`}
-    ${chips('Project type', [['Feature'], ['Documentary', 1], ['Series'], ['Short'], ['Animation']])}
+    ${chips('Project type', [['Feature'], ['Documentary', 1], ['Series'], ['Short']])}
     ${chips('Based in', [['The UK', 1, 'a']])}
     ${chips('Stage', [['Writing'], ['Development', 1], ['Production'], ['Post']])}</div>`
 
-  // 5. The shortlist, then the two reminders.
-  const shortlist = (c) => `<div style="width:100%;display:grid;gap:${P_(c, 3.4, 2.4)}cqi">
-    ${c === 'square' ? '' : `<div style="width:88%;transform:rotate(-1.5deg)">${list([li('3', 'Nov', 'Sundance Merata Mita Fellowship', ''), li('5', 'Nov', 'TorinoFilmLab FeatureLab', '')], { head: sp('headline', 'My shortlist'), note: '2 saved' })}</div>`}
-    <div style="display:grid;gap:${P_(c, 2.2, 2)}cqi;width:${P_(c, 92, 100)}%;justify-self:end;transform:rotate(1deg)">
-      ${notif('27', 'A week to go: Merata Mita', 'Closes Tue 3 Nov, 23:30')}<div data-tz="a">${notif('2', 'Tomorrow: Merata Mita', 'Closes Tue 3 Nov, 23:30')}</div></div></div>`
+  // 5. The two reminders, one a week out and one the day before.
+  const shortlist = (c) => `<div style="width:${P_(c, 100, 88)}%;display:grid;gap:${P_(c, 2.6, 2)}cqi">
+    <div style="width:92%;transform:rotate(-1.5deg)">${notif('27', 'A week to go: Merata Mita', 'Closes Tue 3 Nov, 23:30')}</div>
+    <div style="width:92%;justify-self:end;transform:rotate(1.2deg)" data-tz="a">${notif('2', 'Tomorrow: Merata Mita', 'Closes Tue 3 Nov, 23:30')}</div></div>`
 
   // 6. The application, still yours to do. The marker ends as the signature.
   const form = (c) => `<div style="position:relative;width:${P_(c, 74, 62)}cqi;transform:rotate(-1.5deg)"><div class="tz-form">
