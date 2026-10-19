@@ -10,14 +10,14 @@
     .firstfilm-stop { position: absolute; z-index: 1; transform: translate(-50%, -50%) rotate(-4deg); color: var(--marker-text); --pd-type-ink: var(--marker-text); }
     .firstfilm-pen { position: absolute; z-index: 1; width: 2.2cqi; height: 2.2cqi; border-radius: 50%; background: var(--marker); transform: translate(-50%, -50%); }
     .firstfilm-tape { position: absolute; z-index: 3; width: 13cqi; height: 4cqi; background: rgb(251 249 243 / .62); box-shadow: 0 1px 2px rgb(21 19 15 / .12); }
-    .firstfilm-pin { position: absolute; z-index: 3; width: 3cqi; height: 3cqi; border-radius: 50%; background: var(--marker); box-shadow: inset -.4cqi -.5cqi 0 rgb(0 0 0 / .22), 0 .5cqi .7cqi rgb(21 19 15 / .35); }
+    .firstfilm-card i.firstfilm-pin, .firstfilm-pin { position: absolute; z-index: 3; width: 3cqi; height: 3cqi; border-radius: 50%; background: var(--marker); box-shadow: inset -.4cqi -.5cqi 0 rgb(0 0 0 / .22), 0 .5cqi .7cqi rgb(21 19 15 / .35); }
     .firstfilm-cheque { position: relative; display: grid; grid-template-columns: 15cqi 1fr; background: var(--sheet); box-shadow: var(--lift); }
     .firstfilm-cheque .stub { padding: 3.4cqi 2.6cqi; border-right: .3cqi dashed rgb(21 19 15 / .3); display: grid; gap: 1.1cqi; align-content: start; }
     .firstfilm-cheque .stub i, .firstfilm-card i, .firstfilm-form i { display: block; height: 1.1cqi; border-radius: 1cqi; background: rgb(21 19 15 / .13); }
     .firstfilm-cheque .body { padding: 3.4cqi 4cqi 3cqi; display: grid; gap: .4cqi; }
     .firstfilm-cheque .row { display: flex; justify-content: space-between; align-items: baseline; }
     .firstfilm-cheque .micr { margin-top: 1.6cqi; letter-spacing: .32em; }
-    .firstfilm-card { position: absolute; background: var(--sheet); box-shadow: var(--lift); padding: 2.6cqi 2.6cqi 3cqi; display: grid; gap: 1.1cqi; align-content: start; }
+    .firstfilm-card { position: absolute; background: var(--sheet); box-shadow: var(--lift); padding: 2.6cqi 2.2cqi 3cqi; display: grid; gap: 1.1cqi; align-content: start; }
     .firstfilm-form { position: relative; background: var(--sheet); box-shadow: var(--lift); padding: 4cqi 4.6cqi 4.4cqi; display: grid; gap: .2cqi; }
     .firstfilm-form .head { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 1.6cqi; margin-bottom: 1cqi; border-bottom: .3cqi solid var(--ink); }
     .firstfilm-form .row { display: grid; grid-template-columns: 4cqi 1fr auto; gap: 2cqi; align-items: baseline; padding: 1.5cqi 0; border-bottom: 1.5px solid var(--rule); }
@@ -80,15 +80,15 @@
   // 2. Five award cards, pinned up in two rows: five first films.
   const five = (c) => {
     const sqr = c === 'square'
-    const W = sqr ? 84 : 64, cw = sqr ? 15 : 20, ch = sqr ? 21 : 23
+    const W = sqr ? 84 : 72, cw = sqr ? 15 : 22.5, ch = sqr ? 21 : 20
     const pos = sqr
       ? [[0, 4, -3], [17.2, 0, 2], [34.4, 3, -1], [51.6, 0, 3], [68.8, 4, -2]]
-      : [[0, 0, -4], [22, 2.5, 2], [44, 0, -1.5], [11, 24, 3], [33, 25.5, -2.5]]
-    return `<div style="position:relative;width:${W}cqi;height:${sqr ? 26 : 48}cqi;margin-right:${sqr ? 0 : 10}cqi">${pos.map(([x, y, r], k) => `<div class="firstfilm-card" style="left:${x}cqi;top:${y}cqi;width:${cw}cqi;height:${ch}cqi;transform:rotate(${r}deg)">
-      ${sp('metadata', `Film ${k + 1}`, 'class="soft"')}
-      <div style="margin-top:${sqr ? .6 : 2}cqi">${k === (sqr ? 2 : 1) ? circ(sp(sqr ? 'label' : 'headline', '$5,000'), 'round', { l: '-16%', t: '-46%', w: '132%', h: '190%' }) : sp(sqr ? 'label' : 'headline', '$5,000')}</div>
-      ${sqr ? '' : `<div style="display:grid;gap:1.1cqi;margin-top:2.4cqi">${bars(86, 62)}</div>`}
-      ${pin(`left:50%;top:-1.4cqi;margin-left:-1.5cqi`)}</div>`).join('')}</div>`
+      : [[0, 0, -4], [24.5, 2.5, 2], [49, 0, -1.5], [12, 22, 3], [37, 23.5, -2.5]]
+    return `<div style="position:relative;width:${W}cqi;height:${sqr ? 26 : 44}cqi;margin-right:${sqr ? 0 : 9}cqi">${pos.map(([x, y, r], k) => `<div class="firstfilm-card" style="left:${x}cqi;top:${y}cqi;width:${cw}cqi;height:${ch}cqi;transform:rotate(${r}deg)">
+      <div style="display:grid;gap:1.6cqi;zoom:${sqr ? .62 : .8}">${sp('metadata', `Film ${k + 1} of 5`, 'class="soft"')}
+      <div style="margin-top:1cqi">${k === (sqr ? 2 : 1) ? circ(sp('headline', '$5,000'), 'round', { l: '-14%', t: '-40%', w: '128%', h: '180%' }) : sp('headline', '$5,000')}</div>
+      ${sqr ? '' : `<div style="display:grid;gap:1.3cqi;margin-top:1.4cqi">${bars(86, 58)}</div>`}</div>
+      ${pin('left:50%;top:-1.2cqi;margin-left:-1.5cqi')}</div>`).join('')}</div>`
   }
 
   // 3. The fellowship's application, with the three facts filled in.
