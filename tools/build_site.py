@@ -154,6 +154,7 @@ SPRITE = """<svg width="0" height="0" style="position:absolute" aria-hidden="tru
 <symbol id="cs-flag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4.5c4.5-2.5 8.5 2.5 14 0v9c-5.5 2.5-9.5-2.5-14 0"/></g></symbol>
 <symbol id="cs-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.25" y="5.25" width="17.5" height="13.5" rx="1"/><path d="m3.75 6 8.25 6.75L20.25 6"/></g></symbol>
 <symbol id="cs-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="cs-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.25"/><path d="M12 7.5V12l3 2"/></g></symbol>
 <symbol id="cs-sliders" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></g></symbol>
 </svg>"""
 
@@ -411,6 +412,15 @@ def call_row(call: dict, as_of: str) -> str:
       </li>"""
 
 
+def zone_picker() -> str:
+    """'Times for': the clock that closing times are shown in.  The script fills it in; without the script it stays hidden."""
+    return f"""<div class="cs-zone" data-zone-picker data-requires-js>
+          <label class="cs-facet-label" for="cs-zone" data-pd-type="metadata">Times for</label>
+          <div class="cs-input-wrap">{icon("clock", "ph-icon")}<select id="cs-zone" aria-describedby="cs-zone-hint"></select></div>
+          <p class="cs-hint" id="cs-zone-hint" data-pd-type="body.small" data-zone-hint></p>
+        </div>"""
+
+
 def chips(name: str, legend: str, options: list[tuple[str, str]], hint: str = "") -> str:
     boxes = "".join(f'<label class="cs-chip"><input type="checkbox" name="{name}" value="{h(v)}"><span data-pd-ui="metadata">{h(t)}</span></label>' for v, t in options)
     return f'<fieldset class="cs-facet" data-facet="{name}"><legend data-pd-type="metadata">{h(legend)}</legend><div class="cs-chip-row">{boxes}</div>{f"<p class=\"cs-hint\" data-pd-type=\"body.small\">{h(hint)}</p>" if hint else ""}</fieldset>'
@@ -650,6 +660,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
           <p class="eyebrow" data-pd-type="metadata">Find your calls</p>
           <h2 id="find-title" data-pd-type="heading.subsection">What are you making?</h2>
           <p class="cs-finder-note" data-pd-type="body.small">Tap everything that fits. The list below changes as you go.</p>
+          {zone_picker()}
         </div>
         <form class="cs-filters" id="cs-filters" role="search" aria-label="Filter the calls" data-requires-js>
           {chips("format", "Making", format_options)}
@@ -897,6 +908,43 @@ def tz_label(tz: str | None) -> str | None:
     return tz
 
 
+# Organiser countries on one clock (France and New Zealand: the mainland's), so "the end of the day
+# there" is one moment we can turn into the visitor's time.  Countries with several zones (the US,
+# Canada, Australia, Brazil, Mexico, Russia, Indonesia) and anything not listed get no estimate.
+ONE_ZONE_COUNTRIES = {
+    "Argentina": ("America/Argentina/Buenos_Aires", "Argentina"), "Austria": ("Europe/Vienna", "Austria"),
+    "Bangladesh": ("Asia/Dhaka", "Bangladesh"), "Belgium": ("Europe/Brussels", "Belgium"), "Colombia": ("America/Bogota", "Colombia"),
+    "Czechia": ("Europe/Prague", "Czechia"), "Denmark": ("Europe/Copenhagen", "Denmark"), "Egypt": ("Africa/Cairo", "Egypt"),
+    "Finland": ("Europe/Helsinki", "Finland"), "France": ("Europe/Paris", "France"), "Germany": ("Europe/Berlin", "Germany"),
+    "Greece": ("Europe/Athens", "Greece"), "Hong Kong": ("Asia/Hong_Kong", "Hong Kong"), "India": ("Asia/Kolkata", "India"),
+    "Ireland": ("Europe/Dublin", "Ireland"), "Israel": ("Asia/Jerusalem", "Israel"), "Italy": ("Europe/Rome", "Italy"),
+    "Japan": ("Asia/Tokyo", "Japan"), "Kenya": ("Africa/Nairobi", "Kenya"), "Lebanon": ("Asia/Beirut", "Lebanon"),
+    "Nepal": ("Asia/Kathmandu", "Nepal"), "Netherlands": ("Europe/Amsterdam", "the Netherlands"), "New Zealand": ("Pacific/Auckland", "New Zealand"),
+    "Nigeria": ("Africa/Lagos", "Nigeria"), "Norway": ("Europe/Oslo", "Norway"), "Panama": ("America/Panama", "Panama"),
+    "Paraguay": ("America/Asuncion", "Paraguay"), "Peru": ("America/Lima", "Peru"), "Philippines": ("Asia/Manila", "the Philippines"),
+    "Poland": ("Europe/Warsaw", "Poland"), "Qatar": ("Asia/Qatar", "Qatar"), "Saudi Arabia": ("Asia/Riyadh", "Saudi Arabia"),
+    "Singapore": ("Asia/Singapore", "Singapore"), "South Africa": ("Africa/Johannesburg", "South Africa"), "South Korea": ("Asia/Seoul", "South Korea"),
+    "Sweden": ("Europe/Stockholm", "Sweden"), "Switzerland": ("Europe/Zurich", "Switzerland"), "Taiwan": ("Asia/Taipei", "Taiwan"),
+    "Thailand": ("Asia/Bangkok", "Thailand"), "United Kingdom": ("Europe/London", "the UK"), "UK": ("Europe/London", "the UK"),
+    "Uruguay": ("America/Montevideo", "Uruguay"),
+}
+
+
+def time_guess(call: dict, deadline: dict) -> tuple[str, str, str]:
+    """(what's missing, zone, place) for a closing date without a full cut-off, so the call page can
+    offer a labelled estimate.  'end': no time, so the end of the organiser's day; 'zone': a time
+    but no zone.  The zone is the one the organiser gave, else their country's only one, else ''
+    (no estimate).  A cut-off with both, or with only office hours in a note, gets ('', '', '')."""
+    if (deadline.get("time") and deadline.get("timezone")) or (not deadline.get("time") and deadline.get("time_note")):
+        return "", "", ""
+    missing = "zone" if deadline.get("time") else "end"
+    country = ONE_ZONE_COUNTRIES.get(call.get("organiser_country") or "")
+    if deadline.get("timezone"):
+        given = deadline["timezone"]
+        return missing, given, country[1] if country and country[0] == given else tz_label(given)
+    return (missing, *country) if country else (missing, "", "")
+
+
 def dates_block(call: dict) -> str:
     if not call["dates"]:
         return '<p data-pd-type="body.default">No dates published in our notes yet. Watch the official page for the next round.</p>'
@@ -984,7 +1032,8 @@ def call_page(call: dict, by_slug: dict[str, dict], as_of: str, css: str, js: st
         big = ("Closes " + day(closes)) if closes else ("Rolling, or no fixed date" if call["state"] == "watch_or_rolling" else "Dates to come")
         when = (long_day(closes) + (", " + clock if clock else "")) if closes else "Watch the official page for the next round."
         when += (". Next round: " + ", ".join(day(d) for d in later_rounds[:2])) if later_rounds else ""
-    status = f"""<div class="cs-countdown{' is-closed' if closed else ''}" data-countdown data-closes="{h(closes or '')}" data-opens="{h(call.get('opens') or '')}" data-state="{h(call['state'])}" data-rounds="{h(' '.join(rounds(call)))}" data-time="{h(deadline.get('time') or '')}" data-tz="{h(deadline.get('timezone') or '')}">
+    missing, guess_tz, guess_place = time_guess(call, deadline) if closes and not closed else ("", "", "")
+    status = f"""<div class="cs-countdown{' is-closed' if closed else ''}" data-countdown data-closes="{h(closes or '')}" data-opens="{h(call.get('opens') or '')}" data-state="{h(call['state'])}" data-rounds="{h(' '.join(rounds(call)))}" data-time="{h(deadline.get('time') or '')}" data-tz="{h(deadline.get('timezone') or '')}" data-untimed="{missing}" data-guess-tz="{h(guess_tz)}" data-guess-place="{h(guess_place)}">
           <p class="cs-countdown-big" data-pd-type="heading.subsection" data-countdown-text>{h(big)}</p>
           <p class="cs-countdown-when" data-pd-type="body.default" data-countdown-when>{h(when)}</p>
           <p class="cs-countdown-local" data-pd-type="body.small" data-local hidden></p>
@@ -1227,7 +1276,7 @@ def topic_page(topic: dict, calls: list[dict], as_of: str, css: str, js: str) ->
           {feed}
         </div>
       </header>
-      <section class="cs-topic-list" aria-labelledby="topic-list-title"><h2 id="topic-list-title" class="sr-only">The calls, soonest first</h2>{group_html}</section>
+      <section class="cs-topic-list" aria-labelledby="topic-list-title"><h2 id="topic-list-title" class="sr-only">The calls, soonest first</h2>{zone_picker()}{group_html}</section>
       <aside class="cs-help" aria-labelledby="help-title">
         <div class="cs-help-copy">
           <p class="eyebrow" data-pd-type="metadata">From pitch.dog, who made this list</p>

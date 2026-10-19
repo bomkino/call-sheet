@@ -96,6 +96,28 @@ class DataTests(unittest.TestCase):
                 if d["timezone"]:
                     ZoneInfo(d["timezone"])  # raises for anything that isn't an IANA zone
 
+    def test_one_zone_countries_are_one_zone(self):
+        from zoneinfo import ZoneInfo
+        for country, (zone, place) in build_site.ONE_ZONE_COUNTRIES.items():
+            ZoneInfo(zone)
+            self.assertTrue(place, country)
+        # Several clocks, so no "end of the day there" to estimate from.
+        for country in ("US", "United States", "Canada", "Australia", "Brazil", "Mexico", "Russia", "Indonesia", "European Union"):
+            self.assertNotIn(country, build_site.ONE_ZONE_COUNTRIES)
+
+    def test_time_guesses_never_invent_a_cut_off(self):
+        guess = build_site.time_guess
+        self.assertEqual(guess({"organiser_country": "France"}, {"time": None, "timezone": None}), ("end", "Europe/Paris", "France"))
+        self.assertEqual(guess({"organiser_country": "United Kingdom"}, {}), ("end", "Europe/London", "the UK"))
+        self.assertEqual(guess({"organiser_country": "New Zealand"}, {"time": "13:00", "timezone": None}), ("zone", "Pacific/Auckland", "New Zealand"))
+        for country in ("US", "Canada", "Australia", "Mexico", None, "Jersey / UK"):
+            self.assertEqual(guess({"organiser_country": country}, {}), ("end", "", ""), country)
+        # A zone the organiser gave beats the country's; a full cut-off or office hours need no guess.
+        self.assertEqual(guess({"organiser_country": None}, {"timezone": "Europe/Paris"}), ("end", "Europe/Paris", "Central European Time"))
+        self.assertEqual(guess({"organiser_country": "France"}, {"timezone": "Europe/Paris"}), ("end", "Europe/Paris", "France"))
+        self.assertEqual(guess({"organiser_country": "France"}, {"time": "16:00", "timezone": "Europe/Paris"}), ("", "", ""))
+        self.assertEqual(guess({"organiser_country": "France"}, {"timezone": "Europe/Paris", "time_note": "09:00–17:00"}), ("", "", ""))
+
     def test_identity_lines_keep_their_capitals(self):
         # First words that are proper nouns, so "Only for" keeps the capital.  A new capitalised
         # first word belongs here or in build_site.PLAIN_STARTS.
@@ -186,6 +208,50 @@ class BuildTests(unittest.TestCase):
             if call["closes"]:
                 self.assertIn(call["closes"], rounds, call["id"])
             self.assertEqual(rounds, sorted(rounds), call["id"])
+
+    def test_rows_carry_the_cut_off_time_and_zone(self):
+        source = (self.out / "index.html").read_text(encoding="utf-8")
+        timed = 0
+        for call in CALLS:
+            row = re.search(r'<li class="cs-call"[^>]*data-slug="%s"[^>]*>' % re.escape(call["slug"]), source).group(0)
+            deadline = build_site.deadline_on(call, call["closes"])
+            self.assertIn(f'data-time="{deadline.get("time") or ""}"', row, call["id"])
+            self.assertIn(f'data-tz="{deadline.get("timezone") or ""}"', row, call["id"])
+            timed += bool(deadline.get("time") and deadline.get("timezone"))
+        self.assertTrue(timed)
+
+    def test_estimates_only_where_the_organiser_has_one_clock(self):
+        as_of = json.loads((self.out / "BUILD.json").read_text(encoding="utf-8"))["data_as_of"]
+        seen = {"end": 0, "none": 0}
+        for call in CALLS:
+            source = (self.out / call["slug"] / "index.html").read_text(encoding="utf-8")
+            untimed, zone, place = re.search(r'data-untimed="([^"]*)" data-guess-tz="([^"]*)" data-guess-place="([^"]*)"', source).groups()
+            deadline = build_site.deadline_on(call, call["closes"])
+            if not call["closes"] or build_site.closed_at(call, as_of) or (deadline.get("time") and deadline.get("timezone")):
+                self.assertEqual((untimed, zone), ("", ""), call["id"])
+                continue
+            if zone:
+                self.assertTrue(place, call["id"])
+                self.assertTrue(deadline.get("timezone") == zone or build_site.ONE_ZONE_COUNTRIES[call["organiser_country"]][0] == zone, call["id"])
+                seen["end"] += untimed == "end"
+            elif untimed:
+                self.assertNotIn(call.get("organiser_country"), build_site.ONE_ZONE_COUNTRIES, call["id"])
+                seen["none"] += 1
+        self.assertTrue(seen["end"] and seen["none"], seen)
+
+    def test_local_times_need_the_script(self):
+        pages = [self.out / "index.html"] + [self.out / t["slug"] / "index.html" for t in build_site.TOPICS]
+        for page in pages:
+            source = page.read_text(encoding="utf-8")
+            self.assertEqual(len(re.findall(r'<div class="cs-zone" data-zone-picker data-requires-js>', source)), 1, page)
+            visible = re.sub(r"<[^>]+>", " ", re.sub(r"<script.*?</script>", "", source, flags=re.S))
+            for words in ("your time", "No time given"):
+                self.assertNotIn(words, visible, page)
+
+    def test_zone_names_match_the_script(self):
+        script = (REPO / "site/call-sheet.js").read_text(encoding="utf-8")
+        block = re.search(r"const ZONES = \{(.*?)\n\}", script, re.S).group(1)
+        self.assertEqual(dict(re.findall(r"'([^']+)': '([^']+)'", block)), build_site.FRIENDLY_ZONES)
 
     def test_closed_calls_are_not_indexed(self):
         as_of = json.loads((self.out / "BUILD.json").read_text(encoding="utf-8"))["data_as_of"]

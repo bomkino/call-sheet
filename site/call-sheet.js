@@ -92,9 +92,10 @@ function nextRound (rounds, fallback) {
 }
 
 // A cut-off in the organiser's zone as an instant, so it can be shown in the visitor's.
+const zoneFormats = new Map()
 function zoneOffset (ms, tz) {
-  const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' })
-    .formatToParts(new Date(ms)).map(p => [p.type, p.value]))
+  if (!zoneFormats.has(tz)) zoneFormats.set(tz, new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }))
+  const parts = Object.fromEntries(zoneFormats.get(tz).formatToParts(new Date(ms)).map(p => [p.type, p.value]))
   return Date.UTC(+parts.year, +parts.month - 1, +parts.day, +parts.hour % 24, +parts.minute, +parts.second) - ms
 }
 function instantOf (iso, time, tz) {
@@ -123,6 +124,20 @@ const ZONES = {
 }
 const zoneName = tz => ZONES[tz] || (tz.startsWith('Etc/') ? tz.slice(4) : tz.includes('/') ? tz.split('/').pop().replace(/_/g, ' ') + ' time' : tz)
 const hereZone = (() => { try { return Intl.DateTimeFormat().resolvedOptions().timeZone || '' } catch { return '' } })()
+
+// The clock local times are shown on: the browser's, unless the visitor picked another city
+// ("Times for"), to plan with a co-writer elsewhere, say.  Remembered in this browser when it can be.
+const ZONE_STORE = 'pitchdog-call-sheet-zone'
+const validZone = tz => { try { return Boolean(tz && new Intl.DateTimeFormat('en-GB', { timeZone: tz })) } catch { return false } }
+let viewZone = (() => { try { const tz = localStorage.getItem(ZONE_STORE); if (tz && validZone(tz)) return tz } catch {} return hereZone })()
+const whose = () => viewZone === hereZone ? 'your time' : zoneName(viewZone)
+// A cut-off on the chosen clock: the date and time there, and whether that clock reads the same as the organiser's.
+function clockAt (at, tz) {
+  const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: viewZone, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })
+    .formatToParts(at).map(p => [p.type, p.value]))
+  return { iso: `${parts.year}-${parts.month}-${parts.day}`, time: `${parts.hour}:${parts.minute}`, same: zoneOffset(at.getTime(), viewZone) === zoneOffset(at.getTime(), tz) }
+}
+const longClock = at => new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: viewZone }).format(at).replace(' at ', ', ')
 
 function leftText (closes) {
   const days = daysUntil(closes)
@@ -251,6 +266,11 @@ for (const row of listRows) {
   }
 }
 const rowBySlug = new Map(listRows.map(row => [row.dataset.slug, row]))
+// Soonest first: by closing date, then by the exact cut-off where we know it (09:00 before 23:30
+// on the same day), then by title.
+const rowAt = new Map(listRows.map(row => [row, instantOf(row.dataset.closes, row.dataset.time, row.dataset.tz)]))
+const soonest = (a, b) => (a.dataset.closes || '9999').localeCompare(b.dataset.closes || '9999') ||
+  (rowAt.get(a)?.getTime() ?? Infinity) - (rowAt.get(b)?.getTime() ?? Infinity) || a.dataset.title.localeCompare(b.dataset.title)
 const callPage = document.querySelector('.cs-callpage')
 
 function toggleSave (slug) {
@@ -766,7 +786,7 @@ if (form && groupsHost && listRows.length) {
       if (info.place === 'no' && !filters.all) { excluded++; continue }
       rows.push([row, info])
     }
-    rows.sort(([a], [b]) => (a.dataset.closes || '9999').localeCompare(b.dataset.closes || '9999') || a.dataset.title.localeCompare(b.dataset.title))
+    rows.sort(([a], [b]) => soonest(a, b))
     const used = new Map()
     for (const [row, info] of rows) {
       const bucket = bucketFor(row, info.live)
@@ -904,7 +924,7 @@ if (form && groupsHost && listRows.length) {
 const topicList = document.querySelector('.cs-topic-list')
 if (topicList && listRows.length) {
   const rows = listRows.map(row => [row, liveState({ closes: row.dataset.closes, opens: row.dataset.opens, state: row.dataset.state })])
-  rows.sort(([a], [b]) => (a.dataset.closes || '9999').localeCompare(b.dataset.closes || '9999') || a.dataset.title.localeCompare(b.dataset.title))
+  rows.sort(([a], [b]) => soonest(a, b))
   const used = new Map()
   for (const [row, live] of rows) {
     markRow(row, live)
@@ -930,6 +950,70 @@ for (const el of document.querySelectorAll('.cs-lists-n[data-ends]')) {
   const passed = el.dataset.ends.split(' ').filter(d => d && d < todayISO).length
   if (passed) el.textContent = Math.max(0, Number(el.textContent) - passed)
 }
+
+// ------------------------------------------------------------- your time
+
+// Under each date: the cut-off on the chosen clock, or a quiet note that the organiser gave no time.
+// The date above stays the organiser's; the line says when the day differs.
+function showClocks () {
+  for (const row of listRows) {
+    let clock = row.querySelector('[data-clock]')
+    const live = liveState({ closes: row.dataset.closes, opens: row.dataset.opens, state: row.dataset.state })
+    if (!row.dataset.closes || live === 'closed') { if (clock) clock.hidden = true; continue }
+    if (!clock) {
+      clock = Object.assign(document.createElement('span'), { className: 'cs-clock' })
+      clock.dataset.clock = ''
+      clock.setAttribute('data-pd-ui', 'caption')
+      row.querySelector('.cs-when')?.append(clock)
+    }
+    const at = rowAt.get(row)
+    if (at && viewZone) {
+      const there = clockAt(at, row.dataset.tz)
+      clock.textContent = there.same ? there.time : `${there.iso !== row.dataset.closes ? shortDate(there.iso) + ', ' : ''}${there.time} ${whose()}`
+    } else clock.textContent = row.dataset.time ? `${row.dataset.time}, no time zone given` : 'No time given'
+    clock.hidden = false
+  }
+}
+
+// "Times for": every zone the browser knows, by region, with the visitor's own first.
+const zonePicker = document.querySelector('[data-zone-picker]')
+if (zonePicker && listRows.length) {
+  const select = zonePicker.querySelector('select')
+  const hint = zonePicker.querySelector('[data-zone-hint]')
+  const city = tz => tz === 'UTC' ? 'UTC' : tz.split('/').pop().replace(/_/g, ' ')
+  const REGION = { America: 'Americas', Indian: 'Indian Ocean', Etc: 'Other' }
+  let known = []
+  try { known = Intl.supportedValuesOf('timeZone') } catch {}
+  const groups = new Map()
+  for (const tz of new Set([...known, ...Object.keys(ZONES), viewZone, 'UTC'])) {
+    if (!tz || tz === hereZone || !validZone(tz)) continue
+    const region = tz.includes('/') ? REGION[tz.split('/')[0]] || tz.split('/')[0] : 'Other'
+    if (!groups.has(region)) groups.set(region, [])
+    groups.get(region).push(tz)
+  }
+  if (hereZone) select.append(new Option(`${city(hereZone)} (where you are)`, hereZone))
+  for (const [region, zones] of [...groups.entries()].sort(([a], [b]) => (a === 'Other') - (b === 'Other') || a.localeCompare(b))) {
+    const group = Object.assign(document.createElement('optgroup'), { label: region })
+    group.append(...zones.sort((a, b) => city(a).localeCompare(city(b))).map(tz => new Option(city(tz), tz)))
+    select.append(group)
+  }
+  const describe = (kept = true) => {
+    hint.textContent = (viewZone === hereZone
+      ? `Closing times show in ${zoneName(viewZone)}, where you are. Planning with someone in another city? Pick theirs.`
+      : `Closing times show in ${zoneName(viewZone)}. Pick your own city to switch back.`) +
+      (kept ? '' : ' Your browser is blocking storage here, so this lasts until you leave the page.')
+  }
+  select.value = viewZone
+  describe()
+  select.addEventListener('change', () => {
+    viewZone = select.value
+    let kept = true
+    try { if (viewZone === hereZone) localStorage.removeItem(ZONE_STORE); else localStorage.setItem(ZONE_STORE, viewZone) } catch { kept = false }
+    describe(kept)
+    showClocks()
+  })
+}
+showClocks()
 
 // ------------------------------------------------------------- call page
 
@@ -963,12 +1047,19 @@ if (callPage) {
       if (days <= 7) box.classList.add('is-soon')
       if (live === 'watch') text.textContent += ', if it’s open'
     }
-    // The same cut-off on the visitor's clock, when their zone differs from the organiser's.
+    // The same cut-off on the chosen clock, when it differs from the organiser's.
     const local = box.querySelector('[data-local]')
-    if (at && local && live !== 'closed' && hereZone && zoneOffset(at.getTime(), hereZone) !== zoneOffset(at.getTime(), tz)) {
-      const when = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: hereZone }).format(at)
-      local.textContent = `That’s ${when.replace(' at ', ', ')} where you are (${zoneName(hereZone)}).`
-      local.hidden = false
+    const show = line => { local.textContent = line; local.hidden = false }
+    const differs = (instant, zone) => zoneOffset(instant.getTime(), viewZone) !== zoneOffset(instant.getTime(), zone)
+    if (at && local && live !== 'closed' && viewZone && differs(at, tz)) {
+      show(viewZone === hereZone ? `That’s ${longClock(at)} where you are (${zoneName(hereZone)}).` : `That’s ${longClock(at)} in ${zoneName(viewZone)}.`)
+    } else if (!at && local && closes && !moved && live !== 'closed' && viewZone && box.dataset.untimed) {
+      // No full cut-off: say so, and estimate from the organiser's one clock when there is one.
+      const { untimed, guessTz, guessPlace } = box.dataset
+      const guess = guessTz ? instantOf(closes, untimed === 'zone' ? time : '23:59', guessTz) : null
+      const estimate = guess && differs(guess, guessTz) ? `that’s around ${longClock(guess)} ${viewZone === hereZone ? 'for you' : 'in ' + zoneName(viewZone)} (our estimate); to be safe, apply the day before.` : ''
+      if (untimed === 'zone') show(estimate ? `No time zone given for the ${time} cut-off. If it’s ${time} in ${guessPlace}, ${estimate}` : `No time zone given for the ${time} cut-off; apply the day before to be safe.`)
+      else show(estimate ? `No closing time given. If it’s the end of the day in ${guessPlace}, ${estimate}` : 'No closing time given; apply the day before to be safe.')
     }
   }
   let next = false

@@ -251,6 +251,7 @@ html:not(.js) .cs-save, html:not(.js) [data-ics], html:not(.js) .cs-filter-jump 
 .cs-left { min-height: 1em; color: var(--muted); }
 .cs-left.is-soon { color: var(--signal-text); }
 .cs-left.is-today { color: #fff; background: #b8321a; padding: 4px 6px; }
+.cs-clock { color: var(--muted); max-inline-size: 100%; }
 .cs-main { display: grid; gap: 6px; min-width: 0; }
 .cs-title { margin: 0; }
 .cs-title a { text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size .3s var(--ease); }
@@ -482,6 +483,10 @@ html:has(body.has-sheetbar) { scroll-padding-bottom: 112px; }
 .cs-finder-note { margin-top: 10px; color: var(--muted); max-inline-size: 34ch; }
 .cs-facet-label { color: var(--muted); text-transform: uppercase; padding-top: 16px; }
 .cs-facet--place .cs-field, .cs-facet--search .cs-field { max-width: 560px; }
+/* "Times for": a setting, not a filter, so it sits with the finder's heading rather than in the form. */
+.cs-zone { margin-top: 24px; display: grid; gap: 8px; max-width: 360px; }
+.cs-zone .cs-facet-label { padding-top: 0; }
+.cs-topic-list .cs-zone { margin: 0 0 clamp(20px, 2vw, 28px); }
 .cs-filter-more { display: grid; gap: 18px; }
 .cs-chip--new span { border-color: var(--cs-marker); }
 .cs-chip--new[hidden] { display: none; }
