@@ -324,7 +324,7 @@ const P = (id, o) => { POSTS[id] = o }
 // zone below them, the footer at the bottom. Nothing crosses anything, and each post has at most one red mark.
 const head = (kick, h, sub, o = {}) => `${kicker(kick)}${S('display', h, `class="mt-m ${o.hw || 'measure'}"`)}${sub ? S('subhead', sub, `class="mt-s${o.soft ? ' soft' : ''}" style="max-inline-size:${o.sw || 21}em"`) : ''}`
 // The object sits in a .fit box that shrinks, once the type has loaded, until it fits its zone (see fitZones).
-const zone = (c, obj, o = {}) => `<div class="grow calm" style="position:relative;display:flex;align-items:${o.ai || 'center'};margin:${sq(c, 4.4, 3.4)}cqi ${o.bleed ? '-80px' : '0'} ${sq(c, 3.4, 2.6)}cqi 0"><div class="fit" style="width:100%;display:flex;justify-content:${o.jc || 'flex-start'}">${obj}</div></div>`
+const zone = (c, obj, o = {}) => `<div class="grow calm" style="position:relative;display:flex;align-items:${o.ai || 'center'};justify-content:${o.jc || 'flex-start'};margin:${sq(c, 4.4, 3.4)}cqi ${o.bleed ? '-80px' : '0'} ${sq(c, 3.4, 2.6)}cqi 0"><div class="fit" style="width:100%;display:flex;justify-content:${o.jc || 'flex-start'}">${obj}</div></div>`
 const calm = (c, o) => `${head(o.kick, o.h, o.sub, { soft: o.soft ?? o.dark, hw: o.hw, sw: o.sw })}${zone(c, o.obj, o)}${foot(o.credit || 'Call Sheet, by pitch.dog', o.dark)}`
 const ONE_LIST = 'Film and TV grants, festivals, labs and fellowships in one free list. Soonest deadlines first.'
 const by3 = (c, p, s, t) => c === 'square' ? s : c === 'story' ? t : p
@@ -335,8 +335,8 @@ P('launch', { name: 'Filmmaker friends, meet Call Sheet.', g: 'var(--ink)', dark
   render (sz, c) {
     const rows = [li(...CALLS.roy), li(...CALLS.cnc), li(...CALLS.merata, { circle: true, free: true }), li(...CALLS.tfl)]
     const sheet = (r) => `<div style="width:100%;transform:rotate(-1.5deg)">${list(r)}</div>`
-    if (c === 'landscape') return { frame: `<div class="grow calm" style="display:flex;align-items:center;gap:6cqi"><div style="flex:1">${kicker('New · Totally free')}${S('display', 'Filmmaker friends, meet Call Sheet.', 'class="mt-m"')}${S('subhead', ONE_LIST, 'class="mt-m soft"')}</div><div style="flex:1">${sheet(rows.slice(2, 4))}</div></div>${foot('Call Sheet, by pitch.dog', true)}`, art: '' }
-    return { frame: calm(c, { kick: 'New · Totally free · From pitch.dog', h: 'Filmmaker friends, meet Call Sheet.', sub: ONE_LIST, dark: true, obj: sheet(by3(c, rows.slice(1), rows.slice(2), rows)) }), art: '' }
+    if (c === 'landscape') return { frame: `<div class="grow calm" style="display:flex;align-items:center;gap:6cqi"><div style="flex:1">${kicker('New · Totally free')}${S('display', 'Filmmaker friends, meet Call Sheet.', 'class="mt-m"')}${S('subhead', ONE_LIST, 'class="mt-m soft"')}</div><div style="flex:1;zoom:.82">${sheet(rows.slice(2, 4))}</div></div>${foot('Call Sheet, by pitch.dog', true)}`, art: '' }
+    return { frame: calm(c, { kick: 'New · Totally free · From pitch.dog', h: 'Filmmaker friends, meet Call Sheet.', sub: ONE_LIST, dark: true, obj: sheet(by3(c, rows.slice(2), rows.slice(2), rows.slice(1))) }), art: '' }
   } })
 
 // 2. Fewer tabs. Blue ground; one browser window, its tabs running off the edge, the calm list inside it.
@@ -348,7 +348,7 @@ P('tabs', { name: 'Fewer tabs. More applications.', g: 'var(--blue)', sizes: ['1
   render (sz, c) {
     const rows = [li(...CALLS.cnc.slice(0, 3)), li(...CALLS.merata.slice(0, 3), '', { circle: true }), li(...CALLS.tfl.slice(0, 3)), li(...CALLS.cph.slice(0, 3))]
     return { frame: calm(c, { kick: 'Call Sheet', h: 'Fewer tabs.<br>More applications.', sub: c === 'square' ? '' : 'Film and TV grants, festivals, labs and fellowships in one free list, with everything you need to know before applying.',
-      bleed: true, obj: tabsWindow(16, by3(c, rows.slice(0, 3), rows.slice(1, 3), rows)) }), art: '' }
+      bleed: true, obj: tabsWindow(16, by3(c, rows.slice(1, 3), rows.slice(1, 3), rows.slice(0, 3))) }), art: '' }
   } })
 
 // 3. Twelve opportunities. Zero entry fees. Yellow ground; one receipt that adds up to nothing.
@@ -356,10 +356,10 @@ const FREE = window.FREE || []
 P('zero', { name: 'Twelve opportunities. Zero entry fees.', g: 'var(--yellow)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
   alt: 'Twelve opportunities. Zero entry fees. A receipt of entry fees for free-to-enter film and TV opportunities closing November to January: every line reads 0.00, and the total, 0.00, is circled in red.',
   render (sz, c) {
-    const n = by3(c, 5, 3, 7)
+    const n = by3(c, 3, 2, 5)
     const lines = FREE.slice(0, n).map(f => ln(trim(short(f.title).replace(/ call$/, ''), 30), '0.00'))
     return { frame: calm(c, { kick: 'Save this', h: 'Twelve opportunities. Zero entry fees.', sub: 'Totally free to apply for. Closing November to January.',
-      obj: `<div style="width:${by3(c, 74, 62, 82)}cqi;transform:rotate(-1.5deg)">${receipt('Entry fees', [...lines, ln(`${FREE.length - n} more`, '0.00'), '<hr>', `<div class="ln">${sp('label', 'Total')}<span class="lead"></span><span class="v">${circ(sp('headline', '0.00'), 'wide', { l: '-14%', t: '-18%', w: '128%', h: '136%' })}</span></div>`])}</div>` }), art: '' }
+      obj: `<div style="width:${by3(c, 84, 72, 86)}cqi;transform:rotate(-1.5deg)">${receipt('Entry fees', [...lines, ln(`${FREE.length - n} more`, '0.00'), '<hr>', `<div class="ln">${sp('label', 'Total')}<span class="lead"></span><span class="v">${circ(sp('headline', '0.00'), 'wide', { l: '-14%', t: '-18%', w: '128%', h: '136%' })}</span></div>`])}</div>` }), art: '' }
   } })
 
 // 4. Paris 16:00. Sydney 02:00. Pink ground; two clocks side by side, Sydney circled.
@@ -387,7 +387,7 @@ P('circle', { name: 'Circle the one that’s yours.', g: 'var(--paper)', sizes: 
   render (sz, c) {
     const rows = [li(...CALLS.roy.slice(0, 3), '', { dim: true }), li(...CALLS.cnc.slice(0, 3), '', { dim: true }), li(...CALLS.merata.slice(0, 3), '', { ring: true }), li(...CALLS.tfl.slice(0, 3), '', { dim: true }), li(...CALLS.cph.slice(0, 3), '', { dim: true }), li('5', 'Nov', 'TorinoFilmLab FeatureLab', '', { dim: true }), li('9', 'Nov', 'Series Mania Writers Campus', '', { dim: true })]
     return { frame: calm(c, { kick: 'Call Sheet', h: 'Circle the one that’s yours.', sub: 'Tell it what you’re making and where you’re based. Then narrow down the list.',
-      obj: `<div style="width:96%;transform:rotate(1deg)">${list(by3(c, rows.slice(0, 5), rows.slice(1, 4), rows), { note: '186 opportunities' })}</div>` }), art: '' }
+      obj: `<div style="width:96%;transform:rotate(1deg)">${list(by3(c, rows.slice(1, 4), rows.slice(1, 4), rows.slice(0, 5)), { note: '186 opportunities' })}</div>` }), art: '' }
   } })
 
 // 6. "Not published" isn't free. Salmon ground; one fee slip, stamped beside the blank.
@@ -405,10 +405,10 @@ P('monthly', { name: 'New every month.', g: 'var(--ink)', dark: true, sizes: ['1
   alt: 'New every month. We recheck every opportunity, fix what changed and add new ones. Four ruled pages fan out on a dark desk: white for October, then blue, pink and yellow for the months after.',
   render (sz, c) {
     const k = by3(c, 1, .74, 1.12)
-    const pages = [['var(--yellow)', 'Jan', 10, 42], ['var(--pink)', 'Dec', 4, 28], ['var(--blue)', 'Nov', -2, 14], ['var(--white)', 'Oct', -8, 0]]
-    const fan = pages.map(([bg, m, r, x]) => `<div class="rev" style="left:${x * k + 4}cqi;bottom:0;top:auto;width:${40 * k}cqi;transform:rotate(${r}deg);transform-origin:50% 100%"><div class="paper ear ruled" style="background:${bg};--lh:4.6cqi;--ear:${6 * k}cqi"><span class="ear-flap" style="--flap:rgb(21 19 15 / .28)"></span><span class="lbl">${sp('label', m)}</span></div></div>`).join('')
-    return { frame: calm(c, { kick: 'Edition 1 · October', h: 'New every month.', sub: 'We recheck every opportunity, fix what changed and add new ones.', dark: true, ai: 'flex-end',
-      obj: `<div style="position:relative;width:100%;height:${40 * k * 11 / 8.5 + 4}cqi">${fan}</div>` }), art: '' }
+    const pages = [['var(--yellow)', 'Jan', 9, 36], ['var(--pink)', 'Dec', 3, 24], ['var(--blue)', 'Nov', -3, 12], ['var(--white)', 'Oct', -9, 0]]
+    const fan = pages.map(([bg, m, r, x]) => `<div class="rev" style="left:${x * k + 8}cqi;bottom:0;top:auto;width:${36 * k}cqi;transform:rotate(${r}deg);transform-origin:50% 100%"><div class="paper ear ruled" style="background:${bg};--lh:4.6cqi;--ear:${6 * k}cqi"><span class="ear-flap" style="--flap:rgb(21 19 15 / .28)"></span><span class="lbl">${sp('label', m)}</span></div></div>`).join('')
+    return { frame: calm(c, { kick: 'Edition 1 · October', h: 'New every month.', sub: 'We recheck every opportunity, fix what changed and add new ones.', dark: true,
+      obj: `<div style="position:relative;width:100%;height:${36 * k * 11 / 8.5 + 6}cqi;margin-bottom:${4 * k}cqi">${fan}</div>` }), art: '' }
   } })
 
 // 8. Free. No sign-up. No catch. Green ground; one ruled sheet, three lines ticked in ink.
@@ -434,10 +434,10 @@ P('board', { name: '125 opportunities taking entries.', g: 'var(--paper)', sizes
 P('pitch', { name: 'Found the opportunity? Now the pitch.', g: 'var(--ink)', dark: true, sizes: ['1080x1350', '1080x1080', '1080x1920', '1200x630'],
   alt: 'Found the opportunity? Now the pitch. Some applications ask for a pitch deck, and pitch.dog makes them. Three pitch deck slides made by pitch.dog, for the films Openings, Blueberry Picking and Illuminate, stacked on a dark desk.',
   render (sz, c) {
-    const fan = (w) => `<div style="position:relative;width:100%;height:${w * 9 / 16 + 8}cqi">${[['illuminate', 5, 12, 0], ['blueberry-picking', 1.5, 6, 2.5], ['openings', -2.5, 0, 6]].map(([k, r, dx, dy]) => `<div class="slide" style="left:${dx}cqi;top:${dy}cqi;width:${w}cqi;transform:rotate(${r}deg)"><img src="https://pitch.dog/assets/work/${k}/slide-01.webp" alt=""></div>`).join('')}</div>`
+    const fan = (w) => `<div style="position:relative;width:100%;height:${w * 9 / 16 + 8}cqi">${[['illuminate', 5, 12, 0], ['blueberry-picking', 1.5, 6, 2.5], ['openings', -2.5, 0, 6]].map(([k, r, dx, dy]) => `<div class="slide" style="left:${dx + 2}cqi;top:${dy}cqi;width:${w}cqi;transform:rotate(${r}deg)"><img src="https://pitch.dog/assets/work/${k}/slide-01.webp" alt=""></div>`).join('')}</div>`
     const h = `Found the opportunity? ${circ('Now the pitch.', 'long', { l: '-8%', t: '-13%', w: '120%', h: '134%' })}`
-    if (c === 'landscape') return { frame: `<div class="grow" style="display:flex;align-items:center;gap:5cqi"><div style="flex:1">${S('display', h)}</div><div style="flex:1">${fan(34)}</div></div>`, art: '' }
-    return { frame: calm(c, { kick: 'From pitch.dog, who made Call Sheet', h, sub: 'Some applications ask for a pitch deck. We make those: twelve years, 220+ decks.', dark: true, obj: fan(by3(c, 70, 62, 70)) }), art: '' }
+    if (c === 'landscape') return { frame: `<div class="grow" style="display:flex;align-items:center;gap:5cqi"><div style="flex:1">${S('display', h)}</div><div style="flex:1.1">${fan(27)}</div></div>`, art: '' }
+    return { frame: calm(c, { kick: 'From pitch.dog, who made Call Sheet', h, sub: 'Some applications ask for a pitch deck. We make those: twelve years, 220+ decks.', dark: true, obj: fan(by3(c, 66, 58, 66)) }), art: '' }
   } })
 
 // 11. Comment Call Sheet. Cherry ground, story first; the comment itself, typed out on one card.
@@ -788,7 +788,7 @@ Object.entries(window.PLACES || {}).filter(([code]) => PLACE_PAGES[code]).forEac
       const rows = pl.soon.map(s => `<div class="li"><div class="d">${sp('headline', String(+s.closes.slice(8)))}${sp('metadata', monY(s.closes), 'class="soft"')}</div><div>${S('label', short(s.title))}${s.local ? '' : `<span class="ww">${sp('metadata', 'Worldwide')}</span>`}</div></div>`)
       return { frame: `${kicker('Call Sheet · as of 17 Oct 2026')}${S('display', `Based in ${pl.name}?`, 'class="mt-m measure"')}
         <div class="mt-m" style="display:flex;align-items:center;gap:4cqi">${sp('metric', String(pl.yes))}${S('subhead', `film and TV opportunities for filmmakers based in ${pl.name}.`, 'style="max-inline-size:13em"')}</div>
-        <div class="grow calm" style="display:flex;align-items:center;margin:3cqi 0"><div style="width:100%;transform:rotate(-1deg)">${list(c === 'story' ? rows : rows.slice(0, 2), { note: 'A few of them' })}</div></div>
+        <div class="grow calm" style="display:flex;align-items:center;margin:3cqi 0"><div class="fit" style="width:100%"><div style="width:100%;transform:rotate(-1deg)">${list(c === 'story' ? rows : rows.slice(0, 2), { note: 'A few of them' })}</div></div></div>
         ${S('label', `Want all ${pl.yes}, soonest first?`, 'class="soft"')}${S('subhead', `Comment ${circ('Call Sheet', 'long', { ml: '.3em', l: '-7%', t: '-18%', w: '114%', h: '140%' })}&ensp;and we will send you the link!`, 'class="mt-xs"')}<div class="mt-m"></div>${foot('Totally free!')}`, art: '' }
     } })
 })
@@ -877,8 +877,11 @@ const q = new URLSearchParams(location.search)
 if (q.get('flat')) document.documentElement.classList.add('flat')
 // A single post's object never reaches its words or its footer: it shrinks to fit its zone, with room for its tilt.
 function fitZones () {
-  document.querySelectorAll('.grow > .fit').forEach(el => { el.style.zoom = 1; const g = el.parentElement
-    const k = Math.min(1, .94 * g.clientHeight / el.offsetHeight, g.clientWidth / el.offsetWidth); el.style.zoom = k < 1 ? k.toFixed(3) : '' })
+  // A zoomed box keeps a percentage width at full size, so the box gets its zone's width in pixels before it is zoomed.
+  document.querySelectorAll('.grow > .fit').forEach(el => { el.style.zoom = ''; el.style.width = ''; const g = el.parentElement, w = g.clientWidth
+    el.style.width = `${w}px`
+    let k = Math.min(1, .96 * g.clientHeight / el.offsetHeight)
+    for (let i = 0; i < 14; i++) { el.style.width = `${w}px`; el.style.zoom = k < 1 ? k.toFixed(3) : ''; if (g.scrollHeight <= g.clientHeight + 2) break; k *= .95 } })
 }
 if (q.get('id')) { document.querySelector('#root').innerHTML = mount(q.get('id'), q.get('size')); fitZones(); document.fonts.ready.then(fitZones) }
 window.MANIFEST = Object.fromEntries(Object.entries(POSTS).map(([id, p]) => [id, { name: p.name, sizes: p.sizes, alt: p.alt }]))

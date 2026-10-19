@@ -1459,7 +1459,7 @@
         const sq = c === 'square'
         return { frame: `<div class="top" style="justify-content:space-between"><div class="top">${swatch}${sp('metadata', `Still Time · ${p.place.replace(/^the /, '')}`, 'class="soft"')}</div>${sp('metadata', `Week of ${dm(p.week)}`, 'class="soft"')}</div>
           ${S('display', p.head, 'class="mt-m"')}${sq ? '' : S('subhead', p.sub, 'class="mt-s" style="max-inline-size:20em"')}
-          <div class="grow wk-list" style="margin:${sq ? 3 : 3.4}cqb 0;--dn:${sq ? 10 : 12}cqi;--rp:${sq ? 2 : 2.5}cqi"><div>${p.rows.map(row).join('')}</div></div>
+          <div class="grow wk-list" style="margin:${sq ? 3 : 3.4}cqb 0;--dn:${sq ? 10 : c === 'story' ? 13 : 12}cqi;--rp:${sq ? 2 : c === 'story' ? 4.4 : 2.5}cqi"><div>${p.rows.map(row).join('')}</div></div>
           ${S('subhead', cta, 'style="max-inline-size:22em;text-wrap:balance"')}
           <div class="foot mt-m">${sp('credit', 'Call Sheet, by pitch.dog')}</div>`, art: '' }
       } })

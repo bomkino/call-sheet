@@ -42,7 +42,7 @@
 
   /* ---- slide 2: the paperwork one application can involve, as one stack ---- */
   const PILE = ['Guidelines', 'Eligibility', 'Terms and conditions', 'Submission rules']
-  const pile = (c) => { const dy = sq(c, 6, 5.4), h = sq(c, 14, 12), w = sq(c, 76, 70)
+  const pile = (c) => { const dy = sq(c, 5.6, 5.4), h = sq(c, 12.6, 12), w = sq(c, 76, 70)
     return `<div class="scatter" style="width:${w + 4}cqi;height:${dy * 3 + h}cqi">${PILE.map((l, k) => `<div class="sentence-doc" style="left:${[2, 0, 3, 1][k]}cqi;top:${k * dy}cqi;width:${w}cqi;height:${h}cqi;overflow:hidden;transform:rotate(${[-1.2, .6, -.5, .7][k]}deg)"><div class="hd">${sp('metadata', l)}</div>${bars(96, 84, 62)}</div>`).join('')}</div>` }
 
   /* ---- slide 3: Call Sheet's card, with the five things you came to find out highlighted ---- */

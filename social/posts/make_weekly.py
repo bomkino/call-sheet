@@ -34,8 +34,11 @@ The picks: up to three per post, a grant, a lab and something to enter where pos
 three different organisers, mixing film forms, preferring real money or real support and the
 market's own opportunities, and not repeating what that market saw last week.
 
-The design: a production call sheet for the week, on the market's revision-colour ground. See
-the JS at the bottom.
+The design, after the owner's "calm and simple" brief (covers/SIMPLE.md): the same quiet poster
+every Monday on the market's revision-colour ground (US blue, UK green, Canada salmon, Australia
+goldenrod). "Still time." as the headline, one subhead, then a clean list where each opportunity gets
+a big date, its name and one short line, then the team's ask with the only red mark, the loop on
+"Call Sheet". No objects, tape or micro text; nothing overlaps. See the JS at the bottom.
 """
 import json, re, sys
 from datetime import date, timedelta
@@ -484,7 +487,7 @@ JS = r"""// weekly: "Still Time", the weekly Call Sheet post for each key market
         const sq = c === 'square'
         return { frame: `<div class="top" style="justify-content:space-between"><div class="top">${swatch}${sp('metadata', `Still Time · ${p.place.replace(/^the /, '')}`, 'class="soft"')}</div>${sp('metadata', `Week of ${dm(p.week)}`, 'class="soft"')}</div>
           ${S('display', p.head, 'class="mt-m"')}${sq ? '' : S('subhead', p.sub, 'class="mt-s" style="max-inline-size:20em"')}
-          <div class="grow wk-list" style="margin:${sq ? 3 : 3.4}cqb 0;--dn:${sq ? 10 : 12}cqi;--rp:${sq ? 2 : 2.5}cqi"><div>${p.rows.map(row).join('')}</div></div>
+          <div class="grow wk-list" style="margin:${sq ? 3 : 3.4}cqb 0;--dn:${sq ? 10 : c === 'story' ? 13 : 12}cqi;--rp:${sq ? 2 : c === 'story' ? 4.4 : 2.5}cqi"><div>${p.rows.map(row).join('')}</div></div>
           ${S('subhead', cta, 'style="max-inline-size:22em;text-wrap:balance"')}
           <div class="foot mt-m">${sp('credit', 'Call Sheet, by pitch.dog')}</div>`, art: '' }
       } })
