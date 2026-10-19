@@ -17,13 +17,12 @@
   .research-form .go { justify-self: end; margin-top: .6cqi; padding: 1.3cqi 3cqi 1.1cqi; background: var(--ink); color: var(--paper); --pd-type-ink: var(--paper); border-radius: 4cqi; }
   .research-card header { display: flex; justify-content: space-between; align-items: center; padding: 2.4cqi 4.4cqi 2cqi; padding-right: 11cqi; border-bottom: 3px solid var(--ink); }
   .research-card header img { height: 5.2cqi; width: auto; }
-  .research-card .chips { display: flex; gap: 7.4cqi; padding: 2.8cqi 11cqi 2.6cqi 4.4cqi; }
+  .research-card .chips { display: flex; gap: 7.4cqi; padding: 4.6cqi 11cqi 4.4cqi 5cqi; }
   .research-card .rows { border-top: 3px solid var(--ink); }
   .research-card .chip { padding: 1.3cqi 2.2cqi 1.1cqi; border-radius: 5cqi; background: var(--ink); color: var(--paper); --pd-type-ink: var(--paper); white-space: nowrap; }
   .research-card .chip::before { content: ""; display: inline-block; width: .7em; height: .7em; margin-right: .55em; vertical-align: .04em; border-radius: 50%; background: var(--marker); }
-  .research-card .rows { padding: .4cqi 4.4cqi 1.4cqi; }
-  .research-card .row { display: grid; grid-template-columns: 1fr 26cqi 6cqi; gap: 3cqi; align-items: center; padding: 1.1cqi 0; border-bottom: 1.5px solid var(--rule); }
-  .research-card .row:last-child { border-bottom: 0; }
+  .research-card .rows { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; padding: 3.2cqi 5cqi 3.4cqi; }
+  .research-card .row { display: flex; gap: 1.6cqi; align-items: center; }
   .research-card .row svg { width: 5.4cqi; height: 5.4cqi; overflow: visible; }
   .research-card .row svg path { fill: none; stroke: var(--marker); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
   .research-short { padding: 2.4cqi 3.2cqi 1.2cqi; border-radius: 1cqi; }
@@ -83,15 +82,15 @@
 
   /* ---- slide 2: the five steps, a loop with no way out ---- */
   const STEPS = ['Finding an opportunity.', 'Checking if it’s still open.', 'Reading the requirements.', 'Finding out you’re not eligible.', 'Back to looking.']
-  const steps = (c) => `<ol class="research-steps mt-m" style="row-gap:${sq(c, 3.4, 2.4)}cqb;max-inline-size:${sq(c, 80, 84)}cqi">${STEPS.map((t, k) => `<li data-a="step${k + 1}">${sp('metadata', `0${k + 1}`, `class="n" data-a="n${k + 1}"`)}${S('headline', t, `data-a="t${k + 1}"`)}</li>`).join('')}</ol>`
+  const steps = (c) => `<ol class="research-steps mt-m" style="row-gap:${sq(c, 3.4, 4.4)}cqb;max-inline-size:${sq(c, 80, 84)}cqi">${STEPS.map((t, k) => `<li data-a="step${k + 1}">${sp('metadata', `0${k + 1}`, `class="n" data-a="n${k + 1}"`)}${S('headline', t, `data-a="t${k + 1}"`)}</li>`).join('')}</ol>`
 
   /* ---- slide 3: no object. The loop from slide 2 is pulled out straight, like a spring. ---- */
   const coil = (c) => `<div data-a="coil" style="width:100%;height:100%"></div>`
 
   /* ---- slide 4: Call Sheet, filtered, with the three things to check ---- */
   const card = (c) => `<div class="paper ear research-card" data-a="card" style="width:100%;transform:rotate(-.8deg)"><span class="ear-flap"></span>
-    <div class="chips">${['Documentary', 'Canada', 'Development'].map(t => `<span class="chip" data-a="chip-${t}">${sp('label', t)}</span>`).join('')}</div>
-    ${c === 'square' ? '' : `<div class="rows">${[['Costs', 54], ['Requirements', 80], ['Deadlines', 40]].map(([t, w]) => `<div class="row">${sp('label', t)}<i style="width:${w}%"></i>${tickSvg}</div>`).join('')}</div>`}</div>`
+    <div class="chips" style="gap:${sq(c, 5.8, 7.4)}cqi">${['Feature', 'Canada', 'Development'].map(t => `<span class="chip" data-a="chip-${t}">${sp('label', t)}</span>`).join('')}</div>
+    ${c === 'square' ? '' : `<div class="rows">${['Costs', 'Requirements', 'Deadlines'].map(t => `<div class="row">${tickSvg}${sp('label', t)}</div>`).join('')}</div>`}</div>`
 
   /* ---- slide 5: a shortlist, and the date on the calendar ---- */
   const shortlist = (c) => `<div class="research-sheet research-short" data-a="short" style="width:${sq(c, 38, 34)}cqi;transform:rotate(2.5deg)"><div class="hd">${sp('label', 'Saved')}</div>
@@ -101,22 +100,27 @@
   const DAYS = Array.from({ length: 21 }, (_, k) => [k + 6, 0])
   const month = (c) => `<div class="research-sheet research-month" data-a="month" style="width:${sq(c, 50, 46)}cqi;transform:rotate(-1.5deg)"><div class="bind">${sp('label', 'Calendar')}</div><div class="grid">
     ${WD.map(d => `<span class="wd">${sp('metadata', d, 'class="soft"')}</span>`).join('')}
-    ${DAYS.map(([d]) => `<span style="height:${sq(c, 7.4, 6.4)}cqi"${d === 6 ? ' data-a="due"' : ''}>${sp('label', d)}</span>`).join('')}</div></div>`
+    ${DAYS.map(([d]) => `<span style="height:${sq(c, 6.8, 6.4)}cqi"${d === 6 ? ' data-a="due"' : ''}>${sp('label', d)}</span>`).join('')}</div></div>`
   const save = (c) => `<div style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:4cqi">${month(c)}${shortlist(c)}</div>`
 
   // The line's route, in canvas pixels, slide by slide. Each slide picks it up where the last one left it.
   const arrow = (x, y) => [[[x + 32, y - 26], [x, y]], [[x, y], [x + 34, y + 24]]]
   const cw = (c, r) => ({ c, r, cw: true })
+  // A coil pulled straight: loops that shrink and open out as the line moves right (a prolate trochoid).
+  const spring = (x0, y0, x1, y1, rx, ry, turns) => springPts(x0, y0, x1, y1, rx, ry, turns).slice(0, -3)
+  const springPts = (x0, y0, x1, y1, rx, ry, turns) => Array.from({ length: Math.round(turns * 14 * .8) + 1 }, (_, k) => {
+    const u = k / (turns * 14), f = Math.pow(1 - u, .9) * (1 - Math.pow(u, 6)), t = Math.PI / 2 - 2 * Math.PI * turns * u
+    return [x0 + (x1 - x0) * Math.pow(u, 1.5) + rx * f * Math.cos(t), y0 + (y1 - y0) * Math.pow(u, .7) + ry * f * Math.sin(t)] })
   const TH = {
-    s2: { portrait: [[[-20, 228], cw([96, 228], [44, 34]), cw([96, 424], [44, 34]), cw([96, 620], [44, 34]), cw([96, 816], [44, 34]), cw([96, 1012], [44, 34]),
+    s2: { portrait: [[[-20, 228], cw([96, 228], [44, 34]), [146, 326], cw([96, 424], [44, 34]), [134, 522], cw([96, 620], [44, 34]), [147, 718], cw([96, 816], [44, 34]), [136, 914], cw([96, 1012], [44, 34]),
         [150, 1086], [450, 1110], [850, 1096], [992, 1010], [1012, 800], [1006, 500], [980, 340], [900, 296], [700, 290]], ...arrow(700, 290)],
-      square: [[[-20, 196], cw([96, 196], [42, 30]), cw([96, 288], [42, 30]), cw([96, 380], [42, 30]), cw([96, 538], [42, 30]), cw([96, 696], [42, 30]),
-        [150, 764], [450, 792], [850, 782], [1008, 700], [1034, 500], [1030, 290], [1002, 212], [950, 186]], ...arrow(950, 186)] },
-    s3: { portrait: [[[-20, 1080], [40, 1070], cw([210, 1000], [120, 150]), cw([400, 975], [84, 108]), cw([540, 952], [54, 70]), cw([640, 934], [30, 40]), [760, 922], [1100, 918]]],
-      square: [[[-20, 860], [40, 852], cw([196, 760], [104, 126]), cw([370, 782], [72, 92]), cw([496, 800], [46, 58]), cw([586, 816], [26, 34]), [700, 830], [1100, 840]]] },
-    s4: { portrait: [[[-20, 918], [30, 918], cw([226, 918], [128, 46]), cw([473, 915], [93, 46]), cw([719, 912], [126, 46]), [880, 868], [975, 920], [1100, 957]]],
-      square: [[[-20, 840], [30, 840], cw([245, 843], [138, 50]), cw([524, 839], [101, 50]), cw([801, 835], [136, 50]), [975, 780], [1100, 734]]] },
-    s5: { portrait: [[[-20, 957], [40, 957], { c: [133, 957], r: [40, 36] }, [64, 1020]]],
+      square: [[[-20, 196], cw([96, 196], [42, 33]), [144, 252], cw([96, 309], [42, 33]), [134, 366], cw([96, 423], [42, 33]), [146, 512], cw([96, 602], [42, 33]), [135, 692], cw([96, 782], [42, 33]),
+        [150, 852], [450, 880], [850, 868], [1008, 790], [1034, 560], [1030, 290], [1002, 212], [950, 186]], ...arrow(950, 186)] },
+    s3: { portrait: [[[-20, 1150], [60, 1150], ...spring(190, 995, 800, 965, 118, 158, 5.5), [662, 950], [760, 952], [880, 964], [1100, 965]]],
+      square: [[[-20, 900], [60, 900], ...spring(175, 765, 720, 843, 96, 128, 5.5), [594, 815], [680, 818], [790, 840], [1100, 843]]] },
+    s4: { portrait: [[[-20, 965], [30, 965], cw([220, 966], [107, 52]), cw([455, 963], [107, 52]), cw([730, 959], [146, 52]), [930, 916], [1010, 930], [1100, 963]]],
+      square: [[[-20, 843], [30, 843], cw([215, 843], [100, 50]), cw([456, 840], [101, 50]), cw([733, 836], [136, 50]), [920, 792], [1000, 760], [1100, 734]]] },
+    s5: { portrait: [[[-20, 963], [40, 963], { c: [133, 963], r: [40, 34] }, [64, 1026]]],
       square: [[[-20, 734], [40, 734], { c: [134, 734], r: [44, 33] }, [64, 796]]] },
   }
 
@@ -125,7 +129,7 @@
     { g: 'var(--blue)', html: (c, i, n) => `${ctop('The search', i, n)}${S('display', '“At this point, I need funding for the time I spend looking for film funding.”', 'class="mt-m wide"')}<div class="grow"></div><div class="foot">${sp('credit', 'Call Sheet, by pitch.dog')}${swipe}</div>` },
     { g: 'var(--yellow)', html: (c, i, n) => `${ctop('The loop', i, n)}${steps(c)}<div class="grow"></div>${foot()}${thread(c, TH.s2 && TH.s2[c])}` },
     page('The time', 'var(--paper)', (c) => `${head('That’s time you could have spent on the film.', 'wide')}${sub('Or at least on an application you can actually submit.')}${sub('We wanted to make the finding part easier.', false)}`, coil, TH.s3),
-    page('Call Sheet', 'var(--blue)', (c) => `${head('Introducing Call Sheet.')}${sub('Film and TV grants, festivals, labs and fellowships in one place.')}${sub('Filter by what you’re making, where you’re based and what stage you’re at.', false)}${sub('Then check the costs, requirements and deadlines.', false)}`, (c) => `<div style="width:100%;zoom:${sq(c, .84, 1)}">${card(c)}</div>`, TH.s4),
+    page('Call Sheet', 'var(--blue)', (c) => `${head('Introducing Call Sheet.')}${sub('Film and TV grants, festivals, labs and fellowships in one place.')}${sub('Filter by what you’re making, where you’re based and what stage you’re at.', false)}${sub('Then check the costs, requirements and deadlines.', false)}`, card, TH.s4),
     page('Save', 'var(--green)', (c) => `${head('Save the opportunities worth a closer look.', 'wide')}${sub('Add the deadlines to your calendar.')}${sub('We can’t fund your research time. But hopefully, we can help you spend less of it.', false)}`, save, TH.s5),
     closer(),
   ], 'Funding for looking for funding. “At this point, I need funding for the time I spend looking for film funding.” Finding an opportunity. Checking if it’s still open. Reading the requirements. Finding out you’re not eligible. Back to looking: the five steps drawn as a red marker loop that circles back to the start. That’s time you could have spent on the film, or at least on an application you can actually submit, so pitch.dog wanted to make the finding part easier. Introducing Call Sheet: film and TV grants, festivals, labs and fellowships in one place. Filter by what you’re making, where you’re based and what stage you’re at, then check the costs, requirements and deadlines. Save the opportunities worth a closer look and add the deadlines to your calendar. We can’t fund your research time, but hopefully we can help you spend less of it. Last slide: Call Sheet, by pitch.dog. Comment Call Sheet and we will send you the link.')
