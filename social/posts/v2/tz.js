@@ -43,7 +43,7 @@
     <div class="t">${mark ? circ(sp('headline', time), 'wide', { l: '-14%', t: '-30%', w: '128%', h: '160%' }) : sp('headline', time)}</div></div>`
   const tzList = (c) => `<div style="width:100%;transform:rotate(-1deg)"><div class="paper ear list tz-list"><span class="ear-flap"></span>
     <header><img src="/brand/logo/call-sheet-wordmark.svg" alt="Call Sheet">${sp('metadata', 'Your time: London', 'class="soft"')}</header>
-    ${row('3', 'Nov', 'TorinoFilmLab ScriptLab', '15:00')}${row('3', 'Nov', 'Sundance Merata Mita Fellowship', '23:30', 'a')}${c === 'square' ? '' : row('5', 'Nov', 'TorinoFilmLab FeatureLab', '15:00')}</div></div>`
+    ${row('3', 'Nov', 'TorinoFilmLab ScriptLab', '15:00')}${row('3', 'Nov', 'Sundance Merata Mita Fellowship', '23:30', 'a')}</div></div>`
 
   // 3. Midnight there is breakfast here.
   const clocks = (c) => `<div class="tz-clocks" style="width:${P_(c, 70, 58)}cqi;gap:${P_(c, 13, 12)}cqi">
@@ -69,13 +69,13 @@
 
   const SLIDES = [
     page('Filmmaker friends', 'Filmmaker friends,', ['Ever wished grant and festival deadlines showed up in your own time zone?', 'Well, now they do.'], '', { g: 'var(--paper)' }),
-    page('Introducing', 'Introducing Call Sheet.', ['Film and TV grants, festivals, labs and fellowships in one free list.', 'Soonest deadlines first, in your timezone.'], tzList, { g: 'var(--paper)', pt: 1.5 }),
+    page('Introducing', 'Introducing Call Sheet.', ['Film and TV grants, festivals, labs and fellowships in one free list.', 'Soonest deadlines first, in your time zone when it’s given.'], tzList, { g: 'var(--paper)', pt: 1.5 }),
     page('Time zones', '“Wait, is that midnight here or midnight there?”', ['When a fund gives us an exact closing time and time zone, Call Sheet shows what that means for you.'], clocks, { g: 'var(--goldenrod)', hw: '17ch' }),
     page('Filters', 'Find opportunities that fit what you’re making.', ['Choose your project type, where you’re based and what stage you’re at.', 'Then check who can apply, what it costs and what you need to send.'], filters, { g: 'var(--salmon)', hw: '17ch', pt: 1.5 }),
     page('Shortlist', 'Found a few worth applying to?', ['Save them to your shortlist.', 'Add the deadlines to your calendar.', 'Get a reminder a week before, <span style="white-space:nowrap">and the day before.</span>'], shortlist, { g: 'var(--pink)', wrap: 'pretty' }),
     page('Your part', 'You still have to do the application.', ['But hopefully, we’ve saved you some of the time you’d spend finding it and figuring it out.'], form, { g: 'var(--blue)' }),
     closer(),
   ]
-  carousel('tz', SLIDES, 'Deadlines in your time zone. Filmmaker friends, ever wished grant and festival deadlines showed up in your own time zone? Well, now they do. Introducing Call Sheet: film and TV grants, festivals, labs and fellowships in one free list, soonest deadlines first, in your timezone. A printed list shows closing times worked out for someone in London, with 23:30 circled in red. “Wait, is that midnight here or midnight there?” Two clocks: midnight in Los Angeles, 08:00 in London. When a fund gives an exact closing time and time zone, Call Sheet shows what that means for you. Find opportunities that fit what you’re making: choose your project type, where you’re based and what stage you’re at, then check who can apply, what it costs and what you need to send. Save the ones worth applying to, add the deadlines to your calendar, and get a reminder a week before and the day before. You still have to do the application, but hopefully Call Sheet saves you some of the time you’d spend finding it and figuring it out. Last slide: Call Sheet, by pitch.dog. Comment Call Sheet and we will send you the link.')
+  carousel('tz', SLIDES, 'Deadlines in your time zone. Filmmaker friends, ever wished grant and festival deadlines showed up in your own time zone? Well, now they do. Introducing Call Sheet: film and TV grants, festivals, labs and fellowships in one free list, soonest deadlines first, in your time zone when it’s given. A printed list shows closing times worked out for someone in London, with 23:30 circled in red. “Wait, is that midnight here or midnight there?” Two clocks: midnight in Los Angeles, 08:00 in London. When a fund gives an exact closing time and time zone, Call Sheet shows what that means for you. Find opportunities that fit what you’re making: choose your project type, where you’re based and what stage you’re at, then check who can apply, what it costs and what you need to send. Save the ones worth applying to, add the deadlines to your calendar, and get a reminder a week before and the day before. You still have to do the application, but hopefully Call Sheet saves you some of the time you’d spend finding it and figuring it out. Last slide: Call Sheet, by pitch.dog. Comment Call Sheet and we will send you the link.')
 
 }
