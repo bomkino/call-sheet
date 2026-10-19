@@ -57,11 +57,11 @@
   cover('tz', { g: 'var(--yellow)', dark: false,
     art: (c) => {
       const sqr = c === 'square'
-      const D = sqr ? 92 : 104, cx = sqr ? 60 : 62, cy = sqr ? 60 : 80, tilt = 10
+      const D = sqr ? 92 : 104, cx = sqr ? 60 : 62, cy = sqr ? 60 : 80, tilt = sqr ? 4 : 10
       const gaps = [[146, 352]]
       const note = (t, a, r, rot) => { const [x, y] = pt(a, r); return `<span class="cv-tz-note" style="left:${50 + x / 2}%;top:${50 + y / 2}%;transform:translate(-50%,-50%) rotate(${rot}deg)">${sp('metadata', t)}</span>` }
       return `<div class="cv-tz-clock" style="left:${cx - D / 2}cqi;top:${cy - D / 2}cqi;width:${D}cqi;height:${D}cqi;transform:rotate(${tilt}deg)">${dial(8, gaps)}${nums(gaps)}
-        ${note('Midnight there', 16, 52, 14)}${note('Here', 98, 44, 8)}${note('24 hour', 180, 30, 0)}</div>`
+        ${note('Midnight there', 16, 52, 14)}${note('Here', 98, 44, 8)}${note("24 hour", 306, 24, 0)}</div>`
     },
     html: (c, i, n) => {
       const sqr = c === 'square'

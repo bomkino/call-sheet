@@ -98,10 +98,10 @@
   const doc = (label, ref, x, y, r, w, b = bars(100, 84, 92, 58)) => `<div class="sentence-doc" style="left:${x}cqi;top:${y}cqi;width:${w}cqi;transform:rotate(${r}deg)"><div class="hd">${sp('metadata', label)}</div>${b}<div class="pg">${sp('metadata', ref, 'class="soft"')}</div></div>`
   // A stack of paperwork, each sheet's label left showing, the newest on top.
   const PILE = [['Guidelines', '§ 4.2', 4, -1.4], ['Eligibility', 'p. 3', 0, .7], ['Terms and conditions', 'p. 7', 5, -.6], ['Submission rules', '§ 9', 2, .8]]
-  const pile = (c) => { const dy = sq(c, 5.7, 5.2), h = sq(c, 13, 12), w = sq(c, 56, 52)
+  const pile = (c) => { const dy = sq(c, 5.7, 5.2), h = sq(c, 12.2, 11.4), w = sq(c, 56, 52)
     return `<div style="width:100%;display:flex;justify-content:flex-end"><div class="scatter" data-a="pile" style="width:${w + 6}cqi;height:${dy * 3 + h}cqi">
     ${PILE.map(([l, r, x, rot], k) => `<div class="sentence-doc" style="left:${x}cqi;top:${k * dy}cqi;width:${w}cqi;height:${h}cqi;padding-top:1.7cqi;overflow:hidden;transform:rotate(${rot}deg)"${k === 3 ? ' data-a="top"' : ''}><div class="hd">${sp('metadata', l)}${sp('metadata', r, 'class="soft"')}</div>${bars(96, 84, 62)}</div>`).join('')}
-    ${sticky('???', `position:absolute;right:-2cqi;top:${sq(c, 24, 21)}cqi;transform:rotate(6deg);padding:1.4cqi 2.2cqi;z-index:2`)}</div></div>`
+    ${sticky('???', `position:absolute;right:11cqi;top:${sq(c, 22.4, 20.6)}cqi;transform:rotate(5deg);padding:1.4cqi 2.2cqi;z-index:2`)}</div></div>`
   }
 
   /* ---- slide 3: Call Sheet's card, with the five things you came to find out highlighted ---- */

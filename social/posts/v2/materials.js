@@ -15,8 +15,8 @@
     .${K}-card header img { height: 6cqi; width: auto; }
     .${K}-card .f { display: grid; grid-template-columns: 30cqi 1fr; gap: 2cqi; align-items: center; padding: 1.7cqi 4.4cqi; border-bottom: 1.5px solid var(--rule); }
     .${K}-card .f i { display: block; height: 1.1cqi; border-radius: 1cqi; background: rgb(21 19 15 / .13); }
-    .${K}-card .send { padding: 2.4cqi 4.4cqi 5cqi; display: grid; gap: 1.6cqi; }
-    .${K}-chips { display: flex; flex-wrap: wrap; gap: 1.2cqi; }
+    .${K}-card .send { padding: 2.4cqi 4.4cqi 6.6cqi; display: grid; gap: 1.6cqi; }
+    .${K}-chips { display: flex; flex-wrap: wrap; gap: 1.2cqi 4.4cqi; }
     .${K}-chips span { padding: 1.3cqi 2cqi 1.1cqi; border: 1.5px solid var(--rule-strong); border-radius: 5cqi; white-space: nowrap; }
     .${K}-list li { display: grid; grid-template-columns: 6cqi 1fr; gap: 2.6cqi; align-items: center; padding: 1.5cqi 0; }
     .${K}-list li + li { border-top: 1.5px solid var(--rule); }
@@ -67,7 +67,7 @@
   document.fonts.addEventListener('loadingdone', () => requestAnimationFrame(drawAll))
 
   // Where the line crosses from one slide into the next, as a fraction of the height: [portrait, square].
-  const EDGE = { 23: [.855, .795], 34: [.78, .76], 45: [.668, .672] }
+  const EDGE = { 23: [.845, .79], 34: [.78, .76], 45: [.668, .672] }
   const edge = (c, k) => sq(c, ...EDGE[k])
   const mark = (n) => `data-${K}="${n}"`
 
@@ -96,11 +96,11 @@
 
     // 3. Call Sheet's card for one opportunity: the useful details, and the line loops what you need to send.
     { g: 'var(--yellow)',
-      art: (c) => thread([['in', edge(c, 23)], ['by', 'chips', .02, 1, 0, 20], ['by', 'chips', .4, 1, 0, 22], ['loop', 'euro', 16, 12, 160, 1.12], ['out', edge(c, 34)]]),
+      art: (c) => thread([['in', edge(c, 23)], ['by', 'chips', .02, 1, 0, 20], ['by', 'chips', .4, 1, 0, 22], ['loop', 'euro', 2, 10, 160, 1.12], ['out', edge(c, 34)]]),
       html: (c, i, n) => `${ctop('Call Sheet', i, n)}${S('display', 'So we made Call Sheet.', 'class="mt-m wide"')}
         ${S('subhead', '180+ Film and TV funding opportunities with the useful details pulled together, including what you need to send.', 'class="mt-s" style="max-inline-size:34ch"')}
         ${S('subhead', 'So you can work out what’s ready and what still needs writing.', 'class="mt-s" style="max-inline-size:34ch"')}
-        ${zone(c, `<div class="paper ear ${K}-card" style="--ear:7cqi;width:100%;transform:rotate(-1.2deg);zoom:${sq(c, .9, .78)}"><span class="ear-flap"></span>
+        ${zone(c, `<div class="paper ear ${K}-card" style="--ear:7cqi;width:100%;transform:rotate(-1.2deg);zoom:${sq(c, .86, .78)}"><span class="ear-flap"></span>
           <header><img src="/brand/logo/call-sheet-wordmark.svg" alt="Call Sheet">${sp('metadata', 'Film grant', 'class="soft"')}</header>
           ${c === 'square' ? '' : field('Who can apply', 72) + field('Deadline', 40)}
           <div class="send"><div>${sp('metadata', 'What you need to send', 'class="soft"')}</div><div class="${K}-chips" ${mark('chips')}>${['Treatment', 'Script', 'Budget in euros'].map((t, k) => `<span ${k === 2 ? mark('euro') : ''}>${sp('label', t)}</span>`).join('')}</div></div></div>`)}${foot()}` },

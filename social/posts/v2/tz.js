@@ -38,7 +38,7 @@
   // The standard grid: kicker, display headline, subhead lines, the object centred below, footer.
   const page = (label, head, subs, obj, o = {}) => ({ g: o.g, dark: o.dark,
     html: (c, i, n) => `${ctop(label, i, n)}${S('display', head, `class="mt-m" style="max-inline-size:${o.hw || '15ch'}"`)}
-      ${subs.map((t, k) => S('subhead', t, `class="${k ? '' : 'mt-s'}" style="max-inline-size:${o.sw || '32ch'};text-wrap:balance"`)).join('')}
+      ${subs.map((t, k) => S('subhead', t, `class="${k ? '' : 'mt-s'}" style="max-inline-size:${o.sw || '32ch'};text-wrap:${o.wrap || 'balance'}"`)).join('')}
       <div class="grow" style="display:flex;align-items:center;justify-content:center;padding-top:${o.pt ?? 3}cqb">${typeof obj === 'function' ? obj(c) : obj}</div>
       ${i === 1 ? `<div class="foot">${sp('credit', 'Call Sheet, by pitch.dog')}${swipe}</div>` : foot()}` })
 
@@ -50,7 +50,7 @@
     ${row('3', 'Nov', 'TorinoFilmLab ScriptLab', '15:00')}${row('3', 'Nov', 'Sundance Merata Mita Fellowship', '23:30', 'a')}${c === 'square' ? '' : row('5', 'Nov', 'TorinoFilmLab FeatureLab', '15:00')}</div></div>`
 
   // 3. Midnight there is breakfast here.
-  const clocks = (c) => `<div class="tz-clocks" style="width:${P_(c, 70, 52)}cqi;gap:${P_(c, 13, 11)}cqi">
+  const clocks = (c) => `<div class="tz-clocks" style="width:${P_(c, 70, 58)}cqi;gap:${P_(c, 13, 12)}cqi">
     <div class="clock" style="transform:rotate(-3deg)"><div data-tz="f1" style="width:100%;border-radius:50%">${clockSvg(0, 0)}</div><div class="cap">${S('label', 'Midnight there')}${S('metadata', 'Los Angeles', 'class="soft"')}</div></div>
     <div class="clock" style="transform:rotate(2deg)"><div style="width:100%">${clockSvg(8, 0)}</div><div class="cap" data-tz="a">${S('label', '08:00 here')}${S('metadata', 'London', 'class="soft"')}</div></div></div>`
 
@@ -78,7 +78,7 @@
     page('Introducing', 'Introducing Call Sheet.', ['Film and TV grants, festivals, labs and fellowships in one free list.', 'Soonest deadlines first, in your timezone.'], tzList, { g: 'var(--paper)', pt: 1.5 }),
     page('Time zones', '“Wait, is that midnight here or midnight there?”', ['When a fund gives us an exact closing time and time zone, Call Sheet shows what that means for you.'], clocks, { g: 'var(--goldenrod)', hw: '17ch' }),
     page('Filters', 'Find opportunities that fit what you’re making.', ['Choose your project type, where you’re based and what stage you’re at.', 'Then check who can apply, what it costs and what you need to send.'], filters, { g: 'var(--salmon)', hw: '17ch', pt: 1.5 }),
-    page('Shortlist', 'Found a few worth applying to?', ['Save them to your shortlist.', 'Add the deadlines to your calendar.', 'Get a reminder a week before, <span style="white-space:nowrap">and the day before.</span>'], shortlist, { g: 'var(--pink)' }),
+    page('Shortlist', 'Found a few worth applying to?', ['Save them to your shortlist.', 'Add the deadlines to your calendar.', 'Get a reminder a week before, <span style="white-space:nowrap">and the day before.</span>'], shortlist, { g: 'var(--pink)', wrap: 'pretty' }),
     page('Your part', 'You still have to do the application.', ['But hopefully, we’ve saved you some of the time you’d spend finding it and figuring it out.'], form, { g: 'var(--blue)' }),
     closer(),
   ]
@@ -115,7 +115,7 @@
     3: ({ W, c, f1, a, yIn, yOut }) => { const R = f1.w / 2 * (c === 'square' ? 1.32 : 1.24)
       return [...into(yIn), [f1.cx - R * 1.1, yIn - 18], ...orbit(f1.cx, f1.cy, R, 1.0 * PI, 2.05 * PI, 14), [a.x - 6, a.y - 30], ...loop(a, { a0: 1.3 * PI, sweep: 2.25 * PI, pad: 20, k: [1.14, 1.2], grow: .06, tilt: -.03 }), [a.x + a.w + 40, a.y - 40], [W - 50, yOut + 4], ...out(W, yOut)] },
     // Round "Based in: the UK", then out along the empty end of that row.
-    4: ({ W, c, a, yIn, yOut }) => [...into(yIn), [a.x - 34, a.cy - 6], ...loop(a, { a0: .98 * PI, sweep: -2.5 * PI, pad: 10, k: [1.16, 1.12], grow: .04, tilt: -.02 }), [a.x + a.w + 90, a.cy + 22], [a.x + a.w + 220, a.cy + 6], [W * .8, a.cy + 10], [W - 60, (a.cy + yOut) / 2 + 30], [W - 10, yOut], ...out(W, yOut)],
+    4: ({ W, c, a, yIn, yOut }) => [...into(yIn), [a.x - 34, a.cy - 6], ...loop(a, { a0: .98 * PI, sweep: -2.5 * PI, pad: 10, k: [1.16, c === 'square' ? .98 : 1.12], grow: .04, tilt: -.02 }), [a.x + a.w + 90, a.cy + 22], [a.x + a.w + 220, a.cy + 6], [W * .8, a.cy + 10], [W - 60, (a.cy + yOut) / 2 + 30], [W - 10, yOut], ...out(W, yOut)],
     // Along the bottom, up round the day-before reminder, and on.
     5: ({ W, a, yIn, yOut }) => [...into(yIn), [a.x - 50, yIn - 6], ...loop(a, { a0: .62 * PI, sweep: -2.2 * PI, pad: 8, k: [1.12, 1.18] }), [a.x + a.w + 80, yOut - 4], [W * .6, yOut + 6], ...out(W, yOut)],
     // In along the bottom, up under the form, and it becomes the signature.

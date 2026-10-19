@@ -335,10 +335,10 @@ P('launch', { name: 'Filmmaker friends, meet Call Sheet.', g: 'var(--ink)', dark
     const rows = [li(...CALLS.roy), li(...CALLS.cnc), li(...CALLS.merata, { circle: true, free: true }), li(...CALLS.tfl), li(...CALLS.cph)]
     const sheet = (r, style) => `<div class="art" style="${style}">${list(r)}${tape('left:-3cqi;top:-1.8cqi;transform:rotate(-28deg)')}</div>`
     if (c === 'landscape') return { frame: `<div class="grow" style="max-width:47%;display:flex;flex-direction:column;justify-content:center">${kicker('New · Totally free')}${S('display', 'Filmmaker friends, meet Call Sheet.', 'class="mt-m"')}${S('subhead', ONE_LIST, 'class="mt-m soft"')}</div>`,
-      art: sheet(rows.slice(1, 4), 'left:53cqi;right:-7cqi;top:14cqb;transform:rotate(-4deg)') }
+      art: sheet(rows.slice(1, 4), 'left:52cqi;right:3cqi;top:16cqb;transform:rotate(-4deg)') }
     return { frame: head('New · Totally free · From pitch.dog', 'Filmmaker friends, meet Call Sheet.', ONE_LIST, { soft: true }),
       art: sheet(c === 'square' ? rows.slice(1, 4) : rows.slice(c === 'story' ? 0 : 1),
-        c === 'square' ? 'left:12cqi;right:-9cqi;top:54cqb;transform:rotate(-4deg)' : c === 'story' ? 'left:7cqi;right:-10cqi;top:47cqb;transform:rotate(-4deg)' : 'left:8cqi;right:-10cqi;top:50cqb;transform:rotate(-4deg)') }
+        c === 'square' ? 'left:12cqi;right:-1cqi;top:54cqb;transform:rotate(-4deg)' : c === 'story' ? 'left:7cqi;right:-3cqi;top:47cqb;transform:rotate(-4deg)' : 'left:8cqi;right:-3cqi;top:50cqb;transform:rotate(-4deg)') }
   } })
 
 // 2. Fewer tabs. Blue ground; a browser crammed with tabs runs off the edge, one calm list in front.
@@ -448,7 +448,7 @@ P('pitch', { name: 'Found the opportunity? Now the pitch.', g: 'var(--ink)', dar
       <div class="slide" style="left:${x + 7}cqi;top:${y - 1}cqb;width:${w}cqi;transform:rotate(1.5deg);transform-origin:20% 100%"><img src="https://pitch.dog/assets/work/blueberry-picking/slide-01.webp" alt=""></div>
       <div class="slide" style="left:${x}cqi;top:${y + 3}cqb;width:${w}cqi;transform:rotate(-3.5deg);transform-origin:20% 100%"><img src="https://pitch.dog/assets/work/openings/slide-01.webp" alt=""></div>`
     const h = `Found the opportunity? ${circ('Now the pitch.', 'long', { l: '-8%', t: '-13%', w: '120%', h: '134%' })}`
-    if (c === 'landscape') return { frame: `<div class="grow" style="display:flex;align-items:center"><div style="max-width:46%">${S('display', h)}</div></div>`, art: `<div class="art" style="inset:0">${fan(50, 18, 46)}</div>` }
+    if (c === 'landscape') return { frame: `<div class="grow" style="display:flex;align-items:center"><div style="max-width:46%">${S('display', h)}</div></div>`, art: `<div class="art" style="inset:0">${fan(46, 24, 58)}</div>` }
     return { frame: head('From pitch.dog, who made Call Sheet', h, 'Some applications ask for a pitch deck. We make those: twelve years, 220+ decks.', { soft: true }),
       art: `<div class="art" style="inset:0">${fan(sq(c, 10, 18), { portrait: 56, square: 60, story: 56 }[c], { portrait: 92, square: 80, story: 112 }[c])}</div>` }
   } })
@@ -470,12 +470,12 @@ const N = (i, n) => sp('metadata', `${i} / ${n}`, 'class="soft count"')
 const ctop = (label, i, n) => `<div class="top" style="justify-content:space-between"><div class="top">${swatch}${sp('metadata', label, 'class="soft"')}</div>${N(i, n)}</div>`
 const swipe = sp('credit', 'Swipe →')
 // Every carousel ends on the same slide, in the team's exact words.
-const CLOSE_ALT = 'Call Sheet, by pitch.dog. Find film and TV grants, festivals, labs and fellowships, all in one place, with everything you need to know before applying. Filter based on your project status and timezone. Totally free! Comment Call Sheet and we will send you the link!'
+const CLOSE_ALT = 'Call Sheet, by pitch.dog. Find film and TV grants, festivals, labs and fellowships, all in one place, with everything you need to know before applying. Filter based on your project status and where you’re based. Totally free! Comment Call Sheet and we will send you the link!'
 // Three tiers, top to bottom: who and what, then "Totally free!", then the ask as the hero, set on the baseline.
 const closer = () => ({ g: 'var(--ink)', dark: true,
   html: (c, i, n) => `<div class="top" style="justify-content:space-between;align-items:flex-start">
       <div class="closer-who"><img src="/brand/logo/call-sheet-symbol-paper.svg" alt="">${S('headline', 'Call Sheet,')}${S('subhead', 'by pitch.dog.', 'class="soft"')}</div>${N(i, n)}</div>
-    ${S('subhead', 'Find film and TV grants, festivals, labs and fellowships, all in one place, with everything you need to know before applying. Filter based on your project status and timezone.', `class="soft" style="margin-top:${sq(c, 3.6, 3)}cqb;max-inline-size:${sq(c, 21, 25)}em"`)}
+    ${S('subhead', 'Find film and TV grants, festivals, labs and fellowships, all in one place, with everything you need to know before applying. Filter based on your project status and where you’re based.', `class="soft" style="margin-top:${sq(c, 3.6, 3)}cqb;max-inline-size:${sq(c, 21, 25)}em"`)}
     <div class="grow"></div>
     <div class="closer-rule"></div>
     <div class="closer-free">${sp('subhead', 'Totally free!')}</div>
@@ -814,7 +814,7 @@ Object.entries(window.PLACES || {}).filter(([code]) => PLACE_PAGES[code]).forEac
     render (sz, c) {
       const rows = pl.soon.map(s => `<div class="li"><div class="d">${sp('headline', String(+s.closes.slice(8)))}${sp('metadata', monY(s.closes), 'class="soft"')}</div><div>${S('label', short(s.title))}${s.local ? '' : `<span class="ww">${sp('metadata', 'Worldwide')}</span>`}</div></div>`)
       return { frame: `${kicker('Call Sheet · as of 17 Oct 2026')}${S('display', `Based in ${pl.name}?`, 'class="mt-m measure"')}
-        <div class="grow" style="display:flex;flex-direction:column;justify-content:center;gap:${c === 'story' ? 2.6 : 3.4}cqb">
+        <div class="grow" style="display:flex;flex-direction:column;justify-content:center;gap:${c === 'story' ? 1.8 : 3.4}cqb">
           <div style="display:flex;align-items:center;gap:5cqi;padding-left:2cqi">${circ(sp('metric', String(pl.yes)), 'round', { l: '-22%', t: '-18%', w: '144%', h: '136%' })}${S('subhead', `film and TV opportunities for filmmakers based in ${pl.name}.`, 'style="max-inline-size:13em"')}</div>
           <div style="position:relative;width:100%;transform:rotate(-2deg)">${list(c === 'story' ? rows : rows.slice(0, 2), { note: 'A few of them' })}${tape('left:-3cqi;top:-1.8cqi;transform:rotate(-26deg)')}</div></div>
         ${S('label', `Want all ${pl.yes}, soonest first?`, 'class="soft"')}${S('subhead', `Comment ${circ('Call Sheet', 'long', { ml: '.3em', l: '-7%', t: '-18%', w: '114%', h: '140%' })}&ensp;and we will send you the link!`, 'class="mt-xs"')}<div class="mt-m"></div>${foot('Totally free!')}`, art: '' }
