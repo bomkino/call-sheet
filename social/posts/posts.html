@@ -309,18 +309,18 @@ const POSTS = {}
 const P = (id, o) => { POSTS[id] = o }
 
 // 1. Meet Call Sheet. Ink ground; the printed list rises from the bottom edge.
-P('launch', { name: 'Meet Call Sheet.', g: 'var(--ink)', dark: true, sizes: ['1080x1350', '1080x1080', '1080x1920', '1200x630', '1600x900'],
-  alt: 'Meet Call Sheet. Film and TV grants, labs and festivals, sorted by deadline. Free. Below, a printed Call Sheet list rises from the bottom of the frame, with one date circled in red.',
+P('launch', { name: 'Filmmaker friends, meet Call Sheet.', g: 'var(--ink)', dark: true, sizes: ['1080x1350', '1080x1080', '1080x1920', '1200x630', '1600x900'],
+  alt: 'Filmmaker friends, meet Call Sheet. Film and TV grants, festivals, labs and fellowships in one free list. Soonest deadlines first. Below, a printed Call Sheet list rises from the bottom of the frame, with one date circled in red.',
   render (sz, c) {
     const rows = [li(...CALLS.cnc), li(...CALLS.merata, { circle: true, free: true }), li(...CALLS.tfl)]
-    if (c === 'landscape') return { frame: `<div class="grow" style="max-width:48%;display:flex;flex-direction:column;justify-content:center">${S('display', 'Meet Call Sheet.')}${S('headline', 'Film and TV grants, labs and festivals, sorted by deadline.', 'class="mt-m soft"')}</div>`,
+    if (c === 'landscape') return { frame: `<div class="grow" style="max-width:48%;display:flex;flex-direction:column;justify-content:center">${S('display', 'Filmmaker friends, meet Call Sheet.')}${S('headline', 'Film and TV grants, festivals, labs and fellowships in one free list.', 'class="mt-m soft"')}</div>`,
       art: `<div class="art" style="right:-2cqi;top:12cqb;width:48cqi;transform:rotate(-3deg)">${list(rows.slice(0, 2))}</div>` }
     const art = c === 'square'
       ? `<div class="art" style="left:9cqi;right:3cqi;top:35.5cqb;transform:rotate(-3.5deg)">${list([rows[1], rows[2]])}</div>`
       : c === 'story'
         ? `<div class="art" style="left:7cqi;right:-5cqi;top:34cqb;transform:rotate(-3deg)">${list(rows)}</div>`
         : `<div class="art" style="left:7cqi;right:-6cqi;top:42cqb;transform:rotate(-3deg)">${list([rows[1], rows[2]])}</div>`
-    return { frame: `${kicker('New · Free · From pitch.dog')}${S('display', 'Meet Call Sheet.', 'class="mt-m"')}${S('subhead', 'Film and TV grants, labs and festivals, sorted by deadline. Free.', 'class="mt-s wide soft"')}<div class="grow"></div>${foot('Call Sheet, by pitch.dog', true)}`, art }
+    return { frame: `${kicker('New · Free · From pitch.dog')}${S('display', 'Filmmaker friends, meet Call Sheet.', 'class="mt-m measure"')}${S('subhead', 'Film and TV grants, festivals, labs and fellowships in one free list. Soonest deadlines first.', 'class="mt-s wide soft"')}<div class="grow"></div>${foot('Call Sheet, by pitch.dog', true)}`, art }
   } })
 
 // 2. Fewer tabs. Blue ground; a browser crammed with tabs, and one calm sheet in front.
@@ -329,21 +329,21 @@ P('tabs', { name: 'Fewer tabs. More applications.', g: 'var(--blue)', sizes: ['1
   alt: 'Fewer tabs. More applications. A browser window crammed with dozens of tabs sits behind a single printed Call Sheet list.',
   render (sz, c) {
     const h = c === 'square' ? 40 : 46
-    return { frame: `${kicker('Call Sheet')}${S('display', 'Fewer tabs.<br>More applications.', 'class="mt-m"')}${c === 'square' ? '' : S('subhead', '186 calls in one list, soonest deadline first.', 'class="mt-s wide"')}<div class="grow"></div>${foot()}`,
+    return { frame: `${kicker('Call Sheet')}${S('display', 'Fewer tabs.<br>More applications.', 'class="mt-m"')}${c === 'square' ? '' : S('subhead', 'Film and TV grants, festivals, labs and fellowships in one free list. Soonest deadlines first.', 'class="mt-s wide"')}<div class="grow"></div>${foot()}`,
       art: `${browser(22, `left:30cqi;right:-14cqi;bottom:${c === 'story' ? 34 : c === 'square' ? 24 : 22}cqb;height:${h}cqi;transform:rotate(4deg)`)}${browser(18, `left:20cqi;right:-8cqi;bottom:${c === 'story' ? 32 : c === 'square' ? 19 : 17}cqb;height:${h}cqi;transform:rotate(-2deg)`)}
         <div class="art" style="left:8cqi;width:72cqi;bottom:${c === 'story' ? 23 : c === 'square' ? 15 : 13}cqb;transform:rotate(-1.5deg)">${list(c === 'square' ? [li(...CALLS.merata.slice(0, 3), '', { circle: true }), li(...CALLS.tfl.slice(0, 3))] : [li(...CALLS.cnc.slice(0, 3)), li(...CALLS.merata.slice(0, 3), '', { circle: true }), li(...CALLS.tfl.slice(0, 3))])}</div>` }
   } })
 
 // 3. Twelve calls. Zero entry fees. Yellow ground; a pile of slips, stamped.
 const FREE = window.FREE || []
-P('zero', { name: 'Twelve calls. Zero entry fees.', g: 'var(--yellow)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
-  alt: 'Twelve calls. Zero entry fees. A pile of paper slips, each naming a free-to-enter film call and its date, stamped Free to enter in red.',
+P('zero', { name: 'Twelve opportunities. Zero entry fees.', g: 'var(--yellow)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
+  alt: 'Twelve opportunities. Zero entry fees. A pile of paper slips, each naming a free-to-enter film or TV opportunity and its date, stamped Free to enter in red.',
   render (sz, c) {
     const spots = c === 'square' ? [[4, 0, -4], [36, 2, 3], [66, 0, -2], [8, 21, 2], [38, 22, -3], [66, 20, 4]] : [[4, 0, -4], [36, 3, 3], [66, 0, -2], [6, 17, 2], [37, 19, -3], [67, 17, 4]]
     const base = c === 'story' ? 43 : c === 'square' ? 42 : 46
     const slips = FREE.slice(0, 6).map((f, i) => { const [x, y, r] = spots[i]
-      return `<div class="slip paper ear" style="left:${x}cqi;top:${base + y * (c === 'square' ? .9 : 1.1)}cqb;transform:rotate(${r}deg)"><span class="ear-flap" style="--flap:#d8d2c4"></span>${sp('headline', `${+f.closes.slice(8)} ${mon(f.closes)}`)}${S('label', trim(short(f.title), 40), 'class="mt-xs"')}</div>` }).join('')
-    return { frame: `${kicker('Save this')}${S('display', 'Twelve calls. Zero entry fees.', 'class="mt-m measure"')}${S('subhead', 'Free to enter, closing November to January.', 'class="mt-s wide"')}<div class="grow"></div>${foot()}`,
+      return `<div class="slip paper ear" style="left:${x}cqi;top:${base + y * (c === 'square' ? .9 : 1.1)}cqb;transform:rotate(${r}deg)"><span class="ear-flap" style="--flap:#d8d2c4"></span>${sp('headline', `${+f.closes.slice(8)} ${mon(f.closes)}`)}${S('label', trim(short(f.title).replace(/ call$/, ''), 40), 'class="mt-xs"')}</div>` }).join('')
+    return { frame: `${kicker('Save this')}${S('display', 'Twelve opportunities. Zero entry fees.', 'class="mt-m measure"')}${S('subhead', 'Free to enter, closing November to January.', 'class="mt-s wide"')}<div class="grow"></div>${foot()}`,
       art: `<div class="art" style="inset:0">${slips}${stamp('free', c === 'square' ? 'left:31cqi;top:80cqb;width:44cqi;transform:rotate(-5deg)' : `left:36cqi;top:${c === 'story' ? 36.5 : 35}cqb;width:50cqi;transform:rotate(-6deg)`)}</div>` }
   } })
 
@@ -356,23 +356,23 @@ const clockSvg = (h, m) => { const a = (h % 12 + m / 60) * 30, b = m * 6
     <line x1="0" y1="18" x2="0" y2="-86" stroke="#e3472d" stroke-width="1.8" stroke-linecap="round" transform="rotate(${b + 1})"/>
     <circle r="5.5" fill="#15130f"/><circle r="2.4" fill="#e3472d"/></svg>` }
 P('clock', { name: 'Paris 16:00. Sydney 02:00.', g: 'var(--pink)', sizes: ['1080x1350', '1080x1080', '1080x1920', '1200x630', '1600x900'],
-  alt: 'Two clocks. Paris shows 16:00 on Tuesday 3 November; Sydney shows 02:00 on Wednesday 4 November, circled in red. Same deadline. Call Sheet shows it in your time.',
+  alt: 'Two clocks. Paris shows 16:00 on Tuesday 3 November; Sydney shows 02:00 on Wednesday 4 November, circled in red. Same deadline. When the organiser gives a closing time and time zone, Call Sheet shows what it means for you.',
   render (sz, c) {
     const clocks = (w) => `<div style="display:grid;grid-template-columns:1fr 1fr;gap:6cqi;width:${w}">
       <div class="clock">${clockSvg(16, 0)}<div style="text-align:center">${S('headline', 'Paris')}${S('metadata', 'Tue 3 Nov, 16:00', 'class="soft mt-xs"')}</div></div>
       <div class="clock" style="position:relative">${clockSvg(2, 0)}<div style="text-align:center">${S('headline', circ('Sydney', 'wide', { l: '-14%', t: '-18%', w: '128%', h: '134%' }))}${S('metadata', 'Wed 4 Nov, 02:00', 'class="soft mt-xs"')}</div></div></div>`
-    if (c === 'landscape') return { frame: `<div class="grow" style="display:flex;align-items:center;gap:5cqi"><div style="flex:1">${S('display', 'Paris 16:00. Sydney 02:00.')}${S('subhead', 'Same deadline. Call Sheet shows it in your time.', 'class="mt-s soft"')}</div><div style="flex:1">${clocks('100%')}</div></div>${foot()}`, art: '' }
-    return { frame: `${kicker('One deadline, two clocks')}${S('display', 'Paris 16:00. Sydney 02:00.', 'class="mt-m measure"')}${S('subhead', 'Same deadline. Call Sheet shows it in your time.', 'class="mt-s wide"')}<div class="grow" style="display:flex;align-items:center;justify-content:center">${clocks(c === 'square' ? '74%' : '100%')}</div>${foot()}`, art: '' }
+    if (c === 'landscape') return { frame: `<div class="grow" style="display:flex;align-items:center;gap:5cqi"><div style="flex:1">${S('display', 'Paris 16:00. Sydney 02:00.')}${S('subhead', 'Same deadline. When the organiser gives a closing time and time zone, Call Sheet shows what it means for you.', 'class="mt-s soft"')}</div><div style="flex:1">${clocks('100%')}</div></div>${foot()}`, art: '' }
+    return { frame: `${kicker('One deadline, two clocks')}${S('display', 'Paris 16:00. Sydney 02:00.', 'class="mt-m measure"')}${S('subhead', 'Same deadline. When the organiser gives a closing time and time zone, Call Sheet shows what it means for you.', 'class="mt-s wide"')}<div class="grow" style="display:flex;align-items:center;justify-content:center">${clocks(c === 'square' ? '74%' : '100%')}</div>${foot()}`, art: '' }
   } })
 
 // 5. Circle the one that's yours. Paper ground; a long printed list, one row circled.
 P('circle', { name: 'Circle the one that’s yours.', g: 'var(--paper)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
-  alt: 'Circle the one that’s yours. A long printed list of film calls with one row, the Sundance Merata Mita Fellowship, circled in red marker.',
+  alt: 'Circle the one that’s yours. A printed list of film and TV opportunities with one row, the Sundance Merata Mita Fellowship, circled in red marker.',
   render (sz, c) {
     const rows = [li(...CALLS.finn.slice(0, 3), '', { dim: true }), li(...CALLS.sa.slice(0, 3), '', { dim: true }), li(...CALLS.doha.slice(0, 3), '', { dim: true }), li(...CALLS.roy.slice(0, 3), '', { dim: true }), li(...CALLS.cnc.slice(0, 3), '', { dim: true }), li(...CALLS.merata.slice(0, 3), '', { ring: true }), li(...CALLS.tfl.slice(0, 3), '', { dim: true }), li(...CALLS.cph.slice(0, 3), '', { dim: true })]
     const r = c === 'square' ? rows.slice(4, 6) : rows.slice(4, 7)
-    return { frame: `${kicker('Call Sheet')}${S('display', 'Circle the one that’s yours.', 'class="mt-m measure"')}${S('subhead', 'Say what you’re making and where you live. We hide the rest.', 'class="mt-s wide soft"')}<div class="grow"></div>${foot()}`,
-      art: `<div class="art" style="left:${c === 'square' ? 36 : 26}cqi;right:-2cqi;top:${c === 'story' ? 42 : c === 'square' ? 42 : 41}cqb;transform:rotate(2.5deg)">${list(r, { note: '186 calls' })}</div>` }
+    return { frame: `${kicker('Call Sheet')}${S('display', 'Circle the one that’s yours.', 'class="mt-m measure"')}${S('subhead', 'Tell it what you’re making and where you’re based. Then narrow down the list.', 'class="mt-s wide soft"')}<div class="grow"></div>${foot()}`,
+      art: `<div class="art" style="left:${c === 'square' ? 36 : 26}cqi;right:-2cqi;top:${c === 'story' ? 42 : c === 'square' ? 42 : 41}cqb;transform:rotate(2.5deg)">${list(r, { note: '186 opportunities' })}</div>` }
   } })
 
 // 6. "Not published" isn't free. Salmon ground; a fee line and a stamp.
@@ -380,7 +380,7 @@ P('unknown', { name: '“Not published” isn’t free.', g: 'var(--salmon)', si
   alt: '“Not published” isn’t free. A slip of paper reads Entry fee, and a red stamp across it reads Not published.',
   render (sz, c) {
     const w = c === 'square' ? 64 : 76
-    return { frame: `${kicker('House rule no. 1')}${S('display', '“Not published” isn’t free.', 'class="mt-m measure"')}${S('subhead', 'When an organiser hasn’t said, neither do we.', 'class="mt-s wide"')}<div class="grow"></div>${foot()}`,
+    return { frame: `${kicker('House rule no. 1')}${S('display', '“Not published” isn’t free.', 'class="mt-m measure"')}${S('subhead', 'If a fee isn’t published, we say that. You’ve got enough to figure out without our guesses.', 'class="mt-s wide"')}<div class="grow"></div>${foot()}`,
       art: `<div class="art" style="left:${c === 'square' ? 30 : 14}cqi;width:${w}cqi;bottom:${c === 'story' ? 28 : c === 'square' ? 14 : 16}cqb;transform:rotate(-2deg)">
         <div class="paper ear ruled" style="--ear:7cqi;--lh:6cqi;padding:5cqi 6cqi 7cqi"><span class="ear-flap" style="--flap:#d8d2c4"></span>
           ${S('metadata', 'Entry fee', 'class="soft"')}<div class="mt-xs">${sp('headline', '— — —')}</div>${S('metadata', 'Official page, read 17 Oct', 'class="soft mt-s"')}</div>
@@ -395,48 +395,48 @@ P('monthly', { name: 'New every month.', g: 'var(--ink)', dark: true, sizes: ['1
     const y = c === 'story' ? 44 : c === 'square' ? 24 : 36
     const s = c === 'square' ? .66 : .86
     const fan = pages.map(([bg, m, r, x], i) => `<div class="rev" style="left:${x * s + (c === 'square' ? 30 : 6)}cqi;top:${y}cqb;transform:rotate(${r}deg) scale(${s});transform-origin:50% 100%"><div class="paper ear ruled" style="background:${bg};--lh:4.6cqi"><span class="ear-flap" style="--flap:${i === 3 ? 'var(--marker)' : 'rgb(21 19 15 / .28)'}"></span><span class="lbl">${sp('label', m)}</span></div></div>`).join('')
-    return { frame: `${kicker('Edition 1')}${S('display', 'New every month.', 'class="mt-m measure"')}${S('subhead', 'We recheck every call, fix what changed and add new ones.', 'class="mt-s wide soft"')}<div class="grow"></div>${foot('Call Sheet, by pitch.dog', true)}`, art: `<div class="art" style="inset:0">${fan}</div>` }
+    return { frame: `${kicker('Edition 1')}${S('display', 'New every month.', 'class="mt-m measure"')}${S('subhead', 'We recheck every opportunity, fix what changed and add new ones.', 'class="mt-s wide soft"')}<div class="grow"></div>${foot('Call Sheet, by pitch.dog', true)}`, art: `<div class="art" style="inset:0">${fan}</div>` }
   } })
 
 // 8. Free. No sign-up. No catch. Green ground; three ticked lines.
 P('open', { name: 'Free. No sign-up. No catch.', g: 'var(--green)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
-  alt: 'Free. No sign-up. No catch. Three lines ticked in red: no account or email; your saved calls stay on your device; the code and data are open.',
+  alt: 'Free. No sign-up. No catch. Totally free. Three lines ticked in red: no account, no email; your list stays on your device; the code and data are open.',
   render (sz, c) {
-    return { frame: `${kicker('Call Sheet')}${S('display', 'Free. No <span style="white-space:nowrap">sign-up.</span> No catch.', 'class="mt-m measure"')}<div class="grow" style="display:flex;align-items:center">
+    return { frame: `${kicker('Totally free!')}${S('display', 'Free. No <span style="white-space:nowrap">sign-up.</span> No catch.', 'class="mt-m measure"')}<div class="grow" style="display:flex;align-items:center">
       <div class="paper ear ruled" style="--ear:7cqi;--lh:6cqi;width:100%;padding:5cqi 6cqi;transform:rotate(-1.2deg)"><span class="ear-flap"></span><ul class="ticks">
         <li>${tick}${S('headline', 'No account, no email.')}</li><li>${tick}${S('headline', 'Your list stays on your device.')}</li><li>${tick}${S('headline', 'The code and data are open.')}</li></ul></div></div>${foot()}`, art: '' }
   } })
 
 // 9. 125 calls taking entries today. Paper ground; the board.
-P('board', { name: '125 calls taking entries today.', g: 'var(--paper)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
-  alt: 'Call Sheet on 17 October 2026: 125 calls taking entries today, 13 free to enter, and the next deadline, 19 October, circled.',
+P('board', { name: '125 opportunities taking entries.', g: 'var(--paper)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
+  alt: 'Call Sheet on 17 October 2026: 125 film and TV opportunities taking entries, 13 free to enter, and the next deadline, 19 October, circled.',
   render (sz, c) {
-    return { frame: `${kicker('Updated 17 Oct 2026')}${S('display', '125 calls taking entries today.', 'class="mt-m measure"')}<div class="grow" style="display:flex;align-items:center"><div class="board" style="width:100%">
+    return { frame: `${kicker('Updated 17 Oct 2026')}${S('display', '125 opportunities taking entries.', 'class="mt-m measure"')}<div class="grow" style="display:flex;align-items:center"><div class="board" style="width:100%">
       <div>${sp('metric', '125')}${sp('label', 'Taking entries now')}</div><div>${sp('metric', '13')}${sp('label', 'Free to enter')}</div>
       <div style="grid-column:1/-1"><span>${circ(sp('metric', '19 Oct'), 'wide', { l: '-8%', t: '-14%', w: '116%', h: '126%' })}</span>${sp('label', 'Next deadline')}</div></div></div>
-      ${c === 'square' ? '' : S('body', 'Film and TV grants, labs and festivals. Each one says who can apply, what you get and what the organiser says it costs.', 'class="soft wide"') + '<div class="mt-m"></div>'}${foot()}`, art: '' }
+      ${c === 'square' ? '' : S('body', 'Film and TV grants, festivals, labs and fellowships. Each one says who can apply, what you get and, if the organiser says, what it costs.', 'class="soft wide"') + '<div class="mt-m"></div>'}${foot()}`, art: '' }
   } })
 
 // 10. Found the call? Now the pitch. Ink ground; real pitch.dog decks, fanned.
-P('pitch', { name: 'Found the call? Now the pitch.', g: 'var(--ink)', dark: true, sizes: ['1080x1350', '1080x1080', '1080x1920', '1200x630'],
-  alt: 'Found the call? Now the pitch. Three pitch deck slides made by pitch.dog, for the films Openings, Blueberry Picking and Illuminate, fanned out on a dark desk.',
+P('pitch', { name: 'Found the opportunity? Now the pitch.', g: 'var(--ink)', dark: true, sizes: ['1080x1350', '1080x1080', '1080x1920', '1200x630'],
+  alt: 'Found the opportunity? Now the pitch. Some applications ask for a pitch deck, and pitch.dog makes them. Three pitch deck slides made by pitch.dog, for the films Openings, Blueberry Picking and Illuminate, fanned out on a dark desk.',
   render (sz, c) {
     const fan = (x, y, w) => `<div class="slide" style="left:${x + 14}cqi;top:${y - 4}cqb;width:${w}cqi;transform:rotate(6deg);transform-origin:20% 100%"><img src="https://pitch.dog/assets/work/illuminate/slide-01.webp" alt=""></div>
       <div class="slide" style="left:${x + 7}cqi;top:${y - 1}cqb;width:${w}cqi;transform:rotate(1.5deg);transform-origin:20% 100%"><img src="https://pitch.dog/assets/work/blueberry-picking/slide-01.webp" alt=""></div>
       <div class="slide" style="left:${x}cqi;top:${y + 3}cqb;width:${w}cqi;transform:rotate(-3.5deg);transform-origin:20% 100%"><img src="https://pitch.dog/assets/work/openings/slide-01.webp" alt=""></div>`
-    const head = `Found the call? ${circ('Now the pitch.', 'long', { l: '-8%', t: '-13%', w: '120%', h: '134%' })}`
+    const head = `Found the opportunity? ${circ('Now the pitch.', 'long', { l: '-8%', t: '-13%', w: '120%', h: '134%' })}`
     if (c === 'landscape') return { frame: `<div class="grow" style="display:flex;align-items:center"><div style="max-width:46%">${S('display', head)}</div></div>`, art: `<div class="art" style="inset:0">${fan(50, 18, 40)}</div>` }
     const y = c === 'story' ? 50 : c === 'square' ? 52 : 52
-    return { frame: `${kicker('From pitch.dog, who made Call Sheet')}${S('display', head, 'class="mt-m measure"')}${S('subhead', 'We make the pitch decks these applications ask for. Twelve years, 220+ decks.', 'class="mt-s wide soft"')}<div class="grow"></div>${foot('hello@pitch.dog', true)}`,
+    return { frame: `${kicker('From pitch.dog, who made Call Sheet')}${S('display', head, 'class="mt-m measure"')}${S('subhead', 'Some applications ask for a pitch deck. We make those: twelve years, 220+ decks.', 'class="mt-s wide soft"')}<div class="grow"></div>${foot('hello@pitch.dog', true)}`,
       art: `<div class="art" style="inset:0">${fan(c === 'square' ? 26 : 7, y, c === 'square' ? 58 : 72)}</div>` }
   } })
 
 // 11. DM us SHEET. Cherry ground, story first.
-P('dm', { name: 'Want the link? DM us SHEET.', g: 'var(--cherry)', dark: true, sizes: ['1080x1920', '1080x1350', '1080x1080'],
-  alt: 'Want the link? DM us the word SHEET, circled, and we’ll send it.',
+P('dm', { name: 'Comment Call Sheet and we will send you the link!', g: 'var(--cherry)', dark: true, sizes: ['1080x1920', '1080x1350', '1080x1080'],
+  alt: 'Comment Call Sheet, with the words Call Sheet circled, and we will send you the link! Film and TV grants, festivals, labs and fellowships in one free list.',
   render (sz, c) {
-    return { frame: `${kicker('Call Sheet · free')}<div class="grow" style="display:flex;flex-direction:column;justify-content:center">${S('display', `Want the link? DM us ${circ('SHEET', 'wide', { ml: '.38em', l: '-13%', t: '-11%', w: '126%', h: '130%', loop: 'var(--paper)' })}`, 'class="measure"')}
-      ${S('subhead', 'A free list of film and TV grants, labs and festivals. We’ll send it straight over.', 'class="mt-m wide soft"')}</div>${foot('Or: pitch.dog/call-sheet', true)}`, art: '' }
+    return { frame: `${kicker('Filmmaker friends')}<div class="grow" style="display:flex;flex-direction:column;justify-content:center">${S('display', `Comment ${circ('Call Sheet', 'long', { l: '-5%', t: '-16%', w: '110%', h: '136%', loop: 'var(--paper)' })} and we will send you the link!`, 'class="measure"')}
+      ${S('subhead', 'Film and TV grants, festivals, labs and fellowships in one free list. Totally free!', 'class="mt-m wide soft"')}</div>${foot('Call Sheet, by pitch.dog', true)}`, art: '' }
   } })
 
 /* -------------------------------------------------------------- carousels */
@@ -707,36 +707,36 @@ P('day', { name: 'Found it the day after it closed?', g: 'var(--buff)', sizes: [
   alt: 'Found it the day after it closed? A desk calendar page for Monday 19 October, crossed out in red marker.',
   render (sz, c) {
     const w = c === 'square' ? 46 : 58
-    return { frame: `${kicker('Call Sheet')}${S('display', 'Found it the day after it closed?', 'class="mt-m measure"')}${S('subhead', 'Call Sheet lists film and TV grants, labs and festivals before they close. Soonest first.', 'class="mt-s wide"')}<div class="grow"></div>${foot()}`,
+    return { frame: `${kicker('Call Sheet')}${S('display', 'Found it the day after it closed?', 'class="mt-m measure"')}${S('subhead', 'Call Sheet puts film and TV grants, festivals, labs and fellowships in one free list. Soonest deadlines first.', 'class="mt-s wide"')}<div class="grow"></div>${foot()}`,
       art: `<div class="art" style="right:${c === 'square' ? 10 : 12}cqi;width:${w}cqi;top:${c === 'story' ? 48 : c === 'square' ? 45 : 48}cqb;transform:rotate(4deg)">${calPage('Monday', '19', 'October')}</div>` }
   } })
 
 P('websites', { name: '99 websites. One list.', g: 'var(--ink)', dark: true, sizes: ['1080x1350', '1080x1080', '1080x1920'],
   alt: '99 websites. One list. A grid of 99 small website cards, one of them circled in red marker.',
   render (sz, c) {
-    return { frame: `${kicker('Call Sheet')}${S('display', '99 websites. One list.', 'class="mt-m measure"')}${S('subhead', '186 film and TV calls, from Paraguay to Finland, in one free list.', 'class="mt-s wide soft"')}<div class="grow" style="display:flex;align-items:center">${c === 'square' ? `<div style="width:100%">${miniGrid(66, 11, 40, '1.1cqi')}</div>` : `<div style="width:100%">${miniGrid(99, 11, 60)}</div>`}</div>${foot('Call Sheet, by pitch.dog', true)}`, art: '' }
+    return { frame: `${kicker('Call Sheet')}${S('display', '99 websites. One list.', 'class="mt-m measure"')}${S('subhead', '186 film and TV opportunities, from Paraguay to Finland, in one free list.', 'class="mt-s wide soft"')}<div class="grow" style="display:flex;align-items:center">${c === 'square' ? `<div style="width:100%">${miniGrid(66, 11, 40, '1.1cqi')}</div>` : `<div style="width:100%">${miniGrid(99, 11, 60)}</div>`}</div>${foot('Call Sheet, by pitch.dog', true)}`, art: '' }
   } })
 
 P('page9', { name: 'The rule you needed was on page 9.', g: 'var(--blue)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
   alt: 'The rule you needed was on page 9. A stack of guideline pages; on the top page, page 9 of 9, one line is highlighted: Applicants must live in France.',
   render (sz, c) {
-    return { frame: `${kicker('Call Sheet')}${S('display', 'The rule you needed was on page 9.', 'class="mt-m measure"')}${S('subhead', 'Call Sheet puts who can apply on line one.', 'class="mt-s wide"')}<div class="grow"></div>${foot()}`,
+    return { frame: `${kicker('Call Sheet')}${S('display', 'The rule you needed was on page 9.', 'class="mt-m measure"')}${S('subhead', 'Call Sheet puts who can apply right at the top, in plain words.', 'class="mt-s wide"')}<div class="grow"></div>${foot()}`,
       art: `<div class="art" style="left:${c === 'square' ? 34 : c === 'story' ? 10 : 13}cqi;top:${c === 'story' ? 44 : c === 'square' ? 46 : 47}cqb;transform:rotate(-2.5deg)">${page9(c === 'square' ? '56cqi' : c === 'story' ? '80cqi' : '74cqi')}</div>` }
   } })
 
-// Based in …? One per country, with the three soonest calls made for it (or open to all).
+// Based in …? One per country, with the three soonest opportunities made for it (or open to all).
 const GROUNDS = ['var(--blue)', 'var(--pink)', 'var(--yellow)', 'var(--green)', 'var(--salmon)', 'var(--buff)', 'var(--goldenrod)']
 // Only the countries pitch.dog's clients work from, each with its own list on the site.
 const PLACE_PAGES = { US: 'us', GB: 'uk', CA: 'canada', AU: 'australia' }
 Object.entries(window.PLACES || {}).filter(([code]) => PLACE_PAGES[code]).forEach(([code, pl], i) => {
   const cap = pl.name[0].toUpperCase() + pl.name.slice(1)
   P(`place-${code.toLowerCase()}`, { name: `Based in ${pl.name}?`, g: GROUNDS[i % GROUNDS.length], sizes: ['1080x1350', '1080x1920'],
-    alt: `Based in ${pl.name}? ${pl.yes} film and TV calls take filmmakers based in ${pl.name}, as of 17 October 2026. Three of them, with their deadlines: ${pl.soon.map(s => `${s.title}, ${+s.closes.slice(8)} ${mon(s.closes)}`).join('; ')}. See all ${pl.yes} at pitch.dog/call-sheet/${PLACE_PAGES[code]}.`,
+    alt: `Based in ${pl.name}? ${pl.yes} film and TV opportunities for filmmakers based in ${pl.name}, as of 17 October 2026. Three of them, with their deadlines: ${pl.soon.map(s => `${s.title}, ${+s.closes.slice(8)} ${mon(s.closes)}`).join('; ')}. Want all ${pl.yes}, soonest first? Comment Call Sheet and we will send you the link!`,
     render (sz, c) {
       const rows = pl.soon.map(s => `<div class="li"><div class="d">${sp('headline', String(+s.closes.slice(8)))}${sp('metadata', monY(s.closes), 'class="soft"')}</div><div>${S('label', short(s.title))}${s.local ? '' : `<span class="ww">${sp('metadata', 'Worldwide')}</span>`}</div></div>`)
       return { frame: `${kicker('Call Sheet · as of 17 Oct 2026')}${S('display', `Based in ${pl.name}?`, 'class="mt-m measure"')}
-        <div class="mt-m" style="display:flex;align-items:center;gap:4cqi">${circ(sp('metric', String(pl.yes)), 'round', { l: '-16%', t: '-14%', w: '132%', h: '128%' })}${S('body', `film and TV calls take filmmakers based in ${pl.name}.`, 'style="max-inline-size:17ch"')}</div>
-        <div class="grow" style="display:flex;align-items:center"><div style="width:100%;transform:rotate(-1.2deg)">${list(c === 'story' ? rows : rows.slice(0, 2), { note: 'A few of them' })}</div></div>${S('label', `See all ${pl.yes}, soonest first:`, 'class="soft"')}${S('subhead', `pitch.dog/call-sheet/${PLACE_PAGES[code]}`, 'class="mt-xs"')}<div class="mt-m"></div>${foot('Free. No sign-up.')}`, art: '' }
+        <div class="mt-m" style="display:flex;align-items:center;gap:4cqi">${circ(sp('metric', String(pl.yes)), 'round', { l: '-16%', t: '-14%', w: '132%', h: '128%' })}${S('body', `film and TV opportunities for filmmakers based in ${pl.name}.`, 'style="max-inline-size:17ch"')}</div>
+        <div class="grow" style="display:flex;align-items:center"><div style="width:100%;transform:rotate(-1.2deg)">${list(c === 'story' ? rows : rows.slice(0, 2), { note: 'A few of them' })}</div></div>${S('label', `Want all ${pl.yes}, soonest first?`, 'class="soft"')}${S('subhead', `Comment ${circ('Call Sheet', 'long', { l: '-5%', t: '-16%', w: '110%', h: '136%' })} and we will send you the link!`, 'class="mt-xs"')}<div class="mt-m"></div>${foot('Free. No sign-up.')}`, art: '' }
     } })
 })
 
@@ -760,9 +760,9 @@ WHY.forEach((sl, i) => P(`why-${String(i + 1).padStart(2, '0')}`, { name: `why $
 // For the explainer and anything else on the channel. Big type, one idea, readable at 168px wide.
 const Y = (role, text, extra = '') => S(role, text, extra, 'youtube')
 P('thumb-a', { name: 'YouTube A: find film grants before they close', g: 'var(--paper)', youtube: true, sizes: ['1280x720'],
-  alt: 'Call Sheet, free. Find film grants before they close, with the word close circled in red marker. Grants, labs and festivals, sorted by deadline. Beside it, the Call Sheet symbol: the letters Cs circled on a black page with a folded corner.',
+  alt: 'Call Sheet, free. Find film grants before they close, with the word close circled in red marker. Grants, festivals, labs and fellowships. Soonest deadlines first. Beside it, the Call Sheet symbol: the letters Cs circled on a black page with a folded corner.',
   render: () => ({ frame: `<div class="grow" style="display:flex;flex-direction:row;align-items:center;gap:4cqi">
-      <div style="flex:1.3">${Y('kicker', 'Call Sheet · free')}${Y('title', `Find film grants before they ${circ('close', 'wide', { ml: '.14em', l: '-8%', t: '-16%', w: '116%', h: '136%' })}`, 'class="mt-m"')}${Y('support', 'Grants, labs and festivals, sorted by deadline', 'class="mt-m soft"')}</div>
+      <div style="flex:1.3">${Y('kicker', 'Call Sheet · free')}${Y('title', `Find film grants before they ${circ('close', 'wide', { ml: '.14em', l: '-8%', t: '-16%', w: '116%', h: '136%' })}`, 'class="mt-m"')}${Y('support', 'Grants, festivals, labs and fellowships. Soonest deadlines first.', 'class="mt-m soft"')}</div>
       <div style="flex:.5;align-self:center"><img src="/brand/logo/call-sheet-symbol.svg" alt="" style="width:100%;transform:rotate(4deg)"></div></div>`, art: '' }) })
 P('thumb-b', { name: 'YouTube B: found it the day after it closed?', g: 'var(--buff)', youtube: true, sizes: ['1280x720'],
   alt: 'Found it the day after it closed? Beside the words, a desk calendar page for Monday 19 October, crossed out in red marker.',
@@ -785,6 +785,7 @@ P('thumb-c', { name: 'YouTube C: 99 websites, one list', g: 'var(--ink)', dark: 
 <script src="v2/stages.js"></script>
 <script src="v2/materials.js"></script>
 <script src="v2/research.js"></script>
+<script src="v2/weekly.js"></script>
 <script>
 /* ------------------------------------------------------------------ mount */
 function mount (id, size) {
