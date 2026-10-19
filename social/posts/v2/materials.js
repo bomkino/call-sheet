@@ -111,7 +111,7 @@
       html: (c, i, n) => `${ctop('Your checklist', i, n)}${S('display', 'Save the opportunities you’re interested in.', 'class="mt-m wide"')}
         ${S('subhead', 'Open each one to check the application materials.', 'class="mt-s" style="max-inline-size:34ch"')}
         ${S('subhead', 'Tick things off as you get them ready. Your checklist stays saved on the same device.', 'class="mt-s" style="max-inline-size:34ch"')}
-        ${zone(c, `<div class="paper ear" style="--ear:6cqi;width:${sq(c, 100, 92)}%;padding:${sq(c, 2.6, 2)}cqi 5cqi;transform:rotate(1deg);zoom:${sq(c, .84, .72)}"><span class="ear-flap"></span>
+        ${zone(c, `<div class="paper ear" style="--ear:6cqi;width:${sq(c, 94, 92)}%;padding:${sq(c, 2.6, 2)}cqi 5cqi;transform:rotate(1deg);zoom:${sq(c, .7, .68)}"><span class="ear-flap"></span>
           <ul class="${K}-list" style="list-style:none">${[['Treatment', 1], ['Script', 1], ['Two-page synopsis', 0], ['Budget in euros', 0]].map(([t, on]) => item(t, on)).join('')}</ul></div>`)}${foot()}` },
 
     // 5. The deadline in your calendar, two reminders, and the line signs off under the last line.

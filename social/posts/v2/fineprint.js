@@ -102,13 +102,13 @@
 
     // 2. The two catches in full, then the page they come from: two clauses, and the pen loops what each one hides.
     { g: 'var(--paper)',
-      art: (c) => thread([['loop', 'r', 16, 10, 160, 1.12], ['by', 'r', .1, 1.75], ['loop', 'p', 16, 10, 160, 1.12], ['out', edge(c, 23)]]),
+      art: (c) => thread([['loop', 'r', 16, 8, 160, 1.12], ['by', 'r', .1, sq(c, 1.75, 2)], ['loop', 'p', 16, 8, 160, 1.12], ['by', 'p', 1.18, .8], ['out', edge(c, 23)]]),
       html: (c, i, n) => `${ctop('For example', i, n)}
         <div class="mt-m">${S('headline', 'Sometimes, a prize is a reimbursement.', 'class="wide"')}${S('subhead', 'You need to spend the money first.', 'class="mt-xs"')}</div>
-        <div class="mt-m">${S('headline', 'Sometimes, programmes have a participation fee.', 'class="wide"')}${S('subhead', 'You pay it after you’re selected.', 'class="mt-xs"')}</div>
-        ${S('subhead', 'These are useful things to know before you apply.', `class="mt-s wide soft"`)}
-        ${zone(c, `<div style="width:${sq(c, 96, 90)}%;transform:rotate(-1.2deg)${c === 'square' ? ';zoom:.72' : ''}"><div class="doc" style="padding:2.6cqi 4.4cqi 2.6cqi;gap:.8cqi">${head('Guidelines', 'Page 6 of 6')}
-          ${clauseRow('§ 6.2', 'Prize', 'Reimbursement', 'r')}${bars(70)}${clauseRow('§ 9.1', 'Participation fee', 'After selection', 'p')}</div></div>`)}${foot()}` },
+        <div class="${sq(c, 'mt-m', 'mt-s')}">${S('headline', 'Sometimes, programmes have a participation fee.', 'class="wide"')}${S('subhead', 'You pay it after you’re selected.', 'class="mt-xs"')}</div>
+        ${S('subhead', 'These are useful things to know before you apply.', `class="${sq(c, 'mt-s', 'mt-xs')} wide soft"`)}
+        ${zone(c, `<div style="width:${sq(c, 96, 90)}%;transform:rotate(-1.2deg)${c === 'square' ? ';zoom:.68' : ''}"><div class="doc" style="padding:2.6cqi 4.4cqi 2.6cqi;gap:.8cqi">${head('Guidelines', 'Page 6 of 6')}
+          ${clauseRow('§ 6.2', 'Prize', 'Reimbursement', 'r')}<div style="padding:${sq(c, 0, 1.2)}cqi 0">${bars(70)}</div>${clauseRow('§ 9.1', 'Participation fee', 'After selection', 'p')}</div></div>`)}${foot()}` },
 
     // 3. The turn, on ink: the highlighted line has slipped out of the page, and the pen drops through after it.
     { g: 'var(--ink)', dark: true,
@@ -117,7 +117,7 @@
         ${S('subhead', 'But it might make it the wrong one for you, and very often this fine print slips through the cracks.', 'class="mt-s wide soft"')}${S('subhead', 'So, we found a way to make it easier', 'class="mt-s wide"')}
         ${zone(c, `<div style="position:relative;width:52cqi;margin-left:3cqi;transform:rotate(1.5deg);zoom:${sq(c, .92, .62)}">
           <div class="doc" style="width:100%;padding:3.4cqi 4cqi 4cqi;gap:1.1cqi">${head('Guidelines', 'Page 6 of 6')}${bars(94, 86, 92, 70)}<div class="${K}-slot" ${mark('slot')}></div>${bars(62)}</div>
-          <div class="${K}-strip" style="left:44cqi;top:${sq(c, 70, 74)}%;width:48cqi;transform:rotate(-6deg)">${hl(S('label', 'Prizes are paid as reimbursement of expenses.'), mark('strip'))}</div></div>`, { j: 'flex-start', a: 'flex-start' })}${foot('Call Sheet, by pitch.dog', true)}` },
+          <div class="${K}-strip" style="left:44cqi;top:${sq(c, 70, 74)}%;width:48cqi;transform:rotate(-6deg)">${hl(c === 'square' ? `<div style="display:grid;gap:1.4cqi;padding:.8cqi 0">${[92, 58].map(w => `<i style="display:block;height:1.6cqi;border-radius:1cqi;background:rgb(21 19 15 / .22);width:${w}%"></i>`).join('')}</div>` : S('label', 'Prizes are paid as reimbursement of expenses.'), mark('strip'))}</div></div>`, { j: 'flex-start', a: 'flex-start' })}${foot('Call Sheet, by pitch.dog', true)}` },
 
     // 4. Call Sheet, with the conditions pulled out onto one card. The line runs on underneath it.
     { g: 'var(--blue)',

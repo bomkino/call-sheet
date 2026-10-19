@@ -7,6 +7,7 @@ embedded and the post definitions (P(id, {...}) for every week x region).
 
   python3 social/posts/make_weekly.py            # write v2/weekly.js
   python3 social/posts/make_weekly.py --explain  # also print every pool and every exclusion
+  python3 social/posts/make_weekly.py --dry      # print the picks, write nothing
 
 The rules (from the owner):
 - Lead time is counted from the Monday the post goes out to the EFFECTIVE deadline: the
@@ -17,13 +18,24 @@ The rules (from the owner):
     21 days  a lab, fellowship, pitch forum or fund that wants a synopsis, statement, video,
              treatment or sample
     35 days  anything that wants a budget, financing plan, production company or other
-             production paperwork (and public-funder labs)
-    42 days  major public funds (Telefilm, Screen Australia, UK Global Screen Fund, Bell, CMF...)
+             production paperwork
+    42 days  major public funds (Telefilm, Screen Australia, UK Global Screen Fund, Bell, CMF...),
+             whatever the programme: the owner names the funders
+  When more than one row applies, the longest wins.
 - Excluded: not open on the posting day (unless it opens within 7 days: then "opens ..."),
   invite-only, closed, rolling or undated, an earlier step already passed, not open to the
-  region (where.countries has it, or where.scope is worldwide), city- or state-restricted,
-  identity-restricted unless the row says who it's for, deadlines we couldn't confirm, and
-  anything whose reward isn't published.
+  region (where.countries has it, or where.scope is worldwide), city- or state-restricted
+  (where.subnational, or a state or province named in who it's for), identity-restricted unless
+  the row says who it's for, deadlines we couldn't confirm or never rechecked, and anything
+  whose reward isn't published. A deadline at "midnight, start or end of day not stated"
+  counts as the day before.
+
+The picks: up to three per post, a grant, a lab and something to enter where possible, from
+three different organisers, mixing film forms, preferring real money or real support and the
+market's own opportunities, and not repeating what that market saw last week.
+
+The design: a production call sheet for the week, on the market's revision-colour ground. See
+the JS at the bottom.
 """
 import json, re, sys
 from datetime import date, timedelta
@@ -38,16 +50,28 @@ WEEKS = [date(2026, 10, 19) + timedelta(weeks=k) for k in range(5)]
 HORIZON = 63            # days: "coming up" means within nine weeks of the post
 PER_POST = 3
 
-REGIONS = {  # key: (country code, who we're talking to, ground colour)
-    'us': ('US', 'US', 'var(--blue)'),
-    'uk': ('GB', 'UK', 'var(--green)'),
-    'ca': ('CA', 'Canadian', 'var(--salmon)'),
-    'au': ('AU', 'Australian', 'var(--yellow)'),
+REGIONS = {  # key: (country code, the place, its revision-colour ground and that colour's name)
+    'us': ('US', 'the US', 'var(--blue)', 'blue'),
+    'uk': ('GB', 'the UK', 'var(--green)', 'green'),
+    'ca': ('CA', 'Canada', 'var(--salmon)', 'salmon'),
+    'au': ('AU', 'Australia', 'var(--goldenrod)', 'goldenrod'),
 }
 
 # National and supranational screen agencies: the big public funds.
-MAJOR = re.compile(r'^(Telefilm|Screen Australia|UK Global Screen Fund|Bell Fund|CMF|NZFC|NZ On Air|CNC|'
-                   r'Creative Europe|Eurimages|FFA|Austrian Film Institute|Finnish Film Foundation|IDFA Bertha)')
+MAJOR = re.compile(r'^(Telefilm|Screen Australia|UK Global Screen Fund|Bell Fund|CMF|Canada Media Fund|Canada Council|'
+                   r'BFI|Indigenous Screen Office|NZFC|NZ On Air|CNC|Creative Europe|Eurimages|FFA|'
+                   r'Austrian Film Institute|Finnish Film Foundation|IDFA Bertha)')
+# A state, province or territory named in who an opportunity is for makes it subnational, even when
+# where.subnational is empty (Sundance's Graton Fellowship is for artists from California-based tribes).
+STATES = re.compile(r'\b(Alabama|Alaska|Arizona|Arkansas|California|Colorado|Connecticut|Delaware|Florida|Georgia|'
+                    r'Hawaii|Idaho|Illinois|Indiana|Iowa|Kansas|Kentucky|Louisiana|Maine|Maryland|Massachusetts|'
+                    r'Michigan|Minnesota|Mississippi|Missouri|Montana|Nebraska|Nevada|New Hampshire|New Jersey|'
+                    r'New Mexico|New York|North Carolina|North Dakota|Ohio|Oklahoma|Oregon|Pennsylvania|Rhode Island|'
+                    r'South Carolina|South Dakota|Tennessee|Texas|Utah|Vermont|Virginia|Washington|West Virginia|'
+                    r'Wisconsin|Wyoming|Ontario|Quebec|Québec|British Columbia|Alberta|Manitoba|Saskatchewan|'
+                    r'Nova Scotia|New Brunswick|Newfoundland|Yukon|Nunavut|Northwest Territories|Prince Edward Island|'
+                    r'New South Wales|Victoria|Queensland|Tasmania|Western Australia|South Australia|'
+                    r'Northern Territory|Scotland|Wales|Northern Ireland|London)\b')
 PAPER = re.compile(r'budget|financ|cash ?flow|production package|company|corporate|rights chain|'
                    r'distribution plan|production schedule')
 MATERIAL = re.compile(r'synopsis|statement|video|treatment|sample|pitch|dossier|proposal|deck|teaser|footage|bio')
@@ -58,20 +82,22 @@ def d(s):
     return date.fromisoformat(s) if s else None
 
 
+def major(c):
+    return bool(MAJOR.match(c['title']) or MAJOR.match(c['organiser'] or ''))
+
+
 def need(c):
-    """Minimum lead time in days for what this application asks for, and why."""
+    """Minimum lead time in days for what this application asks for, and why. When more than one
+    row of the owner's table applies, the longest one wins."""
     items = [b['item'] for b in c['bring'] if not b['item'].lower().startswith('if selected')]
     bring = ' '.join(items).lower()
     kinds = set(c['kinds'])
-    major = bool(MAJOR.match(c['title']))
+    if major(c):
+        return 42, 'major public fund'           # the owner names the funders, whatever the programme
     if bucket(c) == 'enter':
         return 14, 'a finished film or a script'
-    if major and 'lab' not in kinds:
-        return 42, 'major public fund'
     if PAPER.search(bring) or c['where']['test'] == 'company':
         return 35, 'budget, financing or company paperwork'
-    if major:
-        return 35, 'public-funder programme'
     if kinds & {'lab', 'market', 'grant', 'other_finance'} or MATERIAL.search(bring):
         return 21, 'written or video application'
     return 14, 'a finished film or a script'
@@ -93,6 +119,10 @@ def bucket(c):
 def effective(c):
     """(effective deadline, label of the step that sets it, earliest prerequisite already missed)"""
     closes = d(c['closes'])
+    for x in c['dates']:                         # "midnight, start or end of day not stated": the earlier one
+        if x['role'] == 'application_submission_deadline' and x['date'] == c['closes'] and \
+                'start or end of day not stated' in (x['label'] or ''):
+            closes -= timedelta(days=1)
     pre = [(d(x['date']), x['label']) for x in c['dates'] if x['role'] == 'prerequisite' and x['date']]
     eff, step = closes, None
     for when, label in pre:
@@ -125,8 +155,12 @@ def check(c, monday, code):
         return 'not open to the region'
     if w['subnational']:
         return f"only for {w['subnational']}"
+    if w['identity'] and STATES.search(w['identity']):
+        return f"only for {w['identity']}"
     if w['identity'] and c['slug'] not in FOR:
         return f"identity-restricted ({w['identity']}) and no 'for' line written"
+    if (c.get('recheck') or {}).get('status') not in ('confirmed', 'changed'):
+        return 'deadline not rechecked against the official page'
     if re.search(r"couldn't load|could not load", c['caution'] or '', re.I):
         return "deadline unconfirmed (we couldn't load the official page)"
     if (c['get'] or '').lower().startswith('not published'):
@@ -140,12 +174,24 @@ def check(c, monday, code):
     return None
 
 
+SUPPORT = re.compile(r'mentor|residenc|workshop|pitch|meetings|tutoring|screening|coaching', re.I)
+SHAKY = re.compile(r'not juried|confirm before relying', re.I)
+
+
+def org(c):
+    """Who runs it, loosely: one post never carries two opportunities from the same house."""
+    words = (c['organiser'] or c['title']).replace('—', ' ').split()
+    return ' '.join(words[:2] if words[0].lower() == 'the' else words[:1]).lower()
+
+
 def score(c, code, monday, history, same_week):
     s = 0.0
     if code in c['where']['countries']:
         s += 30                                  # made for this market
-    if MONEY.search(c['get'] or ''):
-        s += 15                                  # real money, stated
+    if MONEY.search(c['get'] or '') and not SHAKY.search(c['caution'] or ''):
+        s += 15                                  # real money, stated and dependable
+    elif SUPPORT.search(c['get'] or ''):
+        s += 6                                   # real support: mentoring, a residency, a pitch
     if c['fee']['state'] == 'free':
         s += 5
     if c['where']['identity']:
@@ -159,23 +205,31 @@ def score(c, code, monday, history, same_week):
 
 
 def pick(pool, code, monday, history, same_week):
-    """Up to three, a grant, a lab and something to enter where possible. Fresh first: nothing this
-    market saw last week, and nothing two other markets already have this week. Those limits relax
-    only when the pool runs short."""
-    ranked = sorted(pool, key=lambda c: -score(c, code, monday, history, same_week))
+    """Up to three: a grant, a lab and something to enter where possible, from three different houses
+    and, where it can, for different kinds of film. Fresh first: nothing this market saw last week,
+    and nothing two other markets already have this week. Those limits relax only when the pool
+    runs short."""
     last = history.get(monday - timedelta(weeks=1), set())
-    tiers = [[c for c in ranked if c['slug'] not in last and same_week.count(c['slug']) < 2],
-             [c for c in ranked if c['slug'] not in last],
-             ranked]
+    tiers = [[c for c in pool if c['slug'] not in last and same_week.count(c['slug']) < 2],
+             [c for c in pool if c['slug'] not in last],
+             pool]
     chosen = []
+
+    def fits(c):
+        return c not in chosen and org(c) not in {org(x) for x in chosen}
+
+    def value(c):                                # a film form already in the post counts against
+        shared = set(c['formats']) & {f for x in chosen for f in x['formats']}
+        return score(c, code, monday, history, same_week) - 5 * len(shared)
+
     for tier in tiers:
-        seen = {bucket(c) for c in chosen}
-        for c in tier:                           # the best of each kind not yet in the post
-            if c not in chosen and bucket(c) not in seen and len(chosen) < PER_POST:
-                chosen.append(c); seen.add(bucket(c))
-        for c in tier:                           # then the best of the rest
-            if c not in chosen and len(chosen) < PER_POST:
-                chosen.append(c)
+        for per_kind in (True, False):           # the best of each kind not yet in, then the best of the rest
+            while len(chosen) < PER_POST:
+                kinds = {bucket(x) for x in chosen}
+                cands = [c for c in tier if fits(c) and not (per_kind and bucket(c) in kinds)]
+                if not cands:
+                    break
+                chosen.append(max(cands, key=value))
     return sorted(chosen, key=lambda c: effective(c)[0])
 
 
@@ -284,7 +338,7 @@ def build(calls, explain=False):
     posts, skipped, history = [], [], {}
     for monday in WEEKS:
         same_week = []
-        for key, (code, region, ground) in REGIONS.items():
+        for key, (code, place, ground, rev) in REGIONS.items():
             pool = []
             for c in calls:
                 why = check(c, monday, code)
@@ -409,8 +463,9 @@ def main():
     explain = '--explain' in sys.argv
     calls = json.load(open(DATA))['calls']
     posts, skipped = build(calls, explain)
-    OUT.write_text(JS.replace('__DATA__', json.dumps(posts, ensure_ascii=False, indent=1)))
-    print(f'wrote {OUT.relative_to(ROOT)}: {len(posts)} posts')
+    if '--dry' not in sys.argv:
+        OUT.write_text(JS.replace('__DATA__', json.dumps(posts, ensure_ascii=False, indent=1)))
+        print(f'wrote {OUT.relative_to(ROOT)}: {len(posts)} posts')
     for pid, n in skipped:
         print(f'SKIPPED {pid}: only {n} qualified')
     print('\n| Week | Market | Opportunity | Effective deadline | Lead | Minimum |\n|---|---|---|---|---|---|')

@@ -10,7 +10,10 @@
     .cv-sentence-clause { position: absolute; color: var(--toner); --pd-type-ink: var(--toner); }
     .cv-sentence-ink { position: absolute; left: 0; top: 0; z-index: 4; overflow: visible; pointer-events: none; }
     .cv-sentence-ink path { fill: none; stroke: var(--marker); stroke-linecap: round; stroke-linejoin: round; }
-    .cv-sentence-ear { position: absolute; right: 0; top: 0; width: 8.6cqi; height: 8.6cqi; z-index: 5; overflow: visible; }
+    .cv-sentence-swipe { display: flex; align-items: center; gap: 1.6cqi; margin-right: -3cqi; }
+    .cv-sentence-arrow { width: 15cqi; height: 6cqi; overflow: visible; }
+    .cv-sentence-arrow path { fill: none; stroke: var(--marker); stroke-width: 5.5; stroke-linecap: round; stroke-linejoin: round; }
+    .cv-sentence-ear { position: absolute; right: 0; top: 0; width: 7cqi; height: 7cqi; z-index: 5; overflow: visible; }
   </style>`)
 
   // The sentence, broken the way a title card would break it. Each line is fitted to the measure.
@@ -36,9 +39,10 @@
     const x1 = b.right - pr.left + 1.4 * u, y1 = b.top - pr.top + b.height * .52, xm = 96.4 * u
     const sqr = post.dataset.pdCanvas === 'square'
     const P = sqr
-      ? (() => { const xa = a.left - pr.left + a.width * .62, ya = a.top - pr.top + .2 * u, w = b.getBoundingClientRect ? 0 : 0
-          const t2 = post.querySelector('.cv-sentence-wall > span:last-child').getBoundingClientRect(), xt = t2.left - pr.left + t2.width * .5, yt = t2.bottom - pr.top + 1.2 * u
-          return [[xa, ya], [xa + 2 * u, ya - 4 * u], [xt - 4 * u, yt + 5 * u], [xt - 1 * u, yt + 1.2 * u], [xt, yt]] })()
+      ? (() => { const t2 = post.querySelector('.cv-sentence-wall > span:last-child').getBoundingClientRect(), yt = t2.top - pr.top + t2.height * .55, xl = t2.left - pr.left
+          const al = a.left - pr.left, at = a.top - pr.top, ah = a.height
+          // Out of the loop's left end, under "is", up the margin and into the wall.
+          return [[al + 1.4 * u, at + ah * .7], [xl + 1.4 * u, at + ah + .4 * u], [xl - 3.2 * u, at + ah * .2], [xl - 4 * u, (at + yt) / 2], [xl - 3.4 * u, yt + 2 * u], [xl - .9 * u, yt]] })()
       : [[x0, y0], [x0 + 6 * u, y0 - 3.4 * u], [xm, y0 - 9 * u], [xm + .4 * u, y1 + 6 * u], [xm - 1.2 * u, y1 + 1 * u], [x1, y1]]
     const e = P[P.length - 1], q = P[P.length - 2], ang = Math.atan2(e[1] - q[1], e[0] - q[0])
     const head = [[-.6, 3], [.58, 2.8]].map(([da, L]) => `M${f(e[0])} ${f(e[1])} L${f(e[0] - Math.cos(ang + da) * L * u)} ${f(e[1] - Math.sin(ang + da) * L * u)}`).join(' ')
@@ -51,6 +55,9 @@
 
   const ear = `<svg class="cv-sentence-ear" viewBox="0 0 100 100" aria-hidden="true"><path d="M0 0 L100 100 L100 0 Z" fill="#f3a58a"/><path d="M0 0 L100 100 L0 100 Z" fill="rgb(21 19 15 / .18)" transform="translate(-3 4)"/><path d="M0 0 L100 100 L0 100 Z" fill="#e3472d"/></svg>`
 
+  // The swipe cue, drawn: the same marker arrow as the rest of the set.
+  const arrow = `<svg class="cv-sentence-arrow" viewBox="0 0 100 40" aria-hidden="true"><path d="M3 24 C 24 19, 46 27, 68 21 S 88 18, 96 19"/><path d="M83 7 C 88 12, 92 15, 97 19 C 91 22, 87 27, 84 33"/></svg>`
+
   cover('sentence', { g: 'var(--white)', dark: false,
     art: () => ear,
     html: (c, i, n) => {
@@ -58,8 +65,8 @@
       const lines = L.map((t) => t === 'entity domiciled in a' ? line(t).replace(' a<', ' <span data-cv-target>a</span><') : line(t)).join('')
       return `${ctop('Guidelines, § 4.2', i, n)}
         <div class="grow" style="display:flex;flex-direction:column;justify-content:center"><div class="cv-sentence-wall">${lines}</div></div>
-        ${S('headline', `Somewhere in this sentence is ${circ('$10,000', 'wide', { l: '-9%', t: '-16%', w: '118%', h: '134%' })} for your next film, and we want to help you find it!!`, `class="cv-sentence-pay mt-m" style="max-inline-size:${sq(c, '22ch', '24ch')}"`)}
+        ${S('headline', `Somewhere in this sentence is ${circ('$10,000', 'wide', { l: '-9%', t: '-16%', w: '118%', h: '134%' })} for your next film, and we want to help you find it!!`, `class="cv-sentence-pay ${sq(c, 'mt-s', 'mt-m')}" style="max-inline-size:${sq(c, '22ch', '24ch')}"`)}
         <div class="mt-m"></div>
-        <div class="foot">${sp('credit', 'Call Sheet, by pitch.dog')}${swipe}</div>`
+        <div class="foot">${sp('credit', 'Call Sheet, by pitch.dog')}<span class="cv-sentence-swipe">${sp('credit', 'Swipe')}${arrow}</span></div>`
     } })
 }

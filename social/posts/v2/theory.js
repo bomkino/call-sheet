@@ -84,7 +84,7 @@
       6: { rules: { x: 260, y: 650, w: 560, r: -2 }, pins: [[540, 664]] },
     },
   }
-  // The cover's string leaves its right edge from a pin at c, aiming for e (cover units: cqi). Slide 2 picks it up there.
+  // The cover's string leaves its right edge from a pin at c, aiming for e (cqi; mirrors P.c and P.e in covers/theory.js). Slide 2 picks it up there.
   const COVER = { portrait: { c: [86, 60.5], e: [104, 63] }, square: { c: [85, 55], e: [104, 50] } }
 
   // The red string: one quadratic sag between each pair of pins, drawn on both slides it crosses.
@@ -98,7 +98,7 @@
     let lead = ''
     if (n === 2) { const q = 10.8, C = COVER[c], cc = [C.c[0] * q - W, C.c[1] * q], e = [C.e[0] * q - W, C.e[1] * q], L = Math.hypot(e[0] - cc[0], e[1] - cc[1])
       const k = [(cc[0] + e[0]) / 2, (cc[1] + e[1]) / 2 + L * .02], t = [(e[0] - k[0]) / L, (e[1] - k[1]) / L], p = P[0], L2 = p[0] - e[0]
-      lead = `M${cc[0]} ${cc[1]} Q${k[0]} ${k[1]}, ${e[0]} ${e[1]} C${e[0] + t[0] * L2 * .3} ${e[1] + t[1] * L2 * .3 + 40}, ${p[0] - L2 * .35} ${p[1] + 26}, ${p[0]} ${p[1]}` }
+      lead = `M${cc[0]} ${cc[1]} Q${k[0]} ${k[1]}, ${e[0]} ${e[1]} C${e[0] + t[0] * 45} ${e[1] + t[1] * 45}, ${p[0] - L2 * .45} ${p[1] + 34}, ${p[0]} ${p[1]}` }
     const pins = [...BOARD[c][n].pins, ...(BOARD[c][n].deco || [])].map(([x, y]) => `<g transform="translate(${x} ${y})"><ellipse cx="5" cy="9" rx="13" ry="9" fill="rgb(21 19 15 / .22)"/><circle r="13" fill="#c2381f"/><circle r="11" fill="#e3472d"/><circle cx="-4" cy="-4.5" r="3.6" fill="rgb(255 255 255 / .55)"/></g>`).join('')
     return `<svg class="theory-string" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" aria-hidden="true">
       <path d="${lead} ${d}" fill="none" stroke="rgb(21 19 15 / .16)" stroke-width="4.6" stroke-linecap="round" transform="translate(4 9)"/>
@@ -109,7 +109,7 @@
   const SLIDES = [
     page('Conspiracy theory', (c) => head('Conspiracy theory:', ['Filmmaking grants and festival submissions are deliberately confusing, so you’re too tired to apply after reading the rules!!']), () => '', { g: 'var(--goldenrod)', n: 1 }),
     page('Exhibit A', (c) => head('Okay, maybe that’s not true.', ['But you can’t deny there are times when you understand every word in these “guidelines” but still have no idea what the sentence means.']),
-      board(2, (c, B) => at(B.guide, guide(c))), { g: 'var(--buff)', n: 2 }),
+      board(2, (c, B) => at(B.guide, guide(c))), { g: 'var(--salmon)', n: 2 }),
     page('Introducing', (c) => head('So, we cut the fluff.', ['Introducing Call Sheet.', 'Film and TV grants, fellowships, labs and festivals, explained in language you don’t need a PhD to understand.']),
       board(3, (c, B) => at(B.fluff, fluff(c)) + at(B.plain, plain(c))), { g: 'var(--paper)', n: 3 }),
     page('The questions', () => '',

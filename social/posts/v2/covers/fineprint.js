@@ -6,16 +6,20 @@
   document.head.insertAdjacentHTML('beforeend', `<style>
     .cv-fineprint-page { position: absolute; transform-origin: 0 0; overflow: hidden; height: calc(var(--ph, 200) * 1cqi); background: var(--sheet); color: var(--ink); --pd-type-ink: var(--ink); padding: 3.4cqi 4cqi; box-shadow: var(--lift-dark); }
     .cv-fineprint-page .hd { display: flex; justify-content: space-between; padding-bottom: 1.2cqi; border-bottom: .3cqi solid var(--ink); margin-bottom: 1.6cqi; }
-    .cv-fineprint-page .cols { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2.6cqi; }
+    .cv-fineprint-page .cols { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2.4cqi; }
     .cv-fineprint-page .cl { font-size: 1.3cqi; line-height: 1.36; margin-bottom: .8cqi; }
     .cv-fineprint-page .cl b { font-weight: 600; margin-right: .35em; }
     .cv-fineprint-page .key { position: relative; }
     .cv-fineprint-page .key { display: block; }
     .cv-fineprint-page .key > span { position: relative; display: inline-block; }
     .cv-fineprint-page .key svg { position: absolute; left: -3%; width: 106%; bottom: -.3cqi; height: .9cqi; overflow: visible; }
+    .cv-fineprint-swipe { display: flex; align-items: center; gap: 1.6cqi; margin-right: -3cqi; }
+    .cv-fineprint-arrow { width: 15cqi; height: 6cqi; overflow: visible; }
+    .cv-fineprint-arrow path { fill: none; stroke: var(--sheet); stroke-width: 5.5; stroke-linecap: round; stroke-linejoin: round; }
+    .cv-fineprint-clip { position: absolute; width: 4.4cqi; height: 13cqi; overflow: visible; }
     .cv-fineprint-glass { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; }
     .cv-fineprint-glass > * { position: absolute; }
-    .cv-fineprint-lens { border-radius: 50%; overflow: hidden; background: var(--sheet); }
+    .cv-fineprint-lens { border-radius: 50%; overflow: hidden; background: var(--cherry); }
     .cv-fineprint-lens > .mag { position: absolute; width: 100cqi; height: 125cqi; }
   </style>`)
 
@@ -28,10 +32,10 @@
     'But it might make it the wrong one for you, and very often this fine print slips through the cracks.',
   ]
   const under = `<svg viewBox="0 0 100 6" preserveAspectRatio="none" aria-hidden="true"><path d="M1 3.8 C 20 2.2, 46 4.6, 70 2.8 S 92 3.4, 99 1.8" fill="none" stroke="#e3472d" stroke-linecap="round" vector-effect="non-scaling-stroke" style="stroke-width:.3cqi"/></svg>`
-  const clause = (n, t, key) => S('body', key ? `<span class="key"><span><b>${n}</b>${t[0]}${under}</span><br><span>${t[1]}${under.replace('M1 3.8', 'M1 2.6')}</span></span>` : `<b>${n}</b>${t}`, 'class="cl"')
+  const clause = (n, t, key) => S('body', key ? `<span class="key">${t.map((l, j) => `<span>${j ? '' : `<b>${n}</b>`}${l}${under.replace('M1 3.8', `M1 ${3.8 - j * .8}`)}</span>`).join('<br>')}</span>` : `<b>${n}</b>${t}`, 'class="cl"')
   // Five columns of clauses; the key clause sits in the third column, a few clauses down.
-  const cols = Array.from({ length: 5 }, (_, k) => `<div>${Array.from({ length: 9 }, (_, j) => { const n = k * 9 + j + 1
-    return k === 2 && j === 3 ? clause(`6.${n}`, ['It’s usually somewhere', 'in the fine print.'], 1) : clause(`6.${n}`, T[(k * 3 + j * 2) % T.length]) }).join('')}</div>`).join('')
+  const cols = Array.from({ length: 6 }, (_, k) => `<div>${Array.from({ length: 9 }, (_, j) => { const n = k * 9 + j + 1
+    return k === 2 && j === 1 ? clause(`6.${n}`, ['It’s usually', 'somewhere in the', 'fine print.'], 1) : clause(`6.${n}`, T[(k * 3 + j * 2) % T.length]) }).join('')}</div>`).join('')
   const pageHtml = (st) => `<div class="cv-fineprint-page" style="${st}"><div class="hd">${sp('metadata', 'Terms and conditions', 'class="soft"')}${sp('metadata', 'Page 6 of 6', 'class="soft"')}</div><div class="cols">${cols}</div></div>`
 
   // Centre the glass on the key clause once the page is laid out. --lx/--ly are in cqi.
@@ -39,7 +43,9 @@
   const aim = (post) => {
     const g = post.querySelector('.cv-fineprint-glass'), key = post.querySelector(':scope > .cv-fineprint-page .key'); if (!g || !key) return
     const pr = post.getBoundingClientRect(), u = pr.width / 100
-    for (let it = 0; it < 2; it++) { const k = key.getBoundingClientRect(), cs = getComputedStyle(post)
+    const box = () => { const r = [...key.querySelectorAll(':scope > span')].map(e => e.getBoundingClientRect())
+      return { left: Math.min(...r.map(q => q.left)), top: Math.min(...r.map(q => q.top)), width: Math.max(...r.map(q => q.right)) - Math.min(...r.map(q => q.left)), height: Math.max(...r.map(q => q.bottom)) - Math.min(...r.map(q => q.top)) } }
+    for (let it = 0; it < 2; it++) { const k = box(), cs = getComputedStyle(post)
       const sx = +(cs.getPropertyValue('--sx') || 0), sy = +(cs.getPropertyValue('--sy') || 0)
       post.style.setProperty('--sx', (sx + +g.dataset.lx - (k.left + k.width / 2 - pr.left) / u).toFixed(2))
       post.style.setProperty('--sy', (sy + +g.dataset.ly - (k.top + k.height / 2 - pr.top) / u).toFixed(2)) }
@@ -52,7 +58,13 @@
   const root = document.querySelector('#root')
   if (root) new MutationObserver(() => { reaim(); document.fonts.ready.then(() => requestAnimationFrame(reaim)) }).observe(root, { childList: true })
 
-  const LAY = { portrait: { page: [-6, 66, 118, -6], d: 60, m: 3.1, lx: 54, ly: 88, hand: 100, bottom: 111 }, square: { page: [-4, 56, 112, -6], d: 46, m: 3.1, lx: 56, ly: 70, hand: 98, bottom: 88 } }
+  const LAY = { portrait: { page: [-6, 66, 118, -6], d: 60, m: 3.5, lx: 50, ly: 83, hand: 100, bottom: 111 }, square: { page: [-4, 56, 112, -6], d: 43, m: 3.1, lx: 52, ly: 68, hand: 98, bottom: 88 } }
+
+  // The swipe cue, drawn: the set's marker arrow, in paper on the cherry ground.
+  const arrow = `<svg class="cv-fineprint-arrow" viewBox="0 0 100 40" aria-hidden="true"><path d="M3 24 C 24 19, 46 27, 68 21 S 88 18, 96 19"/><path d="M83 7 C 88 12, 92 15, 97 19 C 91 22, 87 27, 84 33"/></svg>`
+  // A paperclip on the page's top edge: wire, drawn as one bent line, with its shadow.
+  const wire = 'M3 40 V8 A6 6 0 0 1 15 8 V34 A4 4 0 0 1 7 34 V12'
+  const clip = (st) => `<svg class="cv-fineprint-clip" viewBox="0 0 18 48" style="${st}" aria-hidden="true"><path d="${wire}" transform="translate(1 1.6)" fill="none" stroke="rgb(21 19 15 / .3)" stroke-width="2.2" stroke-linecap="round"/><path d="${wire}" fill="none" stroke="#9a958c" stroke-width="2.2" stroke-linecap="round"/><path d="${wire}" fill="none" stroke="#e6e2da" stroke-width=".8" stroke-linecap="round" transform="translate(-.4 -.3)"/></svg>`
 
   cover('fineprint', { g: 'var(--cherry)', dark: false,
     art: (c) => {
@@ -61,7 +73,8 @@
       const at = (dx, dy) => `left:calc((var(--lx) + ${dx}) * 1cqi);top:calc((var(--ly) + ${dy}) * 1cqi)`
       // The handle leaves the lens down and to the right, and runs out of frame.
       const ha = L.hand
-      return `${pageHtml(st)}
+      const t = c === 'square' ? 20 : 22, ca = pr * Math.PI / 180
+      return `${pageHtml(st)}${clip(`left:calc((${px} + ${(t * Math.cos(ca) - 2.2).toFixed(2)} + var(--sx, 0)) * 1cqi);top:calc((${py} + ${(t * Math.sin(ca) - 4.6).toFixed(2)} + var(--sy, 0)) * 1cqi);transform:rotate(${pr}deg)`)}
         <div class="cv-fineprint-glass" data-lx="${L.lx}" data-ly="${L.ly}" data-bottom="${L.bottom}" style="--lx:${L.lx};--ly:${L.ly}">
           <div style="${at(-r + 2.4, -r + 3.6)};width:${d}cqi;height:${d}cqi;border-radius:50%;box-shadow:0 0 2.6cqi 1cqi rgb(21 19 15 / .3)"></div>
           <div style="${at(0, 0)};width:80cqi;height:8cqi;transform-origin:0 50%;transform:translate(1.6cqi, -0.4cqi) rotate(${ha - 90}deg) translate(${r}cqi, 2.4cqi);border-radius:2cqi;background:rgb(21 19 15 / .26)"></div>
@@ -70,13 +83,13 @@
             <i style="display:block;flex:1;height:6.4cqi;background:#15130f;border-radius:1cqi 3.2cqi 3.2cqi 1cqi;box-shadow:inset 0 1.1cqi 0 -.4cqi rgb(255 255 255 / .16)"></i></div>
           <div class="cv-fineprint-lens" style="${at(-r, -r)};width:${d}cqi;height:${d}cqi">
             <div class="mag" style="left:calc((var(--lx) - ${r}) * -1cqi);top:calc((var(--ly) - ${r}) * -1cqi);transform-origin:calc(var(--lx) * 1cqi) calc(var(--ly) * 1cqi);transform:scale(${L.m})">${pageHtml(st)}</div></div>
-          <div style="${at(-r - 1.8, -r - 1.8)};width:${d + 3.6}cqi;height:${d + 3.6}cqi;border-radius:50%;border:2.6cqi solid #15130f;box-shadow:inset 0 0 0 .45cqi #4a4640, inset 0 .9cqi 1.4cqi rgb(21 19 15 / .35)"></div>
+          <div style="${at(-r - 1.8, -r - 1.8)};width:${d + 3.6}cqi;height:${d + 3.6}cqi;border-radius:50%;border:2.2cqi solid #15130f;box-shadow:inset 0 0 0 .45cqi #4a4640, inset 0 .9cqi 1.4cqi rgb(21 19 15 / .35)"></div>
           <svg style="${at(-r, -r)};width:${d}cqi;height:${d}cqi;overflow:visible" viewBox="-50 -50 100 100" aria-hidden="true">
             <path d="M-38 -14 A40 40 0 0 1 -14 -38" fill="none" stroke="rgb(255 255 255 / .6)" stroke-width="2.4" stroke-linecap="round"/>
             <path d="M-40 -3 A40 40 0 0 1 -39 -9" fill="none" stroke="rgb(255 255 255 / .45)" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>`
     },
     html: (c, i, n) => `<div style="color:var(--sheet);--pd-type-ink:var(--sheet)">${ctop('The fine print', i, n)}
-        ${S('display', 'Sometimes, film festivals and funding opportunities come with a catch.', `class="mt-m" style="max-inline-size:17ch"`)}</div>
-        <div class="grow"></div><div class="foot" style="color:var(--sheet);--pd-type-ink:var(--sheet)">${sp('credit', 'Call Sheet, by pitch.dog')}${swipe}</div>` })
+        ${S('display', `Sometimes, film festivals and funding opportunities come with a ${circ('catch.', 'wide', { ml: '.1em', l: '-9%', t: '-10%', w: '118%', h: '126%', loop: 'var(--sheet)' })}`, `class="mt-m" style="max-inline-size:${sq(c, '20ch', '17ch')};${sq(c, 'font-size:9.2cqi', '')}"`)}</div>
+        <div class="grow"></div><div class="foot" style="color:var(--sheet);--pd-type-ink:var(--sheet)">${sp('credit', 'Call Sheet, by pitch.dog')}<span class="cv-fineprint-swipe">${sp('credit', 'Swipe')}${arrow}</span></div>` })
 }

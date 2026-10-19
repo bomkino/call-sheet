@@ -335,10 +335,10 @@ P('launch', { name: 'Filmmaker friends, meet Call Sheet.', g: 'var(--ink)', dark
     const rows = [li(...CALLS.roy), li(...CALLS.cnc), li(...CALLS.merata, { circle: true, free: true }), li(...CALLS.tfl), li(...CALLS.cph)]
     const sheet = (r, style) => `<div class="art" style="${style}">${list(r)}${tape('left:-3cqi;top:-1.8cqi;transform:rotate(-28deg)')}</div>`
     if (c === 'landscape') return { frame: `<div class="grow" style="max-width:47%;display:flex;flex-direction:column;justify-content:center">${kicker('New · Totally free')}${S('display', 'Filmmaker friends, meet Call Sheet.', 'class="mt-m"')}${S('subhead', ONE_LIST, 'class="mt-m soft"')}</div>`,
-      art: sheet(rows.slice(1, 4), 'left:52cqi;right:3cqi;top:16cqb;transform:rotate(-4deg)') }
+      art: sheet(rows.slice(1, 4), 'left:54cqi;right:5cqi;top:22cqb;transform:rotate(-3deg)') }
     return { frame: head('New · Totally free · From pitch.dog', 'Filmmaker friends, meet Call Sheet.', ONE_LIST, { soft: true }),
       art: sheet(c === 'square' ? rows.slice(1, 4) : rows.slice(c === 'story' ? 0 : 1),
-        c === 'square' ? 'left:12cqi;right:-1cqi;top:54cqb;transform:rotate(-4deg)' : c === 'story' ? 'left:7cqi;right:-3cqi;top:47cqb;transform:rotate(-4deg)' : 'left:8cqi;right:-3cqi;top:50cqb;transform:rotate(-4deg)') }
+        c === 'square' ? 'left:12cqi;right:-1cqi;top:49cqb;transform:rotate(-4deg)' : c === 'story' ? 'left:7cqi;right:-3cqi;top:47cqb;transform:rotate(-4deg)' : 'left:8cqi;right:-3cqi;top:50cqb;transform:rotate(-4deg)') }
   } })
 
 // 2. Fewer tabs. Blue ground; a browser crammed with tabs runs off the edge, one calm list in front.
@@ -346,11 +346,11 @@ const browser = (n, style) => `<div class="browser" style="${style}"><div class=
 P('tabs', { name: 'Fewer tabs. More applications.', g: 'var(--blue)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
   alt: 'Fewer tabs. More applications. A browser window crammed with dozens of tabs runs off the edge of the frame, behind a single printed Call Sheet list, taped down, with one date circled.',
   render (sz, c) {
-    const top = sq(c, c === 'story' ? 50 : 56, 58)
+    const top = sq(c, c === 'story' ? 50 : 56, 50)
     const rows = [li(...CALLS.cnc.slice(0, 3)), li(...CALLS.merata.slice(0, 3), '', { circle: true }), li(...CALLS.tfl.slice(0, 3)), li(...CALLS.cph.slice(0, 3))]
     return { frame: head('Call Sheet', 'Fewer tabs.<br>More applications.', c === 'square' ? '' : 'Film and TV grants, festivals, labs and fellowships in one free list, with everything you need to know before applying.'),
       art: `${browser(26, `left:24cqi;right:-30cqi;top:${top - 6}cqb;height:${sq(c, 62, 54)}cqi;transform:rotate(5deg)`)}${browser(20, `left:14cqi;right:-18cqi;top:${top - 2}cqb;height:${sq(c, 62, 54)}cqi;transform:rotate(-1.5deg)`)}
-        <div class="art" style="left:6cqi;width:74cqi;top:${top + sq(c, 8, 10)}cqb;transform:rotate(-3deg)">${list(rows.slice(0, sq(c, c === 'story' ? 4 : 3, 2)), { note: 'Soonest first' })}${tape('right:6cqi;top:-2cqi;transform:rotate(10deg)')}</div>` }
+        <div class="art" style="left:6cqi;width:74cqi;top:${top + sq(c, 8, -1)}cqb;transform:rotate(-3deg)">${list(c === 'square' ? rows.slice(1, 3) : rows.slice(0, c === 'story' ? 4 : 3), { note: 'Soonest first' })}${tape('right:6cqi;top:-2cqi;transform:rotate(10deg)')}</div>` }
   } })
 
 // 3. Twelve opportunities. Zero entry fees. Yellow ground; a scatter of slips runs off the top, stamped; the type sits below.
@@ -396,7 +396,7 @@ P('circle', { name: 'Circle the one that’s yours.', g: 'var(--paper)', sizes: 
   render (sz, c) {
     const rows = [li(...CALLS.roy.slice(0, 3), '', { dim: true }), li(...CALLS.cnc.slice(0, 3), '', { dim: true }), li(...CALLS.merata.slice(0, 3), '', { ring: true }), li(...CALLS.tfl.slice(0, 3), '', { dim: true }), li(...CALLS.cph.slice(0, 3), '', { dim: true }), li('5', 'Nov', 'TorinoFilmLab FeatureLab', '', { dim: true }), li('9', 'Nov', 'Series Mania Writers Campus', '', { dim: true })]
     return { frame: head('Call Sheet', 'Circle the one that’s yours.', 'Tell it what you’re making and where you’re based. Then narrow down the list.'),
-      art: `<div class="art" style="left:${sq(c, 16, 22)}cqi;right:-7cqi;top:${{ portrait: 46, square: 50, story: 43 }[c]}cqb;transform:rotate(4deg)">${list(rows, { note: '186 opportunities' })}${tape('left:-3cqi;top:-1.6cqi;transform:rotate(-26deg)')}</div>` }
+      art: `<div class="art" style="left:${sq(c, 16, 22)}cqi;right:0;top:${{ portrait: 46, square: 50, story: 43 }[c]}cqb;transform:rotate(4deg)">${list(rows, { note: '186 opportunities' })}${tape('left:-3cqi;top:-1.6cqi;transform:rotate(-26deg)')}</div>` }
   } })
 
 // 6. "Not published" isn't free. Salmon ground; a big fee slip runs off the right edge, stamped.
@@ -461,7 +461,7 @@ P('dm', { name: 'Comment Call Sheet and we will send you the link!', g: 'var(--c
       <i style="display:block;width:${sq(c, 12, 10)}cqi;height:${sq(c, 12, 10)}cqi;border-radius:50%;background:var(--ink)"></i>
       <div>${S('metadata', 'Your comment', 'class="soft"')}<div style="margin-top:1.2cqi;display:flex;align-items:center;gap:.4cqi">${sp('headline', circ('Call Sheet', 'long', { l: '-8%', t: '-20%', w: '116%', h: '146%' }))}<i style="display:block;width:.5cqi;height:${sq(c, 7, 6)}cqi;margin-left:3cqi;background:var(--marker)"></i></div></div>
       <svg viewBox="0 0 24 24" style="width:${sq(c, 8, 7)}cqi;height:auto" aria-hidden="true"><path d="M3 11.5 L21 3 L14.5 21 L11.5 13 Z" fill="none" stroke="#15130f" stroke-width="1.8" stroke-linejoin="round"/><path d="M11.5 13 L21 3" stroke="#15130f" stroke-width="1.8"/></svg></div></div>`
-    return { frame: `${kicker('Filmmaker friends')}${S('display', 'Comment Call Sheet and we will send you the link!', `class="mt-m" style="max-inline-size:${sq(c, 9, 12)}em"`)}
+    return { frame: `${kicker('Filmmaker friends')}${S('display', 'Comment Call&nbsp;Sheet and we will send you the link!', `class="mt-m" style="max-inline-size:${sq(c, 9, 12)}em"`)}
       ${S('subhead', 'Film and TV grants, festivals, labs and fellowships in one free list. Totally free!', 'class="mt-s soft" style="max-inline-size:16em"')}<div class="grow" style="display:flex;align-items:center">${card}</div>${foot('Call Sheet, by pitch.dog', true)}`, art: '' }
   } })
 
@@ -754,7 +754,7 @@ const FIRST = [
 ]
 
 const CAROUSELS = { how: [HOW,'How Call Sheet works: pick what you’re making, read what matters, save the ones you like, get a nudge before it closes and tick off what to send. Last slide: Call Sheet, by pitch.dog. Comment Call Sheet and we will send you the link.'],
-  free: [FREEC, 'Twelve funding opportunities for your film that are completely free to apply for, closing November 2026 to January 2027, on printed lists with what each one gives. Last slide: Call Sheet, by pitch.dog. Comment Call Sheet and we will send you the link.'],
+  free: [FREEC, 'Twelve funding opportunities for your film that are completely free to apply for, closing November 2026 to January 2027, three at a time on printed lists and paper slips, each with its date and what it gives. Last slide: Call Sheet, by pitch.dog. Comment Call Sheet and we will send you the link.'],
   read: [READ, 'Five bits of small print to read before you apply: not published isn’t free; check the city; before means before; up to is a ceiling; home or passport.'],
   fee: [FEE, 'Is it free? The four answers you’ll see on Call Sheet. Free to enter: the organiser says so, as with the Sundance Merata Mita Fellowship. Not published: the organiser hasn’t said, as with the WAVE Grant. Free to enter but €1,090 tuition if selected, as with Series Mania Writers Campus. And a price: $48, or $38 for students, for the Roy W. Dean Fall Grant. Call Sheet shows every fee as published.'],
   who: [WHO, 'Can I apply? Calls test who can apply in different ways: where you live (the WAVE Grant, US residents), your citizenship (the Michael Collyer Fellowship, US citizens and green-card holders aged 18 to 25), your company (the Bell Fund, Canadian-controlled companies), or two at once (the UK Global Screen Fund, a UK-resident producer leading a UK company). Say where you’re based on Call Sheet and it hides the calls that rule you out.'],
@@ -817,7 +817,7 @@ Object.entries(window.PLACES || {}).filter(([code]) => PLACE_PAGES[code]).forEac
         <div class="grow" style="display:flex;flex-direction:column;justify-content:center;gap:${c === 'story' ? 1.8 : 3.4}cqb">
           <div style="display:flex;align-items:center;gap:5cqi;padding-left:2cqi">${circ(sp('metric', String(pl.yes)), 'round', { l: '-22%', t: '-18%', w: '144%', h: '136%' })}${S('subhead', `film and TV opportunities for filmmakers based in ${pl.name}.`, 'style="max-inline-size:13em"')}</div>
           <div style="position:relative;width:100%;transform:rotate(-2deg)">${list(c === 'story' ? rows : rows.slice(0, 2), { note: 'A few of them' })}${tape('left:-3cqi;top:-1.8cqi;transform:rotate(-26deg)')}</div></div>
-        ${S('label', `Want all ${pl.yes}, soonest first?`, 'class="soft"')}${S('subhead', `Comment ${circ('Call Sheet', 'long', { ml: '.3em', l: '-7%', t: '-18%', w: '114%', h: '140%' })}&ensp;and we will send you the link!`, 'class="mt-xs"')}<div class="mt-m"></div>${foot('Totally free!')}`, art: '' }
+        ${S('label', `Want all ${pl.yes}, soonest first?`, 'class="soft"')}${S('subhead', `Comment ${circ('Call Sheet', 'long', { ml: '.3em', l: '-7%', t: '-18%', w: '114%', h: '140%' })}&ensp;and we will send you the link!`, 'class="mt-xs"')}${c === 'story' ? '<div class="mt-xs"></div>' : '<div class="mt-m"></div>'}${foot('Totally free!')}`, art: '' }
     } })
 })
 

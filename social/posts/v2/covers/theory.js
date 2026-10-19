@@ -8,11 +8,11 @@
     .cv-theory-board > * { position: absolute; }
     .cv-theory-cork { inset: 0; width: 100%; height: 100%; }
     .cv-theory-page { background: var(--sheet); color: var(--ink); --pd-type-ink: var(--ink); box-shadow: var(--lift); padding: 2.6cqi 3cqi; display: grid; gap: 1.1cqi; align-content: start; }
-    .cv-theory-page .ln { display: grid; grid-template-columns: 4.2cqi 1fr; align-items: center; gap: .6cqi; }
-    .cv-theory-page .ln b { display: block; font-size: .7em; line-height: 1; }
-    .cv-theory-page .ln b [data-pd-social] { font-size: 1.5cqi; }
+    .cv-theory-page .cv-theory-ln { display: grid; grid-template-columns: 4.2cqi 1fr; align-items: center; gap: .6cqi; }
+    .cv-theory-page .cv-theory-ln b { display: block; font-size: 1.5cqi; line-height: 1; font-weight: inherit; }
+    .cv-theory-page .cv-theory-ln b [data-pd-social] { font-size: 1.5cqi; line-height: 1; }
     .cv-theory-card::before { content: ""; position: absolute; left: 0; right: 0; top: 3.2cqi; height: .3cqi; background: #8fb2df; }
-    .cv-theory-tape { position: absolute; width: 15cqi; height: 4.6cqi; background: rgb(251 249 243 / .62); box-shadow: 0 .2cqi .5cqi rgb(21 19 15 / .16); clip-path: polygon(0 8%, 4% 0, 9% 10%, 14% 0, 100% 4%, 96% 92%, 91% 100%, 86% 90%, 0 96%); }
+    .cv-theory-tape { position: absolute; width: 15cqi; height: 4.6cqi; background: rgb(236 226 198 / .88); box-shadow: 0 .2cqi .5cqi rgb(21 19 15 / .2); clip-path: polygon(0 8%, 4% 0, 9% 10%, 14% 0, 100% 4%, 96% 92%, 91% 100%, 86% 90%, 0 96%); }
     .cv-theory-swipe { display: flex; align-items: center; gap: 1.6cqi; margin-right: -3cqi; }
     .cv-theory-arrow { width: 15cqi; height: 6cqi; overflow: visible; }
     .cv-theory-arrow path { fill: none; stroke: var(--marker); stroke-width: 5.5; stroke-linecap: round; stroke-linejoin: round; }
@@ -48,7 +48,7 @@
       <path d="${path}" fill="none" stroke="#c2381f" stroke-width=".4" stroke-linecap="round"/>
       <path d="${path}" fill="none" stroke="#e3472d" stroke-width=".18" stroke-linecap="round" stroke-dasharray=".5 .45" opacity=".65"/>` }
   // Clause rows: a number in the margin, a grey line of text, and one clause highlighted.
-  const bars = (sec, ...w) => w.map((x, k) => `<div class="ln"><b>${k % 3 ? '' : sp('metadata', `${sec}.${k / 3 + 1}`, 'class="soft"')}</b>${x === 'hl' ? '<i class="hl" style="width:84%"></i>' : `<i style="width:${x}%"></i>`}</div>`).join('')
+  const bars = (sec, ...w) => w.map((x, k) => `<div class="cv-theory-ln"><b>${k % 3 ? '' : sp('metadata', `${sec}.${k / 3 + 1}`, 'class="soft"')}</b>${x === 'hl' ? '<i class="hl" style="width:84%"></i>' : `<i style="width:${x}%"></i>`}</div>`).join('')
   const page = (style, hd, pg, body) => `<div class="cv-theory-page" style="${style}"><div class="hd">${sp('metadata', hd, 'class="soft"')}${sp('metadata', pg, 'class="soft"')}</div>${body}</div>`
 
   // A coffee ring, left by someone who read the rules twice.
@@ -61,12 +61,12 @@
     art: (c) => {
       const sqr = c === 'square', H = sqr ? 100 : 125
       const L = sqr
-        ? { clip: 11, p1: [-2, 39, -6], p2: [31, 36, 4], p3: [66, 41, -3], card: [26, 55, 1.8, 70, 5.1] }
-        : { clip: 12, p1: [-2, 43, -6], p2: [33, 40, 4], p3: [68, 46, -3], card: [8, 72, 1.6, 86, 6.3] }
+        ? { clip: 11, p1: [-2, 39, -6], p2: [31, 36, 4], p3: [66, 41, -3], card: [17, 53.5, 2, 64, 4.6] }
+        : { clip: 12, p1: [-2, 43, -6], p2: [33, 40, 4], p3: [68, 46, -3], card: [8, 69.5, 1.6, 86, 6.0] }
       // Pins on the highlighted clauses, one beside the giveaway word, and the string's way out.
       const P = sqr
-        ? { a: [24, 52], b: [54, 51.5], c: [85, 55], d: [29.6, 69.4], e: [104, 50], f: [60, 57.6] }
-        : { a: [13, 57.4], b: [56, 56.5], c: [86, 60.5], d: [11.6, 93.2], e: [104, 63], f: [60, 74.6] }
+        ? { a: [16, 51.5], b: [52, 50.2], c: [85, 55], d: [20.4, 68.4], e: [104, 50], f: [72, 56.4] }
+        : { a: [13, 57.4], b: [56, 56.5], c: [86, 60.5], d: [11.6, 89.9], e: [104, 63], f: [60, 72.2] }
       const [cx, cy, cr, cw, cf] = L.card
       return `<div class="cv-theory-board">${cork(100, H)}
         ${page(`left:${L.p1[0]}cqi;top:${L.p1[1]}cqi;width:40cqi;transform:rotate(${L.p1[2]}deg)`, 'Guidelines', 'p. 3', bars(2, 92, 80, 'hl', 88, 64, 90, 76, 84, 58, 80, 66))}
@@ -82,7 +82,7 @@
           ${S('headline', `Filmmaking grants and festival submissions are ${circ('deliberately', 'wide', { l: '-6%', t: '-12%', w: '112%', h: '130%' })} confusing, so you’re too tired to apply after reading the rules!!`, `class="say" style="font-size:${cf}cqi"`)}</div>
         <svg class="cv-theory-svg" viewBox="0 0 100 ${H}" style="inset:0;width:100%;height:100%;z-index:7" aria-hidden="true">
           ${string([P.a, P.d], .02)}${string([P.c, P.f], .03)}${pin(50, L.clip + 1.6, 'ink', 2.4)}${pin(...P.d, 'yellow', 2.2)}${pin(...P.f, 'blue', 2)}</svg>
-        <i class="cv-theory-tape" style="left:${sqr ? 84 : 82}cqi;top:${cy - 1.6}cqi;transform:rotate(38deg);z-index:8"></i>
+        <i class="cv-theory-tape" style="${sqr ? `left:73cqi;top:83.5cqi;transform:rotate(-40deg)` : `left:85cqi;top:${cy - 0.6}cqi;transform:rotate(41deg)`};z-index:8"></i>
       </div>`
     },
     html: (c, i, n) => `${ctop('A theory', i, n)}<div class="grow"></div><div class="foot">${sp('credit', 'Call Sheet, by pitch.dog')}<span class="cv-theory-swipe">${sp('credit', 'Swipe')}${arrow}</span></div>` })

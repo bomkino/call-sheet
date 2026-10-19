@@ -1,18 +1,20 @@
 // Cover poster for the stages carousel. Calls cover('stages', {...}).
-// One shot, six times: a strip of film that starts as a pencil storyboard and ends as the graded frame.
+// One frame of 35mm film, blown up to fill the poster, and it's still a pencil storyboard: the film
+// isn't finished, and the headline is written on it. The next frame, already shot, peeks in from the
+// right edge, and a grease-pencil line along the film runs out that way, into slide 2.
 {
-  const G = 'var(--salmon)'     // the ground; the sprocket holes show it through, in the strip's shadow
-  const HOLE = '#c98168'        // the desk seen through a perforation, in the strip's shadow
+  const HOLE = '#c98168'        // the salmon desk seen through a perforation, in the strip's shadow
+  const EDGE = '#d9b25a'        // edge print on the film base
   document.head.insertAdjacentHTML('beforeend', `<style>
-    .cv-stages-strip { position: absolute; z-index: 1; transform-origin: 0 50%; box-shadow: var(--lift); }
-    .cv-stages-strip > svg, .cv-stages-ink > svg, .cv-stages-tool > svg { display: block; width: 100%; height: auto; overflow: visible; }
-    .cv-stages-ink { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
-    .cv-stages-ink > svg { height: 100%; }
-    .cv-stages-tool { position: absolute; z-index: 2; transform-origin: 0 50%; }
-    .cv-stages-tape { position: absolute; z-index: 2; background: rgb(236 226 200 / .78); box-shadow: 0 1px 1px rgb(21 19 15 / .12); clip-path: polygon(0 4%, 12% 0, 30% 3%, 52% 0, 74% 2%, 100% 0, 100% 100%, 82% 97%, 60% 100%, 40% 96%, 18% 100%, 0 97%); }
-    .cv-stages-cue { display: inline-flex; align-items: center; gap: 1.4cqi; }
-    .cv-stages-swipe { width: 9cqi; height: auto; overflow: visible; }
-    .cv-stages-head [data-pd-social="display"] { font-size: 13.2cqi; line-height: .86; }
+    .cv-stages-strip { position: absolute; z-index: 1; box-shadow: var(--lift); }
+    .cv-stages-strip > svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .cv-stages-ink { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+    .cv-stages-ink > svg { display: block; width: 100%; height: 100%; overflow: visible; }
+    .cv-stages-tape { position: absolute; z-index: 2; background: rgb(240 232 210 / .8); box-shadow: 0 1px 1px rgb(21 19 15 / .14); clip-path: polygon(0 5%, 14% 0, 33% 4%, 55% 0, 76% 3%, 100% 0, 98% 52%, 100% 100%, 80% 96%, 58% 100%, 36% 95%, 16% 100%, 0 96%, 2% 48%); }
+    .cv-stages-on { position: relative; transform-origin: 50% 0; }
+    .cv-stages-on [data-pd-social="display"] { font-size: 12.2cqi; line-height: .86; }
+    .cv-stages-cue { display: inline-flex; align-items: center; gap: 1.6cqi; }
+    .cv-stages-cue svg { width: 12cqi; height: auto; overflow: visible; }
   </style>`)
 
   // ---- a marker stroke: a smooth line through the points, thicker in the middle, tapered at the ends
@@ -30,97 +32,85 @@
       L.push([p[0] + nx * hw, p[1] + ny * hw]); R.push([p[0] - nx * hw, p[1] - ny * hw]) })
     const f = (q) => `${q[0].toFixed(2)} ${q[1].toFixed(2)}`
     return `<path d="M${L.map(f).join(' L')} L${R.reverse().map(f).join(' L')} Z"/>` }
-  const arrow = (pts, w, head = 4, seed = 1) => { const n = pts.length, e = pts[n - 1], p = pts[n - 2]; const a = Math.atan2(e[1] - p[1], e[0] - p[0])
-    const wing = (da) => [[e[0] - Math.cos(a + da) * head, e[1] - Math.sin(a + da) * head], e]
-    return ink(pts, w, seed) + ink(wing(.5), w * .9, seed + 2) + ink(wing(-.45), w * .9, seed + 3) }
+  const arrow = (pts, w, len = 4, seed = 1) => { const n = pts.length, e = pts[n - 1], p = pts[n - 2], a = Math.atan2(e[1] - p[1], e[0] - p[0])
+    return ink(pts, w, seed) + [.55, -.5].map((da, k) => ink([[e[0] - Math.cos(a + da) * len, e[1] - Math.sin(a + da) * len], e], w * .9, seed + k + 2)).join('') }
+  const swipeArrow = `<svg viewBox="0 0 54 14" aria-hidden="true"><g fill="var(--marker)">${arrow([[1, 8.6], [16, 6.2], [32, 7], [51, 5.4]], 1.8, 6.4, 3)}</g></svg>`
 
-  // ---- the same shot at six stages: pencil, cleaner pencil, inked board, grey footage, rough cut, graded
-  const W = 120, H = 90, hz = 55, vx = 67
-  const poles = [[108, 30], [93, 16.5], [84, 9.5], [78.5, 5.6], [75, 3.4]]   // x, height; bases run to the vanishing point
-  const poleBase = (x) => hz + (x - vx) * .36
-  const fig = (x, y, s, c, sw) => `<g stroke="${c}" stroke-width="${sw}" stroke-linecap="round" fill="none"><circle cx="${x}" cy="${y - 11 * s}" r="${1.7 * s}" fill="${c}"/><path d="M${x} ${y - 9 * s} L${x + .4 * s} ${y - 4 * s} M${x + .4 * s} ${y - 4 * s} L${x - 1.6 * s} ${y} M${x + .4 * s} ${y - 4 * s} L${x + 2.2 * s} ${y - .2 * s} M${x} ${y - 8 * s} L${x - 2 * s} ${y - 5 * s} M${x} ${y - 8 * s} L${x + 2.3 * s} ${y - 5.6 * s}"/></g>`
-  const road = `M${vx - 1} ${hz} L${vx + 1} ${hz} L${W - 6} ${H} L${12} ${H} Z`
-  const hill = `M0 ${hz - 6} C 14 ${hz - 13}, 30 ${hz - 9}, 44 ${hz - 1} L 44 ${hz} L0 ${hz} Z`
-  const scene = (k) => {
-    if (k <= 1) { // storyboard pencil on paper
-      const g = k ? '#4f4a43' : '#8d877d', sw = k ? .75 : .6
-      const hatch = k ? Array.from({ length: 16 }, (_, i) => `M${4 + i * 7} ${H - 1} L${12 + i * 7} ${hz + 3}`).join(' ') : ''
-      return `<rect width="${W}" height="${H}" fill="#f5f1e7"/><g fill="none" stroke="${g}" stroke-width="${sw}" stroke-linecap="round">
-        <path d="M-2 ${hz + .4} L${W + 2} ${hz - .6}"/>${k ? `<path d="M2 ${hz + 1.6} L${W - 4} ${hz + 1}" stroke-width=".35"/>` : ''}
-        <ellipse cx="${vx}" cy="${hz - 5}" rx="17" ry="16.4" transform="rotate(-8 ${vx} ${hz - 5})"/><ellipse cx="${vx + .8}" cy="${hz - 5.6}" rx="16.2" ry="17" stroke-width="${sw * .6}"/>
-        <path d="M${vx - .6} ${hz} L${14} ${H + 2} M${vx + .8} ${hz} L${W - 8} ${H + 2}"/>
-        ${k ? `<path d="${hill}" stroke-width=".6"/><path d="M${vx} ${hz + 6} L${vx} ${hz + 9} M${vx + .5} ${hz + 14} L${vx + 1} ${hz + 20} M${vx + 2} ${hz + 26} L${vx + 2.6} ${H}" stroke-width="1.1"/>
-          ${poles.map(([x, h]) => `<path d="M${x} ${poleBase(x)} L${x} ${poleBase(x) - h} M${x - h * .18} ${poleBase(x) - h * .9} L${x + h * .18} ${poleBase(x) - h * .9}"/>`).join('')}
-          <path d="${hatch}" stroke-width=".3" opacity=".7"/><path d="M14 18 l3 2 l3 -2 M24 13 l2.4 1.6 l2.4 -1.6" stroke-width=".5"/>
-          <path d="M4 6 L4 4 L8 4 M${W - 8} 4 L${W - 4} 4 L${W - 4} 6 M4 ${H - 6} L4 ${H - 4} L8 ${H - 4} M${W - 8} ${H - 4} L${W - 4} ${H - 4} L${W - 4} ${H - 6}" stroke-width=".4"/>`
-        : '<path d="M30 14 C 34 10, 40 10, 42 14" stroke-width=".4"/>'}</g>
-        ${fig(76, 77, 1.05, g, k ? .9 : .7)}`
+  // ---- the shot, in the frame's own cqi: a road to the horizon, a low sun, telegraph poles, someone walking
+  const shot = (w, h, mode, sx = .83) => {
+    const hy = h * .84, vx = w * .62, pole = (x) => hy + (x - vx) * .2
+    const poles = (sx > .85 ? [[.975, .36], [.93, .22], [.89, .14], [.86, .09], [.84, .06]] : [[.97, .40], [.885, .25], [.825, .16], [.785, .1], [.76, .065]]).map(([x, ph]) => [w * x, h * ph])
+    const fx = w * .66, fy = hy + h * .1, fs = h * .0135
+    // someone walking away from us, toward the sun: head, a long coat, mid-stride; a long shadow back to camera
+    const figure = (c, sw, fill = 'none') => `<g stroke="${c}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M${fx - .8 * fs} ${fy + .2 * fs} L${fx - 6 * fs} ${fy + 3.4 * fs} M${fx + .9 * fs} ${fy} L${fx - 3.8 * fs} ${fy + 3.6 * fs}" stroke-width="${sw * .5}" opacity=".6"/>
+      <circle cx="${fx}" cy="${fy - 10.6 * fs}" r="${1.35 * fs}" fill="${fill}"/>
+      <path d="M${fx - 1.7 * fs} ${fy - 8.8 * fs} Q ${fx} ${fy - 9.5 * fs} ${fx + 1.7 * fs} ${fy - 8.8 * fs} L${fx + 2.4 * fs} ${fy - 3.2 * fs} L${fx - 2.3 * fs} ${fy - 3.2 * fs} Z" fill="${fill}"/>
+      <path d="M${fx - .9 * fs} ${fy - 3.2 * fs} L${fx - 1.3 * fs} ${fy + .2 * fs} M${fx + .9 * fs} ${fy - 3.2 * fs} L${fx + 1.5 * fs} ${fy - .1 * fs}"/>
+</g>`
+    const sun = [w * sx, hy, h * (sx > .85 ? .12 : .15)]
+    if (mode === 'pencil') {
+      const g = '#5d5850'
+      const hatch = Array.from({ length: 30 }, (_, i) => { const x = i * w / 26 - 4; return `M${x} ${h + 1} L${x + 5} ${hy + 1.6}` }).join(' ')
+      const persp = [-.3, .05, .22, 1.3, 1.6].map(t => `M${vx} ${hy} L${w * t} ${t < .5 ? 0 : h * .02}`).join(' ')
+      return `<rect width="${w}" height="${h}" fill="#f6f2e9"/>
+        <g fill="none" stroke="${g}" stroke-linecap="round" stroke-linejoin="round">
+          <path d="${persp}" stroke-width=".14" opacity=".35"/>
+          <path d="M-1 ${hy + .3} L${w + 1} ${hy - .4}" stroke-width=".36"/><path d="M1 ${hy + 1} L${w - 2} ${hy + .5}" stroke-width=".16" opacity=".6"/>
+          <path d="M${sun[0] - sun[2]} ${hy} A ${sun[2]} ${sun[2]} 0 0 1 ${sun[0] + sun[2]} ${hy}" stroke-width=".32"/><path d="M${sun[0] - sun[2] * 1.04} ${hy - .4} A ${sun[2] * 1.03} ${sun[2] * .98} 0 0 1 ${sun[0] + sun[2] * .97} ${hy - .6}" stroke-width=".16" opacity=".7"/>
+          ${Array.from({ length: 7 }, (_, i) => { const a = Math.PI * (1.12 + i * .127), r1 = sun[2] * 1.18, r2 = sun[2] * 1.38; return `<path d="M${sun[0] + Math.cos(a) * r1} ${hy + Math.sin(a) * r1} L${sun[0] + Math.cos(a) * r2} ${hy + Math.sin(a) * r2}" stroke-width=".2"/>` }).join('')}
+          <path d="M-2 ${hy - h * .07} C ${w * .1} ${hy - h * .12}, ${w * .22} ${hy - h * .09}, ${w * .34} ${hy - .2}" stroke-width=".28"/>
+          <path d="M${vx - .3} ${hy} L${w * .36} ${h + 1} M${vx + .3} ${hy} L${w * 1.02} ${h + 1}" stroke-width=".34"/>
+          <path d="M${vx} ${hy + h * .03} L${vx + .05} ${hy + h * .05} M${vx + .3} ${hy + h * .08} L${vx + .5} ${hy + h * .115}" stroke-width=".5"/>
+          ${poles.map(([x, ph]) => `<path d="M${x} ${pole(x)} L${x} ${pole(x) - ph} M${x - ph * .16} ${pole(x) - ph * .9} L${x + ph * .16} ${pole(x) - ph * .9}" stroke-width=".3"/>`).join('')}
+          <path d="M${poles.map(([x, ph]) => `${x} ${pole(x) - ph * .9}`).join(' Q ')}" stroke-width=".12" opacity=".7"/>
+          <path d="${hatch}" stroke-width=".12" opacity=".55"/>
+          <path d="M${w * .79} ${hy - h * .52} l1.4 .9 l1.4 -.9 M${w * .85} ${hy - h * .58} l1.1 .7 l1.1 -.7" stroke-width=".22"/>
+          <path d="M2 4.4 V2 H4.4 M${w - 4.4} 2 H${w - 2} V4.4 M2 ${h - 4.4} V${h - 2} H4.4 M${w - 4.4} ${h - 2} H${w - 2} V${h - 4.4}" stroke-width=".22"/>
+          ${[[w - 3.4, h - 3.4, -1, -1], [3.4, h - 3.4, 1, -1]].map(([x, y, dx, dy]) => { const L2 = 5.4, ex = x + dx * L2, ey = y + dy * L2 * .72
+            return `<path d="M${x} ${y} L${ex} ${ey} M${ex} ${ey} l${-dx * 1.4} ${-dy * .1} M${ex} ${ey} l${-dx * .1} ${-dy * 1.3}" stroke-width=".24"/>` }).join('')}
+        </g>${figure(g, .3, 'rgb(93 88 80 / .32)')}`
     }
-    if (k === 2) { // inked board with flat marker tones
-      return `<rect width="${W}" height="${H}" fill="#f5f1e7"/><path d="M0 ${hz} H${W} V${H} H0 Z" fill="#d6d0c4"/><path d="${hill}" fill="#bdb6a9"/><path d="${road}" fill="#9d978c"/>
-        <circle cx="${vx}" cy="${hz - 5}" r="16.6" fill="#f5f1e7" stroke="#15130f" stroke-width="1"/><path d="M-1 ${hz} H${W + 1}" stroke="#15130f" stroke-width="1.1"/>
-        <g stroke="#15130f" stroke-width="1" stroke-linecap="round">${poles.map(([x, h]) => `<path d="M${x} ${poleBase(x)} L${x} ${poleBase(x) - h} M${x - h * .18} ${poleBase(x) - h * .9} L${x + h * .18} ${poleBase(x) - h * .9}"/>`).join('')}</g>
-        <path d="M${vx - 1} ${hz} L12 ${H} M${vx + 1} ${hz} L${W - 6} ${H}" stroke="#15130f" stroke-width=".9" fill="none"/>${fig(76, 77, 1.05, '#15130f', 1.1)}`
-    }
-    // footage: grey (shoot), flat colour with burnt-in timecode (edit), graded (finished)
-    const C = k === 3
-      ? { sky: ['#cfcbc3', '#d8d4cc', '#e2ded6'], sun: '#f2efe8', land: '#6e6a62', hill: '#57534c', road: '#3e3b36', dash: '#a9a49b', ink: '#1f1d1a' }
-      : k === 4
-        ? { sky: ['#d9b6b0', '#e2bca3', '#e9d3a2'], sun: '#efdcae', land: '#5f6a52', hill: '#4c5643', road: '#2f2d2a', dash: '#d8c98f', ink: '#22201c' }
-        : { sky: ['#f3b5c8', '#f3a58a', '#f4df77'], sun: '#fbf3d2', land: '#3f5b3a', hill: '#2c4429', road: '#15130f', dash: '#f4df77', ink: '#15130f' }
-    const bands = [0, 22, 40].map((y, i) => `<rect y="${y}" width="${W}" height="${hz - y + 1}" fill="${C.sky[i]}"/>`).join('')
-    return `${bands}<circle cx="${vx}" cy="${hz - 5}" r="16.6" fill="${C.sun}"/><path d="M0 ${hz} H${W} V${H} H0 Z" fill="${C.land}"/><path d="${hill}" fill="${C.hill}"/><path d="${road}" fill="${C.road}"/>
-      <g fill="${C.dash}">${[[hz + 5, .5, 2], [hz + 11, .8, 4], [hz + 21, 1.2, 6.5]].map(([y, w, h]) => `<rect x="${vx + (y - hz) * .06 - w / 2}" y="${y}" width="${w}" height="${h}"/>`).join('')}</g>
-      <g stroke="${C.ink}" stroke-width="1" stroke-linecap="round">${poles.map(([x, h]) => `<path d="M${x} ${poleBase(x)} L${x} ${poleBase(x) - h} M${x - h * .18} ${poleBase(x) - h * .9} L${x + h * .18} ${poleBase(x) - h * .9}"/>`).join('')}
-      <path d="M${poles.map(([x, h]) => `${x} ${poleBase(x) - h * .9}`).join(' L')}" stroke-width=".35" fill="none"/></g>
-      <path d="M76 77 L${76 + 26} ${77 + 9} L${76 + 22} ${77 + 11} Z" fill="${C.ink}" opacity=".35"/>${fig(76, 77, 1.05, C.ink, 1.2)}
-      ${k === 3 ? `<g fill="#2a2825"><rect x="18" y="-1" width="1.2" height="9"/><rect x="13" y="7" width="11" height="5" rx="2.4"/></g>` : ''}
-      ${k === 4 ? `<rect x="${W / 2 - 17}" y="${H - 9.5}" width="34" height="6.4" fill="#15130f"/><text x="${W / 2}" y="${H - 4.7}" text-anchor="middle" font-size="4.4" fill="#fbf9f3" style="font-variant-numeric:tabular-nums;letter-spacing:.06em">01:04:12:08</text>` : ''}`
+    // the next frame: shot, but not graded yet
+    const C = { sky: ['#cfcbc3', '#d8d4cc', '#e2ded6'], sun: '#f2efe8', land: '#6e6a62', hill: '#57534c', road: '#3e3b36', ink: '#1f1d1a' }
+    return `${[0, .3, .55].map((y, i) => `<rect y="${h * y}" width="${w}" height="${hy - h * y + 1}" fill="${C.sky[i]}"/>`).join('')}
+      <circle cx="${w * .3}" cy="${hy}" r="${h * .15}" fill="${C.sun}"/><rect y="${hy}" width="${w}" height="${h - hy}" fill="${C.land}"/>
+      <path d="M-2 ${hy - h * .07} C ${w * .06} ${hy - h * .12}, ${w * .14} ${hy - h * .09}, ${w * .22} ${hy} Z" fill="${C.hill}"/>
+      <g fill="#2a2825"><rect x="${w * .1}" y="-1" width=".7" height="${h * .12}"/><rect x="${w * .07}" y="${h * .11}" width="${w * .07}" height="${h * .05}" rx="${h * .025}"/></g>`
   }
 
-  // ---- the strip, in cqi: six frames with perforations and edge print
-  const FW = 30, FH = 22.5, GAP = 2.2, RB = 6, P = FW + GAP, SH = FH + 2 * RB, LEAD = 6, SL = LEAD + 6 * P + 30
-  const LBL = ['The idea', 'Development', 'A pilot script', 'Production', 'The edit', 'The finished film']
-  const strip = () => { const holes = Array.from({ length: Math.ceil(SL / 3.1) }, (_, i) => [1.15, SH - 1.15 - 1.6].map(y => `<rect x="${(i * 3.1 + .6).toFixed(2)}" y="${y}" width="1.9" height="1.6" rx=".45"/>`).join('')).join('')
-    const frames = LBL.map((t, k) => { const x = LEAD + k * P
-      return `<svg x="${x}" y="${RB}" width="${FW}" height="${FH}" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" overflow="hidden">${scene(k)}</svg>
-        <text x="${x + .4}" y="${RB - 1.1}" font-size="1.45" fill="#d9b25a" style="letter-spacing:.14em;text-transform:uppercase">${t}</text>
-        <text x="${x + FW - .4}" y="${SH - RB + 2.3}" text-anchor="end" font-size="1.3" fill="#d9b25a" style="letter-spacing:.1em">▸ ${k + 1}${k % 2 ? 'A' : ''}</text>` }).join('')
-    return `<svg viewBox="0 0 ${SL} ${SH}" aria-hidden="true"><rect width="${SL}" height="${SH}" fill="#1c1a17"/><g fill="${HOLE}">${holes}</g>${frames}</svg>` }
+  // ---- the strip: a 35mm still frame's proportions, eight perforations a frame
+  const L = { portrait: { FW: 88, FH: 60, RB: 11, x: 3, y: 15.6, r: -2.2, sx: .83 }, square: { FW: 88, FH: 47, RB: 8.4, x: 3, y: 13.4, r: -1.4, sx: .9 } }
+  const strip = (c) => { const { FW, FH, RB } = L[c], GAP = 2.4, P = FW + GAP, SL = 3 * P, SH = FH + 2 * RB
+    const hw = P / 8 * .44, hh = RB * .28, hy = RB * .22
+    const holes = Array.from({ length: 24 }, (_, i) => [hy, SH - hy - hh].map(y => `<rect x="${(i * P / 8 + P / 16 - hw / 2).toFixed(2)}" y="${y.toFixed(2)}" width="${hw.toFixed(2)}" height="${hh.toFixed(2)}" rx="${(hh * .2).toFixed(2)}"/>`).join('')).join('')
+    const txt = (x, y, t, a = 'start') => `<text x="${x}" y="${y}" font-size="${RB * .17}" fill="${EDGE}" text-anchor="${a}" style="letter-spacing:.16em;text-transform:uppercase">${t}</text>`
+    return { P, SH, html: `<svg viewBox="0 0 ${SL} ${SH}" aria-hidden="true"><rect width="${SL}" height="${SH}" fill="#1c1a17"/><g fill="${HOLE}">${holes}</g>
+      <svg x="${GAP / 2 + P}" y="${RB}" width="${FW}" height="${FH}" overflow="hidden">${shot(FW, FH, 'pencil', L[c].sx)}</svg>
+      <svg x="${GAP / 2 + 2 * P}" y="${RB}" width="${FW}" height="${FH}" overflow="hidden">${shot(FW, FH, 'grey')}</svg>
+      ${txt(P + GAP / 2 + .6, RB * .86, 'The idea · Scene 1 · Board 1A')}${txt(2 * P - GAP / 2 - .6, SH - RB * .5, '▸ 1A', 'end')}
+      ${txt(2 * P + GAP / 2 + .6, RB * .86, 'Production')}</svg>` } }
 
-  // ---- a red china marker, paper-wrapped, lying on the desk
-  const chinaMarker = () => `<svg viewBox="-4 -8 136 22" aria-hidden="true">
-    <path d="M3 9 L 128 9 L 120 14 L -2 14 Z" fill="rgb(21 19 15 / .16)"/><path d="M6 8 L 126 8 L 121 12 L 2 12 Z" fill="rgb(21 19 15 / .18)"/>
-    <rect x="0" y="-5" width="104" height="10" rx="1.2" fill="#2a2724"/><rect x="0" y="-5" width="104" height="3" fill="#3d3935"/><rect x="0" y="2.6" width="104" height="2.4" fill="#1a1815"/>
-    <g stroke="#f3e3da" stroke-width=".45" opacity=".75">${Array.from({ length: 16 }, (_, i) => `<path d="M${6 + i * 6} -5 L${2 + i * 6} 5"/>`).join('')}</g>
-    <path d="M104 -5 L116 -2.2 Q 121 -.6, 121 0 Q 121 .6, 116 2.2 L104 5 Z" fill="#e3472d"/><path d="M104 -5 L116 -2.2 L 116 -1 L104 -2.4 Z" fill="#ef6a50"/>
-    <path d="M104 -5.4 L104 5.4" stroke="#7a2414" stroke-width=".6"/><path d="M96 -5 C 99 -9, 104 -9, 108 -6.5" fill="none" stroke="#f3e3da" stroke-width=".5"/></svg>`
-
-  // a strip of masking tape, slightly torn at both ends
-  const tape = (w, h, style) => `<div class="cv-stages-tape" style="width:${w}cqi;height:${h}cqi;${style}"></div>`
-  // the hand-drawn arrow beside "Swipe"
-  const swipeArrow = `<svg class="cv-stages-swipe" viewBox="0 0 40 14" aria-hidden="true"><g fill="var(--marker)">${arrow([[1, 9], [12, 6.4], [24, 6.8], [36, 5.6]], 1.7, 6, 3)}</g></svg>`
-
-  cover('stages', { g: G, dark: false,
-    art: (c) => {
-      const sqr = c === 'square', Hh = sqr ? 100 : 125
-      const sc = sqr ? .72 : .92                                 // strip scale
-      const a = sqr ? -2.5 : -4, rad = a * Math.PI / 180
-      const x0 = sqr ? -40 : -52, y0 = sqr ? 65.4 : 84.4             // centre of the strip's left end, cqi
-      const at = (s, d = 0) => [x0 + s * sc * Math.cos(rad) - d * Math.sin(rad), y0 + s * sc * Math.sin(rad) + d * Math.cos(rad)]
-      // a grease-pencil line from the circled "six", up to the strip and along it, out of the right edge
-      const d = SH * sc / 2 + 2.4
-      const six = sqr ? [29.2, 78.4] : [31.4, 100.2]
-      const run = [six, [six[0] + 4, six[1] - 3.2], at(LEAD + 2.55 * P, d + .5), at(LEAD + 3.3 * P, d - .2), at(LEAD + 4.1 * P, d + .3), at(LEAD + 5.2 * P, d + 1.4)]
-      return `<div class="cv-stages-strip" style="left:${x0}cqi;top:${y0 - SH * sc / 2}cqi;width:${SL * sc}cqi;transform:rotate(${a}deg)">${strip()}</div>
-        ${tape(sqr ? 8 : 9.5, sqr ? 11 : 13.5, `left:${sqr ? 1 : 1.5}cqi;top:${y0 - (sqr ? 7 : 9)}cqi;transform:rotate(${a - 3}deg)`)}
-                <div class="cv-stages-ink"><svg viewBox="0 0 100 ${Hh}" preserveAspectRatio="none" aria-hidden="true"><g fill="var(--marker)">${ink(run, 1.15, 2)}</g></svg></div>`
-    },
-    html: (c, i, n) => `${ctop('Where you’re at', i, n)}
-      <div class="cv-stages-head mt-m">${S('display', 'You don’t need<br>a finished film.')}</div>
-      ${S(c === 'square' ? 'body' : 'subhead', 'There are opportunities you can apply for while you’re still writing, shooting or editing.', `class="mt-xs" style="max-inline-size:${c === 'square' ? 40 : 30}ch"`)}
+  cover('stages', { g: 'var(--salmon)', dark: false,
+    art: (c) => { const sqr = c === 'square', { FW, FH, RB, x, y, r } = L[c], { P, SH, html } = strip(c)
+      const left = x - P - 1.2, rad = r * Math.PI / 180
+      // a point on the strip, from the panel's top-left corner, in poster cqi
+      const at = (u, v) => [x + u * Math.cos(rad) - v * Math.sin(rad), y + RB + u * Math.sin(rad) + v * Math.cos(rad)]
+      // grease pencil: from the circled "six" up onto the bottom rebate, along it and out into the next frame
+      const six = sqr ? [27.7, 79] : [30.2, 99.7]
+      const rv = FH + RB * .5
+      const run = [six, [six[0] + 2.6, six[1] - 3.2], at(40, rv + .3), at(62, rv - .2), at(84, rv + .1), at(100, rv - .3), at(112, rv + .2)]
+      return `<div class="cv-stages-strip" style="left:${left}cqi;top:${y}cqi;width:${3 * P}cqi;transform-origin:${P + 1.2}cqi ${RB}cqi;transform:rotate(${r}deg)">${html}</div>
+        <div class="cv-stages-tape" style="left:-4.6cqi;top:${y + RB * .2}cqi;width:10cqi;height:${sqr ? 8 : 9.5}cqi;transform:rotate(-34deg)"></div>
+        <div class="cv-stages-tape" style="left:${sqr ? 84 : 85}cqi;top:${y + SH - (sqr ? 6.4 : 8.6)}cqi;width:11cqi;height:${sqr ? 8 : 10}cqi;transform:rotate(-41deg)"></div>
+        <div class="cv-stages-ink"><svg viewBox="0 0 100 ${sqr ? 100 : 125}" preserveAspectRatio="none" aria-hidden="true"><g fill="var(--marker)">${ink(run, 1.1, 2)}</g></svg></div>` },
+    html: (c, i, n) => { const sqr = c === 'square', { RB, r } = L[c]
+      return `${ctop('Where you’re at', i, n)}
+      <div class="cv-stages-on" style="margin-top:${sqr ? 12.4 : 15.4}cqi;padding:0 4cqi 0 1.4cqi;transform:rotate(${r}deg)">
+        ${S('display', 'You don’t need<br>a finished film.')}
+        ${S('subhead', 'There are opportunities you can apply for while you’re still writing, shooting or editing.', `class="mt-s" style="max-inline-size:${sqr ? 30 : 26}ch"`)}</div>
       <div class="grow"></div>
-      ${S('subhead', `Here are ${circ('six,', 'wide', { l: '-12%', t: '-20%', w: '126%', h: '144%' })} depending on where your project’s at.`, 'style="max-inline-size:24ch"')}
-      <div class="foot mt-s">${sp('credit', 'Call Sheet, by pitch.dog')}<span class="cv-stages-cue">${swipeArrow}${swipe}</span></div>`,
+      ${S('subhead', `Here are ${circ('six,', 'wide', { l: '-12%', t: '-20%', w: '126%', h: '144%' })} depending on where your project’s at.`, `style="max-inline-size:${sqr ? 40 : 24}ch"`)}
+      <div class="foot ${sqr ? 'mt-xs' : 'mt-s'}">${sp('credit', 'Call Sheet, by pitch.dog')}<span class="cv-stages-cue">${sp('credit', 'Swipe')}${swipeArrow}</span></div>` },
   })
 }

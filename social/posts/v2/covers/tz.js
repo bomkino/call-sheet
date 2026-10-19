@@ -23,14 +23,14 @@
 
   // The dial in a 200-unit box. 24 hours round, one hand. `gaps` are angle ranges where the rim and
   // ticks drop out from behind the headline.
-  const dial = (hour, gaps) => {
+  const dial = (hour, gaps, rimGaps = gaps) => {
     const ha = hour * 15
     const ticks = Array.from({ length: 96 }, (_, i) => { const a = i * 3.75; if (inGap(a, gaps)) return ''
       const big = i % 4 === 0, [x1, y1] = pt(a, big ? 81 : 86.5), [x2, y2] = pt(a, 91)
       return `<line x1="${f(x1)}" y1="${f(y1)}" x2="${f(x2)}" y2="${f(y2)}" stroke="#15130f" stroke-width="${big ? 2.6 : .9}"/>` }).join('')
     // The rim: a thick ring drawn as arcs, skipping the gaps.
     const segs = []; let a0 = null
-    for (let a = 0; a <= 360; a += 1) { const open = !inGap(a, gaps) && a < 360
+    for (let a = 0; a <= 360; a += 1) { const open = !inGap(a, rimGaps) && a < 360
       if (open && a0 === null) a0 = a
       if ((!open || a === 359) && a0 !== null) { segs.push([a0, open ? 360 : a]); a0 = null } }
     const arc = (r, [s, e], w) => { const [x1, y1] = pt(s, r), [x2, y2] = pt(e, r); return `<path d="M${f(x1)} ${f(y1)} A${r} ${r} 0 ${e - s > 180 ? 1 : 0} 1 ${f(x2)} ${f(y2)}" fill="none" stroke="#15130f" stroke-width="${w}"/>` }
@@ -58,10 +58,10 @@
     art: (c) => {
       const sqr = c === 'square'
       const D = sqr ? 92 : 104, cx = sqr ? 60 : 62, cy = sqr ? 60 : 80, tilt = sqr ? 4 : 10
-      const gaps = [[146, 352]]
+      const gaps = [[123, 352]]
       const note = (t, a, r, rot) => { const [x, y] = pt(a, r); return `<span class="cv-tz-note" style="left:${50 + x / 2}%;top:${50 + y / 2}%;transform:translate(-50%,-50%) rotate(${rot}deg)">${sp('metadata', t)}</span>` }
-      return `<div class="cv-tz-clock" style="left:${cx - D / 2}cqi;top:${cy - D / 2}cqi;width:${D}cqi;height:${D}cqi;transform:rotate(${tilt}deg)">${dial(8, gaps)}${nums(gaps)}
-        ${note('Midnight there', 16, 52, 14)}${note('Here', 98, 44, 8)}${note("24 hour", 306, 24, 0)}</div>`
+      return `<div class="cv-tz-clock" style="left:${cx - D / 2}cqi;top:${cy - D / 2}cqi;width:${D}cqi;height:${D}cqi;transform:rotate(${tilt}deg)">${dial(8, gaps, [[150, 352]])}${nums(gaps)}
+        ${note('Midnight there', 27, 45, 27)}${note('Here', 98, 44, 8)}${note("24 hour", 306, 24, 0)}</div>`
     },
     html: (c, i, n) => {
       const sqr = c === 'square'
