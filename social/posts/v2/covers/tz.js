@@ -8,6 +8,10 @@
     .cv-tz-clock > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
     .cv-tz-num { position: absolute; transform: translate(-50%, -52%); line-height: 1; white-space: nowrap; }
     .cv-tz-note { position: absolute; white-space: nowrap; color: var(--toner); --pd-type-ink: var(--toner); }
+    .cv-tz-swipe { display: flex; align-items: center; gap: 1.6cqi; margin-right: -3cqi; }
+    .cv-tz-arrow { width: 15cqi; height: 6cqi; overflow: visible; }
+    .cv-tz-arrow path { fill: none; stroke: var(--marker); stroke-width: 5.5; stroke-linecap: round; stroke-linejoin: round; }
+    .cv-tz-pay { font-size: 11.6cqi; line-height: .86; }
   </style>`)
 
   const f = (n) => n.toFixed(2)
@@ -31,7 +35,8 @@
       if ((!open || a === 359) && a0 !== null) { segs.push([a0, open ? 360 : a]); a0 = null } }
     const arc = (r, [s, e], w) => { const [x1, y1] = pt(s, r), [x2, y2] = pt(e, r); return `<path d="M${f(x1)} ${f(y1)} A${r} ${r} 0 ${e - s > 180 ? 1 : 0} 1 ${f(x2)} ${f(y2)}" fill="none" stroke="#15130f" stroke-width="${w}"/>` }
     const rim = segs.map(sg => arc(95, sg, .7)).join('') + segs.map(sg => arc(93.4, sg, .35)).join('')
-    const hand = (dx, dy, c) => `<g transform="translate(${dx} ${dy}) rotate(${ha})"><path d="M-3.2 18 L-1.8 -54 L0 -61 L1.8 -54 L3.2 18 Z" fill="${c}"/><circle r="5" fill="${c}"/></g>`
+    // A world-time hand: a long blade with an arrow tip, and a counterweight disc on its tail.
+    const hand = (dx, dy, c) => `<g transform="translate(${dx} ${dy}) rotate(${ha})"><path d="M-2.2 12 L-1.4 -48 L-5.4 -48 L0 -62 L5.4 -48 L1.4 -48 L2.2 12 Z" fill="${c}"/><circle r="5.4" fill="${c}"/></g>`
     // The marker: from midnight round to the hand, overshooting a touch, with a two-stroke arrowhead.
     const P = []; for (let k = 0; k <= 30; k++) { const t = k / 30; P.push(pt(-2 + (ha - 14 + 2) * t, 58 - t * 2 + Math.sin(t * 7) * .8)) }
     const e = P[P.length - 1], q = P[P.length - 3], ang = Math.atan2(e[1] - q[1], e[0] - q[0])
@@ -39,21 +44,24 @@
     return `<svg viewBox="-100 -100 200 200" aria-hidden="true"><circle r="100" fill="#fbf9f3"/>${rim}${ticks}
       ${hand(1.5, 2.6, 'rgb(21 19 15 / .15)')}
       <path d="${smooth(P)} ${head}" fill="none" stroke="#e3472d" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" opacity=".95"/>
-      ${hand(0, 0, '#15130f')}<circle r="1.5" fill="#fbf9f3"/></svg>`
+      ${hand(0, 0, '#15130f')}<circle r="1.6" fill="#fbf9f3"/></svg>`
   }
   // Even hours as numerals, on the dial; the rest are ticks. Numerals in a gap drop out too.
-  const nums = (gaps) => Array.from({ length: 12 }, (_, k) => { const n = k * 2, a = n * 15; if (inGap(a, gaps)) return ''
+  const nums = (gaps) => Array.from({ length: 12 }, (_, k) => { const n = k * 2, a = n * 15; if (n && inGap(a, gaps)) return ''
     const [x, y] = pt(a, 71), t = sp('headline', String(n).padStart(2, '0'))
     return `<span class="cv-tz-num" style="left:${50 + x / 2}%;top:${50 + y / 2}%">${n === 8 ? circ(t, 'round', { l: '-34%', t: '-38%', w: '170%', h: '176%' }) : t}</span>` }).join('')
+
+  // The swipe cue, drawn: the same marker arrow as the rest of the set.
+  const arrow = `<svg class="cv-tz-arrow" viewBox="0 0 100 40" aria-hidden="true"><path d="M3 24 C 24 19, 46 27, 68 21 S 88 18, 96 19"/><path d="M83 7 C 88 12, 92 15, 97 19 C 91 22, 87 27, 84 33"/></svg>`
 
   cover('tz', { g: 'var(--yellow)', dark: false,
     art: (c) => {
       const sqr = c === 'square'
-      const D = sqr ? 94 : 104, cx = sqr ? 64 : 60, cy = sqr ? 70 : 91
-      const gaps = [[146, 357]]
+      const D = sqr ? 92 : 104, cx = sqr ? 60 : 62, cy = sqr ? 60 : 80, tilt = 10
+      const gaps = [[146, 352]]
       const note = (t, a, r, rot) => { const [x, y] = pt(a, r); return `<span class="cv-tz-note" style="left:${50 + x / 2}%;top:${50 + y / 2}%;transform:translate(-50%,-50%) rotate(${rot}deg)">${sp('metadata', t)}</span>` }
-      return `<div class="cv-tz-clock" style="left:${cx - D / 2}cqi;top:${cy - D / 2}cqi;width:${D}cqi;height:${D}cqi;transform:rotate(-12deg)">${dial(8, gaps)}${nums(gaps)}
-        ${note('Midnight there', 16, 52, 14)}${note('Here', 98, 44, 8)}</div>`
+      return `<div class="cv-tz-clock" style="left:${cx - D / 2}cqi;top:${cy - D / 2}cqi;width:${D}cqi;height:${D}cqi;transform:rotate(${tilt}deg)">${dial(8, gaps)}${nums(gaps)}
+        ${note('Midnight there', 16, 52, 14)}${note('Here', 98, 44, 8)}${note('24 hour', 180, 30, 0)}</div>`
     },
     html: (c, i, n) => {
       const sqr = c === 'square'
@@ -61,8 +69,8 @@
         ${S('subhead', 'Filmmaker friends,', 'class="mt-m"')}
         ${S('headline', 'Ever wished grant and festival deadlines showed up in your own time zone?', 'class="mt-xs" style="max-inline-size:13ch"')}
         <div class="grow"></div>
-        ${S('display', 'Well, now they do.', 'style="max-inline-size:6ch"')}
+        ${S('display', 'Well, now they do.', `class="cv-tz-pay" style="max-inline-size:6ch;${sqr ? 'font-size:10.2cqi' : ''}"`)}
         <div class="mt-m"></div>
-        <div class="foot">${sp('credit', 'Call Sheet, by pitch.dog')}${swipe}</div>`
+        <div class="foot">${sp('credit', 'Call Sheet, by pitch.dog')}<span class="cv-tz-swipe">${sp('credit', 'Swipe')}${arrow}</span></div>`
     } })
 }

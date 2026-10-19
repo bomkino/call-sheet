@@ -14,7 +14,6 @@
     .cv-why-frames { display: flex; gap: 2.4cqi; align-items: stretch; padding: .6cqi 0 .6cqi 22cqi; overflow: hidden; }
     .cv-why-frame { position: relative; flex: none; width: auto; aspect-ratio: 4 / 3; border-radius: .5cqi; background: #efe9dc; overflow: hidden; }
     .cv-why-frame svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-    .cv-why-frame .no { position: absolute; left: .8cqi; bottom: -2.9cqi; color: #a39c90; --pd-type-ink: #a39c90; }
     .cv-why-head { font-size: 13.2cqi; line-height: .88; }
     .cv-why-tape { display: inline-block; background: #ece2c6; color: var(--ink); --pd-type-ink: var(--ink); padding: 1.1cqi 2.4cqi 1cqi; margin-left: -2cqi; transform: rotate(-2.5deg);
       box-shadow: 0 1px 1px rgb(0 0 0 / .3), 0 .6cqi 1cqi -.5cqi rgb(0 0 0 / .5);
@@ -45,15 +44,15 @@
     clock: `<svg viewBox="0 0 100 70" preserveAspectRatio="xMidYMid meet"><circle cx="50" cy="35" r="27" fill="#fbf9f3" stroke="#15130f" stroke-width="2.6"/>${Array.from({ length: 12 }, (_, k) => { const a = k * 30 * Math.PI / 180; return `<line x1="${50 + Math.sin(a) * 21}" y1="${35 - Math.cos(a) * 21}" x2="${50 + Math.sin(a) * 25}" y2="${35 - Math.cos(a) * 25}" stroke="#15130f" stroke-width="${k % 3 ? .8 : 1.8}"/>` }).join('')}<line x1="50" y1="35" x2="${50 + Math.sin(Math.PI / 3) * 13}" y2="${35 - Math.cos(Math.PI / 3) * 13}" stroke="#15130f" stroke-width="2.6" stroke-linecap="round"/><line x1="50" y1="35" x2="50" y2="14" stroke="#15130f" stroke-width="1.8" stroke-linecap="round"/><circle cx="50" cy="35" r="2" fill="#15130f"/></svg>`,
     fee: `<svg viewBox="0 0 100 70" preserveAspectRatio="none"><rect x="14" y="10" width="72" height="50" fill="#fbf9f3" stroke="rgb(21 19 15 / .2)" stroke-width=".6"/>${[20, 27, 34].map(y => `<rect x="22" y="${y}" width="${y === 34 ? 30 : 54}" height="2.4" rx="1" fill="rgb(21 19 15 / .22)"/>`).join('')}<g transform="translate(26 40) rotate(-8)"><rect width="50" height="15" rx="2" fill="none" stroke="#e3472d" stroke-width="2"/><rect x="5" y="5" width="40" height="2.2" fill="#e3472d"/><rect x="9" y="9.4" width="32" height="2.2" fill="#e3472d"/></g></svg>`,
   }
-  const strip = (style, keys) => {
+  const strip = (style, keys, lead = 22) => {
     const holes = `<div class="cv-why-holes">${'<i></i>'.repeat(40)}</div>`
-    return `<div class="cv-why-strip" style="${style}">${holes}<div class="cv-why-frames">${keys.map(k => `<div class="cv-why-frame">${pict[k]}</div>`).join('')}</div>${holes}</div>`
+    return `<div class="cv-why-strip" style="${style}">${holes}<div class="cv-why-frames" style="padding-left:${lead}cqi">${keys.map(k => `<div class="cv-why-frame">${pict[k]}</div>`).join('')}</div>${holes}</div>`
   }
 
   const art = (c) => {
     const sqr = c === 'square'
-    const reel = sqr ? { cx: 5, cy: 101, d: 62 } : { cx: 9, cy: 117, d: 84 }
-    return `${strip(`left:${sqr ? 2 : 1}cqi;top:${sqr ? 57.5 : 67}cqi;width:${sqr ? 110 : 112}cqi;height:${sqr ? 18 : 22}cqi;transform:rotate(-7deg)`, ['film', 'sites', 'page9', 'clock', 'fee'])}
+    const reel = sqr ? { cx: 9, cy: 106, d: 76 } : { cx: 15, cy: 121, d: 100 }
+    return `${strip(`left:${sqr ? 4 : 3}cqi;top:${sqr ? 69 : 76}cqi;width:${sqr ? 112 : 118}cqi;height:${sqr ? 18 : 21}cqi;transform:rotate(${sqr ? -13 : -17}deg)`, ['film', 'sites', 'page9', 'clock', 'fee'], sqr ? 22 : 33)}
       <div class="cv-why-reel" style="left:${reel.cx - reel.d / 2}cqi;top:${reel.cy - reel.d / 2}cqi;width:${reel.d}cqi;height:${reel.d}cqi;transform:rotate(12deg)"><div class="body"></div>${reelSvg}</div>`
   }
   const arrow = `<svg class="cv-why-arrow" viewBox="0 0 100 40" aria-hidden="true"><path d="M3 24 C 24 19, 46 27, 68 21 S 88 18, 96 19"/><path d="M83 7 C 88 12, 92 15, 97 19 C 91 22, 87 27, 84 33"/></svg>`

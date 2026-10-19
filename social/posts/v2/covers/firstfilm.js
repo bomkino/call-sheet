@@ -54,8 +54,8 @@
         </div>
         ${cells('11cqi 1fr 1fr 1.25fr', `<div>${lbl('Roll')}${sqr ? '' : '<span class="cv-firstfilm-mid" data-pd-social="metric" style="margin-top:3.4cqi">A001</span>'}</div>
           <div>${lbl('Scene')}${sqr ? '' : '<span class="cv-firstfilm-mid" data-pd-social="metric" style="margin-top:3.4cqi">1</span>'}</div>
-          <div>${lbl('Take')}<span class="cv-firstfilm-take" data-pd-social="metric" style="margin:1cqi 0 -1.4cqi;font-size:${sqr ? 27 : 30}cqi">1</span></div>`)}
-        ${sqr ? cells('11cqi 1.3fr 1fr 1fr', `<div>${lbl('Director')}<span class="cv-firstfilm-blank"></span></div><div>${lbl('Camera')}<span class="cv-firstfilm-blank"></span></div><div>${lbl('Date')}<span class="cv-firstfilm-blank" style="height:30cqi"></span></div>`) : ''}
+          <div>${lbl('Take')}<span class="cv-firstfilm-take" data-pd-social="metric" style="margin:1cqi 0 -1.4cqi;font-size:${sqr ? 14 : 30}cqi">1</span></div>`)}
+        ${sqr ? '<div style="height:30cqi"></div>' : ''}
       </div>
       <div class="cv-firstfilm-tape" style="left:${sqr ? 15 : 13}cqi;top:${sqr ? 41.5 : 63.5}cqi;transform:rotate(${sqr ? 2 : 2.5}deg)">${S('subhead', 'Here are 4 places you could get money to make it!')}</div>
     </div>`

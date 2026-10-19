@@ -74,7 +74,7 @@
   document.fonts.addEventListener('loadingdone', () => requestAnimationFrame(drawAll))
 
   // Where the line crosses from one slide into the next, as a fraction of the height: [portrait, square].
-  const EDGE = { 23: [.82, .84], 34: [.79, .82], 45: [.8, .8], 56: [.79, .8] }
+  const EDGE = { 23: [.75, .757], 34: [.7, .7], 45: [.77, .74], 56: [.69, .7] }
   const edge = (c, k) => sq(c, ...EDGE[k])
   const mark = (n) => `data-${K}="${n}"`
 
@@ -93,16 +93,16 @@
   const clause = (t) => `<div style="margin-bottom:1.2cqb">${sp('metadata', t, 'class="num"')}</div>`
   const nw = (t, n) => `<span style="white-space:nowrap" ${mark(n)}>${t}</span>`
   const clauseRow = (no, k, v, n) => `<div class="ln" style="padding:1.5cqi 0">${sp('metadata', no, 'class="num"')}${sp('body', k)}<span class="lead"></span><span class="v">${sp('label', v, mark(n))}</span></div>`
-  const zone = (c, html, o = {}) => `<div class="grow" style="position:relative;display:flex;align-items:center;justify-content:${o.j || 'center'};padding:${sq(c, 3.4, 2.6)}cqb 0 ${sq(c, 3, 2)}cqb">${html}</div>`
+  const zone = (c, html, o = {}) => `<div class="grow" style="position:relative;display:flex;align-items:${o.a || 'center'};justify-content:${o.j || 'center'};padding:${sq(c, 3.4, 2.6)}cqb 0 ${sq(c, 3, 2)}cqb">${html}</div>`
 
   const SLIDES = [
     // 1. The cover poster replaces this slide (v2/covers/fineprint.js); kept simple so the count holds.
     slide('The fine print', 'Sometimes, film festivals and funding opportunities come with a catch.', 'It’s usually somewhere in the fine print.',
-      (c) => `<div style="transform:rotate(-2deg)">${guide(sq(c, 58, 40), S('label', 'It’s usually somewhere in the fine print.'))}</div>`, { g: 'var(--goldenrod)', hw: 'wide' }),
+      (c) => c === 'square' ? '' : `<div style="transform:rotate(-2deg);zoom:.8">${guide(60, S('label', 'It’s usually somewhere in the fine print.'))}</div>`, { g: 'var(--goldenrod)', hw: 'wide' }),
 
     // 2. The two catches in full, then the page they come from: two clauses, and the pen loops what each one hides.
     { g: 'var(--paper)',
-      art: (c) => thread([['loop', 'r', 16, 10, 160, 1.12], ['by', 'r', .1, 1.75], ['loop', 'p', 16, 10, 160, 1.12], ['by', 'p', 1.12, 1.15], ['out', edge(c, 23)]]),
+      art: (c) => thread([['loop', 'r', 16, 10, 160, 1.12], ['by', 'r', .1, 1.75], ['loop', 'p', 16, 10, 160, 1.12], ['out', edge(c, 23)]]),
       html: (c, i, n) => `${ctop('For example', i, n)}
         <div class="mt-m">${S('headline', 'Sometimes, a prize is a reimbursement.', 'class="wide"')}${S('subhead', 'You need to spend the money first.', 'class="mt-xs"')}</div>
         <div class="mt-m">${S('headline', 'Sometimes, programmes have a participation fee.', 'class="wide"')}${S('subhead', 'You pay it after you’re selected.', 'class="mt-xs"')}</div>
@@ -112,30 +112,29 @@
 
     // 3. The turn, on ink: the highlighted line has slipped out of the page, and the pen drops through after it.
     { g: 'var(--ink)', dark: true,
-      art: (c) => thread([['in', edge(c, 23)], ['by', 'slot', -.12, .62], ['by', 'slot', .45, .66], ['by', 'slot', 1.04, .58], ['by', 'strip', .7, -.9], ['out', edge(c, 34)]]),
+      art: (c) => thread([['in', edge(c, 23)], ['by', 'slot', .12, .6], ['by', 'slot', .5, .64], ['by', 'slot', 1.06, .5], ['by', 'strip', .6, -.55], ['out', edge(c, 34)]]),
       html: (c, i, n) => `${ctop('The catch', i, n)}${S('display', 'None of that necessarily makes it a bad opportunity.', 'class="mt-m wide"')}
         ${S('subhead', 'But it might make it the wrong one for you, and very often this fine print slips through the cracks.', 'class="mt-s wide soft"')}${S('subhead', 'So, we found a way to make it easier', 'class="mt-s wide"')}
-        ${zone(c, `<div style="position:relative;width:52cqi;margin-left:3cqi;transform:rotate(1.5deg);zoom:${sq(c, .84, .6)}">
+        ${zone(c, `<div style="position:relative;width:52cqi;margin-left:3cqi;transform:rotate(1.5deg);zoom:${sq(c, .92, .62)}">
           <div class="doc" style="width:100%;padding:3.4cqi 4cqi 4cqi;gap:1.1cqi">${head('Guidelines', 'Page 6 of 6')}${bars(94, 86, 92, 70)}<div class="${K}-slot" ${mark('slot')}></div>${bars(62)}</div>
-          <div class="${K}-strip" style="left:30cqi;top:96%;width:50cqi;transform:rotate(-5deg)">${hl(S('label', 'Prizes are paid as reimbursement of expenses.'), mark('strip'))}</div></div>`, { j: 'flex-start' })}${foot('Call Sheet, by pitch.dog', true)}` },
+          <div class="${K}-strip" style="left:44cqi;top:${sq(c, 70, 74)}%;width:48cqi;transform:rotate(-6deg)">${hl(S('label', 'Prizes are paid as reimbursement of expenses.'), mark('strip'))}</div></div>`, { j: 'flex-start', a: 'flex-start' })}${foot('Call Sheet, by pitch.dog', true)}` },
 
     // 4. Call Sheet, with the conditions pulled out onto one card. The line runs on underneath it.
     { g: 'var(--blue)',
       art: (c) => thread([['z', 1], ['in', edge(c, 34)], ['at', .5, (edge(c, 34) + edge(c, 45)) / 2], ['out', edge(c, 45)]]),
       html: (c, i, n) => `${ctop('Introducing', i, n)}${S('display', `Introducing ${circ('Call Sheet.', 'long', { ml: '.08em', l: '-5%', t: '-14%', w: '110%', h: '132%' })}`, 'class="mt-m wide"')}
         ${S('subhead', 'Film and TV funding opportunities, with the important conditions pulled out and explained plainly.', 'class="mt-s wide"')}
-        ${zone(c, `<div class="paper ear ${K}-card" style="--ear:7cqi;width:100%;transform:rotate(-1.2deg)"><span class="ear-flap"></span>
-          <header><img src="/brand/logo/call-sheet-wordmark.svg" alt="Call Sheet"></header>
-          ${['What you get.', 'What it costs.', 'What to check before applying.'].map((t, k) => `<div class="row" style="padding:${sq(c, 2.8, 1.8)}cqi 4.4cqi">${sp('label', `0${k + 1}`, 'class="num"')}${S('headline', t)}</div>`).join('')}</div>`)}${foot()}` },
+        ${zone(c, `<div class="paper ear ${K}-card" style="--ear:7cqi;width:100%;transform:rotate(-1.2deg)"><span class="ear-flap"></span><div style="padding:${sq(c, 1.6, 1)}cqi 0">
+          ${['What you get.', 'What it costs.', 'What to check before applying.'].map((t, k) => `<div class="row" style="padding:${sq(c, 2.8, 2)}cqi 4.4cqi">${sp('label', `0${k + 1}`, 'class="num"')}${S('headline', t)}</div>`).join('')}</div></div>`)}${foot()}` },
 
     // 5. Two house rules on the paperwork. The pen comes in under the fee slip, squiggles under the unclear rule and plants a flag.
     { g: 'var(--yellow)',
-      art: (c) => thread([['z', 1], ['in', edge(c, 45)], ['by', 'fee', .55, .55], ['by', 'fee', 1.06, .62], ['z', 3], ['by', 'rule', -.08, 1, 0, 20], ['wave', 'rule', 16, 8, 9], ['by', 'rule', 1.2, 1.4], ['out', edge(c, 56)]]),
+      art: (c) => thread([['z', 1], ['in', edge(c, 45)], ['by', 'fee', .55, .55], ['by', 'fee', 1.06, .62], ['z', 3], ['by', 'rule', -.08, 1, 0, 20], ['wave', 'rule', 16, 8, 9], ['by', 'rule', 1.18, .9], ['out', edge(c, 56)]]),
       html: (c, i, n) => `${ctop('House rules', i, n)}${S('display', 'If a fee isn’t published, we say that.', 'class="mt-m wide"')}${S('display', 'If a rule is unclear, we flag it.', 'class="mt-s wide"')}
         ${S('subhead', 'You’ve got enough to figure out without making confident guesses.', 'class="mt-m wide"')}
-        ${zone(c, `<div style="display:flex;gap:${sq(c, 7, 6)}cqi;align-items:center;zoom:${sq(c, 1, .74)}">
+        ${zone(c, `<div style="display:flex;gap:${sq(c, 7, 6)}cqi;align-items:center;zoom:${sq(c, .86, .72)}">
           <div style="position:relative;width:38cqi;transform:rotate(-2deg)" ${mark('fee')}><div class="doc receipt" style="padding:3.4cqi 4cqi 5cqi">${S('label', 'Entry fee')}<hr>${sp('headline', '— — —')}${zz}</div>${stamp('notpub', 'right:-5cqi;bottom:-2cqi;width:28cqi;transform:rotate(-9deg)')}</div>
-          <div style="position:relative;width:40cqi;transform:rotate(2.5deg)"><div class="doc" style="padding:3.4cqi 4cqi 5.4cqi;gap:1.2cqi">${head('Eligibility', '§ 2.4', '')}${bars(92, 80)}<i style="width:78%;background:rgb(21 19 15 / .3)" ${mark('rule')}></i>${bars(64)}</div>${flag('right:-4cqi;top:-7cqi;transform:rotate(8deg)')}</div></div>`)}${foot()}` },
+          <div style="position:relative;width:40cqi;transform:rotate(2.5deg)"><div class="doc" style="padding:3.4cqi 4cqi 5.4cqi;gap:1.2cqi">${S('label', 'Eligibility')}${bars(92, 80)}<i style="width:78%;background:rgb(21 19 15 / .3)" ${mark('rule')}></i>${bars(64)}</div>${flag('right:-4cqi;top:-7cqi;transform:rotate(8deg)')}</div></div>`)}${foot()}` },
 
     // 6. Your call. The line comes in across the form and ends as a tick in its box.
     { g: 'var(--green)',

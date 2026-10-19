@@ -1,6 +1,6 @@
 // Cover poster for the how carousel. Calls cover('how', {...}).
-// A stopwatch, bigger than the frame, reset to zero; the marker goes once round the dial:
-// one minute, which is how long the next six slides take.
+// A stopwatch, bigger than the frame, reset to zero and waiting for the press:
+// one minute, which is about how long the next six slides take.
 {
   document.head.insertAdjacentHTML('beforeend', `<style>
     .cv-how-watch { position: absolute; z-index: 1; }
@@ -8,7 +8,7 @@
     .cv-how-watch svg { position: absolute; inset: -12%; width: 124%; height: 124%; overflow: visible; }
     .cv-how-watch text { font-family: inherit; fill: #15130f; }
     .cv-how-head { font-size: 13.2cqi; line-height: .88; }
-    .cv-how-sweep path, .cv-how-arrow path { fill: none; stroke: var(--marker); stroke-linecap: round; stroke-linejoin: round; }
+    .cv-how-arrow path { fill: none; stroke: var(--marker); stroke-linecap: round; stroke-linejoin: round; }
     .cv-how-swipe { display: flex; align-items: center; gap: 1.6cqi; margin-right: -3cqi; }
     .cv-how-arrow { width: 15cqi; height: 6cqi; overflow: visible; }
     .cv-how-arrow path { stroke-width: 5.5; }
@@ -37,19 +37,14 @@
     <path d="M 90 70 A 114 114 0 0 1 30 110" fill="none" stroke="#a39c90" stroke-width="3" stroke-linecap="round" opacity=".7"/>
     <circle r="105" fill="#15130f"/><circle r="101.5" fill="#fbf9f3"/>
     ${ticks}${nums}
-    <text y="-44" font-size="5.6" text-anchor="middle" letter-spacing="1.2" opacity=".7">1/5 SECOND</text>
+    <text x="-30" y="-48" font-size="5.2" text-anchor="middle" letter-spacing="1.1" opacity=".7">1/5 SECOND</text>
     ${sub(0, 40)}
     <g><line x1="0" y1="24" x2="0" y2="-97" stroke="#15130f" stroke-width="1.9" stroke-linecap="round"/><circle cy="18" r="5" fill="none" stroke="#15130f" stroke-width="1.9"/><circle r="5.2" fill="#15130f"/><circle r="1.8" fill="#c9c3b8"/></g>
   </svg>`
-  // The marker starts the clock, drawn on the glass: a quick arc from 60, the way the hand will go.
-  const sweep = `<svg class="cv-how-sweep" viewBox="-134 -134 268 268" aria-hidden="true" style="position:absolute;inset:-12%;width:124%;height:124%;overflow:visible">
-    <path d="M 4 -61 C 24 -60, 42 -52, 52 -36" style="stroke-width:1.9"/>
-    <path d="M 42 -42 C 46 -40, 50 -38, 53 -35 C 54 -40, 55 -44, 56 -49" style="stroke-width:1.9"/></svg>`
-
   const art = (c) => {
     const sqr = c === 'square'
     const [cx, cy, d] = sqr ? [84, 97, 81] : [58, 126, 112]
-    return `<div class="cv-how-watch" style="left:${cx - d / 2}cqi;top:${cy - d / 2}cqi;width:${d}cqi;height:${d}cqi;transform:rotate(${sqr ? -8 : -1}deg)"><div class="body"></div>${watch}${sweep}</div>`
+    return `<div class="cv-how-watch" style="left:${cx - d / 2}cqi;top:${cy - d / 2}cqi;width:${d}cqi;height:${d}cqi;transform:rotate(${sqr ? -8 : -1}deg)"><div class="body"></div>${watch}</div>`
   }
   const arrow = `<svg class="cv-how-arrow" viewBox="0 0 100 40" aria-hidden="true"><path d="M3 24 C 24 19, 46 27, 68 21 S 88 18, 96 19"/><path d="M83 7 C 88 12, 92 15, 97 19 C 91 22, 87 27, 84 33"/></svg>`
 

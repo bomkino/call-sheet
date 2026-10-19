@@ -1,8 +1,8 @@
 // Cover poster for the stages carousel. Calls cover('stages', {...}).
 // One shot, six times: a strip of film that starts as a pencil storyboard and ends as the graded frame.
 {
-  const G = '#e6b640'           // goldenrod: the ground, and the colour the sprocket holes show through
-  const HOLE = '#b98f2f'        // the desk seen through a perforation, in the strip's shadow
+  const G = 'var(--salmon)'     // the ground; the sprocket holes show it through, in the strip's shadow
+  const HOLE = '#c98168'        // the desk seen through a perforation, in the strip's shadow
   document.head.insertAdjacentHTML('beforeend', `<style>
     .cv-stages-strip { position: absolute; z-index: 1; transform-origin: 0 50%; box-shadow: var(--lift); }
     .cv-stages-strip > svg, .cv-stages-ink > svg, .cv-stages-tool > svg { display: block; width: 100%; height: auto; overflow: visible; }
@@ -104,9 +104,9 @@
   cover('stages', { g: G, dark: false,
     art: (c) => {
       const sqr = c === 'square', Hh = sqr ? 100 : 125
-      const sc = sqr ? .74 : 1.06                                 // strip scale
-      const a = sqr ? -2.5 : -4.5, rad = a * Math.PI / 180
-      const x0 = sqr ? -40 : -52, y0 = sqr ? 65.9 : 82.7             // centre of the strip's left end, cqi
+      const sc = sqr ? .72 : .92                                 // strip scale
+      const a = sqr ? -2.5 : -4, rad = a * Math.PI / 180
+      const x0 = sqr ? -40 : -52, y0 = sqr ? 65.4 : 84.4             // centre of the strip's left end, cqi
       const at = (s, d = 0) => [x0 + s * sc * Math.cos(rad) - d * Math.sin(rad), y0 + s * sc * Math.sin(rad) + d * Math.cos(rad)]
       // a grease-pencil line from the circled "six", up to the strip and along it, out of the right edge
       const d = SH * sc / 2 + 2.4
@@ -118,7 +118,7 @@
     },
     html: (c, i, n) => `${ctop('Where you’re at', i, n)}
       <div class="cv-stages-head mt-m">${S('display', 'You don’t need<br>a finished film.')}</div>
-      ${S('body', 'There are opportunities you can apply for while you’re still writing, shooting or editing.', 'class="mt-xs" style="max-inline-size:40ch"')}
+      ${S(c === 'square' ? 'body' : 'subhead', 'There are opportunities you can apply for while you’re still writing, shooting or editing.', `class="mt-xs" style="max-inline-size:${c === 'square' ? 40 : 30}ch"`)}
       <div class="grow"></div>
       ${S('subhead', `Here are ${circ('six,', 'wide', { l: '-12%', t: '-20%', w: '126%', h: '144%' })} depending on where your project’s at.`, 'style="max-inline-size:24ch"')}
       <div class="foot mt-s">${sp('credit', 'Call Sheet, by pitch.dog')}<span class="cv-stages-cue">${swipeArrow}${swipe}</span></div>`,

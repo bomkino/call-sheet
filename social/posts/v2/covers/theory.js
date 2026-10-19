@@ -45,7 +45,7 @@
   // A coffee ring, left by someone who read the rules twice.
   const ring = (style) => `<svg viewBox="-12 -12 24 24" style="${style}" aria-hidden="true"><circle r="9.6" fill="none" stroke="rgb(120 74 24 / .22)" stroke-width="1.1"/><circle r="9.1" cx=".3" cy=".2" fill="none" stroke="rgb(120 74 24 / .14)" stroke-width=".5"/><path d="M-8 6 A10 10 0 0 0 7 7" fill="none" stroke="rgb(120 74 24 / .18)" stroke-width="1.8"/></svg>`
 
-  cover('theory', { g: 'var(--goldenrod)', dark: false,
+  cover('theory', { g: 'var(--buff)', dark: false,
     art: (c) => {
       const sqr = c === 'square', H = sqr ? 100 : 125
       const L = sqr

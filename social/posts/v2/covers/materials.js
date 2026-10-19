@@ -1,19 +1,28 @@
 // Cover poster for the materials carousel. Calls cover('materials', {...}).
-// Three grants, three different piles of paper, and you juggling them: the pages fly round a red marker orbit.
+// Three grants, three piles of paper, held like a hand of cards. The marker numbers them 1, 2, 3,
+// in the margin of the copy and on the corner of each page, so you can see you're keeping count.
 {
+  // Until v2/materials.js adds the carousel, register its first slide so the cover can be previewed.
+  if (!POSTS['materials-01']) P('materials-01', { name: 'materials 1/6', g: 'var(--goldenrod)', sizes: ['1080x1350', '1080x1080'],
+    alt: 'One film grant wants a treatment. Another wants a script. Another wants a budget in euros. And you’re trying to keep track of all three.', render: () => ({ frame: '', art: '' }) })
+
   document.head.insertAdjacentHTML('beforeend', `<style>
     .cv-materials-doc { position: absolute; z-index: 1; }
-    .cv-materials-air { box-shadow: 0 1px 1px rgb(21 19 15 / .08), 0 5cqi 6cqi -2cqi rgb(21 19 15 / .28), 0 12cqi 14cqi -6cqi rgb(21 19 15 / .22); }
-    .cv-materials-page { background: var(--sheet); aspect-ratio: 8.5 / 11; padding: 4.2cqi 4cqi; display: grid; gap: 1.2cqi; align-content: start; position: relative; }
+    .cv-materials-page { background: var(--sheet); aspect-ratio: 8.5 / 11; padding: 4.4cqi 4.4cqi; display: grid; gap: 1.1cqi; align-content: start; position: relative; box-shadow: var(--lift); }
     .cv-materials-page i { display: block; height: 1cqi; border-radius: 1cqi; background: rgb(21 19 15 / .14); }
-    .cv-materials-page .pno { position: absolute; right: 4cqi; bottom: 3.2cqi; }
-    .cv-materials-row { display: flex; justify-content: space-between; align-items: baseline; }
-    .cv-materials-cover { background: #e9d5ae; aspect-ratio: 8.5 / 11; position: relative; display: grid; justify-items: center; align-content: center; gap: 2cqi; text-align: center; }
+    .cv-materials-row { display: flex; gap: 2cqi; align-items: baseline; }
+    .cv-materials-cover { background: var(--blue); aspect-ratio: 8.5 / 11; position: relative; box-shadow: var(--lift); }
     .cv-materials-cover b { display: block; height: 2cqi; background: rgb(21 19 15 / .78); }
-    .cv-materials-brad { position: absolute; left: 2.4cqi; width: 2.6cqi; height: 2.6cqi; border-radius: 50%; background: #c9a24a; box-shadow: inset -.4cqi -.5cqi 0 #9c7a2c, inset .3cqi .3cqi 0 #ecd28a, 0 .3cqi .4cqi rgb(21 19 15 / .35); }
-    .cv-materials-hole { position: absolute; left: 2.6cqi; width: 2.2cqi; height: 2.2cqi; border-radius: 50%; background: rgb(21 19 15 / .28); box-shadow: inset 0 .3cqi .3cqi rgb(21 19 15 / .3); }
-    .cv-materials-ink { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
-    .cv-materials-ink > svg { display: block; width: 100%; height: 100%; overflow: visible; }
+    .cv-materials-brad { position: absolute; left: 2.6cqi; width: 2.6cqi; height: 2.6cqi; border-radius: 50%; background: #c9a24a; box-shadow: inset -.4cqi -.5cqi 0 #9c7a2c, inset .3cqi .3cqi 0 #ecd28a, 0 .3cqi .4cqi rgb(21 19 15 / .35); }
+    .cv-materials-hole { position: absolute; left: 2.8cqi; width: 2.2cqi; height: 2.2cqi; border-radius: 50%; background: #b98f2f; box-shadow: inset 0 .3cqi .3cqi rgb(21 19 15 / .3); }
+    .cv-materials-tab { display: grid; grid-template-columns: 1fr auto; margin-top: 2.4cqi; border-top: 1.5px solid var(--rule-strong); }
+    .cv-materials-tab > span { padding: 1.3cqi .4cqi; border-bottom: 1.5px solid var(--rule); font-variant-numeric: tabular-nums; }
+    .cv-materials-tab > span:nth-child(2n) { text-align: right; }
+    .cv-materials-tab > .h { border-bottom-color: var(--rule-strong); }
+    .cv-materials-tab > .t { border-bottom: 0; border-top: 3px solid var(--ink); }
+    .cv-materials-num { position: absolute; width: 7.5cqi; height: auto; overflow: visible; }
+    .cv-materials-lines { display: grid; grid-template-columns: 5.4cqi 1fr; column-gap: 1.6cqi; row-gap: .6cqi; align-items: center; margin-left: -1cqi; }
+    .cv-materials-lines svg { width: 4.6cqi; height: auto; overflow: visible; justify-self: center; }
     .cv-materials-head [data-pd-social="display"] { font-size: 11.6cqi; line-height: .88; }
     .cv-materials-cue { display: inline-flex; align-items: center; gap: 1.4cqi; }
     .cv-materials-cue svg { width: 9cqi; height: auto; overflow: visible; }
@@ -34,48 +43,50 @@
       L.push([p[0] + nx * hw, p[1] + ny * hw]); R.push([p[0] - nx * hw, p[1] - ny * hw]) })
     const f = (q) => `${q[0].toFixed(2)} ${q[1].toFixed(2)}`
     return `<path d="M${L.map(f).join(' L')} L${R.reverse().map(f).join(' L')} Z"/>` }
-  const head = (e, ang, w, len = 3.6, seed = 1) => [.55, -.5].map((da, k) => ink([[e[0] - Math.cos(ang + da) * len, e[1] - Math.sin(ang + da) * len], e], w * .9, seed + k)).join('')
-  const arrow = (pts, w, len = 4, seed = 1) => { const n = pts.length, e = pts[n - 1], p = pts[n - 2]; return ink(pts, w, seed) + head(e, Math.atan2(e[1] - p[1], e[0] - p[0]), w, len, seed + 2) }
+  const arrow = (pts, w, len = 4, seed = 1) => { const n = pts.length, e = pts[n - 1], p = pts[n - 2], a = Math.atan2(e[1] - p[1], e[0] - p[0])
+    return ink(pts, w, seed) + [.55, -.5].map((da, k) => ink([[e[0] - Math.cos(a + da) * len, e[1] - Math.sin(a + da) * len], e], w * .9, seed + k + 2)).join('') }
 
-  // ---- the three piles, each a full page; only their tops show above the bottom edge
+  // ---- marker numerals, drawn as strokes in a 12 × 13 box centred on 0,0
+  const NUM = {
+    1: [[[-1.6, -2.8], [.2, -4.8], [.5, -.4], [.3, 4.8]]],
+    2: [[[-2.8, -2.6], [-.6, -4.9], [2.3, -3.8], [1.7, -.6], [-1.6, 2.6], [-3, 4.6], [.4, 4], [3.2, 4.4]]],
+    3: [[[-2.8, -3.6], [0, -5], [2.7, -3.2], [.6, -.7], [-.9, -.3], [1.5, .2], [3, 2.5], [.8, 4.8], [-2.8, 3.8]]],
+  }
+  const numeral = (n, w = 1.15, seed = 1) => `<svg viewBox="-6 -6.5 12 13" aria-hidden="true"><g fill="var(--marker)">${NUM[n].map((p, k) => ink(p, w, seed + k)).join('')}</g></svg>`
+  const cornerNum = (n, style) => numeral(n, 1.05, n * 3).replace('<svg ', `<svg class="cv-materials-num" style="${style}" `)
+
+  // ---- the three piles, each a full page; content sits in the top half, so the foot lands on clean paper
   const bars = (...w) => w.map(x => `<i style="width:${x}%"></i>`).join('')
-  const para = (...w) => `<div style="display:grid;gap:1.1cqi;margin-top:1.6cqi">${bars(...w)}</div>`
+  const para = (...w) => `<div style="display:grid;gap:1.1cqi;margin-top:1.4cqi">${bars(...w)}</div>`
   const treatment = (w) => `<div class="cv-materials-page" style="width:${w}cqi">
-    <div class="cv-materials-row">${sp('metadata', 'Treatment')}${sp('metadata', 'Page 1 of 4', 'class="soft"')}</div>
-    <b style="display:block;height:2.6cqi;width:58%;background:rgb(21 19 15 / .82);margin:3cqi 0 .6cqi"></b><b style="display:block;height:1.2cqi;width:34%;background:rgb(21 19 15 / .3)"></b>
-    ${para(100, 96, 98, 91, 64)}${para(97, 100, 93, 99, 78)}${para(100, 92, 96, 46)}${para(98, 95, 88)}</div>`
+    <div class="cv-materials-row" style="padding-left:6.4cqi">${sp('metadata', 'Treatment')}${sp('metadata', 'Draft 2', 'class="soft"')}</div>
+    <b style="display:block;height:2.6cqi;width:58%;background:rgb(21 19 15 / .82);margin:2.6cqi 0 .4cqi"></b><b style="display:block;height:1.2cqi;width:34%;background:rgb(21 19 15 / .3)"></b>
+    ${para(100, 96, 98, 91, 64)}${para(97, 100, 93, 78)}${para(100, 92, 46)}
+    ${cornerNum(1, 'left:1.4cqi;top:1.4cqi;transform:rotate(-6deg)')}</div>`
   const script = (w) => `<div class="cv-materials-cover" style="width:${w}cqi">
-    <i class="cv-materials-brad" style="top:9%"></i><i class="cv-materials-hole" style="top:calc(50% - 1.1cqi)"></i><i class="cv-materials-brad" style="bottom:9%"></i>
-    <div style="position:absolute;left:0;right:0;top:15%;display:grid;justify-items:center;gap:2.4cqi">${sp('metadata', 'Script', 'class="soft"')}<b style="width:56%;height:2.6cqi"></b>${sp('metadata', 'Written by', 'class="soft"')}<b style="width:34%;height:1.4cqi;background:rgb(21 19 15 / .45)"></b></div>
-    <span style="position:absolute;right:4cqi;bottom:4cqi">${sp('metadata', 'Third draft', 'class="soft"')}</span></div>`
+    <i class="cv-materials-brad" style="top:8%"></i><i class="cv-materials-hole" style="top:calc(50% - 1.1cqi)"></i><i class="cv-materials-brad" style="bottom:8%"></i>
+    <div style="position:absolute;left:0;right:0;top:13%;display:grid;justify-items:center;gap:2.4cqi">${sp('metadata', 'Script', 'class="soft"')}<b style="width:56%;height:2.6cqi"></b>${sp('metadata', 'Written by', 'class="soft"')}<b style="width:34%;height:1.4cqi;background:rgb(21 19 15 / .45)"></b>${sp('metadata', 'Third draft', 'class="soft" style="margin-top:2cqi"')}</div>
+    ${cornerNum(2, 'left:5.4cqi;top:1.6cqi;transform:rotate(4deg)')}</div>`
   const budget = (w) => `<div class="cv-materials-page" style="width:${w}cqi;gap:0">
-    <div class="cv-materials-row">${sp('metadata', 'Budget')}${sp('metadata', 'In euros', 'class="soft"')}</div>
-    <div class="sheet" style="box-shadow:none;margin-top:2.4cqi;grid-template-columns:2fr 1.2fr">${[['Line', 'EUR', 'h'], ['Development', '14,500'], ['Shoot, 18 days', '162,000'], ['Post', '38,250'], ['Music', '9,000'], ['Contingency', '21,475'], ['Total', '€245,225', 't']]
-      .map(([a, b, cls]) => [a, b].map(x => `<span class="${cls || ''}" style="padding:1.4cqi 1.8cqi">${sp(cls === 'h' ? 'metadata' : 'label', x)}</span>`).join('')).join('')}</div></div>`
-  // the marker counts them: 1, 2, 3, drawn by hand in the corner of each page
-  const numeral = (n, x, y, s = 1, seed = 1) => { const P = (pts) => pts.map(([a, b]) => [x + a * s, y + b * s])
-    if (n === 1) return ink(P([[-1.2, -2.6], [.4, -4.4], [.6, 0], [.4, 4.4]]), 1 * s, seed)
-    if (n === 2) return ink(P([[-2.6, -2.4], [-.6, -4.6], [2.2, -3.6], [1.6, -.6], [-1.6, 2.6], [-2.8, 4.4], [.4, 3.8], [3, 4.2]]), 1 * s, seed)
-    return ink(P([[-2.6, -3.4], [0, -4.8], [2.6, -3], [.6, -.6], [-.8, -.2], [1.4, .2], [2.8, 2.4], [.8, 4.6], [-2.6, 3.6]]), 1 * s, seed) }
+    <div class="cv-materials-row" style="padding-left:6.4cqi">${sp('metadata', 'Budget')}${sp('metadata', 'In euros', 'class="soft"')}</div>
+    <div class="cv-materials-tab">${[['Line', 'EUR', 'h'], ['Development', '€14,500'], ['Shoot', '€162,000'], ['Post', '€38,250'], ['Total', '€214,750', 't']]
+      .map(([a, b, cls]) => `<span class="${cls || ''}">${sp(cls === 'h' ? 'metadata' : 'label', a)}</span><span class="${cls || ''}">${sp(cls === 'h' ? 'metadata' : 'label', b)}</span>`).join('')}</div>
+    ${cornerNum(3, 'left:1.4cqi;top:1.4cqi;transform:rotate(-3deg)')}</div>`
 
   const swipeArrow = `<svg viewBox="0 0 40 14" aria-hidden="true"><g fill="var(--marker)">${arrow([[1, 9], [12, 6.4], [24, 6.8], [36, 5.6]], 1.7, 6, 3)}</g></svg>`
 
-  cover('materials', { g: 'var(--blue)', dark: false,
+  cover('materials', { g: 'var(--goldenrod)', dark: false,
     art: (c) => {
-      const sqr = c === 'square', Hh = sqr ? 100 : 125
-      // the orbit: up from the bottom left, over the top, down and out of the right edge
-      // a hand of three pages, fanned up from below the bottom edge: treatment, script, budget
-      const sw = sqr ? 46 : 52
-      // [page, rotation, centre x, top y]: drawn back to front
-      const fan = sqr ? [['treatment', -11, 24, 66], ['budget', 12, 80, 67], ['script', 3, 52, 63]] : [['treatment', -11, 24, 72], ['budget', 12, 80, 74], ['script', 3, 52, 69]]
-      const pages = fan.map(([k, r, cx, y]) => `<div class="cv-materials-doc" style="left:${cx - sw / 2}cqi;top:${y}cqi;transform:rotate(${r}deg)"><div class="paper" style="box-shadow:var(--lift)">${({ treatment, script, budget })[k](sw)}</div></div>`).join('')
-      const nums = sqr ? [[1, 6.5, 74], [2, 34, 70], [3, 63, 72]] : [[1, 6.5, 80], [2, 34, 76], [3, 63, 79]]
-      return `${pages}<div class="cv-materials-ink"><svg viewBox="0 0 100 ${Hh}" preserveAspectRatio="none" aria-hidden="true"><g fill="var(--marker)">${nums.map(([n, x, y], j) => numeral(n, x, y, 1.15, j * 3)).join('')}</g></svg></div>`
+      const sqr = c === 'square', sw = sqr ? 40 : 50
+      // a hand of three pages, fanned from a point below the bottom edge; the right-hand page on top
+      const T = sqr ? 69 : 66, px = 53, py = sqr ? 150 : 175
+      const fan = [['treatment', -17], ['script', 0], ['budget', 16]]
+      return fan.map(([k, r]) => `<div class="cv-materials-doc" style="left:${px - sw / 2}cqi;top:${T}cqi;width:${sw}cqi;transform-origin:50% ${py - T}cqi;transform:rotate(${r}deg)">${({ treatment, script, budget })[k](sw)}</div>`).join('')
     },
     html: (c, i, n) => `${ctop('What to send', i, n)}
-      <div class="mt-m" style="display:grid;gap:.4cqi">${S('subhead', 'One film grant wants a treatment.')}${S('subhead', 'Another wants a script.')}${S('subhead', 'Another wants a budget in euros.')}</div>
+      <div class="cv-materials-lines mt-m">${[[1, 'One film grant wants a treatment.'], [2, 'Another wants a script.'], [3, 'Another wants a budget in euros.']].map(([k, t]) => `${numeral(k, 1.15, k * 3)}${S('subhead', t)}`).join('')}</div>
       <div class="cv-materials-head mt-m">${S('display', `And you’re trying to keep track of ${circ('all three.', 'long', { l: '-6%', t: '-14%', w: '112%', h: '130%' })}`, 'style="max-inline-size:14ch"')}</div>
       <div class="grow"></div>
-      <div class="foot mt-m">${sp('credit', 'Call Sheet, by pitch.dog')}<span class="cv-materials-cue">${swipeArrow}${swipe}</span></div>`,
+      <div class="foot">${sp('credit', 'Call Sheet, by pitch.dog')}<span class="cv-materials-cue">${swipeArrow}${swipe}</span></div>`,
   })
 }

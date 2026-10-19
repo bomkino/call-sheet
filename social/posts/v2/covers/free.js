@@ -15,7 +15,7 @@
     .cv-free-item > span { font-size: 1.9cqi; white-space: nowrap; overflow: hidden; }
     .cv-free-item .nm { text-overflow: clip; }
     .cv-free-item .v { font-variant-numeric: tabular-nums; }
-    .cv-free-total { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 1.2cqi; }
+    .cv-free-total { display: flex; justify-content: flex-end; gap: 3cqi; align-items: baseline; margin-top: 1.2cqi; }
     .cv-free-total .big { font-size: 12cqi; position: relative; }
     .cv-free-dbl { position: absolute; left: -4%; width: 110%; bottom: -3.2cqi; height: 3cqi; overflow: visible; }
     .cv-free-dbl path, .cv-free-arrow path { fill: none; stroke: var(--marker); stroke-linecap: round; stroke-linejoin: round; }
@@ -53,11 +53,11 @@
         <hr class="cv-free-rule">
         <div class="cv-free-total">${sp('label', 'Total')}<span class="big" data-pd-social="metric">0.00${dbl}</span></div>
       </div>
-      ${stamp('free', `left:${sqr ? 8 : 5}cqi;top:${sqr ? 54 : 62}cqi;width:${sqr ? 54 : 60}cqi;transform:rotate(-10deg)`)}
+      ${stamp('free', `left:${sqr ? -1 : 2}cqi;top:${sqr ? 68 : 98}cqi;width:${sqr ? 40 : 42}cqi;transform:rotate(-8deg)`)}
     </div>`
   }
 
-  cover('free', { g: 'var(--yellow)', dark: false,
+  cover('free', { g: 'var(--green)', dark: false,
     art: (c) => receipt(c, 1, 6),
     html: (c, i, n) => `<div class="grow"></div><div class="foot">${sp('credit', 'Call Sheet, by pitch.dog')}<span class="cv-free-swipe">${sp('credit', 'Swipe')}${arrow}</span></div>` })
 }
