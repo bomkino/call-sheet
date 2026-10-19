@@ -177,3 +177,248 @@ def pick(pool, code, monday, history, same_week):
             if c not in chosen and len(chosen) < PER_POST:
                 chosen.append(c)
     return sorted(chosen, key=lambda c: effective(c)[0])
+
+
+# ---------------------------------------------------------------- the words
+# One plain line of what you get, and what the application needs, per opportunity. Every fact
+# comes from that opportunity's get / bring / who / caution in data/calls.json, as of 17 Oct.
+# FOR: who an identity-restricted opportunity is for, shown in its row. NOTE: an extra line where
+# the date we count to isn't the closing date.
+COPY = {
+    'atlanta-film-festival-screenplay-2027': ('Atlanta Film Festival Screenplay Competition',
+        'Cash prizes of $250–500, a travel stipend and lodging', 'Needs an unproduced English script, written with no AI.'),
+    'atx-tv-festival-pitch-competition-2027': ('ATX TV Festival Pitch Competition',
+        'Ten finalists pitch live and get a year of mentoring', 'Needs your pilot’s first 10 pages and a 90-second video.'),
+    'bell-fund-production-major-production-funder': ('Bell Fund, Major Production Funder',
+        'Non-repayable funding of up to CAD 150,000–250,000', 'Needs a Canadian company, a licence deal, a budget and a finance plan.'),
+    'canada-council-creating-knowing-and-sharing-short-term-projects': ('Canada Council Short-Term Projects',
+        'Project funding for up to a year; no amount published', 'Needs an activity proposal and a budget.'),
+    'carole-dorothy-joyce-student-grant-2026': ('Carole Dorothy Joyce Student Grant',
+        '$3,000 plus donated services and products', 'Needs a synopsis, a budget and a fundraising plan.'),
+    'cfa-x-imgn-grant-2026': ('CFA x IMGN Grant',
+        'USD 4,500 for one narrative or documentary project', 'Needs a budget and a production book with a script breakdown.'),
+    'cinestory-tv-retreat-and-fellowship-2027': ('CineStory TV Fellowship',
+        'The Fellow gets USD 3,000, a year’s mentoring and a free retreat', 'Needs an anonymous English pilot script.'),
+    'doc-edge-pitch': ('Doc Edge Pitch',
+        'A pitch at Doc Edge 2027, with mentoring and two industry passes', 'Needs a teaser of up to 5 minutes and downloadable images.'),
+    'eurodoc-annual-programme': ('EURODOC Annual Programme',
+        'Three residential weeks in Europe and meetings with decision makers', 'Needs a feature doc behind you, a 15-page dossier and finance material.'),
+    'ficci66-festival-films': ('FICCI 66 festival competition',
+        'Prizes from a pool of up to USD 100,000', 'Needs a 2026 film, unseen in Colombia, with English subtitles.'),
+    'hot-docs-deal-maker': ('Hot Docs Deal Maker',
+        'Three days of one-on-one pitch meetings', 'Needs up to 10 minutes of footage or visuals.'),
+    'hot-docs-festival-films': ('Hot Docs Festival',
+        'A festival screening, and a shot at jury and audience awards', 'Needs a documentary finished after 1 January 2026.'),
+    'hot-docs-forum': ('Hot Docs Forum',
+        'A pitch to a round table of international commissioners', 'Needs a production company and a doc that’s 10–75% financed.'),
+    'le-groupe-ouest-selection-annuelle': ('Le Groupe Ouest Annual Selection',
+        'Three writing residencies in Brittany, board and lodging covered', 'Needs working French, a 3-page synopsis and a 5-minute spoken video.'),
+    'michael-collyer-memorial-fellowship-2027': ('Michael Collyer Fellowship',
+        '$10,000 and a year of mentoring by a prominent screenwriter', 'Needs a finished feature script, hosted on the Black List.'),
+    'screen-australia-narrative-content-production-december': ('Screen Australia Narrative Production',
+        'Drama production funding; Creative First features can ask up to AUD 500,000', 'Needs a full production package: rights, budget, finance and distribution.'),
+    'screen-australia-x-actf-kids-ip-incubator': ('Screen Australia × ACTF Kids IP Incubator',
+        'AUD 20,000 per team, mentoring and a Melbourne workshop', 'Needs a 3-minute pitch video, a writer on the team and the webinar watched.'),
+    'sedona-screenplay-competition-2027': ('Sedona Screenplay Competition',
+        'Winners get a VIP pass, hotel nights, a table read and coverage', 'Needs an unsold, unoptioned English script.'),
+    'series-mania-co-pro-pitching-sessions': ('Series Mania Co-Pro Pitching',
+        'A pitch in Lille; the best project wins up to €50,000', 'Needs a production company and a 10-page English template.'),
+    'series-mania-writers-campus': ('Series Mania Writers Campus',
+        'Mentoring, a workshop in Lille and a pitch at the Forum', 'Needs an English project dossier of up to 10 pages.'),
+    'seriesfest-pilots-in-progress-season-13': ('SeriesFest Pilots in Progress',
+        'Your rough cut screened to an audience, for feedback', 'Needs a pilot rough cut, a series deck and a one-sheet.'),
+    'seriesfest-pitch-a-thon-season-13': ('SeriesFest Pitch-A-Thon!',
+        'A live five-minute pitch, with panel feedback', 'Needs a pilot script, a 3–5-minute pitch video and a deck.'),
+    'sofia-meetings-features': ('Sofia Meetings, features',
+        'A pitch to co-producers, sales agents and distributors', 'Needs a script or treatment, a finance plan and CVs.'),
+    'sofia-meetings-tv-series': ('Sofia Meetings, TV series',
+        'A pitch to co-producers, with industry awards', 'Needs a pitch, a pilot outline, a bible, a budget and finance.'),
+    'sundance-graton-fellowship-2027': ('Sundance Graton Fellowship',
+        '$25,000 each for two fellows, plus a year of support', 'Needs an application and your tribal affiliation documents.'),
+    'sundance-sloan-episodic-science-grant-2027': ('Sundance Sloan Episodic Science Grant',
+        '$17,000 and craft support for one series about science', 'Needs a finished pilot, short bios and two 250-word statements.'),
+    'the-film-fund-fall-narrative-contest-2026': ('The Film Fund Fall Narrative Contest',
+        'Up to $10,000 for a short, paid back against your costs', 'Needs one sentence: your idea and how you’d spend the money.'),
+    'torinofilmlab-comedylab': ('TorinoFilmLab ComedyLab',
+        'Three residential modules to develop a comedy feature', 'Needs a synopsis, a 5-page treatment, five scenes and a video.'),
+    'torinofilmlab-green-narratives': ('TorinoFilmLab Green Narratives',
+        'Three online modules of group script tutoring', 'Needs a 15–20-page treatment, a synopsis and a 2-minute video.'),
+    'torinofilmlab-serieslab': ('TorinoFilmLab SeriesLab',
+        'Six months, three residential workshops and an industry pitch', 'Needs a writer–producer team and a series dossier.'),
+    'tribeca-at-and-t-untold-stories-2027': ('Tribeca AT&T Untold Stories',
+        'USD 1.2m to make the winning feature', 'Needs a registered script, a $1.2m budget and 5 minutes of past work.'),
+    'visions-du-reel-vdrpitching': ('Visions du Réel Pitching',
+        'A pitch in Nyon, and a shot at a €20,000 award', 'Needs a doc feature over 60 minutes, a budget and a finance plan.'),
+}
+FOR = {
+    'canada-council-creating-knowing-and-sharing-short-term-projects': 'For First Nations, Inuit and Métis artists',
+    'carole-dorothy-joyce-student-grant-2026': 'For students',
+    'michael-collyer-memorial-fellowship-2027': 'For writers aged 18 to 25',
+    'sundance-graton-fellowship-2027': 'For artists from California-based tribes',
+    'tribeca-at-and-t-untold-stories-2027': 'For writers or directors from underrepresented communities',
+}
+NOTE = {
+    'atx-tv-festival-pitch-competition-2027': 'Ask for a fee waiver by 16 Nov. Entries close 14 Dec.',
+}
+
+WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+MON = 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split()
+
+
+def dm(x, year=False):
+    return f'{x.day} {MON[x.month - 1]}' + (f' {x.year}' if year else '')
+
+
+def weeks(days):
+    """Lead time in weeks, rounded down to the half week, so we never overstate it."""
+    h = days * 2 // 7
+    return (f'{h // 2}' if h % 2 == 0 else (f'{h // 2}½' if h > 1 else '½')) + (' week' if h == 2 else ' weeks')
+
+
+def headline(region, lead):
+    n = lead // 7
+    return f'{region} filmmakers, you’ve still got {WORDS[n] if n < 10 else n} weeks.'
+
+
+def build(calls, explain=False):
+    posts, skipped, history = [], [], {}
+    for monday in WEEKS:
+        same_week = []
+        for key, (code, region, ground) in REGIONS.items():
+            pool = []
+            for c in calls:
+                why = check(c, monday, code)
+                if why is None:
+                    pool.append(c)
+                elif explain and c['state'] not in ('closed_or_historical', 'legacy_snapshot') and (c['closes'] or '') >= monday.isoformat():
+                    print(f'  - {monday} {key} {c["slug"]}: {why}')
+            chosen = pick(pool, code, monday, history.get(key, {}), same_week)
+            same_week += [c['slug'] for c in chosen]
+            history.setdefault(key, {})[monday] = {c['slug'] for c in chosen}
+            pid = f'week-{monday:%m%d}-{key}'
+            if explain:
+                print(f'{pid}: pool of {len(pool)} -> {[c["slug"] for c in chosen]}')
+            if len(chosen) < 2:
+                skipped.append((pid, len(pool)))
+                continue
+            rows = []
+            for c in chosen:
+                missing = [s for s in [c['slug']] if s not in COPY]
+                if missing:
+                    sys.exit(f'No copy written for {missing[0]}: add it to COPY before posting.')
+                name, get, needs = COPY[c['slug']]
+                eff, step, _ = effective(c)
+                opens = d(c['opens'])
+                lead = (eff - monday).days
+                rows.append({'slug': c['slug'], 'name': name, 'get': get, 'needs': needs,
+                             'for': FOR.get(c['slug']), 'note': NOTE.get(c['slug']) or (f'Opens {dm(opens)}.' if opens and opens > monday else None),
+                             'date': eff.isoformat(), 'wd': f'{eff:%a}', 'lead': lead, 'weeks': weeks(lead),
+                             'min': need(c)[0], 'why': need(c)[1], 'step': step, 'closes': c['closes'], 'kind': bucket(c)})
+            soon = min(r['lead'] for r in rows)
+            count = WORDS[len(rows)].capitalize()
+            head = headline(region, soon)
+            sub = f'{count} funding opportunities with time left to apply, if you start this week.'
+            alt = (f'Still Time, the week of {dm(monday, True)}: {head} {sub} '
+                   + ' '.join(f'{i + 1}. {r["name"]}, {"first step due" if r["step"] else "closes"} {eff_day(r)} ({r["lead"]} days away). '
+                              f'{r["get"]}.{(" " + r["for"] + ".") if r["for"] else ""} {r["needs"]}{(" " + r["note"]) if r["note"] else ""}'
+                              for i, r in enumerate(rows))
+                   + ' A week strip runs from this week, highlighted, to the last deadline, with a red bar for each one showing the time left.'
+                   + ' Comment Call Sheet and we will send you the link!')
+            posts.append({'id': pid, 'week': monday.isoformat(), 'region': key, 'g': ground, 'head': head, 'sub': sub,
+                          'rows': rows, 'alt': alt})
+    return posts, skipped
+
+
+def eff_day(r):
+    x = date.fromisoformat(r['date'])
+    return f'{x:%A} {dm(x)}'
+
+
+JS = r"""// weekly: "Still Time", the weekly Call Sheet post for each key market (the US, the UK, Canada, Australia).
+// GENERATED by social/posts/make_weekly.py from data/calls.json (as of 17 Oct 2026). Edit the script, not this file.
+// Each post: this week, three opportunities that still leave time to apply properly, and the team's call to action.
+{
+  const WEEKLY = __DATA__
+
+  document.head.insertAdjacentHTML('beforeend', `<style>
+    .wk-card { padding: 3cqi 4cqi 1cqi; --ear: 6cqi; }
+    .wk-axis { position: relative; height: 9.6cqi; }
+    .wk-axis .wk-now { position: absolute; left: 0; top: 0; }
+    .wk-axis .wk-this { position: absolute; left: 0; bottom: 4.4cqi; height: 2.2cqi; background: #f4df77; border-radius: .3cqi; }
+    .wk-axis .wk-rule { position: absolute; left: 0; right: 0; bottom: 4.4cqi; border-bottom: 2px solid var(--ink); }
+    .wk-axis .wk-tick { position: absolute; bottom: 4.4cqi; width: 2px; height: 1.4cqi; margin-left: -1px; background: var(--ink); }
+    .wk-axis .wk-lab { position: absolute; bottom: 1cqi; white-space: nowrap; }
+    .wk-axis .wk-due { position: absolute; bottom: 3.7cqi; width: 1.6cqi; height: 1.6cqi; margin-left: -.8cqi; border-radius: 50%; background: var(--marker); box-shadow: 0 0 0 .45cqi var(--sheet); }
+    .wk-row { display: grid; grid-template-columns: 11.5cqi 1fr; column-gap: 3cqi; padding: 2.4cqi 0 2.2cqi; border-top: 1.5px solid var(--rule); }
+    .wk-row .wk-d { display: grid; align-content: start; }
+    .wk-row .wk-t > * + * { margin-top: .5cqi; }
+    .wk-row .wk-k { color: var(--marker-text); }
+    .wk-row .wk-for { display: inline-block; padding: .45em .65em .35em; background: #f4e5bd; color: #6b5214; --pd-type-ink: #6b5214; }
+    .wk-bar { grid-column: 1 / -1; position: relative; height: 1cqi; margin-top: 2cqi; border-radius: 1cqi; background: rgb(21 19 15 / .08); }
+    .wk-bar > b { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 1cqi; background: var(--marker); }
+    .wk-bar > i { position: absolute; top: 50%; width: 2.6cqi; height: 2.6cqi; margin: -1.3cqi 0 0 -1.3cqi; border-radius: 50%; background: var(--marker); box-shadow: 0 0 0 .5cqi var(--sheet); }
+    .wk-bar > span { position: absolute; top: 50%; transform: translateY(-50%); white-space: nowrap; }
+  </style>`)
+
+  const day = (iso) => new Date(iso + 'T12:00:00Z')
+  const span = (a, b) => Math.round((day(b) - day(a)) / 864e5)
+  const MON3 = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  const label = (d, first) => `${d.getUTCDate()}${first || d.getUTCDate() <= 7 ? ' ' + MON3[d.getUTCMonth()] : ''}`
+
+  // The week strip: from this Monday to the Monday after the last deadline, this week highlighted.
+  function strip (p) {
+    const last = Math.max(...p.rows.map(r => r.lead))
+    const n = Math.max(6, Math.ceil((last + 3) / 7))
+    const x = (days) => `${(days / (n * 7) * 100).toFixed(2)}%`
+    const ticks = Array.from({ length: n + 1 }, (_, k) => { const d = new Date(day(p.week).getTime() + k * 7 * 864e5)
+      return `<i class="wk-tick" style="left:${x(k * 7)}"></i>${k < n ? `<span class="wk-lab" style="left:${x(k * 7)}">${sp('metadata', label(d, k === 0), `class="${k ? 'soft' : ''}"`)}</span>` : ''}` }).join('')
+    const dues = p.rows.map(r => `<i class="wk-due" style="left:${x(r.lead)}"></i>`).join('')
+    const bar = (r) => { const at = r.lead / (n * 7), right = at > .72
+      return `<div class="wk-bar"><b style="width:${x(r.lead)}"></b><i style="left:${x(r.lead)}"></i><span style="${right ? `right:calc(${((1 - at) * 100).toFixed(2)}% + 3cqi)` : `left:calc(${x(r.lead)} + 3cqi)`}">${sp('metadata', `${r.weeks} to go`, right ? 'style="color:var(--sheet);background:var(--marker);padding:.2em .5em .1em;border-radius:.3em"' : '')}</span></div>` }
+    return { n, bar, axis: `<div class="wk-axis"><span class="wk-now">${circ(sp('label', 'This week'), 'wide', { l: '-12%', t: '-34%', w: '124%', h: '168%' })}</span>
+      <span class="wk-this" style="width:${x(7)}"></span><span class="wk-rule"></span>${ticks}${dues}</div>` }
+  }
+
+  const row = (r, bar, o) => { const d = day(r.date)
+    return `<div class="wk-row"><div class="wk-d">${sp('headline', String(d.getUTCDate()))}${sp('metadata', `${MON3[d.getUTCMonth()]} · ${r.wd}`, 'class="soft"')}</div>
+      <div class="wk-t">${S('label', r.name)}${r.for ? `<div>${sp('metadata', r.for, 'class="wk-for"')}</div>` : ''}${S('body', r.get)}
+      ${o.needs ? S('body', r.needs.replace(/^Needs /, '<span class="wk-k">Needs</span> '), 'class="soft"') : ''}${r.note && o.needs ? S('body', r.note, 'class="soft"') : ''}</div>${bar(r)}</div>` }
+
+  const card = (p, o) => { const s = strip(p)
+    return `<div class="paper ear wk-card"><span class="ear-flap"></span>${s.axis}${p.rows.map(r => row(r, s.bar, o)).join('')}</div>` }
+
+  const when = (iso) => { const d = day(iso); return `Week of ${d.getUTCDate()} ${MON3[d.getUTCMonth()]}` }
+  const cta = `Comment ${circ('Call Sheet', 'long', { l: '-5%', t: '-16%', w: '110%', h: '136%' })} and we will send you the link!`
+
+  for (const p of WEEKLY) {
+    P(p.id, { name: p.head, g: p.g, sizes: ['1080x1350', '1080x1080', '1080x1920'], alt: p.alt,
+      render (sz, c) {
+        const o = { needs: true }
+        const z = c === 'square' ? .8 : c === 'story' ? 1 : .9
+        return { frame: `<div class="top" style="justify-content:space-between"><div class="top">${swatch}${sp('metadata', 'Still Time', 'class="soft"')}</div>${sp('metadata', when(p.week), 'class="soft"')}</div>
+          ${S('display', p.head, 'class="mt-m"')}${c === 'square' ? '' : S('subhead', p.sub, 'class="mt-s wide"')}
+          <div class="grow" style="display:flex;align-items:center;padding:${c === 'story' ? '4cqb 0' : '2.4cqb 0'}"><div style="width:100%;zoom:${z};transform:rotate(-.6deg)">${card(p, o)}</div></div>
+          ${S('subhead', cta, 'class="wide"')}<div class="mt-s"></div>${foot()}`, art: '' }
+      } })
+  }
+}
+"""
+
+
+def main():
+    explain = '--explain' in sys.argv
+    calls = json.load(open(DATA))['calls']
+    posts, skipped = build(calls, explain)
+    OUT.write_text(JS.replace('__DATA__', json.dumps(posts, ensure_ascii=False, indent=1)))
+    print(f'wrote {OUT.relative_to(ROOT)}: {len(posts)} posts')
+    for pid, n in skipped:
+        print(f'SKIPPED {pid}: only {n} qualified')
+    print('\n| Week | Market | Opportunity | Effective deadline | Lead | Minimum |\n|---|---|---|---|---|---|')
+    for p in posts:
+        for r in p['rows']:
+            step = f" ({r['step']})" if r['step'] else ''
+            print(f"| {p['week']} | {p['region'].upper()} | {r['name']} | {r['date']}{step} | {r['lead']} d | {r['min']} d, {r['why']} |")
+
+
+if __name__ == '__main__':
+    main()

@@ -230,6 +230,18 @@
   .awards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2cqi; }
   .awards .doc { aspect-ratio: 3 / 4; display: grid; place-items: center; padding: 1cqi; }
 
+  /* the closing slide */
+  .closer-who { display: grid; grid-template-columns: auto auto; column-gap: 3cqi; align-items: end; }
+  .closer-who img { grid-row: span 2; width: 13cqi; height: auto; transform: rotate(-4deg); box-shadow: var(--lift-dark); border-radius: 1.6cqi; }
+  .closer-who > div:last-child { margin-top: .4cqi; }
+  .closer-rule { height: 0; border-top: 1.5px solid rgb(243 239 230 / .2); margin-bottom: 4cqb; }
+  .closer-free { align-self: flex-start; padding: 1.2cqi 2.6cqi 1.4cqi; background: var(--marker); color: var(--sheet); --pd-type-ink: var(--sheet); border-radius: .3cqi; transform: rotate(-2.5deg); box-shadow: 0 .6cqi 1.2cqi -.4cqi rgb(0 0 0 / .5); }
+
+  /* a carousel's thread: one marker line that leaves each slide where the next one picks it up */
+  .thread { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; overflow: visible; pointer-events: none; }
+  .thread path { fill: none; stroke: var(--marker); stroke-width: 1.15cqi; stroke-linecap: round; stroke-linejoin: round; }
+  .tape { position: absolute; z-index: 3; width: 13cqi; height: 4.4cqi; background: rgb(243 236 214 / .78); box-shadow: 0 1px 2px rgb(21 19 15 / .18); clip-path: polygon(2% 8%, 10% 0, 22% 9%, 35% 1%, 48% 8%, 62% 0, 76% 7%, 90% 0, 100% 10%, 98% 92%, 88% 100%, 74% 93%, 60% 100%, 46% 92%, 32% 100%, 18% 93%, 6% 100%, 0 90%); }
+
 </style>
 </head>
 <body>
@@ -445,16 +457,24 @@ const ctop = (label, i, n) => `<div class="top" style="justify-content:space-bet
 const swipe = sp('credit', 'Swipe →')
 // Every carousel ends on the same slide, in the team's exact words.
 const CLOSE_ALT = 'Call Sheet, by pitch.dog. Find film and TV grants, festivals, labs and fellowships, all in one place, with everything you need to know before applying. Filter based on your project status and timezone. Totally free! Comment Call Sheet and we will send you the link!'
+// Three tiers, top to bottom: who and what, then "Totally free!", then the ask as the hero, set on the baseline.
 const closer = () => ({ g: 'var(--ink)', dark: true,
-  html: (c, i, n) => `${ctop('Call Sheet, by pitch.dog.', i, n)}<div class="grow" style="display:flex;flex-direction:column;justify-content:center">
-    ${c === 'square' ? '' : '<img src="/brand/logo/call-sheet-logo-reverse.svg" alt="" style="width:56cqi;max-width:100%;margin:0 0 3cqb -2cqi">'}
-    ${S('subhead', 'Find film and TV grants, festivals, labs and fellowships, all in one place, with everything you need to know before applying. Filter based on your project status and timezone.', 'class="wide soft"')}
-    <div class="mt-m"><span class="tag" style="background:var(--marker);color:var(--sheet);--pd-type-ink:var(--sheet)">${sp('metadata', 'Totally free!')}</span></div>
-    ${S('display', `Comment ${circ('Call Sheet', 'long', { l: '-5%', t: '-16%', w: '110%', h: '136%', loop: 'var(--marker)' })} and we will send you the link!`, 'class="mt-s" style="max-inline-size:16ch"')}</div>
-    <div class="foot">${sp('credit', '')}<img src="/brand/logo/call-sheet-stamp-reverse.svg" alt=""></div>` })
+  html: (c, i, n) => `<div class="top" style="justify-content:space-between;align-items:flex-start">
+      <div class="closer-who"><img src="/brand/logo/call-sheet-symbol-paper.svg" alt="">${S('headline', 'Call Sheet,')}${S('subhead', 'by pitch.dog.', 'class="soft"')}</div>${N(i, n)}</div>
+    ${S('subhead', 'Find film and TV grants, festivals, labs and fellowships, all in one place, with everything you need to know before applying. Filter based on your project status and timezone.', `class="soft" style="margin-top:${sq(c, 3.6, 3)}cqb;max-inline-size:${sq(c, 21, 25)}em"`)}
+    <div class="grow"></div>
+    <div class="closer-rule"></div>
+    <div class="closer-free">${sp('subhead', 'Totally free!')}</div>
+    ${S('display', `Comment ${sq(c, '<br>', '')}${circ('Call&nbsp;Sheet', 'long', { ml: sq(c, '.02em', '.24em'), l: '-7%', t: '-15%', w: '114%', h: '134%', loop: 'var(--marker)' })}<br>and we will send<br>you the link!`, `style="margin-top:${sq(c, 3.6, 3)}cqb"`)}` })
 function carousel (key, slides, alt) {
   slides.forEach((s, i) => P(`${key}-${String(i + 1).padStart(2, '0')}`, { name: `${key} ${i + 1}/${slides.length}`, g: s.g || 'var(--paper)', dark: s.dark, sizes: ['1080x1350', '1080x1080'], alt,
     render: (sz, c) => ({ frame: s.html(c, i + 1, slides.length), art: s.art ? s.art(c) : '' }) }))
+}
+// A carousel's cover is designed as a poster in its own file (v2/covers/<key>.js) and replaces slide 1 here.
+function cover (key, s) {
+  const p = POSTS[`${key}-01`]; if (!p) return
+  const n = +p.name.split('/').pop()
+  Object.assign(p, { g: s.g || p.g, dark: s.dark, render: (sz, c) => ({ frame: s.html(c, 1, n), art: s.art ? s.art(c) : '' }) })
 }
 const chipsUi = (items) => `<div style="display:flex;flex-wrap:wrap;gap:1.4cqi">${items.map(([t, on]) => `<span class="paper" style="padding:1.6cqi 2.2cqi 1.4cqi;${on ? 'background:var(--ink);color:var(--paper);--pd-type-ink:var(--paper)' : ''}">${on ? '<span class="chip-dot" style="display:inline-block;margin-right:.6em;vertical-align:.05em"></span>' : ''}${sp('metadata', t)}</span>`).join('')}</div>`
 
@@ -786,6 +806,18 @@ P('thumb-c', { name: 'YouTube C: 99 websites, one list', g: 'var(--ink)', dark: 
 <script src="v2/materials.js"></script>
 <script src="v2/research.js"></script>
 <script src="v2/weekly.js"></script>
+<!-- Covers load last: each one replaces slide 1 of its carousel. -->
+<script src="v2/covers/tz.js"></script>
+<script src="v2/covers/theory.js"></script>
+<script src="v2/covers/sentence.js"></script>
+<script src="v2/covers/fineprint.js"></script>
+<script src="v2/covers/firstfilm.js"></script>
+<script src="v2/covers/free.js"></script>
+<script src="v2/covers/how.js"></script>
+<script src="v2/covers/why.js"></script>
+<script src="v2/covers/stages.js"></script>
+<script src="v2/covers/materials.js"></script>
+<script src="v2/covers/research.js"></script>
 <script>
 /* ------------------------------------------------------------------ mount */
 function mount (id, size) {
