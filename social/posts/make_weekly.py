@@ -327,6 +327,46 @@ NOTE = {
     'visions-du-reel-vdrpitching': 'CHF 360 if you’re picked, and a trip to Nyon.',
 }
 
+# LINE: the one short line each opportunity gets on the image: what it gives, in the row's own facts.
+# Who it's for (FOR) leads it when the opportunity is identity-restricted; a first step (STEP) follows it.
+LINE = {
+    'atlanta-film-festival-screenplay-2027': 'Cash prizes of $250–500, plus travel and lodging',
+    'atx-tv-festival-pitch-competition-2027': 'Ten finalists pitch live and get a year of mentoring',
+    'bell-fund-production-major-production-funder': 'Up to CAD 150,000–250,000 for production, non-repayable',
+    'canada-council-creating-knowing-and-sharing-short-term-projects': 'Project funding for up to a year',
+    'carole-dorothy-joyce-student-grant-2026': '$3,000 plus donated services and products',
+    'cfa-x-imgn-grant-2026': 'USD 4,500 for one narrative or documentary project',
+    'cinestory-tv-retreat-and-fellowship-2027': 'The Fellow gets USD 3,000, mentoring and a free retreat',
+    'doc-edge-pitch': 'A pitch at Doc Edge 2027, with mentoring',
+    'eurodoc-annual-programme': 'Three residential weeks in Europe for producers',
+    'ficci66-festival-films': 'Prizes from a pool of up to USD 100,000',
+    'hot-docs-deal-maker': 'Three days of one-on-one pitch meetings',
+    'hot-docs-festival-films': 'A festival screening, and a shot at the awards',
+    'hot-docs-forum': 'A pitch to international commissioners and funders',
+    'le-groupe-ouest-selection-annuelle': 'Three writing residencies in Brittany',
+    'michael-collyer-memorial-fellowship-2027': 'USD 10,000 and a year of mentoring',
+    'screen-australia-narrative-content-production-december': 'Drama production funding; Creative First features up to AUD 500,000',
+    'screen-australia-x-actf-kids-ip-incubator': 'AUD 20,000 per team, plus mentoring',
+    'sedona-screenplay-competition-2027': 'Winners get a VIP pass, hotel nights and a table read',
+    'series-mania-co-pro-pitching-sessions': 'A pitch in Lille; the best project wins up to €50,000',
+    'series-mania-writers-campus': 'Mentoring, a workshop in Lille and a pitch at the Forum',
+    'seriesfest-pilots-in-progress-season-13': 'Your pilot’s rough cut screened to an audience, for feedback',
+    'seriesfest-pitch-a-thon-season-13': 'A live five-minute pitch, with panel feedback',
+    'sofia-meetings-features': 'A pitch to co-producers, sales agents and distributors',
+    'sofia-meetings-tv-series': 'A pitch to co-producers, with industry awards',
+    'sundance-graton-fellowship-2027': '$25,000 each for two fellows',
+    'sundance-sloan-episodic-science-grant-2027': 'USD 17,000 and craft support for a science series',
+    'the-film-fund-fall-narrative-contest-2026': 'Up to $10,000 for a short, paid back against your costs',
+    'torinofilmlab-comedylab': 'Three residential modules to develop a comedy feature',
+    'torinofilmlab-green-narratives': 'Three online modules of group script tutoring',
+    'torinofilmlab-serieslab': 'Six months, three residential workshops and a pitch',
+    'tribeca-at-and-t-untold-stories-2027': 'USD 1.2m to make the winning feature',
+    'visions-du-reel-vdrpitching': 'A pitch in Nyon, and a shot at a €20,000 award',
+}
+STEP = {
+    'atx-tv-festival-pitch-competition-2027': 'Ask for a fee waiver by 16 Nov; entries close 14 Dec.',
+}
+
 WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
 MON = 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split()
 STICKY = 'Start this week, not the night before.'
@@ -384,116 +424,69 @@ def build(calls, explain=False):
                 opens = d(c['opens'])
                 lead = (eff - monday).days
                 note = NOTE.get(c['slug']) or (f'Opens {opens:%a} {dm(opens)}.' if opens and opens > monday else None)
-                rows.append({'slug': c['slug'], 'name': name, 'get': get, 'needs': needs, 'for': FOR.get(c['slug']),
+                if c['slug'] not in LINE or (step and c['slug'] not in STEP):
+                    sys.exit(f'No line (or first-step line) written for {c["slug"]}.')
+                who = FOR.get(c['slug'])
+                line = ' '.join(x for x in [f'{who}.' if who else None, LINE[c['slug']] + '.', STEP[c['slug']] if step else None] if x)
+                rows.append({'slug': c['slug'], 'name': name, 'line': line, 'get': get, 'needs': needs, 'for': who,
                              'note': note, 'fee': cheaper(c, monday, eff),
                              'date': eff.isoformat(), 'wd': f'{eff:%a}', 'lead': lead, 'weeks': weeks(lead),
                              'min': need(c)[0], 'why': need(c)[1], 'step': step, 'closes': c['closes'], 'kind': bucket(c)})
             count = WORDS[len(rows)].capitalize()
-            sub = f'{count} funding opportunities open to filmmakers in {place}, with time to apply properly.'
-            alt = (f'Still Time, the week of {dm(monday, True)}. Still time. {sub} '
-                   + ' '.join(f'{i + 1}. {r["name"]}: {"first step due" if r["step"] else "closes"} {long_day(date.fromisoformat(r["date"]))}. '
-                              f'{r["get"]}.{(" " + r["for"] + ".") if r["for"] else ""} {r["needs"]}{(" " + r["note"]) if r["note"] else ""}'
+            head = 'Still time.'
+            sub = f'For filmmakers in {place}. {STICKY}'
+            alt = (f'Still Time, the week of {dm(monday, True)}. {head} {sub} {count} funding opportunities: '
+                   + ' '.join(f'{i + 1}. {r["name"]}, {"first step due" if r["step"] else "closes"} {long_day(date.fromisoformat(r["date"]))}: {r["line"]}'
                               for i, r in enumerate(rows))
-                   + f' The {WORDS[len(rows)]} are typed on a production call sheet taped to a {rev} page, soonest deadline circled'
-                   + f' in red marker, with an empty “Ready?” box beside each. A sticky note on the sheet says: {STICKY} {CTA}')
+                   + f' {CTA} The {WORDS[len(rows)]} are set as a plain list on a {rev} ground, each with its date in large type.')
             posts.append({'id': pid, 'week': monday.isoformat(), 'region': key, 'place': place, 'g': ground, 'rev': rev, 'count': count,
-                          'sub': sub, 'rows': rows, 'alt': alt})
+                          'head': head, 'sub': sub, 'rows': rows, 'alt': alt})
     return posts, skipped
 
 
 JS = r"""// weekly: "Still Time", the weekly Call Sheet post for each key market (the US, the UK, Canada, Australia).
 // GENERATED by social/posts/make_weekly.py from data/calls.json (as of 17 Oct 2026). Edit the script, not this file.
-// The series image: a production call sheet for the week, printed with "Still time." as its title and
-// taped down across the market's revision-colour page. The soonest deadline is circled in red marker, each
-// row has an empty "Ready?" box, a sticky note says what to do about it, and the team's ask sits in the
-// sheet's notes box. Same sheet every Monday; the colour says where.
+// Calm and simple, like the covers: words on a clean revision-colour ground, the same in every market and every
+// week. The headline, one quiet subhead, then the list itself: each opportunity gets a big date, its name and one
+// short line. The team's ask closes it, with the only red mark, the loop, on "Call Sheet". Nothing overlaps.
 {
   const WEEKLY = __DATA__
 
   document.head.insertAdjacentHTML('beforeend', `<style>
-    .wk-stage { position: relative; display: flex; flex-direction: column; margin: 0 -13cqi 0 -3.4cqi; padding-bottom: var(--hang, 3.4cqi); }
-    .wk-sheet { position: relative; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; background: var(--sheet); color: var(--ink); --pd-type-ink: var(--ink);
-      padding: 0 15.6cqi var(--pb, 0) 5cqi; box-shadow: var(--lift); transform: rotate(var(--rot, -1.6deg)); transform-origin: 0 0; }
-    .wk-under { position: absolute; inset: 0 0 var(--hang, 3.4cqi) 0; background: var(--sheet); transform: rotate(var(--rot2, .6deg)) translate(-.6cqi, 1.4cqi); transform-origin: 0 0; box-shadow: 0 1px 1px rgb(21 19 15 / .1), 0 1.6cqi 2.6cqi -1cqi rgb(21 19 15 / .32); }
-    .wk-title { position: relative; padding: var(--tp, 5.4cqi) 0 1.8cqi; border-bottom: 3px solid var(--ink); }
-    .wk-strip { display: flex; justify-content: space-between; align-items: baseline; gap: 2cqi; margin-top: 2cqi; }
-    .wk-big { font-size: var(--big, 17cqi); line-height: .8; letter-spacing: -.05em; margin-left: -.05em; white-space: nowrap; }
-    .wk-grid { display: grid; grid-template-columns: var(--dc, 15.4cqi) 1fr 5.4cqi; column-gap: 2.2cqi; }
-    .wk-cols { padding: 1.1cqi 0 .9cqi; border-bottom: 1.5px solid var(--rule-strong); }
-    .wk-cols > :last-child { justify-self: center; }
-    .wk-row { padding: var(--rp, 1.7cqi) 0; border-bottom: 1.5px solid var(--rule); align-items: start; }
-    .wk-row:last-child { border-bottom: 0; }
-    .wk-due { display: grid; justify-items: start; gap: .2cqi; }
-    .wk-due .wk-n { font-size: var(--dn, 8.6cqi); line-height: .86; }
-    .wk-due .circ > svg.loop { left: -30%; top: -16%; width: 160%; height: 128%; }
-    .wk-step { display: inline-block; margin-top: .5cqi; padding: .35em .5em .25em; background: #f8dad0; color: #9e2f1a; --pd-type-ink: #9e2f1a; }
-    .wk-what > * + * { margin-top: .35cqi; }
-    .wk-what .wk-k { color: var(--marker-text); }
-    .wk-for { display: inline-block; padding: .4em .6em .3em; background: #f4e5bd; color: #6b5214; --pd-type-ink: #6b5214; }
-    .wk-note { color: var(--toner); --pd-type-ink: var(--toner); }
-    .wk-box { justify-self: center; width: 5cqi; height: 5cqi; margin-top: .4cqi; border: .45cqi solid rgb(21 19 15 / .5); border-radius: .5cqi; }
-    .wk-notes { margin-top: auto; border-top: 3px solid var(--ink); padding: 1.4cqi 0 var(--np, 3.2cqi); position: relative; }
-    .wk-notes .circ > svg.loop { left: -6%; top: -16%; width: 112%; height: 136%; }
-    .wk-sticky { position: absolute; z-index: 4; right: var(--sr, -1cqi); bottom: var(--sb, -3cqi); width: var(--sw, 30cqi); padding: 2.4cqi 2.6cqi 3.2cqi; background: var(--stk, #f4df77);
-      transform: rotate(var(--srot, 4deg)); box-shadow: 0 1px 1px rgb(21 19 15 / .14), 0 1.6cqi 2.2cqi -1cqi rgb(21 19 15 / .45); }
-    .wk-sticky::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2.4cqi; background: rgb(21 19 15 / .045); }
-    .wk-ul { position: relative; }
-    .wk-ul > svg { position: absolute; left: -4%; bottom: -.2em; width: 108%; height: .42em; overflow: visible; }
-    .wk-ul path { fill: none; stroke: var(--marker); stroke-width: 3.2; stroke-linecap: round; }
-    .wk-ring { position: absolute; z-index: 1; width: 23cqi; height: 23cqi; overflow: visible; pointer-events: none; }
-    .wk-ring circle { fill: none; stroke: rgb(120 82 40 / .16); }
+    .wk-list { display: flex; flex-direction: column; justify-content: center; }
+    .wk-row { display: grid; grid-template-columns: var(--dc, 21cqi) 1fr; column-gap: 3cqi; align-items: start; padding: var(--rp, 3cqi) 0; border-top: 2px solid rgb(21 19 15 / .16); }
+    .wk-row:last-child { border-bottom: 2px solid rgb(21 19 15 / .16); }
+    .wk-date { display: grid; justify-items: start; gap: 1cqi; }
+    .wk-n { font-size: var(--dn, 12cqi); line-height: .8; font-variant-numeric: tabular-nums; }
+    .wk-row .wk-what > * + * { margin-top: .9cqi; }
   </style>`)
 
   const day = (iso) => new Date(iso + 'T12:00:00Z')
   const MON3 = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   const dm = (iso) => { const d = day(iso); return `${d.getUTCDate()} ${MON3[d.getUTCMonth()]}` }
-  const STICKY = { us: '#f4df77', uk: '#f4df77', ca: '#f4df77', au: '#f3b5c8' }
-  const ul = `<svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path d="M2 6 C 24 3, 52 8, 74 4 S 94 5, 98 3"/></svg>`
-  const ring = (style) => `<svg class="wk-ring" viewBox="0 0 100 100" style="${style}" aria-hidden="true"><circle cx="50" cy="50" r="40" stroke-width="4.5"/><circle cx="51" cy="49" r="43" stroke-width="1.1" stroke-dasharray="40 9 70 14 30 6"/></svg>`
 
-  function row (r, i, o) {
-    const d = day(r.date), n = sp('headline', String(d.getUTCDate()), 'class="wk-n"')
-    // A row whose date is a first step always says what the step is and when entries close.
-    const note = [o.notes || r.step ? r.note : null, o.fees ? r.fee : null].filter(Boolean).join(' ')
-    return `<div class="wk-grid wk-row"><div class="wk-due">${i === 0 ? circ(n, 'round') : n}${sp('metadata', `${MON3[d.getUTCMonth()]} · ${r.wd}`, 'class="soft"')}${r.step ? sp('metadata', 'First step', 'class="wk-step"') : o.weeks ? sp('metadata', r.weeks, 'class="soft"') : ''}</div>
-      <div class="wk-what">${S('label', r.name)}${r.for ? `<div>${sp('metadata', r.for, 'class="wk-for"')}</div>` : ''}${S('body', r.get)}
-        ${o.needs ? S('body', r.needs.replace(/^Needs /, '<span class="wk-k">Needs</span> '), 'class="soft"') : ''}
-        ${note ? S('metadata', note, 'class="wk-note"') : ''}</div>
-      <span class="wk-box"></span></div>`
-  }
+  const row = (r) => { const d = day(r.date)
+    return `<div class="wk-row"><div class="wk-date">${sp('metric', String(d.getUTCDate()), 'class="wk-n"')}${sp('label', `${MON3[d.getUTCMonth()]}${d.getUTCFullYear() > 2026 ? ` ${d.getUTCFullYear()}` : ''} · ${r.wd}`)}</div>
+      <div class="wk-what">${S('subhead', r.name)}${S('body', r.line, 'class="soft"')}</div></div>` }
 
-  const sheet = (p, o) => `<div class="wk-under"></div><div class="wk-sheet">
-      <div class="wk-title">${S('display', 'Still time.', 'class="wk-big"')}<div class="wk-strip">${S('subhead', `For filmmakers in ${p.place}.`)}${sp('metadata', `Week of ${dm(p.week)}`, 'class="soft" style="white-space:nowrap"')}</div>${ring(o.ring)}</div>
-      <div class="wk-grid wk-cols">${sp('metadata', 'Due', 'class="soft"')}${sp('metadata', 'Opportunity', 'class="soft"')}${sp('metadata', 'Ready?', 'class="soft"')}</div>
-      <div><div class="wk-rows" data-z="${o.z}" style="zoom:${o.z}">${p.rows.map((r, i) => row(r, i, o)).join('')}</div></div>
-      <div class="wk-notes">${sp('metadata', 'Notes', 'class="soft"')}${S('subhead', `Comment ${circ('Call&nbsp;Sheet', 'long')} and we will send you the link!`, `style="margin-top:.8cqi;max-inline-size:${o.cw}"`)}
-        <div class="wk-sticky" style="--stk:${STICKY[p.region]};${o.sticky}">${S(o.sr, `Start <span class="wk-ul">this week${ul}</span>, not the night before.`)}</div></div>
-      </div>
-      ${tape('left:3cqi;top:-1.6cqi;transform:rotate(-8deg)')}${tape('right:5cqi;top:-1.2cqi;transform:rotate(5deg);width:11cqi')}`
-
-  // Safety net: if a week's rows run long, shrink the rows (never the title or the ask) until the sheet
-  // fits its page, and no further than 72%. Runs again once the fonts are in.
-  const fit = () => document.querySelectorAll('.wk-sheet').forEach(sh => {
-    const rows = sh.querySelector('.wk-rows'); let z = +rows.dataset.z; rows.style.zoom = z
-    const cs = getComputedStyle(sh), room = sh.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom)
-    const used = () => [...sh.children].reduce((h, el) => h + el.offsetHeight, 0)   // in-flow blocks only; the sticky may hang off
-    while (used() > room + 1 && z > .72) { z -= .01; rows.style.zoom = z }
+  // Safety net: if a week's names run long, shrink the list (never the headline or the ask) until it fits.
+  const fit = () => document.querySelectorAll('.wk-list').forEach(g => {
+    const list = g.firstElementChild; let z = 1; list.style.zoom = z
+    while (list.getBoundingClientRect().height > g.clientHeight && z > .8) { z -= .01; list.style.zoom = z }
   })
   addEventListener('load', fit); document.fonts.ready.then(() => setTimeout(fit, 0))
 
-  const LAYOUT = {
-    portrait: { big: '17.6cqi', z: .9, needs: false, notes: false, fees: false, weeks: true, cw: '11em', sr: 'subhead', ring: 'right:-6cqi;top:-3cqi', sticky: '--sw:36cqi;--sb:-5.4cqi' },
-    square: { big: '15cqi', z: .82, needs: false, notes: false, fees: false, weeks: false, cw: '11em', sr: 'subhead', ring: 'right:-6cqi;top:-5cqi', sticky: '--sw:34cqi;--sb:-4.4cqi', tp: '4cqi' },
-    story: { big: '19cqi', z: .94, needs: true, notes: true, fees: false, weeks: true, cw: '11em', sr: 'subhead', ring: 'right:-5cqi;top:-2cqi', sticky: '--sw:36cqi;--sb:-1cqi' },
-  }
+  const cta = `Comment ${circ('Call&nbsp;Sheet', 'long', { ml: '.16em', l: '-6%', t: '-16%', w: '112%', h: '136%' })}<span style="margin-left:.4em">and</span> we will send you the link!`
 
   for (const p of WEEKLY) {
     P(p.id, { name: `Still Time · ${p.region.toUpperCase()} · week of ${dm(p.week)}`, g: p.g, sizes: ['1080x1350', '1080x1080', '1080x1920'], alt: p.alt,
       render (sz, c) {
-        const o = LAYOUT[c]
-        // On the story the sheet runs off the bottom of the screen; its words stop above the 320px the app covers.
-        const story = c === 'story' ? ';margin-bottom:calc(-320px - 6cqb);--hang:0px;--pb:calc(320px + 6cqb + 4.6cqi)' : `;margin-bottom:${c === 'square' ? 1.4 : 2}cqb`
-        return { frame: `<div class="grow wk-stage" style="--big:${o.big}${o.tp ? `;--tp:${o.tp}` : ''}${story}">${sheet(p, o)}</div>${foot()}`, art: '' }
+        const sq = c === 'square'
+        return { frame: `<div class="top" style="justify-content:space-between"><div class="top">${swatch}${sp('metadata', `Still Time · ${p.place.replace(/^the /, '')}`, 'class="soft"')}</div>${sp('metadata', `Week of ${dm(p.week)}`, 'class="soft"')}</div>
+          ${S('display', p.head, 'class="mt-m"')}${sq ? '' : S('subhead', p.sub, 'class="mt-s" style="max-inline-size:20em"')}
+          <div class="grow wk-list" style="margin:${sq ? 3 : 3.4}cqb 0;--dn:${sq ? 10 : 12}cqi;--rp:${sq ? 2 : 2.5}cqi"><div>${p.rows.map(row).join('')}</div></div>
+          ${S('subhead', cta, 'style="max-inline-size:22em;text-wrap:balance"')}
+          <div class="foot mt-m">${sp('credit', 'Call Sheet, by pitch.dog')}</div>`, art: '' }
       } })
   }
 }

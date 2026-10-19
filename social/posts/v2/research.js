@@ -1,136 +1,63 @@
 // Post 11: Funding for looking for funding. The team's copy, verbatim; the last slide is closer().
-// One red marker line: on slide 2 it runs round the search in a loop it can't get out of, on slide 3
-// it shakes itself loose, on slide 4 it picks the filters, and on slide 5 it goes straight to the date.
+// Calm set: one simple object per slide in the same zone under the copy, at most one red mark,
+// and the ground colours moving yellow, paper, blue, green, then ink.
 {
   document.head.insertAdjacentHTML('beforeend', `<style>
-  .research-thread { position: absolute; left: -80px; width: 1080px; z-index: 4; pointer-events: none; overflow: visible; }
-  .research-thread path { fill: none; stroke: var(--marker); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
-  .research-steps { list-style: none; display: grid; }
+  .research-steps { list-style: none; display: grid; position: relative; }
   .research-steps li { display: grid; grid-template-columns: 13cqi 1fr; align-items: baseline; }
-  .research-steps li .n { color: var(--marker-text); --pd-type-ink: var(--marker-text); }
-  .research-sheet { position: relative; background: var(--sheet); color: var(--ink); --pd-type-ink: var(--ink); box-shadow: var(--lift); }
-  .research-sheet i, .research-card i, .research-short i { display: block; height: 1.1cqi; border-radius: 1cqi; background: rgb(21 19 15 / .14); }
-  .research-form { padding: 3cqi 3.6cqi 3.4cqi; display: grid; gap: 1.5cqi; }
-  .research-form .hd, .research-short .hd { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 1.4cqi; border-bottom: 1.5px solid var(--rule-strong); }
-  .research-form .f { display: grid; gap: .9cqi; }
-  .research-form .box { height: 4.6cqi; border: 1.5px solid var(--rule-strong); border-radius: .5cqi; }
-  .research-form .go { justify-self: end; margin-top: .6cqi; padding: 1.3cqi 3cqi 1.1cqi; background: var(--ink); color: var(--paper); --pd-type-ink: var(--paper); border-radius: 4cqi; }
-  .research-card header { display: flex; justify-content: space-between; align-items: center; padding: 2.4cqi 4.4cqi 2cqi; padding-right: 11cqi; border-bottom: 3px solid var(--ink); }
-  .research-card header img { height: 5.2cqi; width: auto; }
-  .research-card .chips { display: flex; gap: 7.4cqi; padding: 4.6cqi 11cqi 4.4cqi 5cqi; }
-  .research-card .rows { border-top: 3px solid var(--ink); }
+  .research-back { position: absolute; left: -80px; width: 1080px; pointer-events: none; overflow: visible; }
+  .research-back path { fill: none; stroke: var(--marker); stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; }
+  .research-card i { display: block; height: 1.1cqi; border-radius: 1cqi; background: rgb(21 19 15 / .14); }
+  .research-card .chips { display: flex; gap: 3cqi; padding: 4.4cqi 11cqi 4.2cqi 5cqi; }
   .research-card .chip { padding: 1.3cqi 2.2cqi 1.1cqi; border-radius: 5cqi; background: var(--ink); color: var(--paper); --pd-type-ink: var(--paper); white-space: nowrap; }
-  .research-card .chip::before { content: ""; display: inline-block; width: .7em; height: .7em; margin-right: .55em; vertical-align: .04em; border-radius: 50%; background: var(--marker); }
-  .research-card .rows { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; padding: 3.2cqi 5cqi 3.4cqi; }
+  .research-card .rows { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; padding: 3.2cqi 5cqi 3.4cqi; border-top: 3px solid var(--ink); }
   .research-card .row { display: flex; gap: 1.6cqi; align-items: center; }
-  .research-card .row svg { width: 5.4cqi; height: 5.4cqi; overflow: visible; }
-  .research-card .row svg path { fill: none; stroke: var(--marker); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
-  .research-short { padding: 2.4cqi 3.2cqi 1.2cqi; border-radius: 1cqi; }
-  .research-short .it { display: grid; grid-template-columns: 3.2cqi 1fr; gap: 2.2cqi; align-items: center; padding: 1.6cqi 0; border-bottom: 1.5px solid var(--rule); }
-  .research-short .it:last-child { border-bottom: 0; }
-  .research-short .it .b { display: grid; gap: 1cqi; }
-  .research-short svg { width: 3.2cqi; height: 4cqi; }
-  .research-month { border-radius: 1.2cqi; overflow: hidden; }
-  .research-month .bind { background: var(--marker); color: var(--sheet); --pd-type-ink: var(--sheet); padding: 1.8cqi 2.6cqi 1.6cqi; }
-  [data-pd-canvas="square"] .research-month .bind { padding: 1.1cqi 2.6cqi 1cqi; }
-  [data-pd-canvas="square"] .research-month .grid { padding-top: 1cqi; padding-bottom: 1.2cqi; }
-  .research-month .grid { display: grid; grid-template-columns: repeat(7, 1fr); padding: 1.6cqi 2cqi 2cqi; row-gap: .4cqi; }
-  .research-month .grid > span { display: grid; place-items: center; }
-  .research-month .grid > .wd { padding-bottom: .6cqi; }
-  .research-month .grid > .off { opacity: .32; }
+  .research-card .row svg { width: 4.6cqi; height: 4.6cqi; overflow: visible; }
+  .research-card .row svg path { fill: none; stroke: var(--ink); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; opacity: .75; }
+  .research-month { background: var(--sheet); box-shadow: var(--lift); border-radius: 1.2cqi; }
+  .research-month .grid { display: grid; grid-template-columns: repeat(7, 1fr); padding: 2.6cqi 3cqi 3cqi; row-gap: .6cqi; }
+  .research-month .grid > span { position: relative; display: grid; place-items: center; }
+  .research-month .grid > .wd { padding-bottom: 1.2cqi; border-bottom: 1.5px solid var(--rule-strong); margin-bottom: 1cqi; }
+  .research-month .grid > .due > svg.loop { position: absolute; left: 4%; top: 2%; width: 92%; height: 96%; overflow: visible; }
   </style>`)
 
-  /* ---- the marker line: points in canvas pixels, smoothed into one hand-drawn stroke ---- */
-  const curve = (p) => {
-    let d = `M${p[0][0]} ${p[0][1]}`
-    for (let i = 0; i < p.length - 1; i++) {
-      const a = p[i - 1] || p[i], b = p[i], c = p[i + 1], e = p[i + 2] || c
-      const f = (v) => +v.toFixed(1)
-      d += ` C${f(b[0] + (c[0] - a[0]) / 6)} ${f(b[1] + (c[1] - a[1]) / 6)}, ${f(c[0] - (e[0] - b[0]) / 6)} ${f(c[1] - (e[1] - b[1]) / 6)}, ${f(c[0])} ${f(c[1])}`
-    }
-    return d
-  }
-  // A stroke is a list of points and loops. A loop {c: centre, r: radii} leaves the line on its
-  // tangent, goes once round and rejoins heading for the next point, the way a hand draws one.
-  const expand = (items) => { const out = []
-    items.forEach((it, k) => {
-      if (Array.isArray(it)) { out.push(it); return }
-      const A = out[out.length - 1], nx = items[k + 1], B = Array.isArray(nx) ? nx : nx.c
-      const [cx, cy] = it.c, [rx, ry] = it.r
-      const ang = (dx, dy, cw) => Math.atan2(cw ? -dx : dx, cw ? dy : -dy) * 180 / Math.PI
-      let best
-      for (const cw of it.cw === undefined ? [true, false] : [it.cw]) {
-        const st = ang(cx - A[0], cy - A[1], cw), en = ang(B[0] - cx, B[1] - cy, cw)
-        let sw = (((cw ? en - st : st - en) % 360) + 360) % 360; if (sw < 250) sw += 360
-        if (!best || Math.abs(sw - 370) < Math.abs(best.sw - 370)) best = { cw, st, sw } }
-      const n = Math.round(best.sw / 20)
-      for (let j = 0; j <= n; j++) { const t = j / n, a = (best.st + (best.cw ? 1 : -1) * best.sw * t) * Math.PI / 180, g = .95 + .1 * t
-        out.push([cx + Math.cos(a) * rx * g, cy + Math.sin(a) * ry * g]) } })
-    return out }
-  // runs: each run is one smooth stroke; consecutive runs meet at a sharp corner (an arrowhead).
-  const thread = (c, runs) => runs ? `<svg class="research-thread" data-thread viewBox="0 0 1080 ${sq(c, 1350, 1080)}" style="top:-${sq(c, 92, 80)}px;height:${sq(c, 1350, 1080)}px" aria-hidden="true"><path d="${runs.map(r => curve(expand(r))).join(' ')}"/></svg>` : ''
-
   /* ---- a slide on the shared grid: kicker, the copy at the headline baseline, the object zone, the footer ---- */
-  const page = (label, g, copy, zone, th, o = {}) => ({ g,
+  const page = (label, g, copy, zone) => ({ g,
     html: (c, i, n) => `${ctop(label, i, n)}<div class="mt-m">${copy(c)}</div>
-      <div class="grow" style="display:flex;align-items:center;justify-content:center;padding:${o.pt ? sq(c, ...o.pt) : sq(c, 3, 2.4)}cqb 0 ${sq(c, 2.6, 2.4)}cqb">${zone(c)}</div>${foot()}${thread(c, th && th[c])}` })
+      <div class="grow" style="display:flex;align-items:center;justify-content:center;padding:${sq(c, 3.4, 2.6)}cqb 0 ${sq(c, 3, 2.6)}cqb">${zone(c)}</div>${foot()}` })
   const head = (t, hw = 'measure') => S('display', t, `class="${hw}"`)
   const sub = (t, first = true) => S('subhead', t, `class="${first ? 'mt-s' : 'mt-xs'} wide"`)
-  const bars = (...w) => w.map(x => `<i style="width:${x}%"></i>`).join('')
-  const bookmark = `<svg viewBox="0 0 20 24" aria-hidden="true"><path d="M2 1h16v22l-8-6-8 6z" fill="#e3472d"/></svg>`
   const tickSvg = `<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 22 C 10 25, 13 29, 15 33 C 20 21, 27 11, 37 4"/></svg>`
 
-  /* ---- slide 2: the five steps, a loop with no way out ---- */
+  /* ---- slide 2: the five steps, and one arrow back to the first, in the list's own right-hand column ---- */
   const STEPS = ['Finding an opportunity.', 'Checking if it’s still open.', 'Reading the requirements.', 'Finding out you’re not eligible.', 'Back to looking.']
-  const steps = (c) => `<ol class="research-steps mt-m" style="row-gap:${sq(c, 3.4, 4.4)}cqb;max-inline-size:${sq(c, 80, 84)}cqi">${STEPS.map((t, k) => `<li data-a="step${k + 1}">${sp('metadata', `0${k + 1}`, `class="n" data-a="n${k + 1}"`)}${S('headline', t, `data-a="t${k + 1}"`)}</li>`).join('')}</ol>`
+  // Canvas pixels: from the end of "Back to looking." up the free column to the first step.
+  const BACK = { portrait: 'M796 1004 C 900 1000, 948 960, 950 860 L 950 420 C 948 330, 900 296, 704 290 M736 262 L 704 290 L 738 316',
+    square: 'M736 828 C 860 824, 940 790, 942 700 L 942 340 C 940 276, 890 254, 640 250 M672 222 L 640 250 L 674 276' }
+  const steps = (c) => `<ol class="research-steps mt-m" style="row-gap:${sq(c, 3.4, 2.6)}cqb;max-inline-size:${sq(c, 70, 64)}cqi">${STEPS.map((t, k) => `<li>${sp('metadata', `0${k + 1}`, 'class="soft"')}${S('headline', t)}</li>`).join('')}</ol>
+    <svg class="research-back" viewBox="0 0 1080 ${sq(c, 1350, 1080)}" style="top:-${sq(c, 92, 80)}px;height:${sq(c, 1350, 1080)}px" aria-hidden="true"><path d="${BACK[c]}"/></svg>`
 
-  /* ---- slide 3: no object. The loop from slide 2 is pulled out straight, like a spring. ---- */
-  const coil = (c) => `<div data-a="coil" style="width:100%;height:100%"></div>`
+  /* ---- slide 3: the film you could have been working on ---- */
+  const film = (c) => `<div style="transform:rotate(-2deg)">${clapper(sq(c, 62, 48))}</div>`
 
   /* ---- slide 4: Call Sheet, filtered, with the three things to check ---- */
-  const card = (c) => `<div class="paper ear research-card" data-a="card" style="width:100%;transform:rotate(-.8deg)"><span class="ear-flap"></span>
-    <div class="chips" style="gap:${sq(c, 5.8, 7.4)}cqi">${['Feature', 'Canada', 'Development'].map(t => `<span class="chip" data-a="chip-${t}">${sp('label', t)}</span>`).join('')}</div>
+  const card = (c) => `<div class="paper ear research-card" style="width:100%;transform:rotate(-.6deg)"><span class="ear-flap"></span>
+    <div class="chips">${['Feature', 'Canada', 'Development'].map(t => `<span class="chip">${sp('label', t)}</span>`).join('')}</div>
     ${c === 'square' ? '' : `<div class="rows">${['Costs', 'Requirements', 'Deadlines'].map(t => `<div class="row">${tickSvg}${sp('label', t)}</div>`).join('')}</div>`}</div>`
 
-  /* ---- slide 5: a shortlist, and the date on the calendar ---- */
-  const shortlist = (c) => `<div class="research-sheet research-short" data-a="short" style="width:${sq(c, 38, 34)}cqi;transform:rotate(2.5deg)"><div class="hd">${sp('label', 'Saved')}</div>
-    ${[[92, 60], [80, 66], [88, 50]].slice(0, sq(c, 3, 2)).map(([a, b]) => `<div class="it">${bookmark}<div class="b"><i style="width:${a}%"></i><i style="width:${b}%;opacity:.6"></i></div></div>`).join('')}</div>`
+  /* ---- slide 5: three weeks of the calendar, with the deadline circled ---- */
   const WD = ['M', 'T', 'W', 'T', 'F', 'S', 'S']
-  // Three weeks of a month. The date the line rings opens the first row, so it can come straight in from the left.
-  const DAYS = Array.from({ length: 21 }, (_, k) => [k + 6, 0])
-  const month = (c) => `<div class="research-sheet research-month" data-a="month" style="width:${sq(c, 50, 46)}cqi;transform:rotate(-1.5deg)"><div class="bind">${sp('label', 'Calendar')}</div><div class="grid">
+  const month = (c) => `<div class="research-month" style="width:${sq(c, 84, 70)}cqi;transform:rotate(-1deg)"><div class="grid">
     ${WD.map(d => `<span class="wd">${sp('metadata', d, 'class="soft"')}</span>`).join('')}
-    ${DAYS.map(([d]) => `<span style="height:${sq(c, 6.8, 6.4)}cqi"${d === 6 ? ' data-a="due"' : ''}>${sp('label', d)}</span>`).join('')}</div></div>`
-  const save = (c) => `<div style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:4cqi">${month(c)}${shortlist(c)}</div>`
-
-  // The line's route, in canvas pixels, slide by slide. Each slide picks it up where the last one left it.
-  const arrow = (x, y) => [[[x + 32, y - 26], [x, y]], [[x, y], [x + 34, y + 24]]]
-  const cw = (c, r) => ({ c, r, cw: true })
-  // A coil pulled straight: loops that shrink and open out as the line moves right (a prolate trochoid).
-  const spring = (x0, y0, x1, y1, rx, ry, turns) => springPts(x0, y0, x1, y1, rx, ry, turns).slice(0, -3)
-  const springPts = (x0, y0, x1, y1, rx, ry, turns) => Array.from({ length: Math.round(turns * 14 * .8) + 1 }, (_, k) => {
-    const u = k / (turns * 14), f = Math.pow(1 - u, .9) * (1 - Math.pow(u, 6)), t = Math.PI / 2 - 2 * Math.PI * turns * u
-    return [x0 + (x1 - x0) * Math.pow(u, 1.5) + rx * f * Math.cos(t), y0 + (y1 - y0) * Math.pow(u, .7) + ry * f * Math.sin(t)] })
-  const TH = {
-    s2: { portrait: [[[-20, 228], cw([96, 228], [44, 34]), [146, 326], cw([96, 424], [44, 34]), [134, 522], cw([96, 620], [44, 34]), [147, 718], cw([96, 816], [44, 34]), [136, 914], cw([96, 1012], [44, 34]),
-        [150, 1086], [450, 1110], [850, 1096], [992, 1010], [1012, 800], [1006, 500], [980, 340], [900, 296], [700, 290]], ...arrow(700, 290)],
-      square: [[[-20, 196], cw([96, 196], [42, 33]), [144, 252], cw([96, 309], [42, 33]), [134, 366], cw([96, 423], [42, 33]), [146, 512], cw([96, 602], [42, 33]), [135, 692], cw([96, 782], [42, 33]),
-        [150, 852], [450, 880], [850, 868], [1008, 790], [1034, 560], [1030, 290], [1002, 212], [950, 186]], ...arrow(950, 186)] },
-    s3: { portrait: [[[-20, 1150], [60, 1150], ...spring(190, 995, 800, 965, 118, 158, 5.5), [662, 950], [760, 952], [880, 964], [1100, 965]]],
-      square: [[[-20, 900], [60, 900], ...spring(175, 765, 720, 843, 96, 128, 5.5), [594, 815], [680, 818], [790, 840], [1100, 843]]] },
-    s4: { portrait: [[[-20, 965], [30, 965], cw([220, 966], [107, 52]), cw([455, 963], [107, 52]), cw([730, 959], [146, 52]), [930, 916], [1010, 930], [1100, 963]]],
-      square: [[[-20, 843], [30, 843], cw([215, 843], [100, 50]), cw([456, 840], [101, 50]), cw([733, 836], [136, 50]), [920, 792], [1000, 760], [1100, 734]]] },
-    s5: { portrait: [[[-20, 963], [40, 963], { c: [133, 963], r: [40, 34] }, [64, 1026]]],
-      square: [[[-20, 734], [40, 734], { c: [134, 734], r: [44, 33] }, [64, 796]]] },
-  }
+    ${Array.from({ length: 21 }, (_, k) => k + 6).map(d => `<span${d === 20 ? ' class="due"' : ''} style="height:${sq(c, 8.4, 6.6)}cqi">${sp('subhead', d)}${d === 20 ? loopSvg('round') : ''}</span>`).join('')}</div></div>`
 
   carousel('research', [
     // 1. Replaced at load time by the cover poster in v2/covers/research.js.
     { g: 'var(--blue)', html: (c, i, n) => `${ctop('The search', i, n)}${S('display', '“At this point, I need funding for the time I spend looking for film funding.”', 'class="mt-m wide"')}<div class="grow"></div><div class="foot">${sp('credit', 'Call Sheet, by pitch.dog')}${swipe}</div>` },
-    { g: 'var(--yellow)', html: (c, i, n) => `${ctop('The loop', i, n)}${steps(c)}<div class="grow"></div>${foot()}${thread(c, TH.s2 && TH.s2[c])}` },
-    page('The time', 'var(--paper)', (c) => `${head('That’s time you could have spent on the film.', 'wide')}${sub('Or at least on an application you can actually submit.')}${sub('We wanted to make the finding part easier.', false)}`, coil, TH.s3),
-    page('Call Sheet', 'var(--blue)', (c) => `${head('Introducing Call Sheet.')}${sub('Film and TV grants, festivals, labs and fellowships in one place.')}${sub('Filter by what you’re making, where you’re based and what stage you’re at.', false)}${sub('Then check the costs, requirements and deadlines.', false)}`, card, TH.s4),
-    page('Save', 'var(--green)', (c) => `${head('Save the opportunities worth a closer look.', 'wide')}${sub('Add the deadlines to your calendar.')}${sub('We can’t fund your research time. But hopefully, we can help you spend less of it.', false)}`, save, TH.s5),
+    { g: 'var(--yellow)', html: (c, i, n) => `${ctop('The loop', i, n)}${steps(c)}<div class="grow"></div>${foot()}` },
+    page('The time', 'var(--paper)', (c) => `${head('That’s time you could have spent on the film.', 'wide')}${sub('Or at least on an application you can actually submit.')}${sub('We wanted to make the finding part easier.', false)}`, film),
+    page('Call Sheet', 'var(--blue)', (c) => `${head('Introducing Call Sheet.')}${sub('Film and TV grants, festivals, labs and fellowships in one place.')}${sub('Filter by what you’re making, where you’re based and what stage you’re at.', false)}${sub('Then check the costs, requirements and deadlines.', false)}`, card),
+    page('Save', 'var(--green)', (c) => `${head('Save the opportunities worth a closer look.', 'wide')}${sub('Add the deadlines to your calendar.')}${sub('We can’t fund your research time. But hopefully, we can help you spend less of it.', false)}`, month),
     closer(),
-  ], 'Funding for looking for funding. “At this point, I need funding for the time I spend looking for film funding.” Finding an opportunity. Checking if it’s still open. Reading the requirements. Finding out you’re not eligible. Back to looking: the five steps drawn as a red marker loop that circles back to the start. That’s time you could have spent on the film, or at least on an application you can actually submit, so pitch.dog wanted to make the finding part easier. Introducing Call Sheet: film and TV grants, festivals, labs and fellowships in one place. Filter by what you’re making, where you’re based and what stage you’re at, then check the costs, requirements and deadlines. Save the opportunities worth a closer look and add the deadlines to your calendar. We can’t fund your research time, but hopefully we can help you spend less of it. Last slide: Call Sheet, by pitch.dog. Comment Call Sheet and we will send you the link.')
+  ], 'Funding for looking for funding. “At this point, I need funding for the time I spend looking for film funding.” Finding an opportunity. Checking if it’s still open. Reading the requirements. Finding out you’re not eligible. Back to looking, with a red arrow running back up to the first step. That’s time you could have spent on the film, or at least on an application you can actually submit, so pitch.dog wanted to make the finding part easier. Introducing Call Sheet: film and TV grants, festivals, labs and fellowships in one place. Filter by what you’re making, where you’re based and what stage you’re at, then check the costs, requirements and deadlines. Save the opportunities worth a closer look and add the deadlines to your calendar: three weeks of a calendar with one date circled. We can’t fund your research time, but hopefully we can help you spend less of it. Last slide: Call Sheet, by pitch.dog. Comment Call Sheet and we will send you the link.')
 }
