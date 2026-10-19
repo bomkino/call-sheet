@@ -154,6 +154,7 @@ SPRITE = """<svg width="0" height="0" style="position:absolute" aria-hidden="tru
 <symbol id="cs-flag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4.5c4.5-2.5 8.5 2.5 14 0v9c-5.5 2.5-9.5-2.5-14 0"/></g></symbol>
 <symbol id="cs-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.25" y="5.25" width="17.5" height="13.5" rx="1"/><path d="m3.75 6 8.25 6.75L20.25 6"/></g></symbol>
 <symbol id="cs-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="cs-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.25"/><path d="M12 7.5V12l3 2"/></g></symbol>
 <symbol id="cs-sliders" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></g></symbol>
 </svg>"""
 
@@ -204,7 +205,7 @@ FOOTER = """<footer class="footer">
   </footer>"""
 
 
-SOCIAL_ALT = "Call Sheet by pitch.dog, with the word Call circled in red marker. Find film and TV grants, labs and festivals before they close. Beside it, a printed list of calls, soonest first, with one date circled."
+SOCIAL_ALT = "Call Sheet by pitch.dog, with the word Call circled in red marker. Find film and TV grants, labs and festivals before they close. Beside it, a printed list of opportunities, soonest first, with one date circled."
 SOCIAL = {"src": ""}
 BRAND: dict[str, str] = {}
 PALETTE = json.loads((REPO / "brand/palette.json").read_text(encoding="utf-8"))
@@ -358,6 +359,24 @@ def deadline_on(call: dict, iso: str | None) -> dict:
     return next((d for d in call["dates"] if d["date"] == iso and d["role"] in ("application_submission_deadline", "application_fee_tier_cutoff")), {}) if iso else {}
 
 
+def cutoff_utc(call: dict, iso: str | None) -> dt.datetime | None:
+    """A closing date's exact cut-off in UTC, when the organiser gives both a time and a zone."""
+    from zoneinfo import ZoneInfo
+    when = deadline_on(call, iso)
+    if not (when.get("time") and when.get("timezone")):
+        return None
+    hh, mm = map(int, when["time"].split(":"))
+    return dt.datetime.combine(dt.date.fromisoformat(iso), dt.time(hh, mm), ZoneInfo(when["timezone"])).astimezone(dt.timezone.utc)
+
+
+def end_mark(call: dict) -> str:
+    """A call's last closing date for the script to recount by: 'YYYY-MM-DD', or with its exact
+    cut-off as 'YYYY-MM-DD@YYYY-MM-DDTHH:MMZ' so it counts as closed at that moment wherever the visitor is."""
+    last = rounds(call)[-1]
+    at = cutoff_utc(call, last)
+    return f"{last}@{at:%Y-%m-%dT%H:%MZ}" if at else last
+
+
 def org_line(call: dict) -> str:
     """Organiser and country, without repeating an organiser the title already names."""
     org = call.get("organiser") or ""
@@ -407,8 +426,17 @@ def call_row(call: dict, as_of: str) -> str:
           <div><dt data-pd-type="metadata">You get</dt><dd data-pd-type="body.small">{h(call['get'])}</dd></div>
           <div class="cs-fact-fee"><dt data-pd-type="metadata">Entry fee</dt><dd data-pd-type="body.small" class="cs-fee cs-fee--{h(call['fee']['state'])}">{h(call['fee']['summary'])}</dd></div>
         </dl>
-        <button class="cs-save" type="button" data-save="{h(call['slug'])}" aria-pressed="false" aria-label="Save {h(call['title'])} to my call sheet">{icon('bookmark', 'cs-icon cs-save-off')}{icon('bookmark-fill', 'cs-icon cs-save-on')}<span class="cs-save-text">Save</span></button>
+        <button class="cs-save" type="button" data-save="{h(call['slug'])}" aria-pressed="false" aria-label="Save {h(call['title'])} to my shortlist">{icon('bookmark', 'cs-icon cs-save-off')}{icon('bookmark-fill', 'cs-icon cs-save-on')}<span class="cs-save-text">Save</span></button>
       </li>"""
+
+
+def zone_picker() -> str:
+    """'Times for': the clock that closing times are shown in.  The script fills it in; without the script it stays hidden."""
+    return f"""<div class="cs-zone" data-zone-picker data-requires-js>
+          <label class="cs-facet-label" for="cs-zone" data-pd-type="metadata">Times for</label>
+          <div class="cs-input-wrap">{icon("clock", "ph-icon")}<select id="cs-zone" aria-describedby="cs-zone-hint"></select></div>
+          <p class="cs-hint" id="cs-zone-hint" data-pd-type="body.small" data-zone-hint></p>
+        </div>"""
 
 
 def chips(name: str, legend: str, options: list[tuple[str, str]], hint: str = "") -> str:
@@ -424,7 +452,7 @@ def recheck_paragraph(calls: list[dict]) -> str:
     changed = sum(1 for c in rechecked if c["recheck"]["status"] == "changed")
     closed = sum(1 for c in rechecked if c["recheck"]["status"] == "closed")
     blocked = sum(1 for c in calls if not c.get("recheck") and c["state"] != "closed_or_historical")
-    parts = [f"On {day(when)} we went back to the official page of every call that wasn’t already closed, and read it again for the dates, the fee, who can apply and what you get. {len(rechecked)} calls carry a <strong>Rechecked</strong> mark."]
+    parts = [f"On {day(when)} we went back to the official page of every opportunity that wasn’t already closed, and read it again for the dates, the fee, who can apply and what you get. {len(rechecked)} opportunities carry a <strong>Rechecked</strong> mark."]
     if changed:
         parts.append(f"{changed} needed correcting and now follow the official page.")
     if closed:
@@ -448,7 +476,7 @@ def edition_window(calls: list[dict], as_of: str) -> str:
     """The months this edition is built around, and the calls on it that close after them."""
     later = sum(1 for c in calls if c.get("closes") and c["closes"][:7] > EDITION["covers"]["to"] and not closed_at(c, as_of))
     extra = f", plus {later} later {'one' if later == 1 else 'ones'} we already know about" if later else ""
-    return f"This edition is built around calls closing {month_name(EDITION['covers']['from'])} to {month_name(EDITION['covers']['to'])}{extra}."
+    return f"This edition is built around opportunities closing {month_name(EDITION['covers']['from'])} to {month_name(EDITION['covers']['to'])}{extra}."
 
 
 def unread_note(calls: list[dict]) -> str:
@@ -485,7 +513,7 @@ def editions_section(calls: list[dict], as_of: str) -> str:
           <h2 id="feeds-title" data-pd-type="heading.section">Updated every month.</h2>
         </div>
         <div class="cs-keep-editions" id="editions">
-          <p data-pd-type="lead.section">Every month we check each call against its official page, fix what changed and add new ones. {h(edition_window(calls, as_of))}</p>
+          <p data-pd-type="lead.section">Every month we check each opportunity against its official page, fix what changed and add new ones. {h(edition_window(calls, as_of))}</p>
           <ol class="cs-revs">{''.join(strip)}</ol>
           <p class="cs-hint" data-pd-type="body.small">Each update gets the next page colour, the way film scripts mark their changes. When you come back, anything new since your last visit is tagged <strong>New</strong>.</p>
         </div>
@@ -512,7 +540,6 @@ def feed_count(calls: list[dict], as_of: str, fmt: str | None) -> str:
 def ics_feed(calls: list[dict], as_of: str, name: str) -> str:
     """A subscribable calendar: one event per upcoming deadline, regenerated with every build.
     Mirrors icsFor() in site/call-sheet.js, without the alarms a subscription can't carry."""
-    from zoneinfo import ZoneInfo
     stamp = f"{as_of.replace('-', '')}T000000Z"
     esc = lambda t: str(t or "").replace("\\", "\\\\").replace("\n", "\\n").replace(",", "\\,").replace(";", "\\;")
 
@@ -534,10 +561,7 @@ def ics_feed(calls: list[dict], as_of: str, name: str) -> str:
         closes = call["closes"]
         when = deadline_on(call, closes)
         page_url = f"{ORIGIN}{BASE}{call['slug']}/"
-        at = None
-        if when.get("time") and when.get("timezone"):
-            hh, mm = map(int, when["time"].split(":"))
-            at = dt.datetime.combine(dt.date.fromisoformat(closes), dt.time(hh, mm), ZoneInfo(when["timezone"])).astimezone(dt.timezone.utc)
+        at = cutoff_utc(call, closes)
         cutoff = f"It closes at {when['time']}, {tz_label(when['timezone'])}." if at else "Check the exact cut-off time and time zone on the official page before you plan around this date."
         details = f"{cutoff}\n\nYou get: {call['get']}\nWho can apply: {call['who']}\nEntry fee: {call['fee']['summary']}\n\nCall Sheet: {page_url}" + (f"\nOfficial page: {call['official_url']}" if call.get("official_url") else "")
         start = closes.replace("-", "")
@@ -589,10 +613,10 @@ def help_block(call: dict) -> str:
         <div class="cs-help-copy">
           <p class="eyebrow" data-pd-type="metadata">From pitch.dog, who made this list</p>
           <h2 id="help-title" data-pd-type="title.card">{h(lead)}</h2>
-          <p data-pd-type="body.default">We design pitch decks, lookbooks, treatments and series bibles for film and TV. Send us this call and a line about your project, and we’ll tell you how we’d approach it. The list stays free either way.</p>
+          <p data-pd-type="body.default">We design pitch decks, lookbooks, treatments and series bibles for film and TV. Send us this opportunity and a line about your project, and we’ll tell you how we’d approach it. The list stays free either way.</p>
         </div>
         <div class="button-row cs-help-actions">
-          <a class="button button--ink" href="{h(mailto)}">{icon("mail")}Send us this call</a>
+          <a class="button button--ink" href="{h(mailto)}">{icon("mail")}Send us this opportunity</a>
           <a class="button" href="{WHATSAPP}" target="_blank" rel="noopener noreferrer">WhatsApp us</a>
           <a class="cs-help-work" href="/work/" data-pd-type="body.small">See decks we’ve made {ph("arrow-right")}</a>
         </div>
@@ -625,7 +649,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
         {edition_slip(as_of)}
         <h1 id="page-title" class="cs-logo"><span class="sr-only">Call Sheet</span>{inline_svg("web/logo.svg", "cs-logo-art")}</h1>
         <p class="cs-tagline" data-pd-type="heading.subsection">Find film and TV grants, labs and festivals before they close.</p>
-        <p class="cs-lede" data-pd-type="lead.hero">One free list, soonest deadline first. Each call says who can apply, what you get, what it costs and what to send.</p>
+        <p class="cs-lede" data-pd-type="lead.hero">One free list, soonest deadline first. Each one says who can apply, what you get, what it costs and what to send.</p>
         <dl class="cs-board" aria-label="Today on the call sheet">
           <div><dt data-pd-type="metadata">Open now</dt><dd data-pd-ui="display" data-board="open">{len(open_now)}</dd></div>
           <div class="cs-board-next"><dt data-pd-type="metadata">Next deadline</dt><dd data-pd-ui="display"><span data-board="next">{h(day(next_close, with_year=False)) if next_close else '—'}</span>{inline_svg("web/ring.svg", "cs-board-ring").replace("<svg ", '<svg preserveAspectRatio="none" ', 1)}</dd></div>
@@ -638,7 +662,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
     <section class="cs-steps" aria-labelledby="steps-title">
       <h2 id="steps-title" class="sr-only">How it works</h2>
       <ol>
-        <li><span class="cs-step-n" data-pd-ui="display" aria-hidden="true">1</span><strong data-pd-type="title.functional">Pick what you’re making.</strong><span data-pd-type="body.small">And where you live. We hide the calls you can’t apply to.</span></li>
+        <li><span class="cs-step-n" data-pd-ui="display" aria-hidden="true">1</span><strong data-pd-type="title.functional">Pick what you’re making.</strong><span data-pd-type="body.small">And where you live. We hide what you can’t apply to.</span></li>
         <li><span class="cs-step-n" data-pd-ui="display" aria-hidden="true">2</span><strong data-pd-type="title.functional">Save the ones you like.</strong><span data-pd-type="body.small">They stay on this device. No account, no email.</span></li>
         <li><span class="cs-step-n" data-pd-ui="display" aria-hidden="true">3</span><strong data-pd-type="title.functional">Add the deadlines to your calendar.</strong><span data-pd-type="body.small">You get a reminder a week before, and the day before.</span></li>
       </ol>
@@ -647,24 +671,25 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
     <section class="cs-finder" id="find" aria-labelledby="find-title">
       <div class="cs-finder-inner">
         <div class="cs-finder-head">
-          <p class="eyebrow" data-pd-type="metadata">Find your calls</p>
+          <p class="eyebrow" data-pd-type="metadata">Find your opportunities</p>
           <h2 id="find-title" data-pd-type="heading.subsection">What are you making?</h2>
           <p class="cs-finder-note" data-pd-type="body.small">Tap everything that fits. The list below changes as you go.</p>
+          {zone_picker()}
         </div>
-        <form class="cs-filters" id="cs-filters" role="search" aria-label="Filter the calls" data-requires-js>
+        <form class="cs-filters" id="cs-filters" role="search" aria-label="Filter the opportunities" data-requires-js>
           {chips("format", "Making", format_options)}
           <div class="cs-facet cs-facet--place">
             <label class="cs-facet-label" for="cs-from" data-pd-type="metadata">Based in</label>
             <div class="cs-field">
               <div class="cs-input-wrap">{ph("map-pin")}<select id="cs-from" name="from"><option value="">Anywhere: show everything</option></select></div>
-              <p class="cs-hint" data-pd-type="body.small">We hide calls that rule you out. If a call isn’t clear about it, we keep it and flag it.</p>
+              <p class="cs-hint" data-pd-type="body.small">We hide opportunities that rule you out. If one isn’t clear about it, we keep it and flag it.</p>
             </div>
           </div>
           {chips("kind", "Looking for", list(KIND_FILTERS))}
           <fieldset class="cs-facet cs-facet--toggles" data-facet="only"><legend data-pd-type="metadata">Only show</legend><div class="cs-chip-row">
             <label class="cs-chip"><input type="checkbox" name="only" value="open"><span data-pd-ui="metadata">Open now</span></label>
             <label class="cs-chip"><input type="checkbox" name="only" value="free"><span data-pd-ui="metadata">Free to enter</span></label>
-            <label class="cs-chip"><input type="checkbox" name="only" value="saved"><span data-pd-ui="metadata">My saved calls</span></label>
+            <label class="cs-chip"><input type="checkbox" name="only" value="saved"><span data-pd-ui="metadata">My shortlist</span></label>
             <label class="cs-chip cs-chip--new" data-new-chip hidden><input type="checkbox" name="only" value="new"><span data-pd-ui="metadata">New since my last visit</span></label>
           </div></fieldset>
           <div class="cs-filter-more" id="cs-filter-more">
@@ -676,26 +701,26 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
               </div>
             </div>
           </div>
-          <div class="cs-see-row"><a class="button button--ink cs-see" href="#calls" data-see><span data-see-text>See {len([c for c in calls if not closed_at(c, as_of)])} calls</span> <span aria-hidden="true">↓</span></a><button class="button button--ghost button--small" type="button" data-clear-finder hidden>Start again</button></div>
+          <div class="cs-see-row"><a class="button button--ink cs-see" href="#calls" data-see><span data-see-text>See {len([c for c in calls if not closed_at(c, as_of)])} opportunities</span> <span aria-hidden="true">↓</span></a><button class="button button--ghost button--small" type="button" data-clear-finder hidden>Start again</button></div>
         </form>
-        <noscript><p class="cs-noscript" data-pd-type="body.default">Filters need JavaScript. Every call is listed below, soonest first.</p></noscript>
+        <noscript><p class="cs-noscript" data-pd-type="body.default">Filters need JavaScript. Every opportunity is listed below, soonest first.</p></noscript>
       </div>
     </section>
 
     <section class="cs-results" id="calls" aria-labelledby="calls-title">
       <div class="cs-results-head">
-        <h2 id="calls-title" class="cs-count" data-pd-type="title.functional"><span data-count>{len(calls)}</span> calls, soonest first</h2>
+        <h2 id="calls-title" class="cs-count" data-pd-type="title.functional"><span data-count>{len(calls)}</span> opportunities, soonest first</h2>
         <p class="cs-count-note" data-pd-type="body.small" data-count-note></p>
         <a class="button button--small cs-filter-jump" href="#find" data-filter-jump>{icon('sliders')}<span>Filters</span></a>
         <button class="button button--small" type="button" data-clear hidden>Clear filters</button>
-        <div class="cs-colheads" aria-hidden="true"><span data-pd-type="metadata">Closes</span><span data-pd-type="metadata">Call</span><span data-pd-type="metadata">Who can apply</span><span data-pd-type="metadata">You get</span><span data-pd-type="metadata">Entry fee</span><span></span></div>
+        <div class="cs-colheads" aria-hidden="true"><span data-pd-type="metadata">Closes</span><span data-pd-type="metadata">Opportunity</span><span data-pd-type="metadata">Who can apply</span><span data-pd-type="metadata">You get</span><span data-pd-type="metadata">Entry fee</span><span></span></div>
       </div>
       <div class="cs-groups" id="cs-groups">
     {chr(10).join(group_html)}
       </div>
       <div class="cs-empty" data-empty hidden>
         <p data-pd-type="title.card">Nothing fits all of that.</p>
-        <p data-pd-type="body.default">Loosen a filter, or <a href="mailto:hello@pitch.dog?subject=A%20call%20for%20Call%20Sheet">tell us about a call we’re missing</a>.</p>
+        <p data-pd-type="body.default">Loosen a filter, or <a href="mailto:hello@pitch.dog?subject=An%20opportunity%20for%20Call%20Sheet">tell us about one we’re missing</a>.</p>
         <button class="button button--small" type="button" data-clear-empty>Clear filters</button>
       </div>
       <p class="cs-excluded" data-excluded hidden></p>
@@ -711,10 +736,10 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
         <h2 id="how-title" data-pd-type="heading.section">Where every line comes from.</h2>
       </div>
       <div class="section-body">
-        <p data-pd-type="lead.section">Every call started on the organiser’s own pages: the call, the guidelines, the FAQ, and the form where we could reach it. In mid-October 2026 we read them for dates, money, fees, who can apply and what to send, and wrote down what we couldn’t find as carefully as what we could.</p>
-        <p data-pd-type="body.reading">Then we kept the rough edges. A fee nobody has published says <strong>Not published</strong>, not free. When two official pages disagree on a date, the call page says so. When a rule is unclear, the call stays on your list with a flag instead of quietly disappearing.</p>
+        <p data-pd-type="lead.section">Every opportunity here started on the organiser’s own pages: the announcement, the guidelines, the FAQ, and the form where we could reach it. In mid-October 2026 we read them for dates, money, fees, who can apply and what to send, and wrote down what we couldn’t find as carefully as what we could.</p>
+        <p data-pd-type="body.reading">Then we kept the rough edges. A fee nobody has published says <strong>Not published</strong>, not free. When two official pages disagree on a date, our page for it says so. When a rule is unclear, it stays on your list with a flag instead of quietly disappearing.</p>
         {recheck_paragraph(calls)}
-        <p data-pd-type="body.reading">Calls change between rounds, and the official page always wins. Use this to decide what to check next, then check it there.</p>
+        <p data-pd-type="body.reading">Dates and rules change between rounds, and the official page always wins. Use this to decide what to check next, then check it there.</p>
       </div>
     </section>
 
@@ -725,9 +750,9 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
       </div>
       <ul class="cs-cards">
         <li class="cs-card cs-card--powder"><p class="eyebrow" data-pd-type="metadata">Free</p><h3 data-pd-type="title.card">No price, no account.</h3><p data-pd-type="body.default">Nothing here costs money, nothing on the list paid to be on it, and the data and code are open for anyone to reuse.</p></li>
-        <li class="cs-card cs-card--mint"><p class="eyebrow" data-pd-type="metadata">Dated</p><h3 data-pd-type="title.card">Every date says what it is.</h3><p data-pd-type="body.default">Opening, deadline, fee change, selection or event, never one dressed up as another. Each call shows the day we last checked it.</p></li>
+        <li class="cs-card cs-card--mint"><p class="eyebrow" data-pd-type="metadata">Dated</p><h3 data-pd-type="title.card">Every date says what it is.</h3><p data-pd-type="body.default">Opening, deadline, fee change, selection or event, never one dressed up as another. Each opportunity shows the day we last checked it.</p></li>
         <li class="cs-card cs-card--lilac"><p class="eyebrow" data-pd-type="metadata">Unranked</p><h3 data-pd-type="title.card">No prestige score, no odds.</h3><p data-pd-type="body.default">The closing date sets the order. You set the priorities.</p></li>
-        <li class="cs-card cs-card--blush"><p class="eyebrow" data-pd-type="metadata">Private</p><h3 data-pd-type="title.card">Your searches stay with you.</h3><p data-pd-type="body.default">Filters live in the page address, saved calls in this browser. Neither reaches us.</p></li>
+        <li class="cs-card cs-card--blush"><p class="eyebrow" data-pd-type="metadata">Private</p><h3 data-pd-type="title.card">Your searches stay with you.</h3><p data-pd-type="body.default">Filters live in the page address, your shortlist in this browser. Neither reaches us.</p></li>
       </ul>
     </section>
 
@@ -737,14 +762,14 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
         <h2 id="faq-title" data-pd-type="heading.section">Before you ask.</h2>
       </div>
       <div class="faq">
-        <details><summary data-pd-type="title.functional">Is it really free?</summary><p data-pd-type="body.default">Yes. No price, no account and no email gate. Finding the next call shouldn’t take a week of open tabs, and we’d rather you spent that week on the application.</p></details>
-        <details><summary data-pd-type="title.functional">How current is it?</summary><p data-pd-type="body.default">Every call shows the day it was last checked. On {h(day(as_of))} we went back to the official page of every call that wasn’t already closed{unread_note(calls)}. Dates and terms change between rounds, so treat this as the map and the official page as the ground.</p></details>
-        <details><summary data-pd-type="title.functional">How often is it updated?</summary><p data-pd-type="body.default">Every month. We check each open call against its official page and add new ones, three months ahead at a time. {h(edition_window(calls, as_of))} Calls that are new since your last visit are tagged <strong>New</strong>.</p></details>
-        <details><summary data-pd-type="title.functional">Does a match mean I’m eligible?</summary><p data-pd-type="body.default">No. It means nothing we found rules you out. Eligibility lives in the details: where you live versus your passport, you versus your company, how much of the budget is already raised. Each call page lists what to check before you apply.</p></details>
-        <details><summary data-pd-type="title.functional">Why isn’t my festival or fund here?</summary><p data-pd-type="body.default">This is a curated set of {len(calls)} calls, not a census. If one belongs here, send the link to <a href="mailto:hello@pitch.dog?subject=A%20call%20for%20Call%20Sheet">hello@pitch.dog</a> and we’ll take a look.</p></details>
-        <details><summary data-pd-type="title.functional">Do you rank the calls?</summary><p data-pd-type="body.default">No. There’s no prestige score and no guess at your odds. Calls are sorted by closing date, because the deadline is the one thing that won’t wait.</p></details>
-        <details><summary data-pd-type="title.functional">What happens to what I type?</summary><p data-pd-type="body.default">Nothing leaves your browser. Filters are kept in the page address, so you can bookmark or share a search. Saved calls stay in this browser until you clear them. Like every pitch.dog page, this one counts visits, without your searches or saved calls.</p></details>
-        <details><summary data-pd-type="title.functional">I found a mistake.</summary><p data-pd-type="body.default">Thank you. Every call page has a button that starts an email to us with the call already named. Tell us what changed and where you saw it.</p></details>
+        <details><summary data-pd-type="title.functional">Is it really free?</summary><p data-pd-type="body.default">Yes. No price, no account and no email gate. Finding the next grant or lab shouldn’t take a week of open tabs, and we’d rather you spent that week on the application.</p></details>
+        <details><summary data-pd-type="title.functional">How current is it?</summary><p data-pd-type="body.default">Every opportunity shows the day it was last checked. On {h(day(as_of))} we went back to the official page of every one that wasn’t already closed{unread_note(calls)}. Dates and terms change between rounds, so treat this as the map and the official page as the ground.</p></details>
+        <details><summary data-pd-type="title.functional">How often is it updated?</summary><p data-pd-type="body.default">Every month. We check each open opportunity against its official page and add new ones, three months ahead at a time. {h(edition_window(calls, as_of))} Anything new since your last visit is tagged <strong>New</strong>.</p></details>
+        <details><summary data-pd-type="title.functional">Does a match mean I’m eligible?</summary><p data-pd-type="body.default">No. It means nothing we found rules you out. Eligibility lives in the details: where you live versus your passport, you versus your company, how much of the budget is already raised. Each opportunity’s page lists what to check before you apply.</p></details>
+        <details><summary data-pd-type="title.functional">Why isn’t my festival or fund here?</summary><p data-pd-type="body.default">This is a curated set of {len(calls)} opportunities, not a census. If one belongs here, send the link to <a href="mailto:hello@pitch.dog?subject=An%20opportunity%20for%20Call%20Sheet">hello@pitch.dog</a> and we’ll take a look.</p></details>
+        <details><summary data-pd-type="title.functional">Do you rank them?</summary><p data-pd-type="body.default">No. There’s no prestige score and no guess at your odds. They’re sorted by closing date, because the deadline is the one thing that won’t wait.</p></details>
+        <details><summary data-pd-type="title.functional">What happens to what I type?</summary><p data-pd-type="body.default">Nothing leaves your browser. Filters are kept in the page address, so you can bookmark or share a search. Your shortlist stays in this browser until you clear it. Like every pitch.dog page, this one counts visits, without your searches or your shortlist.</p></details>
+        <details><summary data-pd-type="title.functional">I found a mistake.</summary><p data-pd-type="body.default">Thank you. Every opportunity’s page has a button that starts an email to us with it already named. Tell us what changed and where you saw it.</p></details>
         <details><summary data-pd-type="title.functional">Can I use the data?</summary><p data-pd-type="body.default">Yes, for anything, without asking. The whole dataset is at <a href="{BASE}data/calls.json">calls.json</a>, dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="license noopener">CC0</a>. The code is on <a href="https://github.com/bomkino/call-sheet">GitHub</a> under 0BSD, about as open as a licence gets. A link back is welcome, never required. Quotes from organisers’ pages stay theirs.</p></details>
       </div>
     </section>
@@ -754,9 +779,9 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
       <div class="brand-inner">
         <div class="brand-copy">
           <p class="brand-eyebrow" data-pd-type="metadata">Made by pitch.dog</p>
-          <h2 id="brand-title" data-pd-type="display.chapter">Found the call? <em data-pd-emphasis="head-italic">Now the pitch.</em></h2>
+          <h2 id="brand-title" data-pd-type="display.chapter">Found your opportunity? <em data-pd-emphasis="head-italic">Now the pitch.</em></h2>
           <span class="brand-rule" aria-hidden="true"></span>
-          <p data-pd-type="lead.section">Some of these calls ask for a deck, a treatment or a pitch. Making those is our day job: pitch decks, director’s treatments and show bibles for film and TV, for twelve years. If yours could use a sharper story or a better look before it goes in, show us.</p>
+          <p data-pd-type="lead.section">Some of these opportunities ask for a deck, a treatment or a pitch. Making those is our day job: pitch decks, director’s treatments and show bibles for film and TV, for twelve years. If yours could use a sharper story or a better look before it goes in, show us.</p>
           <div class="button-row">
             <a class="button button--brand button--large" href="/work/">See our work <span aria-hidden="true">→</span></a>
             <a class="button button--ghost button--large" href="/#book">Book a call</a>
@@ -790,7 +815,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
              "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": about, "image": ORIGIN + SOCIAL["src"],
              "codeRepository": "https://github.com/bomkino/call-sheet", "license": "https://opensource.org/license/0bsd",
              "creator": {"@type": "Organization", "name": "pitch.dog", "url": ORIGIN + "/"}},
-            {"@type": "Dataset", "@id": ORIGIN + BASE + "#data", "name": "Call Sheet: film and TV calls",
+            {"@type": "Dataset", "@id": ORIGIN + BASE + "#data", "name": "Call Sheet: film and TV opportunities",
              "description": f"{len(calls)} film and TV grants, labs, markets and festivals with typed dates, fees, eligibility and sources, each checked against the organiser's page. Research snapshot, not legal advice.",
              "url": ORIGIN + BASE, "isAccessibleForFree": True, "license": "https://creativecommons.org/publicdomain/zero/1.0/", "dateModified": as_of,
              "creator": {"@type": "Organization", "name": "pitch.dog", "url": ORIGIN + "/"},
@@ -811,17 +836,17 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
 
 def sheet_ui() -> str:
     return f"""<div class="cs-sheetbar" data-sheetbar hidden>
-    <button class="cs-sheetbar-button" type="button" data-open-sheet>{icon('bookmark-fill')}<span><strong data-sheet-count>0 calls</strong><span data-sheet-next></span></span><span class="cs-sheetbar-open" data-pd-type="metadata">My call sheet</span></button>
+    <button class="cs-sheetbar-button" type="button" data-open-sheet>{icon('bookmark-fill')}<span><strong data-sheet-count>0 saved</strong><span data-sheet-next></span></span><span class="cs-sheetbar-open" data-pd-type="metadata">My shortlist</span></button>
   </div>
   <dialog class="cs-sheet" id="cs-sheet" aria-labelledby="cs-sheet-title">
     <div class="cs-sheet-inner">
       <header class="cs-sheet-head">
-        <div><p class="eyebrow" data-pd-type="metadata">Saved in this browser only</p><h2 id="cs-sheet-title" data-pd-type="heading.subsection">My call sheet.</h2></div>
-        <button class="cs-icon-button" type="button" data-close-sheet aria-label="Close my call sheet">{icon('close')}</button>
+        <div><p class="eyebrow" data-pd-type="metadata">Saved in this browser only</p><h2 id="cs-sheet-title" data-pd-type="heading.subsection">My shortlist.</h2></div>
+        <button class="cs-icon-button" type="button" data-close-sheet aria-label="Close my shortlist">{icon('close')}</button>
       </header>
-      <p class="cs-sheet-intro" data-pd-type="body.small">Your shortlist, soonest first. It stays on this device; we never see it.</p>
+      <p class="cs-sheet-intro" data-pd-type="body.small">Soonest deadline first. It stays on this device; we never see it.</p>
       <ol class="cs-sheet-list" data-sheet-list></ol>
-      <p class="cs-sheet-empty" data-sheet-empty data-pd-type="body.default">Nothing saved yet. Tap <strong>Save</strong> on any call to start your sheet.</p>
+      <p class="cs-sheet-empty" data-sheet-empty data-pd-type="body.default">Nothing saved yet. Tap <strong>Save</strong> on any opportunity to start your shortlist.</p>
       <footer class="cs-sheet-actions">
         <button class="button button--ink" type="button" data-sheet-ics>{icon('calendar')}Add deadlines to calendar</button>
         <button class="button" type="button" data-sheet-print>{icon('printer')}Print</button>
@@ -895,6 +920,43 @@ def tz_label(tz: str | None) -> str | None:
     if "/" in tz:
         return tz.rsplit("/", 1)[1].replace("_", " ") + " time"
     return tz
+
+
+# Organiser countries on one clock (France and New Zealand: the mainland's), so "the end of the day
+# there" is one moment we can turn into the visitor's time.  Countries with several zones (the US,
+# Canada, Australia, Brazil, Mexico, Russia, Indonesia) and anything not listed get no estimate.
+ONE_ZONE_COUNTRIES = {
+    "Argentina": ("America/Argentina/Buenos_Aires", "Argentina"), "Austria": ("Europe/Vienna", "Austria"),
+    "Bangladesh": ("Asia/Dhaka", "Bangladesh"), "Belgium": ("Europe/Brussels", "Belgium"), "Colombia": ("America/Bogota", "Colombia"),
+    "Czechia": ("Europe/Prague", "Czechia"), "Denmark": ("Europe/Copenhagen", "Denmark"), "Egypt": ("Africa/Cairo", "Egypt"),
+    "Finland": ("Europe/Helsinki", "Finland"), "France": ("Europe/Paris", "France"), "Germany": ("Europe/Berlin", "Germany"),
+    "Greece": ("Europe/Athens", "Greece"), "Hong Kong": ("Asia/Hong_Kong", "Hong Kong"), "India": ("Asia/Kolkata", "India"),
+    "Ireland": ("Europe/Dublin", "Ireland"), "Israel": ("Asia/Jerusalem", "Israel"), "Italy": ("Europe/Rome", "Italy"),
+    "Japan": ("Asia/Tokyo", "Japan"), "Kenya": ("Africa/Nairobi", "Kenya"), "Lebanon": ("Asia/Beirut", "Lebanon"),
+    "Nepal": ("Asia/Kathmandu", "Nepal"), "Netherlands": ("Europe/Amsterdam", "the Netherlands"), "New Zealand": ("Pacific/Auckland", "New Zealand"),
+    "Nigeria": ("Africa/Lagos", "Nigeria"), "Norway": ("Europe/Oslo", "Norway"), "Panama": ("America/Panama", "Panama"),
+    "Paraguay": ("America/Asuncion", "Paraguay"), "Peru": ("America/Lima", "Peru"), "Philippines": ("Asia/Manila", "the Philippines"),
+    "Poland": ("Europe/Warsaw", "Poland"), "Qatar": ("Asia/Qatar", "Qatar"), "Saudi Arabia": ("Asia/Riyadh", "Saudi Arabia"),
+    "Singapore": ("Asia/Singapore", "Singapore"), "South Africa": ("Africa/Johannesburg", "South Africa"), "South Korea": ("Asia/Seoul", "South Korea"),
+    "Sweden": ("Europe/Stockholm", "Sweden"), "Switzerland": ("Europe/Zurich", "Switzerland"), "Taiwan": ("Asia/Taipei", "Taiwan"),
+    "Thailand": ("Asia/Bangkok", "Thailand"), "United Kingdom": ("Europe/London", "the UK"), "UK": ("Europe/London", "the UK"),
+    "Uruguay": ("America/Montevideo", "Uruguay"),
+}
+
+
+def time_guess(call: dict, deadline: dict) -> tuple[str, str, str]:
+    """(what's missing, zone, place) for a closing date without a full cut-off, so the call page can
+    offer a labelled estimate.  'end': no time, so the end of the organiser's day; 'zone': a time
+    but no zone.  The zone is the one the organiser gave, else their country's only one, else ''
+    (no estimate).  A cut-off with both, or with only office hours in a note, gets ('', '', '')."""
+    if (deadline.get("time") and deadline.get("timezone")) or (not deadline.get("time") and deadline.get("time_note")):
+        return "", "", ""
+    missing = "zone" if deadline.get("time") else "end"
+    country = ONE_ZONE_COUNTRIES.get(call.get("organiser_country") or "")
+    if deadline.get("timezone"):
+        given = deadline["timezone"]
+        return missing, given, country[1] if country and country[0] == given else tz_label(given)
+    return (missing, *country) if country else (missing, "", "")
 
 
 def dates_block(call: dict) -> str:
@@ -984,7 +1046,8 @@ def call_page(call: dict, by_slug: dict[str, dict], as_of: str, css: str, js: st
         big = ("Closes " + day(closes)) if closes else ("Rolling, or no fixed date" if call["state"] == "watch_or_rolling" else "Dates to come")
         when = (long_day(closes) + (", " + clock if clock else "")) if closes else "Watch the official page for the next round."
         when += (". Next round: " + ", ".join(day(d) for d in later_rounds[:2])) if later_rounds else ""
-    status = f"""<div class="cs-countdown{' is-closed' if closed else ''}" data-countdown data-closes="{h(closes or '')}" data-opens="{h(call.get('opens') or '')}" data-state="{h(call['state'])}" data-rounds="{h(' '.join(rounds(call)))}" data-time="{h(deadline.get('time') or '')}" data-tz="{h(deadline.get('timezone') or '')}">
+    missing, guess_tz, guess_place = time_guess(call, deadline) if closes and not closed else ("", "", "")
+    status = f"""<div class="cs-countdown{' is-closed' if closed else ''}" data-countdown data-closes="{h(closes or '')}" data-opens="{h(call.get('opens') or '')}" data-state="{h(call['state'])}" data-rounds="{h(' '.join(rounds(call)))}" data-time="{h(deadline.get('time') or '')}" data-tz="{h(deadline.get('timezone') or '')}" data-untimed="{missing}" data-guess-tz="{h(guess_tz)}" data-guess-place="{h(guess_place)}">
           <p class="cs-countdown-big" data-pd-type="heading.subsection" data-countdown-text>{h(big)}</p>
           <p class="cs-countdown-when" data-pd-type="body.default" data-countdown-when>{h(when)}</p>
           <p class="cs-countdown-local" data-pd-type="body.small" data-local hidden></p>
@@ -1008,7 +1071,7 @@ def call_page(call: dict, by_slug: dict[str, dict], as_of: str, css: str, js: st
     recheck = call.get("recheck")
     checked = f"Checked {day(call['checked_on'])}" + (f" · rechecked {day(recheck['checked_on'])}" if recheck else "")
     mail_subject = f"Call Sheet correction: {call['title']}"
-    mail_body = f"Call: {call['title']}\nPage: {ORIGIN}{path}\n\nWhat's changed, and where did you see it?\n"
+    mail_body = f"Opportunity: {call['title']}\nPage: {ORIGIN}{path}\n\nWhat's changed, and where did you see it?\n"
     from urllib.parse import quote
     mailto = f"mailto:hello@pitch.dog?subject={quote(mail_subject)}&body={quote(mail_body)}"
     facts = [
@@ -1023,7 +1086,7 @@ def call_page(call: dict, by_slug: dict[str, dict], as_of: str, css: str, js: st
     portal = f'<a class="button button--large" href="{h(call["portal_url"])}" rel="noopener">Submission portal {ph("arrow-up-right")}</a>' if call.get("portal_url") else ""
     body = f"""<main id="main" class="cs-callpage" data-call="{h(call['slug'])}" data-title="{h(call['title'])}" data-closes="{h(closes or '')}" data-official="{h(call.get('official_url') or '')}">
     <article class="cs-article" aria-labelledby="call-title">
-      <nav class="cs-crumbs" aria-label="Breadcrumb"><a href="{BASE}" data-back>{ph("arrow-left")}<span>All calls</span></a></nav>
+      <nav class="cs-crumbs" aria-label="Breadcrumb"><a href="{BASE}" data-back>{ph("arrow-left")}<span>All opportunities</span></a></nav>
       <header class="cs-callhead">
         <p class="hero-locator cs-locator"><span class="hero-locator-mark" aria-hidden="true"></span><span>{h(kind)}</span>{f'<span aria-hidden="true">·</span><span>{h(call["organiser_country"])}</span>' if call.get("organiser_country") else ''}<span class="hero-locator-rule" aria-hidden="true"></span><span class="hero-locator-dot" aria-hidden="true">·</span><span>{h(checked)}<span data-age="{h((recheck or {}).get('checked_on') or call['checked_on'])}"></span></span></p>
         <h1 id="call-title" data-pd-type="heading.section">{title_html(call['title'])}</h1>
@@ -1050,10 +1113,10 @@ def call_page(call: dict, by_slug: dict[str, dict], as_of: str, css: str, js: st
       {help_block(call) if not closed else ''}
       {block("terms", "Terms to read first", f'<table class="cs-table cs-table--two"><tbody>{terms}</tbody></table><p class="cs-fineprint" data-pd-type="body.small">Our notes, not legal advice. Read the contract before you accept a place or grant any rights.</p>') if terms else ''}
       {block("sources", "Where this comes from", f'<ul class="cs-sourcelist">{sources}</ul><div class="cs-report"><p data-pd-type="body.default">Spotted something out of date?</p><a class="button button--small" href="{h(mailto)}">{icon("mail")}Tell us</a></div>')}
-      {block("related", "Related calls", f'<ul class="cs-related">{related_html}</ul>') if related_html else ''}
+      {block("related", "Related opportunities", f'<ul class="cs-related">{related_html}</ul>') if related_html else ''}
       {block("around", "Also closing around then", f'<ul class="cs-related">{around_html}</ul>') if around_html else ''}
       {block("lists", "More lists like this", topic_links(list(by_slug.values()), as_of, mine)) if mine else ''}
-      <p class="cs-disclaimer" data-pd-type="body.small">A research snapshot, not legal advice or a promise that the call is open. The official page always wins.</p>
+      <p class="cs-disclaimer" data-pd-type="body.small">A research snapshot, not legal advice or a promise that it’s open. The official page always wins.</p>
     </article>
   </main>
 
@@ -1092,14 +1155,14 @@ def not_found_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
     <article class="cs-article cs-notfound" aria-labelledby="call-title">
       <header class="cs-callhead">
         <p class="hero-locator cs-locator"><span class="hero-locator-mark" aria-hidden="true"></span><span>Call Sheet</span></p>
-        <h1 id="call-title" data-pd-type="heading.section">That call isn’t on the sheet.</h1>
-        <p class="cs-callorg" data-pd-type="lead.section">It may have moved, closed for good, or never been here. The list has every call we track, soonest first.</p>
-        <div class="button-row cs-callactions"><a class="button button--ink button--large" href="{BASE}">All calls {ph("arrow-right")}</a><a class="button button--large" href="mailto:hello@pitch.dog?subject=A%20missing%20call%20on%20Call%20Sheet">Tell us what you were after</a></div>
+        <h1 id="call-title" data-pd-type="heading.section">That opportunity isn’t on the sheet.</h1>
+        <p class="cs-callorg" data-pd-type="lead.section">It may have moved, closed for good, or never been here. The list has every opportunity we track, soonest first.</p>
+        <div class="button-row cs-callactions"><a class="button button--ink button--large" href="{BASE}">All opportunities {ph("arrow-right")}</a><a class="button button--large" href="mailto:hello@pitch.dog?subject=A%20missing%20opportunity%20on%20Call%20Sheet">Tell us what you were after</a></div>
       </header>
       {block("soon", "Closing soonest", f'<ul class="cs-related">{items}</ul>') if items else ''}
     </article>
   </main>"""
-    return page(title="Not found · Call Sheet", description="This page isn’t on Call Sheet. Every call we track is on the list, soonest first.", path=BASE + "404.html",
+    return page(title="Not found · Call Sheet", description="This page isn’t on Call Sheet. Every opportunity we track is on the list, soonest first.", path=BASE + "404.html",
                 body=body, css=css, js=js, social_title="Call Sheet — free, by pitch.dog", robots="noindex, follow")
 
 
@@ -1155,7 +1218,7 @@ TOPICS = (
      "intro": "Funds, labs and markets that take animated features, series and shorts.",
      "test": lambda c: "animation" in c["formats"], "query": "format=animation", "feed": "animation"},
     {"slug": "screenwriting", "name": "Screenwriting", "title": "Screenwriting grants, labs and script competitions", "page_title": "Screenwriting grants, labs and competitions",
-     "intro": "Calls for projects that are still on the page: writing grants, script labs and screenplay competitions.",
+     "intro": "Opportunities for projects that are still on the page: writing grants, script labs and screenplay competitions.",
      "test": lambda c: "writing" in c["stages"], "query": "stage=writing"},
     {"slug": "grants", "name": "Grants", "title": "Film and TV grants",
      "intro": "Development, production and finishing money from film funds, agencies and foundations.",
@@ -1168,15 +1231,15 @@ TOPICS = (
      "description": "{n} pitch forums, co-production markets and pitch competitions, soonest deadline first. Pitch to financiers, broadcasters and sales agents in person.",
      "test": lambda c: "market" in c["kinds"], "query": "kind=market"},
     {"slug": "free-to-enter", "name": "Free to enter", "title": "Film grants and labs that are free to enter",
-     "intro": "Calls whose organisers say they’re free to enter. A fee nobody has published doesn’t count; those calls are on the full list, marked Not published.",
-     "description": "{n} film and TV calls whose organisers say they’re free to enter, soonest deadline first. A fee nobody has published doesn’t count as free.",
+     "intro": "Opportunities whose organisers say they’re free to enter. A fee nobody has published doesn’t count; those are on the full list, marked Not published.",
+     "description": "{n} film and TV opportunities whose organisers say they’re free to enter, soonest deadline first. A fee nobody has published doesn’t count as free.",
      "test": lambda c: c["fee"]["state"] == "free", "query": "only=free"},
 )
 for _code, _slug, _name in (("US", "us", "the US"), ("GB", "uk", "the UK"), ("CA", "canada", "Canada"), ("AU", "australia", "Australia")):
     TOPICS += ({"slug": _slug, "name": f"Based in {_name}", "place": _code, "title": f"Film and TV grants and labs for filmmakers in {_name}",
                 "page_title": f"Grants and labs for filmmakers in {_name}",
-                "description": f"{{n}} film and TV calls that take applicants based in {_name}, soonest deadline first. Each says if it tests where you live, your passport or your company.",
-                "intro": f"Calls that take applicants based in {_name}, including the ones open worldwide. Some test where you live, some your passport, some where your company is registered, so each call says which.",
+                "description": f"{{n}} film and TV opportunities for people based in {_name}, soonest deadline first. Each says if it tests where you live, your passport or your company.",
+                "intro": f"Opportunities that take applicants based in {_name}, including the ones open worldwide. Some test where you live, some your passport, some where your company is registered, so each one says which.",
                 "test": (lambda code: lambda c: place_match(c["where"], code) == "yes")(_code), "query": f"from={_code}"},)
 
 
@@ -1191,7 +1254,7 @@ def topic_links(calls: list[dict], as_of: str, only: list[dict] | None = None, c
         members = topic_members(t, calls, as_of)
         mark = ' aria-current="page"' if t["slug"] == current else ""
         # Each dated member's last closing date, so the script can recount on the visitor's day.
-        ends = " ".join(rounds(c)[-1] for c in members if rounds(c))
+        ends = " ".join(end_mark(c) for c in members if rounds(c))
         items.append(f'<li><a href="{BASE}{t["slug"]}/"{mark}><span data-pd-type="title.functional">{h(t["name"])}</span><span class="cs-lists-n" data-pd-type="metadata" data-ends="{ends}">{len(members)}</span></a></li>')
     return f'<ul class="cs-lists">{"".join(items)}</ul>'
 
@@ -1209,30 +1272,30 @@ def topic_page(topic: dict, calls: list[dict], as_of: str, css: str, js: str) ->
     if topic.get("place"):
         m = sum(1 for c in calls if not closed_at(c, as_of) and place_match(c["where"], topic["place"]) == "maybe")
         if m:
-            unclear = f' We left out {m} {"call" if m == 1 else "calls"} whose rules on where you’re based aren’t clear; the full list keeps them, flagged.'
+            unclear = f' We left out {m} {"opportunity" if m == 1 else "opportunities"} whose rules on where you’re based aren’t clear; the full list keeps them, flagged.'
     feed = f'<a class="button" href="webcal://pitch.dog{BASE}feeds/{topic["feed"]}.ics">{icon("calendar")}Put these deadlines in my calendar</a>' if topic.get("feed") else ""
     from urllib.parse import quote
-    mailto = "mailto:hello@pitch.dog?subject=" + quote(f"Call Sheet: {topic['title']}") + "&body=" + quote("Hi pitch.dog,\n\nMy project, in a line:\nThe call I’m applying to:\nWhat I have so far:\n")
+    mailto = "mailto:hello@pitch.dog?subject=" + quote(f"Call Sheet: {topic['title']}") + "&body=" + quote("Hi pitch.dog,\n\nMy project, in a line:\nWhat I’m applying to:\nWhat I have so far:\n")
     others = [t for t in TOPICS if t["slug"] != topic["slug"]]
     body = f"""<main id="main" class="cs-callpage cs-topic">
     <article class="cs-article" aria-labelledby="topic-title">
-      <nav class="cs-crumbs" aria-label="Breadcrumb"><a href="{BASE}">{ph("arrow-left")}<span>All calls</span></a></nav>
+      <nav class="cs-crumbs" aria-label="Breadcrumb"><a href="{BASE}">{ph("arrow-left")}<span>All opportunities</span></a></nav>
       <header class="cs-callhead">
         <p class="hero-locator cs-locator"><span class="hero-locator-mark" aria-hidden="true"></span><span>Call Sheet</span><span class="hero-locator-rule" aria-hidden="true"></span><span class="hero-locator-dot" aria-hidden="true">·</span><span>Updated {h(day(as_of))}</span></p>
         <h1 id="topic-title" data-pd-type="heading.section">{h(topic['title'])}</h1>
         <p class="cs-callorg" data-pd-type="lead.section">{h(topic['intro'])}</p>
-        <p class="cs-topic-count" data-pd-type="body.default"><span data-topic-count>{len(members)} {"call that hasn’t" if len(members) == 1 else "calls that haven’t"} closed</span>, soonest deadline first. Each one says who can apply, what you get, what it costs and what to send.{h(unclear)}</p>
+        <p class="cs-topic-count" data-pd-type="body.default"><span data-topic-count>{len(members)} {"opportunity that hasn’t" if len(members) == 1 else "opportunities that haven’t"} closed</span>, soonest deadline first. Each one says who can apply, what you get, what it costs and what to send.{h(unclear)}</p>
         <div class="button-row cs-callactions">
           <a class="button button--ink" href="{BASE}?{topic['query']}#calls">Narrow these down {ph("arrow-right")}</a>
           {feed}
         </div>
       </header>
-      <section class="cs-topic-list" aria-labelledby="topic-list-title"><h2 id="topic-list-title" class="sr-only">The calls, soonest first</h2>{group_html}</section>
+      <section class="cs-topic-list" aria-labelledby="topic-list-title"><h2 id="topic-list-title" class="sr-only">The opportunities, soonest first</h2>{zone_picker()}{group_html}</section>
       <aside class="cs-help" aria-labelledby="help-title">
         <div class="cs-help-copy">
           <p class="eyebrow" data-pd-type="metadata">From pitch.dog, who made this list</p>
-          <h2 id="help-title" data-pd-type="title.card">Found your call? We’ll help with the pitch.</h2>
-          <p data-pd-type="body.default">We design pitch decks, lookbooks, treatments and series bibles for film and TV. Tell us which call and a line about your project, and we’ll tell you how we’d approach it. The list stays free either way.</p>
+          <h2 id="help-title" data-pd-type="title.card">Found one to apply to? We’ll help with the pitch.</h2>
+          <p data-pd-type="body.default">We design pitch decks, lookbooks, treatments and series bibles for film and TV. Tell us which one and a line about your project, and we’ll tell you how we’d approach it. The list stays free either way.</p>
         </div>
         <div class="button-row cs-help-actions">
           <a class="button button--ink" href="{h(mailto)}">{icon("mail")}Email us</a>
@@ -1241,7 +1304,7 @@ def topic_page(topic: dict, calls: list[dict], as_of: str, css: str, js: str) ->
         </div>
       </aside>
       {block("lists", "More lists", topic_links(calls, as_of, others))}
-      <p class="cs-disclaimer" data-pd-type="body.small">A research snapshot, not legal advice or a promise that a call is open. The official page always wins. Updated every month.</p>
+      <p class="cs-disclaimer" data-pd-type="body.small">A research snapshot, not legal advice or a promise that any of these is open. The official page always wins. Updated every month.</p>
     </article>
   </main>
 
@@ -1261,7 +1324,7 @@ def topic_page(topic: dict, calls: list[dict], as_of: str, css: str, js: str) ->
         ],
     }
     # Written to fit a search result whole; "description" is for topics whose intro runs long.
-    description = clip((topic.get("description") or "{n} calls, soonest deadline first. " + topic["intro"]).replace("{n}", str(len(members))), 158)
+    description = clip((topic.get("description") or "{n} opportunities, soonest deadline first. " + topic["intro"]).replace("{n}", str(len(members))), 158)
     return page(
         title=f"{topic.get('page_title') or topic['title']} · Call Sheet",
         description=description,

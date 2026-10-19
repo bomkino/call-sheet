@@ -3,8 +3,8 @@
     pip install fonttools brotli uharfbuzz
     python3 social/posts/make_data.py --fonts ../pitchdog-type-system/assets/fonts
 
-Run it after each monthly update, check the picks in PLACES below are still open,
-then re-render. The loops and stamps only change if the drawing code does.
+Run it after each monthly update, check the picks in FREE_PICKS and PLACES below are still
+open, then re-render. The loops and stamps only change if the drawing code does.
 """
 from __future__ import annotations
 
@@ -22,6 +22,7 @@ sys.path.insert(0, str(REPO / "brand/tools"))
 sys.path.insert(0, str(REPO / "tools"))
 import build_site  # noqa: E402
 import make_brand as mb  # noqa: E402
+import make_weekly as weekly  # noqa: E402  (the owner's lead-time rule: effective deadline and minimum days)
 
 # Marker loops for circling things in layouts, drawn by the same hand as the logo.
 LOOPS = {
@@ -32,7 +33,20 @@ LOOPS = {
 }
 # Rubber stamps, in PD Eyebrow at 720 and width 92: (key, lines, size).
 STAMPS = (("free", ["FREE TO ENTER"], 64), ("notpub", ["NOT", "PUBLISHED"], 70), ("checked", ["CHECKED", "17 OCT 2026"], 48))
-# The "Based in…?" posts: only the countries pitch.dog's clients work from, with three calls each
+# The free carousel (free-02 to free-05) and the zero single: free-to-enter opportunities, picked by hand.
+# Each must still be free to enter and leave the owner's minimum lead time plus FREE_MARGIN days from
+# FREE_DAY, the day the free carousel goes out, so a post that slips a few days is still fair. The script
+# stops if one no longer fits. All are open to filmmakers in the US, UK, Canada or Australia except
+# FICG DocuLab (Ibero-American directors), kept from the first list. On 19 October only these eight
+# passed; twelve didn't exist.
+FREE_DAY = dt.date(2026, 10, 21)
+FREE_MARGIN = 3
+FREE_PICKS = [
+    "ficg-doculab-19", "series-mania-co-pro-pitching-sessions", "sofia-meetings-features", "sofia-meetings-tv-series",
+    "sundance-native-lab-fellowship-2027", "cfa-x-imgn-grant-2026", "tribeca-at-and-t-untold-stories-2027",
+    "the-whickers-film-and-tv-funding-award",
+]
+# The "Based in…?" posts (retired 19 October: the weekly series does their job): only the countries pitch.dog's clients work from, with three calls each
 # that are open countrywide (no city, state or identity limit), soonest first.
 PLACES = {
     "US": ["film-independent-x-humana-foundation-shorts", "roy-w-dean-fall-grant-2026", "wave-grant-2027"],
@@ -99,13 +113,20 @@ def main() -> int:
     payload = json.loads((REPO / "data/calls.json").read_text(encoding="utf-8"))
     calls = payload["calls"]
     as_of = max([payload["research_as_of"], *[c["recheck"]["checked_on"] for c in calls if c.get("recheck")]])
-    # Free to enter, and open for at least another week, so a post doesn't go up on a closing day.
-    start = (dt.date.fromisoformat(as_of) + dt.timedelta(days=8)).isoformat()
-    free = sorted((c for c in calls if c["state"] == "open_or_published" and c["fee"]["state"] == "free" and (c.get("closes") or "") >= start),
-                  key=lambda c: (c["closes"], c["title"]))
-    write("free.js", "FREE", [{"closes": c["closes"], "title": c["title"], "get": c["get"], "who": c["who"], "country": c.get("organiser_country"), "slug": c["slug"]} for c in free])
-
     by_slug = {c["slug"]: c for c in calls}
+    free = []
+    for slug in FREE_PICKS:
+        c = by_slug[slug]
+        eff, _, _ = weekly.effective(c)
+        need, why = weekly.need(c)
+        lead = (eff - FREE_DAY).days
+        assert c["fee"]["state"] == "free" and c["state"] in ("open_or_published", "announced_not_open"), f"free: {slug} is no longer free to enter and open"
+        assert lead >= need + FREE_MARGIN, f"free: {slug} leaves {lead} days from {FREE_DAY}, needs {need} ({why}) plus {FREE_MARGIN}"
+        free.append(c)
+    free.sort(key=lambda c: (c["closes"], c["title"]))
+    write("free.js", "FREE", [{"closes": c["closes"], "opens": c["opens"] if c["state"] == "announced_not_open" else None, "title": c["title"], "get": c["get"], "who": c["who"],
+                               "country": c.get("organiser_country"), "slug": c["slug"]} for c in free])
+
     places = {}
     for code, slugs in PLACES.items():
         yes = [c for c in calls if not build_site.closed_at(c, as_of) and build_site.place_match(c["where"], code) == "yes"]

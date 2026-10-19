@@ -96,6 +96,28 @@ class DataTests(unittest.TestCase):
                 if d["timezone"]:
                     ZoneInfo(d["timezone"])  # raises for anything that isn't an IANA zone
 
+    def test_one_zone_countries_are_one_zone(self):
+        from zoneinfo import ZoneInfo
+        for country, (zone, place) in build_site.ONE_ZONE_COUNTRIES.items():
+            ZoneInfo(zone)
+            self.assertTrue(place, country)
+        # Several clocks, so no "end of the day there" to estimate from.
+        for country in ("US", "United States", "Canada", "Australia", "Brazil", "Mexico", "Russia", "Indonesia", "European Union"):
+            self.assertNotIn(country, build_site.ONE_ZONE_COUNTRIES)
+
+    def test_time_guesses_never_invent_a_cut_off(self):
+        guess = build_site.time_guess
+        self.assertEqual(guess({"organiser_country": "France"}, {"time": None, "timezone": None}), ("end", "Europe/Paris", "France"))
+        self.assertEqual(guess({"organiser_country": "United Kingdom"}, {}), ("end", "Europe/London", "the UK"))
+        self.assertEqual(guess({"organiser_country": "New Zealand"}, {"time": "13:00", "timezone": None}), ("zone", "Pacific/Auckland", "New Zealand"))
+        for country in ("US", "Canada", "Australia", "Mexico", None, "Jersey / UK"):
+            self.assertEqual(guess({"organiser_country": country}, {}), ("end", "", ""), country)
+        # A zone the organiser gave beats the country's; a full cut-off or office hours need no guess.
+        self.assertEqual(guess({"organiser_country": None}, {"timezone": "Europe/Paris"}), ("end", "Europe/Paris", "Central European Time"))
+        self.assertEqual(guess({"organiser_country": "France"}, {"timezone": "Europe/Paris"}), ("end", "Europe/Paris", "France"))
+        self.assertEqual(guess({"organiser_country": "France"}, {"time": "16:00", "timezone": "Europe/Paris"}), ("", "", ""))
+        self.assertEqual(guess({"organiser_country": "France"}, {"timezone": "Europe/Paris", "time_note": "09:00–17:00"}), ("", "", ""))
+
     def test_identity_lines_keep_their_capitals(self):
         # First words that are proper nouns, so "Only for" keeps the capital.  A new capitalised
         # first word belongs here or in build_site.PLAIN_STARTS.
@@ -140,7 +162,7 @@ class BuildTests(unittest.TestCase):
             members = build_site.topic_members(topic, CALLS, as_of)
             rows = re.findall(r'<li class="cs-call"[^>]*data-slug="([^"]+)"', source)
             self.assertEqual(rows, [c["slug"] for c in members], topic["slug"])
-            self.assertIn(f"{len(members)} calls that haven’t closed", source, topic["slug"])
+            self.assertIn(f"{len(members)} opportunities that haven’t closed", source, topic["slug"])
             ld = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', source).group(1))
             self.assertEqual(ld["@graph"][1]["numberOfItems"], len(members), topic["slug"])
             self.assertEqual(f"/call-sheet/{topic['slug']}/<" in sitemap, len(members) >= 5, topic["slug"])
@@ -186,6 +208,73 @@ class BuildTests(unittest.TestCase):
             if call["closes"]:
                 self.assertIn(call["closes"], rounds, call["id"])
             self.assertEqual(rounds, sorted(rounds), call["id"])
+
+    def test_rows_carry_the_cut_off_time_and_zone(self):
+        source = (self.out / "index.html").read_text(encoding="utf-8")
+        timed = 0
+        for call in CALLS:
+            row = re.search(r'<li class="cs-call"[^>]*data-slug="%s"[^>]*>' % re.escape(call["slug"]), source).group(0)
+            deadline = build_site.deadline_on(call, call["closes"])
+            self.assertIn(f'data-time="{deadline.get("time") or ""}"', row, call["id"])
+            self.assertIn(f'data-tz="{deadline.get("timezone") or ""}"', row, call["id"])
+            timed += bool(deadline.get("time") and deadline.get("timezone"))
+        self.assertTrue(timed)
+
+    def test_estimates_only_where_the_organiser_has_one_clock(self):
+        as_of = json.loads((self.out / "BUILD.json").read_text(encoding="utf-8"))["data_as_of"]
+        seen = {"end": 0, "none": 0}
+        for call in CALLS:
+            source = (self.out / call["slug"] / "index.html").read_text(encoding="utf-8")
+            untimed, zone, place = re.search(r'data-untimed="([^"]*)" data-guess-tz="([^"]*)" data-guess-place="([^"]*)"', source).groups()
+            deadline = build_site.deadline_on(call, call["closes"])
+            if not call["closes"] or build_site.closed_at(call, as_of) or (deadline.get("time") and deadline.get("timezone")):
+                self.assertEqual((untimed, zone), ("", ""), call["id"])
+                continue
+            if zone:
+                self.assertTrue(place, call["id"])
+                self.assertTrue(deadline.get("timezone") == zone or build_site.ONE_ZONE_COUNTRIES[call["organiser_country"]][0] == zone, call["id"])
+                seen["end"] += untimed == "end"
+            elif untimed:
+                self.assertNotIn(call.get("organiser_country"), build_site.ONE_ZONE_COUNTRIES, call["id"])
+                seen["none"] += 1
+        self.assertTrue(seen["end"] and seen["none"], seen)
+
+    def test_local_times_need_the_script(self):
+        pages = [self.out / "index.html"] + [self.out / t["slug"] / "index.html" for t in build_site.TOPICS]
+        for page in pages:
+            source = page.read_text(encoding="utf-8")
+            self.assertEqual(len(re.findall(r'<div class="cs-zone" data-zone-picker data-requires-js>', source)), 1, page)
+            visible = re.sub(r"<[^>]+>", " ", re.sub(r"<script.*?</script>", "", source, flags=re.S))
+            for words in ("your time", "No time given"):
+                self.assertNotIn(words, visible, page)
+
+    def test_counts_close_at_the_exact_cut_off(self):
+        # A last round with a time and zone carries its UTC instant, so a visitor ahead of the
+        # organiser (Sydney, say) still counts it until the cut-off; date-only rounds stay dates.
+        import datetime as dt
+        from zoneinfo import ZoneInfo
+        source = (self.out / "index.html").read_text(encoding="utf-8")
+        ends = [e for m in re.findall(r'data-ends="([^"]*)"', source) for e in m.split()]
+        timed = [e for e in ends if "@" in e]
+        self.assertTrue(timed and len(timed) < len(ends))
+        for end in ends:
+            self.assertRegex(end, r"^\d{4}-\d{2}-\d{2}(@\d{4}-\d{2}-\d{2}T\d{2}:\d{2}Z)?$")
+        c21 = {"dates": [{"date": "2026-10-19", "role": "application_submission_deadline", "time": "23:59", "timezone": "Etc/GMT"}]}
+        self.assertEqual(build_site.end_mark(c21), "2026-10-19@2026-10-19T23:59Z")
+        denver = {"dates": [{"date": "2026-11-03", "role": "application_submission_deadline", "time": "16:30", "timezone": "America/Denver"}]}
+        self.assertEqual(build_site.end_mark(denver), "2026-11-03@2026-11-03T23:30Z")
+        self.assertEqual(build_site.end_mark({"dates": [{"date": "2026-11-09", "role": "application_submission_deadline", "time": "13:00", "timezone": None}]}), "2026-11-09")
+        for call in CALLS:
+            if build_site.rounds(call) and "@" in build_site.end_mark(call):
+                last = build_site.rounds(call)[-1]
+                d = build_site.deadline_on(call, last)
+                want = dt.datetime.fromisoformat(f"{last}T{d['time']}").replace(tzinfo=ZoneInfo(d["timezone"])).astimezone(dt.timezone.utc)
+                self.assertEqual(build_site.end_mark(call).split("@")[1], want.strftime("%Y-%m-%dT%H:%MZ"), call["id"])
+
+    def test_zone_names_match_the_script(self):
+        script = (REPO / "site/call-sheet.js").read_text(encoding="utf-8")
+        block = re.search(r"const ZONES = \{(.*?)\n\}", script, re.S).group(1)
+        self.assertEqual(dict(re.findall(r"'([^']+)': '([^']+)'", block)), build_site.FRIENDLY_ZONES)
 
     def test_closed_calls_are_not_indexed(self):
         as_of = json.loads((self.out / "BUILD.json").read_text(encoding="utf-8"))["data_as_of"]
@@ -239,10 +328,10 @@ class BuildTests(unittest.TestCase):
 
     def test_pitch_copy_claims_only_what_the_data_shows(self):
         source = (self.out / "index.html").read_text(encoding="utf-8")
-        for claim in ("Most ask for a pitch deck", "Most of these calls ask"):
+        for claim in ("Most ask for a pitch deck", "Most of these calls ask", "Most of these opportunities ask"):
             self.assertNotIn(claim, source)
         self.assertIn("Applying to one? If it asks for a deck, a treatment or a pitch, we make those.", source)
-        self.assertIn("Some of these calls ask for a deck, a treatment or a pitch.", source)
+        self.assertIn("Some of these opportunities ask for a deck, a treatment or a pitch.", source)
         as_of = json.loads((self.out / "BUILD.json").read_text(encoding="utf-8"))["data_as_of"]
         self.assertTrue(any(build_site.asks_for(c) for c in CALLS if not build_site.closed_at(c, as_of)))
 
@@ -259,7 +348,8 @@ class BuildTests(unittest.TestCase):
             members = build_site.topic_members(topic, CALLS, as_of)
             ends, n = re.search(r'href="/call-sheet/%s/"><span[^>]*>[^<]*</span><span class="cs-lists-n"[^>]*data-ends="([^"]*)">(\d+)<' % topic["slug"], source).groups()
             self.assertEqual(int(n), len(members), topic["slug"])
-            self.assertEqual(ends.split(), [build_site.rounds(c)[-1] for c in members if build_site.rounds(c)], topic["slug"])
+            self.assertEqual([e.split("@")[0] for e in ends.split()], [build_site.rounds(c)[-1] for c in members if build_site.rounds(c)], topic["slug"])
+            self.assertEqual(ends.split(), [build_site.end_mark(c) for c in members if build_site.rounds(c)], topic["slug"])
 
     def test_edition_window_names_later_calls(self):
         as_of = json.loads((self.out / "BUILD.json").read_text(encoding="utf-8"))["data_as_of"]
@@ -267,7 +357,7 @@ class BuildTests(unittest.TestCase):
         later = [c for c in CALLS if c["closes"] and c["closes"][:7] > edition["covers"]["to"] and not build_site.closed_at(c, as_of)]
         source = (self.out / "index.html").read_text(encoding="utf-8")
         self.assertNotIn("This edition covers calls closing", source)
-        self.assertIn("This edition is built around calls closing", source)
+        self.assertIn("This edition is built around opportunities closing", source)
         if later:
             self.assertEqual(source.count(f"plus {len(later)} later"), 2)
 

@@ -2,7 +2,7 @@
  * Call Sheet — pitch.dog
  *
  * Every page works without this script.  It adds the site theme and mobile
- * menu, live countdowns, filtering, and "My call sheet": a shortlist saved
+ * menu, live countdowns, filtering, and "My shortlist", saved
  * in this browser's localStorage only.  Nothing typed or saved is sent
  * anywhere.
  */
@@ -85,16 +85,22 @@ const shortDate = (iso, withYear = false) => {
 }
 const longDate = iso => { const d = toDate(iso); return `${d.toLocaleDateString('en-GB', { weekday: 'long', timeZone: 'UTC' })} ${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}` }
 
-// The next closing date: once one round passes, the page moves to the next.
-function nextRound (rounds, fallback) {
+// Whether a closing date has gone by for this visitor: at the exact cut-off when we hold one,
+// wherever they are, and otherwise once their own date is past it.
+function passed (closes, at) { return at ? at.getTime() <= Date.now() : closes < todayISO }
+
+// The next closing date: once one round passes, the page moves to the next.  `at` is the exact
+// cut-off of `fallback`, the round the page was built on, when we hold one.
+function nextRound (rounds, fallback, at) {
   const list = (rounds || '').split(' ').filter(Boolean)
-  return list.find(d => d >= todayISO) || list[list.length - 1] || fallback || ''
+  return list.find(d => !passed(d, d === fallback ? at : null)) || list[list.length - 1] || fallback || ''
 }
 
 // A cut-off in the organiser's zone as an instant, so it can be shown in the visitor's.
+const zoneFormats = new Map()
 function zoneOffset (ms, tz) {
-  const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' })
-    .formatToParts(new Date(ms)).map(p => [p.type, p.value]))
+  if (!zoneFormats.has(tz)) zoneFormats.set(tz, new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }))
+  const parts = Object.fromEntries(zoneFormats.get(tz).formatToParts(new Date(ms)).map(p => [p.type, p.value]))
   return Date.UTC(+parts.year, +parts.month - 1, +parts.day, +parts.hour % 24, +parts.minute, +parts.second) - ms
 }
 function instantOf (iso, time, tz) {
@@ -124,7 +130,27 @@ const ZONES = {
 const zoneName = tz => ZONES[tz] || (tz.startsWith('Etc/') ? tz.slice(4) : tz.includes('/') ? tz.split('/').pop().replace(/_/g, ' ') + ' time' : tz)
 const hereZone = (() => { try { return Intl.DateTimeFormat().resolvedOptions().timeZone || '' } catch { return '' } })()
 
-function leftText (closes) {
+// The clock local times are shown on: the browser's, unless the visitor picked another city
+// ("Times for"), to plan with a co-writer elsewhere, say.  Remembered in this browser when it can be.
+const ZONE_STORE = 'pitchdog-call-sheet-zone'
+const validZone = tz => { try { return Boolean(tz && new Intl.DateTimeFormat('en-GB', { timeZone: tz })) } catch { return false } }
+let viewZone = (() => { try { const tz = localStorage.getItem(ZONE_STORE); if (tz && validZone(tz)) return tz } catch {} return hereZone })()
+const whose = () => viewZone === hereZone ? 'your time' : zoneName(viewZone)
+// A cut-off on the chosen clock: the date and time there, and whether that clock reads the same as the organiser's.
+function clockAt (at, tz) {
+  const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: viewZone, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })
+    .formatToParts(at).map(p => [p.type, p.value]))
+  return { iso: `${parts.year}-${parts.month}-${parts.day}`, time: `${parts.hour}:${parts.minute}`, same: zoneOffset(at.getTime(), viewZone) === zoneOffset(at.getTime(), tz) }
+}
+const longClock = at => new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: viewZone }).format(at).replace(' at ', ', ')
+
+function leftText (closes, at) {
+  if (at && passed(closes, at)) return { text: 'Closed', cls: 'is-closed' }
+  // The organiser's date is behind the visitor's, but their cut-off is still ahead: count the hours.
+  if (at && closes < todayISO) {
+    const hours = Math.floor((at.getTime() - Date.now()) / 3600000)
+    return { text: hours < 1 ? 'Closes within the hour' : `Closes in ${hours} ${hours === 1 ? 'hour' : 'hours'}`, cls: 'is-today' }
+  }
   const days = daysUntil(closes)
   if (days < 0) return { text: 'Closed', cls: 'is-closed' }
   if (days === 0) return { text: 'Closes today', cls: 'is-today' }
@@ -134,11 +160,12 @@ function leftText (closes) {
   return { text: `${Math.round(days / 30.4)} months left`, cls: '' }
 }
 
-// Whether a call is accepting applications on the visitor's own date.
-function liveState ({ closes, opens, state }) {
+// Whether a call is accepting applications for the visitor: until its exact cut-off when we
+// hold one, otherwise until the end of its date on their own calendar.
+function liveState ({ closes, opens, state, at }) {
   if (state === 'closed_or_historical') return 'closed'
   if (!closes) return state === 'watch_or_rolling' ? 'rolling' : 'tbc'
-  if (closes < todayISO) return 'closed'
+  if (passed(closes, at)) return 'closed'
   if (opens && opens > todayISO) return 'later'
   if (state === 'announced_not_open' && !opens) return 'later'
   if (state === 'watch_or_rolling') return 'watch'
@@ -238,7 +265,7 @@ function snapshotFromPage (main) {
 
 const listRows = [...document.querySelectorAll('.cs-call')]
 for (const row of listRows) {
-  const closes = nextRound(row.dataset.rounds, row.dataset.closes)
+  const closes = nextRound(row.dataset.rounds, row.dataset.closes, instantOf(row.dataset.closes, row.dataset.time, row.dataset.tz))
   if (!closes || closes === row.dataset.closes) continue
   // A later round: the cut-off time we hold belonged to the one that passed.
   Object.assign(row.dataset, { closes, time: '', tz: '' })
@@ -251,6 +278,12 @@ for (const row of listRows) {
   }
 }
 const rowBySlug = new Map(listRows.map(row => [row.dataset.slug, row]))
+// Soonest first: by closing date, then by the exact cut-off where we know it (09:00 before 23:30
+// on the same day), then by title.
+const rowAt = new Map(listRows.map(row => [row, instantOf(row.dataset.closes, row.dataset.time, row.dataset.tz)]))
+const rowLive = row => liveState({ closes: row.dataset.closes, opens: row.dataset.opens, state: row.dataset.state, at: rowAt.get(row) })
+const soonest = (a, b) => (a.dataset.closes || '9999').localeCompare(b.dataset.closes || '9999') ||
+  (rowAt.get(a)?.getTime() ?? Infinity) - (rowAt.get(b)?.getTime() ?? Infinity) || a.dataset.title.localeCompare(b.dataset.title)
 const callPage = document.querySelector('.cs-callpage')
 
 function toggleSave (slug) {
@@ -266,7 +299,7 @@ function toggleSave (slug) {
     sheet = readSheet()
     syncSaveButtons(slug)
     renderSheet()
-    notice('Your browser is blocking storage here (a private window often does), so that call wasn’t saved.')
+    notice('Your browser is blocking storage here (a private window often does), so it wasn’t saved.')
     return
   }
   syncSaveButtons(slug)
@@ -328,6 +361,10 @@ function notice (text) {
 }
 const say = text => { if (sheetStatus) { sheetStatus.textContent = text; clearTimeout(say.t); say.t = setTimeout(() => { sheetStatus.textContent = '' }, 4000) } }
 
+// A saved call's exact cut-off, and whether it's still ahead.
+const itemAt = item => instantOf(item.closes, item.time, item.tz)
+const upcoming = item => Boolean(item.closes) && !passed(item.closes, itemAt(item))
+
 function sortedItems () {
   return Object.entries(sheet.items).sort(([, a], [, b]) => (a.closes || '9999').localeCompare(b.closes || '9999') || String(a.title).localeCompare(String(b.title)))
 }
@@ -338,9 +375,9 @@ function renderSheet () {
   if (bar) {
     bar.hidden = items.length === 0
     document.body.classList.toggle('has-sheetbar', items.length > 0)
-    bar.querySelector('[data-sheet-count]').textContent = `${items.length} ${items.length === 1 ? 'call' : 'calls'} saved`
-    const next = items.map(([, i]) => i.closes).filter(c => c && c >= todayISO).sort()[0]
-    bar.querySelector('[data-sheet-next]').textContent = next ? `Next closes ${daysUntil(next) === 0 ? 'today' : daysUntil(next) === 1 ? 'tomorrow' : 'in ' + daysUntil(next) + ' days'}` : 'No upcoming deadlines'
+    bar.querySelector('[data-sheet-count]').textContent = `${items.length} saved`
+    const next = items.map(([, i]) => i).filter(upcoming).map(i => i.closes).sort()[0]
+    bar.querySelector('[data-sheet-next]').textContent = next ? `Next closes ${daysUntil(next) <= 0 ? 'today' : daysUntil(next) === 1 ? 'tomorrow' : 'in ' + daysUntil(next) + ' days'}` : 'No upcoming deadlines'
   }
   const list = document.querySelector('[data-sheet-list]')
   if (!list) return
@@ -350,7 +387,7 @@ function renderSheet () {
   list.replaceChildren(...items.map(([slug, item]) => {
     const title = item.title || slug
     const d = item.closes ? toDate(item.closes) : null
-    const left = item.closes ? leftText(item.closes) : null
+    const left = item.closes ? leftText(item.closes, itemAt(item)) : null
     const date = el('span', { className: 'cs-date' },
       el('span', { className: 'cs-day', textContent: d ? d.getUTCDate() : '—' }),
       el('span', { className: 'cs-month', textContent: d ? MONTHS[d.getUTCMonth()].slice(0, 3) : 'No date' }))
@@ -368,7 +405,7 @@ function renderSheet () {
     meta.append(status)
     const remove = el('button', { className: 'cs-sheet-remove', type: 'button', innerHTML: '<svg class="cs-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#cs-close"></use></svg>' })
     remove.dataset.remove = slug
-    remove.setAttribute('aria-label', `Remove ${title} from my call sheet`)
+    remove.setAttribute('aria-label', `Remove ${title} from my shortlist`)
     return el('li', { className: 'cs-sheet-item' }, date, meta, remove)
   }))
 }
@@ -446,8 +483,8 @@ function download (name, text, type) {
   setTimeout(() => URL.revokeObjectURL(url), 1000)
 }
 document.querySelector('[data-sheet-ics]')?.addEventListener('click', () => {
-  const entries = sortedItems().filter(([, i]) => i.closes && i.closes >= todayISO)
-  if (!entries.length) return say('None of your saved calls has an upcoming deadline yet.')
+  const entries = sortedItems().filter(([, i]) => upcoming(i))
+  if (!entries.length) return say('Nothing on your shortlist has an upcoming deadline yet.')
   download('call-sheet-deadlines.ics', icsFor(entries), 'text/calendar')
   say(`${entries.length} ${entries.length === 1 ? 'deadline' : 'deadlines'} ready for your calendar.`)
 })
@@ -459,8 +496,8 @@ document.querySelector('[data-ics]')?.addEventListener('click', () => {
 document.querySelector('[data-sheet-share]')?.addEventListener('click', async () => {
   const url = `${location.origin}${BASE}?sheet=${sortedItems().map(([slug]) => slug).join(',')}`
   try {
-    if (navigator.share && matchMedia('(pointer: coarse)').matches) await navigator.share({ title: 'My call sheet', url })
-    else { await navigator.clipboard.writeText(url); say('Link copied. Anyone with it sees the same calls, never your notes or statuses.') }
+    if (navigator.share && matchMedia('(pointer: coarse)').matches) await navigator.share({ title: 'My shortlist', url })
+    else { await navigator.clipboard.writeText(url); say('Link copied. Anyone with it sees the same opportunities, never your notes or statuses.') }
   } catch { prompt('Copy this link:', url) }
 })
 
@@ -488,7 +525,7 @@ document.querySelector('[data-sheet-print]')?.addEventListener('click', () => {
   const label = Object.fromEntries(STATUSES)
   const cell = text => { const td = document.createElement('td'); td.textContent = text || ''; return td }
   const table = document.createElement('table')
-  table.innerHTML = '<thead><tr><th>Closes</th><th>Call</th><th>Who can apply</th><th>You get</th><th>Entry fee</th><th>Status</th></tr></thead><tbody></tbody>'
+  table.innerHTML = '<thead><tr><th>Closes</th><th>Opportunity</th><th>Who can apply</th><th>You get</th><th>Entry fee</th><th>Status</th></tr></thead><tbody></tbody>'
   for (const [slug, item] of items) {
     const tr = document.createElement('tr')
     const call = cell(item.title)
@@ -497,9 +534,9 @@ document.querySelector('[data-sheet-print]')?.addEventListener('click', () => {
     tr.append(cell(item.closes ? shortDate(item.closes, true) : '—'), call, cell(item.who), cell(item.get), cell(item.fee), cell(label[item.status] || ''))
     table.tBodies[0].append(tr)
   }
-  const h1 = document.createElement('h1'); h1.textContent = 'Call sheet.'
+  const h1 = document.createElement('h1'); h1.textContent = 'My shortlist.'
   const meta = document.createElement('p'); meta.className = 'cs-print-meta'
-  meta.innerHTML = `<span>Printed ${shortDate(todayISO, true)}</span><span>${items.length} ${items.length === 1 ? 'call' : 'calls'}</span><span>pitch.dog/call-sheet</span>`
+  meta.innerHTML = `<span>Printed ${shortDate(todayISO, true)}</span><span>${items.length} ${items.length === 1 ? 'opportunity' : 'opportunities'}</span><span>pitch.dog/call-sheet</span>`
   const foot = document.createElement('p'); foot.className = 'cs-print-foot'
   foot.textContent = 'A research snapshot, not legal advice. Check every deadline, fee and rule on the official page before you apply.'
   holder.replaceChildren(h1, meta, table, foot)
@@ -545,7 +582,7 @@ function bucketFor (row, live) {
   const closes = row.dataset.closes
   if (live === 'closed') return { key: 'z', title: 'Closed for this round', closed: true }
   if (!closes) return { key: 'y', title: 'No fixed date yet' }
-  const days = daysUntil(closes)
+  const days = Math.max(0, daysUntil(closes))
   if (days <= 7) return { key: '0', title: days === 0 ? 'Closes today' : 'In the next 7 days' }
   const d = toDate(closes)
   const now = toDate(todayISO)
@@ -558,7 +595,7 @@ function bucketFor (row, live) {
 function markRow (row, live) {
   const left = row.querySelector('[data-left]')
   if (row.dataset.closes && left) {
-    const l = leftText(row.dataset.closes)
+    const l = leftText(row.dataset.closes, rowAt.get(row))
     left.textContent = l.text
     left.className = `cs-left ${l.cls}`
   }
@@ -704,7 +741,7 @@ if (form && groupsHost && listRows.length) {
     box.className = 'cs-shared'
     box.setAttribute('role', 'status')
     const gone = missingShared ? ` ${missingShared} more ${missingShared === 1 ? 'isn’t' : 'aren’t'} on Call Sheet any more.` : ''
-    box.innerHTML = `<p data-pd-type="body.default"><strong>Someone shared ${filters.shared.length} ${filters.shared.length === 1 ? 'call' : 'calls'} with you.</strong> Showing just those.${gone}</p><div class="button-row"><button class="button button--ink button--small" type="button" data-adopt>Add to my call sheet</button><button class="button button--small" type="button" data-show-all>Show every call</button></div>`
+    box.innerHTML = `<p data-pd-type="body.default"><strong>Someone shared ${filters.shared.length} ${filters.shared.length === 1 ? 'opportunity' : 'opportunities'} with you.</strong> Showing just those.${gone}</p><div class="button-row"><button class="button button--ink button--small" type="button" data-adopt>Add to my shortlist</button><button class="button button--small" type="button" data-show-all>Show the full list</button></div>`
     document.querySelector('.cs-results-head').after(box)
     box.querySelector('[data-adopt]').addEventListener('click', () => {
       for (const slug of filters.shared) if (!saved(slug)) toggleSave(slug)
@@ -715,7 +752,7 @@ if (form && groupsHost && listRows.length) {
   })() : null
 
   function rowState (row) {
-    const live = liveState({ closes: row.dataset.closes, opens: row.dataset.opens, state: row.dataset.state })
+    const live = rowLive(row)
     const where = JSON.parse(row.dataset.where)
     return { live, where, place: placeMatch(where, filters.from) }
   }
@@ -766,7 +803,7 @@ if (form && groupsHost && listRows.length) {
       if (info.place === 'no' && !filters.all) { excluded++; continue }
       rows.push([row, info])
     }
-    rows.sort(([a], [b]) => (a.dataset.closes || '9999').localeCompare(b.dataset.closes || '9999') || a.dataset.title.localeCompare(b.dataset.title))
+    rows.sort(([a], [b]) => soonest(a, b))
     const used = new Map()
     for (const [row, info] of rows) {
       const bucket = bucketFor(row, info.live)
@@ -784,27 +821,27 @@ if (form && groupsHost && listRows.length) {
     const visible = rows.filter(([, info]) => info.live !== 'closed').length
     const closedCount = rows.length - visible
     countEl.textContent = String(visible)
-    countEl.parentElement.lastChild.textContent = ` ${visible === 1 ? 'call' : 'calls'}, soonest first`
+    countEl.parentElement.lastChild.textContent = ` ${visible === 1 ? 'opportunity' : 'opportunities'}, soonest first`
     const active = []
     if (filters.q) active.push(queryPlace(filters.q) ? `open to people based in ${countryName(queryPlace(filters.q))}` : `“${filters.q.length > 40 ? filters.q.slice(0, 40) + '…' : filters.q}”`)
     if (filters.from) active.push(`based in ${countryName(filters.from)}`)
     for (const facet of ['format', 'stage', 'kind']) for (const v of filters[facet]) active.push(form.querySelector(`input[name="${facet}"][value="${v}"]`)?.nextElementSibling.textContent.toLowerCase())
     for (const v of filters.only) active.push(form.querySelector(`input[name="only"][value="${v}"]`)?.nextElementSibling.textContent.toLowerCase())
-    noteEl.textContent = (filters.shared.length ? 'A shared call sheet. ' : '') + (active.length ? `Filtered: ${active.join(', ')}.` : filters.shared.length ? '' : 'Every call we track.') + (closedCount ? ` Plus ${closedCount} closed for this round.` : '')
+    noteEl.textContent = (filters.shared.length ? 'A shared shortlist. ' : '') + (active.length ? `Filtered: ${active.join(', ')}.` : filters.shared.length ? '' : 'Every opportunity we track.') + (closedCount ? ` Plus ${closedCount} closed for this round.` : '')
     clear.hidden = !active.length
     empty.hidden = rows.length > 0
     if (filterJump) filterJump.querySelector('span').textContent = active.length ? `Filters (${active.length})` : 'Filters'
     if (see) {
-      see.querySelector('[data-see-text]').textContent = visible ? `See ${visible} ${visible === 1 ? 'call' : 'calls'}` : 'Nothing fits yet'
+      see.querySelector('[data-see-text]').textContent = visible ? `See ${visible} ${visible === 1 ? 'opportunity' : 'opportunities'}` : 'Nothing fits yet'
       see.classList.toggle('is-zero', visible === 0)
       startAgain.hidden = !active.length
     }
-    if (write) announce(`${visible} ${visible === 1 ? 'call' : 'calls'} open or coming up${active.length ? `, filtered by ${active.join(', ')}` : ''}.`)
+    if (write) announce(`${visible} ${visible === 1 ? 'opportunity' : 'opportunities'} open or coming up${active.length ? `, filtered by ${active.join(', ')}` : ''}.`)
     if (filters.from && (excluded || filters.all)) {
       excludedEl.hidden = false
       excludedEl.innerHTML = filters.all
-        ? `<span>Showing calls that don’t take applicants based in ${countryName(filters.from)} too.</span><button class="button button--small" type="button" data-toggle-all>Hide them again</button>`
-        : `<span>${excluded} more ${excluded === 1 ? 'call doesn’t' : 'calls don’t'} take applicants based in ${countryName(filters.from)}.</span><button class="button button--small" type="button" data-toggle-all>Show them anyway</button>`
+        ? `<span>Showing opportunities that don’t take applicants based in ${countryName(filters.from)} too.</span><button class="button button--small" type="button" data-toggle-all>Hide them again</button>`
+        : `<span>${excluded} more ${excluded === 1 ? 'opportunity doesn’t' : 'opportunities don’t'} take applicants based in ${countryName(filters.from)}.</span><button class="button button--small" type="button" data-toggle-all>Show them anyway</button>`
     } else excludedEl.hidden = true
     if (write) writeUrl()
   }
@@ -843,12 +880,12 @@ if (form && groupsHost && listRows.length) {
   // The board under the title, recounted for the visitor's date.
   const board = { open: 0, week: 0, next: null, free: 0 }
   for (const row of listRows) {
-    const live = liveState({ closes: row.dataset.closes, opens: row.dataset.opens, state: row.dataset.state })
+    const live = rowLive(row)
     if (live === 'open') board.open++
     // Counts what the Free to enter list holds: free and not closed, open yet or not.
     if (live !== 'closed' && row.dataset.fee === 'free') board.free++
     if (row.dataset.closes && live !== 'closed' && daysUntil(row.dataset.closes) <= 7) board.week++
-    if (row.dataset.closes && row.dataset.closes >= todayISO && (!board.next || row.dataset.closes < board.next)) board.next = row.dataset.closes
+    if (row.dataset.closes && !passed(row.dataset.closes, rowAt.get(row)) && (!board.next || row.dataset.closes < board.next)) board.next = row.dataset.closes
   }
   document.querySelector('[data-board="open"]').textContent = board.open
     document.querySelector('[data-board="next"]').textContent = board.next ? shortDate(board.next) : '—'
@@ -867,7 +904,7 @@ if (form && groupsHost && listRows.length) {
     const stale = document.createElement('p')
     stale.className = 'cs-stale'
     stale.setAttribute('data-pd-type', 'body.small')
-    stale.textContent = `We last checked this list on ${shortDate(document.body.dataset.asOf, true)}, ${Math.round(age / 30.4)} ${Math.round(age / 30.4) === 1 ? 'month' : 'months'} ago. Calls that have closed move to the bottom on their own, but new rounds and changed dates won’t show until we check again. The official page always wins.`
+    stale.textContent = `We last checked this list on ${shortDate(document.body.dataset.asOf, true)}, ${Math.round(age / 30.4)} ${Math.round(age / 30.4) === 1 ? 'month' : 'months'} ago. Anything that has closed moves to the bottom on its own, but new rounds and changed dates won’t show until we check again. The official page always wins.`
     document.querySelector('.cs-results-head').after(stale)
   }
 
@@ -879,7 +916,7 @@ if (form && groupsHost && listRows.length) {
     const box = document.createElement('div')
     box.className = 'cs-welcome'
     box.setAttribute('role', 'status')
-    box.innerHTML = `<p data-pd-type="body.default"><strong>Welcome back.</strong> ${newSince.size} ${newSince.size === 1 ? 'call is' : 'calls are'} new since you were last here, on ${shortDate(lastVisit.toISOString().slice(0, 10))}.</p><button class="button button--small" type="button" data-only-new>Show just the new ones</button>`
+    box.innerHTML = `<p data-pd-type="body.default"><strong>Welcome back.</strong> ${newSince.size} ${newSince.size === 1 ? 'opportunity is' : 'opportunities are'} new since you were last here, on ${shortDate(lastVisit.toISOString().slice(0, 10))}.</p><button class="button button--small" type="button" data-only-new>Show just the new ones</button>`
     box.querySelector('[data-only-new]').addEventListener('click', () => {
       form.querySelector('input[name="only"][value="new"]').checked = true
       filters.only = [...new Set([...filters.only, 'new'])]
@@ -903,8 +940,8 @@ if (form && groupsHost && listRows.length) {
 // date, regroup the way the full list does, and move calls that have closed to the bottom.
 const topicList = document.querySelector('.cs-topic-list')
 if (topicList && listRows.length) {
-  const rows = listRows.map(row => [row, liveState({ closes: row.dataset.closes, opens: row.dataset.opens, state: row.dataset.state })])
-  rows.sort(([a], [b]) => (a.dataset.closes || '9999').localeCompare(b.dataset.closes || '9999') || a.dataset.title.localeCompare(b.dataset.title))
+  const rows = listRows.map(row => [row, rowLive(row)])
+  rows.sort(([a], [b]) => soonest(a, b))
   const used = new Map()
   for (const [row, live] of rows) {
     markRow(row, live)
@@ -922,14 +959,79 @@ if (topicList && listRows.length) {
   }
   const open = rows.filter(([, live]) => live !== 'closed').length
   const count = topicList.closest('.cs-topic')?.querySelector('[data-topic-count]')
-  if (count) count.textContent = `${open} ${open === 1 ? 'call that hasn’t' : 'calls that haven’t'} closed`
+  if (count) count.textContent = `${open} ${open === 1 ? 'opportunity that hasn’t' : 'opportunities that haven’t'} closed`
 }
 
 // Ready-made list counts, wherever they appear: a call drops out once its last round has closed.
 for (const el of document.querySelectorAll('.cs-lists-n[data-ends]')) {
-  const passed = el.dataset.ends.split(' ').filter(d => d && d < todayISO).length
-  if (passed) el.textContent = Math.max(0, Number(el.textContent) - passed)
+  // Each end is a date, or a date and its exact cut-off in UTC ("2026-10-19@2026-10-19T23:59Z").
+  const gone = el.dataset.ends.split(' ').filter(end => { const [d, at] = end.split('@'); return d && passed(d, at ? new Date(at) : null) }).length
+  if (gone) el.textContent = Math.max(0, Number(el.textContent) - gone)
 }
+
+// ------------------------------------------------------------- your time
+
+// Under each date: the cut-off on the chosen clock, or a quiet note that the organiser gave no time.
+// The date above stays the organiser's; the line says when the day differs.
+function showClocks () {
+  for (const row of listRows) {
+    let clock = row.querySelector('[data-clock]')
+    const live = rowLive(row)
+    if (!row.dataset.closes || live === 'closed') { if (clock) clock.hidden = true; continue }
+    if (!clock) {
+      clock = Object.assign(document.createElement('span'), { className: 'cs-clock' })
+      clock.dataset.clock = ''
+      clock.setAttribute('data-pd-ui', 'caption')
+      row.querySelector('.cs-when')?.append(clock)
+    }
+    const at = rowAt.get(row)
+    if (at && viewZone) {
+      const there = clockAt(at, row.dataset.tz)
+      clock.textContent = there.same ? there.time : `${there.iso !== row.dataset.closes ? shortDate(there.iso) + ', ' : ''}${there.time} ${whose()}`
+    } else clock.textContent = row.dataset.time ? `${row.dataset.time}, no time zone given` : 'No time given'
+    clock.hidden = false
+  }
+}
+
+// "Times for": every zone the browser knows, by region, with the visitor's own first.
+const zonePicker = document.querySelector('[data-zone-picker]')
+if (zonePicker && listRows.length) {
+  const select = zonePicker.querySelector('select')
+  const hint = zonePicker.querySelector('[data-zone-hint]')
+  const city = tz => tz === 'UTC' ? 'UTC' : tz.split('/').pop().replace(/_/g, ' ')
+  const REGION = { America: 'Americas', Indian: 'Indian Ocean', Etc: 'Other' }
+  let known = []
+  try { known = Intl.supportedValuesOf('timeZone') } catch {}
+  const groups = new Map()
+  for (const tz of new Set([...known, ...Object.keys(ZONES), viewZone, 'UTC'])) {
+    if (!tz || tz === hereZone || !validZone(tz)) continue
+    const region = tz.includes('/') ? REGION[tz.split('/')[0]] || tz.split('/')[0] : 'Other'
+    if (!groups.has(region)) groups.set(region, [])
+    groups.get(region).push(tz)
+  }
+  if (hereZone) select.append(new Option(`${city(hereZone)} (where you are)`, hereZone))
+  for (const [region, zones] of [...groups.entries()].sort(([a], [b]) => (a === 'Other') - (b === 'Other') || a.localeCompare(b))) {
+    const group = Object.assign(document.createElement('optgroup'), { label: region })
+    group.append(...zones.sort((a, b) => city(a).localeCompare(city(b))).map(tz => new Option(city(tz), tz)))
+    select.append(group)
+  }
+  const describe = (kept = true) => {
+    hint.textContent = (viewZone === hereZone
+      ? `Closing times show in ${zoneName(viewZone)}, where you are. Planning with someone in another city? Pick theirs.`
+      : `Closing times show in ${zoneName(viewZone)}. Pick your own city to switch back.`) +
+      (kept ? '' : ' Your browser is blocking storage here, so this lasts until you leave the page.')
+  }
+  select.value = viewZone
+  describe()
+  select.addEventListener('change', () => {
+    viewZone = select.value
+    let kept = true
+    try { if (viewZone === hereZone) localStorage.removeItem(ZONE_STORE); else localStorage.setItem(ZONE_STORE, viewZone) } catch { kept = false }
+    describe(kept)
+    showClocks()
+  })
+}
+showClocks()
 
 // ------------------------------------------------------------- call page
 
@@ -937,7 +1039,7 @@ if (callPage) {
   const box = callPage.querySelector('[data-countdown]')
   const text = box?.querySelector('[data-countdown-text]')
   if (box && text) {
-    const closes = nextRound(box.dataset.rounds, box.dataset.closes)
+    const closes = nextRound(box.dataset.rounds, box.dataset.closes, instantOf(box.dataset.closes, box.dataset.time, box.dataset.tz))
     const moved = closes !== box.dataset.closes
     if (moved) {
       // The round on the page has passed and the call has another: show that one.
@@ -946,7 +1048,7 @@ if (callPage) {
     }
     const { opens, time, tz } = box.dataset
     const at = instantOf(closes, time, tz)
-    const live = at && at < new Date() ? 'closed' : liveState(box.dataset)
+    const live = liveState({ closes, opens, state: box.dataset.state, at })
     if (moved) box.querySelector('[data-countdown-when]').textContent = `${longDate(closes)}${live === 'closed' ? '' : '. The earlier round has closed'}.`
     if (live === 'closed') {
       // Nothing left to put in a calendar.
@@ -963,17 +1065,25 @@ if (callPage) {
       if (days <= 7) box.classList.add('is-soon')
       if (live === 'watch') text.textContent += ', if it’s open'
     }
-    // The same cut-off on the visitor's clock, when their zone differs from the organiser's.
+    // The same cut-off on the chosen clock, when it differs from the organiser's.
     const local = box.querySelector('[data-local]')
-    if (at && local && live !== 'closed' && hereZone && zoneOffset(at.getTime(), hereZone) !== zoneOffset(at.getTime(), tz)) {
-      const when = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: hereZone }).format(at)
-      local.textContent = `That’s ${when.replace(' at ', ', ')} where you are (${zoneName(hereZone)}).`
-      local.hidden = false
+    const show = line => { local.textContent = line; local.hidden = false }
+    const differs = (instant, zone) => zoneOffset(instant.getTime(), viewZone) !== zoneOffset(instant.getTime(), zone)
+    if (at && local && live !== 'closed' && viewZone && differs(at, tz)) {
+      show(viewZone === hereZone ? `That’s ${longClock(at)} where you are (${zoneName(hereZone)}).` : `That’s ${longClock(at)} in ${zoneName(viewZone)}.`)
+    } else if (!at && local && closes && !moved && live !== 'closed' && viewZone && box.dataset.untimed) {
+      // No full cut-off: say so, and estimate from the organiser's one clock when there is one.
+      const { untimed, guessTz, guessPlace } = box.dataset
+      const guess = guessTz ? instantOf(closes, untimed === 'zone' ? time : '23:59', guessTz) : null
+      const estimate = guess && differs(guess, guessTz) ? `that’s around ${longClock(guess)} ${viewZone === hereZone ? 'for you' : 'in ' + zoneName(viewZone)} (our estimate); to be safe, apply the day before.` : ''
+      if (untimed === 'zone') show(estimate ? `No time zone given for the ${time} cut-off. If it’s ${time} in ${guessPlace}, ${estimate}` : `No time zone given for the ${time} cut-off; apply the day before to be safe.`)
+      else show(estimate ? `No closing time given. If it’s the end of the day in ${guessPlace}, ${estimate}` : 'No closing time given; apply the day before to be safe.')
     }
   }
   let next = false
   for (const item of callPage.querySelectorAll('.cs-timeline-item')) {
-    if (item.dataset.date < todayISO) item.classList.add('is-past')
+    const at = item.dataset.date === callPage.dataset.closes ? instantOf(item.dataset.date, box?.dataset.time, box?.dataset.tz) : null
+    if (passed(item.dataset.date, at)) item.classList.add('is-past')
     else if (!next) { item.classList.add('is-next'); next = true }
   }
   // The WhatsApp button sits over the action buttons on a phone; tuck it while they're on screen.
