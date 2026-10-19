@@ -359,6 +359,24 @@ def deadline_on(call: dict, iso: str | None) -> dict:
     return next((d for d in call["dates"] if d["date"] == iso and d["role"] in ("application_submission_deadline", "application_fee_tier_cutoff")), {}) if iso else {}
 
 
+def cutoff_utc(call: dict, iso: str | None) -> dt.datetime | None:
+    """A closing date's exact cut-off in UTC, when the organiser gives both a time and a zone."""
+    from zoneinfo import ZoneInfo
+    when = deadline_on(call, iso)
+    if not (when.get("time") and when.get("timezone")):
+        return None
+    hh, mm = map(int, when["time"].split(":"))
+    return dt.datetime.combine(dt.date.fromisoformat(iso), dt.time(hh, mm), ZoneInfo(when["timezone"])).astimezone(dt.timezone.utc)
+
+
+def end_mark(call: dict) -> str:
+    """A call's last closing date for the script to recount by: 'YYYY-MM-DD', or with its exact
+    cut-off as 'YYYY-MM-DD@YYYY-MM-DDTHH:MMZ' so it counts as closed at that moment wherever the visitor is."""
+    last = rounds(call)[-1]
+    at = cutoff_utc(call, last)
+    return f"{last}@{at:%Y-%m-%dT%H:%MZ}" if at else last
+
+
 def org_line(call: dict) -> str:
     """Organiser and country, without repeating an organiser the title already names."""
     org = call.get("organiser") or ""
@@ -522,7 +540,6 @@ def feed_count(calls: list[dict], as_of: str, fmt: str | None) -> str:
 def ics_feed(calls: list[dict], as_of: str, name: str) -> str:
     """A subscribable calendar: one event per upcoming deadline, regenerated with every build.
     Mirrors icsFor() in site/call-sheet.js, without the alarms a subscription can't carry."""
-    from zoneinfo import ZoneInfo
     stamp = f"{as_of.replace('-', '')}T000000Z"
     esc = lambda t: str(t or "").replace("\\", "\\\\").replace("\n", "\\n").replace(",", "\\,").replace(";", "\\;")
 
@@ -544,10 +561,7 @@ def ics_feed(calls: list[dict], as_of: str, name: str) -> str:
         closes = call["closes"]
         when = deadline_on(call, closes)
         page_url = f"{ORIGIN}{BASE}{call['slug']}/"
-        at = None
-        if when.get("time") and when.get("timezone"):
-            hh, mm = map(int, when["time"].split(":"))
-            at = dt.datetime.combine(dt.date.fromisoformat(closes), dt.time(hh, mm), ZoneInfo(when["timezone"])).astimezone(dt.timezone.utc)
+        at = cutoff_utc(call, closes)
         cutoff = f"It closes at {when['time']}, {tz_label(when['timezone'])}." if at else "Check the exact cut-off time and time zone on the official page before you plan around this date."
         details = f"{cutoff}\n\nYou get: {call['get']}\nWho can apply: {call['who']}\nEntry fee: {call['fee']['summary']}\n\nCall Sheet: {page_url}" + (f"\nOfficial page: {call['official_url']}" if call.get("official_url") else "")
         start = closes.replace("-", "")
@@ -1240,7 +1254,7 @@ def topic_links(calls: list[dict], as_of: str, only: list[dict] | None = None, c
         members = topic_members(t, calls, as_of)
         mark = ' aria-current="page"' if t["slug"] == current else ""
         # Each dated member's last closing date, so the script can recount on the visitor's day.
-        ends = " ".join(rounds(c)[-1] for c in members if rounds(c))
+        ends = " ".join(end_mark(c) for c in members if rounds(c))
         items.append(f'<li><a href="{BASE}{t["slug"]}/"{mark}><span data-pd-type="title.functional">{h(t["name"])}</span><span class="cs-lists-n" data-pd-type="metadata" data-ends="{ends}">{len(members)}</span></a></li>')
     return f'<ul class="cs-lists">{"".join(items)}</ul>'
 

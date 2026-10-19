@@ -85,10 +85,15 @@ const shortDate = (iso, withYear = false) => {
 }
 const longDate = iso => { const d = toDate(iso); return `${d.toLocaleDateString('en-GB', { weekday: 'long', timeZone: 'UTC' })} ${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}` }
 
-// The next closing date: once one round passes, the page moves to the next.
-function nextRound (rounds, fallback) {
+// Whether a closing date has gone by for this visitor: at the exact cut-off when we hold one,
+// wherever they are, and otherwise once their own date is past it.
+function passed (closes, at) { return at ? at.getTime() <= Date.now() : closes < todayISO }
+
+// The next closing date: once one round passes, the page moves to the next.  `at` is the exact
+// cut-off of `fallback`, the round the page was built on, when we hold one.
+function nextRound (rounds, fallback, at) {
   const list = (rounds || '').split(' ').filter(Boolean)
-  return list.find(d => d >= todayISO) || list[list.length - 1] || fallback || ''
+  return list.find(d => !passed(d, d === fallback ? at : null)) || list[list.length - 1] || fallback || ''
 }
 
 // A cut-off in the organiser's zone as an instant, so it can be shown in the visitor's.
@@ -139,7 +144,13 @@ function clockAt (at, tz) {
 }
 const longClock = at => new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: viewZone }).format(at).replace(' at ', ', ')
 
-function leftText (closes) {
+function leftText (closes, at) {
+  if (at && passed(closes, at)) return { text: 'Closed', cls: 'is-closed' }
+  // The organiser's date is behind the visitor's, but their cut-off is still ahead: count the hours.
+  if (at && closes < todayISO) {
+    const hours = Math.floor((at.getTime() - Date.now()) / 3600000)
+    return { text: hours < 1 ? 'Closes within the hour' : `Closes in ${hours} ${hours === 1 ? 'hour' : 'hours'}`, cls: 'is-today' }
+  }
   const days = daysUntil(closes)
   if (days < 0) return { text: 'Closed', cls: 'is-closed' }
   if (days === 0) return { text: 'Closes today', cls: 'is-today' }
@@ -149,11 +160,12 @@ function leftText (closes) {
   return { text: `${Math.round(days / 30.4)} months left`, cls: '' }
 }
 
-// Whether a call is accepting applications on the visitor's own date.
-function liveState ({ closes, opens, state }) {
+// Whether a call is accepting applications for the visitor: until its exact cut-off when we
+// hold one, otherwise until the end of its date on their own calendar.
+function liveState ({ closes, opens, state, at }) {
   if (state === 'closed_or_historical') return 'closed'
   if (!closes) return state === 'watch_or_rolling' ? 'rolling' : 'tbc'
-  if (closes < todayISO) return 'closed'
+  if (passed(closes, at)) return 'closed'
   if (opens && opens > todayISO) return 'later'
   if (state === 'announced_not_open' && !opens) return 'later'
   if (state === 'watch_or_rolling') return 'watch'
@@ -253,7 +265,7 @@ function snapshotFromPage (main) {
 
 const listRows = [...document.querySelectorAll('.cs-call')]
 for (const row of listRows) {
-  const closes = nextRound(row.dataset.rounds, row.dataset.closes)
+  const closes = nextRound(row.dataset.rounds, row.dataset.closes, instantOf(row.dataset.closes, row.dataset.time, row.dataset.tz))
   if (!closes || closes === row.dataset.closes) continue
   // A later round: the cut-off time we hold belonged to the one that passed.
   Object.assign(row.dataset, { closes, time: '', tz: '' })
@@ -269,6 +281,7 @@ const rowBySlug = new Map(listRows.map(row => [row.dataset.slug, row]))
 // Soonest first: by closing date, then by the exact cut-off where we know it (09:00 before 23:30
 // on the same day), then by title.
 const rowAt = new Map(listRows.map(row => [row, instantOf(row.dataset.closes, row.dataset.time, row.dataset.tz)]))
+const rowLive = row => liveState({ closes: row.dataset.closes, opens: row.dataset.opens, state: row.dataset.state, at: rowAt.get(row) })
 const soonest = (a, b) => (a.dataset.closes || '9999').localeCompare(b.dataset.closes || '9999') ||
   (rowAt.get(a)?.getTime() ?? Infinity) - (rowAt.get(b)?.getTime() ?? Infinity) || a.dataset.title.localeCompare(b.dataset.title)
 const callPage = document.querySelector('.cs-callpage')
@@ -348,6 +361,10 @@ function notice (text) {
 }
 const say = text => { if (sheetStatus) { sheetStatus.textContent = text; clearTimeout(say.t); say.t = setTimeout(() => { sheetStatus.textContent = '' }, 4000) } }
 
+// A saved call's exact cut-off, and whether it's still ahead.
+const itemAt = item => instantOf(item.closes, item.time, item.tz)
+const upcoming = item => Boolean(item.closes) && !passed(item.closes, itemAt(item))
+
 function sortedItems () {
   return Object.entries(sheet.items).sort(([, a], [, b]) => (a.closes || '9999').localeCompare(b.closes || '9999') || String(a.title).localeCompare(String(b.title)))
 }
@@ -359,8 +376,8 @@ function renderSheet () {
     bar.hidden = items.length === 0
     document.body.classList.toggle('has-sheetbar', items.length > 0)
     bar.querySelector('[data-sheet-count]').textContent = `${items.length} ${items.length === 1 ? 'call' : 'calls'} saved`
-    const next = items.map(([, i]) => i.closes).filter(c => c && c >= todayISO).sort()[0]
-    bar.querySelector('[data-sheet-next]').textContent = next ? `Next closes ${daysUntil(next) === 0 ? 'today' : daysUntil(next) === 1 ? 'tomorrow' : 'in ' + daysUntil(next) + ' days'}` : 'No upcoming deadlines'
+    const next = items.map(([, i]) => i).filter(upcoming).map(i => i.closes).sort()[0]
+    bar.querySelector('[data-sheet-next]').textContent = next ? `Next closes ${daysUntil(next) <= 0 ? 'today' : daysUntil(next) === 1 ? 'tomorrow' : 'in ' + daysUntil(next) + ' days'}` : 'No upcoming deadlines'
   }
   const list = document.querySelector('[data-sheet-list]')
   if (!list) return
@@ -370,7 +387,7 @@ function renderSheet () {
   list.replaceChildren(...items.map(([slug, item]) => {
     const title = item.title || slug
     const d = item.closes ? toDate(item.closes) : null
-    const left = item.closes ? leftText(item.closes) : null
+    const left = item.closes ? leftText(item.closes, itemAt(item)) : null
     const date = el('span', { className: 'cs-date' },
       el('span', { className: 'cs-day', textContent: d ? d.getUTCDate() : '—' }),
       el('span', { className: 'cs-month', textContent: d ? MONTHS[d.getUTCMonth()].slice(0, 3) : 'No date' }))
@@ -466,7 +483,7 @@ function download (name, text, type) {
   setTimeout(() => URL.revokeObjectURL(url), 1000)
 }
 document.querySelector('[data-sheet-ics]')?.addEventListener('click', () => {
-  const entries = sortedItems().filter(([, i]) => i.closes && i.closes >= todayISO)
+  const entries = sortedItems().filter(([, i]) => upcoming(i))
   if (!entries.length) return say('None of your saved calls has an upcoming deadline yet.')
   download('call-sheet-deadlines.ics', icsFor(entries), 'text/calendar')
   say(`${entries.length} ${entries.length === 1 ? 'deadline' : 'deadlines'} ready for your calendar.`)
@@ -565,7 +582,7 @@ function bucketFor (row, live) {
   const closes = row.dataset.closes
   if (live === 'closed') return { key: 'z', title: 'Closed for this round', closed: true }
   if (!closes) return { key: 'y', title: 'No fixed date yet' }
-  const days = daysUntil(closes)
+  const days = Math.max(0, daysUntil(closes))
   if (days <= 7) return { key: '0', title: days === 0 ? 'Closes today' : 'In the next 7 days' }
   const d = toDate(closes)
   const now = toDate(todayISO)
@@ -578,7 +595,7 @@ function bucketFor (row, live) {
 function markRow (row, live) {
   const left = row.querySelector('[data-left]')
   if (row.dataset.closes && left) {
-    const l = leftText(row.dataset.closes)
+    const l = leftText(row.dataset.closes, rowAt.get(row))
     left.textContent = l.text
     left.className = `cs-left ${l.cls}`
   }
@@ -735,7 +752,7 @@ if (form && groupsHost && listRows.length) {
   })() : null
 
   function rowState (row) {
-    const live = liveState({ closes: row.dataset.closes, opens: row.dataset.opens, state: row.dataset.state })
+    const live = rowLive(row)
     const where = JSON.parse(row.dataset.where)
     return { live, where, place: placeMatch(where, filters.from) }
   }
@@ -863,12 +880,12 @@ if (form && groupsHost && listRows.length) {
   // The board under the title, recounted for the visitor's date.
   const board = { open: 0, week: 0, next: null, free: 0 }
   for (const row of listRows) {
-    const live = liveState({ closes: row.dataset.closes, opens: row.dataset.opens, state: row.dataset.state })
+    const live = rowLive(row)
     if (live === 'open') board.open++
     // Counts what the Free to enter list holds: free and not closed, open yet or not.
     if (live !== 'closed' && row.dataset.fee === 'free') board.free++
     if (row.dataset.closes && live !== 'closed' && daysUntil(row.dataset.closes) <= 7) board.week++
-    if (row.dataset.closes && row.dataset.closes >= todayISO && (!board.next || row.dataset.closes < board.next)) board.next = row.dataset.closes
+    if (row.dataset.closes && !passed(row.dataset.closes, rowAt.get(row)) && (!board.next || row.dataset.closes < board.next)) board.next = row.dataset.closes
   }
   document.querySelector('[data-board="open"]').textContent = board.open
     document.querySelector('[data-board="next"]').textContent = board.next ? shortDate(board.next) : '—'
@@ -923,7 +940,7 @@ if (form && groupsHost && listRows.length) {
 // date, regroup the way the full list does, and move calls that have closed to the bottom.
 const topicList = document.querySelector('.cs-topic-list')
 if (topicList && listRows.length) {
-  const rows = listRows.map(row => [row, liveState({ closes: row.dataset.closes, opens: row.dataset.opens, state: row.dataset.state })])
+  const rows = listRows.map(row => [row, rowLive(row)])
   rows.sort(([a], [b]) => soonest(a, b))
   const used = new Map()
   for (const [row, live] of rows) {
@@ -947,8 +964,9 @@ if (topicList && listRows.length) {
 
 // Ready-made list counts, wherever they appear: a call drops out once its last round has closed.
 for (const el of document.querySelectorAll('.cs-lists-n[data-ends]')) {
-  const passed = el.dataset.ends.split(' ').filter(d => d && d < todayISO).length
-  if (passed) el.textContent = Math.max(0, Number(el.textContent) - passed)
+  // Each end is a date, or a date and its exact cut-off in UTC ("2026-10-19@2026-10-19T23:59Z").
+  const gone = el.dataset.ends.split(' ').filter(end => { const [d, at] = end.split('@'); return d && passed(d, at ? new Date(at) : null) }).length
+  if (gone) el.textContent = Math.max(0, Number(el.textContent) - gone)
 }
 
 // ------------------------------------------------------------- your time
@@ -958,7 +976,7 @@ for (const el of document.querySelectorAll('.cs-lists-n[data-ends]')) {
 function showClocks () {
   for (const row of listRows) {
     let clock = row.querySelector('[data-clock]')
-    const live = liveState({ closes: row.dataset.closes, opens: row.dataset.opens, state: row.dataset.state })
+    const live = rowLive(row)
     if (!row.dataset.closes || live === 'closed') { if (clock) clock.hidden = true; continue }
     if (!clock) {
       clock = Object.assign(document.createElement('span'), { className: 'cs-clock' })
@@ -1021,7 +1039,7 @@ if (callPage) {
   const box = callPage.querySelector('[data-countdown]')
   const text = box?.querySelector('[data-countdown-text]')
   if (box && text) {
-    const closes = nextRound(box.dataset.rounds, box.dataset.closes)
+    const closes = nextRound(box.dataset.rounds, box.dataset.closes, instantOf(box.dataset.closes, box.dataset.time, box.dataset.tz))
     const moved = closes !== box.dataset.closes
     if (moved) {
       // The round on the page has passed and the call has another: show that one.
@@ -1030,7 +1048,7 @@ if (callPage) {
     }
     const { opens, time, tz } = box.dataset
     const at = instantOf(closes, time, tz)
-    const live = at && at < new Date() ? 'closed' : liveState(box.dataset)
+    const live = liveState({ closes, opens, state: box.dataset.state, at })
     if (moved) box.querySelector('[data-countdown-when]').textContent = `${longDate(closes)}${live === 'closed' ? '' : '. The earlier round has closed'}.`
     if (live === 'closed') {
       // Nothing left to put in a calendar.
@@ -1064,7 +1082,8 @@ if (callPage) {
   }
   let next = false
   for (const item of callPage.querySelectorAll('.cs-timeline-item')) {
-    if (item.dataset.date < todayISO) item.classList.add('is-past')
+    const at = item.dataset.date === callPage.dataset.closes ? instantOf(item.dataset.date, box?.dataset.time, box?.dataset.tz) : null
+    if (passed(item.dataset.date, at)) item.classList.add('is-past')
     else if (!next) { item.classList.add('is-next'); next = true }
   }
   // The WhatsApp button sits over the action buttons on a phone; tuck it while they're on screen.

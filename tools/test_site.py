@@ -248,6 +248,29 @@ class BuildTests(unittest.TestCase):
             for words in ("your time", "No time given"):
                 self.assertNotIn(words, visible, page)
 
+    def test_counts_close_at_the_exact_cut_off(self):
+        # A last round with a time and zone carries its UTC instant, so a visitor ahead of the
+        # organiser (Sydney, say) still counts it until the cut-off; date-only rounds stay dates.
+        import datetime as dt
+        from zoneinfo import ZoneInfo
+        source = (self.out / "index.html").read_text(encoding="utf-8")
+        ends = [e for m in re.findall(r'data-ends="([^"]*)"', source) for e in m.split()]
+        timed = [e for e in ends if "@" in e]
+        self.assertTrue(timed and len(timed) < len(ends))
+        for end in ends:
+            self.assertRegex(end, r"^\d{4}-\d{2}-\d{2}(@\d{4}-\d{2}-\d{2}T\d{2}:\d{2}Z)?$")
+        c21 = {"dates": [{"date": "2026-10-19", "role": "application_submission_deadline", "time": "23:59", "timezone": "Etc/GMT"}]}
+        self.assertEqual(build_site.end_mark(c21), "2026-10-19@2026-10-19T23:59Z")
+        denver = {"dates": [{"date": "2026-11-03", "role": "application_submission_deadline", "time": "16:30", "timezone": "America/Denver"}]}
+        self.assertEqual(build_site.end_mark(denver), "2026-11-03@2026-11-03T23:30Z")
+        self.assertEqual(build_site.end_mark({"dates": [{"date": "2026-11-09", "role": "application_submission_deadline", "time": "13:00", "timezone": None}]}), "2026-11-09")
+        for call in CALLS:
+            if build_site.rounds(call) and "@" in build_site.end_mark(call):
+                last = build_site.rounds(call)[-1]
+                d = build_site.deadline_on(call, last)
+                want = dt.datetime.fromisoformat(f"{last}T{d['time']}").replace(tzinfo=ZoneInfo(d["timezone"])).astimezone(dt.timezone.utc)
+                self.assertEqual(build_site.end_mark(call).split("@")[1], want.strftime("%Y-%m-%dT%H:%MZ"), call["id"])
+
     def test_zone_names_match_the_script(self):
         script = (REPO / "site/call-sheet.js").read_text(encoding="utf-8")
         block = re.search(r"const ZONES = \{(.*?)\n\}", script, re.S).group(1)
@@ -325,7 +348,8 @@ class BuildTests(unittest.TestCase):
             members = build_site.topic_members(topic, CALLS, as_of)
             ends, n = re.search(r'href="/call-sheet/%s/"><span[^>]*>[^<]*</span><span class="cs-lists-n"[^>]*data-ends="([^"]*)">(\d+)<' % topic["slug"], source).groups()
             self.assertEqual(int(n), len(members), topic["slug"])
-            self.assertEqual(ends.split(), [build_site.rounds(c)[-1] for c in members if build_site.rounds(c)], topic["slug"])
+            self.assertEqual([e.split("@")[0] for e in ends.split()], [build_site.rounds(c)[-1] for c in members if build_site.rounds(c)], topic["slug"])
+            self.assertEqual(ends.split(), [build_site.end_mark(c) for c in members if build_site.rounds(c)], topic["slug"])
 
     def test_edition_window_names_later_calls(self):
         as_of = json.loads((self.out / "BUILD.json").read_text(encoding="utf-8"))["data_as_of"]
