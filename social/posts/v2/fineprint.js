@@ -11,7 +11,7 @@
     .${K}-row { display: grid; align-items: center; }
     .${K}-num { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 1.4cqi; border-bottom: 1.5px solid var(--rule-strong); }
     .${K}-slot { height: 4.4cqi; margin: .6cqi -1.4cqi; border: .3cqi dashed rgb(21 19 15 / .32); border-radius: .4em .8em .6em .3em; }
-    .${K}-strip { position: absolute; background: var(--sheet); box-shadow: var(--lift-dark); padding: 1.2cqi 2.2cqi; }
+    .${K}-strip { position: absolute; background: var(--sheet); color: var(--ink); --pd-type-ink: var(--ink); box-shadow: var(--lift-dark); padding: 1.2cqi 2.2cqi; }
     .${K}-flag { position: absolute; width: 11cqi; height: auto; overflow: visible; }
     .${K}-sig { position: absolute; left: 4%; bottom: .4cqi; width: 46%; height: 6cqi; overflow: visible; }
     .${K}-sig path { fill: none; stroke: #23324d; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
@@ -30,32 +30,43 @@
   // ops: ['in', y] / ['out', y] edges (fraction of height) · ['at', x, y] fractions of the canvas ·
   // ['by', name, fx, fy, dx, dy] a point on a marked element · ['loop', name, px, py] an e-shaped loop round it ·
   // ['under', name, dy] · ['wave', name, dy, n] a squiggle under it · ['tick', name] a tick into it (ends the line)
-  const thread = (spec, z = 3) => `<svg class="${K}-thread" data-spec='${JSON.stringify(spec)}' style="z-index:${z}" aria-hidden="true"><path d=""/></svg>`
-  const curve = (p) => p.slice(0, -1).reduce((d, b, i) => { const a = p[i - 1] || b, c = p[i + 1], e = p[i + 2] || c
-    return d + ` C${(b[0] + (c[0] - a[0]) / 6).toFixed(1)} ${(b[1] + (c[1] - a[1]) / 6).toFixed(1)} ${(c[0] - (e[0] - b[0]) / 6).toFixed(1)} ${(c[1] - (e[1] - b[1]) / 6).toFixed(1)} ${c[0].toFixed(1)} ${c[1].toFixed(1)}` }, `M${p[0][0].toFixed(1)} ${p[0][1].toFixed(1)}`)
+  // ['z', 1] sends the line under the paperwork from that point on, ['z', 3] brings it back on top.
+  const thread = (spec) => [1, 3].map(z => `<svg class="${K}-thread" data-z="${z}" data-spec='${JSON.stringify(spec)}' style="z-index:${z}" aria-hidden="true"><path d=""/></svg>`).join('')
+  const f = (n) => n.toFixed(1)
   const plot = (svg) => {
     const post = svg.closest('.post'); if (!post) return
     const P = post.getBoundingClientRect(), W = P.width, H = P.height
     const box = (n) => { const el = post.querySelector(`[data-${K}="${n}"]`); if (!el) return null; const r = el.getBoundingClientRect(); return { x: r.left - P.left, y: r.top - P.top, w: r.width, h: r.height } }
-    const pts = []; let tail = ''
+    const pts = []; let tail = '', z = 3
+    const push = (...q) => q.forEach(([x, y]) => pts.push([x, y, z]))
     for (const [op, ...a] of JSON.parse(svg.dataset.spec)) {
-      if (op === 'in') { pts.push([-40, a[0] * H], [70, a[0] * H]); continue }
-      if (op === 'out') { pts.push([W - 70, a[0] * H], [W + 40, a[0] * H]); continue }
-      if (op === 'at') { pts.push([a[0] * W, a[1] * H]); continue }
+      if (op === 'z') { z = a[0]; continue }
+      if (op === 'in') { push([-40, a[0] * H], [70, a[0] * H]); continue }
+      if (op === 'out') { push([W - 70, a[0] * H], [W + 40, a[0] * H]); continue }
+      if (op === 'at') { push([a[0] * W, a[1] * H]); continue }
       const b = box(a[0]); if (!b) continue
       const cx = b.x + b.w / 2, cy = b.y + b.h / 2
-      if (op === 'by') pts.push([b.x + a[1] * b.w + (a[3] || 0), b.y + a[2] * b.h + (a[4] || 0)])
-      if (op === 'loop') { const rx = b.w * .58 + (a[1] ?? 22), ry = b.h * .62 + (a[2] ?? 18)
-        ;[125, 80, 35, -10, -55, -100, -145, -190, -235, -275].forEach((t, k) => { const s = 1 + k * .012, r = t * Math.PI / 180
-          pts.push([cx + Math.cos(r) * rx * s, cy + Math.sin(r) * ry * s]) }) }
-      if (op === 'under') { const y = b.y + b.h + (a[1] ?? 10); pts.push([b.x - 10, y + 3], [b.x + b.w * .45, y - 2], [b.x + b.w + 16, y + 2]) }
-      if (op === 'wave') { const y = b.y + b.h + (a[1] ?? 10), n = a[2] || 7
-        for (let k = 0; k <= n; k++) pts.push([b.x + b.w * k / n, y + (k % 2 ? -1 : 1) * b.h * .09 * (k && k < n ? 1 : .3)]) }
-      if (op === 'tick') { pts.push([b.x + b.w * .1, b.y + b.h * .5], [b.x + b.w * .42, b.y + b.h * .86])
-        tail = ` Q${(b.x + b.w * .66).toFixed(1)} ${(b.y + b.h * .2).toFixed(1)} ${(b.x + b.w * 1.5).toFixed(1)} ${(b.y - b.h * .7).toFixed(1)}` }
+      if (op === 'by') push([b.x + a[1] * b.w + (a[3] || 0), b.y + a[2] * b.h + (a[4] || 0)])
+      // a loop starts at angle a[3] (degrees, 0 = right, 90 = below) and goes round anticlockwise a[4] turns
+      if (op === 'loop') { const rx = b.w * .56 + (a[1] ?? 22), ry = b.h * .6 + (a[2] ?? 18), t0 = a[3] ?? 125, n = Math.round((a[4] ?? 1.1) * 8)
+        for (let k = 0; k <= n; k++) { const s = 1 + k * .014, r = (t0 - k * 45) * Math.PI / 180; push([cx + Math.cos(r) * rx * s, cy + Math.sin(r) * ry * s]) } }
+      if (op === 'under') { const y = b.y + b.h + (a[1] ?? 10); push([b.x - 10, y + 3], [b.x + b.w * .45, y - 2], [b.x + b.w + 16, y + 2]) }
+      if (op === 'wave') { const y = b.y + b.h + (a[1] ?? 10), n = a[2] || 7, amp = a[3] || 9
+        for (let k = 0; k <= n; k++) push([b.x + b.w * k / n, y + (k % 2 ? -1 : 1) * amp * (k && k < n ? 1 : .3)]) }
+      if (op === 'tick') { push([b.x + b.w * .1, b.y + b.h * .5], [b.x + b.w * .42, b.y + b.h * .86])
+        tail = ` Q${f(b.x + b.w * .66)} ${f(b.y + b.h * .2)} ${f(b.x + b.w * 1.5)} ${f(b.y - b.h * .7)}` }
     }
+    // Catmull-Rom through the points; each piece is drawn on the layer its starting point asked for.
+    let d = '', on = false
+    for (let i = 0; i < pts.length - 1; i++) {
+      const a = pts[i - 1] || pts[i], b = pts[i], c = pts[i + 1], e = pts[i + 2] || c
+      if (b[2] !== +svg.dataset.z) { on = false; continue }
+      if (!on) { d += `M${f(b[0])} ${f(b[1])}`; on = true }
+      d += ` C${f(b[0] + (c[0] - a[0]) / 6)} ${f(b[1] + (c[1] - a[1]) / 6)} ${f(c[0] - (e[0] - b[0]) / 6)} ${f(c[1] - (e[1] - b[1]) / 6)} ${f(c[0])} ${f(c[1])}`
+    }
+    if (on && tail && pts[pts.length - 1][2] === +svg.dataset.z) d += tail
     svg.setAttribute('viewBox', `0 0 ${W} ${H}`)
-    svg.querySelector('path').setAttribute('d', pts.length > 1 ? curve(pts) + tail : '')
+    svg.querySelector('path').setAttribute('d', d)
   }
   const drawAll = () => document.querySelectorAll(`svg.${K}-thread`).forEach(plot)
   const kick = () => { drawAll(); document.fonts.ready.then(() => requestAnimationFrame(drawAll)) }
@@ -63,76 +74,77 @@
   document.fonts.addEventListener('loadingdone', () => requestAnimationFrame(drawAll))
 
   // Where the line crosses from one slide into the next, as a fraction of the height: [portrait, square].
-  const EDGE = { 23: [.86, .86], 34: [.9, .9], 45: [.93, .9], 56: [.88, .86] }
+  const EDGE = { 23: [.82, .84], 34: [.79, .82], 45: [.8, .8], 56: [.79, .8] }
   const edge = (c, k) => sq(c, ...EDGE[k])
   const mark = (n) => `data-${K}="${n}"`
 
   /* ---------------------------------------------------------------- the paperwork */
   const hl = (html, extra = '') => `<div class="hl" style="margin:.8cqi 0" ${extra}>${html}</div>`
+  const head = (l, r, cls = 'soft') => `<div class="${K}-num">${sp('metadata', l, `class="${cls}"`)}${sp('metadata', r, 'class="soft"')}</div>`
   // The guidelines page, the object the whole carousel reads from.
-  const guide = (w, line) => `<div class="doc" style="width:${w}cqi;padding:4cqi 4.4cqi;gap:1.2cqi"><div class="${K}-num">${sp('metadata', 'Guidelines', 'class="soft"')}${sp('metadata', 'Page 6 of 6', 'class="soft"')}</div>${bars(96, 88, 92, 70)}${hl(line)}${bars(90, 84, 58)}</div>`
-  // A prize slip: the money comes back later.
-  const prize = (w) => `<div class="doc receipt" style="width:${w}cqi;padding:3.4cqi 4cqi 3.4cqi"><div class="${K}-num" style="border:0;padding:0">${sp('label', 'Prize')}${sp('metadata', '§ 6.2', 'class="soft"')}</div><hr>${S('metadata', 'Paid as', 'class="soft"')}
-    <div style="margin-top:1cqi">${sp('label', 'Reimbursement', mark('reimb'))}</div>${zz}</div>`
-  // A participant's pass: the fee comes after selection.
-  const badge = (w) => `<div class="pass" style="width:${w}cqi"><i class="slot"></i><div class="band">${sp('label', 'Participant')}</div>
-    <div class="pass-body"><i class="face"></i>${bars(70, 52)}${S('metadata', 'Fee', 'class="soft mt-xs"')}${sp('label', 'After selection', mark('after'))}</div></div>`
+  const guide = (w, line) => `<div class="doc" style="width:${w}cqi;padding:4cqi 4.4cqi;gap:1.2cqi">${head('Guidelines', 'Page 6 of 6')}${bars(96, 88, 92, 70)}${hl(line)}${bars(90, 84, 58)}</div>`
+  // A prize slip, clause 6.2: the money comes back later.
+  const prize = (w) => `<div class="doc receipt" style="width:${w}cqi;padding:3.4cqi 4cqi 3.6cqi"><div class="${K}-num" style="border:0;padding:0">${sp('label', 'Prize')}${sp('metadata', '§ 6.2', 'class="soft"')}</div><hr>${bars(88, 64)}<div class="ln" style="margin-top:1.4cqi">${sp('body', 'Paid as')}<span class="lead"></span><span class="v">${sp('label', 'Reimbursement', mark('reimb'))}</span></div>${zz}</div>`
+  // A participant's badge: the fee comes after selection.
+  const badge = (w) => `<div class="idcard" style="width:${w}cqi"><div class="band" style="display:flex;justify-content:space-between">${sp('label', 'Participant')}${sp('metadata', '§ 9.1')}</div>
+    <div class="id-body" style="grid-template-columns:13cqi 1fr;padding:3cqi 3.4cqi 3.4cqi"><i class="face" style="width:13cqi;height:15cqi"></i><div style="display:grid;gap:1.1cqi;align-content:center">${bars(84, 60, 72)}</div></div><div class="ln" style="padding:0 3.4cqi 3cqi">${sp('body', 'Fee')}<span class="lead"></span><span class="v">${sp('label', 'After selection', mark('after'))}</span></div></div>`
   const flag = (style) => `<svg class="${K}-flag" viewBox="0 0 44 60" style="${style}" aria-hidden="true"><path d="M4 58 V4" stroke="#15130f" stroke-width="3" stroke-linecap="round"/><path d="M5 5 C 16 1, 24 11, 40 6 L 36 18 L 41 30 C 25 35, 17 25, 5 29 Z" fill="#e3472d"/></svg>`
   const sig = `<svg class="${K}-sig" viewBox="0 0 100 24" aria-hidden="true"><path d="M2 18 C 8 2, 14 2, 12 16 C 11 22, 20 6, 26 10 C 30 13, 28 20, 34 14 C 40 8, 44 18, 52 12 C 58 8, 62 16, 70 11 C 78 7, 86 14, 98 8"/></svg>`
-  const foot2 = (dark) => foot('Call Sheet, by pitch.dog', dark)
+  const clause = (t) => `<div style="margin-bottom:1.2cqb">${sp('metadata', t, 'class="num"')}</div>`
+  const nw = (t, n) => `<span style="white-space:nowrap" ${mark(n)}>${t}</span>`
+  const clauseRow = (no, k, v, n) => `<div class="ln" style="padding:1.5cqi 0">${sp('metadata', no, 'class="num"')}${sp('body', k)}<span class="lead"></span><span class="v">${sp('label', v, mark(n))}</span></div>`
+  const zone = (c, html, o = {}) => `<div class="grow" style="position:relative;display:flex;align-items:center;justify-content:${o.j || 'center'};padding:${sq(c, 3.4, 2.6)}cqb 0 ${sq(c, 3, 2)}cqb">${html}</div>`
 
   const SLIDES = [
     // 1. The cover poster replaces this slide (v2/covers/fineprint.js); kept simple so the count holds.
     slide('The fine print', 'Sometimes, film festivals and funding opportunities come with a catch.', 'It’s usually somewhere in the fine print.',
-      (c) => `<div style="transform:rotate(-2deg)">${guide(sq(c, 70, 56), S('label', 'It’s usually somewhere in the fine print.'))}</div>`, { g: 'var(--goldenrod)', hw: 'wide' }),
+      (c) => `<div style="transform:rotate(-2deg)">${guide(sq(c, 58, 40), S('label', 'It’s usually somewhere in the fine print.'))}</div>`, { g: 'var(--goldenrod)', hw: 'wide' }),
 
-    // 2. Two catches, zig-zag, each with its paperwork; the pen loops both and underlines the moral.
+    // 2. The two catches in full, then the page they come from: two clauses, and the pen loops what each one hides.
     { g: 'var(--paper)',
-      art: (c) => thread([['by', 'reimb', -.12, .2, -10], ['loop', 'reimb', 18, 16], ['by', 'reimb', .3, 1, 0, sq(c, 90, 60)], ['loop', 'after', 18, 16], ['by', 'last', .05, 1, 0, 26], ['under', 'last', 12], ['out', edge(c, 23)]]),
+      art: (c) => thread([['loop', 'r', 16, 10, 160, 1.12], ['by', 'r', .1, 1.75], ['loop', 'p', 16, 10, 160, 1.12], ['by', 'p', 1.12, 1.15], ['out', edge(c, 23)]]),
       html: (c, i, n) => `${ctop('For example', i, n)}
-        <div class="mt-m ${K}-row" style="grid-template-columns:1fr ${sq(c, 33, 27)}cqi;gap:${sq(c, 6, 5)}cqi">
-          <div>${S('headline', 'Sometimes, a prize is a reimbursement.')}${S('subhead', 'You need to spend the money first.', 'class="mt-xs"')}</div>
-          <div style="transform:rotate(3deg)">${prize(sq(c, 33, 27))}</div></div>
-        <div class="grow" style="display:flex;align-items:center"><div class="${K}-row" style="width:100%;grid-template-columns:${sq(c, 29, 22)}cqi 1fr;gap:${sq(c, 7, 6)}cqi">
-          <div style="transform:rotate(-3deg)${c === 'square' ? ';zoom:.8' : ''}">${badge(sq(c, 29, 27))}</div>
-          <div>${S('headline', 'Sometimes, programmes have a participation fee.')}${S('subhead', 'You pay it after you’re selected.', 'class="mt-xs"')}</div></div></div>
-        ${S('subhead', 'These are useful things to know before you apply.', `class="wide" ${mark('last')}`)}<div class="mt-m"></div>${foot2()}` },
+        <div class="mt-m">${S('headline', 'Sometimes, a prize is a reimbursement.', 'class="wide"')}${S('subhead', 'You need to spend the money first.', 'class="mt-xs"')}</div>
+        <div class="mt-m">${S('headline', 'Sometimes, programmes have a participation fee.', 'class="wide"')}${S('subhead', 'You pay it after you’re selected.', 'class="mt-xs"')}</div>
+        ${S('subhead', 'These are useful things to know before you apply.', `class="mt-s wide soft"`)}
+        ${zone(c, `<div style="width:${sq(c, 96, 90)}%;transform:rotate(-1.2deg)${c === 'square' ? ';zoom:.72' : ''}"><div class="doc" style="padding:2.6cqi 4.4cqi 2.6cqi;gap:.8cqi">${head('Guidelines', 'Page 6 of 6')}
+          ${clauseRow('§ 6.2', 'Prize', 'Reimbursement', 'r')}${bars(70)}${clauseRow('§ 9.1', 'Participation fee', 'After selection', 'p')}</div></div>`)}${foot()}` },
 
-    // 3. The turn, on ink: the highlighted line has slipped out of the page, and the pen goes after it.
+    // 3. The turn, on ink: the highlighted line has slipped out of the page, and the pen drops through after it.
     { g: 'var(--ink)', dark: true,
-      art: (c) => thread([['in', edge(c, 23)], ['by', 'slot', .1, .5, 0, 0], ['by', 'slot', .9, .5], ['by', 'strip', .2, 1.6], ['loop', 'strip', 18, 14], ['out', edge(c, 34)]]),
+      art: (c) => thread([['in', edge(c, 23)], ['by', 'slot', -.12, .62], ['by', 'slot', .45, .66], ['by', 'slot', 1.04, .58], ['by', 'strip', .7, -.9], ['out', edge(c, 34)]]),
       html: (c, i, n) => `${ctop('The catch', i, n)}${S('display', 'None of that necessarily makes it a bad opportunity.', 'class="mt-m wide"')}
         ${S('subhead', 'But it might make it the wrong one for you, and very often this fine print slips through the cracks.', 'class="mt-s wide soft"')}${S('subhead', 'So, we found a way to make it easier', 'class="mt-s wide"')}
-        <div class="grow" style="position:relative;display:flex;align-items:center;justify-content:flex-start;padding:3cqb 0">${c === 'square' ? '' : `<div style="position:relative;width:56cqi;margin-left:6cqi;transform:rotate(1.5deg)">
-          <div class="doc" style="width:100%;padding:3.4cqi 4cqi;gap:1.1cqi"><div class="${K}-num">${sp('metadata', 'Guidelines', 'class="soft"')}${sp('metadata', 'Page 6 of 6', 'class="soft"')}</div>${bars(94, 86, 70)}<div class="${K}-slot" ${mark('slot')}></div>${bars(90, 62)}</div>
-          <div class="${K}-strip" style="left:46cqi;top:60%;width:40cqi;transform:rotate(-14deg)">${hl(S('label', 'Prizes are paid as reimbursement of expenses.'), mark('strip'))}</div></div>`}</div>${foot2(true)}` },
+        ${zone(c, `<div style="position:relative;width:52cqi;margin-left:3cqi;transform:rotate(1.5deg);zoom:${sq(c, .84, .6)}">
+          <div class="doc" style="width:100%;padding:3.4cqi 4cqi 4cqi;gap:1.1cqi">${head('Guidelines', 'Page 6 of 6')}${bars(94, 86, 92, 70)}<div class="${K}-slot" ${mark('slot')}></div>${bars(62)}</div>
+          <div class="${K}-strip" style="left:30cqi;top:96%;width:50cqi;transform:rotate(-5deg)">${hl(S('label', 'Prizes are paid as reimbursement of expenses.'), mark('strip'))}</div></div>`, { j: 'flex-start' })}${foot('Call Sheet, by pitch.dog', true)}` },
 
-    // 4. Call Sheet, with the conditions pulled out onto one card. The line runs underneath.
+    // 4. Call Sheet, with the conditions pulled out onto one card. The line runs on underneath it.
     { g: 'var(--blue)',
-      art: (c) => thread([['in', edge(c, 34)], ['at', .5, edge(c, 34) - .02], ['out', edge(c, 45)]], 1),
+      art: (c) => thread([['z', 1], ['in', edge(c, 34)], ['at', .5, (edge(c, 34) + edge(c, 45)) / 2], ['out', edge(c, 45)]]),
       html: (c, i, n) => `${ctop('Introducing', i, n)}${S('display', `Introducing ${circ('Call Sheet.', 'long', { ml: '.08em', l: '-5%', t: '-14%', w: '110%', h: '132%' })}`, 'class="mt-m wide"')}
         ${S('subhead', 'Film and TV funding opportunities, with the important conditions pulled out and explained plainly.', 'class="mt-s wide"')}
-        <div class="grow" style="display:flex;align-items:center;padding:3cqb 0"><div class="paper ear ${K}-card" style="--ear:7cqi;width:100%;transform:rotate(-1.2deg)"><span class="ear-flap"></span>
+        ${zone(c, `<div class="paper ear ${K}-card" style="--ear:7cqi;width:100%;transform:rotate(-1.2deg)"><span class="ear-flap"></span>
           <header><img src="/brand/logo/call-sheet-wordmark.svg" alt="Call Sheet"></header>
-          ${['What you get.', 'What it costs.', 'What to check before applying.'].map((t, k) => `<div class="row">${sp('label', `0${k + 1}`, 'class="num"')}${S('headline', t)}</div>`).join('')}</div></div>${foot2()}` },
+          ${['What you get.', 'What it costs.', 'What to check before applying.'].map((t, k) => `<div class="row" style="padding:${sq(c, 2.8, 1.8)}cqi 4.4cqi">${sp('label', `0${k + 1}`, 'class="num"')}${S('headline', t)}</div>`).join('')}</div>`)}${foot()}` },
 
-    // 5. Two house rules, shown on the paperwork. The pen squiggles under the unclear rule and plants a flag.
+    // 5. Two house rules on the paperwork. The pen comes in under the fee slip, squiggles under the unclear rule and plants a flag.
     { g: 'var(--yellow)',
-      art: (c) => thread([['in', edge(c, 45)], ['by', 'rule', -.1, 1, 0, 30], ['wave', 'rule', 14, 8], ['by', 'rule', 1.15, .4], ['out', edge(c, 56)]]),
+      art: (c) => thread([['z', 1], ['in', edge(c, 45)], ['by', 'fee', .55, .55], ['by', 'fee', 1.06, .62], ['z', 3], ['by', 'rule', -.08, 1, 0, 20], ['wave', 'rule', 16, 8, 9], ['by', 'rule', 1.2, 1.4], ['out', edge(c, 56)]]),
       html: (c, i, n) => `${ctop('House rules', i, n)}${S('display', 'If a fee isn’t published, we say that.', 'class="mt-m wide"')}${S('display', 'If a rule is unclear, we flag it.', 'class="mt-s wide"')}
         ${S('subhead', 'You’ve got enough to figure out without making confident guesses.', 'class="mt-m wide"')}
-        <div class="grow" style="display:flex;align-items:center;justify-content:center;padding:3cqb 0"><div style="display:flex;gap:${sq(c, 7, 6)}cqi;align-items:center;zoom:${sq(c, 1, .8)}">
-          <div style="position:relative;width:38cqi;transform:rotate(-2deg)"><div class="doc receipt" style="padding:3.4cqi 4cqi 5cqi">${S('label', 'Entry fee')}<hr>${sp('headline', '— — —')}${zz}</div>${stamp('notpub', 'right:-5cqi;bottom:-2cqi;width:28cqi;transform:rotate(-9deg)')}</div>
-          <div style="position:relative;width:38cqi;transform:rotate(2.5deg)"><div class="doc" style="padding:3.4cqi 4cqi 4.6cqi;gap:1.2cqi">${S('label', 'Eligibility')}${bars(92, 80)}<i style="width:78%;background:rgb(21 19 15 / .3)" ${mark('rule')}></i>${bars(64)}</div>${flag('right:-4cqi;top:-6cqi;transform:rotate(8deg)')}</div></div></div>${foot2()}` },
+        ${zone(c, `<div style="display:flex;gap:${sq(c, 7, 6)}cqi;align-items:center;zoom:${sq(c, 1, .74)}">
+          <div style="position:relative;width:38cqi;transform:rotate(-2deg)" ${mark('fee')}><div class="doc receipt" style="padding:3.4cqi 4cqi 5cqi">${S('label', 'Entry fee')}<hr>${sp('headline', '— — —')}${zz}</div>${stamp('notpub', 'right:-5cqi;bottom:-2cqi;width:28cqi;transform:rotate(-9deg)')}</div>
+          <div style="position:relative;width:40cqi;transform:rotate(2.5deg)"><div class="doc" style="padding:3.4cqi 4cqi 5.4cqi;gap:1.2cqi">${head('Eligibility', '§ 2.4', '')}${bars(92, 80)}<i style="width:78%;background:rgb(21 19 15 / .3)" ${mark('rule')}></i>${bars(64)}</div>${flag('right:-4cqi;top:-7cqi;transform:rotate(8deg)')}</div></div>`)}${foot()}` },
 
-    // 6. Your call. The line ends as a tick on the application form.
+    // 6. Your call. The line comes in across the form and ends as a tick in its box.
     { g: 'var(--green)',
-      art: (c) => thread([['in', edge(c, 56)], ['by', 'box', -.6, .9, 0, 0], ['tick', 'box']]),
+      art: (c) => thread([['in', edge(c, 56)], ['by', 'box', -1.4, .6], ['tick', 'box']]),
       html: (c, i, n) => `${ctop('Your call', i, n)}${S('display', 'If the terms work for you, apply.', 'class="mt-m wide"')}${S('subhead', 'If they don’t, hopefully we’ve saved you some time.', 'class="mt-s wide"')}
-        <div class="grow" style="display:flex;align-items:center;justify-content:center;padding:3cqb 0"><div style="position:relative;width:${sq(c, 70, 58)}cqi;transform:rotate(-1.5deg)"><div class="doc" style="padding:4cqi 4.6cqi;gap:1.3cqi">
-          <div class="${K}-num">${sp('label', 'Application form')}${sp('metadata', 'Page 1 of 1', 'class="soft"')}</div>${bars(94, 82, 88, 56)}
+        ${zone(c, `<div style="position:relative;width:${sq(c, 72, 60)}cqi;transform:rotate(-1.5deg)"><div class="doc" style="padding:4cqi 4.6cqi;gap:1.3cqi">
+          ${head('Application form', 'Page 1 of 1', '')}${bars(94, 82, 88, 56)}
           <div class="${K}-box" style="margin-top:2cqi"><b ${mark('box')}></b><span>${bars(86, 54)}</span></div>
-          <div class="sign" style="margin-top:2.4cqi">${sp('headline', '×')}<span style="position:relative">${sig}</span></div></div></div></div>${foot2()}` },
+          <div class="sign" style="margin-top:2.4cqi">${sp('headline', '×')}<span style="position:relative">${sig}</span></div></div></div>`)}${foot()}` },
 
     closer(),
   ]

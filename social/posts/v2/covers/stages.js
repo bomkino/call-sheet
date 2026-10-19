@@ -9,6 +9,9 @@
     .cv-stages-ink { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
     .cv-stages-ink > svg { height: 100%; }
     .cv-stages-tool { position: absolute; z-index: 2; transform-origin: 0 50%; }
+    .cv-stages-tape { position: absolute; z-index: 2; background: rgb(236 226 200 / .78); box-shadow: 0 1px 1px rgb(21 19 15 / .12); clip-path: polygon(0 4%, 12% 0, 30% 3%, 52% 0, 74% 2%, 100% 0, 100% 100%, 82% 97%, 60% 100%, 40% 96%, 18% 100%, 0 97%); }
+    .cv-stages-cue { display: inline-flex; align-items: center; gap: 1.4cqi; }
+    .cv-stages-swipe { width: 9cqi; height: auto; overflow: visible; }
     .cv-stages-head [data-pd-social="display"] { font-size: 13.2cqi; line-height: .86; }
   </style>`)
 
@@ -93,29 +96,31 @@
     <path d="M104 -5 L116 -2.2 Q 121 -.6, 121 0 Q 121 .6, 116 2.2 L104 5 Z" fill="#e3472d"/><path d="M104 -5 L116 -2.2 L 116 -1 L104 -2.4 Z" fill="#ef6a50"/>
     <path d="M104 -5.4 L104 5.4" stroke="#7a2414" stroke-width=".6"/><path d="M96 -5 C 99 -9, 104 -9, 108 -6.5" fill="none" stroke="#f3e3da" stroke-width=".5"/></svg>`
 
+  // a strip of masking tape, slightly torn at both ends
+  const tape = (w, h, style) => `<div class="cv-stages-tape" style="width:${w}cqi;height:${h}cqi;${style}"></div>`
+  // the hand-drawn arrow beside "Swipe"
+  const swipeArrow = `<svg class="cv-stages-swipe" viewBox="0 0 40 14" aria-hidden="true"><g fill="var(--marker)">${arrow([[1, 9], [12, 6.4], [24, 6.8], [36, 5.6]], 1.7, 6, 3)}</g></svg>`
+
   cover('stages', { g: G, dark: false,
     art: (c) => {
-      const sqr = c === 'square'
-      const a = sqr ? -16 : -24, x0 = sqr ? -40 : -44, y0 = sqr ? 77 : 103   // left end of the strip, cqi
-      const rad = a * Math.PI / 180, at = (s) => [x0 + s * Math.cos(rad), y0 + s * Math.sin(rad)]
-      const Hh = sqr ? 100 : 125
-      // the loop goes round the frame you're on; the arrow runs on along the strip and out the right edge
-      const k = 1, [cx, cy] = at(LEAD + k * P + FW / 2)
-      const loop = (() => { const rx = FW / 2 + 3.2, ry = FH / 2 + 3.4, pts = []
-        for (let t = -2.3; t <= 4.25; t += .35) pts.push([cx + Math.cos(t) * rx * (1 + .05 * Math.sin(3 * t)), cy + Math.sin(t) * ry])
-        return pts.map(([x, y]) => { const dx = x - cx, dy = y - cy; return [cx + dx * Math.cos(rad) - dy * Math.sin(rad), cy + dx * Math.sin(rad) + dy * Math.cos(rad)] }) })()
-      const [ex, ey] = at(LEAD + 5 * P), off = SH / 2 + 3.4
-      const nrm = [Math.sin(rad), -Math.cos(rad)]
-      const start = at(LEAD + k * P + FW + 3), run = [[start[0] + nrm[0] * off, start[1] + nrm[1] * off], ...[1.4, 2.4, 3.6].map(m => { const q = at(LEAD + (k + m) * P); return [q[0] + nrm[0] * (off + Math.sin(m * 2) * .8), q[1] + nrm[1] * (off + Math.sin(m * 2) * .8)] }), [ex + nrm[0] * off + 12, ey + nrm[1] * off - 8]]
-      return `<div class="cv-stages-strip" style="left:${x0}cqi;top:${y0 - SH / 2}cqi;width:${SL}cqi;transform:rotate(${a}deg)">${strip()}</div>
-        <div class="cv-stages-tool" style="left:${sqr ? -6 : -8}cqi;top:${sqr ? 88 : 118}cqi;width:${sqr ? 44 : 52}cqi;transform:rotate(${a + 6}deg)">${chinaMarker()}</div>
-        <div class="cv-stages-ink"><svg viewBox="0 0 100 ${Hh}" preserveAspectRatio="none" aria-hidden="true"><g fill="var(--marker)">${ink(loop, 1.1, 2)}${arrow(run, 1, 3.4, 4)}</g></svg></div>`
+      const sqr = c === 'square', Hh = sqr ? 100 : 125
+      const sc = sqr ? .74 : 1.06                                 // strip scale
+      const a = sqr ? -2.5 : -4.5, rad = a * Math.PI / 180
+      const x0 = sqr ? -40 : -52, y0 = sqr ? 65.9 : 82.7             // centre of the strip's left end, cqi
+      const at = (s, d = 0) => [x0 + s * sc * Math.cos(rad) - d * Math.sin(rad), y0 + s * sc * Math.sin(rad) + d * Math.cos(rad)]
+      // a grease-pencil line from the circled "six", up to the strip and along it, out of the right edge
+      const d = SH * sc / 2 + 2.4
+      const six = sqr ? [29.2, 78.4] : [31.4, 100.2]
+      const run = [six, [six[0] + 4, six[1] - 3.2], at(LEAD + 2.55 * P, d + .5), at(LEAD + 3.3 * P, d - .2), at(LEAD + 4.1 * P, d + .3), at(LEAD + 5.2 * P, d + 1.4)]
+      return `<div class="cv-stages-strip" style="left:${x0}cqi;top:${y0 - SH * sc / 2}cqi;width:${SL * sc}cqi;transform:rotate(${a}deg)">${strip()}</div>
+        ${tape(sqr ? 8 : 9.5, sqr ? 11 : 13.5, `left:${sqr ? 1 : 1.5}cqi;top:${y0 - (sqr ? 7 : 9)}cqi;transform:rotate(${a - 3}deg)`)}
+                <div class="cv-stages-ink"><svg viewBox="0 0 100 ${Hh}" preserveAspectRatio="none" aria-hidden="true"><g fill="var(--marker)">${ink(run, 1.15, 2)}</g></svg></div>`
     },
     html: (c, i, n) => `${ctop('Where you’re at', i, n)}
       <div class="cv-stages-head mt-m">${S('display', 'You don’t need<br>a finished film.')}</div>
-      ${S('subhead', 'There are opportunities you can apply for while you’re still writing, shooting or editing.', 'class="mt-s" style="max-inline-size:20ch"')}
+      ${S('body', 'There are opportunities you can apply for while you’re still writing, shooting or editing.', 'class="mt-xs" style="max-inline-size:40ch"')}
       <div class="grow"></div>
-      ${S('headline', 'Here are six, depending on where your project’s at.', 'style="max-inline-size:13ch;margin-left:auto;text-align:right"')}
-      <div class="foot mt-s">${sp('credit', 'Call Sheet, by pitch.dog')}${swipe}</div>`,
+      ${S('subhead', `Here are ${circ('six,', 'wide', { l: '-12%', t: '-20%', w: '126%', h: '144%' })} depending on where your project’s at.`, 'style="max-inline-size:24ch"')}
+      <div class="foot mt-s">${sp('credit', 'Call Sheet, by pitch.dog')}<span class="cv-stages-cue">${swipeArrow}${swipe}</span></div>`,
   })
 }

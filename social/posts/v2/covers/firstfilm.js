@@ -44,20 +44,20 @@
   const board = (c) => {
     const sqr = c === 'square'
     return `<div class="cv-firstfilm-clap" style="left:-9cqi;width:${W}cqi;top:${sqr ? 32.5 : 26.5}cqb;transform:rotate(-4deg)">
-      <div class="cv-firstfilm-stick top" style="top:-10.6cqi;transform:rotate(${sqr ? -10 : -13}deg)">${stripes(-3)}</div>
+      <div class="cv-firstfilm-stick top" style="top:-10.6cqi;transform:rotate(${sqr ? -11 : -13}deg)">${stripes(-3)}</div>
       <div class="cv-firstfilm-stick" style="position:relative;border-radius:.6cqi .6cqi 0 0">${stripes(2.5)}</div>
       <i class="cv-firstfilm-hinge" style="left:10.6cqi;top:-6.4cqi"></i>
       <div class="cv-firstfilm-slate">${chalk}
         <div class="row" style="padding:1.8cqi 4cqi 2.8cqi 13cqi">
-          <div style="display:flex;justify-content:space-between;align-items:baseline">${lbl('Prod.')}<div class="cv-firstfilm-boxes" style="margin:0 12cqi 0 0">${['Int.', 'Ext.'].map((t, k) => `<span class="${k ? '' : 'on'}">${sp('metadata', t)}</span>`).join('')}${['Day', 'Night'].map((t, k) => `<span class="${k ? 'on' : ''}">${sp('metadata', t)}</span>`).join('')}</div></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline">${lbl('Prod.')}<div class="cv-firstfilm-boxes" style="margin:0 12cqi 0 0;${sqr ? 'display:none' : ''}">${['Int.', 'Ext.'].map((t, k) => `<span class="${k ? '' : 'on'}">${sp('metadata', t)}</span>`).join('')}${['Day', 'Night'].map((t, k) => `<span class="${k ? 'on' : ''}">${sp('metadata', t)}</span>`).join('')}</div></div>
           ${S('display', `Making your ${circ('first', 'wide', { l: '-9%', t: '-6%', w: '118%', h: '124%' })} film?`, 'class="cv-firstfilm-head" style="margin-top:2cqi;max-inline-size:6.4em"')}
         </div>
-        ${cells('11cqi 1fr 1fr 1.25fr', `<div>${lbl('Roll')}<span class="cv-firstfilm-mid" data-pd-social="metric" style="margin-top:3.4cqi">A001</span></div>
-          <div>${lbl('Scene')}<span class="cv-firstfilm-mid" data-pd-social="metric" style="margin-top:3.4cqi">1</span></div>
+        ${cells('11cqi 1fr 1fr 1.25fr', `<div>${lbl('Roll')}${sqr ? '' : '<span class="cv-firstfilm-mid" data-pd-social="metric" style="margin-top:3.4cqi">A001</span>'}</div>
+          <div>${lbl('Scene')}${sqr ? '' : '<span class="cv-firstfilm-mid" data-pd-social="metric" style="margin-top:3.4cqi">1</span>'}</div>
           <div>${lbl('Take')}<span class="cv-firstfilm-take" data-pd-social="metric" style="margin:1cqi 0 -1.4cqi;font-size:${sqr ? 27 : 30}cqi">1</span></div>`)}
         ${sqr ? cells('11cqi 1.3fr 1fr 1fr', `<div>${lbl('Director')}<span class="cv-firstfilm-blank"></span></div><div>${lbl('Camera')}<span class="cv-firstfilm-blank"></span></div><div>${lbl('Date')}<span class="cv-firstfilm-blank" style="height:30cqi"></span></div>`) : ''}
       </div>
-      <div class="cv-firstfilm-tape" style="left:${sqr ? 15 : 13}cqi;top:${sqr ? 46.5 : 66}cqi;transform:rotate(${sqr ? 2 : 2.5}deg)">${S('subhead', 'Here are 4 places you could get money to make it!')}</div>
+      <div class="cv-firstfilm-tape" style="left:${sqr ? 15 : 13}cqi;top:${sqr ? 41.5 : 63.5}cqi;transform:rotate(${sqr ? 2 : 2.5}deg)">${S('subhead', 'Here are 4 places you could get money to make it!')}</div>
     </div>`
   }
   // The swipe cue, drawn: a marker arrow that runs on towards the edge of the frame.
@@ -65,5 +65,5 @@
 
   cover('firstfilm', { g: 'var(--pink)', dark: false,
     art: board,
-    html: (c, i, n) => `${ctop('First film', i, n)}<div class="grow"></div><div class="foot" ${c === 'square' ? 'style="color:var(--sheet);--pd-type-ink:var(--sheet)"' : ''}>${sp('credit', 'Call Sheet, by pitch.dog')}<span class="cv-firstfilm-swipe">${sp('credit', 'Swipe')}${arrow}</span></div>` })
+    html: (c, i, n) => `${c === 'square' ? `<div class="top">${swatch}${sp('metadata', 'First film', 'class="soft"')}<span style="margin-left:2cqi">${N(i, n)}</span></div>` : ctop('First film', i, n)}<div class="grow"></div><div class="foot" ${c === 'square' ? 'style="color:var(--sheet);--pd-type-ink:var(--sheet)"' : ''}>${sp('credit', 'Call Sheet, by pitch.dog')}<span class="cv-firstfilm-swipe">${sp('credit', 'Swipe')}${arrow}</span></div>` })
 }

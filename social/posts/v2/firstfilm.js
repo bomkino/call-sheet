@@ -85,7 +85,7 @@
       ? [[0, 3, -3], [14.3, 0, 2], [28.6, 2.5, -1], [42.9, 0, 3], [57.2, 3, -2]]
       : [[0, 0, -4], [24.5, 2.5, 2], [49, 0, -1.5], [12, 22, 3], [37, 23.5, -2.5]]
     return `<div style="position:relative;width:${W}cqi;height:${sqr ? 24 : 44}cqi;margin-right:${sqr ? 12 : 9}cqi">${pos.map(([x, y, r], k) => `<div class="firstfilm-card" style="left:${x}cqi;top:${y}cqi;width:${cw}cqi;height:${ch}cqi;transform:rotate(${r}deg)">
-      <div style="display:grid;gap:1.6cqi;zoom:${sqr ? .56 : .8}">${sp('metadata', `Film ${k + 1} of 5`, 'class="soft"')}
+      <div style="display:grid;gap:1.6cqi;zoom:${sqr ? .56 : .8}">${sqr ? '' : sp('metadata', `Film ${k + 1} of 5`, 'class="soft"')}
       <div style="margin-top:1cqi">${k === (sqr ? 2 : 1) ? circ(sp('headline', '$5,000'), 'round', { l: '-14%', t: '-40%', w: '128%', h: '180%' }) : sp('headline', '$5,000')}</div>
       ${sqr ? '' : `<div style="display:grid;gap:1.3cqi;margin-top:1.4cqi">${bars(86, 58)}</div>`}</div>
       ${pin('left:50%;top:-1.2cqi;margin-left:-1.5cqi')}</div>`).join('')}</div>`
@@ -99,7 +99,7 @@
     ${tape('left:50%;top:-2cqi;margin-left:-6.5cqi;transform:rotate(-3deg)')}</div>`
 
   // 4. A student card, with the lanyard slot and a barcode.
-  const idDoc = (w) => `<div class="firstfilm-id" style="width:${w}cqi"><div class="band">${sp('label', 'Student')}${sp('metadata', '2026')}</div>
+  const idDoc = (w) => `<div class="firstfilm-id" style="width:${w}cqi"><div class="band">${sp('label', 'Student')}</div>
     <div class="bd"><i class="face"></i><div class="lines">${bars(92, 74, 56)}<div class="bar">${[3, 1, 2, 1, 1, 3, 1, 2, 2, 1, 3, 1, 1, 2, 1, 3, 2, 1].map(x => `<b style="width:${x * .3}cqi"></b>`).join('')}</div></div></div></div>`
 
   /* ---- the slide ---------------------------------------------------- */
@@ -120,7 +120,7 @@
     card('Directing debut', '$5,000 for your directing debut.', ['The WAVE Grant backs five first scripted films, each by a solo director.'], 'US residents only. Closes 15 November.',
       five, { g: 'var(--yellow)', n: 2, route: [{ cx: 966, dip: 60 }, { cx: 980, dip: 30, r: 40 }] }),
     card('Aged 18 to 25', '18 to 25? $10,000 and a mentor.', ['The Michael Collyer Fellowship, for an original feature script. US citizens and green-card holders.'], 'Closes 8 January.',
-      (c) => `<div style="transform:rotate(1.5deg);zoom:${sq(c, .96, .76)};margin-left:${sq(c, 12, 14)}cqi">${form(70)}</div>`,
+      (c) => `<div style="transform:rotate(1.5deg);zoom:${sq(c, .9, .66)};margin-left:${sq(c, 12, 14)}cqi">${form(70)}</div>`,
       { g: 'var(--blue)', n: 3, route: [{ cx: 112, dip: -30 }, { cx: 104, dip: 30, r: 40 }] }),
     card('Students', 'Still a student?', ['The Carole Dorothy Joyce Student Grant gives $3,000 plus donated services, for films budgeted at $50,000 or less.'], 'Closes 30 November.',
       (c) => `<div style="transform:rotate(-3deg);zoom:${sq(c, 1, .78)};margin-right:${sq(c, 10, 14)}cqi">${idDoc(60)}</div>`,
