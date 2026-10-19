@@ -12,11 +12,6 @@
     .firstfilm-doc { background: var(--sheet); box-shadow: var(--lift); }
     .firstfilm-doc i { display: block; height: 1.1cqi; border-radius: 1cqi; background: rgb(21 19 15 / .13); }
     .firstfilm-cheque { padding: 4cqi 4.6cqi 3.6cqi; display: grid; gap: .4cqi; }
-    .firstfilm-cards { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2.4cqi; }
-    .firstfilm-cards > div { grid-column: span 2; padding: 2.8cqi 3cqi 3.2cqi; display: grid; gap: 1.6cqi; align-content: start; }
-    .firstfilm-cards > div:nth-child(4) { grid-column: 2 / span 2; }
-    .firstfilm-cards.row { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.8cqi; }
-    .firstfilm-cards.row > div { grid-column: auto; padding: 2.2cqi 1.8cqi 2.6cqi; }
     .firstfilm-form { padding: 4cqi 4.6cqi 3cqi; display: grid; }
     .firstfilm-form .head { padding-bottom: 1.8cqi; margin-bottom: .6cqi; border-bottom: .3cqi solid var(--ink); }
     .firstfilm-form .row { display: flex; justify-content: space-between; align-items: baseline; gap: 3cqi; padding: 1.6cqi 0; border-bottom: 1.5px solid var(--rule); }
@@ -29,7 +24,7 @@
   </style>`)
 
   // The thread: the four places as four amounts, the current one in ink.
-  const PLACES = ['£120,000', '$5,000', '$10,000', '$3,000']
+  const PLACES = ['£120,000', 'Up to $10K', '$10,000', '$3,000']
   const band = (k) => `<div class="firstfilm-band">${PLACES.map((t, j) => `<div class="${j === k ? 'on' : ''}"><b></b>${sp('metadata', t, j === k ? '' : 'class="soft"')}</div>`).join('')}</div>`
 
   /* ---- the paperwork, one object per slide ------------------------------ */
@@ -40,12 +35,10 @@
     <div class="ln">${sp('body', 'For')}<span class="lead"></span><span class="v">${sp('label', 'A first documentary')}</span></div>
     <div class="sign" style="margin-top:2.4cqi">${sp('headline', '×')}<span></span></div></div>`
 
-  // Five award cards on a tidy grid: three over two on portrait, one row on square.
-  const five = (c) => {
-    const row = c === 'square'
-    return `<div class="firstfilm-cards${row ? ' row' : ''}" style="width:${row ? 80 : 76}cqi">${[1, 2, 3, 4, 5].map(k => `<div class="firstfilm-doc">
-      ${sp('metadata', `Film ${k}`, 'class="soft"')}<div style="zoom:${row ? .54 : .74}">${sp('headline', '$5,000')}</div></div>`).join('')}</div>`
-  }
+  // The Film Fund pays its prize back against what the short costs: an expense claim, the total circled.
+  const claim = (w) => `<div class="firstfilm-doc firstfilm-form" style="width:${w}cqi"><div class="head">${sp('label', 'Expense claim')}</div>
+    ${['Camera hire', 'Crew', 'Locations'].map((k, j) => `<div class="row">${sp('body', k)}<i style="width:${[18, 24, 14][j]}cqi"></i></div>`).join('')}
+    <div class="row">${sp('body', 'Paid back')}${loopAmount(sp('label', 'Up to $10,000'))}</div></div>`
 
   const form = (w) => `<div class="firstfilm-doc firstfilm-form" style="width:${w}cqi"><div class="head">${sp('label', 'Michael Collyer Fellowship')}</div>
     ${[['Age', loopAmount(sp('label', '18 to 25'))], ['Script', sp('label', 'Original feature')], ['Award', sp('label', '$10,000')], ['Plus', sp('label', 'A mentor')]]
@@ -68,8 +61,8 @@
       () => filmography(62), { g: 'var(--pink)', k: -1, z: [1.1, .8] }),
     card('First documentary', '£120,000 for your first documentary.', ['The Whickers fund one director’s first documentary of 50 minutes or more.'], 'Free to enter. Opens 24 November.',
       () => chequeDoc(76), { g: 'var(--buff)', k: 0, z: [.94, .78] }),
-    card('Directing debut', '$5,000 for your directing debut.', ['The WAVE Grant backs five first scripted films, each by a solo director.'], 'US residents only. Closes 15 November.',
-      five, { g: 'var(--yellow)', k: 1, z: [1, 1] }),
+    card('First short', 'Up to $10,000 for your first short.', ['The Film Fund’s Fall Narrative Contest pays back up to $10,000 of what your short costs to make.'], 'Open worldwide. Closes 17 November.',
+      () => claim(66), { g: 'var(--yellow)', k: 1, z: [.8, .58] }),
     card('Aged 18 to 25', '18 to 25? $10,000 and a mentor.', ['The Michael Collyer Fellowship, for an original feature script. US citizens and green-card holders.'], 'Closes 8 January.',
       () => form(66), { g: 'var(--blue)', k: 2, z: [.8, .58] }),
     card('Students', 'Still a student?', ['The Carole Dorothy Joyce Student Grant gives $3,000 plus donated services, for films budgeted at $50,000 or less.'], 'Closes 30 November.',
@@ -77,5 +70,5 @@
     closer(),
   ]
 
-  carousel('firstfilm', SLIDES, 'Making your first film? Here are 4 places you could get money to make it! £120,000 for your first documentary: the Whickers fund one director’s first documentary of 50 minutes or more. Free to enter. Opens 24 November. $5,000 for your directing debut: the WAVE Grant backs five first scripted films, each by a solo director. US residents only. Closes 15 November. 18 to 25? $10,000 and a mentor: the Michael Collyer Fellowship, for an original feature script. US citizens and green-card holders. Closes 8 January. Still a student? The Carole Dorothy Joyce Student Grant gives $3,000 plus donated services, for films budgeted at $50,000 or less. Closes 30 November. Each slide shows one piece of paperwork: a £120,000 cheque, five $5,000 award cards, a fellowship form and a student ID, above a band listing the four amounts. Last slide: Call Sheet, by pitch.dog. Find film and TV grants, festivals, labs and fellowships, all in one place. Totally free! Comment Call Sheet and we will send you the link!')
+  carousel('firstfilm', SLIDES, 'Making your first film? Here are 4 places you could get money to make it! £120,000 for your first documentary: the Whickers fund one director’s first documentary of 50 minutes or more. Free to enter. Opens 24 November. Up to $10,000 for your first short: the Film Fund’s Fall Narrative Contest pays back up to $10,000 of what your short costs to make. Open worldwide. Closes 17 November. 18 to 25? $10,000 and a mentor: the Michael Collyer Fellowship, for an original feature script. US citizens and green-card holders. Closes 8 January. Still a student? The Carole Dorothy Joyce Student Grant gives $3,000 plus donated services, for films budgeted at $50,000 or less. Closes 30 November. Each slide shows one piece of paperwork: a £120,000 cheque, an expense claim paid back up to $10,000, a fellowship form and a student ID, above a band listing the four amounts. Last slide: Call Sheet, by pitch.dog. Find film and TV grants, festivals, labs and fellowships, all in one place. Totally free! Comment Call Sheet and we will send you the link!')
 }

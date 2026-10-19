@@ -10,5 +10,5 @@
   </g>
 </svg>`
   cover('free', poster({ g: 'var(--green)', label: 'Save this', hw: '18ch',
-    head: `Twelve funding opportunities for your film that are ${circ('COMPLETELY&nbsp;FREE', 'long', { l: '-2%', t: '-10%', w: '104%', h: '124%' })} to apply for.`, obj: art }))
+    head: `${FREE_N} funding opportunities for your film that are ${circ('COMPLETELY&nbsp;FREE', 'long', { l: '-2%', t: '-10%', w: '104%', h: '124%' })} to apply for.`, obj: art }))
 }

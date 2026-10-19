@@ -295,6 +295,10 @@ const GIST = {
   'Series Mania Co-Pro Pitching Sessions': 'A pitch in Lille. The best project wins up to EUR\u00a050,000',
   'Sofia Meetings — TV Series': 'A pitch to co-producers at Sofia Meetings, with industry awards',
   'Tribeca — AT&T Untold Stories 2027': 'USD\u00a01.2m to make the winning feature, USD\u00a015,000 for each other finalist',
+  'Sofia Meetings — Features': 'A pitch to co-producers, sales agents and distributors, with industry awards',
+  'FICG — DocuLab 19': 'Feedback on a first or second cut, for Ibero-American documentary directors',
+  'Sundance — Native Lab Fellowship 2027': 'Opens 1 Dec. A lab in Santa Fe for Indigenous writers based in the US or Canada',
+  'The Whickers — Film & TV Funding Award': 'Opens 24 Nov. £120,000 for a first documentary, £25,000 for the runner-up',
 }
 const gist = (f) => GIST[f.title] || nb(trim(f.get))
 const trim = (t, n = 84) => t.length > n ? t.slice(0, t.lastIndexOf(' ', n - 2)).replace(/[\s,;:\/—–-]+$/, '') + '…' : t
@@ -314,6 +318,15 @@ const CALLS = {
   finn: ['20', 'Oct', 'Finnish Film Foundation: development', 'Up to €250,000'],
   sa: ['22', 'Oct', 'Screen Australia First Nations Development', 'Up to AUD 65,000 for series'],
   doha: ['24', 'Oct', 'Doha Film Institute Short Script Lab', 'Online, with one-to-one mentoring'],
+  // The live examples (launch, tabs, circle and the how carousel), from 19 October. Each leaves the owner's
+  // lead time, with three days to spare, from the last day its post is planned for (16 November for the singles).
+  cinestory: ['14', 'Dec', 'CineStory TV Fellowship', 'The Fellow gets USD 3,000 and a year of mentoring'],
+  vdr: ['15', 'Dec', 'Visions du Réel VdR–Pitching', 'A pitch in Nyon, and a shot at a €20,000 award'],
+  docedge: ['20', 'Dec', 'Doc Edge Pitch', 'A pitch at Doc Edge 2027, with mentoring'],
+  hotdocs: ['4', 'Jan', 'Hot Docs Festival', 'A festival screening, and a shot at the awards'],
+  pitchathon: ['5', 'Jan', 'SeriesFest Pitch-A-Thon!', 'A live five-minute pitch, with panel feedback'],
+  whickers: ['22', 'Jan', 'The Whickers Film & TV Funding Award', '£120,000 for a first documentary'],
+  raindance: ['8', 'Mar', 'Raindance Script Competition', 'Industry Discovery List for feature scripts'],
 }
 
 /* =================================================================== posts */
@@ -333,7 +346,7 @@ const by3 = (c, p, s, t) => c === 'square' ? s : c === 'story' ? t : p
 P('launch', { name: 'Filmmaker friends, meet Call Sheet.', g: 'var(--ink)', dark: true, sizes: ['1080x1350', '1080x1080', '1080x1920', '1200x630', '1600x900'],
   alt: 'Filmmaker friends, meet Call Sheet. Film and TV grants, festivals, labs and fellowships in one free list. Soonest deadlines first. Below, a printed Call Sheet list with one date circled in red.',
   render (sz, c) {
-    const rows = [li(...CALLS.roy), li(...CALLS.cnc), li(...CALLS.merata, { circle: true, free: true }), li(...CALLS.tfl)]
+    const rows = [li(...CALLS.docedge), li(...CALLS.hotdocs), li(...CALLS.whickers, { circle: true, free: true }), li(...CALLS.raindance)]
     const sheet = (r) => `<div style="width:100%;transform:rotate(-1.5deg)">${list(r)}</div>`
     if (c === 'landscape') return { frame: `<div class="grow calm" style="display:flex;align-items:center;gap:6cqi"><div style="flex:1">${kicker('New · Totally free')}${S('display', 'Filmmaker friends, meet Call Sheet.', 'class="mt-m"')}${S('subhead', ONE_LIST, 'class="mt-m soft"')}</div><div style="flex:1;zoom:.82">${sheet(rows.slice(2, 4))}</div></div>${foot('Call Sheet, by pitch.dog', true)}`, art: '' }
     return { frame: calm(c, { kick: 'New · Totally free · From pitch.dog', h: 'Filmmaker friends, meet Call Sheet.', sub: ONE_LIST, dark: true, obj: sheet(by3(c, rows.slice(2), rows.slice(2), rows.slice(1))) }), art: '' }
@@ -346,23 +359,26 @@ const tabsWindow = (n, rows) => `<div class="browser" style="position:relative;w
 P('tabs', { name: 'Fewer tabs. More applications.', g: 'var(--blue)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
   alt: 'Fewer tabs. More applications. One browser window with dozens of tabs running off the edge of the frame; inside it, a single Call Sheet list with one date circled.',
   render (sz, c) {
-    const rows = [li(...CALLS.cnc.slice(0, 3)), li(...CALLS.merata.slice(0, 3), '', { circle: true }), li(...CALLS.tfl.slice(0, 3)), li(...CALLS.cph.slice(0, 3))]
+    const rows = [li(...CALLS.cinestory.slice(0, 3)), li(...CALLS.docedge.slice(0, 3), '', { circle: true }), li(...CALLS.hotdocs.slice(0, 3))]
     return { frame: calm(c, { kick: 'Call Sheet', h: 'Fewer tabs.<br>More applications.', sub: c === 'square' ? '' : 'Film and TV grants, festivals, labs and fellowships in one free list, with everything you need to know before applying.',
       bleed: true, obj: tabsWindow(16, by3(c, rows.slice(1, 3), rows.slice(1, 3), rows.slice(0, 3))) }), art: '' }
   } })
 
-// 3. Twelve opportunities. Zero entry fees. Yellow ground; one receipt that adds up to nothing.
+// 3. Eight opportunities. Zero entry fees. Yellow ground; one receipt that adds up to nothing.
 const FREE = window.FREE || []
-P('zero', { name: 'Twelve opportunities. Zero entry fees.', g: 'var(--yellow)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
-  alt: 'Twelve opportunities. Zero entry fees. A receipt of entry fees for free-to-enter film and TV opportunities closing November to January: every line reads 0.00, and the total, 0.00, is circled in red.',
+// The count, in words, for the zero single and the free carousel: it follows FREE_PICKS in make_data.py.
+const FREE_N = ['None', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'][FREE.length] || String(FREE.length)
+P('zero', { name: `${FREE_N} opportunities. Zero entry fees.`, g: 'var(--yellow)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
+  alt: `${FREE_N} opportunities. Zero entry fees. A receipt of entry fees for free-to-enter film and TV opportunities closing November to January: every line reads 0.00, and the total, 0.00, is circled in red.`,
   render (sz, c) {
     const n = by3(c, 3, 2, 5)
     const lines = FREE.slice(0, n).map(f => ln(trim(short(f.title).replace(/ call$/, ''), 30), '0.00'))
-    return { frame: calm(c, { kick: 'Save this', h: 'Twelve opportunities. Zero entry fees.', sub: 'Totally free to apply for. Closing November to January.',
+    return { frame: calm(c, { kick: 'Save this', h: `${FREE_N} opportunities. Zero entry fees.`, sub: 'Totally free to apply for. Closing November to January.',
       obj: `<div style="width:${by3(c, 84, 72, 86)}cqi;transform:rotate(-1.5deg)">${receipt('Entry fees', [...lines, ln(`${FREE.length - n} more`, '0.00'), '<hr>', `<div class="ln">${sp('label', 'Total')}<span class="lead"></span><span class="v">${circ(sp('headline', '0.00'), 'wide', { l: '-14%', t: '-18%', w: '128%', h: '136%' })}</span></div>`])}</div>` }), art: '' }
   } })
 
-// 4. Paris 16:00. Sydney 02:00. Pink ground; two clocks side by side, Sydney circled.
+// 4. Paris 16:00. Sydney 02:00. Pink ground; two clocks side by side, Sydney circled. The example is TorinoFilmLab
+// ComedyLab's deadline, 16:00 Paris time (CET) on Monday 30 November: 02:00 on Tuesday 1 December in Sydney (AEDT).
 const clockSvg = (h, m) => { const a = (h % 12 + m / 60) * 30, b = m * 6
   const ticks = Array.from({ length: 60 }, (_, i) => { const r1 = i % 5 ? 88 : 80; const t = i * 6 * Math.PI / 180; return `<line x1="${(Math.sin(t) * r1).toFixed(2)}" y1="${(-Math.cos(t) * r1).toFixed(2)}" x2="${(Math.sin(t) * 94).toFixed(2)}" y2="${(-Math.cos(t) * 94).toFixed(2)}" stroke="#15130f" stroke-width="${i % 5 ? 1.2 : 3.4}" stroke-linecap="round"/>` }).join('')
   return `<svg viewBox="-110 -110 220 220" aria-hidden="true"><circle r="104" fill="#15130f"/><circle r="100" fill="#fbf9f3"/>${ticks}
@@ -372,10 +388,10 @@ const clockSvg = (h, m) => { const a = (h % 12 + m / 60) * 30, b = m * 6
     <circle r="5.5" fill="#15130f"/><circle r="2.4" fill="#e3472d"/></svg>` }
 const CLOCK_SUB = 'Same deadline. When a fund gives us an exact closing time and time zone, Call Sheet shows what that means for you.'
 const clocks = (w) => `<div style="display:grid;grid-template-columns:1fr 1fr;gap:6cqi;width:${w}">
-  <div class="clock">${clockSvg(16, 0)}<div style="text-align:center">${S('headline', 'Paris')}${S('metadata', 'Tue 3 Nov, 16:00', 'class="soft mt-xs"')}</div></div>
-  <div class="clock">${clockSvg(2, 0)}<div style="text-align:center">${S('headline', circ('Sydney', 'wide', { l: '-14%', t: '-18%', w: '128%', h: '134%' }))}${S('metadata', 'Wed 4 Nov, 02:00', 'class="soft mt-xs"')}</div></div></div>`
+  <div class="clock">${clockSvg(16, 0)}<div style="text-align:center">${S('headline', 'Paris')}${S('metadata', 'Mon 30 Nov, 16:00', 'class="soft mt-xs" style="white-space:nowrap"')}</div></div>
+  <div class="clock">${clockSvg(2, 0)}<div style="text-align:center">${S('headline', circ('Sydney', 'wide', { l: '-14%', t: '-18%', w: '128%', h: '134%' }))}${S('metadata', 'Tue 1 Dec, 02:00', 'class="soft mt-xs" style="white-space:nowrap"')}</div></div></div>`
 P('clock', { name: 'Paris 16:00. Sydney 02:00.', g: 'var(--pink)', sizes: ['1080x1350', '1080x1080', '1080x1920', '1200x630', '1600x900'],
-  alt: 'Two clocks. Paris shows 16:00 on Tuesday 3 November; Sydney shows 02:00 on Wednesday 4 November, circled in red. Same deadline. When a fund gives an exact closing time and time zone, Call Sheet shows what that means for you.',
+  alt: 'Two clocks. Paris shows 16:00 on Monday 30 November; Sydney shows 02:00 on Tuesday 1 December, circled in red. Same deadline. When a fund gives an exact closing time and time zone, Call Sheet shows what that means for you.',
   render (sz, c) {
     if (c === 'landscape') return { frame: `<div class="grow" style="display:flex;align-items:center;gap:5cqi"><div style="flex:1">${S('display', 'Paris 16:00. Sydney 02:00.')}${S('subhead', CLOCK_SUB, 'class="mt-s soft"')}</div><div style="flex:1">${clocks('100%')}</div></div>${foot()}`, art: '' }
     return { frame: calm(c, { kick: 'One deadline, two clocks', h: 'Paris 16:00. Sydney 02:00.', sub: CLOCK_SUB, sw: sq(c, 21, 25), jc: 'center', obj: clocks(by3(c, '96%', '62%', '100%')) }), art: '' }
@@ -383,9 +399,9 @@ P('clock', { name: 'Paris 16:00. Sydney 02:00.', g: 'var(--pink)', sizes: ['1080
 
 // 5. Circle the one that's yours. Paper ground; a printed list, one row circled.
 P('circle', { name: 'Circle the one that’s yours.', g: 'var(--paper)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
-  alt: 'Circle the one that’s yours. Tell it what you’re making and where you’re based, then narrow down the list. A printed list of film and TV opportunities with one row, the Sundance Merata Mita Fellowship, circled in red marker.',
+  alt: 'Circle the one that’s yours. Tell it what you’re making and where you’re based, then narrow down the list. A printed list of film and TV opportunities with one row, the Hot Docs Festival, circled in red marker.',
   render (sz, c) {
-    const rows = [li(...CALLS.roy.slice(0, 3), '', { dim: true }), li(...CALLS.cnc.slice(0, 3), '', { dim: true }), li(...CALLS.merata.slice(0, 3), '', { ring: true }), li(...CALLS.tfl.slice(0, 3), '', { dim: true }), li(...CALLS.cph.slice(0, 3), '', { dim: true }), li('5', 'Nov', 'TorinoFilmLab FeatureLab', '', { dim: true }), li('9', 'Nov', 'Series Mania Writers Campus', '', { dim: true })]
+    const rows = [li(...CALLS.cinestory.slice(0, 3), '', { dim: true }), li(...CALLS.docedge.slice(0, 3), '', { dim: true }), li(...CALLS.hotdocs.slice(0, 3), '', { ring: true }), li(...CALLS.pitchathon.slice(0, 3), '', { dim: true }), li(...CALLS.whickers.slice(0, 3), '', { dim: true })]
     return { frame: calm(c, { kick: 'Call Sheet', h: 'Circle the one that’s yours.', sub: 'Tell it what you’re making and where you’re based. Then narrow down the list.',
       obj: `<div style="width:96%;transform:rotate(1deg)">${list(by3(c, rows.slice(1, 4), rows.slice(1, 4), rows.slice(0, 5)), { note: '186 opportunities' })}</div>` }), art: '' }
   } })
@@ -421,6 +437,7 @@ P('open', { name: 'Free. No sign-up. No catch.', g: 'var(--green)', sizes: ['108
   } })
 
 // 9. 125 opportunities taking entries. Paper ground; the board, next deadline circled.
+// Retired 19 October: its "next deadline" goes stale daily. It still renders, but it's no longer in the kit.
 P('board', { name: '125 opportunities taking entries.', g: 'var(--paper)', sizes: ['1080x1350', '1080x1080', '1080x1920'],
   alt: 'Call Sheet on 17 October 2026: 125 film and TV opportunities taking entries, 13 free to enter, and the next deadline, 19 October, circled in red.',
   render (sz, c) {
@@ -496,15 +513,15 @@ const HOW = [
     { g: 'var(--paper)' }),
   tgrid('Step 2', 'Read what matters.', '',
     (c) => `<div style="zoom:${sq(c, .95, 1.04)};position:relative;width:80cqi;transform:rotate(1deg)"><div class="paper ear" style="--ear:6cqi;padding:3.4cqi 5cqi 3.6cqi"><span class="ear-flap"></span>
-      ${S('label', 'Sundance Merata Mita Fellowship')}${S('metadata', 'Who can apply', 'class="soft mt-s"')}${S('body', 'Indigenous artists who identify as women, worldwide')}${c === 'square' ? '' : `${S('metadata', 'You get', 'class="soft mt-s"')}${S('body', 'A cash grant, a year of support and a trip to Sundance')}`}
-      ${S('metadata', 'Entry fee', 'class="soft mt-s"')}<div style="margin-top:.8cqi">${circ(sp('label', 'Free to enter'), 'wide', { l: '-12%', t: '-28%', w: '124%', h: '156%' })}</div>${S('metadata', 'Closes', 'class="soft mt-s"')}${S('body', 'Tue 3 Nov, 4:30pm Mountain Time, shown in yours')}</div></div>`,
+      ${S('label', 'The Whickers Film & TV Funding Award')}${S('metadata', 'Who can apply', 'class="soft mt-s"')}${S('body', 'Directors anywhere making a first documentary of 50+ minutes')}${c === 'square' ? '' : `${S('metadata', 'You get', 'class="soft mt-s"')}${S('body', '£120,000 for the winner, and £25,000 for the runner-up')}`}
+      ${S('metadata', 'Entry fee', 'class="soft mt-s"')}<div style="margin-top:.8cqi">${circ(sp('label', 'Free to enter'), 'wide', { l: '-12%', t: '-28%', w: '124%', h: '156%' })}</div>${S('metadata', 'Closes', 'class="soft mt-s"')}${S('body', 'Fri 22 Jan, 11:59pm GMT, shown in yours')}</div></div>`,
     { g: 'var(--buff)' }),
   tgrid('Step 3', 'Save the ones you like.', 'They stay on your device. No&nbsp;account, no email.',
-    (c) => `<div style="position:relative;width:${sq(c, 84, 76)}cqi;margin-right:${sq(c, -6, -4)}cqi;transform:rotate(-1.5deg)">${list([li(...CALLS.merata.slice(0, 3), '', { circle: true }), li(...CALLS.tfl.slice(0, 3)), ...(c === 'square' ? [] : [li(...CALLS.cph.slice(0, 3))])], { head: sp('headline', 'My shortlist'), note: `${sq(c, 3, 2)} saved` })}</div>`,
+    (c) => `<div style="position:relative;width:${sq(c, 84, 76)}cqi;margin-right:${sq(c, -6, -4)}cqi;transform:rotate(-1.5deg)">${list([...(c === 'square' ? [] : [li(...CALLS.vdr.slice(0, 3))]), li(...CALLS.docedge.slice(0, 3)), li(...CALLS.whickers.slice(0, 3), '', { circle: true })], { head: sp('headline', 'My shortlist'), note: `${sq(c, 3, 2)} saved` })}</div>`,
     { g: 'var(--yellow)' }),
   tgrid('Step 4', 'Get a nudge before it closes.', 'One tap adds the deadline, with a reminder a week before (shaded) and the day before.',
     (c) => `<div style="position:relative;width:${sq(c, 86, 70)}cqi;transform:rotate(1deg)"><div class="paper" style="padding:3cqi;display:grid;grid-template-columns:repeat(7,1fr);gap:1cqi">
-      ${['M', 'T', 'W', 'T', 'F', 'S', 'S'].map(d => `<span style="text-align:center">${sp('metadata', d, 'class="soft"')}</span>`).join('')}${[26, 27, 28, 29, 30, 31, 1, 2, 3, 4, 5, 6, 7, 8].map(n => `<span style="position:relative;aspect-ratio:1;display:grid;place-items:center;border:1.5px solid var(--rule);${n === 3 ? 'background:var(--ink);color:var(--paper);--pd-type-ink:var(--paper)' : n === 27 ? 'background:#f6e7b0' : ''}">${sp('label', n)}${n === 3 ? `<svg class="loop" viewBox="-64.16 -55.7 123.47 109.58" preserveAspectRatio="none" style="position:absolute;left:-30%;top:-28%;width:160%;height:156%;overflow:visible"><path d="${window.LOOPS.round.d}"/></svg>` : ''}</span>`).join('')}</div></div>`,
+      ${['M', 'T', 'W', 'T', 'F', 'S', 'S'].map(d => `<span style="text-align:center">${sp('metadata', d, 'class="soft"')}</span>`).join('')}${[11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24].map(n => `<span style="position:relative;aspect-ratio:1;display:grid;place-items:center;border:1.5px solid var(--rule);${n === 22 ? 'background:var(--ink);color:var(--paper);--pd-type-ink:var(--paper)' : n === 15 ? 'background:#f6e7b0' : ''}">${sp('label', n)}${n === 22 ? `<svg class="loop" viewBox="-64.16 -55.7 123.47 109.58" preserveAspectRatio="none" style="position:absolute;left:-30%;top:-28%;width:160%;height:156%;overflow:visible"><path d="${window.LOOPS.round.d}"/></svg>` : ''}</span>`).join('')}</div></div>`,
     { g: 'var(--salmon)' }),
   tgrid('Step 5', 'Tick off what to send.', 'Most opportunities list what they ask for. Your&nbsp;ticks are saved.',
     (c) => `<div style="position:relative;width:${sq(c, 80, 72)}cqi;transform:rotate(-1deg)"><div class="paper ear ruled" style="--lh:${sq(c, 7, 6)}cqi;padding:3cqi 5cqi"><span class="ear-flap"></span><ul class="ticks">
@@ -514,19 +531,19 @@ const HOW = [
 ]
 
 const FREEC = [
-  { g: 'var(--yellow)', html: (c) => `${ctop('Save this', 1, 6)}${S('display', `Twelve funding opportunities for your film that are ${circ('COMPLETELY&nbsp;FREE', 'long', { l: '-2.5%', t: '-12%', w: '104%', h: '128%' })} to apply for.`, 'class="mt-m" style="max-inline-size:17ch"')}<div class="grow"></div><div class="foot">${sp('credit', 'Call Sheet, by pitch.dog')}${swipe}</div>`,
+  { g: 'var(--yellow)', html: (c) => `${ctop('Save this', 1, 6)}${S('display', `${FREE_N} funding opportunities for your film that are ${circ('COMPLETELY&nbsp;FREE', 'long', { l: '-2.5%', t: '-12%', w: '104%', h: '128%' })} to apply for.`, 'class="mt-m" style="max-inline-size:17ch"')}<div class="grow"></div><div class="foot">${sp('credit', 'Call Sheet, by pitch.dog')}${swipe}</div>`,
     art: (c) => stamp('free', `left:${c === 'square' ? 14 : 8}cqi;top:${c === 'square' ? 52 : 54}cqb;width:${c === 'square' ? 72 : 84}cqi;transform:rotate(-8deg)`) },
-  // Four sets of three, soonest first. A printed list, then three loose slips, then a list, then slips,
+  // Four sets, soonest first (two each for the eight that pass the lead-time rule on 21 October). A printed list, then three loose slips, then a list, then slips,
   // on a ground that moves from paper through green and blue to pink before the ink close.
-  ...[0, 1, 2, 3].map(k => { const set = FREE.slice(k * 3, k * 3 + 3), a = set[0], z = set[set.length - 1]
+  ...[0, 1, 2, 3].map(k => { const per = Math.ceil(FREE.length / 4), set = FREE.slice(k * per, k * per + per), a = set[0], z = set[set.length - 1]
     const day = (f) => String(+f.closes.slice(8)), month = (f) => monY(f.closes).replace(/^[A-Z][a-z]+/, (m) => ({ Oct: 'October', Nov: 'November', Dec: 'December', Jan: 'January' })[m] || m)
-    const span = mon(a.closes) === mon(z.closes) ? `${day(a)} to ${day(z)} ${month(z)}` : `${day(a)} ${mon(a.closes)} to ${day(z)} ${monY(z.closes)}`
+    const span = a.closes === z.closes ? `${day(a)} ${month(a)}` : mon(a.closes) === mon(z.closes) ? `${day(a)} to ${day(z)} ${month(z)}` : `${day(a)} ${mon(a.closes)} to ${day(z)} ${monY(z.closes)}`
     const name = (f) => short(f.title).replace(/ call$/, '')
     const slips = (c) => `<div style="position:relative;width:100%;display:grid;gap:${sq(c, 2.2, 1.4)}cqb;zoom:${sq(c, 1.04, .9)}">${set.map((f, j) => `<div style="position:relative;width:${sq(c, 80, 78)}cqi;justify-self:${['start', 'end', 'start'][j]};transform:rotate(${[-1.8, 1.4, -1][j]}deg)">
         <div class="paper ear" style="--ear:4.4cqi;padding:3.2cqi 3.6cqi;display:grid;grid-template-columns:12cqi 1fr;gap:3cqi;align-items:center"><span class="ear-flap" style="--flap:#d8d2c4"></span>
         <div style="display:grid">${sp('headline', day(f))}${sp('metadata', mon(f.closes), 'class="soft"')}</div><div>${S('label', name(f))}${S('body', gist(f), 'class="soft who"')}</div></div></div>`).join('')}</div>`
     const printed = (c) => `<div style="position:relative;width:${sq(c, 90, 84)}cqi;transform:rotate(${[-1.2, 0, 1, 0][k]}deg);zoom:${sq(c, 1, .9)}">${list(set.map(f => li(day(f), monY(f.closes), name(f), gist(f))), { note: 'Free to enter' })}</div>`
-    return tgrid(`Free to enter · ${k * 3 + 1}–${k * 3 + set.length} of ${FREE.length}`, `Closing ${span}.`, '', k % 2 ? slips : printed,
+    return tgrid(`Free to enter · ${k * per + 1}–${k * per + set.length} of ${FREE.length}`, `Closing ${span}.`, '', k % 2 ? slips : printed,
       { g: ['var(--paper)', 'var(--green)', 'var(--blue)', 'var(--pink)'][k], hw: 'wide', hh: [21, 20] }) }),
   closer(),
 ]
@@ -729,7 +746,7 @@ const FIRST = [
 ]
 
 const CAROUSELS = { how: [HOW,'How Call Sheet works: pick what you’re making, read what matters, save the ones you like, get a nudge before it closes and tick off what to send. Last slide: Call Sheet, by pitch.dog. Comment Call Sheet and we will send you the link.'],
-  free: [FREEC, 'Twelve funding opportunities for your film that are completely free to apply for, closing November 2026 to January 2027, three at a time on printed lists and paper slips, each with its date and what it gives. Last slide: Call Sheet, by pitch.dog. Comment Call Sheet and we will send you the link.'],
+  free: [FREEC, `${FREE_N} funding opportunities for your film that are completely free to apply for, closing November 2026 to January 2027, ${['', 'one', 'two', 'three'][Math.ceil(FREE.length / 4)]} at a time on printed lists and paper slips, each with its date and what it gives. Last slide: Call Sheet, by pitch.dog. Comment Call Sheet and we will send you the link.`],
   read: [READ, 'Five bits of small print to read before you apply: not published isn’t free; check the city; before means before; up to is a ceiling; home or passport.'],
   fee: [FEE, 'Is it free? The four answers you’ll see on Call Sheet. Free to enter: the organiser says so, as with the Sundance Merata Mita Fellowship. Not published: the organiser hasn’t said, as with the WAVE Grant. Free to enter but €1,090 tuition if selected, as with Series Mania Writers Campus. And a price: $48, or $38 for students, for the Roy W. Dean Fall Grant. Call Sheet shows every fee as published.'],
   who: [WHO, 'Can I apply? Calls test who can apply in different ways: where you live (the WAVE Grant, US residents), your citizenship (the Michael Collyer Fellowship, US citizens and green-card holders aged 18 to 25), your company (the Bell Fund, Canadian-controlled companies), or two at once (the UK Global Screen Fund, a UK-resident producer leading a UK company). Say where you’re based on Call Sheet and it hides the calls that rule you out.'],
