@@ -176,7 +176,7 @@ def nav() -> str:
         <details class="pd-nav-more" data-hide-below="601"><summary>Free stuff{ph("caret-down")}</summary><div class="pd-nav-more-menu">{menu}</div></details>
         <a href="/#pricing">Pricing</a>
         <button class="theme-control" id="theme-button" type="button" aria-label="Theme: Auto. Activate to switch to Light.">{ph("circle-half").replace('class="ph-icon"', 'class="ph-icon" id="theme-icon"')}<span id="theme-label">Auto</span></button>
-        <a class="primary" href="/#book">Book a call</a>
+        <a class="primary" href="https://cal.com/pitch.dog/wood">Book a call</a>
       </div>
       <button class="mobile-menu-toggle" id="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg class="ph-icon menu-open-icon" aria-hidden="true" viewBox="0 0 256 256"><use href="/assets/phosphor-sprite.svg#ph-list"></use></svg><svg class="ph-icon menu-close-icon" aria-hidden="true" viewBox="0 0 256 256"><use href="/assets/phosphor-sprite.svg#ph-x"></use></svg></button>
     </nav>
@@ -188,7 +188,7 @@ def nav() -> str:
       <a href="/"><span>01</span>Home {ph("arrow-right")}</a>
       <a href="/work/"><span>02</span>Work {ph("arrow-right")}</a>
       <a href="/#pricing"><span>03</span>Pricing {ph("arrow-right")}</a>
-      <a href="/#book"><span>04</span>Book a call {ph("arrow-right")}</a>
+      <a href="https://cal.com/pitch.dog/wood"><span>04</span>Book a call {ph("arrow-right")}</a>
       <a href="mailto:hello@pitch.dog"><span>05</span>Email us {ph("arrow-up-right")}</a>
       <div class="pd-mobile-more"><p class="eyebrow">Free stuff</p>{mobile}</div>
       <div class="mobile-menu-note">Pitch decks · Treatments · Show bibles · Pitch sites<br>Working worldwide.</div>
@@ -442,24 +442,6 @@ def zone_picker() -> str:
 def chips(name: str, legend: str, options: list[tuple[str, str]], hint: str = "") -> str:
     boxes = "".join(f'<label class="cs-chip"><input type="checkbox" name="{name}" value="{h(v)}"><span data-pd-ui="metadata">{h(t)}</span></label>' for v, t in options)
     return f'<fieldset class="cs-facet" data-facet="{name}"><legend data-pd-type="metadata">{h(legend)}</legend><div class="cs-chip-row">{boxes}</div>{f"<p class=\"cs-hint\" data-pd-type=\"body.small\">{h(hint)}</p>" if hint else ""}</fieldset>'
-
-
-def recheck_paragraph(calls: list[dict]) -> str:
-    rechecked = [c for c in calls if c.get("recheck")]
-    if not rechecked:
-        return ""
-    when = max(c["recheck"]["checked_on"] for c in rechecked)
-    changed = sum(1 for c in rechecked if c["recheck"]["status"] == "changed")
-    closed = sum(1 for c in rechecked if c["recheck"]["status"] == "closed")
-    blocked = sum(1 for c in calls if not c.get("recheck") and c["state"] != "closed_or_historical")
-    parts = [f"On {day(when)} we went back to the official page of every opportunity that wasn’t already closed, and read it again for the dates, the fee, who can apply and what you get. {len(rechecked)} opportunities carry a <strong>Rechecked</strong> mark."]
-    if changed:
-        parts.append(f"{changed} needed correcting and now follow the official page.")
-    if closed:
-        parts.append(f"{closed} turned out to have closed, and say so.")
-    if blocked:
-        parts.append(f"{blocked} {'page' if blocked == 1 else 'pages'} wouldn’t let us in, mostly behind FilmFreeway’s bot check; those keep their earlier date and no mark.")
-    return f'<p data-pd-type="body.reading">{" ".join(parts)}</p>'
 
 
 FEEDS = (("all", "Every deadline", None), ("fiction_feature", "Fiction features", "fiction_feature"), ("documentary", "Documentaries", "documentary"),
@@ -730,18 +712,6 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
 
     {editions_section(calls, as_of)}
 
-    <section class="section section--split cs-how" id="how" aria-labelledby="how-title">
-      <div class="section-head">
-        <p class="eyebrow" data-pd-type="metadata">How we check</p>
-        <h2 id="how-title" data-pd-type="heading.section">Where every line comes from.</h2>
-      </div>
-      <div class="section-body">
-        <p data-pd-type="lead.section">Every opportunity here started on the organiser’s own pages: the announcement, the guidelines, the FAQ, and the form where we could reach it. In mid-October 2026 we read them for dates, money, fees, who can apply and what to send, and wrote down what we couldn’t find as carefully as what we could.</p>
-        <p data-pd-type="body.reading">Then we kept the rough edges. A fee nobody has published says <strong>Not published</strong>, not free. When two official pages disagree on a date, our page for it says so. When a rule is unclear, it stays on your list with a flag instead of quietly disappearing.</p>
-        {recheck_paragraph(calls)}
-        <p data-pd-type="body.reading">Dates and rules change between rounds, and the official page always wins. Use this to decide what to check next, then check it there.</p>
-      </div>
-    </section>
 
     <section class="section cs-principles" aria-labelledby="principles-title">
       <div class="section-head section-head--wide">
@@ -784,7 +754,7 @@ def list_page(calls: list[dict], as_of: str, css: str, js: str) -> str:
           <p data-pd-type="lead.section">Some of these opportunities ask for a deck, a treatment or a pitch. Making those is our day job: pitch decks, director’s treatments and show bibles for film and TV, for twelve years. If yours could use a sharper story or a better look before it goes in, show us.</p>
           <div class="button-row">
             <a class="button button--brand button--large" href="/work/">See our work <span aria-hidden="true">→</span></a>
-            <a class="button button--ghost button--large" href="/#book">Book a call</a>
+            <a class="button button--ghost button--large" href="https://cal.com/pitch.dog/wood">Book a call</a>
             <a class="button button--ghost button--large" href="mailto:hello@pitch.dog">Email us</a>
           </div>
           <p class="brand-note" data-pd-type="body.small">No pressure, no strings. The list stays free either way.</p>

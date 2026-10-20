@@ -308,7 +308,6 @@ html:not(.js) .cs-save, html:not(.js) [data-ics], html:not(.js) .cs-filter-jump 
 .cs-card--mint { background: var(--mint); }
 .cs-card--lilac { background: var(--lilac); }
 .cs-card--blush { background: var(--blush); }
-.cs-how .section-body strong { color: var(--ink); }
 
 /* ------------------------------------------------------------- sheet bar */
 
