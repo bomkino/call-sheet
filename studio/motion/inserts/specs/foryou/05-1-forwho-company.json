@@ -1,0 +1,22 @@
+{
+  "reel": "foryou 05 · The company · Hot Docs Forum",
+  "note": "who: independent production companies worldwide with a doc about 10–75% financed; FAQ: no Canadian link needed (calls.json).",
+  "ground": "white",
+  "scenes": [
+    {
+      "type": "forwho",
+      "seconds": 3.0,
+      "items": [
+        "you run an independent company",
+        "doc 10–75% financed",
+        "no Canadian link needed"
+      ],
+      "loop": 1,
+      "motif": {
+        "kind": "laptop",
+        "place": "above",
+        "tint": "green"
+      }
+    }
+  ]
+}

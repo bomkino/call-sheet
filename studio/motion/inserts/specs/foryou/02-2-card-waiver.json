@@ -1,0 +1,26 @@
+{
+  "reel": "foryou 02 · Never been staffed · ATX TV Festival Pitch Competition",
+  "note": "get: ten finalists pitch live and a year-long mentorship; $65 until 23 Nov 7:59am CT, $85 until 14 Dec 7:59am CT or the cap; waiver/student discount by 16 Nov 11:59pm CT; travel not covered (calls.json). Data notes say '8am CT' in fee items vs 7:59am in dates.",
+  "ground": "buff",
+  "scenes": [
+    {
+      "type": "card",
+      "seconds": 2.5,
+      "kicker": "$65 till 23 Nov · can fill early",
+      "name": "ATX TV Festival Pitch Competition",
+      "for": "Legal residents of the 50 US states or DC",
+      "gets": "10 finalists pitch live",
+      "closes": "14 Dec",
+      "loop": "gets"
+    },
+    {
+      "type": "catch",
+      "seconds": 2.2,
+      "ground": "salmon",
+      "inFrom": "right",
+      "label": "Ask first",
+      "text": "Fee waiver or student discount? Ask by Mon 16 Nov.",
+      "note": "Finalists pay their own travel"
+    }
+  ]
+}

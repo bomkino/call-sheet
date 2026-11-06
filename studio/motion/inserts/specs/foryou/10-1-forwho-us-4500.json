@@ -1,0 +1,18 @@
+{
+  "reel": "foryou 10 · $4,500, US · CFA x IMGN Grant",
+  "note": "where.evidence: U.S.-based filmmakers (50 states + DC), 18 and older; one independent narrative or documentary project. Script hook says 'live in the US': data wording used.",
+  "ground": "blue",
+  "align": "center",
+  "scenes": [
+    {
+      "type": "forwho",
+      "seconds": 3.0,
+      "items": [
+        "you live in the 50 states or DC",
+        "you're 18 or over",
+        "your film needs $4,500"
+      ],
+      "loop": 2
+    }
+  ]
+}

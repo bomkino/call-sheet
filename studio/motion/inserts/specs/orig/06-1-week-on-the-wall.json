@@ -1,0 +1,43 @@
+{
+  "reel": "orig 06 · The week on the wall",
+  "note": "The Reel's hand-drawn week strip, names as on the wall (props). calls.json closes: FICCI66 festival films Sun 29 Nov, ComedyLab Mon 30 Nov, Sloan Thu 3 Dec, Green Narratives Fri 4 Dec; 1 and 2 Dec empty. Golden-hour ground. Loop on Mon 30 Nov, matching the drift-in on Manali's loop.",
+  "ground": "goldenrod",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "custom",
+      "name": "orig-06",
+      "seconds": 3.0,
+      "kicker": "Save this for your next deadline",
+      "markAt": 0.8,
+      "props": {
+        "label": "Four deadlines, six days",
+        "loop": 1,
+        "days": [
+          {
+            "day": "Sun 29 Nov",
+            "name": "FICCI 66"
+          },
+          {
+            "day": "Mon 30 Nov",
+            "name": "TFL ComedyLab"
+          },
+          {
+            "day": "Tue 1 Dec"
+          },
+          {
+            "day": "Wed 2 Dec"
+          },
+          {
+            "day": "Thu 3 Dec",
+            "name": "Sundance Sloan"
+          },
+          {
+            "day": "Fri 4 Dec",
+            "name": "TFL Green Narratives"
+          }
+        ]
+      }
+    }
+  ]
+}

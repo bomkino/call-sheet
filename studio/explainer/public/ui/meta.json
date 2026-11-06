@@ -1,0 +1,1137 @@
+{
+ "row-roy-w-dean-fall-grant-2026": {
+  "w": 358,
+  "h": 348,
+  "parts": {
+   "save": {
+    "x": 314,
+    "y": 18,
+    "w": 44,
+    "h": 44
+   },
+   "title": {
+    "x": 78,
+    "y": 18,
+    "w": 220,
+    "h": 44.8
+   },
+   "date": {
+    "x": 0,
+    "y": 18,
+    "w": 25.1,
+    "h": 45.1
+   },
+   "left": {
+    "x": 0,
+    "y": 71.1,
+    "w": 62,
+    "h": 22
+   },
+   "fee": {
+    "x": 149.9,
+    "y": 308.8,
+    "w": 47.3,
+    "h": 17
+   },
+   "who": {
+    "x": 78,
+    "y": 193,
+    "w": 280,
+    "h": 39.8
+   },
+   "get": {
+    "x": 78,
+    "y": 255.1,
+    "w": 280,
+    "h": 39.8
+   },
+   "newb": {
+    "x": -16,
+    "y": -323.5,
+    "w": 0,
+    "h": 0
+   }
+  }
+ },
+ "row-cph-forum": {
+  "w": 358,
+  "h": 310,
+  "parts": {
+   "save": {
+    "x": 314,
+    "y": 18,
+    "w": 44,
+    "h": 44
+   },
+   "title": {
+    "x": 78,
+    "y": 18,
+    "w": 220,
+    "h": 22.4
+   },
+   "date": {
+    "x": 0,
+    "y": 18,
+    "w": 20.9,
+    "h": 45.1
+   },
+   "left": {
+    "x": 0,
+    "y": 71.1,
+    "w": 62,
+    "h": 22
+   },
+   "fee": {
+    "x": 149.9,
+    "y": 271.1,
+    "w": 53.3,
+    "h": 17
+   },
+   "who": {
+    "x": 78,
+    "y": 135.4,
+    "w": 280,
+    "h": 39.8
+   },
+   "get": {
+    "x": 78,
+    "y": 197.4,
+    "w": 280,
+    "h": 59.6
+   },
+   "newb": {
+    "x": -16,
+    "y": -342.8,
+    "w": 0,
+    "h": 0
+   }
+  }
+ },
+ "row-sundance-merata-mita-fellowship-2027": {
+  "w": 358,
+  "h": 359,
+  "parts": {
+   "save": {
+    "x": 314,
+    "y": 18,
+    "w": 44,
+    "h": 44
+   },
+   "title": {
+    "x": 78,
+    "y": 18,
+    "w": 220,
+    "h": 44.8
+   },
+   "date": {
+    "x": 0,
+    "y": 18,
+    "w": 20.9,
+    "h": 45.1
+   },
+   "left": {
+    "x": 0,
+    "y": 71.1,
+    "w": 62,
+    "h": 22
+   },
+   "fee": {
+    "x": 149.9,
+    "y": 319.3,
+    "w": 80,
+    "h": 17
+   },
+   "who": {
+    "x": 78,
+    "y": 203.6,
+    "w": 280,
+    "h": 39.8
+   },
+   "get": {
+    "x": 78,
+    "y": 265.6,
+    "w": 280,
+    "h": 39.8
+   },
+   "newb": {
+    "x": -16,
+    "y": -96.1,
+    "w": 0,
+    "h": 0
+   }
+  }
+ },
+ "row-torinofilmlab-featurelab": {
+  "w": 358,
+  "h": 341,
+  "parts": {
+   "save": {
+    "x": 314,
+    "y": 18,
+    "w": 44,
+    "h": 44
+   },
+   "title": {
+    "x": 78,
+    "y": 18,
+    "w": 220,
+    "h": 22.4
+   },
+   "date": {
+    "x": 0,
+    "y": 18,
+    "w": 20.9,
+    "h": 45.1
+   },
+   "left": {
+    "x": 0,
+    "y": 71.1,
+    "w": 62,
+    "h": 22
+   },
+   "fee": {
+    "x": 149.9,
+    "y": 301.8,
+    "w": 87.8,
+    "h": 17
+   },
+   "who": {
+    "x": 78,
+    "y": 166.1,
+    "w": 280,
+    "h": 39.8
+   },
+   "get": {
+    "x": 78,
+    "y": 228.2,
+    "w": 280,
+    "h": 59.6
+   },
+   "newb": {
+    "x": -16,
+    "y": -559.2,
+    "w": 0,
+    "h": 0
+   }
+  }
+ },
+ "row-doc-edge-pitch": {
+  "w": 358,
+  "h": 370,
+  "parts": {
+   "save": {
+    "x": 314,
+    "y": 18,
+    "w": 44,
+    "h": 44
+   },
+   "title": {
+    "x": 78,
+    "y": 18,
+    "w": 220,
+    "h": 22.4
+   },
+   "date": {
+    "x": 0,
+    "y": 18,
+    "w": 36.5,
+    "h": 45.1
+   },
+   "left": {
+    "x": 0,
+    "y": 71.1,
+    "w": 62,
+    "h": 22
+   },
+   "fee": {
+    "x": 149.9,
+    "y": 331.1,
+    "w": 82.8,
+    "h": 17
+   },
+   "who": {
+    "x": 78,
+    "y": 215.3,
+    "w": 280,
+    "h": 39.8
+   },
+   "get": {
+    "x": 78,
+    "y": 277.3,
+    "w": 280,
+    "h": 39.8
+   },
+   "newb": {
+    "x": -16,
+    "y": -313.2,
+    "w": 0,
+    "h": 0
+   }
+  }
+ },
+ "making-0": {
+  "w": 358,
+  "h": 104,
+  "parts": {
+   "doc": {
+    "x": 138.4,
+    "y": 16.3,
+    "w": 102.6,
+    "h": 40
+   }
+  }
+ },
+ "place-0": {
+  "w": 358,
+  "h": 118,
+  "parts": {
+   "field": {
+    "x": 0,
+    "y": 16.3,
+    "w": 358,
+    "h": 54
+   }
+  }
+ },
+ "only-0": {
+  "w": 358,
+  "h": 56,
+  "parts": {
+   "open": {
+    "x": 0,
+    "y": 16.3,
+    "w": 81.7,
+    "h": 40
+   }
+  }
+ },
+ "see-0": {
+  "w": 422,
+  "h": 111,
+  "parts": {
+   "button": {
+    "x": 32,
+    "y": 29,
+    "w": 286,
+    "h": 54
+   }
+  }
+ },
+ "place-1": {
+  "w": 358,
+  "h": 118,
+  "parts": {
+   "field": {
+    "x": 0,
+    "y": 16.3,
+    "w": 358,
+    "h": 54
+   }
+  }
+ },
+ "see-1": {
+  "w": 422,
+  "h": 163,
+  "parts": {
+   "button": {
+    "x": 32,
+    "y": 29,
+    "w": 286,
+    "h": 54
+   }
+  }
+ },
+ "making-1": {
+  "w": 358,
+  "h": 104,
+  "parts": {
+   "doc": {
+    "x": 138.4,
+    "y": 16.3,
+    "w": 117.6,
+    "h": 40
+   }
+  }
+ },
+ "see-2": {
+  "w": 422,
+  "h": 163,
+  "parts": {
+   "button": {
+    "x": 32,
+    "y": 29,
+    "w": 286,
+    "h": 54
+   }
+  }
+ },
+ "us-doc-rows": [
+  {
+   "slug": "film-independent-x-humana-foundation-shorts",
+   "title": "Film Independent x Humana Foundation Shorts",
+   "closes": "2026-10-26"
+  },
+  {
+   "slug": "ficg42-festival-films",
+   "title": "FICG42 — Festival films",
+   "closes": "2026-10-31"
+  },
+  {
+   "slug": "roy-w-dean-fall-grant-2026",
+   "title": "Roy W. Dean Fall Grant 2026",
+   "closes": "2026-10-31"
+  },
+  {
+   "slug": "big-sky-pitch-2027",
+   "title": "Big Sky Pitch 2027",
+   "closes": "2026-11-01"
+  },
+  {
+   "slug": "sundance-merata-mita-fellowship-2027",
+   "title": "Sundance — Merata Mita Fellowship 2027",
+   "closes": "2026-11-03"
+  },
+  {
+   "slug": "cph-forum",
+   "title": "CPH:FORUM",
+   "closes": "2026-11-03"
+  },
+  {
+   "slug": "torinofilmlab-featurelab",
+   "title": "TorinoFilmLab FeatureLab",
+   "closes": "2026-11-05"
+  },
+  {
+   "slug": "the-louies-2027-documentary-feature",
+   "title": "The Louies 2027 — Documentary Feature",
+   "closes": "2026-11-06"
+  },
+  {
+   "slug": "the-louies-2027-documentary-feature-finishing",
+   "title": "The Louies 2027 — Documentary Feature Finishing",
+   "closes": "2026-11-06"
+  },
+  {
+   "slug": "the-louies-2027-documentary-short",
+   "title": "The Louies 2027 — Documentary Short",
+   "closes": "2026-11-06"
+  },
+  {
+   "slug": "aidc-the-factory",
+   "title": "AIDC — The FACTory",
+   "closes": "2026-11-08"
+  },
+  {
+   "slug": "sundance-graton-fellowship-2027",
+   "title": "Sundance — Graton Fellowship 2027",
+   "closes": "2026-11-16"
+  },
+  {
+   "slug": "queens-arts-fund-new-work-grant-2027",
+   "title": "Queens Arts Fund — New Work Grant 2027",
+   "closes": "2026-11-17"
+  },
+  {
+   "slug": "eurodoc-annual-programme",
+   "title": "EURODOC — Annual Programme",
+   "closes": "2026-11-23"
+  },
+  {
+   "slug": "jerome-new-york-city-film-production-2027",
+   "title": "Jerome New York City Film Production 2027",
+   "closes": "2026-11-24"
+  },
+  {
+   "slug": "jerome-minnesota-film-production-2027",
+   "title": "Jerome Minnesota Film Production 2027",
+   "closes": "2026-11-24"
+  },
+  {
+   "slug": "jerome-minnesota-filmmaker-mentorship-2027",
+   "title": "Jerome Minnesota Filmmaker Mentorship 2027",
+   "closes": "2026-11-24"
+  },
+  {
+   "slug": "ficci66-festival-films",
+   "title": "FICCI66 — Festival films",
+   "closes": "2026-11-29"
+  },
+  {
+   "slug": "carole-dorothy-joyce-student-grant-2026",
+   "title": "Carole Dorothy Joyce Student Grant 2026",
+   "closes": "2026-11-30"
+  },
+  {
+   "slug": "hot-docs-deal-maker",
+   "title": "Hot Docs Deal Maker",
+   "closes": "2026-12-10"
+  },
+  {
+   "slug": "hot-docs-forum",
+   "title": "Hot Docs Forum",
+   "closes": "2026-12-10"
+  },
+  {
+   "slug": "visions-du-reel-vdrpitching",
+   "title": "Visions du Réel — VdR–Pitching",
+   "closes": "2026-12-15"
+  },
+  {
+   "slug": "puffin-foundation-2027-film-video",
+   "title": "Puffin Foundation 2027 — Film / Video",
+   "closes": "2026-12-16"
+  },
+  {
+   "slug": "doc-edge-pitch",
+   "title": "Doc Edge Pitch",
+   "closes": "2026-12-20"
+  },
+  {
+   "slug": "cfa-x-imgn-grant-2026",
+   "title": "CFA x IMGN Grant 2026",
+   "closes": "2026-12-31"
+  },
+  {
+   "slug": "hot-docs-festival-films",
+   "title": "Hot Docs — Festival films",
+   "closes": "2027-01-04"
+  },
+  {
+   "slug": "docsbarcelona-pro",
+   "title": "DocsBarcelona Pro",
+   "closes": "2027-01-20"
+  },
+  {
+   "slug": "the-whickers-film-and-tv-funding-award",
+   "title": "The Whickers — Film & TV Funding Award",
+   "closes": "2027-01-22"
+  },
+  {
+   "slug": "doc-edge-festival-films",
+   "title": "Doc Edge — Festival films",
+   "closes": "2027-01-31"
+  },
+  {
+   "slug": "tribeca-works-in-progress-2027",
+   "title": "Tribeca — Works in Progress 2027",
+   "closes": "2027-02-24"
+  },
+  {
+   "slug": "perspective-fund-documentary-inquiry",
+   "title": "Perspective Fund — Documentary Inquiry",
+   "closes": ""
+  },
+  {
+   "slug": "hot-docsslaight-family-fund",
+   "title": "Hot Docs–Slaight Family Fund",
+   "closes": "2025-12-11"
+  },
+  {
+   "slug": "psbt-doc-commune-2026",
+   "title": "PSBT — Doc_Commune 2026",
+   "closes": "2026-01-20"
+  },
+  {
+   "slug": "atf-other-2026-pitches-not-mediacorp",
+   "title": "ATF — other 2026 pitches (not Mediacorp)",
+   "closes": "2026-09-29"
+  },
+  {
+   "slug": "nfdc-waves-film-bazaar-viewing-room-2026",
+   "title": "NFDC WAVES Film Bazaar — Viewing Room 2026",
+   "closes": "2026-10-02"
+  },
+  {
+   "slug": "vimeo-short-film-grant-2026",
+   "title": "Vimeo Short Film Grant 2026",
+   "closes": "2026-10-16"
+  },
+  {
+   "slug": "female-eye-live-pitch",
+   "title": "Female Eye — Live Pitch",
+   "closes": "2026-10-16"
+  },
+  {
+   "slug": "red-sea-film-festival-souk-2026",
+   "title": "Red Sea Film Festival / Souk 2026",
+   "closes": ""
+  }
+ ],
+ "place-label": "United States",
+ "only-1": {
+  "w": 358,
+  "h": 56,
+  "parts": {
+   "open": {
+    "x": 0,
+    "y": 16.3,
+    "w": 96.7,
+    "h": 40
+   }
+  }
+ },
+ "see-3": {
+  "w": 422,
+  "h": 163,
+  "parts": {
+   "button": {
+    "x": 32,
+    "y": 29,
+    "w": 286,
+    "h": 54
+   }
+  }
+ },
+ "see-states": [
+  "See 157 opportunities ↓",
+  "See 73 opportunities ↓",
+  "See 31 opportunities ↓",
+  "See 24 opportunities ↓"
+ ],
+ "row-roy-w-dean-fall-grant-2026-saved": {
+  "w": 358,
+  "h": 348,
+  "parts": {
+   "save": {
+    "x": 314,
+    "y": 18,
+    "w": 44,
+    "h": 44
+   },
+   "title": {
+    "x": 78,
+    "y": 18,
+    "w": 220,
+    "h": 44.8
+   },
+   "date": {
+    "x": 0,
+    "y": 18,
+    "w": 25.1,
+    "h": 45.1
+   },
+   "left": {
+    "x": 0,
+    "y": 71.1,
+    "w": 62,
+    "h": 22
+   },
+   "fee": {
+    "x": 149.9,
+    "y": 308.8,
+    "w": 47.3,
+    "h": 17
+   },
+   "who": {
+    "x": 78,
+    "y": 193,
+    "w": 280,
+    "h": 39.8
+   },
+   "get": {
+    "x": 78,
+    "y": 255.1,
+    "w": 280,
+    "h": 39.8
+   },
+   "newb": {
+    "x": -16,
+    "y": -440,
+    "w": 0,
+    "h": 0
+   }
+  }
+ },
+ "row-cph-forum-saved": {
+  "w": 358,
+  "h": 310,
+  "parts": {
+   "save": {
+    "x": 314,
+    "y": 18,
+    "w": 44,
+    "h": 44
+   },
+   "title": {
+    "x": 78,
+    "y": 18,
+    "w": 220,
+    "h": 22.4
+   },
+   "date": {
+    "x": 0,
+    "y": 18,
+    "w": 20.9,
+    "h": 45.1
+   },
+   "left": {
+    "x": 0,
+    "y": 71.1,
+    "w": 62,
+    "h": 22
+   },
+   "fee": {
+    "x": 149.9,
+    "y": 271.1,
+    "w": 53.3,
+    "h": 17
+   },
+   "who": {
+    "x": 78,
+    "y": 135.4,
+    "w": 280,
+    "h": 39.8
+   },
+   "get": {
+    "x": 78,
+    "y": 197.4,
+    "w": 280,
+    "h": 59.6
+   },
+   "newb": {
+    "x": -16,
+    "y": -401.6,
+    "w": 0,
+    "h": 0
+   }
+  }
+ },
+ "row-doc-edge-pitch-saved": {
+  "w": 358,
+  "h": 370,
+  "parts": {
+   "save": {
+    "x": 314,
+    "y": 18,
+    "w": 44,
+    "h": 44
+   },
+   "title": {
+    "x": 78,
+    "y": 18,
+    "w": 220,
+    "h": 22.4
+   },
+   "date": {
+    "x": 0,
+    "y": 18,
+    "w": 36.5,
+    "h": 45.1
+   },
+   "left": {
+    "x": 0,
+    "y": 71.1,
+    "w": 62,
+    "h": 22
+   },
+   "fee": {
+    "x": 149.9,
+    "y": 331.1,
+    "w": 82.8,
+    "h": 17
+   },
+   "who": {
+    "x": 78,
+    "y": 215.3,
+    "w": 280,
+    "h": 39.8
+   },
+   "get": {
+    "x": 78,
+    "y": 277.3,
+    "w": 280,
+    "h": 39.8
+   },
+   "newb": {
+    "x": -16,
+    "y": -402.2,
+    "w": 0,
+    "h": 0
+   }
+  }
+ },
+ "sheetbar": {
+  "w": 286,
+  "h": 60,
+  "text": "3 savedNext closes in 14 daysMy shortlist"
+ },
+ "sheet": {
+  "w": 390,
+  "h": 907,
+  "parts": {
+   "actions": {
+    "x": 20,
+    "y": 614.6,
+    "w": 350,
+    "h": 130.3
+   },
+   "ics": {
+    "x": 20,
+    "y": 633.6,
+    "w": 170,
+    "h": 50.6
+   },
+   "print": {
+    "x": 200,
+    "y": 633.6,
+    "w": 170,
+    "h": 50.6
+   },
+   "share": {
+    "x": 20,
+    "y": 694.3,
+    "w": 170,
+    "h": 50.6
+   }
+  }
+ },
+ "sheet-actions": {
+  "w": 350,
+  "h": 130,
+  "parts": {
+   "ics": {
+    "x": 0,
+    "y": 19,
+    "w": 170,
+    "h": 50.6
+   },
+   "print": {
+    "x": 180,
+    "y": 19,
+    "w": 170,
+    "h": 50.6
+   },
+   "share": {
+    "x": 0,
+    "y": 79.6,
+    "w": 170,
+    "h": 50.6
+   }
+  }
+ },
+ "row-doc-edge-pitch-new": {
+  "w": 358,
+  "h": 370,
+  "parts": {
+   "save": {
+    "x": 314,
+    "y": 18,
+    "w": 44,
+    "h": 44
+   },
+   "title": {
+    "x": 78,
+    "y": 18,
+    "w": 220,
+    "h": 22.4
+   },
+   "date": {
+    "x": 0,
+    "y": 18,
+    "w": 36.5,
+    "h": 45.1
+   },
+   "left": {
+    "x": 0,
+    "y": 71.1,
+    "w": 62,
+    "h": 22
+   },
+   "fee": {
+    "x": 149.9,
+    "y": 331.1,
+    "w": 82.8,
+    "h": 17
+   },
+   "who": {
+    "x": 78,
+    "y": 215.3,
+    "w": 280,
+    "h": 39.8
+   },
+   "get": {
+    "x": 78,
+    "y": 277.3,
+    "w": 280,
+    "h": 39.8
+   },
+   "newb": {
+    "x": 78,
+    "y": 109,
+    "w": 37.6,
+    "h": 24
+   }
+  }
+ },
+ "row-torinofilmlab-featurelab-new": {
+  "w": 358,
+  "h": 371,
+  "parts": {
+   "save": {
+    "x": 314,
+    "y": 18,
+    "w": 44,
+    "h": 44
+   },
+   "title": {
+    "x": 78,
+    "y": 18,
+    "w": 220,
+    "h": 22.4
+   },
+   "date": {
+    "x": 0,
+    "y": 18,
+    "w": 20.9,
+    "h": 45.1
+   },
+   "left": {
+    "x": 0,
+    "y": 71.1,
+    "w": 62,
+    "h": 22
+   },
+   "fee": {
+    "x": 149.9,
+    "y": 331.8,
+    "w": 87.8,
+    "h": 17
+   },
+   "who": {
+    "x": 78,
+    "y": 196.1,
+    "w": 280,
+    "h": 39.8
+   },
+   "get": {
+    "x": 78,
+    "y": 258.2,
+    "w": 280,
+    "h": 59.6
+   },
+   "newb": {
+    "x": 78,
+    "y": 119.8,
+    "w": 37.6,
+    "h": 24
+   }
+  }
+ },
+ "welcome": {
+  "w": 359,
+  "h": 132,
+  "parts": {}
+ },
+ "perfect-open": {
+  "w": 358,
+  "h": 235,
+  "parts": {
+   "title": {
+    "x": 78,
+    "y": 17,
+    "w": 138.7,
+    "h": 23
+   },
+   "date": {
+    "x": 0,
+    "y": 18,
+    "w": 25.7,
+    "h": 45.1
+   },
+   "left": {
+    "x": 0,
+    "y": 71.1,
+    "w": 6.5,
+    "h": 11
+   }
+  }
+ },
+ "perfect-closed": {
+  "w": 358,
+  "h": 235,
+  "parts": {
+   "title": {
+    "x": 78,
+    "y": 17,
+    "w": 138.7,
+    "h": 23
+   },
+   "date": {
+    "x": 0,
+    "y": 18,
+    "w": 25.7,
+    "h": 45.1
+   },
+   "left": {
+    "x": 0,
+    "y": 71.1,
+    "w": 62,
+    "h": 22
+   }
+  }
+ },
+ "countdown": {
+  "w": 358,
+  "h": 284,
+  "parts": {
+   "big": {
+    "x": 28,
+    "y": 19,
+    "w": 307,
+    "h": 33.7
+   },
+   "when": {
+    "x": 28,
+    "y": 58.7,
+    "w": 307,
+    "h": 51.7
+   },
+   "local": {
+    "x": 28,
+    "y": 116.3,
+    "w": 307,
+    "h": 39.8
+   },
+   "time": null,
+   "there": {
+    "x": 238.3,
+    "y": 60.7,
+    "w": 42.3,
+    "h": 20
+   }
+  }
+ },
+ "countdownText": "Closes in 64 days Sunday 20 December 2026, 23:59 New Zealand time That’s Sunday 20 December, 05:59 where you are (Eastern Time (US)). Rechecked on the official page, 17 Oct 2026. Deadlines confirmed: early bird 13 November, regular 4 December and late 20 December, each at 11.59pm New Zealand time, with notifications on 11 January.",
+ "bring-0": {
+  "w": 358,
+  "h": 362,
+  "parts": {
+   "box0": {
+    "x": 2,
+    "y": 140,
+    "w": 17,
+    "h": 17
+   },
+   "box1": {
+    "x": 2,
+    "y": 234.6,
+    "w": 17,
+    "h": 17
+   },
+   "item0": {
+    "x": 0,
+    "y": 125,
+    "w": 358,
+    "h": 93.6
+   },
+   "item1": {
+    "x": 0,
+    "y": 219.6,
+    "w": 358,
+    "h": 113.5
+   }
+  }
+ },
+ "bring-1": {
+  "w": 358,
+  "h": 362,
+  "parts": {
+   "box0": {
+    "x": 2,
+    "y": 140,
+    "w": 17,
+    "h": 17
+   },
+   "box1": {
+    "x": 2,
+    "y": 234.6,
+    "w": 17,
+    "h": 17
+   },
+   "item0": {
+    "x": 0,
+    "y": 125,
+    "w": 358,
+    "h": 93.6
+   },
+   "item1": {
+    "x": 0,
+    "y": 219.6,
+    "w": 358,
+    "h": 113.5
+   }
+  }
+ },
+ "bring-2": {
+  "w": 358,
+  "h": 362,
+  "parts": {
+   "box0": {
+    "x": 2,
+    "y": 140,
+    "w": 17,
+    "h": 17
+   },
+   "box1": {
+    "x": 2,
+    "y": 234.6,
+    "w": 17,
+    "h": 17
+   },
+   "item0": {
+    "x": 0,
+    "y": 125,
+    "w": 358,
+    "h": 93.6
+   },
+   "item1": {
+    "x": 0,
+    "y": 219.6,
+    "w": 358,
+    "h": 113.5
+   }
+  }
+ },
+ "sources": {
+  "w": 358,
+  "h": 273,
+  "parts": {}
+ },
+ "countdown-syd": {
+  "w": 358,
+  "h": 245,
+  "parts": {
+   "big": {
+    "x": 28,
+    "y": 19,
+    "w": 307,
+    "h": 33.7
+   },
+   "when": {
+    "x": 28,
+    "y": 58.7,
+    "w": 307,
+    "h": 51.7
+   },
+   "local": {
+    "x": 28,
+    "y": 116.3,
+    "w": 307,
+    "h": 39.8
+   },
+   "time": {
+    "x": 191.9,
+    "y": 117.3,
+    "w": 37.6,
+    "h": 17
+   },
+   "there": {
+    "x": 241.6,
+    "y": 60.7,
+    "w": 41.3,
+    "h": 20
+   }
+  }
+ },
+ "countdownSydText": "Closes in 19 days Thursday 5 November 2026, 16:00 Central European Time That’s Friday 6 November, 02:00 where you are (Sydney time). Rechecked on the official page, 17 Oct 2026. Deadline confirmed: 5 November 2026, 4.00 pm CET."
+}

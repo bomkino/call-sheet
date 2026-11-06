@@ -1,0 +1,22 @@
+{
+  "reel": "trial 18 · What's the catch? · product, no opportunity named",
+  "note": "Site behaviour from the script and captions.md: free, no account, no email, saves stay on the device. The comment itself is not shown: it must be a real one, shot in-app.",
+  "ground": "white",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "forwho",
+      "seconds": 4,
+      "hook": "The catch?",
+      "items": [
+        "Free",
+        "No account. No email.",
+        "Saves stay on your device",
+        "The writing's still yours"
+      ],
+      "mark": "loop",
+      "loop": 3,
+      "markAt": 2.9
+    }
+  ]
+}

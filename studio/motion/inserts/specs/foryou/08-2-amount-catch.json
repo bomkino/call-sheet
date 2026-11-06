@@ -1,0 +1,25 @@
+{
+  "reel": "foryou 08 · 18 to 25 · Michael Collyer Memorial Fellowship",
+  "note": "money: $10,000 to write a NEW original feature + a year of mentoring; Black List hosting and evaluation required unless fee waiver, price not published; opt in by 8 Jan 2027, no time (calls.json).",
+  "ground": "goldenrod",
+  "align": "center",
+  "scenes": [
+    {
+      "type": "amount",
+      "seconds": 2.4,
+      "label": "+ a year with a mentor",
+      "amount": "$10,000",
+      "name": "Michael Collyer Memorial Fellowship",
+      "line": "Your script gets you in. The money's for the next one."
+    },
+    {
+      "type": "catch",
+      "seconds": 2.2,
+      "ground": "blue",
+      "align": "left",
+      "label": "Before you opt in",
+      "text": "Paid Black List hosting + evaluation, unless waived.",
+      "note": "Opt in by Fri 8 Jan"
+    }
+  ]
+}

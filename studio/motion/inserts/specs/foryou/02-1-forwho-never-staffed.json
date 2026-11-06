@@ -1,0 +1,23 @@
+{
+  "reel": "foryou 02 · Never been staffed · ATX TV Festival Pitch Competition",
+  "note": "where.evidence: legal residents of the 50 US states or DC, age of majority; not PR/territories; not writers staffed or paid to develop by a studio, network or production company. Script hook says 'in the US': data wording used.",
+  "ground": "blue",
+  "scenes": [
+    {
+      "type": "forwho",
+      "seconds": 3.0,
+      "items": [
+        "you write TV",
+        "you live in the 50 states or DC",
+        "never been staffed"
+      ],
+      "loop": 2,
+      "motif": {
+        "kind": "sticky",
+        "value": "10 pp",
+        "place": "above",
+        "tint": "yellow"
+      }
+    }
+  ]
+}

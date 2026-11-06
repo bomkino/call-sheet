@@ -1,0 +1,30 @@
+{
+  "name": "remotion-starter-kit",
+  "version": "1.0.0",
+  "description": "pitch.dog's Remotion starter: a beat-grid timeline that drives picture and score, colour-true motion blur, and a film-print finish, in Instagram's three sizes",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@pitchdog/type-system": "github:bomkino/pitchdog-type-system#v3.0.0",
+    "@remotion/cli": "4.0.532",
+    "@remotion/media": "4.0.532",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.532"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.532",
+    "@types/react": "19.2.7",
+    "@types/web": "0.0.166",
+    "eslint": "9.39.5",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "dev": "remotion studio",
+    "score": "python3 scripts/make_score.py",
+    "render": "node scripts/render.mjs",
+    "render:cine": "node scripts/render.mjs --cine",
+    "lint": "eslint src && tsc"
+  }
+}

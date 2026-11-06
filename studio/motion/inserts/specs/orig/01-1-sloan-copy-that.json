@@ -1,0 +1,22 @@
+{
+  "reel": "orig 01 · Kettle's rolling · Sundance Sloan Episodic Science Grant",
+  "note": "calls.json sundance-sloan-episodic-science-grant-2027: closes 2026-12-03 (Thu), no time; USD 17,000 grant. Cut over 15.0-18.0 under 'Sundance. Third of December.'; the loop lands on 'Third of December'. Kettle motif from the Reel's kitchen.",
+  "ground": "yellow",
+  "align": "center",
+  "scenes": [
+    {
+      "type": "deadline",
+      "seconds": 3.0,
+      "date": "3 Dec",
+      "weekday": "Thu",
+      "note": "USD 17,000 grant",
+      "name": "Sundance Sloan Episodic Science Grant",
+      "motif": {
+        "kind": "kettle",
+        "place": "above",
+        "tint": "blue"
+      },
+      "markAt": 1.0
+    }
+  ]
+}

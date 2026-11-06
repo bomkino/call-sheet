@@ -1,0 +1,22 @@
+{
+  "reel": "foryou 06 · 250 characters · Visions du Réel Pitching",
+  "note": "where.evidence: feature length over 60 min; projects from all over the world; hybrid eligible; directors must have completed at least one short; no TV series (calls.json who).",
+  "ground": "buff",
+  "scenes": [
+    {
+      "type": "forwho",
+      "seconds": 3.0,
+      "items": [
+        "you've made a short",
+        "your next doc is a feature",
+        "nonfiction or hybrid, over 60 min"
+      ],
+      "loop": 0,
+      "motif": {
+        "kind": "filmstrip",
+        "place": "above",
+        "tint": "pink"
+      }
+    }
+  ]
+}

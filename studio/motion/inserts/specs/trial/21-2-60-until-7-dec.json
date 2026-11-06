@@ -1,0 +1,23 @@
+{
+  "reel": "trial 21 · No name on it · Raindance Script Competition",
+  "note": "Raindance feature: £60 until 7 Dec, £75 until 18 Jan, £90 until 8 Mar, 11:59pm UK (calls.json). After 23 Nov swap per the script.",
+  "ground": "buff",
+  "align": "center",
+  "inFrom": "down",
+  "scenes": [
+    {
+      "type": "amount",
+      "seconds": 3.5,
+      "label": "Feature, until 7 Dec",
+      "amount": "£60",
+      "name": "Raindance Script Competition",
+      "line": "Then £75 until 18 Jan. £90 until 8 Mar.",
+      "motif": {
+        "kind": "tag",
+        "value": "£60",
+        "place": "above"
+      },
+      "markAt": 1.7
+    }
+  ]
+}

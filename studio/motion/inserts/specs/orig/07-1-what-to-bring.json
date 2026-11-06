@@ -1,0 +1,23 @@
+{
+  "reel": "orig 07 · Packing for a lab · TorinoFilmLab Green Narratives",
+  "note": "calls.json torinofilmlab-green-narratives bring: 2-page synopsis, 15-20-page treatment, 2-page motivation, CV/work samples, visual material and a 2-minute personal video (last two merged on one line); closes 4 Dec 23:59 Europe/Paris. The list drops down into the bag.",
+  "ground": "buff",
+  "align": "left",
+  "outTo": "down",
+  "scenes": [
+    {
+      "type": "send",
+      "seconds": 3.0,
+      "kicker": "Closes 4 Dec, 23:59 Paris time",
+      "hook": "What to bring",
+      "items": [
+        "2-page synopsis",
+        "15–20-page treatment",
+        "2-page motivation",
+        "CVs and work samples",
+        "Visual material + 2-min video"
+      ],
+      "name": "TorinoFilmLab Green Narratives"
+    }
+  ]
+}

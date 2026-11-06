@@ -1,0 +1,23 @@
+{
+  "reel": "trial 13 · Under $25,000 (US) · CineStory TV Retreat & Fellowship",
+  "note": "CineStory: writers worldwide 18+ with writing earnings of $25,000 or less in five years; Fellow USD 3,000 + 12-month mentorship; closes 14 Dec (calls.json).",
+  "ground": "pink",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "forwho",
+      "seconds": 4.5,
+      "hook": "Under $25,000? Good.",
+      "items": [
+        "You write TV",
+        "You're 18 or over",
+        "$25,000 or less from writing",
+        "…over the last five years"
+      ],
+      "mark": "loop",
+      "loop": 2,
+      "markAt": 2.8,
+      "name": "CineStory TV Fellowship · closes 14 Dec"
+    }
+  ]
+}

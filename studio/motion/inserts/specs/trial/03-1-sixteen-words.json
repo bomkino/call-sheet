@@ -1,0 +1,24 @@
+{
+  "reel": "trial 03 · Sixteen words · no opportunity named",
+  "note": "From the script: the example sentence is not a real fund's rule. No red loop here: the Reel's own red loop round 'domiciled' (6.0-9.5) is its one red mark.",
+  "ground": "yellow",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "line",
+      "seconds": 1.9,
+      "text": "Sixteen words.",
+      "sub": "“…a majority-held entity domiciled…”",
+      "motif": {
+        "kind": "magnifier",
+        "place": "above"
+      }
+    },
+    {
+      "type": "line",
+      "seconds": 2.6,
+      "kicker": "Translation",
+      "text": "Where's your\ncompany based?"
+    }
+  ]
+}

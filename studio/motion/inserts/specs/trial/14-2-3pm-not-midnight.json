@@ -1,0 +1,17 @@
+{
+  "reel": "trial 14 · None of them British (UK) · TorinoFilmLab SeriesLab",
+  "note": "SeriesLab closes 2026-12-16 16:00 Europe/Paris = 15:00 Europe/London, Wednesday, no extensions (calls.json).",
+  "ground": "green",
+  "align": "center",
+  "scenes": [
+    {
+      "type": "deadline",
+      "seconds": 3.5,
+      "date": "16 Dec",
+      "weekday": "Wed",
+      "note": "3pm UK. Not midnight.",
+      "name": "TorinoFilmLab SeriesLab",
+      "markAt": 1.6
+    }
+  ]
+}

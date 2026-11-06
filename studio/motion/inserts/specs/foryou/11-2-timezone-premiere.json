@@ -1,0 +1,42 @@
+{
+  "reel": "foryou 11 · 2:59am in LA · Doc Edge Pitch",
+  "note": "Final deadline 20 Dec 2026 23:59 Pacific/Auckland (NZDT, UTC+13) = 10:59 UTC = 10:59am London, 2:59am Los Angeles, same Sunday. Terms: submission agrees to offer Doc Edge the NZ premiere unless otherwise agreed in writing (calls.json).",
+  "ground": "paper",
+  "scenes": [
+    {
+      "type": "timezone",
+      "seconds": 3.0,
+      "label": "Closes Sun 20 Dec",
+      "motif": {
+        "kind": "clock",
+        "value": "2:59",
+        "place": "above",
+        "tint": "blue"
+      },
+      "cities": [
+        {
+          "city": "Auckland",
+          "time": "11:59pm"
+        },
+        {
+          "city": "London",
+          "time": "10:59am"
+        },
+        {
+          "city": "LA",
+          "time": "2:59am"
+        }
+      ],
+      "loop": 2
+    },
+    {
+      "type": "catch",
+      "seconds": 2.0,
+      "ground": "pink",
+      "transition": "page",
+      "label": "The catch",
+      "text": "Entering offers them your film's New Zealand premiere.",
+      "note": "Unless agreed otherwise in writing"
+    }
+  ]
+}

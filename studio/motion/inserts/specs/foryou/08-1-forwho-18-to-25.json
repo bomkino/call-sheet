@@ -1,0 +1,18 @@
+{
+  "reel": "foryou 08 · 18 to 25 · Michael Collyer Memorial Fellowship",
+  "note": "where.evidence: US citizens and legal permanent residents only; aged 18-25, no older than 25 on 31 Dec 2026; completed original feature sample. Script hook says 'writing features in the US': data wording used.",
+  "ground": "pink",
+  "scenes": [
+    {
+      "type": "forwho",
+      "seconds": 3.5,
+      "kicker": "25 or younger on 31 Dec 2026",
+      "items": [
+        "you're 18 to 25",
+        "US citizen or permanent resident",
+        "you've finished a feature script"
+      ],
+      "loop": 0
+    }
+  ]
+}

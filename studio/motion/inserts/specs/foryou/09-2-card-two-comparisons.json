@@ -1,0 +1,26 @@
+{
+  "reel": "foryou 09 · Two comparisons, max · SeriesFest Pitch-A-Thon",
+  "note": "get: two-part virtual workshop, 5-minute live pitch, 7 minutes of feedback; deck ≤2 comparisons; $65 until 2 Dec, $85 until 5 Jan 2027 23:59 local; students less; no travel award verified (calls.json).",
+  "ground": "green",
+  "scenes": [
+    {
+      "type": "card",
+      "seconds": 2.5,
+      "kicker": "Max two comparisons. Choose well.",
+      "name": "SeriesFest Pitch-A-Thon",
+      "for": "Series creators anywhere, materials in English",
+      "gets": "5 min live, 7 of notes",
+      "closes": "5 Jan",
+      "loop": "gets"
+    },
+    {
+      "type": "catch",
+      "seconds": 2.0,
+      "ground": "salmon",
+      "inFrom": "left",
+      "label": "Your trip",
+      "text": "Travel to Denver isn't covered.",
+      "note": "$65 until 2 Dec, then $85"
+    }
+  ]
+}

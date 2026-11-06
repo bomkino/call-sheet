@@ -1,0 +1,17 @@
+{
+  "reel": "foryou 04 · Someone falling over · TorinoFilmLab ComedyLab",
+  "note": "where.evidence: experienced and emerging writer/directors or teams of writer and director from all over the world; individual or team of two (calls.json). Deadpan: no motif.",
+  "ground": "salmon",
+  "scenes": [
+    {
+      "type": "forwho",
+      "seconds": 3.0,
+      "items": [
+        "you're writing a comedy feature",
+        "from anywhere",
+        "alone, or as a team of two"
+      ],
+      "loop": 1
+    }
+  ]
+}

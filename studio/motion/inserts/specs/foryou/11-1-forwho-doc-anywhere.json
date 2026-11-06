@@ -1,0 +1,17 @@
+{
+  "reel": "foryou 11 · 2:59am in LA · Doc Edge Pitch",
+  "note": "who: rights-holders worldwide (18+) with a doc over 40 minutes or a factual series (calls.json).",
+  "ground": "buff",
+  "scenes": [
+    {
+      "type": "forwho",
+      "seconds": 3.0,
+      "items": [
+        "you're making a doc over 40 min",
+        "or a factual series",
+        "from anywhere, 18+"
+      ],
+      "loop": 2
+    }
+  ]
+}

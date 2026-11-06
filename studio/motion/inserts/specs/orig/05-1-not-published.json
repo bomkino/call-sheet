@@ -1,0 +1,20 @@
+{
+  "reel": "orig 05 · Three money lines · line one",
+  "note": "Site copy: a fee nobody has published says Not published, not free. Highlighter-yellow ground. Carries the 6.0s card ENTRY FEE: NOT PUBLISHED -> Unknown. Not free.",
+  "ground": "yellow",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "catch",
+      "seconds": 3.5,
+      "label": "Entry fee",
+      "text": "Not published.",
+      "note": "Unknown. Not free.",
+      "motif": {
+        "kind": "magnifier",
+        "place": "above",
+        "tint": "buff"
+      }
+    }
+  ]
+}

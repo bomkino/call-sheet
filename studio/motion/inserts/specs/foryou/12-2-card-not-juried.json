@@ -1,0 +1,31 @@
+{
+  "reel": "foryou 12 · What's still missing · SeriesFest Pilots in Progress",
+  "note": "get: rough-cut screening with audience feedback; bring cut + deck + one-sheet on missing elements; $45 until 2 Dec, $65 until 5 Jan 2027 23:59 local; caution: not juried (calls.json).",
+  "ground": "blue",
+  "scenes": [
+    {
+      "type": "card",
+      "seconds": 2.3,
+      "kicker": "Send a one-sheet on what's missing",
+      "name": "SeriesFest Pilots in Progress",
+      "for": "Series creators anywhere, 10–60-min rough cut",
+      "gets": "Your cut, shown to an audience",
+      "closes": "5 Jan",
+      "loop": "closes"
+    },
+    {
+      "type": "catch",
+      "seconds": 2.1,
+      "ground": "green",
+      "label": "Notes, not a prize",
+      "text": "The category isn't juried.",
+      "note": "$45 until 2 Dec, then $65",
+      "motif": {
+        "kind": "sticky",
+        "value": "VFX?",
+        "place": "above",
+        "tint": "yellow"
+      }
+    }
+  ]
+}

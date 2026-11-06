@@ -1,0 +1,22 @@
+{
+  "reel": "orig 05 · Three money lines · line three · TorinoFilmLab ComedyLab",
+  "note": "calls.json torinofilmlab-comedylab fee item: EUR 3,000 participation fee if selected with a project, plus VAT if due; closes 30 Nov. The envelope is the yes you budget for.",
+  "ground": "salmon",
+  "align": "center",
+  "inFrom": "right",
+  "scenes": [
+    {
+      "type": "amount",
+      "seconds": 3.5,
+      "label": "Fee if selected",
+      "amount": "€3,000",
+      "name": "TorinoFilmLab ComedyLab",
+      "line": "Plus VAT if due · closes 30 Nov",
+      "motif": {
+        "kind": "envelope",
+        "place": "above",
+        "tint": "white"
+      }
+    }
+  ]
+}

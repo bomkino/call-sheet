@@ -1,0 +1,33 @@
+{
+  "reel": "trial 05 · The empty box · The Whickers Film & TV Funding Award",
+  "note": "Whickers: £120,000; directors 18+ anywhere; first 50+ min doc as director; EP attached; free; opens 24 Nov (calls.json). Post before 24 Nov as written; from 24 Nov change the name line to 'Free to enter · closes 22 Jan'.",
+  "ground": "green",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "amount",
+      "seconds": 2.2,
+      "align": "center",
+      "loop": false,
+      "kicker": "Previous work: (empty). Good.",
+      "label": "For a first documentary",
+      "amount": "£120,000",
+      "name": "The Whickers Film & TV Funding Award"
+    },
+    {
+      "type": "forwho",
+      "seconds": 2.8,
+      "ground": "yellow",
+      "items": [
+        "Your first doc, 50+ minutes",
+        "Directors 18+, anywhere",
+        "An executive producer attached"
+      ],
+      "hook": "The empty box is the point.",
+      "mark": "loop",
+      "loop": 0,
+      "markAt": 1.3,
+      "name": "Free to enter · opens 24 Nov"
+    }
+  ]
+}

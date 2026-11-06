@@ -1,0 +1,23 @@
+{
+  "reel": "foryou 14 · Five straight minutes · Tribeca AT&T Untold Stories",
+  "note": "where.evidence: 18+, reside in the U.S. or Puerto Rico; current students not eligible; a screenwriter and/or director from, or with stories about, an underrepresented community. Custom scene: the data's exact words don't fit a 34-character forwho item. Script hook says 'in the US': data's 'US or Puerto Rico' used.",
+  "ground": "green",
+  "scenes": [
+    {
+      "type": "custom",
+      "name": "foryou-14",
+      "seconds": 4.0,
+      "props": {
+        "items": [
+          "you live in the US or Puerto Rico, 18+",
+          "a writer or director is from, or telling stories about, an underrepresented community",
+          "you're not a current student"
+        ],
+        "loop": {
+          "item": 1,
+          "text": "underrepresented"
+        }
+      }
+    }
+  ]
+}

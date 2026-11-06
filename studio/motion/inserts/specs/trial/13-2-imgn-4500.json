@@ -1,0 +1,18 @@
+{
+  "reel": "trial 13 · Under $25,000 (US) · CFA x IMGN Grant",
+  "note": "CFA x IMGN: USD 4,500; free; legal residents of the US and DC, 18+; closes 31 Dec (calls.json).",
+  "ground": "goldenrod",
+  "align": "center",
+  "scenes": [
+    {
+      "type": "amount",
+      "seconds": 3.5,
+      "kicker": "In the US?",
+      "label": "Free to apply",
+      "amount": "$4,500",
+      "name": "CFA x IMGN Grant",
+      "line": "For one indie film or doc. Closes 31 Dec.",
+      "markAt": 2.0
+    }
+  ]
+}

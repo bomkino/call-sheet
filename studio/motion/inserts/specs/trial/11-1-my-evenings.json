@@ -1,0 +1,21 @@
+{
+  "reel": "trial 11 · Funding for looking for funding · no opportunity named",
+  "note": "The script's own line (8.0-11.0).",
+  "ground": "yellow",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "line",
+      "seconds": 2.5,
+      "hook": "Project budget:",
+      "text": "My evenings.",
+      "loop": "My evenings.",
+      "markAt": 1.2,
+      "sub": "All of them.",
+      "motif": {
+        "kind": "laptop",
+        "place": "above"
+      }
+    }
+  ]
+}

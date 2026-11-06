@@ -1,0 +1,20 @@
+{
+  "reel": "trial 06 · $0 to apply · CFA x IMGN Grant",
+  "note": "CFA x IMGN: USD 4,500; free to enter; legal residents of the 50 states or DC, 18+; closes 31 Dec (calls.json).",
+  "ground": "paper",
+  "align": "left",
+  "inFrom": "right",
+  "scenes": [
+    {
+      "type": "card",
+      "seconds": 3.5,
+      "entry": "slide",
+      "name": "CFA x IMGN Grant",
+      "for": "Legal residents of the US and DC, 18+",
+      "gets": "$4,500 · free to enter",
+      "closes": "31 Dec",
+      "loop": "gets",
+      "markAt": 2.0
+    }
+  ]
+}

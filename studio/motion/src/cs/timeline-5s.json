@@ -1,0 +1,33 @@
+{
+  "fps": 30,
+  "framesPerBeat": 15,
+  "firstBeat": 0,
+  "durationInFrames": 150,
+  "soundDelayMs": 20,
+  "frames": {
+    "header": 0,
+    "rows": [
+      0,
+      4,
+      8,
+      11,
+      15,
+      19,
+      23,
+      26,
+      30
+    ],
+    "loopStart": 45,
+    "loopEnd": 63,
+    "settle": 65,
+    "cut": 75,
+    "earStart": 76,
+    "earEnd": 90,
+    "line1": 86,
+    "line2": 90,
+    "url": 100,
+    "urlRate": 1,
+    "ding": 120,
+    "end": 120
+  }
+}

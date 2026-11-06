@@ -1,0 +1,21 @@
+{
+  "reel": "foryou 11 · 2:59am in LA · Doc Edge Pitch",
+  "note": "Example. Doc Edge Pitch, first deadline 13 Nov 2026, 23:59 Auckland (calls.json). Converted: NZDT UTC+13, GMT, EST, PST.",
+  "ground": "paper",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "timezone",
+      "seconds": 4.5,
+      "kicker": "Doc Edge Pitch · closes Fri 13 Nov",
+      "motif": { "kind": "clock", "value": "2:59" },
+      "cities": [
+        { "city": "Auckland", "time": "11:59pm", "day": "Fri 13 Nov" },
+        { "city": "London", "time": "10:59am", "day": "Fri 13 Nov" },
+        { "city": "New York", "time": "5:59am", "day": "Fri 13 Nov" },
+        { "city": "Los Angeles", "time": "2:59am", "day": "Fri 13 Nov" }
+      ],
+      "loop": 3
+    }
+  ]
+}

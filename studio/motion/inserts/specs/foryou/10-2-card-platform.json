@@ -1,0 +1,30 @@
+{
+  "reel": "foryou 10 · $4,500, US · CFA x IMGN Grant",
+  "note": "USD 4,500 for one independent narrative or documentary; free; closes 31 Dec 2026 (no time); winner paid by 31 Jan; separate IMGN platform agreement (calls.json). Rides in from below like the scrolling page.",
+  "ground": "yellow",
+  "inFrom": "down",
+  "scenes": [
+    {
+      "type": "card",
+      "seconds": 2.5,
+      "entry": "slide",
+      "kicker": "Free to enter · paid by 31 Jan",
+      "name": "CFA x IMGN Grant",
+      "for": "Legal residents of the 50 US states or DC, 18+",
+      "gets": "$4,500 for one narrative or doc",
+      "closes": "31 Dec",
+      "loop": "closes"
+    },
+    {
+      "type": "catch",
+      "seconds": 2.2,
+      "ground": "white",
+      "label": "Before you upload",
+      "text": "IMGN has its own platform agreement. Read it.",
+      "motif": {
+        "kind": "laptop",
+        "place": "above"
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "reel": "trial 08 · It's rarely the film · counts as of 17 Oct",
+  "note": "99 distinct official websites across the 186 opportunities in calls.json (17 Oct). Matches the script.",
+  "ground": "pink",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "line",
+      "seconds": 3.2,
+      "kicker": "1 · It's on one of",
+      "text": "99 websites.",
+      "loop": "99 websites.",
+      "markAt": 1.5,
+      "sub": "One of them has your grant.",
+      "motif": {
+        "kind": "tabs",
+        "value": "12",
+        "place": "above"
+      }
+    }
+  ]
+}

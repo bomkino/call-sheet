@@ -1,0 +1,11 @@
+# Every Python script in scripts/ (score, film print, paper, contact and review sheets, checks).
+numpy>=1.26
+scipy>=1.11
+pillow>=10
+# audio_check.py: the spectrogram against the picture events.
+matplotlib>=3.8
+# make_marks.py, and the brand's own brand/tools/make_brand.py that it loads.
+shapely>=2.0
+fonttools>=4.47
+brotli>=1.1
+uharfbuzz>=0.39

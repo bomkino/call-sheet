@@ -1,0 +1,17 @@
+{
+  "reel": "trial 16 · 2am in Sydney (Australia) · SeriesFest Pitch-A-Thon",
+  "note": "Pitch-A-Thon final deadline 5 Jan, 23:59 'local time', no zone given (calls.json).",
+  "ground": "pink",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "catch",
+      "seconds": 3.5,
+      "label": "Local time",
+      "text": "11:59pm “local time”. Whose? Check.",
+      "note": "Closes 5 Jan",
+      "name": "SeriesFest Pitch-A-Thon",
+      "markAt": 1.6
+    }
+  ]
+}

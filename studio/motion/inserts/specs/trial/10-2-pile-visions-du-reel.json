@@ -1,0 +1,23 @@
+{
+  "reel": "trial 10 · Three piles · Visions du Réel Pitching",
+  "note": "VdR Pitching bring: EUR budget and financing, timeline, teaser and more; closes 15 Dec 17:00 Zurich (calls.json).",
+  "ground": "green",
+  "align": "left",
+  "inFrom": "down",
+  "scenes": [
+    {
+      "type": "send",
+      "seconds": 3.0,
+      "entry": "slide",
+      "kicker": "Pile 3 · Visions du Réel, 15 Dec",
+      "items": [
+        "A budget and financing plan",
+        "…in euros",
+        "A teaser"
+      ],
+      "mark": "loop",
+      "loop": 1,
+      "markAt": 1.7
+    }
+  ]
+}

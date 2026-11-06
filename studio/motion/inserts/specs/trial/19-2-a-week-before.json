@@ -1,0 +1,21 @@
+{
+  "reel": "trial 19 · 11:58pm · product",
+  "note": "Site behaviour: calendar file with reminders a week before and the day before (captions.md).",
+  "ground": "buff",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "line",
+      "seconds": 3,
+      "kicker": "Or: a reminder",
+      "text": "A week before.",
+      "loop": "A week before.",
+      "markAt": 1.4,
+      "sub": "And the day before.",
+      "motif": {
+        "kind": "calendar",
+        "place": "above"
+      }
+    }
+  ]
+}

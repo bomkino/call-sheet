@@ -1,0 +1,26 @@
+{
+  "reel": "foryou 04 · Someone falling over · TorinoFilmLab ComedyLab",
+  "note": "Closes 30 Nov 2026 16:00 Europe/Paris, no extensions; up to 4 comedy features, three residential modules; bring five comic scenes (3+ with dialogue); €3,000 + VAT if selected with a project; Vienna workshop travel/hotel self-funded (calls.json). Rises in from the floor, after the empty-chair gag.",
+  "ground": "paper",
+  "inFrom": "down",
+  "scenes": [
+    {
+      "type": "card",
+      "seconds": 2.4,
+      "kicker": "5 comic scenes · 3 with dialogue",
+      "name": "TorinoFilmLab ComedyLab",
+      "for": "Comedy feature writers, anywhere",
+      "gets": "Up to 4 comedies, 3 modules",
+      "closes": "30 Nov, 4pm",
+      "loop": "closes"
+    },
+    {
+      "type": "catch",
+      "seconds": 2.4,
+      "ground": "green",
+      "label": "If you're picked",
+      "text": "€3,000, plus VAT if due.",
+      "note": "Vienna first, on your own travel budget"
+    }
+  ]
+}

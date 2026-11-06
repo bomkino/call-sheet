@@ -1,0 +1,18 @@
+{
+  "reel": "orig 08 · Say the last bit first · Visions du Réel Pitching",
+  "note": "calls.json visions-du-reel-vdrpitching: teams anywhere with a nonfiction or hybrid feature over 60 min; pitch to industry in Nyon; closes 15 Dec 17:00 Europe/Zurich (shown as the script does, 15 Dec). Answers the friend's 'Where's it going?'.",
+  "ground": "green",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "card",
+      "seconds": 4.0,
+      "hook": "Where's it going?",
+      "name": "Visions du Réel Pitching",
+      "for": "Nonfiction and hybrid features, anywhere",
+      "gets": "A pitch to industry in Nyon",
+      "closes": "15 Dec",
+      "loop": "closes"
+    }
+  ]
+}

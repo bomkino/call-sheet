@@ -1,0 +1,26 @@
+{
+  "reel": "foryou 06 · 250 characters · Visions du Réel Pitching",
+  "note": "bring: goals 250 characters; get: pitch in Nyon, may qualify for €20,000 award; closes 15 Dec 2026 17:00 Europe/Zurich; CHF 360 if selected; mandatory pitch training in Nyon 11 April 2027; budget and financing in EUR (calls.json).",
+  "ground": "pink",
+  "scenes": [
+    {
+      "type": "card",
+      "seconds": 2.5,
+      "entry": "type",
+      "kicker": "Your goals: 250 characters. Max.",
+      "name": "Visions du Réel Pitching",
+      "for": "Teams anywhere, nonfiction or hybrid feature over 60 min",
+      "gets": "A shot at €20,000",
+      "closes": "15 Dec, 5pm",
+      "loop": "gets"
+    },
+    {
+      "type": "catch",
+      "seconds": 2.2,
+      "ground": "paper",
+      "label": "If you're picked",
+      "text": "CHF 360, and pitch training in Nyon on 11 April.",
+      "note": "Budget and financing in euros"
+    }
+  ]
+}

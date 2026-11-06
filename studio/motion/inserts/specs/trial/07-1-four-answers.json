@@ -1,0 +1,24 @@
+{
+  "reel": "trial 07 · Sixty seconds · product, no opportunity named",
+  "note": "The four lines every opportunity shows, from the script (10.0-15.0) and captions.md site behaviour.",
+  "ground": "blue",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "send",
+      "seconds": 4,
+      "kicker": "60 seconds · stopwatch on",
+      "hook": "Every opportunity, 4 lines",
+      "items": [
+        "Who can apply",
+        "What you get",
+        "Entry fee",
+        "When it closes"
+      ],
+      "motif": {
+        "kind": "laptop",
+        "place": "below"
+      }
+    }
+  ]
+}
