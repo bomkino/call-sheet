@@ -1,0 +1,44 @@
+{
+  "reel": "trial 16 · 2am in Sydney (Australia) · TorinoFilmLab SeriesLab",
+  "note": "SeriesLab closes 2026-12-16 16:00 Europe/Paris = Perth 11pm Wed, Brisbane 1am Thu, Sydney 2am Thu (IANA). Matches the script and caption.",
+  "ground": "goldenrod",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "timezone",
+      "seconds": 4.5,
+      "kicker": "Alarm set for 1:45am",
+      "label": "SeriesLab · closes Wed 16 Dec",
+      "motif": {
+        "kind": "clock",
+        "value": "1:45",
+        "place": "above",
+        "tint": "blue"
+      },
+      "cities": [
+        {
+          "city": "Paris",
+          "time": "4pm",
+          "day": "Wed"
+        },
+        {
+          "city": "Perth",
+          "time": "11pm",
+          "day": "Wed"
+        },
+        {
+          "city": "Brisbane",
+          "time": "1am",
+          "day": "Thu"
+        },
+        {
+          "city": "Sydney",
+          "time": "2am",
+          "day": "Thu"
+        }
+      ],
+      "loop": 3,
+      "markAt": 3.0
+    }
+  ]
+}

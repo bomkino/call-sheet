@@ -1,0 +1,15 @@
+{
+  "reel": "trial 20 · One sentence · The Film Fund Fall Narrative Contest",
+  "note": "Prize set by number of entries, paid as reimbursement of expenses submitted within 120 days; $25 entry; filmmakers worldwide; closes 17 Nov (calls.json).",
+  "ground": "salmon",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "catch",
+      "seconds": 3.5,
+      "text": "Paid back against your costs. Set by how many enter.",
+      "note": "$25 to enter · anyone · closes 17 Nov",
+      "markAt": 1.6
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "reel": "trial 21 · No name on it · Raindance Script Competition",
+  "note": "Raindance: anonymous English PDF, no title page or identifying details (calls.json).",
+  "ground": "white",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "line",
+      "seconds": 3,
+      "kicker": "Raindance Script Competition",
+      "hook": "Take your name off your script.",
+      "text": "No title page.",
+      "loop": "No title page.",
+      "markAt": 1.6,
+      "sub": "The PDF must be anonymous."
+    }
+  ]
+}

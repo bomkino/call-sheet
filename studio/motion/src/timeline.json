@@ -1,0 +1,15 @@
+{
+  "fps": 30,
+  "framesPerBeat": 14,
+  "firstBeat": 8,
+  "durationInFrames": 150,
+  "soundDelayMs": 20,
+  "events": {
+    "title": 1,
+    "emphasis": 2,
+    "rule": 3,
+    "mark": 4,
+    "hit": 5,
+    "end": 6
+  }
+}

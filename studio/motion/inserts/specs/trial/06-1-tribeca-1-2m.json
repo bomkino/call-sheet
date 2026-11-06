@@ -1,0 +1,25 @@
+{
+  "reel": "trial 06 · $0 to apply · Tribeca AT&T Untold Stories",
+  "note": "Tribeca: USD 1.2m production award; free to enter; US or Puerto Rico; closes 18 Jan 23:59 ET (calls.json).",
+  "ground": "goldenrod",
+  "align": "center",
+  "inFrom": "down",
+  "scenes": [
+    {
+      "type": "amount",
+      "seconds": 3.5,
+      "reveal": "type",
+      "hook": "$0 to apply.",
+      "label": "To make the winning film",
+      "amount": "$1.2m",
+      "name": "Tribeca AT&T Untold Stories",
+      "line": "Free to enter. US and Puerto Rico. Closes 18 Jan.",
+      "motif": {
+        "kind": "tag",
+        "value": "$0",
+        "place": "above"
+      },
+      "markAt": 1.8
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "reel": "foryou 01 · High school counts · Carole Dorothy Joyce Student Grant",
+  "note": "who: student filmmakers from any country, enrolled in university, college, community college, extension courses or high school; budget $50,000 or less (calls.json where.evidence). Cut in at 1.5s as the student card goes down: rides in from the top.",
+  "ground": "yellow",
+  "inFrom": "up",
+  "scenes": [
+    {
+      "type": "forwho",
+      "seconds": 3.0,
+      "items": [
+        "you're a film student",
+        "from anywhere in the world",
+        "yes, high school counts"
+      ],
+      "loop": 2,
+      "motif": {
+        "kind": "sticky",
+        "value": "FILM",
+        "place": "above",
+        "tint": "blue"
+      }
+    }
+  ]
+}

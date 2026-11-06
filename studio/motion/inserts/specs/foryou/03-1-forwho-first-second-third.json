@@ -1,0 +1,24 @@
+{
+  "reel": "foryou 03 · First, second or third · Sofia Meetings, Features",
+  "note": "where.evidence: first, second or third fiction features in development or pre-production; max total budget €6 million; worldwide (calls.json).",
+  "ground": "green",
+  "align": "center",
+  "scenes": [
+    {
+      "type": "forwho",
+      "seconds": 3.0,
+      "items": [
+        "1st, 2nd or 3rd feature",
+        "fiction, in development",
+        "total budget €6m or less"
+      ],
+      "loop": 0,
+      "motif": {
+        "kind": "sticky",
+        "value": "1st",
+        "place": "above",
+        "tint": "yellow"
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "reel": "trial 08 · It's rarely the film · counts as of 17 Oct",
+  "note": "100 of the 157 not-closed opportunities in calls.json have fee summary 'Not published' (17 Oct). Matches the caption.",
+  "ground": "salmon",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "catch",
+      "seconds": 3.0,
+      "kicker": "4 · It's rarely the film",
+      "label": "Entry fee",
+      "text": "Nobody mentions it. Until they do.",
+      "note": "100 of 157 don't publish one (17 Oct)",
+      "markAt": 1.6
+    }
+  ]
+}

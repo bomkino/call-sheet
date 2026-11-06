@@ -1,0 +1,22 @@
+{
+  "reel": "orig 09 · Closed on the 16th · Vimeo Short Film Grant 2026 (closed)",
+  "note": "calls.json vimeo-short-film-grant-2026: USD 60,000 ($60,000), Panavision camera package, free to enter; CLOSED 16 Oct. No date or 'open' on screen: this is the hope beat before the real Closed screen at 5.5s.",
+  "ground": "white",
+  "align": "center",
+  "scenes": [
+    {
+      "type": "amount",
+      "seconds": 3.0,
+      "label": "Free to enter",
+      "amount": "$60,000",
+      "name": "Vimeo Short Film Grant 2026",
+      "line": "Plus a Panavision camera package.",
+      "motif": {
+        "kind": "laptop",
+        "place": "above",
+        "tint": "blue"
+      },
+      "markAt": 1.3
+    }
+  ]
+}

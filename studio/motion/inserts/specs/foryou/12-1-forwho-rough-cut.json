@@ -1,0 +1,19 @@
+{
+  "reel": "foryou 12 · What's still missing · SeriesFest Pilots in Progress",
+  "note": "who: series creators worldwide with a near-complete 10–60-minute pilot rough cut and screening rights (calls.json). 'You can't see it any more' is the Reel's own hook line.",
+  "ground": "yellow",
+  "inFrom": "right",
+  "scenes": [
+    {
+      "type": "forwho",
+      "seconds": 3.5,
+      "items": [
+        "your pilot is a rough cut",
+        "10 to 60 minutes, nearly there",
+        "you hold the rights to screen it",
+        "you can't see it any more"
+      ],
+      "loop": 0
+    }
+  ]
+}

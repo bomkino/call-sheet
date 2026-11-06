@@ -1,0 +1,26 @@
+{
+  "reel": "foryou 05 · The company · Hot Docs Forum",
+  "note": "get: pitch to a round table of international commissioners and funders; closes 10 Dec 2026, no time; CAD 45; industry pass per pitch-team member if selected, priced after selection (calls.json). MISMATCH not on screen: script says 'Send: a pitch deck'; data bring says do not send extra decks, follow the form fields.",
+  "ground": "blue",
+  "inFrom": "down",
+  "scenes": [
+    {
+      "type": "card",
+      "seconds": 2.5,
+      "kicker": "CAD 45 to apply",
+      "name": "Hot Docs Forum",
+      "for": "Independent production companies, docs 10–75% financed",
+      "gets": "Pitch to international funders",
+      "closes": "10 Dec",
+      "loop": "closes"
+    },
+    {
+      "type": "catch",
+      "seconds": 2.1,
+      "ground": "goldenrod",
+      "label": "If you're picked",
+      "text": "Everyone pitching buys an industry pass.",
+      "note": "Priced after selection"
+    }
+  ]
+}

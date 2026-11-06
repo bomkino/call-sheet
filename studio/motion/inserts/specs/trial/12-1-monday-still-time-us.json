@@ -1,0 +1,33 @@
+{
+  "reel": "trial 12 · Monday: still time · worked example, US, week of 26 Oct",
+  "note": "FICCI 66 closes 29 Nov (prize pool up to USD 100,000 across sections); Series Mania Co-Pro Pitching 30 Nov (up to EUR 50,000, companies only); Sundance Sloan 3 Dec (USD 17,000) (calls.json). Only for the week of 26 Oct; later weeks need their own insert.",
+  "ground": "white",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "list",
+      "seconds": 4.5,
+      "hook": "Monday. Still time.",
+      "label": "US · week of 26 Oct",
+      "items": [
+        {
+          "closes": "29 Nov",
+          "name": "FICCI 66",
+          "gets": "Prizes up to $100,000"
+        },
+        {
+          "closes": "30 Nov",
+          "name": "Series Mania Co-Pro",
+          "gets": "Up to €50,000"
+        },
+        {
+          "closes": "3 Dec",
+          "name": "Sundance Sloan",
+          "gets": "$17,000, one series"
+        }
+      ],
+      "loop": 0,
+      "markAt": 2.6
+    }
+  ]
+}

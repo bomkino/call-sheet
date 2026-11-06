@@ -1,0 +1,17 @@
+{
+  "reel": "trial 04 · Here's the invoice · CineStory TV Retreat & Fellowship",
+  "note": "CineStory: retreat fee if invited $2,800 (team $4,600); the TV Fellow gets $3,000, mentoring and a free place (calls.json).",
+  "ground": "buff",
+  "align": "center",
+  "scenes": [
+    {
+      "type": "amount",
+      "seconds": 3.5,
+      "label": "Invited finalists pay",
+      "amount": "$2,800",
+      "name": "CineStory TV Retreat & Fellowship",
+      "line": "The TV Fellow goes free, and gets $3,000.",
+      "markAt": 2.0
+    }
+  ]
+}

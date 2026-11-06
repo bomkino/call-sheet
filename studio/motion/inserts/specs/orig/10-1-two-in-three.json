@@ -1,0 +1,21 @@
+{
+  "reel": "orig 10 · Page nine",
+  "note": "calls.json: 100 of the 157 not-closed opportunities have a listed-countries scope (64%), so 'nearly 2 in 3' holds. Page-nine typewriter kicker; the page slides up like the next page.",
+  "ground": "pink",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "line",
+      "seconds": 2.5,
+      "entry": "slide",
+      "kicker": "PAGE 9 OF 9",
+      "text": "Nearly 2 in 3\nopportunities are only\nfor certain countries.",
+      "loop": "Nearly 2 in 3",
+      "motif": {
+        "kind": "passport",
+        "place": "below",
+        "tint": "blue"
+      }
+    }
+  ]
+}

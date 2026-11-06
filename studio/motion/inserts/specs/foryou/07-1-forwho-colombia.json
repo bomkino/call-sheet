@@ -1,0 +1,23 @@
+{
+  "reel": "foryou 07 · Never screened in Colombia · FICCI 66",
+  "note": "where.evidence: produced and/or premiered in 2026 and 2027; no previous exhibition in Colombia under any form of public communication, analog or digital; any nationality; shorts and features. Script hook says 'finished a short this year': data wording used.",
+  "ground": "green",
+  "inFrom": "up",
+  "scenes": [
+    {
+      "type": "forwho",
+      "seconds": 3.0,
+      "items": [
+        "your film is from 2026 or 2027",
+        "short or feature, any nationality",
+        "never shown in Colombia"
+      ],
+      "loop": 2,
+      "motif": {
+        "kind": "passport",
+        "place": "above",
+        "tint": "yellow"
+      }
+    }
+  ]
+}

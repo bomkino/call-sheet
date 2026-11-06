@@ -1,0 +1,33 @@
+{
+  "reel": "trial 14 · None of them British (UK) · three opportunities",
+  "note": "Hot Docs Deal Maker 10 Dec; TorinoFilmLab SeriesLab 16 Dec 4pm Paris = 3pm UK; Sedona Screenplay Competition 31 Dec (calls.json).",
+  "ground": "blue",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "list",
+      "seconds": 4.5,
+      "hook": "None of them British.",
+      "label": "For UK filmmakers · closes",
+      "items": [
+        {
+          "closes": "10 Dec",
+          "name": "Toronto",
+          "gets": "Hot Docs Deal Maker"
+        },
+        {
+          "closes": "16 Dec",
+          "name": "Turin",
+          "gets": "TorinoFilmLab SeriesLab"
+        },
+        {
+          "closes": "31 Dec",
+          "name": "Sedona",
+          "gets": "Sedona Screenplay Competition"
+        }
+      ],
+      "loop": 0,
+      "markAt": 2.4
+    }
+  ]
+}

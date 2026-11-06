@@ -1,0 +1,24 @@
+{
+  "reel": "trial 02 · Conspiracy board · no opportunity named",
+  "note": "Built from the script's own lines (5.0-7.5 and 7.5-13.0). No facts from calls.json.",
+  "ground": "pink",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "forwho",
+      "seconds": 4.5,
+      "entry": "type",
+      "kicker": "Okay. Probably not true.",
+      "hook": "What you actually came for",
+      "items": [
+        "Can I apply?",
+        "What do I get?",
+        "What does it cost?",
+        "When's the deadline?"
+      ],
+      "mark": "loop",
+      "loop": 0,
+      "markAt": 3.0
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "reel": "orig 02 · Circle the one · the printout",
+  "note": "Five of the six on the printout, soonest first (calls.json closes: FICCI66 festival films 29 Nov, ComedyLab 30 Nov, Sloan 3 Dec, Green Narratives 4 Dec, Hot Docs Deal Maker 10 Dec; CineStory 14 Dec left off for room). Loop on ComedyLab, the row Manali circles. Carries the 30.0-33.5 hold's on-screen text.",
+  "ground": "white",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "list",
+      "seconds": 3.5,
+      "kicker": "Save this for your next deadline",
+      "hook": "186 opportunities, and it prints.",
+      "items": [
+        {
+          "closes": "29 Nov",
+          "name": "FICCI 66 film competition"
+        },
+        {
+          "closes": "30 Nov",
+          "name": "TorinoFilmLab ComedyLab"
+        },
+        {
+          "closes": "3 Dec",
+          "name": "Sundance Sloan"
+        },
+        {
+          "closes": "4 Dec",
+          "name": "TorinoFilmLab Green Narratives"
+        },
+        {
+          "closes": "10 Dec",
+          "name": "Hot Docs Deal Maker"
+        }
+      ],
+      "loop": 1,
+      "markAt": 1.6
+    }
+  ]
+}

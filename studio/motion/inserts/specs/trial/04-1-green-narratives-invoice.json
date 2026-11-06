@@ -1,0 +1,25 @@
+{
+  "reel": "trial 04 · Here's the invoice · TorinoFilmLab Green Narratives",
+  "note": "Green Narratives: participation fee if selected €2,000 per team of up to 2, plus VAT if due, half-fee scholarships (calls.json). Closes 4 Dec 23:59 Paris.",
+  "ground": "salmon",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "catch",
+      "seconds": 3.5,
+      "entry": "slide",
+      "inFrom": "down",
+      "hook": "…here's the invoice.",
+      "label": "If selected",
+      "text": "€2,000 a team",
+      "note": "Plus VAT if due. Half-fee scholarships.",
+      "name": "TorinoFilmLab Green Narratives",
+      "motif": {
+        "kind": "receipt",
+        "value": "€2,000",
+        "place": "above"
+      },
+      "markAt": 1.6
+    }
+  ]
+}

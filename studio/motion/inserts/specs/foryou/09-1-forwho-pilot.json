@@ -1,0 +1,22 @@
+{
+  "reel": "foryou 09 · Two comparisons, max · SeriesFest Pitch-A-Thon",
+  "note": "who: series creators worldwide with English-language materials; bring a pilot script (calls.json). The phone is propped on a mug in the Reel.",
+  "ground": "paper",
+  "scenes": [
+    {
+      "type": "forwho",
+      "seconds": 3.0,
+      "items": [
+        "you've written a pilot",
+        "you'd pitch it to anyone",
+        "from anywhere, in English"
+      ],
+      "loop": 1,
+      "motif": {
+        "kind": "mug",
+        "place": "above",
+        "tint": "salmon"
+      }
+    }
+  ]
+}

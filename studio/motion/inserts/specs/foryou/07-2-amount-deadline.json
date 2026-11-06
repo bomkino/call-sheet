@@ -1,0 +1,29 @@
+{
+  "reel": "foryou 07 · Never screened in Colombia · FICCI 66",
+  "note": "get: competition prizes from a pool of up to USD 100,000 shared across sections and WIP; closes 29 Nov 2026 23:59 America/Bogota; fees after 31 Oct: short $35, feature $70 (calls.json).",
+  "ground": "yellow",
+  "align": "center",
+  "scenes": [
+    {
+      "type": "amount",
+      "seconds": 2.4,
+      "label": "Prize pool, up to",
+      "amount": "$100,000",
+      "name": "FICCI 66",
+      "line": "Shared across all the sections",
+      "loop": false
+    },
+    {
+      "type": "deadline",
+      "seconds": 2.4,
+      "ground": "white",
+      "transition": "page",
+      "inFrom": "right",
+      "date": "29 Nov",
+      "weekday": "Sun",
+      "label": "Closes",
+      "note": "11:59pm Colombia",
+      "name": "Short $35 · feature $70"
+    }
+  ]
+}

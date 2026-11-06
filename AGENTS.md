@@ -7,6 +7,7 @@
 - The runtime and release path are chosen: static pages built by `tools/build_site.py` (Python standard library), released into pitch.dog through `bomkino/pitchdog-cloudflare-sites`. Add no framework or dependency without a reason the README can state.
 - `data/calls.json` and `dist-pitchdog/` are generated. Change `data/overlay.json`, `data/rechecks.json`, `site/` or the tools instead.
 - Keep the private foundation out of this public repository.
+- Video and motion work (Reels, stings, explainers, inserts) happens in `studio/`. Start with [studio/CLAUDE.md](studio/CLAUDE.md).
 
 ## Working agreements
 

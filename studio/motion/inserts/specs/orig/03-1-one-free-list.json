@@ -1,0 +1,20 @@
+{
+  "reel": "orig 03 · Five deadlines, one window",
+  "note": "calls.json: 186 opportunities, 99 distinct official-site domains. Sky-blue ground for the bright window, the SAVE THIS sticky note from the Reel. No loop: Manali's own marker loop follows at 25.5.",
+  "ground": "blue",
+  "align": "center",
+  "scenes": [
+    {
+      "type": "line",
+      "seconds": 2.5,
+      "text": "One free list.",
+      "sub": "186 opportunities from 99 websites.",
+      "motif": {
+        "kind": "sticky",
+        "value": "SAVE THIS",
+        "place": "above",
+        "tint": "yellow"
+      }
+    }
+  ]
+}

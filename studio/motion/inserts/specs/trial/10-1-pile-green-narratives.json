@@ -1,0 +1,24 @@
+{
+  "reel": "trial 10 · Three piles · TorinoFilmLab Green Narratives",
+  "note": "Green Narratives bring: 2-page synopsis, 15-20-page treatment, 2-page motivation, CV, visuals, 2-minute personal video (calls.json). Script shows three of them.",
+  "ground": "buff",
+  "align": "left",
+  "inFrom": "down",
+  "scenes": [
+    {
+      "type": "send",
+      "seconds": 3.5,
+      "entry": "slide",
+      "kicker": "Pile 1 · Green Narratives, 4 Dec",
+      "items": [
+        "2-page synopsis",
+        "15–20-page treatment",
+        "2-minute personal video"
+      ],
+      "motif": {
+        "kind": "piles",
+        "place": "above"
+      }
+    }
+  ]
+}

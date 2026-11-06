@@ -1,0 +1,17 @@
+{
+  "reel": "trial 17 · What I wish I'd known · no opportunity named",
+  "note": "The script's line 2 and the caption's 'It means nobody's said.' If Manali hasn't been caught by these, the kicker should read 'Nobody tells you · 2 of 6' (alternative title).",
+  "ground": "green",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "catch",
+      "seconds": 3.5,
+      "kicker": "Things I wish I'd known · 2 of 6",
+      "label": "Fee",
+      "text": "“Not published” doesn't mean free.",
+      "note": "It means nobody's said.",
+      "markAt": 1.7
+    }
+  ]
+}

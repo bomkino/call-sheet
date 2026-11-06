@@ -1,0 +1,30 @@
+{
+  "reel": "trial · the catch · TorinoFilmLab ComedyLab",
+  "note": "Example. TorinoFilmLab ComedyLab closes 30 Nov 2026, 4pm Paris (calls.json). Participation fee as stated in the trial script.",
+  "ground": "green",
+  "align": "left",
+  "outTo": "left",
+  "scenes": [
+    {
+      "type": "card",
+      "seconds": 2.7,
+      "entry": "type",
+      "name": "TorinoFilmLab ComedyLab",
+      "for": "Writers anywhere developing a comedy feature",
+      "gets": "Three residential modules",
+      "closes": "30 Nov, 4pm",
+      "loop": "closes"
+    },
+    {
+      "type": "catch",
+      "seconds": 2.2,
+      "ground": "salmon",
+      "transition": "page",
+      "inFrom": "right",
+      "label": "If selected",
+      "text": "€3,000 participation fee",
+      "note": "Plus VAT if due",
+      "motif": { "kind": "tag", "value": "€3,000", "place": "above" }
+    }
+  ]
+}

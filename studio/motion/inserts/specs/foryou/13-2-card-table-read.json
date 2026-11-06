@@ -1,0 +1,26 @@
+{
+  "reel": "foryou 13 · Unsold, unoptioned · Sedona Screenplay Competition",
+  "note": "money.note: three category winners get VIP pass, up to four hotel nights, scene table read, coverage, award/interview; no cash prize; feature $75 until 30 Nov, $85 until 31 Dec; festival page lists no fees or closing time (calls.json). Rides up like the scrolling page.",
+  "ground": "white",
+  "inFrom": "down",
+  "scenes": [
+    {
+      "type": "card",
+      "seconds": 2.5,
+      "kicker": "Feature: $75 until 30 Nov",
+      "name": "Sedona Screenplay Competition",
+      "for": "Writers anywhere, unsold and unoptioned, in English",
+      "gets": "Winners: a table read",
+      "closes": "31 Dec",
+      "loop": "gets"
+    },
+    {
+      "type": "catch",
+      "seconds": 2.0,
+      "ground": "goldenrod",
+      "label": "The catch",
+      "text": "No cash prize.",
+      "note": "Check the fee on the entry platform"
+    }
+  ]
+}

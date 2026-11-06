@@ -1,0 +1,26 @@
+{
+  "reel": "foryou 03 · First, second or third · Sofia Meetings, Features",
+  "note": "Free to enter, by email, deadline 1 Dec 2026 (no time); bring includes finance; caution: regulations page still shows last year's 15 Dec (calls.json).",
+  "ground": "white",
+  "scenes": [
+    {
+      "type": "card",
+      "seconds": 2.6,
+      "entry": "type",
+      "kicker": "Free to apply. By email.",
+      "name": "Sofia Meetings, Features",
+      "for": "1st–3rd fiction features, anywhere, €6m or less",
+      "gets": "A pitch to co-producers + sales",
+      "closes": "1 Dec",
+      "loop": "closes"
+    },
+    {
+      "type": "catch",
+      "seconds": 2.2,
+      "ground": "goldenrod",
+      "label": "The catch",
+      "text": "You need a finance plan, not just a script.",
+      "note": "Their rules page shows last year's date"
+    }
+  ]
+}

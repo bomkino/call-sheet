@@ -1,0 +1,25 @@
+{
+  "reel": "foryou 01 · High school counts · Carole Dorothy Joyce Student Grant",
+  "note": "get: $3,000 cash plus donated services and products; closes 30 Nov 2026 23:59 America/Los_Angeles; fee $28; bring includes budget and fundraising and distribution plan (calls.json).",
+  "ground": "paper",
+  "align": "center",
+  "scenes": [
+    {
+      "type": "amount",
+      "seconds": 2.4,
+      "label": "Cash + donated services",
+      "amount": "$3,000",
+      "name": "Carole Dorothy Joyce Student Grant",
+      "line": "Closes Mon 30 Nov, 11:59pm Pacific. $28 to apply."
+    },
+    {
+      "type": "catch",
+      "seconds": 2.2,
+      "ground": "pink",
+      "align": "left",
+      "label": "The catch",
+      "text": "A budget, plus a fundraising and distribution plan.",
+      "note": "Start this week"
+    }
+  ]
+}

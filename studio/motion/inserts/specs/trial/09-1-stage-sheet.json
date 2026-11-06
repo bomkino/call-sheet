@@ -1,0 +1,37 @@
+{
+  "reel": "trial 09 · Not finished? Good. · four stages",
+  "note": "Sloan closes 3 Dec ($17,000); Green Narratives 4 Dec (treatment stage); Hot Docs feature entries 4 Jan; SeriesFest Pilots in Progress final deadline 5 Jan (calls.json). Hook: data says 11 of 157 *take* finished films (only 4 take only finished films), so 'want' in the script hook overstates it slightly.",
+  "ground": "white",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "list",
+      "seconds": 4.0,
+      "label": "Not finished? Good.",
+      "items": [
+        {
+          "closes": "3 Dec",
+          "name": "Sundance Sloan",
+          "gets": "A pilot about science"
+        },
+        {
+          "closes": "4 Dec",
+          "name": "Green Narratives",
+          "gets": "A treatment"
+        },
+        {
+          "closes": "4 Jan",
+          "name": "Hot Docs",
+          "gets": "A finished doc"
+        },
+        {
+          "closes": "5 Jan",
+          "name": "Pilots in Progress",
+          "gets": "A rough cut"
+        }
+      ],
+      "loop": 2,
+      "markAt": 2.6
+    }
+  ]
+}

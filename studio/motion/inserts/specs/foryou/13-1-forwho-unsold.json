@@ -1,0 +1,22 @@
+{
+  "reel": "foryou 13 · Unsold, unoptioned · Sedona Screenplay Competition",
+  "note": "who: writers worldwide with unsold, unoptioned English scripts; features, TV and shorts (calls.json).",
+  "ground": "salmon",
+  "scenes": [
+    {
+      "type": "forwho",
+      "seconds": 3.0,
+      "items": [
+        "your script is finished",
+        "unsold, unoptioned",
+        "it's in English. From anywhere."
+      ],
+      "loop": 1,
+      "motif": {
+        "kind": "piles",
+        "place": "above",
+        "tint": "buff"
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "reel": "trial 15 · Same doc, different price (Canada) · Hot Docs festival",
+  "note": "Hot Docs feature/mid-length/series fee: CAD 120 regular until 10 Dec, CAD 165 late until 4 Jan, +13% HST in Canada (calls.json). Post by 26 Nov for this line.",
+  "ground": "salmon",
+  "align": "left",
+  "inFrom": "down",
+  "scenes": [
+    {
+      "type": "deadline",
+      "seconds": 3.5,
+      "style": "calendar",
+      "kicker": "Same doc. Different price.",
+      "label": "CAD 120 until",
+      "date": "10 Dec",
+      "weekday": "Thu",
+      "note": "Then CAD 165, to 4 Jan",
+      "name": "Hot Docs · feature entry",
+      "markAt": 1.7
+    }
+  ]
+}

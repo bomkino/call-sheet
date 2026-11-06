@@ -1,0 +1,31 @@
+{
+  "reel": "foryou 14 · Five straight minutes · Tribeca AT&T Untold Stories",
+  "note": "get: USD 1.2m to make the winning feature, four other finalists $15,000 each; free; closes 18 Jan 2027 23:59 America/New_York; bring at least five consecutive minutes of the director's previous work, montage alone insufficient (calls.json).",
+  "ground": "paper",
+  "align": "center",
+  "scenes": [
+    {
+      "type": "amount",
+      "seconds": 2.4,
+      "label": "To make one feature",
+      "amount": "$1.2m",
+      "reveal": "type",
+      "name": "Tribeca AT&T Untold Stories",
+      "line": "Free to enter. Closes Mon 18 Jan, 11:59pm ET."
+    },
+    {
+      "type": "catch",
+      "seconds": 2.4,
+      "ground": "buff",
+      "align": "left",
+      "label": "You'll need",
+      "text": "5 straight minutes of the director's work.",
+      "note": "A montage won't do",
+      "motif": {
+        "kind": "filmstrip",
+        "place": "above",
+        "tint": "blue"
+      }
+    }
+  ]
+}

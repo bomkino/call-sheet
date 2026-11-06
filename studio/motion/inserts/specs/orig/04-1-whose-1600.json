@@ -1,0 +1,44 @@
+{
+  "reel": "orig 04 · Whose 16:00? · TorinoFilmLab ComedyLab",
+  "note": "calls.json torinofilmlab-comedylab: 2026-11-30 16:00 Europe/Paris (CET, UTC+1). Converted with the IANA zones: LA 07:00 PST, NY 10:00 EST, London 15:00 GMT, Perth 23:00 AWST, Sydney 02:00 on 1 Dec AEDT. Loop on Sydney, the one that flips the date.",
+  "ground": "paper",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "timezone",
+      "seconds": 4.5,
+      "hook": "Whose 16:00?",
+      "label": "16:00 in Paris on 30 Nov is",
+      "motif": {
+        "kind": "clock",
+        "value": "16:00",
+        "place": "above",
+        "tint": "yellow"
+      },
+      "cities": [
+        {
+          "city": "Los Angeles",
+          "time": "07:00"
+        },
+        {
+          "city": "New York",
+          "time": "10:00"
+        },
+        {
+          "city": "London",
+          "time": "15:00"
+        },
+        {
+          "city": "Perth",
+          "time": "23:00"
+        },
+        {
+          "city": "Sydney",
+          "time": "02:00",
+          "day": "1 Dec"
+        }
+      ],
+      "loop": 4
+    }
+  ]
+}

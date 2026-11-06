@@ -1,0 +1,19 @@
+{
+  "reel": "trial 15 · Same doc, different price (Canada) · Doc Edge Pitch",
+  "note": "Doc Edge Pitch: rights-holders 18+ worldwide with a doc over 40 min or a factual series; pitch at Doc Edge 2027 in NZ; final deadline 20 Dec 23:59 NZT (calls.json).",
+  "ground": "white",
+  "align": "left",
+  "scenes": [
+    {
+      "type": "card",
+      "seconds": 4,
+      "kicker": "Your doc, pitched in New Zealand",
+      "name": "Doc Edge Pitch",
+      "for": "Docs over 40 minutes, or a factual series, 18+",
+      "gets": "A pitch at Doc Edge 2027",
+      "closes": "20 Dec",
+      "loop": "closes",
+      "markAt": 2.6
+    }
+  ]
+}

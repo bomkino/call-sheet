@@ -1,0 +1,13 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Renders, negatives and stills.
+out
+
+# Python
+__pycache__
+
+# Generated audio: scripts regenerate it byte for byte (see ../README.md).
+public/audio/*.wav

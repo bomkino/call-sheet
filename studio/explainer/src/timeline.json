@@ -1,0 +1,129 @@
+{
+  "fps": 30,
+  "framesPerBeat": 17,
+  "firstBeat": 8,
+  "durationInFrames": 1813,
+  "soundDelayMs": 20,
+  "events": {
+    "q": 1,
+    "qText": 0.25,
+    "o": 5,
+    "oText": 5.25,
+    "oLoop": 6.5,
+    "oClosed": 9,
+    "oDroop": 9.5,
+    "p1": 13,
+    "p1Tabs": 13.25,
+    "p1Sub": 14,
+    "p2": 19,
+    "p2Flip": 19.25,
+    "p2Nine": 21,
+    "p2Loop": 21.75,
+    "p3": 27,
+    "p3Box2": 28.25,
+    "p3Loop": 29.5,
+    "p4": 34,
+    "p4Rows": 34.5,
+    "p4Sub": 35.5,
+    "f1": 41,
+    "f1Tick": 41.75,
+    "f1Sub": 42,
+    "f1Rows": 42.5,
+    "f2": 48,
+    "f2Tick": 48.75,
+    "f2Sub": 49,
+    "f2Place": 50,
+    "f2Doc": 51.5,
+    "f2Loop": 53,
+    "f3": 56,
+    "f3Tick": 56.75,
+    "f3Loop": 58,
+    "f4": 62,
+    "f4Tick": 62.75,
+    "f4Sub": 63,
+    "f4Loop": 64.25,
+    "f5a": 68,
+    "f5aSub": 69,
+    "f5aFold1": 69.5,
+    "f5aFold2": 70.25,
+    "f5aFold3": 71,
+    "f5aBar": 72,
+    "f5b": 74,
+    "f5bSub": 75,
+    "f5bPress": 75.25,
+    "f5bCal": 76,
+    "f5bWeek": 77,
+    "f5bDay": 78,
+    "f5bLoop": 78.75,
+    "f5bTick": 79,
+    "f5c": 81,
+    "f5cSub": 82,
+    "f5cNew": 83,
+    "pd": 87,
+    "pdSub": 88,
+    "pdFree": 90,
+    "pdEar": 91,
+    "cta": 94,
+    "ctaRows": 94.5,
+    "ctaLoop": 96,
+    "end": 99,
+    "endLoop": 99.75,
+    "endLine": 101,
+    "endUrl": 102.25
+  },
+  "labels": {
+    "q": {
+      "at": 0.5,
+      "text": "Finding funding"
+    },
+    "p1": {
+      "at": 12.25,
+      "text": "1 · Grants are scattered"
+    },
+    "p2": {
+      "at": 18.25,
+      "text": "2 · The fine print"
+    },
+    "p3": {
+      "at": 26.25,
+      "text": "3 · Time zones are confusing"
+    },
+    "p4": {
+      "at": 33.25,
+      "text": "4 · Hidden fees"
+    },
+    "f1": {
+      "at": 40.25,
+      "text": "1 · Grants are scattered"
+    },
+    "f2": {
+      "at": 47.25,
+      "text": "2 · The fine print"
+    },
+    "f3": {
+      "at": 55.25,
+      "text": "3 · Time zones are confusing"
+    },
+    "f4": {
+      "at": 61.25,
+      "text": "4 · Hidden fees"
+    },
+    "f5a": {
+      "at": 67.25,
+      "text": "Found it the day after it closed"
+    },
+    "f5b": {
+      "at": 73.25,
+      "text": "Found it the day after it closed"
+    },
+    "f5c": {
+      "at": 80.25,
+      "text": "Next: blue pages, November"
+    },
+    "pd": {
+      "at": 86.25,
+      "text": "From pitch.dog, who made this"
+    }
+  },
+  "typeFramesPerChar": 1.5
+}
