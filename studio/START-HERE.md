@@ -6,7 +6,7 @@ How to make Call Sheet videos with Claude in the cloud.
 
 1. **Merge the studio into `main`** (the pull request that adds `studio/`), so every new session finds it.
 2. **Use the environment `call-sheet-studio`.** It already exists in your Claude environments, with `bomkino/call-sheet`, `bomkino/pitchdog-type-system` and `bomkino/pitchdog-cloudflare-sites` attached. Its setup script runs `studio/setup.sh`, so each session starts with both Remotion projects, Chrome, the Python tools and the scores ready, in about a minute.
-3. **Network.** It allows package registries plus the three hosts the setup needs. If a session needs more (for example, to recapture the live site), it will ask, or you can widen it in Settings → Environments.
+3. **Network.** It has full, unrestricted web access, so a session can open organisers' official pages, the live site and any tool it needs. If a session needs an API key (a voice or music service, say), it will ask for it through a secure form; never paste keys into the chat.
 
 ## Every time
 
