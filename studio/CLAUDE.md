@@ -9,6 +9,7 @@ This is where Call Sheet's video and motion work is made: stings, the explainer,
 3. [FORMATS.md](FORMATS.md): sizes, safe zones, encoding and the done checklist.
 4. [LOG.md](LOG.md): what's been made, the owner's feedback and the lessons learned.
 5. [IDEAS.md](IDEAS.md), when you're asked for something new or open-ended.
+7. [START-HERE.md](START-HERE.md), the team's how-to for cloud sessions, if setup comes up.
 6. The README of the project you'll work in: `motion/README.md` or `explainer/README.md`, plus their NOTES.md, SCRIPT.md and `motion/src/inserts/SPEC.md`.
 
 ## Where things are
